@@ -3,6 +3,8 @@
 Questo modulo sull’**inferenza frequentista** è parte dell’ecosistema UTET che accompagna il manuale *Metodi bayesiani in psicologia*.  
 Il suo scopo è duplice: da un lato fornire un’introduzione chiara alle procedure statistiche classiche, dall’altro mostrare come tali procedure abbiano plasmato — e in parte limitato — la ricerca psicologica contemporanea.
 
+\
+
 ## A chi è destinato
 
 - A chi desidera **ripassare le basi del frequentismo** prima di avvicinarsi al bayesiano.  
