@@ -1,0 +1,113 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Inferenza frequentista in psicologia"
+  subtitle: "Modulo introduttivo"
+  license: "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)"
+  reader-mode: true
+  google-analytics: G-QT5S3P9D31
+
+  author: 
+    - name: "Corrado Caudek"
+      orcid: "0000-0002-1404-0420"
+  date: "last-modified"
+  search: true
+  repo-url: https://github.com/ccaudek/utet-frequentista/
+  repo-actions: [source, issue]
+  back-to-top-navigation: true
+  site-url: https://ccaudek.github.io/utet-frequentista/
+  page-footer:
+    left: |
+      **Inferenza frequentista in psicologia** — Modulo del progetto UTET a supporto del manuale *Metodi bayesiani in psicologia*.
+    right: |
+      Realizzato con <a href="https://quarto.org/">Quarto</a>.
+  favicon: style/gauss.png
+  sidebar:
+    collapse-level: 1
+
+  chapters:
+    - index.qmd
+    - prefazione.qmd
+
+    - part: "Frequentismo"
+      chapters:
+        - chapters/frequentist_inference/introduction_frequentist_inference.qmd
+        - chapters/frequentist_inference/01_galton.qmd
+        - chapters/frequentist_inference/02_stime_parametri.qmd
+        - chapters/frequentist_inference/03_conf_interv.qmd
+        - chapters/frequentist_inference/04_sample_size.qmd
+        - chapters/frequentist_inference/05_test_ipotesi.qmd
+        - chapters/frequentist_inference/06_two_ind_samples.qmd
+
+    - part: "Epilogo"
+      chapters:
+        - chapters/epiloque/epiloque.qmd
+
+crossref:
+  appendix-title: "Appendice"
+
+toc: true
+toc-depth: 2
+
+bibliography: ./references.bib
+biblio-style: apalike
+csl: apa.csl
+link-citations: true
+
+format:
+  html:
+    include-in-header:
+      - style/_mathjax-config.html
+    include-after-body:
+      - style/_after-body.html
+    theme: style/mystyle.scss
+    css:
+      - style/_typography-extras.css
+      - style/_code-extras.css
+      - style/_math-extras.css
+      - style/styles.css
+    fig-format: png
+    dpi: 192
+    fig-responsive: true
+    smooth-scroll: true
+    page-layout: article
+    max-width: 72ch
+    number-sections: true
+    link-external-icon: true
+    link-external-newwindow: true
+    footnotes-hover: true
+    reader-mode: true
+    callout-appearance: minimal
+    lang: it
+    title-block-banner: false
+    toc-title: "Sommario"
+    date-format: "D MMMM YYYY"
+    code-copy: hover
+    code-link: true
+    code-overflow: scroll
+    code-line-numbers: false
+    code-block-bg: false
+    code-block-border-left: false
+
+execute:
+  freeze: auto
+  echo: true
+  warning: false
+  message: false
+  fig.width: 6
+  fig.asp: 0.618
+  fig.retina: 2
+  fig.align: "center"
+  fig.show: "hold"
+  options:
+    width: 120
+    pillar.width: Inf
+    tibble.width: Inf
+
+website:
+  cookie-consent:
+    type: express
+    style: headline
+    anonymize-ip: true

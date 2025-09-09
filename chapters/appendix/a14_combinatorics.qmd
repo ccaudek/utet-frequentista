@@ -1,0 +1,307 @@
+# Calcolo combinatorio {#sec-apx-combinatorics}
+
+```{r}
+here::here("code", "_common.R") |>
+    source()
+
+if (!requireNamespace("pacman")) install.packages("pacman")
+pacman::p_load(gtools, combinat)
+```
+
+Il **calcolo combinatorio** studia il numero di modi in cui è possibile combinare, ordinare o disporre elementi appartenenti a uno o più insiemi, seguendo regole ben definite. Molti problemi di probabilità richiedono strumenti combinatori per determinare la probabilità di eventi complessi. In questo capitolo, esploreremo i concetti fondamentali del calcolo combinatorio, illustrandoli attraverso il modello del **campionamento dall’urna**. Tratteremo i principi della somma e del prodotto, fondamentali per affrontare problemi più avanzati, come permutazioni, disposizioni e combinazioni.
+
+## Principio della somma
+
+Il **principio della somma** si applica quando un insieme di elementi può essere suddiviso in **sottoinsiemi disgiunti** (ossia senza sovrapposizioni). In questo caso, il numero totale di elementi è dato dalla somma delle cardinalità dei sottoinsiemi:
+
+$$
+n_{\text{tot}} = n_1 + n_2 + \dots + n_k .
+$$
+
+**Esempio**
+
+Un distributore contiene tre scomparti di caramelle, ciascuno con un diverso tipo di dolci:
+
+- **Scomparto A**: 10 caramelle alla menta,  
+- **Scomparto B**: 8 caramelle alla frutta,  
+- **Scomparto C**: 12 caramelle al cioccolato.  
+
+Quante caramelle ci sono in totale nel distributore?
+
+Secondo il **principio della somma**, il numero totale di caramelle è:
+
+$$
+n_{\text{tot}} = n_A + n_B + n_C = 10 + 8 + 12 = 30.
+$$
+
+Calcolo in R:
+
+```{r}
+A <- 10
+B <- 8
+C <- 12
+
+totale_caramelle <- A + B + C
+totale_caramelle
+```
+
+**Risultato**: Nel distributore ci sono **30 caramelle** in totale.
+
+## Principio del prodotto
+
+Il **principio del prodotto** si applica quando un’operazione può essere suddivisa in più **fasi indipendenti**, ciascuna con un numero specifico di possibilità. In tal caso, il numero totale di combinazioni è dato dal **prodotto** delle possibilità offerte da ciascuna fase:
+
+$$
+n_{\text{tot}} = n_1 \cdot n_2 \cdot \dots \cdot n_k .
+$$
+
+**Esempio**
+
+Supponiamo di avere quattro urne contenenti palline di diverso colore:
+
+- **Urna A**: 5 palline,  
+- **Urna B**: 6 palline,  
+- **Urna C**: 3 palline,  
+- **Urna D**: 2 palline.  
+
+Vogliamo formare insiemi di due palline, ciascuna estratta da urne differenti.
+
+Secondo il **principio del prodotto**, per ogni coppia di urne, il numero di combinazioni è dato dal prodotto del numero di palline contenute nelle due urne. Utilizziamo poi il **principio della somma** per ottenere il totale complessivo:
+
+$$
+n_{\text{tot}} = AB + AC + AD + BC + BD + CD.
+$$
+
+Calcolo in R:
+
+```{r}
+AB <- 5 * 6
+AC <- 5 * 3
+AD <- 5 * 2
+BC <- 6 * 3
+BD <- 6 * 2
+CD <- 3 * 2
+
+totale_insiemi <- AB + AC + AD + BC + BD + CD
+totale_insiemi
+```
+
+**Risultato**: È possibile formare **91 insiemi** di due palline, ciascuna estratta da urne differenti.
+
+
+## Il modello dell'urna e i metodi di campionamento
+
+Molti problemi di calcolo combinatorio possono essere interpretati come **estrazioni di palline da un’urna**. Esistono quattro modi fondamentali di effettuare un campionamento, a seconda che:
+
+1. le estrazioni siano con o senza ripetizione,
+2. l'ordine degli elementi conti o meno.
+
+Queste quattro combinazioni danno origine a quattro principali metodi di campionamento:
+
+1. **Con ripetizione e con ordine**: Dopo ogni estrazione, la pallina viene rimessa nell'urna. (Es. formazione di codici numerici con ripetizioni)
+2. **Senza ripetizione e con ordine**: Ogni estrazione rimuove definitivamente la pallina dall'urna. (Es. assegnare premi in una gara)
+3. **Con ripetizione e senza ordine**: Si considerano i gruppi di elementi senza preoccuparsi dell'ordine. (Es. selezionare un certo numero di ingredienti da una dispensa)
+4. **Senza ripetizione e senza ordine**: Si scelgono elementi distinti senza considerare l’ordine. (Es. formare squadre da un gruppo di persone)
+
+::: {#exm-}
+```{r}
+urna <- c("a", "b", "c")
+
+# Con ripetizione e ordine
+campionamento1 <- expand.grid(urna, urna) |>
+    rename(Elemento1 = Var1, Elemento2 = Var2)
+
+# Senza ripetizione e con ordine
+campionamento2 <- permutations(n = length(urna), r = 2, v = urna) |>
+    as.data.frame() |>
+    rename(Elemento1 = V1, Elemento2 = V2)
+
+# Con ripetizione e senza ordine
+campionamento3 <- combinations(
+    n = length(urna), r = 2, v = urna, repeats.allowed = TRUE
+) |>
+    as.data.frame() |>
+    rename(Elemento1 = V1, Elemento2 = V2)
+
+# Senza ripetizione e senza ordine
+campionamento4 <- combinations(n = length(urna), r = 2, v = urna) |>
+    as.data.frame() |>
+    rename(Elemento1 = V1, Elemento2 = V2)
+
+# Risultati
+list(
+    `Con ripetizione e ordine` = campionamento1,
+    `Senza ripetizione e con ordine` = campionamento2,
+    `Con ripetizione e senza ordine` = campionamento3,
+    `Senza ripetizione e senza ordine` = campionamento4
+)
+```
+:::
+
+## Permutazioni: Disporre tutti gli elementi con ordine
+
+Le **permutazioni** rappresentano tutti i modi in cui è possibile ordinare $n$ elementi distinti. Il numero di permutazioni è dato da:
+
+$$
+P_n = n!
+$$
+
+dove $n!$ (n fattoriale) è il prodotto di tutti i numeri da 1 a $n$:
+
+$$
+n! = n \cdot (n-1) \cdot (n-2) \cdot \dots \cdot 1.
+$$
+
+### Intuizione della formula  
+
+Immaginiamo di avere **$n$ elementi distinti** e di doverli disporre in una sequenza. Il primo elemento può essere scelto in **$n$ modi**. Una volta scelto il primo, rimangono **$n-1$ possibilità** per il secondo, poi **$n-2$** per il terzo e così via, fino all'ultimo elemento, che avrà **1 sola possibilità**. Applicando il **principio del prodotto**, otteniamo:
+
+$$
+P_n = n \times (n-1) \times (n-2) \times \dots \times 1 = n!
+$$
+
+### Metodo di campionamento corrispondente  
+
+- **Campionamento senza ripetizione e con ordine**: si estrae una pallina, la si esclude dall’urna e si continua fino a esaurire gli elementi.  
+- **Esempio pratico**: Ordinare i partecipanti di una gara su un podio (primo, secondo e terzo classificato).  
+
+### Esempio in R: Permutazioni di tre elementi
+
+Se abbiamo tre lettere {a, b, c}, le possibili permutazioni sono:
+
+$$
+P_3 = 3! = 3 \times 2 \times 1 = 6.
+$$
+
+```{r}
+A <- c("a", "b", "c")
+perm <- permutations(n = length(A), r = length(A), v = A)
+print(perm)
+nrow(perm)  # Verifica del numero di permutazioni
+```
+
+**Risultato**:
+
+$$
+\{a, b, c\}, \{a, c, b\}, \{b, a, c\}, \{b, c, a\}, \{c, a, b\}, \{c, b, a\}.
+$$
+
+
+## Disposizioni: Selezionare alcuni elementi con ordine
+
+Le **disposizioni** si usano quando si scelgono $k$ elementi da un insieme di $n$, rispettando l’ordine. Il numero totale di disposizioni è:
+
+$$
+D_{n,k} = \frac{n!}{(n-k)!} .
+$$
+
+### Intuizione della formula 
+
+Supponiamo di avere **$n$ elementi** e di voler scegliere solo **$k$ elementi**, mantenendo l’ordine.  
+
+- il primo elemento può essere scelto in **$n$ modi**;
+- il secondo elemento può essere scelto tra gli **$n-1$ elementi rimanenti**;  
+- il terzo tra gli **$n-2$** rimanenti.  
+
+Si prosegue fino a quando si hanno scelto **$k$ elementi**, fermandosi prima di esaurire tutti gli elementi.
+
+$$
+D_{n,k} = n \times (n-1) \times (n-2) \times \dots \times (n-k+1) .
+$$
+
+Questa espressione corrisponde alla divisione del fattoriale di $n$ per il fattoriale degli elementi che non vengono selezionati:
+
+$$
+D_{n,k} = \frac{n!}{(n-k)!} .
+$$
+
+### Metodo di campionamento corrispondente  
+
+- **Campionamento senza ripetizione e con ordine**: si estrae una pallina, la si esclude dall’urna e si continua fino a raggiungere il numero desiderato di elementi, fermandosi prima di esaurire tutti gli elementi.  
+- **Esempio pratico**: Estrarre casualmente 2 studenti da una classe di 10 e assegnare loro i ruoli di rappresentante e vice-rappresentante (l’ordine conta).  
+
+### Esempio in R: Disposizioni di 2 elementi da {a, b, c}
+
+Se scegliamo 2 lettere su 3, il numero di disposizioni è:
+
+$$
+D_{3,2} = \frac{3!}{(3-2)!} = \frac{3 \times 2 \times 1}{1} = 6.
+$$
+
+```{r}
+disp <- permutations(n = length(A), r = 2, v = A)
+print(disp)
+nrow(disp)  # Verifica del numero di disposizioni
+```
+
+**Risultato**:
+
+$$
+\{a, b\}, \{a, c\}, \{b, a\}, \{b, c\}, \{c, a\}, \{c, b\}.
+$$
+
+Le disposizioni **considerano l’ordine**, quindi $\{a, b\}$ è diverso da $\{b, a\}$.
+
+## Combinazioni: Selezionare alcuni elementi senza ordine
+
+Le **combinazioni** rappresentano il numero di modi per scegliere $k$ elementi da $n$ **senza considerare l'ordine**. Il numero di combinazioni è dato da:
+
+$$
+C_{n,k} = \binom{n}{k} = \frac{n!}{k!(n-k)!} .
+$$
+
+### Intuizione della formula  
+
+Supponiamo di avere **$n$ elementi** e di voler selezionare **$k$ elementi** **senza considerare l’ordine**.  
+Come nel caso delle disposizioni, il primo elemento può essere scelto in **$n$ modi**, il secondo in **$n-1$**, e così via fino a selezionare **$k$ elementi**.
+
+$$
+D_{n,k} = n \times (n-1) \times \dots \times (n-k+1) .
+$$
+
+Tuttavia, in questo caso, l’ordine **non** conta, quindi ogni selezione viene **duplicata** per il numero di modi in cui i $k$ elementi possono essere ordinati, ossia **$k!$ permutazioni interne**. Per correggere questa duplicazione, dobbiamo dividere per $k!$:
+
+$$
+C_{n,k} = \frac{D_{n,k}}{k!} = \frac{n!}{k!(n-k)!} .
+$$
+
+### Metodo di campionamento corrispondente  
+
+- **Campionamento senza ripetizione e senza ordine**: si estrae una pallina e la si esclude dall’urna, ma non importa l’ordine in cui le palline vengono estratte.  
+- **Esempio pratico**: Formare una squadra di 2 studenti da un gruppo di 10 senza assegnare ruoli specifici (quindi $\{a, b\}$ è uguale a $\{b, a\}$).  
+
+### Esempio in R: Combinazioni di 2 elementi da {a, b, c}
+
+Se scegliamo 2 lettere su 3 senza considerare l’ordine, otteniamo:
+
+$$
+C_{3,2} = \binom{3}{2} = \frac{3!}{2!(3-2)!} = \frac{3 \times 2 \times 1}{2 \times 1 \times 1} = 3.
+$$
+
+```{r}
+comb <- combinations(n = length(A), r = 2, v = A)
+print(comb)
+nrow(comb)  # Verifica del numero di combinazioni
+```
+
+**Risultato**:
+
+$$
+\{a, b\}, \{a, c\}, \{b, c\}.
+$$
+
+Le combinazioni **non considerano l’ordine**, quindi $\{a, b\}$ è uguale a $\{b, a\}$.
+
+
+## Sintesi: Quando usare ciascun metodo?
+
+| Metodo | Ripetizione? | Ordine? | Formula | Metodo di campionamento |
+|--------|-------------|---------|---------|----------------------|
+| **Permutazioni** | ❌ No | ✅ Sì | $n!$ | Senza ripetizione e con ordine |
+| **Disposizioni** | ❌ No | ✅ Sì | $\frac{n!}{(n-k)!}$ | Senza ripetizione e con ordine |
+| **Combinazioni** | ❌ No | ❌ No | $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ | Senza ripetizione e senza ordine |
+
+In conclusione, abbiamo visto come il **modello dell’urna** aiuti a comprendere i problemi combinatori. Le differenze tra **permutazioni, disposizioni e combinazioni** dipendono da due fattori fondamentali: **ripetizione** e **ordine**.
+
+Questa classificazione è essenziale per risolvere problemi di probabilità e statistica in modo rigoroso. Gli esempi e il codice R forniscono strumenti concreti per applicare questi concetti nella pratica.
+

@@ -1,0 +1,100 @@
+# Numeri e intervalli {#sec-apx-numbers}
+
+## Numeri binari
+
+I numeri binari rappresentano il sistema numerico più elementare utilizzato in informatica, poiché sono composti unicamente da due simboli: 0 e 1. Questa caratteristica li rende particolarmente adatti alla rappresentazione di situazioni dicotomiche (vero/falso, presente/assente) e consente ai computer di operare rapidamente ed efficacemente sui dati.
+
+Un esempio semplice d’impiego dei valori logici binari si ottiene quando raccogliamo risposte a una domanda chiusa. Immaginiamo, ad esempio, di porre la domanda "Ti piacciono i mirtilli?" a 10 studenti. Se le risposte vengono memorizzate in R come valori logici (`TRUE` per "Sì" e `FALSE` per "No"), potremmo avere:
+
+```{r}
+opinion <- c(TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE)
+opinion
+```
+
+In questo caso, `TRUE` e `FALSE` corrispondono a 1 e 0 rispettivamente quando utilizzati in operazioni numeriche. Lo stesso avviene in Python, dove `True` è interpretato come 1 e `False` come 0. Questa rappresentazione binaria permette di ottenere facilmente statistiche sintetiche. Per esempio, per calcolare la proporzione di risposte positive rispetto al totale, è sufficiente sommare i valori (contando così il numero di `TRUE`) e dividere per la lunghezza del vettore:
+
+```{r}
+sum(opinion) / length(opinion)
+```
+
+Questo fornisce immediatamente la percentuale di studenti che hanno risposto "Sì" alla domanda.
+
+---
+
+## Numeri interi
+
+I numeri interi sono caratterizzati dall’assenza di componenti decimali. Essi includono sia i numeri naturali (1, 2, 3, ...), tradizionalmente utilizzati per il conteggio, sia i loro opposti negativi. L’insieme dei numeri naturali è indicato con $\mathbb{N}$, mentre l’insieme dei numeri interi (che include i numeri naturali, i loro negativi e lo zero) si denota con $\mathbb{Z}$:
+
+$$
+\mathbb{Z} = \{0, \pm 1, \pm 2, \pm 3, \dots\}
+$$
+
+---
+
+## Numeri razionali
+
+I numeri razionali sono quei numeri che possono essere espressi come il rapporto tra due numeri interi, con il denominatore diverso da zero. Essi formano l’insieme:
+
+$$
+\mathbb{Q} = \left\{\frac{m}{n} \mid m,n \in \mathbb{Z}, n \neq 0\right\}.
+$$
+
+Poiché ogni numero naturale è anche un intero, e ogni intero può essere rappresentato come razionale (ad esempio $5 = \frac{5}{1}$), si ha una catena d’inclusioni tra i diversi insiemi di numeri:
+
+$$
+\mathbb{N} \subseteq \mathbb{Z} \subseteq \mathbb{Q}.
+$$
+
+Se si desidera considerare solo i numeri razionali non negativi, si utilizza la notazione:
+
+$$
+\mathbb{Q}^+ = \{q \in \mathbb{Q} \mid q \geq 0\}.
+$$
+
+---
+
+## Numeri irrazionali
+
+Non tutti i numeri possono essere espressi come rapporto di due interi. I numeri che non hanno questa proprietà sono detti irrazionali. Essi non possono essere scritti in forma frazionaria e la loro espansione decimale è infinita e non periodica. Esempi tipici di numeri irrazionali sono:
+
+- $\sqrt{2}$
+- $\sqrt{3}$
+- $\pi = 3.141592...$
+
+---
+
+## Numeri reali
+
+I numeri razionali non coprono tutti i possibili punti sulla retta reale. Per rappresentare ogni possibile misura, grandezza o punto su una linea continua, si considerano i numeri reali, denotati con $\mathbb{R}$. L’insieme dei numeri reali comprende sia i razionali sia gli irrazionali:
+
+$$
+\mathbb{N} \subseteq \mathbb{Z} \subseteq \mathbb{Q} \subseteq \mathbb{R}.
+$$
+
+In statistica, la precisione con cui si esprime una misura è spesso legata al numero di cifre decimali utilizzate, sfruttando così appieno la “continuità” offerta dai numeri reali.
+
+## Intervalli Numerici
+
+**Definizione:**
+Un **intervallo numerico** è un sottoinsieme connesso della retta reale. Intuitivamente, rappresenta tutti i numeri reali compresi tra due estremi, che possono o meno essere inclusi nell'intervallo stesso.
+
+**Classificazione degli intervalli:**
+Gli intervalli vengono classificati in base all'inclusione o meno degli estremi:
+
+* **Intervallo chiuso:** Include entrambi gli estremi. Si indica con $[a, b]$ e rappresenta l'insieme dei numeri reali $x$ tali che $a \leq x \leq b$.
+* **Intervallo aperto:** Non include alcun estremo. Si indica con $(a, b)$ e rappresenta l'insieme dei numeri reali $x$ tali che $a < x < b$.
+* **Intervalli semiaperti:**
+  * **Chiuso a sinistra e aperto a destra:** Include l'estremo sinistro ma non quello destro. Si indica con $[a, b)$ e rappresenta l'insieme dei numeri reali $x$ tali che $a \leq x < b$.
+  * **Aperto a sinistra e chiuso a destra:** Include l'estremo destro ma non quello sinistro. Si indica con $(a, b]$ e rappresenta l'insieme dei numeri reali $x$ tali che $a < x \leq b$.
+
+**Tabella riassuntiva:**
+
+| Intervallo | Notazione | Condizione |
+|---|---|---|
+| Chiuso | $[a, b]$ | $a \leq x \leq b$ |
+| Aperto | $(a, b)$ | $a < x < b$ |
+| Chiuso a sinistra, aperto a destra | $[a, b)$ | $a \leq x < b$ |
+| Aperto a sinistra, chiuso a destra | $(a, b]$ | $a < x \leq b$ |
+
+**Osservazioni:**
+* La scelta della notazione con parentesi quadre o tonde indica rispettivamente l'inclusione o l'esclusione degli estremi.

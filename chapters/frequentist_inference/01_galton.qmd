@@ -1,0 +1,127 @@
+# Inferenza frequentista {#sec-freq-intro}
+
+::: callout-important
+## In questo capitolo imparerai a
+
+- Comprendere il background storico da cui si è sviluppato l'approccio frequentista.
+:::
+
+::: callout-tip
+## Prerequisiti
+
+- Leggere il capitolo *Sampling* di [Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (Second Edition)](https://moderndive.com/v2/).
+:::
+
+::: callout-caution
+## Preparazione del Notebook
+
+```{r}
+here::here("code", "_common.R") |> 
+  source()
+```
+:::
+
+## Introduzione
+
+In questo capitolo esamineremo le radici storiche della statistica **frequentista** e le sue connessioni con il movimento eugenetico. Vedremo come alcune idee sviluppate nel contesto di questa corrente abbiano influenzato l’elaborazione dei metodi statistici che molti di noi utilizzano ancora oggi.
+
+## I Frequentisti sono Razzisti?
+
+Nel [@sec-prob-bayes-theorem], abbiamo esplorato le origini storiche e il contesto culturale che hanno portato all’interpretazione del teorema di Bayes proposta da Richard Price. Quelle origini, legate alla rivoluzione americana, rappresentano il “lato luminoso” del liberalismo moderno.
+
+Le origini dell’approccio frequentista, invece, si collocano agli antipodi: sono strettamente intrecciate con ciò che potremmo definire la “parte oscura” della modernità. L’avversione per la soggettività, tipica del frequentismo, riflette una visione più rigida e deterministica, distante dall’apertura e dalla flessibilità del pensiero bayesiano.
+
+### Francis Galton e l’Eugenetica
+
+Francis Galton (1822-1911), cugino di Charles Darwin, fu un esploratore, un medico e un pioniere della meteorologia. Ma il suo contributo più importante, e anche più controverso, riguardò la statistica e lo studio dell’ereditarietà del talento. 
+
+- **Distribuzione Normale e Regressione**  
+  Galton formalizzò la distribuzione normale e introdusse il concetto di “regressione verso la media”, chiamata inizialmente “regressione verso la mediocrità”.  
+- **Hereditary Genius**  
+  Nel suo libro *Hereditary Genius*, Galton sosteneva che il talento fosse trasmesso all’interno di specifiche famiglie. Fu lui a coniare la famosa espressione “nature and nurture” per indicare il ruolo combinato di eredità e ambiente nello sviluppo umano.  
+- **Eugenetica**  
+  Galton mirava a “migliorare la specie umana” promuovendo la riproduzione tra famiglie ritenute “di successo” e scoraggiandola tra quelle considerate “inferiori”. Le sue idee, fortemente razziste, includevano l’idea che gli africani fossero “inferiori” e “pigri”, gli arabi “semplici consumatori della produzione altrui” e che gli anglosassoni fossero la “razza superiore”.
+
+### L’Impatto di Galton su Pearson e Fisher
+
+Le teorie di Galton influenzarono Karl Pearson (1857-1936) e Ronald Fisher (1890-1962), due figure chiave della statistica moderna. Entrambi condividevano idee razziste e appoggiavano l’eugenetica:
+
+- **Karl Pearson**  
+  Professore all’University College di Londra, sviluppò strumenti come il test del chi quadrato e la deviazione standard. Ereditò la cattedra di eugenetica fondata da Galton.  
+- **Ronald Fisher**  
+  Considerato uno dei padri della statistica moderna, sviluppò l’analisi della varianza (ANOVA), il concetto di significatività statistica e il metodo della massima verosimiglianza (MLE). 
+
+Questi autori cercarono di allontanare la statistica dalla prospettiva di Laplace e Bayes, rifiutando l’idea di introdurre componenti soggettive nella loro “scienza”. Volevano che la statistica apparisse del tutto “oggettiva” per sostenere teorie eugenetiche e gerarchie razziali come se fossero dimostrate scientificamente.
+
+## Implicazioni per le Pratiche Correnti
+
+In che misura dovremmo considerare le implicazioni storiche ed etiche del frequentismo quando lo utilizziamo oggi? Secondo [@chivers2024everything], sebbene sia evidente che l’ideologia razziale nazista possa essere collegata alle idee di Galton, la questione centrale in statistica rimane: **“Quale approccio è metodologicamente corretto?”** o, più pragmaticamente, **“Quale approccio è più utile?”**.
+
+Tuttavia, limitarsi a un dibattito puramente metodologico rischia di trascurare il fatto che la scienza non si svolge in una “torre d’avorio” astratta, ma ha conseguenze concrete. Se una teoria A, pur essendo efficace in uno scenario ideale, ha effetti profondamente negativi nella realtà, dovremmo davvero adottarla acriticamente? La risposta, per molti, è **no**.
+
+Nel caso del frequentismo, non solo emergono questioni etiche, ma – come vedremo in seguito – si evidenziano anche **limiti metodologici**. La sua pretesa di “oggettività” si rivela un’illusione quando si analizza in profondità il funzionamento reale delle procedure inferenziali. In psicologia, dove la variabilità individuale e le questioni etiche sono centrali, questi difetti possono avere conseguenze particolarmente dannose.
+
+::: {.callout-important}
+**Nota didattica:** L’approccio frequentista viene presentato qui soprattutto per mostrare perché il suo uso esclusivo sia problematico. In questo capitolo descriveremo i fondamenti statistici del frequentismo e la logica delle sue procedure inferenziali. Nel capitoli successivi discuteremo invece come le sue applicazioni pratiche possano ostacolare il progresso della psicologia.
+:::
+
+## Il Paradigma Frequentista
+
+L’obiettivo della statistica frequentista è trarre conclusioni su un’intera **popolazione** partendo da un **campione** di dati. In questo contesto:
+
+- I dati osservati vengono considerati come un’estrazione casuale (un “campione”) da una popolazione più ampia.  
+- Il modello statistico assume che esista un processo generatore dei dati, descritto da una distribuzione di probabilità.  
+- Quando raccogliamo un campione di dati, dobbiamo tenere presente che avremmo potuto ottenere molti altri campioni diversi (il principio di **ripetizione del campionamento**).  
+
+### Probabilità e Ripetizione del Campionamento
+
+Il frequentismo adotta un’interpretazione della probabilità basata sulle **frequenze**: se ripetessimo un esperimento moltissime volte, la probabilità di un evento sarebbe il rapporto tra il numero di volte in cui l’evento si verifica e il numero totale di prove.
+
+### Stima di un Parametro
+
+Supponiamo di voler stimare un parametro (ad esempio, la media di una popolazione). Il frequentismo cerca un **stimatore** – una funzione del campione – che abbia determinate proprietà, tra cui l’assenza di distorsione (l’**unbiasedness**) e la **consistenza** (la vicinanza alla realtà con l’aumentare del numero di dati).
+
+Un esempio comune è la stima della media della popolazione tramite la media del campione. Sotto certe condizioni, si può dimostrare che, ripetendo l’esperimento moltissime volte, la media del campione in media coinciderà con la vera media della popolazione.
+
+### Intervalli di Confidenza
+
+Nell’approccio frequentista, invece di fornire un singolo valore come stima di un parametro, si costruisce un **intervallo di confidenza**. L’idea fondamentale è che, se ripetessimo molte volte la stessa procedura di campionamento e di calcolo dell’intervallo, una certa percentuale di questi (ad esempio il 95%) conterrà effettivamente il valore vero del parametro. 
+
+Prima di raccogliere i dati, gli estremi di questo intervallo (i “limiti di confidenza”) sono **variabili casuali**, perché dipendono dal campione che otterremo. Di conseguenza, la probabilità (per esempio, il 95%) si riferisce alla **procedura** di costruzione dell’intervallo, non all’intervallo in sé dopo l’osservazione dei dati. Una volta infatti che il campione è stato raccolto e l’intervallo è stato calcolato, quest’ultimo è un oggetto “fisso”: **o** contiene il valore vero del parametro, **o** non lo contiene; non è più possibile attribuirgli una probabilità di contenere il parametro. L’affermazione “intervallo di confidenza al 95%” significa dunque che, **sul lungo periodo**, usando sempre la stessa procedura, il 95% degli intervalli costruiti conterrà il parametro vero.
+
+### Test delle Ipotesi: Approccio Frequentista e Limitazioni
+
+Nel contesto del test di un’ipotesi (ad esempio, $H_0$: “la media di una popolazione è uguale a 0”), l’approccio frequentista definisce una **regione di rifiuto** in base a un livello di significatività prefissato (ad esempio, $\alpha = 0.05$). Se il risultato dell’analisi (come il p-value) cade all’interno di questa regione, si procede a **rifiutare** $H_0$; altrimenti, si **manca di rifiutare** $H_0$ (ovvero, non si rifiuta l’ipotesi nulla).
+
+- **Errore di tipo I** (falso positivo): si verifica quando si rifiuta $H_0$ nonostante essa sia vera.  
+- **Errore di tipo II** (falso negativo): si verifica quando non si rifiuta $H_0$ nonostante essa sia falsa.  
+
+Nel paradigma frequentista, il ricercatore controlla la probabilità di questi errori, in particolare l’errore di tipo I, attraverso la scelta di $\alpha$ e il calcolo di indicatori come il p-value. Tuttavia, **questo approccio presenta alcune criticità**:
+
+1. **Decisione dicotomica**  
+   Il test conduce a una scelta binaria (rifiutare o non rifiutare $H_0$), che può risultare eccessivamente rigida. I fenomeni reali spesso non si prestano a una categorizzazione netta basata su una soglia arbitraria, rendendo la distinzione “significativo/non significativo” potenzialmente fuorviante. Una visione più sfumata, che consideri l’entità dell’effetto e l’incertezza, potrebbe essere più informativa.
+
+2. **Soglia arbitraria**  
+   Il valore di $\alpha$ (comunemente fissato a 0.05) è in gran parte una convenzione. Ad esempio, un valore-p di 0.049 porta al rifiuto di $H_0$, mentre un valore-p di 0.051 non lo fa, nonostante la differenza tra i due casi sia minima. Questa arbitrarietà può influenzare in modo significativo l’interpretazione dei risultati, creando una discontinuità artificiale.
+
+3. **Nessuna prova diretta di verità/falsità**  
+   Un valore-p basso non implica che $H_0$ sia “falsa” o che un’ipotesi alternativa sia “vera”. Indica semplicemente che, **assumendo** $H_0$ vera, dati simili (o più estremi) sarebbero rari sotto ripetuti campionamenti. Il test frequentista non fornisce una risposta alla domanda “Qual è la probabilità che $H_0$ sia vera?”, limitando la sua capacità di supportare inferenze dirette sulla veridicità delle ipotesi.
+
+Queste criticità evidenziano come la rigidità del test (basato su una decisione binaria) e l’uso di soglie fisse possano risultare problematici, specialmente in discipline come la psicologia, dove le misurazioni sono spesso affette da rumore e le differenze tra condizioni possono essere sottili. Un approccio più flessibile, che integri la stima degli effetti, gli intervalli di confidenza e una valutazione contestuale, potrebbe offrire una comprensione più robusta e sfumata dei dati.
+
+## Riflessioni Conclusive
+
+In questo capitolo abbiamo mostrato come la statistica frequentista, pur essendo stata un pilastro dell’inferenza moderna, affondi le proprie radici in idee profondamente problematiche, come l’eugenetica e il razzismo sostenuti da Galton, Pearson e Fisher. Sebbene oggi queste teorie sembrino superate e distanti dalle nostre pratiche di laboratorio, conoscerne la genesi aiuta a comprendere come l’idea di un’**oggettività assoluta** sia stata impiegata per legittimare visioni ideologiche discutibili.
+
+Parallelamente, la riflessione storica solleva interrogativi sul **metodo** e sulle sue **implicazioni pratiche**. La metafora della “torre d’avorio” mostra quanto sia pericoloso trattare la scienza come un sistema chiuso, ignorando le conseguenze etiche e sociali. Nel campo della psicologia, in particolare, la crisi di replicabilità [@McElreath_rethinking] rivela come l’uso acritico di procedure frequentiste possa influire sulla validità dei risultati.
+
+In definitiva, il frequentismo non va considerato solo come un insieme di tecniche, ma come un paradigma con implicazioni culturali, etiche e metodologiche. Nel prossimo capitolo mostreremo come le applicazioni pratiche dell’approccio frequentista possano risultare limitanti e, talvolta, dannose per il progresso della psicologia [@gelman1995bayesian]. Conoscere le basi e le implicazioni di tale paradigma è il primo passo per un uso più consapevole e responsabile degli strumenti statistici.
+
+## Informazioni sull'Ambiente di Sviluppo {.unnumbered}
+
+```{r}
+sessionInfo()
+```
+
+## Bibliografia {.unnumbered}
+

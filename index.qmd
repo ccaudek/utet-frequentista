@@ -1,0 +1,30 @@
+---
+page-classes: homefront
+toc: false
+---
+
+Questo sito è il **modulo sull’inferenza frequentista** del progetto UTET a supporto del manuale *Metodi bayesiani in psicologia*.  
+Offre un percorso introduttivo alle tecniche statistiche tradizionali (stime puntuali, intervalli di confidenza, test d’ipotesi), insieme a un’analisi critica delle loro assunzioni e dei limiti che hanno portato alla crisi di replicazione in psicologia.
+
+## Percorso e obiettivi {.unnumbered .unlisted}
+
+- **Origini storiche**: da Galton e Fisher ai fondamenti del pensiero frequentista.  
+- **Stima dei parametri**: concetti di media campionaria, varianza, stimatori corretti.  
+- **Intervalli di confidenza**: costruzione, interpretazione, equivoci comuni.  
+- **Test di ipotesi**: logica, errori di I e II tipo, potenza statistica.  
+- **Campionamento e dimensione campionaria**: criteri per pianificare studi quantitativi.  
+- **Oltre il frequentista**: come queste tecniche hanno aperto la strada a una riflessione metodologica più ampia.
+
+Il sito non sostituisce il manuale, ma lo integra: qui trovi il **background propedeutico** e la cornice critica necessaria a comprendere l’alternativa bayesiana.
+
+## Come usare il modulo {.unnumbered .unlisted}
+
+- **Leggi con spirito critico**: lo scopo è capire potenzialità e limiti del frequentismo.  
+- **Collega al manuale**: ogni tema qui affrontato trova un corrispettivo o un superamento nell’approccio bayesiano.  
+- **Sfrutta le appendici**: notazione matematica, simboli e richiami utili sono raccolti in fondo.
+
+## Licenza d’uso {.unnumbered .unlisted}
+
+Materiali distribuiti con licenza  
+[CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.it).  
+Condivisione consentita con attribuzione, **solo per usi non commerciali** e **senza modifiche**.

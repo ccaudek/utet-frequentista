@@ -1,0 +1,595 @@
+/* =========================================================
+_typography-extras.css — stile classico/umanistico
+Dipendenze: caricare DOPO il tema (es. etbook-litera.scss)
+========================================================= */
+
+/* Colonna leggibile e ritmo verticale */
+.quarto-container .page-layout-article .content {
+max-width: 72ch;
+line-height: 1.55;
+}
+
+/* Sillabazione (IT/EN) */
+.content p,
+.content li,
+.content blockquote {
+hyphens: auto;
+-webkit-hyphens: auto;
+-ms-hyphens: auto;
+}
+
+/* Vedove e orfani (supporto parziale) */
+.content p { widows: 3; orphans: 3; }
+
+/* Titoli leggermente più ariosi e umanistici */
+.content h1, .content h2, .content h3 {
+letter-spacing: 0.01em;
+font-feature-settings: "liga" 1, "kern" 1, "onum" 1;
+}
+
+/* Link con sottolineatura “editoriale” */
+a { text-underline-offset: 0.18em; }
+
+/* Blockquote sobrio */
+.content blockquote {
+border-left: 3px solid #0000001a;
+padding-left: 0.9rem;
+color: #222;
+}
+
+/* Tabelle sobrie e leggibili */
+table { border-collapse: collapse; border: 1px solid #0000001a; }
+table th, table td { padding: 0.5rem 0.7rem; border-bottom: 1px solid #00000014; }
+table thead th { font-variant-caps: small-caps; letter-spacing: 0.02em; }
+
+/* Stampa: niente sottolineature, nascondi sidebar/toc se presenti */
+@media print {
+a { text-decoration: none; }
+nav.sidebar, .toc-left { display: none !important; }
+}
+
+
+/* ===== “Paginazione” da libro (solo testo) ===== */
+.content p,
+.content li,
+.content blockquote {
+  text-align: justify;
+  text-justify: inter-word; /* fallback */
+  hanging-punctuation: first allow-end; /* ok per testo */
+}
+
+/* Rientro del primo rigo e nessuno spazio verticale tra paragrafi (solo testo) */
+.content p {
+  text-indent: 1.2em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.content p + p { margin-top: 0; }
+
+/* Evita rientro dopo titoli, liste, figure, callout */
+.content h1 + p,
+.content h2 + p,
+.content h3 + p,
+.content .callout + p,
+.figure + p,
+ul + p, ol + p,
+table + p, blockquote + p {
+  text-indent: 0;
+}
+
+/* ===== Protezioni per la matematica (MathJax v3) ===== */
+/* Niente giustificazione né hanging nelle formule */
+.content mjx-container {
+  text-align: start;           /* o left */
+  text-justify: auto;
+  hanging-punctuation: none;
+}
+
+/* Se il display math è dentro un <p>, annulla il rientro */
+.content p > mjx-container {
+  text-indent: 0 !important;
+  margin-left: 0; /* sicurezza */
+}
+
+/* Se il browser supporta :has, rimuovi rientro ai paragrafi che contengono math */
+/*
+@supports selector(p:has(mjx-container)) {
+  .content p:has(mjx-container) {
+    text-indent: 0 !important;
+  }
+}
+*/
+
+/* Niente rientro solo se il paragrafo INIZIA con una formula in display */
+@supports selector(p:has(> mjx-container[jax="SVG"][display="true"])) {
+  .content p:has(> mjx-container[jax="SVG"][display="true"]) {
+    text-indent: 0 !important;
+  }
+}
+
+/* Per compatibilità (browser senza :has), fallback sul caso “formula all’inizio” */
+.content p > mjx-container[jax="SVG"][display="true"]:first-child {
+  /* se serve, oltre al rientro puoi gestire margini */
+  /* margin-left: 0; */
+}
+
+
+/* Evita che varianti tipografiche tocchino i glifi math */
+.content mjx-container,
+.content mjx-container * {
+  font-variant-numeric: normal;
+  font-variant-caps: normal;
+  letter-spacing: normal;
+}
+
+/* (Opzionale) evita che il justify tocchi inline math */
+.content .math.inline,
+.content span.math.inline,
+.content p .math.inline {
+  text-align: start;
+  hanging-punctuation: none;
+}
+
+/* ===== Iniziale “rinascimentale” discreta ===== */
+/* Stile applicato SOLO al primo paragrafo dopo un h1 nella sezione con classe .sezione-principale */
+@media (min-width: 720px) {
+  .sezione-principale h1 + p::first-letter {
+    float: left;
+    font-size: 3.2em;
+    line-height: 0.88;
+    padding-right: 0.08em;
+    padding-top: 0.02em;
+    font-weight: 400;
+    font-variant-caps: normal;
+    /* Aggiunte per migliorare il rendering: */
+    font-family: var(--font-primary); /* Usa il font principale, non uno diverso */
+    color: inherit; /* Usa il colore ereditato del testo */
+  }
+}
+
+
+/* Primo paragrafo della pagina/sezione senza rientro */
+#quarto-content .content > p:first-of-type { text-indent: 0; }
+
+
+/* Blockquote sobrio con hairline e leggera tinta */
+/*
+.content blockquote {
+  border-left: 3px solid color-mix(in srgb, currentColor 12%, transparent);
+  color: color-mix(in srgb, currentColor 88%, black);
+  padding-left: 0.9rem;
+  margin: 1.2rem 0;
+  font-style: normal;
+}
+*/
+
+/* Sostituire il blockquote esistente con questo */
+.content blockquote {
+  position: relative;
+  margin: 1.618rem 2rem;
+  padding: 0.5rem 0;
+  border: none;
+  font-style: italic;
+}
+
+.content blockquote::before {
+  content: """;
+  position: absolute;
+  left: -1.5rem;
+  top: -0.2rem;
+  font-size: 3em;
+  line-height: 1;
+  color: color-mix(in srgb, currentColor 30%, transparent);
+  font-family: "ETBook", Georgia, serif;
+}
+
+.content blockquote::after {
+  content: """;
+  position: absolute;
+  right: -1.5rem;
+  bottom: -0.8rem;
+  font-size: 3em;
+  line-height: 1;
+  color: color-mix(in srgb, currentColor 30%, transparent);
+  font-family: "ETBook", Georgia, serif;
+}
+
+
+/* Citazioni "manoscritte" con iniziali ornate */
+.content blockquote.manoscritto {
+  position: relative;
+  margin: 2rem 3rem;
+  padding: 1rem 0;
+  border: none;
+  font-style: italic;
+  font-size: 1.05em;
+  line-height: 1.6;
+}
+
+.content blockquote.manoscritto::before {
+  content: """;
+  position: absolute;
+  left: -2.5rem;
+  top: -0.5rem;
+  font-size: 4.5em;
+  line-height: 1;
+  color: color-mix(in srgb, currentColor 25%, transparent);
+  font-family: "ETBook", Georgia, serif;
+  font-weight: 300;
+}
+
+.content blockquote.manoscritto::after {
+  content: """;
+  position: absolute;
+  right: -2rem;
+  bottom: -1.2rem;
+  font-size: 4.5em;
+  line-height: 1;
+  color: color-mix(in srgb, currentColor 25%, transparent);
+  font-family: "ETBook", Georgia, serif;
+  font-weight: 300;
+}
+
+/* Attributo citazione in small caps */
+.content blockquote cite, .content blockquote .attribution {
+  display: block;
+  text-align: right;
+  margin-top: 1rem;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.5px;
+  font-style: normal;
+  font-size: 0.9em;
+  color: color-mix(in srgb, currentColor 70%, transparent);
+}
+
+
+/* Regola orizzontale come “vignetta” tipografica */
+.content hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, currentColor 40%, currentColor 60%, transparent);
+  opacity: .3;
+  margin: 2rem 0;
+}
+
+/* Caption compatte e in piccolo corsivo */
+.figure .figcaption, figcaption {
+  font-size: 0.92em;
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.35rem;
+  color: color-mix(in srgb, currentColor 70%, black);
+}
+
+/* Intestazioni tabella in small caps con leggera tinta */
+table thead th {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, currentColor 80%, black);
+}
+
+/* Numeri di nota più vicini al testo e non invadenti */
+sup, sup.footnote-ref {
+  line-height: 0;
+  font-size: 0.75em;
+  vertical-align: super;
+}
+
+/* Sezione note con rientro “hanging” */
+.footnotes {
+  border-top: 1px solid #00000026;
+  margin-top: 2rem;
+  padding-top: 0.8rem;
+}
+.footnotes ol { padding-left: 1.2em; }
+.footnotes ol li {
+  text-indent: -0.8em;
+  margin-left: 0.8em;
+}
+
+a {
+  text-decoration-thickness: from-font;
+  text-decoration-skip-ink: auto;
+  text-underline-offset: 0.18em;
+}
+
+@media print {
+  nav.sidebar, .toc-left, header, footer { display: none !important; }
+  a { text-decoration: none; color: black; }
+  .content { max-width: 72ch; }
+  pre.sourceCode, pre.code-with-copy-target { border-left-color: #000 !important; }
+  .content blockquote { border-left-color: #000 !important; }
+}
+
+
+/* Corpo testo: elzeviriane + proporzionali */
+.content p, .content li, .content blockquote, .figure .figcaption {
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  font-feature-settings: "liga" 1, "kern" 1, "onum" 1, "pnum" 1;
+}
+
+/* Tabelle e numeri allineati: lining + tabular */
+table, table th, table td {
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+}
+
+/* Titoli e testatine in small caps armonizzate */
+.content h2, .content h3, table thead th {
+  font-variant-caps: small-caps;
+  letter-spacing: 0.02em;
+}
+
+/* Spaziatura titoli: più ariosa, ma costante */
+.content h1 { margin: 2.2rem 0 1.2rem; }
+.content h2 { margin: 1.8rem 0 0.9rem; }
+.content h3 { margin: 1.4rem 0 0.7rem; }
+
+/* Coerenza dopo figure, tabelle, callout, code */
+.figure, table, .callout, pre.sourceCode, pre.code-with-copy-target, blockquote {
+  margin-top: 1.1rem;
+  margin-bottom: 1.1rem;
+}
+
+a {
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: from-font;
+  text-decoration-skip-ink: auto;
+}
+a:hover { text-decoration-thickness: 0.12em; }
+a:visited { opacity: 0.95; }
+a:focus-visible {
+  outline: 2px solid color-mix(in srgb, currentColor 40%, transparent);
+  outline-offset: 2px;
+}
+
+table tbody tr:nth-child(odd) td {
+  background: color-mix(in srgb, currentColor 4%, transparent);
+}
+table td:first-child { padding-left: 0.9rem; }
+
+.footnotes a.footnote-backref {
+  text-decoration: none;
+  opacity: 0.7;
+}
+.footnotes a.footnote-backref:hover { opacity: 1; text-decoration: underline; }
+
+
+/* ============================
+   Serif umanistico con numerali oldstyle
+   ============================ */
+
+/* Corpo testo */
+body, .content {
+  font-family: "TeX Gyre Pagella", "EB Garamond", "Palatino Linotype", Palatino, serif;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  font-feature-settings: "liga" 1, "kern" 1, "onum" 1, "pnum" 1;
+}
+
+/* Tabelle e codice: cifre lining + tabular per allineamenti */
+table, table th, table td, pre, code {
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+}
+
+/* Interlinea ottimizzata per serif classici */
+body { 
+  line-height: 1.618; /* rapporto aureo anche qui */
+}
+
+/* Titoli più compatti */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  margin-top: 2rem;
+  margin-bottom: 0.618rem; /* 1/φ */
+}
+
+/* _typography-extras.css - aggiornamenti */
+
+/* Rientro primo rigo più pronunciato */
+.content p {
+  text-indent: 1.618em; /* invece di 1.4em */
+  margin-bottom: 0; /* elimina spazio tra paragrafi */
+}
+
+/* Spaziatura solo tra sezioni diverse */
+.content h1 + p,
+.content h2 + p,
+.content h3 + p,
+.content .callout + p,
+.content figure + p,
+.content table + p,
+.content blockquote + p,
+.content pre + p {
+  text-indent: 0;
+  margin-top: 1rem; /* respiro dopo elementi non-testo */
+}
+
+/* Drop cap più sofisticata */
+@media (min-width: 720px) {
+  .sezione-principale h1 + p::first-letter,
+  .content > p:first-of-type::first-letter {
+    float: left;
+    font-size: 4.2em; /* più grande */
+    line-height: 0.75;
+    padding-right: 0.1em;
+    padding-top: 0.05em;
+    margin-bottom: -0.1em;
+    font-weight: 500;
+    /* Effetto "inciso" */
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Aggiungere a _typography-extras.css */
+
+/* Vignette decorative per separare sezioni */
+.ornament {
+  text-align: center;
+  font-size: 1.5em;
+  margin: 2rem 0;
+  color: color-mix(in srgb, currentColor 60%, transparent);
+}
+
+.ornament::before {
+  content: "❦"; /* fleuron classico */
+  /* Alternativa: content: "◊ ◊ ◊"; */
+}
+
+/* Regola orizzontale ornamentale */
+.content hr {
+  border: 0;
+  height: 0;
+  text-align: center;
+  margin: 2.5rem 0;
+}
+
+.content hr::before {
+  content: "* * *";
+  color: color-mix(in srgb, currentColor 50%, transparent);
+  font-size: 1.2em;
+  letter-spacing: 1em;
+  margin-left: 1em;
+}
+
+/* Sistema di note marginali */
+.marginalia {
+  float: right;
+  clear: right;
+  width: 15rem;
+  margin: 0 -16rem 1rem 2rem;
+  font-size: 0.85em;
+  line-height: 1.4;
+  color: color-mix(in srgb, currentColor 75%, transparent);
+  font-style: italic;
+}
+
+@media (max-width: 1200px) {
+  .marginalia {
+    float: none;
+    width: auto;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border-left: 2px solid color-mix(in srgb, currentColor 20%, transparent);
+  }
+}
+
+/* === Note a piè di pagina ornamentali === */
+
+/* Separatore ornamentale per le note */
+.footnotes::before {
+  content: "";
+  display: block;
+  width: 6rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.4;
+  margin: 2rem 0 1rem 0;
+}
+
+/* Numeri delle note in stile classico */
+.footnote-ref {
+  font-variant-position: super;
+  font-size: 0.75em;
+  text-decoration: none;
+  color: color-mix(in srgb, currentColor 70%, transparent);
+}
+
+.footnote-ref::before { content: "["; }
+.footnote-ref::after { content: "]"; }
+
+/* Migliora il layout delle note esistenti */
+.footnotes {
+  border-top: none; /* rimuove la linea esistente */
+  margin-top: 3rem;
+  padding-top: 1rem;
+}
+
+.footnotes ol { 
+  padding-left: 1.5em;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.footnotes ol li {
+  text-indent: -1em;
+  margin-left: 1em;
+  margin-bottom: 0.5rem;
+}
+
+/* --------------------- Claude --------------------------------- */
+
+/* Controllo più rigoroso di vedove/orfani per look "libresco" */
+.content p, .content li {
+  widows: 3;
+  orphans: 3;
+  page-break-inside: avoid;
+}
+
+.content h1, .content h2, .content h3 {
+  page-break-after: avoid;
+  break-after: avoid-page;
+}
+
+/* Evita interruzioni scomode */
+.content figure, .content table, .content .callout {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+
+/* Drop cap esplicita dove serve */
+@media (min-width: 720px) {
+  .dropcap::first-letter,
+  .dropcap > p:first-child::first-letter {
+    float: left;
+    font-size: 4.2em;
+    line-height: 0.75;
+    padding-right: 0.1em;
+    padding-top: 0.05em;
+    margin-bottom: -0.1em;
+    font-weight: 500;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+  }
+}
+
+/* Claude */
+
+.content p {
+  text-indent: 2em;
+  text-wrap: pretty;
+  hanging-punctuation: first last;
+}
+
+.dropcap::first-letter {
+  font-size: 5em;
+  color: color-mix(in srgb, currentColor 80%, #8B4513);
+  font-family: "Adobe Jenson Pro", "Palatino", serif;
+}
+
+.ornamental-break {
+  text-align: center;
+  margin: 3em 0;
+  font-size: 1.2em;
+}
+.ornamental-break::before {
+  content: "❦ ❦ ❦";
+  letter-spacing: 1.5em;
+  margin-left: 1.5em;
+}
+
+.marginalia {
+  position: absolute;
+  right: -18rem;
+  width: 16rem;
+  font-variant: small-caps;
+}
+
+.content {
+  max-width: 68ch;
+  line-height: 1.65;
+  hyphenate-limit-chars: 6 3 2;
+}
+

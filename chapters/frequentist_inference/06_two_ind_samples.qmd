@@ -1,0 +1,263 @@
+# Test t di Student per campioni indipendenti
+
+::: callout-important
+## In questo capitolo imparerai a
+
+- eseguire un test di ipotesi frequentista per confrontare le medie di due campioni indipendenti, assumendo l'ipotesi nulla;
+- capire i limiti del test frequentista $t$ di Student.
+:::
+
+::: callout-tip
+## Prerequisiti
+
+- Leggere *Bayesian estimation supersedes the t test* [@kruschke2013bayesian].
+:::
+
+::: callout-caution
+## Preparazione del Notebook
+
+```{r}
+here::here("code", "_common.R") |> 
+  source()
+
+# Load packages
+if (!requireNamespace("pacman")) install.packages("pacman")
+pacman::p_load(mice)
+```
+:::
+
+
+## Introduzione
+
+Questo capitolo è dedicato al [test t di Student](https://www.scientificamerican.com/article/how-the-guinness-brewery-invented-the-most-important-statistical-method-in/) per campioni indipendenti, uno dei test statistici più utilizzati nella pratica frequentista. Il test t di Student è un metodo che permette di confrontare le medie di due gruppi diversi (o "campioni") e determinare se la differenza osservata tra le medie sia statisticamente significativa o se possa essere attribuita a semplice casualità.
+
+Il test è particolarmente utile quando si ha accesso solo a piccoli campioni provenienti da popolazioni sconosciute, ma è importante comprendere bene i suoi principi fondamentali e limiti prima di applicarlo.
+
+## Applicazioni del Test t di Student
+
+Il test t di Student per campioni indipendenti serve per rispondere alla domanda: "Le medie di due gruppi sono significativamente diverse?" Per esempio, potremmo voler sapere se ci sono differenze significative nel peso medio tra uomini e donne.
+
+## Assunzioni Principali
+
+Prima di procedere con il test, è essenziale assicurarsi che siano valide le seguenti ipotesi:
+
+1. **Indipendenza**: Le osservazioni nei due campioni devono essere indipendenti.
+2. **Normalità**: I dati nei due campioni provengono da popolazioni distribuite normalmente.
+3. **Uguaglianza delle Varianze (Omoschedasticità)**: Le varianze delle due popolazioni da cui provengono i campioni sono uguali.
+
+Se queste condizioni non sono soddisfatte, potrebbe essere necessario considerare alternative come il **test di Welch**, che non richiede l'uguaglianza delle varianze.
+
+## Passaggi del Test t di Student
+
+Ecco una panoramica dei passaggi chiave:
+
+1. **Calcolare la Differenza tra le Medie**: Si calcola la differenza tra le medie dei due campioni.
+   
+   $$
+   \bar{x}_1 - \bar{x}_2
+   $$
+   
+   dove $\bar{x}_1$ e $\bar{x}_2$ sono le medie dei due campioni.
+
+2. **Stimare la Deviazione Standard Combinata**: Se assumiamo che le varianze siano uguali (omoschedasticità), possiamo usare una stima combinata della deviazione standard, chiamata **deviazione standard pooled** $s_p$:
+
+   $$
+   s_p = \sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}}
+   $$
+
+   dove $n_1$ e $n_2$ sono le dimensioni dei campioni, e $s_1^2$ e $s_2^2$ sono le varianze campionarie.
+
+3. **Calcolare la Statistica t**: La statistica t viene calcolata usando la formula seguente:
+
+   $$
+   t = \frac{(\bar{x}_1 - \bar{x}_2)}{s_p \sqrt{\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}
+   $$
+
+4. **Determinare i Gradi di Libertà**: I gradi di libertà ($df$) sono calcolati come:
+
+   $$
+   df = n_1 + n_2 - 2
+   $$
+
+5. **Calcolare il Valore-p**: Infine, si confronta la statistica t con la distribuzione t di Student per ottenere il valore-p. Questo valore indica la probabilità di osservare una differenza così estrema tra le medie dei campioni, dato che l'ipotesi nulla è vera.
+
+## Dimostrazione 
+
+Per dimostrare come calcolare la varianza della differenza tra due medie campionarie, consideriamo due campioni casuali indipendenti $X_1, X_2, \dots, X_n$ e $Y_1, Y_2, \dots, Y_m$, estratti dalla stessa popolazione con media $\mu$ e varianza $\sigma^2$. Definiamo $\bar{X}$ e $\bar{Y}$ come le medie campionarie di questi due campioni, rispettivamente.
+
+Le medie campionarie $\bar{X}$ e $\bar{Y}$ sono date da:
+
+$$
+\bar{X} = \frac{1}{n} \sum_{i=1}^n X_i ,
+$$
+$$
+\bar{Y} = \frac{1}{m} \sum_{j=1}^m Y_j .
+$$
+
+Entrambe le medie campionarie $\bar{X}$ e $\bar{Y}$ sono stimatori non distorti della media della popolazione $\mu$. Le loro varianze sono:
+
+$$
+\text{Var}(\bar{X}) = \frac{\sigma^2}{n} ,
+$$
+$$
+\text{Var}(\bar{Y}) = \frac{\sigma^2}{m} .
+$$
+
+Siamo interessati a calcolare la varianza della differenza $\bar{X} - \bar{Y}$. Utilizzando le proprietà della varianza per combinazioni lineari di variabili aleatorie indipendenti, otteniamo:
+
+$$
+\text{Var}(\bar{X} - \bar{Y}) = \text{Var}(\bar{X}) + \text{Var}(\bar{Y}) ,
+$$
+
+dato che i termini incrociati si annullano per l'indipendenza di $\bar{X}$ e $\bar{Y}$. Sostituendo le varianze di $\bar{X}$ e $\bar{Y}$, abbiamo:
+
+$$
+\text{Var}(\bar{X} - \bar{Y}) = \frac{\sigma^2}{n} + \frac{\sigma^2}{m} ,
+$$
+$$
+\text{Var}(\bar{X} - \bar{Y}) = \sigma^2 \left(\frac{1}{n} + \frac{1}{m}\right) .
+$$
+
+Quindi, la varianza della differenza tra le due medie campionarie è una combinazione delle varianze delle singole medie, ponderate in base alle dimensioni dei campioni corrispondenti.
+
+Per giungere alla formula del test $t$ di Student per due campioni indipendenti, dobbiamo considerare l'incertezza aggiuntiva derivante dal fatto che non conosciamo $\sigma$. Il modo migliore per stimare $\sigma$ è utilizzare le due deviazioni standard dei campioni, ponderate per i rispettivi gradi di libertà, come indicato nella formula della deviazione standard *pooled*:
+
+$$
+s_p = \sqrt{\frac{(n - 1)s^2_x + (m - 1)s^2_y}{n + m - 2}},
+$$
+
+dove $s_x$ e $s_y$ sono le deviazioni standard dei due campioni, e $n$ e $m$ sono le numerosità dei due campioni.
+
+## Esempio Pratico
+
+Supponiamo di avere due campioni: 
+
+- **Donne**: Pesi = [38.9, 61.2, 73.3, 21.8, 63.4, 64.6, 48.4, 48.8, 48.5]
+- **Uomini**: Pesi = [67.8, 60, 63.4, 76, 89.4, 73.3, 67.3, 61.3, 62.4]
+
+Creiamo un DataFrame in R e calcoliamo la statistica t:
+
+```{r}
+women_weight <- c(38.9, 61.2, 73.3, 21.8, 63.4, 64.6, 48.4, 48.8, 48.5)
+men_weight <- c(67.8, 60, 63.4, 76, 89.4, 73.3, 67.3, 61.3, 62.4)
+
+weight <- c(women_weight, men_weight)
+is_female <- rep(c(1, 0), each = 9)  # 1 = Femmina, 0 = Maschio
+
+df <- data.frame(is_female = is_female, weight = weight)
+```
+
+Per calcolare manualmente la statistica t:
+
+```{r}
+# Estraiamo i pesi per ogni gruppo
+weight_f <- df$weight[df$is_female == 1]
+weight_m <- df$weight[df$is_female == 0]
+
+# Calcolo della deviazione standard pooled
+s_pool_num <- ((length(weight_f) - 1) * var(weight_f)) + ((length(weight_m) - 1) * var(weight_m))
+s_pool_denom <- length(weight_f) + length(weight_m) - 2
+s_pool <- sqrt(s_pool_num / s_pool_denom)
+
+# Calcolo della statistica t
+t_num <- mean(weight_f) - mean(weight_m)
+t_denom <- s_pool * sqrt(1 / length(weight_f) + 1 / length(weight_m))
+T <- t_num / t_denom
+T
+```
+
+```{r}
+# Gradi di libertà
+df_degrees <- length(weight_f) + length(weight_m) - 2
+df_degrees
+```
+
+```{r}
+# Calcolo del valore-p
+p_value <- 2 * pt(abs(T), df = df_degrees, lower.tail = FALSE)
+print(p_value)
+```
+
+
+In alternativa, possiamo usare la funzione `t.test` di R:
+
+```{r}
+res <- t.test(weight_f, weight_m, var.equal = TRUE)
+print(res, digits = 7)
+```
+
+
+### Interpretazione dei Risultati
+
+Il test t di Student ha generato un valore-p inferiore a 0.05, indicando che la differenza osservata tra i pesi medi delle donne e degli uomini è statisticamente significativa. Questo significa che, con un livello di confidenza del 95%, possiamo rifiutare l'ipotesi nulla secondo cui le medie dei due gruppi sono uguali.
+
+È importante ricordare che un basso valore-p suggerisce che la differenza osservata non è dovuta al caso. Tuttavia, ciò non prova automaticamente una relazione causale; piuttosto, apre la strada ad ulteriori indagini sulle cause della differenza.
+
+
+### Riportare i Risultati
+
+Quando si riportano i risultati di un test t, è fondamentale adottare pratiche che favoriscano una comprensione approfondita e accurata dei dati. Di seguito viene presentato un confronto tra due versioni dei risultati: una da evitare, che si basa su un'interpretazione tradizionale della significatività statistica, e una versione migliorata che enfatizza l'intervallo di confidenza e l'ampiezza dell'effetto.
+
+#### Versione da Evitare
+
+La seguente formulazione segue un approccio tradizionale incentrato sulla "significatività statistica," che è oggi ritenuto inadeguato per una comunicazione efficace dei risultati:
+
+> Abbiamo condotto un test t di Student per confrontare le medie dei due gruppi. I risultati mostrano una differenza significativa tra i pesi medi delle donne e degli uomini (t(16) = -2.78, p-value = 0.01). L'intervallo di confidenza al 95% per la differenza delle medie è [-29.75, -4.03]. L'ampiezza dell'effetto, misurata con Cohen's d, è 1.31, indicando un effetto grande. La potenza statistica del test è stata stimata al 74.4%.
+
+In questa versione, il focus è eccessivamente concentrato sul valore-p, che può portare a interpretazioni riduttive e distorte dei risultati.
+
+#### Versione Migliorata
+
+Ecco invece una versione migliore che mantiene un approccio frequentista, ma sposta l'enfasi sull'intervallo di confidenza e sull'ampiezza dell'effetto, offrendo una descrizione più completa e informativa:
+
+> È stato condotto un test t di Student per confrontare le medie dei due gruppi. La differenza tra i pesi medi delle donne e degli uomini è stata stimata in **-16.89 kg** (intervallo di confidenza al 95%: **[-29.75, -4.03]**), suggerendo che il peso medio degli uomini sia maggiore rispetto a quello delle donne nel campione analizzato. Questo intervallo indica che, con una fiducia del 95%, la differenza reale tra i pesi medi potrebbe variare tra circa -29.75 kg e -4.03 kg.
+>
+> L’ampiezza dell’effetto, misurata con **Cohen’s d = 1.31**, indica una differenza considerevole, equivalente a oltre una deviazione standard. Questo valore suggerisce che la differenza osservata non solo è statisticamente rilevante, ma anche sostanziale dal punto di vista pratico. 
+>
+> Inoltre, la potenza del test, considerando la dimensione dell’effetto osservata, è pari al **74.4%**, suggerendo che il test ha una buona capacità di rilevare differenze di questa entità nel campione analizzato. Ciò significa che, se una differenza di tale magnitudine fosse presente nella popolazione, esisterebbe una probabilità superiore al 70% di rilevarla correttamente.
+
+Questa modalità di reporting fornisce una descrizione più dettagliata ed esplicativa dei risultati, evitando interpretazioni basate esclusivamente sul valore-p e concentrandosi invece sulla grandezza e sull'incertezza della stima. Tale approccio consente una valutazione più equilibrata e informata dei dati, promuovendo una comprensione più approfondita delle implicazioni pratiche e scientifiche dei risultati ottenuti.
+
+
+## Riflessioni Conclusive
+
+Il **test t di Student** è uno strumento statistico ampiamente utilizzato per l'inferenza su una media o per confrontare le medie di due gruppi. È talmente importante che alcuni lo hanno definito [*il metodo statistico più importante nella scienza*](https://www.scientificamerican.com/article/how-the-guinness-brewery-invented-the-most-important-statistical-method-in/). Tuttavia, come osserva [Andrew Gelman](https://statmodeling.stat.columbia.edu/2025/02/10/what-is-the-correct-value-of-x-in-the-sentence-the-t-test-is-the-xth-most-important-statistical-method-in-science/), questa affermazione non va accettata acriticamente. Benché il test t sia semplice ed efficace in molti contesti, presenta notevoli limitazioni che ne riducono l'affidabilità e l'applicabilità quando si affrontano problemi complessi o si desidera una comprensione più approfondita dei dati [@kruschke2013bayesian].
+
+### Limiti del Test t di Student
+
+Uno dei principali limiti del test t risiede nell'assunzione che i dati seguano una distribuzione normale (gaussiana). Questa assunzione è spesso violata in pratica, specialmente con campioni piccoli o quando i dati presentano asimmetrie o code pesanti. Inoltre, nel caso di campioni indipendenti, il test richiede l'omogeneità delle varianze, un'altra assunzione frequentemente infondata. Quando queste condizioni non sono soddisfatte, il test può fornire risultati distorti, necessitando di correzioni come quella di Welch per gestire differenze di varianza.
+
+Un ulteriore limite del test t è legato alla sua dipendenza dalla soglia di significatività $\alpha$, solitamente fissata a 0.05. Questa scelta è arbitraria e può influenzare criticamente le conclusioni. Il test valuta esclusivamente la compatibilità dei dati con l'ipotesi nulla ($H_0$) e fornisce solo un p-value, senza offrire informazioni dirette sulla plausibilità dell'ipotesi alternativa ($H_1$). Ciò significa che un p-value basso non garantisce che $H_1$ sia vera o che i dati supportino tale ipotesi.
+
+### L'Approccio Bayesiano: Una Soluzione Più Potente
+
+In contrasto con il paradigma frequentista, l'**approccio bayesiano** offre un quadro statistico più flessibile e informativo. Attraverso il teorema di Bayes, è possibile calcolare direttamente la probabilità di un'ipotesi dato l'insieme dei dati osservati. Questo permette di quantificare la forza dell'evidenza a favore di un'ipotesi rispetto alle altre, superando le limitazioni intrinseche del test t.
+
+#### Vantaggi dell'Approccio Bayesiano
+
+1. **Non richiede assunzioni rigide**: A differenza del test t, che si basa su ipotesi restrittive come la normalità e l'omoschedasticità, l'inferenza bayesiana è in grado di gestire modelli più generali e robusti, adattandosi ai dati reali senza doverli forzare in strutture artificiali.
+   
+2. **Incorporazione delle informazioni pregresse**: L'approccio bayesiano permette di integrare conoscenze pregresse attraverso distribuzioni a priori, migliorando la qualità delle stime e consentendo analisi più realistiche. Questo è particolarmente utile in situazioni dove i dati disponibili sono scarsi o rumorosi.
+
+3. **Inferenze più informative**: Al posto di semplici decisioni binarie ("rifiuto" o "non rifiuto" di $H_0$), il bayesianismo fornisce distribuzioni a posteriori complete, che descrivono l'incertezza sui parametri di interesse. Questo consente inferenze più dettagliate e interpretabili.
+
+4. **Gestione della complessità**: L'approccio bayesiano gestisce in modo naturale modelli complessi e gerarchici, rendendolo ideale per analisi avanzate. Ad esempio, Kruschke (2013) dimostra come tecniche bayesiane possano superare le limitazioni del test t anche in presenza di violazioni delle assunzioni classiche, producendo risultati più stabili e affidabili.
+
+#### Implementazione Pratica
+
+Sebbene l'approccio bayesiano richieda una maggiore attenzione nella scelta delle distribuzioni a priori e nella specificazione del modello, l'avvento di software moderni come Stan, PyMC3 e JAGS ha reso l'implementazione di modelli bayesiani sempre più accessibile. Oggi, anche ricercatori con competenze statistiche moderate possono applicare metodi bayesiani per affrontare problemi complessi con maggiore precisione e coerenza.
+
+### Conclusioni
+
+Il test t di Student rimane un valido strumento per analisi rapide e semplici, ma le sue limitazioni diventano evidenti quando si lavora con dati complessi o si cerca una comprensione più profonda delle relazioni sottostanti. L'approccio bayesiano rappresenta un'evoluzione concettuale e metodologica rispetto all'inferenza frequentista tradizionale, offrendo numerosi vantaggi: inferenze più ricche, integrazione di informazioni pregresse, gestione delle violazioni delle assunzioni e produzione di stime più robuste. Per questi motivi, il paradigma bayesiano è sempre più considerato come la scelta preferibile per chi desidera un'analisi statistica solida, flessibile e informativa. 
+
+In ultima analisi, mentre il test t resta un punto di partenza utile, l'adozione dell'approccio bayesiano permette di avanzare verso una comprensione più completa e accurata dei dati.
+
+
+## Informazioni sull'Ambiente di Sviluppo {.unnumbered} 
+
+```{r}
+sessionInfo()
+```
+
+## Bibliografia {.unnumbered}

@@ -1,0 +1,118 @@
+/*-- scss:defaults --*/
+
+/* Primary theme color */
+$primary: #637238;
+
+/* Base font size */
+$font-size-root: 16px;
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;600;700&display=swap'); // serif
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');     // sans-serif
+@import url('https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css');                      // monospace
+
+/* Font families */
+$font-family-serif: serif, 'Merriweather';
+$font-family-sans: 'Open Sans', sans-serif;
+$font-family-monospace: 'Fira Code', monospace;
+
+/* Exercise callout colors */
+$exercise-border-color: lighten($primary, 10%);
+$exercise-bg-color: #f8f9fa;
+$exercise-text-color: #333333;
+
+/*-- scss:rules --*/
+
+/* Prevent line breaks in certain spans */
+.no-break {
+  white-space: nowrap;
+}
+
+/* Body typography */
+body {
+  font-family: $font-family-serif;
+  font-size: 1.05rem; // ← leggermente maggiore per leggibilità
+  line-height: 1.65;
+  color: #222;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings: sans-serif, maggiore leggibilità */
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-sans;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #1a1a1a;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Code blocks and inline code */
+code, pre, kbd, samp {
+  font-family: $font-family-monospace;
+  font-size: 0.95em;
+  background-color: #f5f5f5;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  color: #2d2d2d;
+}
+
+pre {
+  padding: 1em;
+  overflow-x: auto;
+  background-color: #f3f3f3;
+  border-left: 4px solid $primary;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Link styling */
+a {
+  color: darken($primary, 5%);
+  text-decoration: underline;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: darken($primary, 15%);
+}
+
+/* Exercise callouts */
+div[id^="exm-"],
+div.callout.exercise {
+  border-left: 4px solid $exercise-border-color;
+  padding: 1em;
+  margin: 1.5em 0;
+  background-color: $exercise-bg-color;
+  color: $exercise-text-color;
+  border-radius: 0 4px 4px 0;
+  font-size: 1.05rem;
+}
+
+/* Tables */
+table {
+  font-size: 0.95rem;
+  margin-bottom: 1.5em;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 0.6em 0.8em;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+/* Math text size adjustment */
+.math.inline,
+.math.display {
+  font-size: 1.0rem;
+  line-height: 1.6;
+}

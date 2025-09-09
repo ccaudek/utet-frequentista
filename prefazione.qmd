@@ -1,0 +1,30 @@
+# Prefazione
+
+Questo modulo sull’**inferenza frequentista** è parte dell’ecosistema UTET che accompagna il manuale *Metodi bayesiani in psicologia*.  
+Il suo scopo è duplice: da un lato fornire un’introduzione chiara alle procedure statistiche classiche, dall’altro mostrare come tali procedure abbiano plasmato — e in parte limitato — la ricerca psicologica contemporanea.
+
+## A chi è destinato
+
+- A chi desidera **ripassare le basi del frequentismo** prima di avvicinarsi al bayesiano.  
+- A chi vuole **capire meglio i punti di forza e i limiti** dei metodi tradizionali, per collocarli storicamente e concettualmente.  
+
+## Cosa troverai
+
+- Una presentazione dei concetti chiave (stima, intervallo di confidenza, test d’ipotesi).  
+- Una discussione delle ipotesi e delle criticità metodologiche che hanno condotto alla crisi di replicazione.  
+- Collegamenti continui con il manuale bayesiano, per comprendere in che senso l’approccio bayesiano rappresenti un’alternativa e un’estensione.  
+
+## Come leggere
+
+- Puoi seguire i capitoli in sequenza per un’introduzione graduale.  
+- Oppure usarli come **riferimento mirato** quando nel manuale incontri un confronto tra frequentismo e bayesiano.  
+
+## Ringraziamenti
+
+Questo modulo si inserisce nel progetto UTET per promuovere una formazione metodologica più solida in psicologia.  
+Suggerimenti e segnalazioni di correzioni sono benvenuti tramite il sistema di *issue* del repository.
+
+## Licenza
+
+Materiali rilasciati con licenza **CC BY-NC-ND 4.0**.  
+Condivisione consentita con attribuzione; non è consentito l’uso commerciale né la creazione di opere derivate.

@@ -1,0 +1,1564 @@
+/*-- scss:defaults --*/
+
+/* Base Bootswatch */
+$theme: "litera";
+
+/* Web fonts (monospace) */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap');
+
+/* ETBook locale */
+/*
+@font-face {
+  font-family: "ETBook";
+  src: url("./style/etbook/ETBook-Regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ETBook";
+  src: url("./style/etbook/ETBook-Italic.woff") format("woff");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ETBook";
+  src: url("./style/etbook/ETBook-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+*/
+
+/* Tipografia base */
+$font-size-root: 18.5px; 
+
+/* Stack serif e sans */
+$font-family-serif: "Palatino nova Pro", "Palatino", Georgia, "Times New Roman", serif;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, Helvetica, "Segoe UI", 
+                         Arial, "Noto Sans", sans-serif;
+
+/* Corpo e titoli entrambi in ETBook */
+$font-family-base: $font-family-serif;
+$headings-font-family: $font-family-serif;
+
+/* Monospace */
+$font-family-monospace: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco,
+                        Consolas, "Liberation Mono", "Courier New", monospace;
+
+
+/*-- scss:rules --*/
+
+/* Bootstrap runtime CSS vars */
+:root {
+  --bs-font-serif: #{$font-family-serif};
+  --bs-font-sans-serif: #{$font-family-sans-serif};
+  --bs-body-font-family: var(--bs-font-serif);
+  --bs-body-bg: #fffff8;
+}
+
+/* Corpo */
+body {
+  font-family: var(--bs-body-font-family);
+  background-color: var(--bs-body-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  font-variant-ligatures: common-ligatures;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  font-kerning: normal;
+}
+
+/* Titoli */
+h1, h2, h3, h4, h5, h6 {
+  font-family: #{$headings-font-family};
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.2px;
+  margin-top: 1.6em;
+  margin-bottom: 0.55em;
+  text-rendering: optimizeLegibility;
+  font-variant-ligatures: common-ligatures discretionary-ligatures;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Scala titoli */
+h1 { font-size: clamp(2.0rem, 3.0vw, 2.55rem); }
+h2 { font-size: clamp(1.60rem, 2.2vw, 2.00rem); }
+h3 { font-size: clamp(1.34rem, 1.6vw, 1.58rem); }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.1rem; }
+h6 { font-size: 1rem; }
+
+/* Link */
+a {
+  text-decoration: underline;
+  transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out;
+}
+
+/* Monospace calibrato */
+code, kbd, samp {
+  font-family: $font-family-monospace;
+  font-size: 0.88em;
+}
+pre {
+  line-height: 1.48;
+}
+
+/* === Code blocks: stile Stan Docs (#f8f8f8, no left border) === */
+
+:root {
+  --stan-bg: #f8f8f8;
+  --stan-secondary: var(--bs-primary);
+  --stan-dark: var(--bs-body-color);
+  --stan-highlight: #fff3cd;
+}
+
+/* Inline code */
+:not(pre) > code,
+:not(pre) > kbd,
+:not(pre) > samp {
+  white-space: inherit;
+  color: var(--stan-dark);
+  background-color: var(--stan-bg);
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  padding: 0.05em 0.22em;
+  font-size: 0.82em !important;
+  line-height: 1;
+}
+
+/* Code blocks — “classico”: niente fondino/bordo, solo hairline sinistra */
+div.sourceCode > pre,
+pre.sourceCode,
+.code-with-copy pre,
+.code-with-copy .sourceCode pre,
+pre[class*="sourceCode"],
+pre:not(.sourceCode) {
+  color: var(--stan-dark) !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-left: 2px solid rgba(0,0,0,.15) !important;
+  padding: 0.85rem 1rem 0.85rem 0.85rem; // un filo meno a sinistra per compensare la hairline
+  overflow-x: auto;
+  line-height: 1.48;
+}
+
+/* Riduzione font SOLO nei blocchi */
+pre code {
+  background: transparent !important;
+  color: inherit !important;
+  border: none !important;
+  padding: 0;
+  white-space: inherit;
+  font-size: 0.88em; /* ridotto */
+}
+
+/* Tabelle */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+}
+th, td {
+  border: 1px solid var(--bs-border-color);
+  padding: 0.6em 0.8em;
+  text-align: left;
+}
+th {
+  background-color: var(--bs-table-bg);
+  font-weight: 600;
+}
+
+/* Matematica più grande */
+.math.inline   { font-size: 1.03em; line-height: 1.5; }
+.math.display  { font-size: 1.06em; line-height: 1.5; }
+.katex         { font-size: 1.04em; }
+mjx-container  { font-size: 104%; line-height: 1.5; }
+
+/* Sottotitolo */
+.subtitle > a {
+  color: var(--bs-secondary-color);
+  font-weight: 700;
+}
+
+/* Titoli in corsivo (capitoli, sezioni, sottosezioni) */
+h1, h2, h3, h4, h5, h6 { 
+  font-style: italic;
+}
+
+/* Non corsivare il codice dentro i titoli */
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+  font-style: normal;
+}
+
+/* Nasconde la numerazione dalle sezioni e sottosezioni, mantiene quella dei capitoli */
+h2 .header-section-number,
+h3 .header-section-number,
+h4 .header-section-number,
+h5 .header-section-number,
+h6 .header-section-number {
+  display: none;
+}
+
+/* =============================================================================
+   RITOCCHI MINIMALI TUFTE-LIKE (appendi al fondo del file)
+   - Migliora ritmo tipografico, didascalie, blockquote, note, TOC e link icon
+   - Non tocca i callout né il loro bordo
+   ========================================================================== */
+
+/* 1) Ipo-sillabazione dolce per testi lunghi in italiano (riduce “scale” ai margini) */
+/* html { hanging-punctuation: first allow-end; } */ /* supporto parziale, harmless */
+body {
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+}
+
+/* 2) Ritmo paragrafi/lista: spaziature leggere e coerenti */
+p { margin: 0 0 0.9rem 0; }
+ul, ol { margin-top: 0.5rem; margin-bottom: 0.9rem; }
+li > ul, li > ol { margin-top: 0.35rem; margin-bottom: 0.5rem; }
+
+/* 3) Citazioni (blockquote): regola sottilissima, nessun pannello */
+blockquote {
+  border-left: 1px solid color-mix(in srgb, var(--bs-body-color) 25%, transparent);
+  margin: 1.1rem 0;
+  padding: 0.1rem 0 0.1rem 0.9rem;
+  background: transparent;
+  font-style: italic;
+}
+
+/* 4) Didascalie figure e tabelle: tono basso, coerente con Tufte */
+.figure-caption, figcaption, caption {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  font-style: italic;
+  color: var(--bs-secondary-color);
+  text-align: center;
+}
+.table > :not(caption) > * > tr > th,
+.table > :not(caption) > * > tr > td {
+  vertical-align: top;
+}
+
+/* 5) Note e riferimenti (footnote) più discreti */
+.footnotes { font-size: 0.95rem; }
+.footnote-ref { text-decoration: none; }
+.footnote-ref:hover { text-decoration: underline; }
+
+/* 6) Regola orizzontale tenue */
+hr {
+  border: 0;
+  border-top: 1px solid #e6e6e6;
+  margin: 1.25rem 0;
+}
+
+/* 7) Iconcina link esterni (se attiva in Quarto) meno evidente */
+a .quarto-external-link {
+  opacity: .55;           /* più soft */
+  margin-left: 0.1em;
+}
+a:hover .quarto-external-link { opacity: .8; }
+
+/* 8) TOC laterale: tono basso e corsivo coerente con i titoli */
+.sidebar .sidebar-item a.sidebar-link { 
+  color: var(--bs-body-color);
+  opacity: .9;
+}
+.sidebar .sidebar-item a.sidebar-link.active {
+  font-style: italic;
+  opacity: 1;
+}
+
+/* 9) Codice inline: bordo e tinta appena più “di carta” (opzionale, molto leggero) */
+:not(pre) > code,
+:not(pre) > kbd,
+:not(pre) > samp {
+  border-color: #e6e2d9;               /* leggermente più caldo di #e0e0e0 */
+  background-color: color-mix(in srgb, #fffff8 70%, #f8f8f8);
+}
+
+/* 10) Focus visibile ma sobrio (accessibilità senza stridere con lo stile) */
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--bs-primary) 35%, transparent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ================================
+   HOME (index) — frontespizio classico
+   ================================ */
+
+/* Target solo la home: Quarto mette l'id #title-block su tutte le pagine,
+   ma limitiamo con body[data-quarto-page="index"] quando presente */
+/* Nascondi title-block SOLO nella home */
+body.homefront .quarto-title-block,
+body.homefront #title-block-header,
+body.homefront header.page-header {
+  display: none !important;
+}
+
+/* Recupera spazio in alto quando il title-block sparisce */
+body.homefront.nav-fixed { padding-top: 0 !important; }
+
+/* Larghezza comoda per il contenuto in home */
+body.homefront #quarto-content .page-columns .content {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* “Frontispiece” tipografia */
+.frontispiece {
+  text-align: center;
+  margin: 1rem 0 1.25rem 0;
+}
+.frontispiece h1 {
+  font-variant: small-caps;
+  letter-spacing: .5px;
+  font-weight: 600;
+  font-style: italic;
+  margin: 0 0 .25rem 0;
+}
+.frontispiece h2 {
+  font-style: italic;
+  font-weight: 500;
+  margin: 0 0 .35rem 0;
+}
+.frontispiece h3 {
+  font-weight: 400;
+  letter-spacing: .3px;
+  color: var(--bs-secondary-color);
+  margin: 0 0 .75rem 0;
+}
+
+/* Linea fine decorativa sotto il titolo */
+.frontispiece::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 1px;
+  margin: .6rem auto 1.1rem auto;
+  background: color-mix(in srgb, var(--bs-body-color) 25%, transparent);
+}
+
+/* Riga autore in piccoli-capitali + tono basso */
+.authorline {
+  font-variant: small-caps;
+  letter-spacing: .4px;
+  color: var(--bs-secondary-color);
+}
+
+/* Epigrafe “classica” */
+.epigraph {
+  max-width: 40rem;
+  margin: 1.1rem auto 1.25rem auto;
+  font-style: italic;
+  color: var(--bs-secondary-color);
+}
+.epigraph > blockquote {
+  border: 0;
+  padding: 0 .5rem;
+  margin: 0;
+  background: transparent;
+  text-align: left;
+}
+.epigraph cite { display: block; text-align: right; }
+
+/* Paragrafo di apertura (“lead”) con drop cap */
+.lead {
+  max-width: 48rem;
+  margin: 1.25rem auto 1.1rem auto;
+  font-size: 1.06em;
+  line-height: 1.55;
+}
+/*
+.lead p:first-of-type::first-letter {
+  font-family: "ETBook", Georgia, serif;
+  font-size: 2.6em;
+  line-height: .95;
+  float: left;
+  padding-right: .22rem;
+  margin-top: .06rem;
+  font-weight: 600;
+}
+*/
+
+/* Call-to-action essenziale */
+a.cta {
+  display: inline-block;
+  margin: .6rem auto 0 auto;
+  padding: .35rem .75rem;
+  border: 1px solid color-mix(in srgb, var(--bs-body-color) 25%, transparent);
+  border-radius: .3rem;
+  text-decoration: none;
+}
+a.cta:hover {
+  background: color-mix(in srgb, var(--bs-primary) 7%, #fff);
+}
+
+/* Hero banner sobrio quando title-block-banner: true */
+.quarto-title-block .quarto-title-banner {
+  background-position: center 40%;
+  background-size: cover;
+  filter: grayscale(100%) contrast(105%) brightness(97%);
+}
+.quarto-title .title, .quarto-title .subtitle {
+  text-shadow: 0 1px 0 rgba(255,255,255,.35);
+}
+
+/* Sidebar home: meno rumore */
+body[data-quarto-page="index"] #quarto-sidebar {
+  opacity: .94;
+}
+
+
+.navbar-brand { font-family: "ETBook", Georgia, serif; font-style: italic; }
+a .quarto-external-link { opacity: .55; margin-left: .1em; }
+a:hover .quarto-external-link { opacity: .8; }
+
+/* Home: epigrafe più “classica” */
+body.homefront .epigraph {
+  max-width: 40rem;
+  margin: 1.1rem auto 1.25rem auto;
+  font-style: italic;
+  color: var(--bs-secondary-color);
+}
+body.homefront .epigraph blockquote { border: 0; margin: 0; padding: 0 .5rem; }
+body.homefront .epigraph em, 
+body.homefront .epigraph i { font-style: italic; }
+
+/* Home: lead con drop-cap sobria (coerente con ETBook) */
+body.homefront .lead {
+  max-width: 48rem;
+  margin: 1.25rem auto 1.1rem auto;
+  font-size: 1.06em;
+  line-height: 1.55;
+}
+
+/*
+body.homefront .lead p:first-of-type::first-letter {
+  font-family: "ETBook", Georgia, serif;
+  font-size: 2.4em;      
+  line-height: .95;
+  float: left;
+  padding-right: .22rem;
+  margin-top: .06rem;
+  font-weight: 600;
+}
+*/
+
+/* Link a risorse PDF in home: stile “pulsante” minimal */
+body.homefront a[href$=".pdf"] {
+  display: inline-block;
+  margin: .2rem .4rem .2rem 0;
+  padding: .3rem .6rem;
+  border: 1px solid color-mix(in srgb, var(--bs-body-color) 25%, transparent);
+  border-radius: .3rem;
+  text-decoration: none;
+}
+body.homefront a[href$=".pdf"]:hover {
+  background: color-mix(in srgb, var(--bs-primary) 7%, #fff);
+}
+
+body.homefront h2, body.homefront h3 {
+  font-variant-caps: small-caps;
+  letter-spacing: .3px;
+}
+
+code, kbd, samp, pre,
+.math, .katex, mjx-container,
+.figcaption, figcaption, caption {
+  hyphens: none;
+}
+
+/* ===========================
+   FIX: scaling matematica nei callout
+   =========================== */
+
+/* 1) Assicura che il testo del callout usi em (non rem) e sia coerente */
+.callout .callout-body,
+.callout .callout-content {
+  font-size: 0.95em; /* o il fattore che preferisci per il corpo del callout */
+}
+
+/* 2) La matematica dentro al callout eredita la dimensione del callout */
+.callout .math,
+.callout .katex,
+.callout mjx-container {
+  font-size: 1em;         /* reset: scala come il testo circostante del callout */
+  line-height: 1.5;
+}
+
+/* 3) Re-applica il “bump” relativo SOLO dentro al callout */
+/*
+.callout .math.inline   { font-size: 1.03em; }
+.callout .math.display  { font-size: 1.06em; }
+*/
+
+/* KaTeX e MathJax: piccoli aggiustamenti coerenti col bump sopra */
+.callout .katex         { font-size: 1.03em; }      /* ~ +3% inline */
+.callout mjx-container[display="true"] { font-size: 106%; } /* display */
+.callout mjx-container:not([display])  { font-size: 103%; } /* inline */
+
+/* (Opzionale) Se vuoi che la matematica nel callout NON sia maggiorata:
+   commenta il blocco 3 e lascia solo il reset a 1em.
+*/
+
+/* Disabilita la sillabazione nei titoli: le parole lunghe vanno a capo intere */
+h1, h2, h3, h4, h5, h6 {
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  overflow-wrap: normal;     /* non spezzare le parole */
+  word-break: normal;        /* evita rotture forzate */
+}
+
+/* ============================== Patches/* ============================== */
+
+/* Larghezza massima del testo (≈ 66–72ch) */
+#quarto-content .page-columns .content,
+main.content {
+  max-width: 72ch;   /* 66–76ch è la fascia ideale */
+}
+
+/* Testo giustificato con sillabazione “it” (serve lang="it" nell'HTML) */
+main p, main li {
+/*  text-align: justify;
+  text-justify: inter-word; */
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+/* Interlinea corpo leggermente più ampia: Palatino respira con 1.55–1.6 */
+body { line-height: 1.55; }
+
+/* Vedove / orfani: non è perfetto su tutti i browser, ma aiuta */
+p, li { widows: 2; orphans: 2; }
+
+/* Legature e numeri “classici” (già impostati, ribadisco per eredità nei blocchi) */
+body, p, li, blockquote {
+  font-variant-ligatures: common-ligatures;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  font-kerning: normal;
+}
+
+
+/* Spazio tra paragrafi più contenuto */
+p { margin: 0 0 0.7rem 0; }
+
+/* Rientro tipografico (≈ 1.2–1.6em) */
+p { text-indent: 1.4em; }
+
+/* Disattiva rientro dove non si usa */
+h1 + p, h2 + p, h3 + p, h4 + p,
+.figure + p, figure + p, .table + p, table + p,
+ul + p, ol + p, blockquote + p, pre + p, .callout + p {
+  text-indent: 0;
+}
+
+/* Il primo paragrafo della pagina/sezione senza rientro */
+.quarto-title-block + * p:first-of-type,
+section > p:first-of-type {
+  text-indent: 0;
+}
+
+
+/* Togli l’italico dai titoli e usa small caps */
+h1, h2, h3, h4, h5, h6 {
+  font-style: normal;                 /* override del tuo italico */
+  font-variant-caps: small-caps;
+  letter-spacing: 0.5px;              /* micro-tracking per small caps */
+  font-weight: 600;
+}
+
+/* Scala dimensioni un filo più misurata */
+h1 { font-size: clamp(2.0rem, 3vw, 2.4rem); }
+h2 { font-size: clamp(1.7rem, 2.4vw, 2.0rem); }
+h3 { font-size: clamp(1.45rem, 2vw, 1.7rem); }
+h4 { font-size: 1.25rem; }
+
+/* Radice leggermente più grande per Palatino */
+:root { font-size: 19px; }   /* prova 19–19.5px; la tua era 18.5px */
+
+/* Garantisci oldstyle/proportional anche in elementi “ostinati” */
+input, select, textarea, th, td, caption, figcaption {
+  font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+a {
+  color: color-mix(in srgb, var(--bs-body-color) 70%, var(--bs-primary));
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.12em;
+}
+a:hover { color: var(--bs-body-color); }
+
+figure, .figure {
+  margin: 1.1rem auto;
+}
+figure img, .quarto-figure > figure > img, .figure img {
+  border: 1px solid #e6e2d9;           /* tono caldo, “carta” */
+  border-radius: .15rem;
+}
+
+/* Tabelle leggere, zebra appena accennata */
+table {
+  border-collapse: collapse;
+  font-size: 0.96rem;
+}
+th, td { border: 1px solid #e6e2d9; padding: 0.55em 0.75em; }
+tbody tr:nth-child(even) { background: color-mix(in srgb, #fffff8 70%, #f8f8f8); }
+
+caption, figcaption, .figure-caption {
+  font-style: italic;
+  color: var(--bs-secondary-color);
+  text-align: center;
+  caption-side: bottom;
+  margin-top: .35rem;
+}
+
+/* Inline code: più sottile, tinta carta */
+:not(pre) > code, :not(pre) > kbd, :not(pre) > samp {
+  background-color: color-mix(in srgb, #fffff8 75%, #f8f8f8);
+  border: 1px solid #e6e2d9;
+  border-radius: 3px;
+  padding: 0.05em 0.22em;
+  font-size: 0.82em;
+}
+
+/* Blocchi: bordo caldo e titolo (lang) discreto */
+pre, pre code, .code-with-copy pre {
+  background: #f8f8f8 !important;
+  /* border: 1px solid #e6e2d9 !important;
+  line-height: 1.5;*/
+}
+
+.math.inline   { font-size: 1.04em; }
+.math.display  { font-size: 1.08em; }
+.katex, mjx-container { line-height: 1.5; }
+
+/* MathJax: frazioni più larghe e spaziatura */
+mjx-container[display="true"] { margin: 0.9rem 0; }
+
+
+blockquote {
+  border-left: 1px solid color-mix(in srgb, var(--bs-body-color) 22%, transparent);
+  padding: 0.1rem 0 0.1rem 0.9rem;
+  font-style: italic;
+}
+
+.footnotes { font-size: 0.95rem; }
+.footnote-ref { text-decoration: none; }
+.footnote-ref:hover { text-decoration: underline; }
+
+hr {
+  border: 0;
+  border-top: 1px solid #e6e2d9;
+  margin: 1.1rem 0;
+}
+
+.sc     { font-variant-caps: small-caps; letter-spacing: .4px; }
+.caps   { text-transform: uppercase; letter-spacing: .6px; }
+.onum   { font-variant-numeric: oldstyle-nums; }
+.pnum   { font-variant-numeric: proportional-nums; }
+.tnum   { font-variant-numeric: tabular-nums; } /* utile per tabelle di numeri */
+
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--bs-primary) 35%, transparent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+  font-variant-caps: small-caps;
+  letter-spacing: .4px;
+}
+
+/* In etbook-litera.scss - scala aurea per i titoli */
+h1 { font-size: clamp(1.953rem, 4vw, 2.441rem); }  /* 1.618³ */
+h2 { font-size: clamp(1.563rem, 3vw, 1.953rem); }  /* 1.618² */
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.563rem); } /* 1.618¹ */
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.8rem; }
+
+/* In etbook-litera.scss */
+
+:root {
+  /* Carta antica */
+  --bs-body-bg: #fdfcf8; /* più caldo di #fffff8 */
+  
+  /* Inchiostro seppia */
+  --bs-body-color: #2d2926; /* marrone scurissimo invece di nero */
+  
+  /* Toni secondari caldi */
+  --bs-secondary-color: #6b6356;
+  --bs-muted-color: #8b8680;
+  
+  /* Link in blu-grigio classico */
+  --bs-link-color: #4a5568;
+  --bs-link-hover-color: #2d3748;
+}
+
+
+/* ==== Footnote refs: allineamento e rimozione parentesi ==== */
+/* Quarto/Pandoc usano <a class="footnote-ref"><sup>1</sup></a>
+   o <a role="doc-noteref">. Copriamo entrambi i selettori. */
+
+a.footnote-ref,
+a[role="doc-noteref"] {
+  text-decoration: none;
+  /* Evita oldstyle-nums sulle footnote: meglio i lining per l'apice */
+  font-variant-numeric: lining-nums proportional-nums;
+}
+
+/* Alcuni temi aggiungono [ ] con pseudoelementi: spengili */
+a.footnote-ref::before,
+a.footnote-ref::after,
+a[role="doc-noteref"]::before,
+a[role="doc-noteref"]::after {
+  content: none !important;
+}
+
+/* Normalizza il <sup>: dimensione, linea di base e interlinea */
+a.footnote-ref sup,
+a[role="doc-noteref"] sup {
+  font-size: 0.72em;      /* 0.7–0.8 em: scegli a gusto */
+  line-height: 0;         /* elimina “spinta” verticale */
+  vertical-align: super;  /* vero apice */
+  font-variant-position: super; /* usa il feature OpenType se disponibile */
+  font-variant-numeric: lining-nums proportional-nums;
+}
+
+/* Se le footnote compaiono nei titoli, disabilita small-caps/italic ereditati */
+h1 a.footnote-ref, h2 a.footnote-ref, h3 a.footnote-ref,
+h4 a.footnote-ref, h5 a.footnote-ref, h6 a.footnote-ref,
+h1 a[role="doc-noteref"], h2 a[role="doc-noteref"], h3 a[role="doc-noteref"],
+h4 a[role="doc-noteref"], h5 a[role="doc-noteref"], h6 a[role="doc-noteref"] {
+  font-variant-caps: normal;
+  font-style: normal;
+}
+
+/* Claude */
+
+:root {
+  --golden-ratio: 1.618;
+  --minor-third: 1.2;
+  --perfect-fourth: 1.333;
+  --perfect-fifth: 1.5;
+}
+
+h1 { font-size: calc(1rem * var(--perfect-fifth) * var(--minor-third)); }
+h2 { font-size: calc(1rem * var(--perfect-fifth)); }
+h3 { font-size: calc(1rem * var(--perfect-fourth)); }
+
+:root {
+  --text-primary: #2d2926;
+  --text-secondary: #5d5349;
+  --accent-warm: #8B4513;
+  --paper-warm: #fdfcf8;
+  --paper-cream: #f8f6f0;
+}
+
+/* === Garamontio Capo (capolettera) === */
+@font-face {
+  font-family: "Garamontio Capo";
+  src: url("./style/garamontio-capo/GaramontioCapo-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Colori di default (puoi sovrascriverli a livello tema/pagina) */
+:root {
+  /* colore della LETTERA (sopra) */
+  --capo-fg: currentColor;
+  /* colore dello SFONDO (sotto), leggermente schiarito rispetto al testo */
+  --capo-bg: color-mix(in oklch, currentColor 25%, white);
+}
+
+/* Variante scura (se usi dark mode) */
+:root.dark, .quarto-dark {
+  --capo-fg: currentColor;
+  --capo-bg: color-mix(in oklch, currentColor 25%, black);
+}
+
+/* Paragrafo con drop cap semplice (senza sfondo) */
+/*
+p.dropcap::first-letter {
+  font-family: "Garamontio Capo", serif;
+  font-size: 4.6rem;
+  line-height: 0.85;
+  float: left;
+  margin: 0.18rem 0.6rem 0 0.1rem;
+  padding-top: 0.15rem;
+}
+*/
+
+/* Paragrafo con capolettera decorato (sfondo + lettera) */
+p.capo {
+  position: relative;
+}
+
+/* Blocco iniziale: due layer sovrapposti dello stesso font */
+/*
+.capo-initial {
+  position: relative;        
+  isolation: isolate;        
+  z-index: 1;                
+  float: left;
+  display: inline-block;
+  font-family: "Garamontio Capo", serif;
+  line-height: 0.85;
+  font-size: 4.8rem;
+  margin: 0.12rem 0.6rem 0 0.06rem;
+  font-feature-settings: "ss01" 1;  
+  color: var(--capo-fg);            
+  -webkit-text-stroke: 0.4px color-mix(in oklch, var(--capo-bg) 80%, transparent);
+}
+*/
+
+/* Layer SFONDO (la cifra 0–9) sotto la lettera */
+.capo-initial::before {
+  content: attr(data-bg);           /* 0–9 seleziona il disegno di sfondo */
+  position: absolute;
+  inset: 0;
+  z-index: 0;                       /* sotto la lettera */
+  font-family: "Garamontio Capo", serif;
+  font-feature-settings: "ss01" 1;  /* stessa centratura */
+  color: var(--capo-bg);            /* colore SFONDO */
+  opacity: 0.90;                    /* tenue ma presente */
+  pointer-events: none;
+
+  /* opzionale: integrazione cromatica più “stampata” */
+  mix-blend-mode: multiply; 
+}
+
+/* Blocco iniziale: LETTERA sopra */
+.capo-initial {
+  position: relative;        /* crea stacking context */
+  isolation: isolate;        /* isola i layer interni */
+  float: left;
+  display: inline-block;
+  font-family: "Garamontio Capo", serif;
+  line-height: 0.85;
+  font-size: 4.8rem;
+  margin: 0.12rem 0.6rem 0 0.06rem;
+  font-feature-settings: "ss01" 1;
+  color: var(--capo-fg);
+  z-index: 1;                /* la lettera è sopra lo sfondo */
+}
+
+/* Layer SFONDO (sotto alla lettera) */
+.capo-initial::before {
+  content: attr(data-bg);
+  position: absolute;
+  inset: 0;
+  font-family: "Garamontio Capo", serif;
+  font-feature-settings: "ss01" 1;
+  color: var(--capo-bg);
+  opacity: 0.90;
+  pointer-events: none;
+  z-index: -1;               /* sfondo sotto */
+}
+
+css/* Attiva ligature discrezionali dove appropriate */
+.content p, .lead, blockquote {
+  font-feature-settings: 
+    "liga" 1,     /* ligature standard */
+    "dlig" 1,     /* ligature discrezionali */
+    "hlig" 1,     /* ligature storiche */
+    "calt" 1,     /* alternates contestuali */
+    "onum" 1,     /* old-style numerals */
+    "pnum" 1;     /* proportional numbers */
+}
+
+/* Titoli con caratteristiche diverse */
+h1, h2, h3 {
+  font-feature-settings:
+    "smcp" 1,     /* small caps */
+    "c2sc" 1,     /* caps to small caps */
+    "liga" 1,
+    "kern" 1;
+}
+
+/* Scala armonica basata sul rapporto aureo */
+:root {
+  --space-xs: 0.382rem;    /* φ⁻² */
+  --space-sm: 0.618rem;    /* φ⁻¹ */
+  --space-md: 1rem;        /* base */
+  --space-lg: 1.618rem;    /* φ */
+  --space-xl: 2.618rem;    /* φ² */
+  --space-xxl: 4.236rem;   /* φ³ */
+}
+
+/* Applicazione coerente */
+p { margin-bottom: var(--space-sm); }
+h1 { margin: var(--space-xl) 0 var(--space-md); }
+.ornamento { margin: var(--space-xl) 0; }
+
+
+/* ===================================================================
+   INTEGRAZIONE CODICE IN STILE UMANISTICO/RINASCIMENTALE
+   - Riduce spazio bianco eccessivo
+   - Migliore integrazione tipografica con il testo
+   - Mantiene leggibilità e gerarchia visiva
+   =================================================================== */
+
+/* 1) SPAZIATURA RIDOTTA E PROPORZIONALE */
+
+/* Blocchi di codice: margini più contenuti, proporzionali al testo */
+div.sourceCode > pre,
+pre.sourceCode,
+.code-with-copy pre,
+pre[class*="sourceCode"] {
+  margin: 0.8rem 0 !important;  /* era probabilmente 1.2-1.5rem */
+  padding: 0.7rem 0.9rem 0.7rem 0.75rem !important;
+  border-left: 2px solid rgba(0,0,0,.12) !important;
+  background: transparent !important;
+  line-height: 1.45;
+  font-size: 0.86em;  /* leggermente più piccolo per integrazione */
+}
+
+/* Codice inline: padding ridotto per fondersi meglio */
+:not(pre) > code {
+  padding: 0.03em 0.18em !important;
+  margin: 0 0.04em;
+  vertical-align: baseline;
+  font-size: 0.84em !important;
+}
+
+/* 2) INTEGRAZIONE CON PARAGRAFI PRECEDENTI/SEGUENTI */
+
+/* Paragrafo che precede codice: margine inferiore ridotto */
+p + div.sourceCode,
+p + pre.sourceCode,
+p + .code-with-copy {
+  margin-top: 0.5rem !important;
+}
+
+/* Paragrafo che segue codice: margine superiore ridotto */
+div.sourceCode + p,
+pre.sourceCode + p,
+.code-with-copy + p {
+  margin-top: 0.5rem !important;
+}
+
+/* Lista seguita da codice */
+ul + div.sourceCode,
+ol + div.sourceCode,
+ul + .code-with-copy,
+ol + .code-with-copy {
+  margin-top: 0.6rem !important;
+}
+
+/* 3) STILE "SCHOLASTIC" - Come annotazioni nei manoscritti */
+
+/* Variante per codice "commentato" - più integrato */
+.code-annotation div.sourceCode > pre,
+.code-scholarly div.sourceCode > pre {
+  background: color-mix(in srgb, var(--paper-warm, #fdfcf8) 95%, #e6e2d9) !important;
+  border: 1px solid #e6e2d9 !important;
+  border-left: 3px solid var(--accent-warm, #8B4513) !important;
+  border-radius: 2px;
+  margin: 0.6rem 0 !important;
+  padding: 0.6rem 0.8rem !important;
+  font-size: 0.85em;
+}
+
+/* 4) CODICE "IN-FLOW" - Molto integrato nel testo */
+
+/* Per codice breve che deve essere molto integrato */
+.code-inline div.sourceCode > pre {
+  display: inline-block;
+  margin: 0.2em 0.4em !important;
+  padding: 0.25em 0.5em !important;
+  border-left: none !important;
+  border: 1px solid #e6e2d9 !important;
+  border-radius: 3px;
+  background: var(--paper-cream, #f8f6f0) !important;
+  font-size: 0.82em;
+  line-height: 1.3;
+  vertical-align: baseline;
+}
+
+/* 5) GERARCHIA VISIVA - Codice importante vs. secondario */
+
+/* Codice principale: spazio normale ma controllato */
+.code-primary div.sourceCode > pre {
+  margin: 0.9rem 0 !important;
+  border-left: 3px solid var(--text-primary, #2d2926) !important;
+  font-weight: 500;
+}
+
+/* Codice di supporto: più discreto e compatto */
+.code-secondary div.sourceCode > pre,
+.code-example div.sourceCode > pre {
+  margin: 0.5rem 0 !important;
+  padding: 0.5rem 0.7rem !important;
+  border-left: 2px solid color-mix(in srgb, currentColor 20%, transparent) !important;
+  opacity: 0.92;
+  font-size: 0.84em;
+}
+
+/* 6) CODICE "MARGINALIA" - Ispirato alle note a margine */
+
+/* Per esempi brevi che accompagnano il testo */
+.code-marginalia div.sourceCode > pre {
+  margin: 0.4rem 0 !important;
+  padding: 0.4rem 0.6rem !important;
+  background: color-mix(in srgb, var(--paper-warm, #fdfcf8) 90%, #f0f0f0) !important;
+  border: none !important;
+  border-left: 1px solid color-mix(in srgb, currentColor 15%, transparent) !important;
+  font-size: 0.82em;
+  line-height: 1.4;
+  font-style: italic; /* sottile enfasi "commentario" */
+}
+
+/* 7) TRANSIZIONI FLUIDE TRA TESTO E CODICE */
+
+/* Linea di separazione sottile opzionale per codice lungo */
+.code-section::before {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 1px;
+  background: color-mix(in srgb, currentColor 20%, transparent);
+  margin: 0.8rem 0 0.6rem 0;
+}
+
+.code-section::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 1px;
+  background: color-mix(in srgb, currentColor 20%, transparent);
+  margin: 0.6rem 0 0.8rem 0;
+}
+
+/* 8) INTEGRAZIONE CON CALLOUT */
+
+/* Codice dentro callout: margini ancora più contenuti */
+.callout div.sourceCode > pre,
+.callout pre.sourceCode {
+  margin: 0.4rem 0 !important;
+  padding: 0.5rem 0.7rem !important;
+  font-size: 0.88em; /* eredita la scala del callout */
+}
+
+/* 9) RESPONSIVE: su schermi piccoli, compatta ulteriormente */
+
+@media (max-width: 640px) {
+  div.sourceCode > pre,
+  pre.sourceCode,
+  .code-with-copy pre {
+    margin: 0.6rem 0 !important;
+    padding: 0.6rem 0.8rem 0.6rem 0.65rem !important;
+    font-size: 0.84em;
+  }
+  
+  /* Codice inline più piccolo su mobile */
+  :not(pre) > code {
+    font-size: 0.82em !important;
+    padding: 0.02em 0.15em !important;
+  }
+}
+
+/* 10) VARIANTE "MANOSCRITTO" - Per stile molto classico */
+
+.manuscript-style div.sourceCode > pre {
+  position: relative;
+  background: color-mix(in srgb, #f4f1e8 80%, white) !important;
+  border: 1px solid #d4c4a0 !important;
+  border-radius: 0 !important;
+  margin: 0.7rem 0 !important;
+  padding: 0.8rem !important;
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.03);
+  font-family: "Fira Code", "SF Mono", monospace;
+  font-size: 0.86em;
+  line-height: 1.5;
+}
+
+/* Piccola decorazione angolare per il look "pergamena" */
+.manuscript-style div.sourceCode > pre::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, #d4c4a0 50%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ===================================================================
+   UTILITY CLASSES PER USO PRATICO
+   =================================================================== */
+
+/* Applica tramite {.code-compact} nelle celle Quarto */
+.code-compact div.sourceCode > pre { 
+  margin: 0.4rem 0 !important; 
+  padding: 0.4rem 0.6rem !important; 
+}
+
+/* Applica tramite {.code-breathe} per codice che deve "respirare" */
+.code-breathe div.sourceCode > pre { 
+  margin: 1.2rem 0 !important; 
+  padding: 1rem !important; 
+}
+
+/* Per sequenze di blocchi codice ravvicinati */
+.code-sequence div.sourceCode > pre {
+  margin: 0.3rem 0 !important;
+}
+
+.code-sequence div.sourceCode:not(:last-child) > pre {
+  margin-bottom: 0.2rem !important;
+  border-bottom: 1px dotted #e0e0e0;
+}
+
+/* ===================================================================
+   OVERRIDE DEFAULTS GLOBALI (da applicare per tutto il libro)
+   =================================================================== */
+
+/* Se vuoi applicare lo stile compatto come default globale,
+   decommmenta questa sezione: */
+
+div.sourceCode > pre,
+pre.sourceCode,
+.code-with-copy pre {
+  margin: 0.7rem 0 !important;
+  padding: 0.65rem 0.8rem 0.65rem 0.7rem !important;
+}
+
+p + div.sourceCode,
+p + .code-with-copy {
+  margin-top: 0.45rem !important;
+}
+
+div.sourceCode + p,
+.code-with-copy + p {
+  margin-top: 0.45rem !important;
+}
+
+
+/* ===================================================================
+   INTEGRAZIONE CODICE PER DOCUMENTI QUARTO .QMD STANDARD
+   - Lavora sui selettori CSS che Quarto genera automaticamente
+   - Mantiene l'armonia tipografica con lo stile classico esistente
+   - Non richiede modifiche al markup .qmd
+   =================================================================== */
+
+/* 1) MIGLIORAMENTI BASE PER TUTTI I BLOCCHI DI CODICE */
+
+/* Override del tuo stile esistente con proporzioni più armoniose */
+div.sourceCode > pre,
+pre.sourceCode,
+.code-with-copy pre,
+pre[class*="sourceCode"] {
+  /* Utilizzo delle tue variabili auree esistenti */
+  margin: var(--space-sm, 0.618rem) 0 var(--space-md, 1rem) !important;
+  padding: var(--space-xs, 0.382rem) var(--space-sm, 0.618rem) var(--space-xs, 0.382rem) calc(var(--space-sm, 0.618rem) - 2px) !important;
+  
+  /* Sfondo pergamenaceo molto sottile */
+  background: linear-gradient(135deg, 
+              color-mix(in srgb, var(--paper-warm, #fdfcf8) 98%, #f0ead6) 0%,
+              color-mix(in srgb, var(--paper-warm, #fdfcf8) 99%, #e8dcc0) 100%) !important;
+  
+  /* Bordo sinistro con il tuo accent warm */
+  border: none !important;
+  border-left: 2px solid color-mix(in srgb, var(--accent-warm, #8B4513) 35%, transparent) !important;
+  border-radius: 0 2px 2px 0;
+  
+  /* Ombra molto sottile per dare profondità */
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    0 1px 2px rgba(0,0,0,0.03);
+    
+  font-size: 0.85em;
+  line-height: 1.55; /* Coerente con la tua body line-height */
+  
+  /* Texture carta antica molto leggera */
+  position: relative;
+}
+
+/* Piccola decorazione per dare carattere "incunabulo" */
+div.sourceCode > pre::after,
+pre.sourceCode::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, 
+              color-mix(in srgb, var(--accent-warm, #8B4513) 20%, transparent) 60%, 
+              transparent 70%);
+  border-radius: 50%;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* 2) TRANSIZIONI FLUIDE CON IL TESTO */
+
+/* Paragrafo che precede codice: preparazione visiva */
+p + div.sourceCode,
+p + pre.sourceCode,
+p + .code-with-copy {
+  margin-top: calc(var(--space-xs, 0.382rem) + 0.1rem) !important;
+}
+
+/* Paragrafo che segue codice: rientro ridotto per continuità */
+div.sourceCode + p,
+pre.sourceCode + p,
+.code-with-copy + p {
+  margin-top: calc(var(--space-xs, 0.382rem) + 0.1rem) !important;
+  text-indent: 0.8em !important; /* Meno del normale 1.4em */
+}
+
+/* Lista seguita/preceduta da codice */
+ul + div.sourceCode,
+ol + div.sourceCode,
+div.sourceCode + ul,
+div.sourceCode + ol {
+  margin-top: var(--space-sm, 0.618rem) !important;
+}
+
+/* 3) STILI SPECIFICI PER LINGUAGGIO (basati sulle classi Quarto) */
+
+/* Codice R: stile più "statistico" e accademico */
+div.sourceCode[class*="r"] > pre,
+div.sourceCode[class*="R"] > pre,
+pre.sourceCode.r,
+pre.sourceCode.R {
+  border-left-color: color-mix(in srgb, #1f77b4 50%, var(--accent-warm, #8B4513)) !important;
+  background: linear-gradient(135deg,
+              color-mix(in srgb, var(--paper-warm, #fdfcf8) 97%, #e8f0ff) 0%,
+              color-mix(in srgb, var(--paper-warm, #fdfcf8) 99%, #f0f8ff) 100%) !important;
+}
+
+/* Codice Python: stile più tecnico */
+div.sourceCode[class*="python"] > pre,
+pre.sourceCode.python {
+  border-left-color: color-mix(in srgb, #2e8b57 50%, var(--accent-warm, #8B4513)) !important;
+  background: linear-gradient(135deg,
+              color-mix(in srgb, var(--paper-warm, #fdfcf8) 97%, #e8f5e8) 0%,
+              color-mix(in srgb, var(--paper-warm, #fdfcf8) 99%, #f0f8f0) 100%) !important;
+}
+
+/* Codice SQL: stile più "archivistico" */
+div.sourceCode[class*="sql"] > pre,
+pre.sourceCode.sql {
+  border-left-color: color-mix(in srgb, #8b4513 60%, var(--accent-warm, #8B4513)) !important;
+  background: linear-gradient(135deg,
+              color-mix(in srgb, var(--paper-warm, #fdfcf8) 97%, #f5f0e8) 0%,
+              color-mix(in srgb, var(--paper-warm, #fdfcf8) 99%, #f8f5f0) 100%) !important;
+}
+
+/* 4) CODICE INLINE PERFETTAMENTE INTEGRATO */
+
+/* Il tuo stile esistente migliorato */
+:not(pre) > code,
+:not(pre) > kbd,
+:not(pre) > samp {
+  /* Colore di sfondo che si armonizza con i blocchi */
+  background-color: color-mix(in srgb, var(--paper-warm, #fdfcf8) 85%, #f0ead6) !important;
+  border: 1px solid color-mix(in srgb, var(--accent-warm, #8B4513) 20%, #e6e2d9) !important;
+  border-radius: 2px;
+  padding: 0.04em 0.2em !important;
+  font-size: 0.84em !important;
+  
+  /* Leggera ombra interna per profondità */
+  box-shadow: inset 0 0.5px 1px rgba(0,0,0,0.06);
+  
+  /* Margini micro per non toccare la punteggiatura */
+  margin: 0 0.06em;
+  vertical-align: baseline;
+}
+
+/* 5) INTEGRAZIONE CON I TUOI ELEMENTI ESISTENTI */
+
+/* Codice dentro blockquote: stile citazione accademica */
+blockquote div.sourceCode > pre,
+blockquote pre.sourceCode {
+  margin: var(--space-xs, 0.382rem) 0 !important;
+  padding: var(--space-xs, 0.382rem) var(--space-sm, 0.618rem) !important;
+  background: transparent !important;
+  border-left: 1px solid color-mix(in srgb, currentColor 25%, transparent) !important;
+  font-style: inherit; /* Eredita l'italic del blockquote */
+  opacity: 0.9;
+  box-shadow: none;
+}
+
+/* Codice dentro callout (utilizzo del tuo stile esistente migliorato) */
+.callout div.sourceCode > pre,
+.callout pre.sourceCode {
+  margin: calc(var(--space-xs, 0.382rem) * 0.8) 0 !important;
+  padding: calc(var(--space-xs, 0.382rem) * 0.8) var(--space-sm, 0.618rem) !important;
+  background: color-mix(in srgb, var(--paper-warm, #fdfcf8) 94%, transparent) !important;
+  border-left-width: 1.5px !important;
+  font-size: 0.86em; /* Leggermente più grande per leggibilità nei callout */
+}
+
+/* 6) NUMERAZIONE AUTOMATICA PER SEQUENZE */
+
+/* Sequenze di blocchi consecutivi: numerazione discreta */
+.content {
+  counter-reset: code-sequence;
+}
+
+/* Solo se ci sono più blocchi consecutivi */
+div.sourceCode + div.sourceCode > pre::before,
+pre.sourceCode + div.sourceCode > pre::before {
+  counter-increment: code-sequence;
+  content: counter(code-sequence);
+  position: absolute;
+  top: 0.3rem;
+  right: 0.4rem;
+  width: 1rem;
+  height: 1rem;
+  background: color-mix(in srgb, var(--accent-warm, #8B4513) 20%, transparent);
+  color: var(--accent-warm, #8B4513);
+  border-radius: 50%;
+  font-size: 0.65rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-sans-serif);
+  opacity: 0.7;
+}
+
+/* 7) SYNTAX HIGHLIGHTING ARMONIZZATO CON I TUOI COLORI */
+
+/* Keywords con small caps come i tuoi titoli */
+.sourceCode .kw,  /* keywords */
+.sourceCode .cf   /* control flow */
+{
+  font-feature-settings: "smcp" 1 !important;
+  font-weight: 500 !important;
+  color: var(--accent-warm, #8B4513) !important;
+  letter-spacing: 0.3px;
+}
+
+/* Stringhe in colore più caldo */
+.sourceCode .st,
+.sourceCode .vs {
+  color: color-mix(in srgb, var(--accent-warm, #8B4513) 80%, #654321) !important;
+  font-style: italic;
+}
+
+/* Commenti con le tue feature tipografiche */
+.sourceCode .co,
+.sourceCode .do {
+  color: var(--text-secondary, #5d5349) !important;
+  font-style: italic !important;
+  font-feature-settings: 
+    "liga" 1,
+    "onum" 1,
+    "pnum" 1 !important;
+  opacity: 0.8;
+}
+
+/* Numeri con old-style nums */
+.sourceCode .dv,
+.sourceCode .bn,
+.sourceCode .fl {
+  font-feature-settings: "onum" 1, "pnum" 1 !important;
+  color: color-mix(in srgb, var(--text-primary, #2d2926) 90%, var(--accent-warm, #8B4513)) !important;
+}
+
+/* 8) RESPONSIVE REFINEMENTS */
+
+@media (max-width: 768px) {
+  div.sourceCode > pre,
+  pre.sourceCode {
+    margin: calc(var(--space-xs, 0.382rem) * 0.8) 0 !important;
+    padding: calc(var(--space-xs, 0.382rem) * 0.8) calc(var(--space-sm, 0.618rem) * 0.8) !important;
+    font-size: 0.84em;
+  }
+  
+  /* Nasconde decorazioni su schermi piccoli */
+  div.sourceCode > pre::after,
+  pre.sourceCode::after {
+    display: none;
+  }
+  
+  /* Numerazione più compatta */
+  div.sourceCode + div.sourceCode > pre::before {
+    top: 0.2rem;
+    right: 0.2rem;
+    width: 0.9rem;
+    height: 0.9rem;
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Codice inline ancora più piccolo su mobile */
+  :not(pre) > code {
+    font-size: 0.82em !important;
+    padding: 0.03em 0.16em !important;
+  }
+  
+  /* Margini più compatti */
+  div.sourceCode > pre,
+  pre.sourceCode {
+    margin: 0.4rem 0 !important;
+    padding: 0.5rem 0.6rem !important;
+  }
+}
+
+/* 9) INTEGRAZIONE CON LE TUE UTILITY CLASSES ESISTENTI */
+
+/* Supporta le tue classi .sc, .caps, ecc. anche nel codice */
+.sourceCode .sc {
+  font-variant-caps: small-caps !important;
+  letter-spacing: 0.4px !important;
+}
+
+/* 10) MIGLIORAMENTI PER ACCESSIBILITÀ MANTENENDO LO STILE */
+
+/* Focus states che si armonizzano con il design */
+div.sourceCode > pre:focus-within,
+pre.sourceCode:focus-within {
+  outline: 2px solid color-mix(in srgb, var(--accent-warm, #8B4513) 40%, transparent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* 11) VARIANTI AUTOMATICHE BASATE SUL CONTESTO */
+
+/* Primo blocco di codice in una sezione: stile di apertura */
+h1 + * div.sourceCode:first-of-type > pre,
+h2 + * div.sourceCode:first-of-type > pre,
+h3 + * div.sourceCode:first-of-type > pre {
+  border-left-width: 3px !important;
+  border-left-color: var(--accent-warm, #8B4513) !important;
+  background: linear-gradient(135deg,
+              color-mix(in srgb, var(--paper-warm, #fdfcf8) 95%, #f0ead6) 0%,
+              color-mix(in srgb, var(--paper-warm, #fdfcf8) 98%, #e8dcc0) 100%) !important;
+}
+
+/* Ultimo blocco in una sezione: stile di chiusura */
+div.sourceCode:last-child > pre,
+pre.sourceCode:last-child {
+  margin-bottom: var(--space-lg, 1.618rem) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent-warm, #8B4513) 15%, transparent);
+}
+
+/* ===================================================================
+   RISULTATO: 
+   - Tutti i blocchi ```{r} hanno automaticamente lo stile elegante
+   - I colori si armonizzano con la palette "carta antica"
+   - La numerazione appare automaticamente per sequenze consecutive
+   - Il syntax highlighting usa le tue feature tipografiche
+   - Responsive design integrato
+   - Nessuna modifica necessaria ai file .qmd
+   =================================================================== */
+   
+/* RESET: disattiva qualsiasi drop-cap "automatico" esterno */
+.lead p:first-of-type::first-letter,
+body.homefront .lead p:first-of-type::first-letter,
+p.dropcap::first-letter {
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-family: inherit !important;
+  font-style: inherit !important;
+  float: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  -webkit-text-stroke: 0 !important;
+  color: inherit !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+/* ===========================================================
+   Override: stringhe lunghe nei blocchi R (es. codice Stan in R)
+   → niente italic, per migliore leggibilità
+   =========================================================== */
+
+/* Regola generale: stringhe in italic */
+pre.sourceCode .st {
+  font-style: italic;
+}
+
+/* Eccezione: nei blocchi R, non usare italic per le stringhe */
+pre.sourceCode.r .st,
+pre.sourceCode.R .st {
+  font-style: normal !important;
+}
+
+
+/* ================================
+   Simmetria spazi verticali blocchi codice (hard override)
+   ================================ */
+
+/* Parametri */
+:root {
+  --para-gap: 0.70rem;  /* spazio standard tra paragrafi */
+  --code-gap: 0.90rem;  /* spazio tra testo e blocco codice (sopra/sotto) */
+  --code-gap-tight: 0.40rem; /* spazio tra blocchi adiacenti di solo codice */
+}
+
+/* 0) Paragrafi: alla base teniamo il gap standard */
+p { margin: 0 0 var(--para-gap) 0; }
+
+/* 1) Hard reset: azzera qualsiasi margine imposto altrove su codice/contenitori */
+div.sourceCode,
+pre.sourceCode,
+pre[class*="sourceCode"],
+pre.code-with-copy-target,
+.code-with-copy,
+.cell-output pre,
+pre.text-output,
+pre:not(.sourceCode) {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* 2) Padding/bordo del codice (non influenza i gap verticali) */
+div.sourceCode > pre,
+pre.sourceCode,
+.code-with-copy pre {
+  padding: 0.65rem 0.8rem 0.65rem 0.7rem;
+  border-left: 2px solid rgba(0,0,0,.15);
+  background: transparent;
+}
+
+/* 3) Gap sopra un blocco codice quando è preceduto da testo/lista/figura/etc. */
+:is(p, ul, ol, blockquote, .callout, table, figure, .figure)
+  + :is(div.sourceCode, pre.sourceCode, .code-with-copy) {
+  margin-top: var(--code-gap) !important;
+}
+
+/* 4) Gap sotto un blocco codice quando è seguito da testo/lista/figura/etc. */
+:is(div.sourceCode, pre.sourceCode, .code-with-copy)
+  + :is(p, ul, ol, blockquote, .callout, table, figure, .figure) {
+  margin-top: var(--code-gap) !important;
+}
+
+/* 5) Niente indentazione del primo paragrafo dopo un blocco codice */
+:is(div.sourceCode, pre.sourceCode, .code-with-copy) + p {
+  text-indent: 0 !important;
+}
+
+/* 6) Sequenze di soli blocchi di codice: gap più stretto */
+:is(div.sourceCode, pre.sourceCode, .code-with-copy)
+  + :is(div.sourceCode, pre.sourceCode, .code-with-copy) {
+  margin-top: var(--code-gap-tight) !important;
+}
+
+/* 7) Dopo i titoli: gap più misurato prima del primo blocco codice */
+h1 + :is(div.sourceCode, pre.sourceCode, .code-with-copy),
+h2 + :is(div.sourceCode, pre.sourceCode, .code-with-copy),
+h3 + :is(div.sourceCode, pre.sourceCode, .code-with-copy),
+h4 + :is(div.sourceCode, pre.sourceCode, .code-with-copy) {
+  margin-top: var(--para-gap) !important;
+}
