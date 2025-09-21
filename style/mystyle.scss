@@ -322,9 +322,13 @@ li {
   font-variant-numeric: oldstyle-nums proportional-nums;
   
   /* Liste giustificate */
+  /*
   text-align: justify;
   hyphens: auto;
+  */
 }
+
+.content li { text-align: justify; hyphens: auto; }
 
 /* Liste annidate */
 li > ul, li > ol {
@@ -2008,3 +2012,65 @@ h1 + p::first-letter {
   font-weight: inherit !important;
 }
 
+/* === FIX: menu sinistro (sidebar) e TOC destro left-aligned === */
+
+/* Contenitori sidebar (sinistra) e toc (destra) – tutte le versioni Quarto */
+#quarto-sidebar,                /* Quarto ≥1.4 */
+.sidebar,                       /* fallback generico */
+nav#TOC,                        /* id TOC classico */
+nav[role="doc-toc"],            /* TOC Quarto moderno */
+#quarto-margin-sidebar,         /* colonna destra “margin” */
+.margin-sidebar {
+  text-align: left !important;
+}
+
+/* Liste di navigazione dentro i contenitori */
+#quarto-sidebar .sidebar-menu,
+#quarto-sidebar .sidebar-item-container,
+.sidebar .sidebar-menu,
+.sidebar .nav,
+nav#TOC .nav,
+nav[role="doc-toc"] .nav,
+#quarto-margin-sidebar .nav {
+  text-align: left !important;
+  hyphens: none !important;       /* niente sillabazione nei menu */
+  text-indent: 0 !important;
+  text-justify: auto !important;  /* disattiva justify */
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+/* Voci e link: blocco a tutta riga, allineati a sinistra */
+#quarto-sidebar .sidebar-menu li,
+#quarto-sidebar .sidebar-menu a,
+.sidebar .nav li,
+.sidebar .nav a,
+.sidebar .sidebar-menu li,
+.sidebar .sidebar-menu a,
+nav#TOC .nav li,
+nav#TOC .nav a,
+nav[role="doc-toc"] .nav li,
+nav[role="doc-toc"] .nav a,
+#quarto-margin-sidebar .nav li,
+#quarto-margin-sidebar .nav a {
+  display: block;
+  text-align: left !important;
+  white-space: normal;            /* evita tagli/overflow strani */
+  hyphens: none !important;
+  text-indent: 0 !important;
+}
+
+/* Titoletti dei pannelli */
+.sidebar-title,
+.toc-title {
+  text-align: left !important;
+}
+
+/* (Difensivo) azzera qualsiasi justify ereditato in profondità */
+#quarto-sidebar *, 
+#quarto-margin-sidebar *, 
+nav#TOC *, 
+nav[role="doc-toc"] * {
+  text-align: left !important;
+  text-justify: auto !important;
+}

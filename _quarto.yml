@@ -58,16 +58,17 @@ link-citations: true
 
 format:
   html:
-    include-in-header:
-      - style/_mathjax-config.html
-    include-after-body:
-      - style/_after-body.html
-    theme: style/mystyle.scss
-    css:
-      - style/_typography-extras.css
-      - style/_code-extras.css
-      - style/_math-extras.css
-      - style/styles.css
+    theme: cosmo
+    # include-in-header:
+    #   - style/_mathjax-config.html
+    # include-after-body:
+    #   - style/_after-body.html
+    # theme: style/mystyle.scss
+    # css:
+    #   - style/_typography-extras.css
+    #   - style/_code-extras.css
+    #   - style/_math-extras.css
+    #   - style/styles.css
     fig-format: png
     dpi: 192
     fig-responsive: true
