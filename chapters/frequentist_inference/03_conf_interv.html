@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.26">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>4&nbsp; Intervalli di fiducia – Inferenza frequentista in psicologia</title>
+<title>3&nbsp; Intervalli di fiducia – Inferenza frequentista in psicologia</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,7 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../chapters/frequentist_inference/04_sample_size.html" rel="next">
+<link href="../../chapters/frequentist_inference/05_test_ipotesi.html" rel="next">
 <link href="../../chapters/frequentist_inference/02_stime_parametri.html" rel="prev">
 <link href="../../style/gauss.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -71,10 +71,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-af5d064118ae80f4bafc3d843c3c3870.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-6754518f538b8e5d55f1a4bf7f770a7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-64f474ecce569e9f1af604c40bb74ae2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6754518f538b8e5d55f1a4bf7f770a7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -134,14 +141,176 @@ window.Quarto = {
 };
 </script>
 </head>
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/03_conf_interv.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Intervalli di fiducia</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/03_conf_interv.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intervalli di fiducia</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Ricerca" onclick="window.quartoOpenSearch();">
@@ -153,8 +322,9 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Inferenza frequentista in psicologia</a> 
-        <div class="sidebar-tools-main">
+        <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/ccaudek/utet-frequentista/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Attiva/disattiva la modalità oscura"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Attiva/disattiva la modalità lettore">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -176,12 +346,6 @@ window.Quarto = {
  <span class="menu-text">Percorso e obiettivi</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../prefazione.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Prefazione</span></span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
@@ -200,37 +364,31 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/01_galton.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Origini storiche dell’approccio frequentista</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Origini storiche dell’approccio frequentista</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/02_stime_parametri.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Stime, stimatori e parametri</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Stime, stimatori e parametri</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/03_conf_interv.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Intervalli di fiducia</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../chapters/frequentist_inference/04_sample_size.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La grandezza del campione</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intervalli di fiducia</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/05_test_ipotesi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Significatività statistica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Significatività statistica</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/06_two_ind_samples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></span></a>
   </div>
 </li>
       </ul>
@@ -247,7 +405,7 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/epiloque/epiloque.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Considerazioni Conclusive</span></a>
+ <span class="menu-text">Considerazioni conclusive</span></a>
   </div>
 </li>
       </ul>
@@ -257,18 +415,22 @@ window.Quarto = {
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2"><h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
-<li><a href="#costruzione-dellintervallo-di-confidenza" id="toc-costruzione-dellintervallo-di-confidenza" class="nav-link active" data-scroll-target="#costruzione-dellintervallo-di-confidenza"><span class="header-section-number">4.1</span> Costruzione dell’intervallo di confidenza</a></li>
-  <li><a href="#esempio-pratico-in-r" id="toc-esempio-pratico-in-r" class="nav-link" data-scroll-target="#esempio-pratico-in-r"><span class="header-section-number">4.2</span> Esempio pratico in R</a></li>
-  <li><a href="#il-significato-del-livello-di-copertura" id="toc-il-significato-del-livello-di-copertura" class="nav-link" data-scroll-target="#il-significato-del-livello-di-copertura"><span class="header-section-number">4.3</span> Il significato del livello di copertura</a></li>
-  <li><a href="#interpretazione-corretta-e-fraintendimenti-comuni" id="toc-interpretazione-corretta-e-fraintendimenti-comuni" class="nav-link" data-scroll-target="#interpretazione-corretta-e-fraintendimenti-comuni"><span class="header-section-number">4.4</span> Interpretazione corretta e fraintendimenti comuni</a></li>
+<li><a href="#costruzione-dellintervallo-di-confidenza" id="toc-costruzione-dellintervallo-di-confidenza" class="nav-link active" data-scroll-target="#costruzione-dellintervallo-di-confidenza"><span class="header-section-number">3.1</span> Costruzione dell’intervallo di confidenza</a></li>
+  <li><a href="#esempio-pratico-in-r" id="toc-esempio-pratico-in-r" class="nav-link" data-scroll-target="#esempio-pratico-in-r"><span class="header-section-number">3.2</span> Esempio pratico in R</a></li>
+  <li><a href="#il-significato-del-livello-di-copertura" id="toc-il-significato-del-livello-di-copertura" class="nav-link" data-scroll-target="#il-significato-del-livello-di-copertura"><span class="header-section-number">3.3</span> Il significato del livello di copertura</a></li>
+  <li><a href="#interpretazione-corretta-e-fraintendimenti-comuni" id="toc-interpretazione-corretta-e-fraintendimenti-comuni" class="nav-link" data-scroll-target="#interpretazione-corretta-e-fraintendimenti-comuni"><span class="header-section-number">3.4</span> Interpretazione corretta e fraintendimenti comuni</a></li>
+  <li><a href="#effetto-del-livello-di-confidenza" id="toc-effetto-del-livello-di-confidenza" class="nav-link" data-scroll-target="#effetto-del-livello-di-confidenza"><span class="header-section-number">3.5</span> Effetto del livello di confidenza</a></li>
+  <li><a href="#effetto-della-dimensione-campionaria" id="toc-effetto-della-dimensione-campionaria" class="nav-link" data-scroll-target="#effetto-della-dimensione-campionaria"><span class="header-section-number">3.6</span> Effetto della dimensione campionaria</a></li>
+  <li><a href="#limiti-dellapproccio-frequentista" id="toc-limiti-dellapproccio-frequentista" class="nav-link" data-scroll-target="#limiti-dellapproccio-frequentista"><span class="header-section-number">3.7</span> Limiti dell’approccio frequentista</a></li>
+  <li><a href="#riflessioni-conclusive" id="toc-riflessioni-conclusive" class="nav-link" data-scroll-target="#riflessioni-conclusive"><span class="header-section-number">3.8</span> Riflessioni conclusive</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/03_conf_interv.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/03_conf_interv.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Intervalli di fiducia</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-frequentism-confidence-intervals" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Intervalli di fiducia</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/03_conf_interv.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intervalli di fiducia</span></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-frequentism-confidence-intervals" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intervalli di fiducia</span></span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Codice</button></div></div>
 </div>
 
 
@@ -292,10 +454,10 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-important no-icon callout-titled">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Importante</span>In questo capitolo imparerai a
@@ -309,10 +471,10 @@ window.Quarto = {
 </ul>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Consiglio</span>Prerequisiti
@@ -325,10 +487,10 @@ window.Quarto = {
 </ul>
 </div>
 </div>
-<div class="callout callout-style-simple callout-caution no-icon callout-titled">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Attenzione</span>Preparazione del Notebook
@@ -341,10 +503,10 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="costruzione-dellintervallo-di-confidenza" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="costruzione-dellintervallo-di-confidenza">
-<span class="header-section-number">4.1</span> Costruzione dell’intervallo di confidenza</h2>
-<section id="caso-con-varianza-nota" class="level3" data-number="4.1.1"><h3 data-number="4.1.1" class="anchored" data-anchor-id="caso-con-varianza-nota">
-<span class="header-section-number">4.1.1</span> Caso con varianza nota</h3>
+<section id="costruzione-dellintervallo-di-confidenza" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="costruzione-dellintervallo-di-confidenza">
+<span class="header-section-number">3.1</span> Costruzione dell’intervallo di confidenza</h2>
+<section id="caso-con-varianza-nota" class="level3" data-number="3.1.1"><h3 data-number="3.1.1" class="anchored" data-anchor-id="caso-con-varianza-nota">
+<span class="header-section-number">3.1.1</span> Caso con varianza nota</h3>
 <p>Consideriamo una popolazione distribuita normalmente con media <span class="math inline">\(\mu\)</span> sconosciuta e varianza <span class="math inline">\(\sigma^2\)</span> nota. In questo contesto, la media campionaria <span class="math inline">\(\bar{X}\)</span> ha una distribuzione normale:</p>
 <p><span class="math display">\[
 \bar{X} \sim \mathcal{N}!\left(\mu,; \frac{\sigma^2}{n}\right).
@@ -363,8 +525,8 @@ P(-1.96 \leq Z \leq 1.96) = 0.95.
 \bar{X} + 1.96 ,\frac{\sigma}{\sqrt{n}}\right).
 \]</span></p>
 <p>Questo intervallo rappresenta l’insieme dei valori di <span class="math inline">\(\mu\)</span> compatibili con i dati osservati, dato il modello assunto e il livello di confidenza scelto.</p>
-</section><section id="caso-con-varianza-incognita" class="level3" data-number="4.1.2"><h3 data-number="4.1.2" class="anchored" data-anchor-id="caso-con-varianza-incognita">
-<span class="header-section-number">4.1.2</span> Caso con varianza incognita</h3>
+</section><section id="caso-con-varianza-incognita" class="level3" data-number="3.1.2"><h3 data-number="3.1.2" class="anchored" data-anchor-id="caso-con-varianza-incognita">
+<span class="header-section-number">3.1.2</span> Caso con varianza incognita</h3>
 <p>Nella maggior parte delle applicazioni reali la varianza della popolazione (^2) non è disponibile. In questi casi la stimiamo tramite la varianza campionaria (s^2). Questa sostituzione introduce un’ulteriore fonte di incertezza, che viene tenuta in conto utilizzando la distribuzione (t) di Student anziché la normale standard.</p>
 <p>La statistica di interesse diventa:</p>
 <p><span class="math display">\[
@@ -379,8 +541,8 @@ T = \frac{\bar{X} - \mu}{s / \sqrt{n}} \sim t_{,n-1},
 \right),
 \]</span> dove <span class="math inline">\(t^{*}_{,n-1}\)</span> è il quantile corrispondente della distribuzione <span class="math inline">\(t\)</span> con <span class="math inline">\(n-1\)</span> gradi di libertà.</p>
 <p>Rispetto al caso con varianza nota, l’intervallo è leggermente più ampio: la distribuzione <span class="math inline">\(t\)</span> tiene conto dell’incertezza aggiuntiva legata alla stima di <span class="math inline">\(s\)</span>, soprattutto quando il campione è di piccole dimensioni.</p>
-</section></section><section id="esempio-pratico-in-r" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="esempio-pratico-in-r">
-<span class="header-section-number">4.2</span> Esempio pratico in R</h2>
+</section></section><section id="esempio-pratico-in-r" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="esempio-pratico-in-r">
+<span class="header-section-number">3.2</span> Esempio pratico in R</h2>
 <p>Consideriamo un campione di punteggi di benessere psicologico, con l’obiettivo di stimare la media della popolazione tramite un intervallo di confidenza.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Dati campionari</span></span>
@@ -433,11 +595,11 @@ T = \frac{\bar{X} - \mu}{s / \sqrt{n}} \sim t_{,n-1},
 <span><span class="co">#&gt;      23.8</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>L’output della funzione conferma i limiti dell’intervallo calcolati manualmente, offrendo al contempo il valore della statistica test e il relativo valore-<span class="math inline">\(p\)</span> per la verifica dell’ipotesi nulla.</p>
-</section><section id="il-significato-del-livello-di-copertura" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="il-significato-del-livello-di-copertura">
-<span class="header-section-number">4.3</span> Il significato del livello di copertura</h2>
+</section><section id="il-significato-del-livello-di-copertura" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="il-significato-del-livello-di-copertura">
+<span class="header-section-number">3.3</span> Il significato del livello di copertura</h2>
 <p>Il <strong>livello di copertura</strong> rappresenta la proporzione di intervalli che, sul lungo periodo, includerà il vero valore del parametro. Si tratta di un concetto riferito alla procedura utilizzata per costruire gli intervalli e non al singolo intervallo ottenuto.</p>
-<section id="simulazione-del-livello-di-copertura" class="level3" data-number="4.3.1"><h3 data-number="4.3.1" class="anchored" data-anchor-id="simulazione-del-livello-di-copertura">
-<span class="header-section-number">4.3.1</span> Simulazione del livello di copertura</h3>
+<section id="simulazione-del-livello-di-copertura" class="level3" data-number="3.3.1"><h3 data-number="3.3.1" class="anchored" data-anchor-id="simulazione-del-livello-di-copertura">
+<span class="header-section-number">3.3.1</span> Simulazione del livello di copertura</h3>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span>
 <span></span>
@@ -463,8 +625,8 @@ T = \frac{\bar{X} - \mu}{s / \sqrt{n}} \sim t_{,n-1},
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Copertura teorica: 95%\n"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Copertura teorica: 95%</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="visualizzazione" class="level3" data-number="4.3.2"><h3 data-number="4.3.2" class="anchored" data-anchor-id="visualizzazione">
-<span class="header-section-number">4.3.2</span> Visualizzazione</h3>
+</section><section id="visualizzazione" class="level3" data-number="3.3.2"><h3 data-number="3.3.2" class="anchored" data-anchor-id="visualizzazione">
+<span class="header-section-number">3.3.2</span> Visualizzazione</h3>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Mostriamo i primi 50 intervalli</span></span>
 <span><span class="va">n_mostra</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
@@ -488,17 +650,17 @@ T = \frac{\bar{X} - \mu}{s / \sqrt{n}} \sim t_{,n-1},
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="03_conf_interv_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
+<figure class="figure"><p><a href="03_conf_interv_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="03_conf_interv_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
 </figure>
 </div>
 </div>
 </div>
-</section></section><section id="interpretazione-corretta-e-fraintendimenti-comuni" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="interpretazione-corretta-e-fraintendimenti-comuni">
-<span class="header-section-number">4.4</span> Interpretazione corretta e fraintendimenti comuni</h2>
-<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+</section></section><section id="interpretazione-corretta-e-fraintendimenti-comuni" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="interpretazione-corretta-e-fraintendimenti-comuni">
+<span class="header-section-number">3.4</span> Interpretazione corretta e fraintendimenti comuni</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Avviso</span>Interpretazione corretta
@@ -509,10 +671,10 @@ T = \frac{\bar{X} - \mu}{s / \sqrt{n}} \sim t_{,n-1},
 <p>L’enfasi è sulla <strong>procedura</strong>, non sul singolo intervallo.</p>
 </div>
 </div>
-<div class="callout callout-style-simple callout-caution no-icon callout-titled">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Attenzione</span>Fraintendimenti da evitare
@@ -522,13 +684,12 @@ T = \frac{\bar{X} - \mu}{s / \sqrt{n}} \sim t_{,n-1},
 <ol type="1">
 <li><p>❌ <em>“C’è il 95% di probabilità che il parametro sia in questo intervallo.”</em> Nel framework frequentista il parametro è fisso: non ha una distribuzione di probabilità.</p></li>
 <li><p>❌ <em>“Il 95% dei valori della popolazione cade nell’intervallo.”</em> L’intervallo riguarda la stima della media, non la dispersione dei dati.</p></li>
-<li>
-<p>❌ <em>“Valori più centrali nell’intervallo sono più probabili.”</em> L’intervallo di confidenza non fornisce una densità di probabilità sul parametro.</p>
-<p>:::</p>
-</li>
+<li><p>❌ <em>“Valori più centrali nell’intervallo sono più probabili.”</em> L’intervallo di confidenza non fornisce una densità di probabilità sul parametro.</p></li>
 </ol>
-<section id="effetto-del-livello-di-confidenza" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="effetto-del-livello-di-confidenza">
-<span class="header-section-number">4.5</span> Effetto del livello di confidenza</h2>
+</div>
+</div>
+</section><section id="effetto-del-livello-di-confidenza" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="effetto-del-livello-di-confidenza">
+<span class="header-section-number">3.5</span> Effetto del livello di confidenza</h2>
 <p>Aumentando il livello di confidenza, l’intervallo si fa più ampio:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Confronto tra livelli di confidenza</span></span>
@@ -546,8 +707,8 @@ T = \frac{\bar{X} - \mu}{s / \sqrt{n}} \sim t_{,n-1},
 <span><span class="co">#&gt; IC al 99%: [19.42, 28.18] - Ampiezza: 8.76</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Livelli più elevati aumentano la “copertura”, ma riducono la <strong>precisione</strong> dell’intervallo: un tipico compromesso in statistica inferenziale.</p>
-</section><section id="effetto-della-dimensione-campionaria" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="effetto-della-dimensione-campionaria">
-<span class="header-section-number">4.6</span> Effetto della dimensione campionaria</h2>
+</section><section id="effetto-della-dimensione-campionaria" class="level2" data-number="3.6"><h2 data-number="3.6" class="anchored" data-anchor-id="effetto-della-dimensione-campionaria">
+<span class="header-section-number">3.6</span> Effetto della dimensione campionaria</h2>
 <p>All’aumentare della dimensione del campione, l’intervallo si restringe:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
@@ -568,8 +729,8 @@ T = \frac{\bar{X} - \mu}{s / \sqrt{n}} \sim t_{,n-1},
 <span><span class="co">#&gt; n = 500: IC = [48.48, 50.25] - Ampiezza: 1.77</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>L’ampiezza dell’intervallo decresce come (1 / ): per ottenere intervalli più stretti occorrono aumenti sostanziali della numerosità.</p>
-</section><section id="limiti-dellapproccio-frequentista" class="level2" data-number="4.7"><h2 data-number="4.7" class="anchored" data-anchor-id="limiti-dellapproccio-frequentista">
-<span class="header-section-number">4.7</span> Limiti dell’approccio frequentista</h2>
+</section><section id="limiti-dellapproccio-frequentista" class="level2" data-number="3.7"><h2 data-number="3.7" class="anchored" data-anchor-id="limiti-dellapproccio-frequentista">
+<span class="header-section-number">3.7</span> Limiti dell’approccio frequentista</h2>
 <p>L’interpretazione degli intervalli di confidenza solleva alcune difficoltà concettuali:</p>
 <ol type="1">
 <li><p><strong>Riferimento al lungo periodo.</strong> L’inferenza si basa su ripetizioni ipotetiche dell’esperimento, mentre in pratica disponiamo di un solo campione.</p></li>
@@ -577,22 +738,22 @@ T = \frac{\bar{X} - \mu}{s / \sqrt{n}} \sim t_{,n-1},
 <li><p><strong>Dipendenza dal piano di campionamento.</strong> Due intervalli costruiti con dati identici possono differire se differente era il piano sperimentale.</p></li>
 </ol>
 <p>Questi aspetti motivano la prospettiva bayesiana, che consente di formulare direttamente affermazioni probabilistiche sul parametro tramite gli <strong>intervalli di credibilità</strong>, basati sulla distribuzione a posteriori.</p>
-</section><section id="riflessioni-conclusive" class="level2" data-number="4.8"><h2 data-number="4.8" class="anchored" data-anchor-id="riflessioni-conclusive">
-<span class="header-section-number">4.8</span> Riflessioni conclusive</h2>
+</section><section id="riflessioni-conclusive" class="level2" data-number="3.8"><h2 data-number="3.8" class="anchored" data-anchor-id="riflessioni-conclusive">
+<span class="header-section-number">3.8</span> Riflessioni conclusive</h2>
 <p>Gli intervalli di confidenza sono lo strumento utilizzato dall’approccio frequentista per esprimere l’incertezza associata alla stima di un parametro di popolazione. È importante interpretarli nel modo corretto: il livello di confidenza (ad esempio, il 95%) si riferisce alla <strong>performance della procedura di costruzione nel lungo periodo</strong>, non alla probabilità che un singolo intervallo calcolato contenga il parametro. Una volta osservati i dati, l’intervallo ottenuto è un’entità deterministica: esso contiene o non contiene il valore vero, e non è possibile attribuirgli una probabilità.</p>
 <p>L’ampiezza dell’intervallo di confidenza è determinata da tre fattori principali: la variabilità intrinseca dei dati, il livello di confidenza scelto (con livelli più elevati che producono intervalli più ampi) e la dimensione del campione, che generalmente porta a stime più precise e intervalli più stretti.</p>
 <p>Nonostante la loro diffusione, gli intervalli di confidenza frequentisti sono spesso soggetti a fraintendimenti interpretativi, in particolare alla tentazione di assegnare loro una probabilità riguardo al parametro. Questa difficoltà interpretativa evidenzia una differenza filosofica fondamentale tra i diversi paradigmi statistici e motiva l’esplorazione di approcci alternativi. L’inferenza bayesiana, in particolare, fornisce un quadro concettuale diverso che permette di quantificare l’incertezza sui parametri in modo più intuitivo, attraverso la distribuzione di probabilità a posteriori. Questo sarà il tema centrale dei capitoli successivi.</p>
-<div class="callout callout-style-simple callout-note no-icon callout-titled" title="Informazioni sull'ambiente di sviluppo">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled" title="Informazioni sull'ambiente di sviluppo">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Nota</span>Informazioni sull’ambiente di sviluppo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -657,11 +818,23 @@ T = \frac{\bar{X} - \mu}{s / \sqrt{n}} \sim t_{,n-1},
 </div>
 
 
-</section>
-</div>
-</div>
+<!-- -->
+
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -730,6 +903,57 @@ T = \frac{\bar{X} - \mu}{s / \sqrt{n}} \sim t_{,n-1},
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -1068,15 +1292,295 @@ T = \frac{\bar{X} - \mu}{s / \sqrt{n}} \sim t_{,n-1},
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../chapters/frequentist_inference/02_stime_parametri.html" class="pagination-link" aria-label="Stime, stimatori e parametri">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Stime, stimatori e parametri</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Stime, stimatori e parametri</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../chapters/frequentist_inference/04_sample_size.html" class="pagination-link" aria-label="La grandezza del campione">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La grandezza del campione</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../chapters/frequentist_inference/05_test_ipotesi.html" class="pagination-link" aria-label="Significatività statistica">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Significatività statistica</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Eseguire il codice</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Intervalli di fiducia {#sec-frequentism-confidence-intervals}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>::: {.callout-note appearance="minimal"}</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>Gli intervalli di confidenza sono uno strumento fondamentale dell'inferenza statistica frequentista. Essi permettono di stimare un parametro sconosciuto della popolazione, come la media $\mu$, tenendo conto dell'incertezza derivante dal fatto che la stima si basa su un campione.</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>::: callout-important</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## In questo capitolo imparerai a</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>costruire intervalli di confidenza per la media di una popolazione;</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>interpretare correttamente il significato di un intervallo di confidenza;</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>distinguere tra interpretazione corretta e fraintendimenti comuni.</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prerequisiti</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Leggere il capitolo *Estimation, Confidence Intervals, and Bootstrapping* di <span class="co">[</span><span class="ot">Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (Second Edition)</span><span class="co">](https://moderndive.com/v2/)</span>.</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Aver compreso il concetto di distribuzione campionaria (capitolo precedente).</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>::: callout-caution</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Preparazione del Notebook</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"_common.R"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">source</span>()</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Costruzione dell'intervallo di confidenza</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="fu">### Caso con varianza nota</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>Consideriamo una popolazione distribuita normalmente con media $\mu$ sconosciuta e varianza $\sigma^2$ nota. In questo contesto, la media campionaria $\bar{X}$ ha una distribuzione normale:</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>\bar{X} \sim \mathcal{N}!\left(\mu,; \frac{\sigma^2}{n}\right).</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>Standardizzando otteniamo una variabile normale standard:</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \sim \mathcal{N}(0, 1).</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>Per un livello di confidenza del 95%, il valore critico della normale standard è (z_{0.025} = 1.96). Questo garantisce che:</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>P(-1.96 \leq Z \leq 1.96) = 0.95.</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>A questo punto possiamo “invertire” la standardizzazione, isolando (\mu) all’interno della doppia disuguaglianza. Il risultato è l’intervallo di confidenza al 95% per la media:</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>\left(\bar{X} - 1.96 ,\frac{\sigma}{\sqrt{n}},\quad</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>\bar{X} + 1.96 ,\frac{\sigma}{\sqrt{n}}\right).</span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>Questo intervallo rappresenta l’insieme dei valori di $\mu$ compatibili con i dati osservati, dato il modello assunto e il livello di confidenza scelto.</span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### Caso con varianza incognita</span></span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>Nella maggior parte delle applicazioni reali la varianza della popolazione (\sigma^2) non è disponibile. In questi casi la stimiamo tramite la varianza campionaria (s^2). Questa sostituzione introduce un’ulteriore fonte di incertezza, che viene tenuta in conto utilizzando la distribuzione (t) di Student anziché la normale standard.</span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>La statistica di interesse diventa:</span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>T = \frac{\bar{X} - \mu}{s / \sqrt{n}} \sim t_{,n-1},</span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>dove i $n-1$ gradi di libertà riflettono il fatto che la varianza viene stimata dai dati.</span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>L’intervallo di confidenza per $\mu$, con livello di confidenza $\gamma$, assume quindi la forma:</span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>\left(</span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a>\bar{X} - t^{*}_{,n-1},\frac{s}{\sqrt{n}},</span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>\quad</span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>\bar{X} + t^{*}_{,n-1},\frac{s}{\sqrt{n}}</span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>\right),</span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>dove $t^{*}_{,n-1}$ è il quantile corrispondente della distribuzione $t$ con $n-1$ gradi di libertà.</span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>Rispetto al caso con varianza nota, l’intervallo è leggermente più ampio: la distribuzione $t$ tiene conto dell’incertezza aggiuntiva legata alla stima di $s$, soprattutto quando il campione è di piccole dimensioni.</span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a><span class="fu">## Esempio pratico in R</span></span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a>Consideriamo un campione di punteggi di benessere psicologico, con l'obiettivo di stimare la media della popolazione tramite un intervallo di confidenza.</span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a><span class="co"># Dati campionari</span></span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a>punteggi <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">28</span>, <span class="dv">22</span>, <span class="dv">26</span>, <span class="dv">18</span>, <span class="dv">30</span>, <span class="dv">24</span>, <span class="dv">27</span>, <span class="dv">17</span>, <span class="dv">21</span>, <span class="dv">25</span>)</span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(punteggi)</span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistiche descrittive</span></span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fu">mean</span>(punteggi)</span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a>dev_std <span class="ot">&lt;-</span> <span class="fu">sd</span>(punteggi)</span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Media campionaria:"</span>, <span class="fu">round</span>(media, <span class="dv">2</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Deviazione standard:"</span>, <span class="fu">round</span>(dev_std, <span class="dv">2</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Dimensione campionaria:"</span>, n, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a>Successivamente, procediamo alla costruzione manuale di un intervallo di confidenza al 95% per la media della popolazione, utilizzando la distribuzione $t$ di Student.</span>
+<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcolo manuale dell'intervallo di confidenza al 95%</span></span>
+<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a>t_star <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> n <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a>errore_standard <span class="ot">&lt;-</span> dev_std <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a>margine_errore <span class="ot">&lt;-</span> t_star <span class="sc">*</span> errore_standard</span>
+<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a>limite_inf <span class="ot">&lt;-</span> media <span class="sc">-</span> margine_errore</span>
+<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a>limite_sup <span class="ot">&lt;-</span> media <span class="sc">+</span> margine_errore</span>
+<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Valore critico t*:"</span>, <span class="fu">round</span>(t_star, <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Errore standard:"</span>, <span class="fu">round</span>(errore_standard, <span class="dv">2</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Intervallo di confidenza al 95%: ["</span>, </span>
+<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(limite_inf, <span class="dv">2</span>), <span class="st">", "</span>, <span class="fu">round</span>(limite_sup, <span class="dv">2</span>), <span class="st">"]</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a>Il risultato può essere verificato utilizzando la funzione <span class="in">`t.test()`</span>, che fornisce direttamente l'intervallo di confidenza e altre statistiche rilevanti:</span>
+<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(punteggi, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a>L'output della funzione conferma i limiti dell'intervallo calcolati manualmente, offrendo al contempo il valore della statistica test e il relativo valore-$p$ per la verifica dell'ipotesi nulla.</span>
+<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a><span class="fu">## Il significato del livello di copertura</span></span>
+<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a>Il **livello di copertura** rappresenta la proporzione di intervalli che, sul lungo periodo, includerà il vero valore del parametro. Si tratta di un concetto riferito alla procedura utilizzata per costruire gli intervalli e non al singolo intervallo ottenuto.</span>
+<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a><span class="fu">### Simulazione del livello di copertura</span></span>
+<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a><span class="co"># Parametri della popolazione</span></span>
+<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a>mu_vero <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a>n_simulazioni <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a><span class="co"># Generazione dei campioni e calcolo degli intervalli</span></span>
+<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a>risultati <span class="ot">&lt;-</span> <span class="fu">replicate</span>(n_simulazioni, {</span>
+<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a>  campione <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu_vero, <span class="at">sd =</span> sigma)</span>
+<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a>  test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(campione, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(test<span class="sc">$</span>conf.int[<span class="dv">1</span>], test<span class="sc">$</span>conf.int[<span class="dv">2</span>])</span>
+<span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a><span class="co"># Verifica della copertura</span></span>
+<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a>contiene_mu <span class="ot">&lt;-</span> (risultati[<span class="dv">1</span>, ] <span class="sc">&lt;=</span> mu_vero) <span class="sc">&amp;</span> (risultati[<span class="dv">2</span>, ] <span class="sc">&gt;=</span> mu_vero)</span>
+<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a>copertura_empirica <span class="ot">&lt;-</span> <span class="fu">mean</span>(contiene_mu)</span>
+<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Copertura empirica:"</span>, <span class="fu">round</span>(copertura_empirica <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>), <span class="st">"%</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Copertura teorica: 95%</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a><span class="fu">### Visualizzazione</span></span>
+<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostriamo i primi 50 intervalli</span></span>
+<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a>n_mostra <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a>df_ic <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span>n_mostra,</span>
+<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a>  <span class="at">lower =</span> risultati[<span class="dv">1</span>, <span class="dv">1</span><span class="sc">:</span>n_mostra],</span>
+<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a>  <span class="at">upper =</span> risultati[<span class="dv">2</span>, <span class="dv">1</span><span class="sc">:</span>n_mostra],</span>
+<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a>  <span class="at">contiene =</span> contiene_mu[<span class="dv">1</span><span class="sc">:</span>n_mostra]</span>
+<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-184"><a href="#cb10-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-185"><a href="#cb10-185" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_ic, <span class="fu">aes</span>(<span class="at">x =</span> id)) <span class="sc">+</span></span>
+<span id="cb10-186"><a href="#cb10-186" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> id, <span class="at">y =</span> lower, <span class="at">yend =</span> upper, <span class="at">color =</span> contiene),</span>
+<span id="cb10-187"><a href="#cb10-187" aria-hidden="true" tabindex="-1"></a>               <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb10-188"><a href="#cb10-188" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> mu_vero, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb10-189"><a href="#cb10-189" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"steelblue"</span>),</span>
+<span id="cb10-190"><a href="#cb10-190" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Non contiene μ"</span>, <span class="st">"Contiene μ"</span>)) <span class="sc">+</span></span>
+<span id="cb10-191"><a href="#cb10-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"50 intervalli di confidenza al 95%"</span>,</span>
+<span id="cb10-192"><a href="#cb10-192" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"La linea tratteggiata indica il valore reale di μ"</span>,</span>
+<span id="cb10-193"><a href="#cb10-193" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Campione"</span>, <span class="at">y =</span> <span class="st">"Intervallo di confidenza"</span>, <span class="at">color =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb10-194"><a href="#cb10-194" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb10-195"><a href="#cb10-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb10-196"><a href="#cb10-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-197"><a href="#cb10-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-198"><a href="#cb10-198" aria-hidden="true" tabindex="-1"></a><span class="fu">## Interpretazione corretta e fraintendimenti comuni</span></span>
+<span id="cb10-199"><a href="#cb10-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-200"><a href="#cb10-200" aria-hidden="true" tabindex="-1"></a>::: {.callout-warning}</span>
+<span id="cb10-201"><a href="#cb10-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-202"><a href="#cb10-202" aria-hidden="true" tabindex="-1"></a><span class="fu">### Interpretazione corretta</span></span>
+<span id="cb10-203"><a href="#cb10-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-204"><a href="#cb10-204" aria-hidden="true" tabindex="-1"></a>“Se ripetessimo lo stesso studio molte volte, il 95% degli intervalli costruiti con questa procedura includerebbe il vero valore del parametro.”</span>
+<span id="cb10-205"><a href="#cb10-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-206"><a href="#cb10-206" aria-hidden="true" tabindex="-1"></a>L’enfasi è sulla **procedura**, non sul singolo intervallo.</span>
+<span id="cb10-207"><a href="#cb10-207" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-208"><a href="#cb10-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-209"><a href="#cb10-209" aria-hidden="true" tabindex="-1"></a>::: {.callout-caution}</span>
+<span id="cb10-210"><a href="#cb10-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-211"><a href="#cb10-211" aria-hidden="true" tabindex="-1"></a><span class="fu">### Fraintendimenti da evitare</span></span>
+<span id="cb10-212"><a href="#cb10-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-213"><a href="#cb10-213" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>❌ *“C’è il 95% di probabilità che il parametro sia in questo intervallo.”*</span>
+<span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a>   Nel framework frequentista il parametro è fisso: non ha una distribuzione di probabilità.</span>
+<span id="cb10-215"><a href="#cb10-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-216"><a href="#cb10-216" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>❌ *“Il 95% dei valori della popolazione cade nell’intervallo.”*</span>
+<span id="cb10-217"><a href="#cb10-217" aria-hidden="true" tabindex="-1"></a>   L’intervallo riguarda la stima della media, non la dispersione dei dati.</span>
+<span id="cb10-218"><a href="#cb10-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-219"><a href="#cb10-219" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>❌ *“Valori più centrali nell’intervallo sono più probabili.”*</span>
+<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a>   L’intervallo di confidenza non fornisce una densità di probabilità sul parametro.</span>
+<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a><span class="fu">## Effetto del livello di confidenza</span></span>
+<span id="cb10-224"><a href="#cb10-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a>Aumentando il livello di confidenza, l’intervallo si fa più ampio:</span>
+<span id="cb10-226"><a href="#cb10-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-229"><a href="#cb10-229" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-230"><a href="#cb10-230" aria-hidden="true" tabindex="-1"></a><span class="co"># Confronto tra livelli di confidenza</span></span>
+<span id="cb10-231"><a href="#cb10-231" aria-hidden="true" tabindex="-1"></a>livelli <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.80</span>, <span class="fl">0.90</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span>)</span>
+<span id="cb10-232"><a href="#cb10-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-233"><a href="#cb10-233" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (liv <span class="cf">in</span> livelli) {</span>
+<span id="cb10-234"><a href="#cb10-234" aria-hidden="true" tabindex="-1"></a>  test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(punteggi, <span class="at">conf.level =</span> liv)</span>
+<span id="cb10-235"><a href="#cb10-235" aria-hidden="true" tabindex="-1"></a>  ampiezza <span class="ot">&lt;-</span> test<span class="sc">$</span>conf.int[<span class="dv">2</span>] <span class="sc">-</span> test<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span>
+<span id="cb10-236"><a href="#cb10-236" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"IC al %d%%: [%.2f, %.2f] - Ampiezza: %.2f</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb10-237"><a href="#cb10-237" aria-hidden="true" tabindex="-1"></a>              liv <span class="sc">*</span> <span class="dv">100</span>, test<span class="sc">$</span>conf.int[<span class="dv">1</span>], test<span class="sc">$</span>conf.int[<span class="dv">2</span>], ampiezza))</span>
+<span id="cb10-238"><a href="#cb10-238" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-239"><a href="#cb10-239" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-240"><a href="#cb10-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-241"><a href="#cb10-241" aria-hidden="true" tabindex="-1"></a>Livelli più elevati aumentano la “copertura”, ma riducono la **precisione** dell’intervallo: un tipico compromesso in statistica inferenziale.</span>
+<span id="cb10-242"><a href="#cb10-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-243"><a href="#cb10-243" aria-hidden="true" tabindex="-1"></a><span class="fu">## Effetto della dimensione campionaria</span></span>
+<span id="cb10-244"><a href="#cb10-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-245"><a href="#cb10-245" aria-hidden="true" tabindex="-1"></a>All’aumentare della dimensione del campione, l’intervallo si restringe:</span>
+<span id="cb10-246"><a href="#cb10-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-249"><a href="#cb10-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-250"><a href="#cb10-250" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb10-251"><a href="#cb10-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-252"><a href="#cb10-252" aria-hidden="true" tabindex="-1"></a>dimensioni <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">30</span>, <span class="dv">100</span>, <span class="dv">500</span>)</span>
+<span id="cb10-253"><a href="#cb10-253" aria-hidden="true" tabindex="-1"></a>popolazione <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb10-254"><a href="#cb10-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-255"><a href="#cb10-255" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (n <span class="cf">in</span> dimensioni) {</span>
+<span id="cb10-256"><a href="#cb10-256" aria-hidden="true" tabindex="-1"></a>  campione <span class="ot">&lt;-</span> <span class="fu">sample</span>(popolazione, n)</span>
+<span id="cb10-257"><a href="#cb10-257" aria-hidden="true" tabindex="-1"></a>  test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(campione, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span>
+<span id="cb10-258"><a href="#cb10-258" aria-hidden="true" tabindex="-1"></a>  ampiezza <span class="ot">&lt;-</span> test<span class="sc">$</span>conf.int[<span class="dv">2</span>] <span class="sc">-</span> test<span class="sc">$</span>conf.int[<span class="dv">1</span>]</span>
+<span id="cb10-259"><a href="#cb10-259" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">"n = %3d: IC = [%.2f, %.2f] - Ampiezza: %.2f</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb10-260"><a href="#cb10-260" aria-hidden="true" tabindex="-1"></a>              n, test<span class="sc">$</span>conf.int[<span class="dv">1</span>], test<span class="sc">$</span>conf.int[<span class="dv">2</span>], ampiezza))</span>
+<span id="cb10-261"><a href="#cb10-261" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-262"><a href="#cb10-262" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-263"><a href="#cb10-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-264"><a href="#cb10-264" aria-hidden="true" tabindex="-1"></a>L’ampiezza dell’intervallo decresce come (1 / \sqrt{n}): per ottenere intervalli più stretti occorrono aumenti sostanziali della numerosità.</span>
+<span id="cb10-265"><a href="#cb10-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-266"><a href="#cb10-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-267"><a href="#cb10-267" aria-hidden="true" tabindex="-1"></a><span class="fu">## Limiti dell’approccio frequentista</span></span>
+<span id="cb10-268"><a href="#cb10-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-269"><a href="#cb10-269" aria-hidden="true" tabindex="-1"></a>L’interpretazione degli intervalli di confidenza solleva alcune difficoltà concettuali:</span>
+<span id="cb10-270"><a href="#cb10-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-271"><a href="#cb10-271" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Riferimento al lungo periodo.**</span>
+<span id="cb10-272"><a href="#cb10-272" aria-hidden="true" tabindex="-1"></a>   L’inferenza si basa su ripetizioni ipotetiche dell’esperimento, mentre in pratica disponiamo di un solo campione.</span>
+<span id="cb10-273"><a href="#cb10-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-274"><a href="#cb10-274" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Assenza di probabilità sul parametro.**</span>
+<span id="cb10-275"><a href="#cb10-275" aria-hidden="true" tabindex="-1"></a>   Non è possibile formulare affermazioni probabilistiche sul parametro stesso.</span>
+<span id="cb10-276"><a href="#cb10-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-277"><a href="#cb10-277" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Dipendenza dal piano di campionamento.**</span>
+<span id="cb10-278"><a href="#cb10-278" aria-hidden="true" tabindex="-1"></a>   Due intervalli costruiti con dati identici possono differire se differente era il piano sperimentale.</span>
+<span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-280"><a href="#cb10-280" aria-hidden="true" tabindex="-1"></a>Questi aspetti motivano la prospettiva bayesiana, che consente di formulare direttamente affermazioni probabilistiche sul parametro tramite gli **intervalli di credibilità**, basati sulla distribuzione a posteriori.</span>
+<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a><span class="fu">## Riflessioni conclusive</span></span>
+<span id="cb10-283"><a href="#cb10-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-284"><a href="#cb10-284" aria-hidden="true" tabindex="-1"></a>Gli intervalli di confidenza sono lo strumento utilizzato dall'approccio frequentista per esprimere l'incertezza associata alla stima di un parametro di popolazione. È importante interpretarli nel modo corretto: il livello di confidenza (ad esempio, il 95%) si riferisce alla **performance della procedura di costruzione nel lungo periodo**, non alla probabilità che un singolo intervallo calcolato contenga il parametro. Una volta osservati i dati, l'intervallo ottenuto è un'entità deterministica: esso contiene o non contiene il valore vero, e non è possibile attribuirgli una probabilità.</span>
+<span id="cb10-285"><a href="#cb10-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-286"><a href="#cb10-286" aria-hidden="true" tabindex="-1"></a>L'ampiezza dell'intervallo di confidenza è determinata da tre fattori principali: la variabilità intrinseca dei dati, il livello di confidenza scelto (con livelli più elevati che producono intervalli più ampi) e la dimensione del campione, che generalmente porta a stime più precise e intervalli più stretti.</span>
+<span id="cb10-287"><a href="#cb10-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-288"><a href="#cb10-288" aria-hidden="true" tabindex="-1"></a>Nonostante la loro diffusione, gli intervalli di confidenza frequentisti sono spesso soggetti a fraintendimenti interpretativi, in particolare alla tentazione di assegnare loro una probabilità  riguardo al parametro. Questa difficoltà interpretativa evidenzia una differenza filosofica fondamentale tra i diversi paradigmi statistici e motiva l'esplorazione di approcci alternativi. L'inferenza bayesiana, in particolare, fornisce un quadro concettuale diverso che permette di quantificare l'incertezza sui parametri in modo più intuitivo, attraverso la distribuzione di probabilità a posteriori. Questo sarà il tema centrale dei capitoli successivi.</span>
+<span id="cb10-289"><a href="#cb10-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-290"><a href="#cb10-290" aria-hidden="true" tabindex="-1"></a>::: {.callout-note collapse=true title="Informazioni sull'ambiente di sviluppo"}</span>
+<span id="cb10-293"><a href="#cb10-293" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-294"><a href="#cb10-294" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb10-295"><a href="#cb10-295" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-296"><a href="#cb10-296" aria-hidden="true" tabindex="-1"></a>:::</span>
+</code></pre></div><button title="Copia negli appunti" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
@@ -1089,7 +1593,38 @@ T = \frac{\bar{X} - \mu}{s / \sqrt{n}} \sim t_{,n-1},
 <p>Realizzato con <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
-</footer>
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 <script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
