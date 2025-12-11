@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Considerazioni Conclusive – Inferenza frequentista in psicologia</title>
+<title>Considerazioni conclusive – Inferenza frequentista in psicologia</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -59,10 +94,14 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-af5d064118ae80f4bafc3d843c3c3870.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-6754518f538b8e5d55f1a4bf7f770a7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-64f474ecce569e9f1af604c40bb74ae2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6754518f538b8e5d55f1a4bf7f770a7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -101,10 +140,201 @@ gtag('config', 'G-QT5S3P9D31', { 'anonymize_ip': true});
 </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -113,7 +343,7 @@ gtag('config', 'G-QT5S3P9D31', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/epiloque/epiloque.html">Epilogo</a></li><li class="breadcrumb-item"><a href="../../chapters/epiloque/epiloque.html">Considerazioni Conclusive</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/epiloque/epiloque.html">Epilogo</a></li><li class="breadcrumb-item"><a href="../../chapters/epiloque/epiloque.html">Considerazioni conclusive</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Ricerca" onclick="window.quartoOpenSearch();">
@@ -126,13 +356,12 @@ gtag('config', 'G-QT5S3P9D31', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Inferenza frequentista in psicologia</a> 
-        <div class="sidebar-tools-main">
+        <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/ccaudek/utet-frequentista/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Attiva/disattiva la modalità oscura"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Attiva/disattiva la modalità lettore">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -154,12 +383,6 @@ gtag('config', 'G-QT5S3P9D31', { 'anonymize_ip': true});
  <span class="menu-text">Percorso e obiettivi</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../prefazione.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Prefazione</span></span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
@@ -178,37 +401,31 @@ gtag('config', 'G-QT5S3P9D31', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/01_galton.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Inferenza frequentista</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Origini storiche dell’approccio frequentista</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/02_stime_parametri.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Stime, stimatori e parametri</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Stime, stimatori e parametri</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/03_conf_interv.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Intervalli di fiducia</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../chapters/frequentist_inference/04_sample_size.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La grandezza del campione</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intervalli di fiducia</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/05_test_ipotesi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Significatività statistica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Significatività statistica</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/06_two_ind_samples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></span></a>
   </div>
 </li>
       </ul>
@@ -225,7 +442,7 @@ gtag('config', 'G-QT5S3P9D31', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/epiloque/epiloque.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Considerazioni Conclusive</span></a>
+ <span class="menu-text">Considerazioni conclusive</span></a>
   </div>
 </li>
       </ul>
@@ -236,23 +453,22 @@ gtag('config', 'G-QT5S3P9D31', { 'anonymize_ip': true});
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
     <h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
-  <li><a href="#limiti-dellinferenza-frequentista" id="toc-limiti-dellinferenza-frequentista" class="nav-link active" data-scroll-target="#limiti-dellinferenza-frequentista">Limiti dell’Inferenza Frequentista</a></li>
-  <li><a href="#la-crisi-della-replicabilità" id="toc-la-crisi-della-replicabilità" class="nav-link" data-scroll-target="#la-crisi-della-replicabilità">La Crisi della Replicabilità</a></li>
-  <li><a href="#conclusioni" id="toc-conclusioni" class="nav-link" data-scroll-target="#conclusioni">Conclusioni</a></li>
-  <li><a href="#bibliografia" id="toc-bibliografia" class="nav-link" data-scroll-target="#bibliografia">Bibliografia</a></li>
+  <li><a href="#limiti-dellinferenza-frequentista" id="toc-limiti-dellinferenza-frequentista" class="nav-link active" data-scroll-target="#limiti-dellinferenza-frequentista">Limiti dell’inferenza frequentista</a></li>
+  <li><a href="#la-crisi-della-replicabilità" id="toc-la-crisi-della-replicabilità" class="nav-link" data-scroll-target="#la-crisi-della-replicabilità">La crisi della replicabilità</a></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/epiloque/epiloque.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/epiloque/epiloque.html">Epilogo</a></li><li class="breadcrumb-item"><a href="../../chapters/epiloque/epiloque.html">Considerazioni Conclusive</a></li></ol></nav>
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/epiloque/epiloque.html">Epilogo</a></li><li class="breadcrumb-item"><a href="../../chapters/epiloque/epiloque.html">Considerazioni conclusive</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Considerazioni Conclusive</h1>
+<div class="quarto-title-block"><div><h1 class="title">Considerazioni conclusive</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Codice</button></div></div>
 </div>
 
 
@@ -269,80 +485,80 @@ gtag('config', 'G-QT5S3P9D31', { 'anonymize_ip': true});
 </header>
 
 
-<p>L’inferenza bayesiana rappresenta un approccio rigoroso e trasparente per integrare conoscenze pregresse e dati empirici nell’analisi psicologica. A differenza dei metodi frequentisti, l’approccio bayesiano consente di quantificare l’incertezza e di costruire modelli che riflettono le nostre aspettative iniziali. Questa flessibilità è particolarmente preziosa in psicologia, dove teorie e ipotesi svolgono un ruolo centrale nel guidare la ricerca. L’inferenza bayesiana rende esplicite le nostre assunzioni a priori e ci permette di valutare come i dati influenzano la nostra comprensione dei fenomeni psicologici.</p>
+<p>L’inferenza bayesiana rappresenta un approccio rigoroso e trasparente per integrare conoscenze pregresse e dati empirici nell’analisi psicologica. A differenza dei metodi frequentisti, l’approccio bayesiano permette di quantificare l’incertezza e di costruire modelli che riflettono le nostre aspettative iniziali. Questa flessibilità è particolarmente preziosa in psicologia, dove teorie e ipotesi svolgono un ruolo centrale nel guidare la ricerca. L’inferenza bayesiana rende esplicite le nostre assunzioni a priori e ci permette di valutare l’impatto dei dati sulla nostra comprensione dei fenomeni psicologici.</p>
 <section id="limiti-dellinferenza-frequentista" class="level2">
-<h2 class="anchored" data-anchor-id="limiti-dellinferenza-frequentista">Limiti dell’Inferenza Frequentista</h2>
-<p>In questo corso, abbiamo esaminato i limiti dell’inferenza frequentista, specialmente quando utilizzata come “filtro” per distinguere risultati scientifici rilevanti da quelli trascurabili. L’eccessiva dipendenza dai valori-p è stata ampiamente criticata per la sua associazione con inferenze inadeguate. Gli effetti possono essere sovrastimati, talvolta anche nella direzione sbagliata, quando la stima è vincolata alla significatività statistica in presenza di dati altamente variabili <span class="citation" data-cites="loken2017measurement">(<a href="#ref-loken2017measurement" role="doc-biblioref">Loken &amp; Gelman, 2017</a>)</span>.</p>
-<p>Nonostante le critiche di lunga data e i dibattiti sul loro uso improprio (Gardner e Altman, 1986; Cohen, 1994; Anderson et al., 2000; Fidler et al., 2004; Finch et al., 2004), i valori-p persistono come indicatore di significatività. Questa tenacia riflette forse la necessità dei ricercatori di avere strumenti intuitivi, sebbene semplificati, per interpretare i dati. Tuttavia, l’uso rigido di soglie arbitrarie (ad esempio, 0.05, 0.01, 0.001) ha trasformato il raggiungimento della significatività in un obiettivo fine a se stesso, piuttosto che in uno strumento per comprendere i fenomeni sottostanti (Cohen, 1994; Kirk, 1996). Inoltre, i valori-p possono solo rifiutare l’ipotesi nulla, ma non confermarla, poiché un risultato non significativo non implica l’assenza di effetti o differenze (Wagenmakers, 2007; Amrhein et al., 2019).</p>
-<p>L’uso improprio dei valori-p, noto come “p-hacking” (Simmons et al., 2011), ha favorito pratiche scientifiche discutibili, contribuendo alla crisi di riproducibilità nella psicologia (Chambers et al., 2014; Szucs e Ioannidis, 2016).</p>
+<h2 class="anchored" data-anchor-id="limiti-dellinferenza-frequentista">Limiti dell’inferenza frequentista</h2>
+<p>Nel presente volume sono stati esaminati i limiti intrinseci dell’inferenza frequentista, con un’attenzione particolare al suo impiego improprio come “filtro” categorico per discriminare i risultati scientifici rilevanti da quelli non rilevanti. L’eccessiva e acritica dipendenza dal valore-<span class="math inline">\(p\)</span> come unico criterio decisionale è stata ampiamente criticata per la sua associazione con inferenze statistiche distorte e spesso inadeguate. In contesti caratterizzati da elevata variabilità dei dati, infatti, vincolare l’interpretazione al superamento di una soglia di significatività può portare a sovrastimare l’entità degli effetti e, in alcuni casi, a inferirne la direzione dell’effetto in modo errato <span class="citation" data-cites="loken2017measurement">(<a href="#ref-loken2017measurement" role="doc-biblioref">Loken &amp; Gelman, 2017</a>)</span>.</p>
+<p>Nonostante le critiche all’uso meccanico dei valori-<span class="math inline">\(p\)</span> abbiano una lunga tradizione, alimentando un dibattito metodologico consolidato <span class="citation" data-cites="gardner1986confidence anderson2000null fidler2004editors">(<a href="#ref-anderson2000null" role="doc-biblioref">Anderson et al., 2000</a>; <a href="#ref-fidler2004editors" role="doc-biblioref">Fidler et al., 2004</a>; <a href="#ref-gardner1986confidence" role="doc-biblioref">Gardner &amp; Altman, 1986</a>)</span>, la loro adozione come indicatore primario di “scoperta scientifica” persiste nella pratica della ricerca. Tale persistenza potrebbe riflettere il bisogno, da parte dei ricercatori, di disporre di un criterio apparentemente oggettivo e intuitivo per interpretare i risultati. Tuttavia, l’applicazione rigida di soglie arbitrarie, convenzionalmente fissate a 0.05, 0.01 o 0.001, ha trasformato il raggiungimento della “significatività statistica” in un fine autonomo, distogliendo l’attenzione dalla comprensione sostanziale del fenomeno indagato <span class="citation" data-cites="cohen1994earth kirk1996practical">(<a href="#ref-cohen1994earth" role="doc-biblioref">Cohen, 1994</a>; <a href="#ref-kirk1996practical" role="doc-biblioref">Kirk, 1996</a>)</span>. A ciò si aggiunge la fondamentale asimmetria logica del test di ipotesi: un valore-<span class="math inline">\(p\)</span> basso consente di respingere l’ipotesi nulla, mentre un valore non significativo non fornisce alcuna evidenza a favore della sua accettazione o dell’assenza di un effetto <span class="citation" data-cites="wagenmakers2007practical amrhein2019scientists">(<a href="#ref-amrhein2019scientists" role="doc-biblioref">Amrhein et al., 2019</a>; <a href="#ref-wagenmakers2007practical" role="doc-biblioref">Wagenmakers, 2007</a>)</span>.</p>
+<p>La deriva nell’uso dei valori-<span class="math inline">\(p\)</span> ha inoltre favorito pratiche metodologicamente scorrette, note collettivamente come “<span class="math inline">\(p\)</span>-hacking” <span class="citation" data-cites="simmons2011false">(<a href="#ref-simmons2011false" role="doc-biblioref">Simmons et al., 2011</a>)</span>. Queste pratiche, che includono l’esplorazione selettiva dei dati e la manipolazione delle analisi fino al raggiungimento del risultato desiderato, hanno contribuito in modo sostanziale alla crisi di riproducibilità che ha investito la psicologia e altre discipline <span class="citation" data-cites="szucs2017empirical">(<a href="#ref-szucs2017empirical" role="doc-biblioref">Szucs &amp; Ioannidis, 2017</a>)</span>.</p>
 </section>
 <section id="la-crisi-della-replicabilità" class="level2">
-<h2 class="anchored" data-anchor-id="la-crisi-della-replicabilità">La Crisi della Replicabilità</h2>
-<p>La crisi della replicabilità rappresenta una delle principali sfide che affliggono la ricerca scientifica contemporanea, con effetti particolarmente rilevanti nel campo della psicologia. Quando i risultati di uno studio non possono essere riprodotti in condizioni simili, si mette in discussione non solo la validità delle teorie su cui si basano interventi clinici e politiche pubbliche, ma anche la fiducia generale nella scienza. Questo problema va oltre l’ambito accademico, influenzando direttamente l’efficacia delle applicazioni pratiche delle ricerche.</p>
+<h2 class="anchored" data-anchor-id="la-crisi-della-replicabilità">La crisi della replicabilità</h2>
+<p>La crisi della replicabilità rappresenta una delle principali sfide che affliggono la ricerca scientifica contemporanea, con effetti particolarmente rilevanti nel campo della psicologia. Quando i risultati di uno studio non possono essere riprodotti in condizioni simili, non solo si mette in discussione la validità delle teorie su cui si basano gli interventi clinici e le politiche pubbliche, ma anche la fiducia generale nella scienza. Questo problema va oltre l’ambito accademico, influenzando direttamente l’efficacia delle applicazioni pratiche delle ricerche.</p>
 <section id="le-cause-sottostanti" class="level3">
-<h3 class="anchored" data-anchor-id="le-cause-sottostanti">Le Cause Sottostanti</h3>
-<p>Uno dei fattori principali della crisi è legato all’uso di <strong>metodologie di ricerca e analisi dei dati insufficientemente rigorose</strong>, che spesso portano a falsi positivi. Sebbene siano stati fatti appelli per migliorare le pratiche scientifiche, tali problemi persistono, indicando che il fenomeno non è semplicemente frutto di errori o mancanza di comprensione. Secondo Smaldino e McElreath (2016), la causa radicale risiede nei <strong>sistemi di incentivi distorti</strong> che favoriscono la quantità piuttosto che la qualità della ricerca. In questo contesto, la pressione a pubblicare risultati significativi diventa prioritaria rispetto alla rigorosità metodologica, alimentando un circolo vizioso in cui la “scienza scadente” si perpetua.</p>
-<p>Pratiche comuni, come il p-hacking (manipolazione statistica per ottenere risultati significativi) o la selezione selettiva dei dati, vengono adottate inconsciamente o intenzionalmente per massimizzare le probabilità di pubblicazione. Questo meccanismo, descritto come una forma di “selezione naturale della scienza scadente”, premia approcci che facilitano la produzione di risultati spettacolari, ma non necessariamente veritieri.</p>
+<h3 class="anchored" data-anchor-id="le-cause-sottostanti">Le cause sottostanti</h3>
+<p>Uno dei fattori principali della crisi è legato all’uso di <strong>metodologie di ricerca e di analisi dei dati insufficientemente rigorose</strong>, che spesso portano a falsi positivi. Nonostante gli appelli per migliorare le pratiche scientifiche, questi problemi persistono, indicando che il fenomeno non è semplicemente frutto di errori o di una mancanza di comprensione. Secondo Smaldino e McElreath (2016), la causa principale risiede nei <strong>sistemi di incentivi distorti</strong> che favoriscono la quantità piuttosto che la qualità della ricerca. In questo contesto, la pressione a pubblicare risultati significativi prevale sulla rigorosità metodologica, creando un circolo vizioso in cui la “scienza scadente” si perpetua.</p>
+<p>Pratiche comuni, come il <span class="math inline">\(p\)</span>-hacking (ovvero, la manipolazione statistica per ottenere risultati significativi) o la selezione selettiva dei dati, vengono adottate inconsciamente o intenzionalmente per aumentare le probabilità di pubblicazione. Questo meccanismo, descritto come una forma di “selezione naturale della scienza scadente”, premia gli approcci che facilitano la produzione di risultati spettacolari, ma non necessariamente veritieri.</p>
 </section>
 <section id="verso-una-soluzione-cambiare-la-cultura-scientifica" class="level3">
-<h3 class="anchored" data-anchor-id="verso-una-soluzione-cambiare-la-cultura-scientifica">Verso una Soluzione: Cambiare la Cultura Scientifica</h3>
-<p>Per superare questa crisi, è fondamentale operare un cambiamento culturale all’interno della comunità scientifica. Non basta correggere gli errori metodologici; occorre modificare radicalmente gli incentivi per premiare la qualità, la trasparenza e la replicabilità della ricerca. Alcune strategie chiave includono:</p>
-<ol type="1">
-<li><strong>Promozione di Pratiche Rigorose</strong>:
-<ul>
-<li>Adottare protocolli trasparenti, preregistrare gli studi prima del loro avvio e condividere apertamente dati e materiali.</li>
-<li>Implementare procedure di peer review più severe e incoraggiare la revisione post-pubblicazione.</li>
-</ul></li>
-<li><strong>Valorizzazione della Replicazione</strong>:
-<ul>
-<li>Dare maggiore riconoscimento agli studi che replicano risultati precedenti, anziché privilegiare esclusivamente nuove scoperte.</li>
-<li>Creare riviste specializzate che si concentriano sulla verifica e sulla riproducibilità degli studi.</li>
-</ul></li>
-<li><strong>Riforma dei Criteri di Valutazione</strong>:
-<ul>
-<li>Spostare l’attenzione dalla quantità delle pubblicazioni alla loro qualità e impatto scientifico.</li>
-<li>Incorporare metriche alternative, come l’impatto sociale e la contribuzione alla conoscenza consolidata.</li>
-</ul></li>
-</ol>
+<h3 class="anchored" data-anchor-id="verso-una-soluzione-cambiare-la-cultura-scientifica">Verso una soluzione: cambiare la cultura scientifica</h3>
+<p>Una trasformazione efficace deve partire dalla promozione di pratiche di ricerca rigorose e aperte. Ciò richiede l’adozione sistematica di protocolli trasparenti, la preregistrazione dei disegni di studio prima della raccolta dei dati e la condivisione aperta di dati, materiali e codice analitico. Parallelamente, è essenziale implementare processi di revisione tra pari più rigorosi che valutino la robustezza metodologica, oltre alla novità dei risultati, e incoraggiare meccanismi di revisione continua post-pubblicazione.</p>
+<p>Un secondo pilastro fondamentale è la valorizzazione esplicita della replicazione come attività scientifica centrale e meritoria. La comunità deve riconoscere e premiare gli sforzi volti a verificare i risultati precedenti, contrapponendosi alla tendenza a privilegiare esclusivamente le nuove scoperte “sensazionali”. La creazione di riviste e piattaforme dedicate alla pubblicazione di studi di replica e meta-analisi rafforzerebbe questo cambiamento di paradigma.</p>
+<p>Infine, è imprescindibile una riforma sostanziale dei criteri di valutazione della ricerca e dei ricercatori. Bisogna spostare l’attenzione dalla quantità delle pubblicazioni, che spesso incentiva pratiche discutibili, alla loro qualità intrinseca, alla trasparenza metodologica e al loro contributo alla creazione di una solida base di conoscenze. L’adozione di metriche alternative che valutino l’impatto scientifico a lungo termine, l’influenza sulla pratica e l’integrità del processo di ricerca è un passo necessario per allineare gli incentivi istituzionali ai principi di una scienza solida e cumulativa.</p>
 </section>
 <section id="nuovi-approcci-metodologici" class="level3">
-<h3 class="anchored" data-anchor-id="nuovi-approcci-metodologici">Nuovi Approcci Metodologici</h3>
-<p>Alcune proposte innovative mirano a migliorare la qualità delle analisi statistiche e ridurre la propensione a falsi positivi. Un esempio è l’adozione dell’inferenza bayesiana, che offre vantaggi significativi rispetto ai metodi tradizionali:</p>
-<ul>
-<li>Maggiore flessibilità nell’analisi di dati rumorosi o campioni piccoli.</li>
-<li>Minore propensione agli errori di tipo I.</li>
-<li>Possibilità di incorporare conoscenze pregresse nel processo decisionale.</li>
-</ul>
-<p>Tuttavia, l’inferenza bayesiana da sola non può risolvere completamente il problema. È necessario affrontare anche le cause strutturali, come il sistema accademico che premia la produttività quantitativa piuttosto che la qualità.</p>
-<p>Un’altra prospettiva promettente è quella avanzata da Richard McElreath, che suggerisce di passare da un approccio descrittivo a uno che descrive formalmente i <strong>meccanismi generativi</strong> dei dati. Questo significa formulare ipotesi esplicite sui processi sottostanti e testarle attraverso confronti quantitativi tra modelli. Tecniche come la validazione incrociata bayesiana Leave-One-Out (LOO) permettono di valutare la robustezza dei modelli e la loro capacità di generalizzare a nuovi contesti.</p>
-<p>Inoltre, la “rivoluzione causale” cerca di identificare relazioni causali in contesti naturali, superando i limiti degli esperimenti controllati tradizionali. Questo approccio richiede ai ricercatori di formulare ipotesi causali esplicite e confrontare modelli alternativi, migliorando così la comprensione dei fenomeni studiati.</p>
+<h3 class="anchored" data-anchor-id="nuovi-approcci-metodologici">Nuovi approcci metodologici</h3>
+<p>La crisi di replicabilità ha stimolato lo sviluppo di proposte metodologiche innovative, mirate a migliorare la robustezza delle analisi statistiche e a ridurre il rischio di falsi positivi. Tra queste, l’adozione dell’inferenza bayesiana rappresenta una direzione promettente, offrendo vantaggi concettuali e pratici distintivi rispetto ai metodi frequentisti tradizionali. Questo approccio si distingue per la sua maggiore flessibilità nell’analisi di dati rumorosi o di campioni di piccole dimensioni, per la sua ridotta propensione agli errori di tipo I nella verifica delle ipotesi e, soprattutto, per la possibilità di incorporare formalmente conoscenze teoriche pregresse nel processo inferenziale.</p>
+<p>È tuttavia importante riconoscere che l’adozione di un nuovo paradigma statistico, come quello bayesiano, non costituisce di per sé una soluzione completa al problema. Per poter sfruttare appieno il suo potenziale, è necessario che sia accompagnato da un’azione concomitante sulle cause strutturali della crisi, in primo luogo la cultura accademica che privilegia la produttività quantitativa a scapito della qualità e della profondità della ricerca.</p>
+<p>Un’altra prospettiva metodologica complementare e altrettanto rilevante è quella proposta da Richard McElreath, che invita a cambiare prospettiva: passare dall’analisi tradizionale dei dati descrittiva a un approccio che formalizzi esplicitamente i meccanismi generativi del processo sottostante. Ciò implica la costruzione di modelli statistici che incorporino ipotesi teoriche sui processi causali che si ipotizzano produrre i dati osservati, seguita dal confronto quantitativo della capacità predittiva di modelli alternativi. Tecniche come la validazione incrociata bayesiana Leave-One-Out (LOO) forniscono strumenti potenti per valutare la robustezza e la capacità di generalizzazione di tali modelli.</p>
+<p>Parallelamente, la cosiddetta “rivoluzione causale” mira a sviluppare strumenti per identificare le relazioni causali in contesti osservazionali o naturali, superando la dipendenza esclusiva dagli esperimenti controllati randomizzati. Questo approccio richiede ai ricercatori di formulare ipotesi causali esplicite e di mettere a confronto modelli alternativi per discriminarne la plausibilità, migliorando così la validità e la profondità della comprensione dei fenomeni studiati.</p>
 </section>
 <section id="implicazioni-sociali-e-educative" class="level3">
-<h3 class="anchored" data-anchor-id="implicazioni-sociali-e-educative">Implicazioni Sociali e Educative</h3>
-<p>La crisi della replicabilità ha implicazioni concrete al di là del mondo accademico. Interventi clinici, politiche pubbliche e decisioni basate su ricerche non replicabili rischiano di essere inefficaci o dannose. Pertanto, garantire la replicabilità e l’affidabilità delle scoperte scientifiche è essenziale non solo per preservare l’integrità accademica, ma anche per assumersi responsabilità sociali.</p>
-<p>Una revisione dei metodi didattici e dei programmi accademici è altrettanto cruciale. Gli studenti devono essere formati per comprendere e applicare inferenze basate su dati empirici. Studiosi come Mine Dogucu hanno sottolineato l’importanza di integrare approcci bayesiani e causalità nei corsi di formazione, e la presente dispensa si inserisce in questo sforzo <span class="citation" data-cites="Johnson2022bayesrules dogucu2022current rosenberg2022making dogucu2021web">(<a href="#ref-dogucu2021web" role="doc-biblioref">Dogucu &amp; Çetinkaya-Rundel, 2021</a>; <a href="#ref-dogucu2022current" role="doc-biblioref">Dogucu &amp; Hu, 2022</a>; <a href="#ref-Johnson2022bayesrules" role="doc-biblioref">Johnson et al., 2022</a>; <a href="#ref-rosenberg2022making" role="doc-biblioref">Rosenberg et al., 2022</a>)</span>.</p>
+<h3 class="anchored" data-anchor-id="implicazioni-sociali-e-educative">Implicazioni sociali e educative</h3>
+<p>La crisi della replicabilità ha implicazioni concrete che vanno oltre il mondo accademico. Gli interventi clinici, le politiche pubbliche e le decisioni basate su ricerche non replicabili rischiano di rivelarsi inefficaci o addirittura dannose. Pertanto, garantire la replicabilità e l’affidabilità delle scoperte scientifiche è essenziale non solo per preservare l’integrità accademica, ma anche per assumersi le proprie responsabilità sociali.</p>
+<p>È altrettanto cruciale una revisione dei metodi didattici e dei programmi accademici. Gli studenti devono essere formati per comprendere e applicare inferenze basate su dati empirici. Studiosi come Mine Dogucu hanno sottolineato l’importanza di integrare gli approcci bayesiani e la causalità nei corsi di formazione e la presente dispensa si inserisce in questo sforzo <span class="citation" data-cites="Johnson2022bayesrules dogucu2022current rosenberg2022making dogucu2021web">(<a href="#ref-dogucu2021web" role="doc-biblioref">Dogucu &amp; Çetinkaya-Rundel, 2021</a>; <a href="#ref-dogucu2022current" role="doc-biblioref">Dogucu &amp; Hu, 2022</a>; <a href="#ref-Johnson2022bayesrules" role="doc-biblioref">Johnson et al., 2022</a>; <a href="#ref-rosenberg2022making" role="doc-biblioref">Rosenberg et al., 2022</a>)</span>.</p>
 </section>
 </section>
-<section id="conclusioni" class="level2">
-<h2 class="anchored" data-anchor-id="conclusioni">Conclusioni</h2>
-<p>Affrontare e superare la crisi della replicabilità rappresenta una sfida fondamentale per la comunità scientifica, richiedendo un impegno collettivo per riformare profondamente la cultura della ricerca. Modificare gli incentivi che favoriscono quantità piuttosto che qualità, promuovere pratiche metodologiche rigorose e valorizzare la replicazione sono passi essenziali per costruire una scienza più affidabile. Solo attraverso un approccio multidimensionale sarà possibile ripristinare la fiducia nella psicologia scientifica e garantire che le sue applicazioni pratiche siano fondate su basi solide e verificabili.</p>
-<p>In questo contesto, l’inferenza bayesiana emerge come uno strumento di grande valore per l’analisi dei dati psicologici. Offrendo metodi avanzati per gestire l’incertezza, integrare conoscenze pregresse e adattarsi a modelli complessi, essa si dimostra particolarmente utile per esplorare i fenomeni legati alla mente umana e al comportamento. La sua capacità di fornire previsioni robuste e di aggiornare le ipotesi in base a nuovi dati la rende un approccio ideale per affrontare le sfide poste dalla natura intrinsecamente dinamica del campo psicologico.</p>
-<p>Tuttavia, è importante sottolineare che l’adozione di metodi bayesiani non costituisce da sola una soluzione completa alla crisi della replicabilità. Per migliorare realmente la qualità della ricerca, è necessario integrare queste tecniche con pratiche metodologiche rigorose. Tra queste, spiccano la formalizzazione di modelli generativi, che consentono di descrivere esplicitamente i processi sottostanti ai dati osservati, e il confronto tra modelli alternativi, fondamentale per valutare l’adeguatezza delle teorie proposte. Inoltre, l’adozione di una prospettiva causale esplicita è cruciale per identificare correttamente le relazioni di causa-effetto, superando i limiti degli studi correlazionali o degli esperimenti tradizionali.</p>
-<p>In conclusione, solo un approccio integrato, che combini l’inferenza bayesiana con pratiche metodologiche avanzate e una riflessione critica sui sistemi di incentivi accademici, permetterà di progredire verso una scienza psicologica più affidabile e riproducibile. Questo sforzo collettivo non solo migliorerà la qualità delle ricerche, ma contribuirà anche a fornire una comprensione più profonda e accurata del comportamento umano, consolidando così la posizione della psicologia come disciplina scientifica solida e credibile.</p>
+<section id="riflessioni-conclusive" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
+<p>Affrontare e superare la crisi della replicabilità rappresenta una sfida fondamentale per la comunità scientifica che richiede un impegno collettivo per riformare in modo profondo la cultura della ricerca. Modificare gli incentivi che favoriscono la quantità piuttosto che la qualità, promuovere pratiche metodologiche rigorose e valorizzare la replicazione sono passi essenziali per costruire una scienza più affidabile. Solo un approccio multidimensionale potrà ripristinare la fiducia nella psicologia scientifica e garantire che le sue applicazioni pratiche siano basate su basi solide e verificabili.</p>
+<p>In questo contesto, l’inferenza bayesiana si presenta come uno strumento di grande valore per l’analisi dei dati psicologici. Offrendo metodi avanzati per gestire l’incertezza, integrare le conoscenze pregresse e adattarsi a modelli complessi, l’inferenza bayesiana si rivela uno strumento prezioso per esplorare i fenomeni legati alla mente umana e al comportamento. La sua capacità di fornire previsioni robuste e di aggiornare le ipotesi in base a nuovi dati la rende un approccio ideale per affrontare le sfide poste dalla natura intrinsecamente dinamica del campo psicologico.</p>
+<p>Tuttavia, è importante sottolineare che l’adozione di metodi bayesiani non costituisce di per sé una soluzione completa alla crisi della replicabilità. Per migliorare realmente la qualità della ricerca, è necessario integrare queste tecniche con pratiche metodologiche rigorose. Tra queste, spiccano la formalizzazione di modelli generativi, che permettono di descrivere esplicitamente i processi sottostanti ai dati osservati, e il confronto tra modelli alternativi, fondamentale per valutare l’adeguatezza delle teorie proposte. Inoltre, l’adozione di una prospettiva causale esplicita è fondamentale per identificare correttamente le relazioni di causa ed effetto, superando i limiti degli studi correlazionali o degli esperimenti tradizionali.</p>
+<p>In conclusione, solo un approccio integrato che combini l’inferenza bayesiana con pratiche metodologiche avanzate e una riflessione critica sui sistemi di incentivi accademici, potrà condurci verso una psicologia scientifica più affidabile e riproducibile. Questo sforzo collettivo non solo migliorerà la qualità delle ricerche, ma contribuirà anche a fornire una comprensione più profonda e accurata del comportamento umano, rafforzando la posizione della psicologia come disciplina scientifica solida e affidabile.</p>
 </section>
-<section id="bibliografia" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="bibliografia">Bibliografia</h2>
+<section id="bibliografia" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="bibliografia">Bibliografia</h2>
 
+
+<!-- -->
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-amrhein2019scientists" class="csl-entry" role="listitem">
+Amrhein, V., Greenland, S., &amp; McShane, B. (2019). Scientists rise up against statistical significance. <em>Nature</em>, <em>567</em>(7748), 305–307.
+</div>
+<div id="ref-anderson2000null" class="csl-entry" role="listitem">
+Anderson, D. R., Burnham, K. P., &amp; Thompson, W. L. (2000). Null hypothesis testing: problems, prevalence, and an alternative. <em>The journal of Wildlife Management</em>, 912–923.
+</div>
+<div id="ref-cohen1994earth" class="csl-entry" role="listitem">
+Cohen, J. (1994). The earth is round (p&lt;. 05). <em>American Psychologist</em>, <em>49</em>(12), 997.
+</div>
 <div id="ref-dogucu2021web" class="csl-entry" role="listitem">
 Dogucu, M., &amp; Çetinkaya-Rundel, M. (2021). Web scraping in the statistics and data science curriculum: Challenges and opportunities. <em>Journal of Statistics and Data Science Education</em>, <em>29</em>(sup1), S112–S122.
 </div>
 <div id="ref-dogucu2022current" class="csl-entry" role="listitem">
 Dogucu, M., &amp; Hu, J. (2022). The current state of undergraduate Bayesian education and recommendations for the future. <em>The American Statistician</em>, <em>76</em>(4), 405–413.
 </div>
+<div id="ref-fidler2004editors" class="csl-entry" role="listitem">
+Fidler, F., Thomason, N., Cumming, G., Finch, S., &amp; Leeman, J. (2004). Editors can lead researchers to confidence intervals, but can’t make them think: Statistical reform lessons from medicine. <em>Psychological Science</em>, <em>15</em>(2), 119–126.
+</div>
+<div id="ref-gardner1986confidence" class="csl-entry" role="listitem">
+Gardner, M. J., &amp; Altman, D. G. (1986). Confidence intervals rather than P values: estimation rather than hypothesis testing. <em>Br Med J (Clin Res Ed)</em>, <em>292</em>(6522), 746–750.
+</div>
 <div id="ref-Johnson2022bayesrules" class="csl-entry" role="listitem">
 Johnson, A. A., Ott, M., &amp; Dogucu, M. (2022). <em><span>Bayes Rules! An Introduction to Bayesian Modeling with R</span></em>. CRC Press.
+</div>
+<div id="ref-kirk1996practical" class="csl-entry" role="listitem">
+Kirk, R. E. (1996). Practical significance: A concept whose time has come. <em>Educational and Psychological Measurement</em>, <em>56</em>(5), 746–759.
 </div>
 <div id="ref-loken2017measurement" class="csl-entry" role="listitem">
 Loken, E., &amp; Gelman, A. (2017). Measurement Error and the Replication Crisis. <em>Science</em>, <em>355</em>(6325), 584–585.
@@ -350,12 +566,34 @@ Loken, E., &amp; Gelman, A. (2017). Measurement Error and the Replication Crisis
 <div id="ref-rosenberg2022making" class="csl-entry" role="listitem">
 Rosenberg, J. M., Kubsch, M., Wagenmakers, E.-J., &amp; Dogucu, M. (2022). Making sense of uncertainty in the science classroom: A Bayesian approach. <em>Science &amp; Education</em>, <em>31</em>(5), 1239–1262.
 </div>
+<div id="ref-simmons2011false" class="csl-entry" role="listitem">
+Simmons, J. P., Nelson, L. D., &amp; Simonsohn, U. (2011). False-positive psychology: Undisclosed flexibility in data collection and analysis allows presenting anything as significant. <em>Psychological science</em>, <em>22</em>(11), 1359–1366.
+</div>
+<div id="ref-szucs2017empirical" class="csl-entry" role="listitem">
+Szucs, D., &amp; Ioannidis, J. P. (2017). Empirical assessment of published effect sizes and power in the recent cognitive neuroscience and psychology literature. <em>PLoS Biology</em>, <em>15</em>(3), e2000797.
+</div>
+<div id="ref-wagenmakers2007practical" class="csl-entry" role="listitem">
+Wagenmakers, E.-J. (2007). A practical solution to the pervasive problems ofp values. <em>Psychonomic Bulletin &amp; Review</em>, <em>14</em>(5), 779–804.
+</div>
 </div>
 </section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -424,6 +662,57 @@ Rosenberg, J. M., Kubsch, M., Wagenmakers, E.-J., &amp; Dogucu, M. (2022). Makin
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -764,12 +1053,70 @@ Rosenberg, J. M., Kubsch, M., Wagenmakers, E.-J., &amp; Dogucu, M. (2022). Makin
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../chapters/frequentist_inference/06_two_ind_samples.html" class="pagination-link" aria-label="Test t di Student per campioni indipendenti">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Eseguire il codice</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Considerazioni conclusive {.unnumbered}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>L'inferenza bayesiana rappresenta un approccio rigoroso e trasparente per integrare conoscenze pregresse e dati empirici nell'analisi psicologica. A differenza dei metodi frequentisti, l'approccio bayesiano permette di quantificare l'incertezza e di costruire modelli che riflettono le nostre aspettative iniziali. Questa flessibilità è particolarmente preziosa in psicologia, dove teorie e ipotesi svolgono un ruolo centrale nel guidare la ricerca. L'inferenza bayesiana rende esplicite le nostre assunzioni a priori e ci permette di valutare l'impatto dei dati sulla nostra comprensione dei fenomeni psicologici.</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Limiti dell'inferenza frequentista</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Nel presente volume sono stati esaminati i limiti intrinseci dell'inferenza frequentista, con un'attenzione particolare al suo impiego improprio come "filtro" categorico per discriminare i risultati scientifici rilevanti da quelli non rilevanti. L'eccessiva e acritica dipendenza dal valore-$p$ come unico criterio decisionale è stata ampiamente criticata per la sua associazione con inferenze statistiche distorte e spesso inadeguate. In contesti caratterizzati da elevata variabilità dei dati, infatti, vincolare l'interpretazione al superamento di una soglia di significatività può portare a sovrastimare l'entità degli effetti e, in alcuni casi, a inferirne la direzione dell'effetto in modo errato  <span class="co">[</span><span class="ot">@loken2017measurement</span><span class="co">]</span>.</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Nonostante le critiche all'uso meccanico dei valori-$p$ abbiano una lunga tradizione, alimentando un dibattito metodologico consolidato <span class="co">[</span><span class="ot">@gardner1986confidence; @anderson2000null; @fidler2004editors</span><span class="co">]</span>, la loro adozione come indicatore primario di "scoperta scientifica" persiste nella pratica della ricerca. Tale persistenza potrebbe riflettere il bisogno, da parte dei ricercatori, di disporre di un criterio apparentemente oggettivo e intuitivo per interpretare i risultati. Tuttavia, l'applicazione rigida di soglie arbitrarie, convenzionalmente fissate a 0.05, 0.01 o 0.001, ha trasformato il raggiungimento della "significatività statistica" in un fine autonomo, distogliendo l'attenzione dalla comprensione sostanziale del fenomeno indagato <span class="co">[</span><span class="ot">@cohen1994earth; @kirk1996practical</span><span class="co">]</span>. A ciò si aggiunge la fondamentale asimmetria logica del test di ipotesi: un valore-$p$ basso consente di respingere l'ipotesi nulla, mentre un valore non significativo non fornisce alcuna evidenza a favore della sua accettazione o dell'assenza di un effetto <span class="co">[</span><span class="ot">@wagenmakers2007practical; @amrhein2019scientists</span><span class="co">]</span>.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>La deriva nell'uso dei valori-$p$ ha inoltre favorito pratiche metodologicamente scorrette, note collettivamente come "$p$-hacking" <span class="co">[</span><span class="ot">@simmons2011false</span><span class="co">]</span>. Queste pratiche, che includono l'esplorazione selettiva dei dati e la manipolazione delle analisi fino al raggiungimento del risultato desiderato, hanno contribuito in modo sostanziale alla crisi di riproducibilità che ha investito la psicologia e altre discipline <span class="co">[</span><span class="ot">@szucs2017empirical</span><span class="co">]</span>.</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## La crisi della replicabilità</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>La crisi della replicabilità rappresenta una delle principali sfide che affliggono la ricerca scientifica contemporanea, con effetti particolarmente rilevanti nel campo della psicologia. Quando i risultati di uno studio non possono essere riprodotti in condizioni simili, non solo si mette in discussione la validità delle teorie su cui si basano gli interventi clinici e le politiche pubbliche, ma anche la fiducia generale nella scienza. Questo problema va oltre l'ambito accademico, influenzando direttamente l'efficacia delle applicazioni pratiche delle ricerche.</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">### Le cause sottostanti</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Uno dei fattori principali della crisi è legato all'uso di **metodologie di ricerca e di analisi dei dati insufficientemente rigorose**, che spesso portano a falsi positivi. Nonostante gli appelli per migliorare le pratiche scientifiche, questi problemi persistono, indicando che il fenomeno non è semplicemente frutto di errori o di una mancanza di comprensione. Secondo Smaldino e McElreath (2016), la causa principale risiede nei **sistemi di incentivi distorti** che favoriscono la quantità piuttosto che la qualità della ricerca.  In questo contesto, la pressione a pubblicare risultati significativi prevale sulla rigorosità metodologica, creando un circolo vizioso in cui la "scienza scadente" si perpetua.</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>Pratiche comuni, come il $p$-hacking (ovvero, la manipolazione statistica per ottenere risultati significativi) o la selezione selettiva dei dati, vengono adottate inconsciamente o intenzionalmente per aumentare le probabilità di pubblicazione. Questo meccanismo, descritto come una forma di "selezione naturale della scienza scadente", premia gli approcci che facilitano la produzione di risultati spettacolari, ma non necessariamente veritieri.</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### Verso una soluzione: cambiare la cultura scientifica</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>Una trasformazione efficace deve partire dalla promozione di pratiche di ricerca rigorose e aperte. Ciò richiede l'adozione sistematica di protocolli trasparenti, la preregistrazione dei disegni di studio prima della raccolta dei dati e la condivisione aperta di dati, materiali e codice analitico. Parallelamente, è essenziale implementare processi di revisione tra pari più rigorosi che valutino la robustezza metodologica, oltre alla novità dei risultati, e incoraggiare meccanismi di revisione continua post-pubblicazione.</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>Un secondo pilastro fondamentale è la valorizzazione esplicita della replicazione come attività scientifica centrale e meritoria. La comunità deve riconoscere e premiare gli sforzi volti a verificare i risultati precedenti, contrapponendosi alla tendenza a privilegiare esclusivamente le nuove scoperte "sensazionali". La creazione di riviste e piattaforme dedicate alla pubblicazione di studi di replica e meta-analisi rafforzerebbe questo cambiamento di paradigma.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>Infine, è imprescindibile una riforma sostanziale dei criteri di valutazione della ricerca e dei ricercatori. Bisogna spostare l'attenzione dalla quantità delle pubblicazioni, che spesso incentiva pratiche discutibili, alla loro qualità intrinseca, alla trasparenza metodologica e al loro contributo alla creazione di una solida base di conoscenze. L'adozione di metriche alternative che valutino l'impatto scientifico a lungo termine, l'influenza sulla pratica e l'integrità del processo di ricerca è un passo necessario per allineare gli incentivi istituzionali ai principi di una scienza solida e cumulativa.</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">### Nuovi approcci metodologici</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>La crisi di replicabilità ha stimolato lo sviluppo di proposte metodologiche innovative, mirate a migliorare la robustezza delle analisi statistiche e a ridurre il rischio di falsi positivi. Tra queste, l'adozione dell'inferenza bayesiana rappresenta una direzione promettente, offrendo vantaggi concettuali e pratici distintivi rispetto ai metodi frequentisti tradizionali. Questo approccio si distingue per la sua maggiore flessibilità nell'analisi di dati rumorosi o di campioni di piccole dimensioni, per la sua ridotta propensione agli errori di tipo I nella verifica delle ipotesi e, soprattutto, per la possibilità di incorporare formalmente conoscenze teoriche pregresse nel processo inferenziale.</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>È tuttavia importante riconoscere che l'adozione di un nuovo paradigma statistico, come quello bayesiano, non costituisce di per sé una soluzione completa al problema. Per poter sfruttare appieno il suo potenziale, è necessario che sia accompagnato da un'azione concomitante sulle cause strutturali della crisi, in primo luogo la cultura accademica che privilegia la produttività quantitativa a scapito della qualità e della profondità della ricerca.</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>Un'altra prospettiva metodologica complementare e altrettanto rilevante è quella proposta da Richard McElreath, che invita a cambiare prospettiva: passare dall'analisi tradizionale dei dati descrittiva a un approccio che formalizzi esplicitamente i meccanismi generativi del processo sottostante. Ciò implica la costruzione di modelli statistici che incorporino ipotesi teoriche sui processi causali che si ipotizzano produrre i dati osservati, seguita dal confronto quantitativo della capacità predittiva di modelli alternativi. Tecniche come la validazione incrociata bayesiana Leave-One-Out (LOO) forniscono strumenti potenti per valutare la robustezza e la capacità di generalizzazione di tali modelli.</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>Parallelamente, la cosiddetta "rivoluzione causale" mira a sviluppare strumenti per identificare le relazioni causali in contesti osservazionali o naturali, superando la dipendenza esclusiva dagli esperimenti controllati randomizzati. Questo approccio richiede ai ricercatori di formulare ipotesi causali esplicite e di mettere a confronto modelli alternativi per discriminarne la plausibilità, migliorando così la validità e la profondità della comprensione dei fenomeni studiati.</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">### Implicazioni sociali e educative</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>La crisi della replicabilità ha implicazioni concrete che vanno oltre il mondo accademico. Gli interventi clinici, le politiche pubbliche e le decisioni basate su ricerche non replicabili rischiano di rivelarsi inefficaci o addirittura dannose. Pertanto, garantire la replicabilità e l'affidabilità delle scoperte scientifiche è essenziale non solo per preservare l'integrità accademica, ma anche per assumersi le proprie responsabilità sociali.</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>È altrettanto cruciale una revisione dei metodi didattici e dei programmi accademici. Gli studenti devono essere formati per comprendere e applicare inferenze basate su dati empirici. Studiosi come Mine Dogucu hanno sottolineato l'importanza di integrare gli approcci bayesiani e la causalità nei corsi di formazione e la presente dispensa si inserisce in questo sforzo <span class="co">[</span><span class="ot">@Johnson2022bayesrules; @dogucu2022current; @rosenberg2022making; @dogucu2021web</span><span class="co">]</span>.</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Riflessioni conclusive {.unnumbered .unlisted}</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>Affrontare e superare la crisi della replicabilità rappresenta una sfida fondamentale per la comunità scientifica che richiede un impegno collettivo per riformare in modo profondo la cultura della ricerca. Modificare gli incentivi che favoriscono la quantità piuttosto che la qualità, promuovere pratiche metodologiche rigorose e valorizzare la replicazione sono passi essenziali per costruire una scienza più affidabile. Solo un approccio multidimensionale potrà ripristinare la fiducia nella psicologia scientifica e garantire che le sue applicazioni pratiche siano basate su basi solide e verificabili.</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>In questo contesto, l'inferenza bayesiana si presenta come uno strumento di grande valore per l'analisi dei dati psicologici. Offrendo metodi avanzati per gestire l'incertezza, integrare le conoscenze pregresse e adattarsi a modelli complessi, l'inferenza bayesiana si rivela uno strumento prezioso per esplorare i fenomeni legati alla mente umana e al comportamento. La sua capacità di fornire previsioni robuste e di aggiornare le ipotesi in base a nuovi dati la rende un approccio ideale per affrontare le sfide poste dalla natura intrinsecamente dinamica del campo psicologico.</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>Tuttavia, è importante sottolineare che l'adozione di metodi bayesiani non costituisce di per sé una soluzione completa alla crisi della replicabilità. Per migliorare realmente la qualità della ricerca, è necessario integrare queste tecniche con pratiche metodologiche rigorose. Tra queste, spiccano la formalizzazione di modelli generativi, che permettono di descrivere esplicitamente i processi sottostanti ai dati osservati, e il confronto tra modelli alternativi, fondamentale per valutare l'adeguatezza delle teorie proposte. Inoltre, l'adozione di una prospettiva causale esplicita è fondamentale per identificare correttamente le relazioni di causa ed effetto, superando i limiti degli studi correlazionali o degli esperimenti tradizionali.</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>In conclusione, solo un approccio integrato che combini l'inferenza bayesiana con pratiche metodologiche avanzate e una riflessione critica sui sistemi di incentivi accademici, potrà condurci verso una psicologia scientifica più affidabile e riproducibile. Questo sforzo collettivo non solo migliorerà la qualità delle ricerche, ma contribuirà anche a fornire una comprensione più profonda e accurata del comportamento umano, rafforzando la posizione della psicologia come disciplina scientifica solida e affidabile.</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## Bibliografia {.unnumbered .unlisted}</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
