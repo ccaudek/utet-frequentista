@@ -118,10 +118,8 @@ Una presentazione più completa dei risultati dovrebbe includere intervalli di c
 
 Il test di ipotesi consente di valutare la compatibilità tra i dati e un modello teorico, ma il valore-$p$ ha un significato più limitato di quanto comunemente si creda. La sua interpretazione non riguarda la verità di $H_0$ ma l’eventualità di osservare dati almeno altrettanto estremi sotto quella stessa ipotesi. La distanza tra significatività statistica e rilevanza pratica, insieme ai vincoli strutturali del metodo frequentista, rende utile affiancare o sostituire questa procedura con strumenti più informativi e interpretabili, come quelli offerti dall’approccio bayesiano.
 
-::: {.callout-caution collapse=true title="Preparazione del Notebook"}
-
+::: {.callout-note collapse=true title="Informazioni sull'ambiente di sviluppo"}
 ```{r}
-here::here("code", "_common.R") |> 
-  source()
+sessionInfo()
 ```
 :::

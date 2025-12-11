@@ -104,5 +104,3 @@ sessionInfo()
 ```
 :::
 
-## Bibliografia {.unnumbered .unlisted}
-

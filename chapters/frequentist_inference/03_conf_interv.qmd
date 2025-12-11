@@ -206,7 +206,7 @@ L’enfasi è sulla **procedura**, non sul singolo intervallo.
 
 3. ❌ *“Valori più centrali nell’intervallo sono più probabili.”*
    L’intervallo di confidenza non fornisce una densità di probabilità sul parametro.
-   :::
+:::
 
 ## Effetto del livello di confidenza
 

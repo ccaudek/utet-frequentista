@@ -167,11 +167,9 @@ Il test $t$ di Student è una procedura statistica ampiamente utilizzata in ambi
 
 La struttura decisionale del test, di tipo dicotomico e basata su soglie arbitrarie, presenta dei limiti di rigidità che sono stati ampiamente discussi in letteratura. Queste criticità, insieme all'interpretazione spesso ambigua del valore-$p$, evidenziano la necessità di integrare o affiancare a questo approccio metodologie statistiche che forniscano una quantificazione più diretta e informativa dell'incertezza. Di conseguenza, l'adozione di paradigmi alternativi, in particolare quello bayesiano, rappresenta una risposta metodologicamente migliore e concettualmente più solida.
 
-::: {.callout-caution collapse=true title="Preparazione del Notebook"}
-
+::: {.callout-note collapse=true title="Informazioni sull'ambiente di sviluppo"}
 ```{r}
-here::here("code", "_common.R") |> 
-  source()
+sessionInfo()
 ```
 :::
 

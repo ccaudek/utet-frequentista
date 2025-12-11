@@ -233,5 +233,3 @@ sessionInfo()
 ```
 :::
 
-## Bibliografia {.unnumbered .unlisted}
-
