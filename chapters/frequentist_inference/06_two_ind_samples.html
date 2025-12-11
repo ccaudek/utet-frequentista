@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.26">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>7&nbsp; Test t di Student per campioni indipendenti – Inferenza frequentista in psicologia</title>
+<title>6&nbsp; Test t di Student per campioni indipendenti – Inferenza frequentista in psicologia</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -91,10 +91,14 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-af5d064118ae80f4bafc3d843c3c3870.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-6754518f538b8e5d55f1a4bf7f770a7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-64f474ecce569e9f1af604c40bb74ae2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6754518f538b8e5d55f1a4bf7f770a7c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -154,14 +158,176 @@ window.Quarto = {
 };
 </script>
 </head>
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/06_two_ind_samples.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/06_two_ind_samples.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Ricerca" onclick="window.quartoOpenSearch();">
@@ -170,13 +336,12 @@ window.Quarto = {
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../index.html" class="sidebar-logo-link">
-      </a>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Inferenza frequentista in psicologia</a> 
-        <div class="sidebar-tools-main">
+        <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/ccaudek/utet-frequentista/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Attiva/disattiva la modalità oscura"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Attiva/disattiva la modalità lettore">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -222,7 +387,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/01_galton.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Inferenza frequentista</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Origini storiche dell’approccio frequentista</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -239,20 +404,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/frequentist_inference/04_sample_size.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">La grandezza del campione</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/05_test_ipotesi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Significatività statistica</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Significatività statistica</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/06_two_ind_samples.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></span></a>
   </div>
 </li>
       </ul>
@@ -279,25 +438,21 @@ window.Quarto = {
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2"><h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
-<li><a href="#introduzione" id="toc-introduzione" class="nav-link active" data-scroll-target="#introduzione"><span class="header-section-number">7.1</span> Introduzione</a></li>
-  <li><a href="#applicazioni-del-test-t-di-student" id="toc-applicazioni-del-test-t-di-student" class="nav-link" data-scroll-target="#applicazioni-del-test-t-di-student"><span class="header-section-number">7.2</span> Applicazioni del Test t di Student</a></li>
-  <li><a href="#assunzioni-principali" id="toc-assunzioni-principali" class="nav-link" data-scroll-target="#assunzioni-principali"><span class="header-section-number">7.3</span> Assunzioni Principali</a></li>
-  <li><a href="#passaggi-del-test-t-di-student" id="toc-passaggi-del-test-t-di-student" class="nav-link" data-scroll-target="#passaggi-del-test-t-di-student"><span class="header-section-number">7.4</span> Passaggi del Test t di Student</a></li>
-  <li><a href="#dimostrazione" id="toc-dimostrazione" class="nav-link" data-scroll-target="#dimostrazione"><span class="header-section-number">7.5</span> Dimostrazione</a></li>
-  <li><a href="#esempio-pratico" id="toc-esempio-pratico" class="nav-link" data-scroll-target="#esempio-pratico"><span class="header-section-number">7.6</span> Esempio Pratico</a></li>
-  <li><a href="#riflessioni-conclusive" id="toc-riflessioni-conclusive" class="nav-link" data-scroll-target="#riflessioni-conclusive"><span class="header-section-number">7.7</span> Riflessioni Conclusive</a></li>
-  <li><a href="#informazioni-sullambiente-di-sviluppo" id="toc-informazioni-sullambiente-di-sviluppo" class="nav-link" data-scroll-target="#informazioni-sullambiente-di-sviluppo">Informazioni sull’Ambiente di Sviluppo</a></li>
-  <li><a href="#bibliografia" id="toc-bibliografia" class="nav-link" data-scroll-target="#bibliografia">Bibliografia</a></li>
+<li><a href="#assunzioni-del-test" id="toc-assunzioni-del-test" class="nav-link active" data-scroll-target="#assunzioni-del-test"><span class="header-section-number">6.1</span> Assunzioni del test</a></li>
+  <li><a href="#formulazione-del-test" id="toc-formulazione-del-test" class="nav-link" data-scroll-target="#formulazione-del-test"><span class="header-section-number">6.2</span> Formulazione del test</a></li>
+  <li><a href="#esempio-pratico" id="toc-esempio-pratico" class="nav-link" data-scroll-target="#esempio-pratico"><span class="header-section-number">6.3</span> Esempio pratico</a></li>
+  <li><a href="#interpretazione-dei-risultati" id="toc-interpretazione-dei-risultati" class="nav-link" data-scroll-target="#interpretazione-dei-risultati"><span class="header-section-number">6.4</span> Interpretazione dei risultati</a></li>
+  <li><a href="#come-riportare-i-risultati" id="toc-come-riportare-i-risultati" class="nav-link" data-scroll-target="#come-riportare-i-risultati"><span class="header-section-number">6.5</span> Come riportare i risultati</a></li>
+  <li><a href="#limiti-del-test-t" id="toc-limiti-del-test-t" class="nav-link" data-scroll-target="#limiti-del-test-t"><span class="header-section-number">6.6</span> Limiti del test <span class="math inline">\(t\)</span></a></li>
+  <li><a href="#lalternativa-bayesiana" id="toc-lalternativa-bayesiana" class="nav-link" data-scroll-target="#lalternativa-bayesiana"><span class="header-section-number">6.7</span> L’alternativa bayesiana</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/06_two_ind_samples.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/06_two_ind_samples.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title">
-<span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span>
-</h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/06_two_ind_samples.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-freq-two-samples" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Codice</button></div></div>
 </div>
 
 
@@ -311,10 +466,20 @@ window.Quarto = {
   
 
 
-</header><div class="callout callout-style-simple callout-important no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
+</header><div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Il <a href="https://www.scientificamerican.com/article/how-the-guinness-brewery-invented-the-most-important-statistical-method-in/">test t di Student</a> per campioni indipendenti è uno strumento fondamentale nella ricerca psicologica. Consente di confrontare le medie di due gruppi e di valutare se la differenza osservata possa essere attribuita semplicemente alla variabilità campionaria oppure rifletta una reale differenza tra le popolazioni da cui i campioni provengono.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Importante</span>In questo capitolo imparerai a
@@ -322,15 +487,16 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>eseguire un test di ipotesi frequentista per confrontare le medie di due campioni indipendenti, assumendo l’ipotesi nulla;</li>
-<li>capire i limiti del test frequentista <span class="math inline">\(t\)</span> di Student.</li>
+<li>eseguire un test t di Student per confrontare le medie di due gruppi indipendenti;</li>
+<li>interpretare correttamente i risultati, includendo intervalli di confidenza e dimensione dell’effetto;</li>
+<li>comprendere i limiti del test e le principali alternative.</li>
 </ul>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Consiglio</span>Prerequisiti
@@ -338,290 +504,205 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
+<li>Conoscere la logica generale del test di ipotesi.</li>
 <li>Leggere <em>Bayesian estimation supersedes the t test</em> <span class="citation" data-cites="kruschke2013bayesian">(<a href="#ref-kruschke2013bayesian" role="doc-biblioref">Kruschke, 2013</a>)</span>.</li>
 </ul>
 </div>
 </div>
-<div class="callout callout-style-simple callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-default callout-caution callout-titled" title="Preparazione del Notebook">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Attenzione</span>Preparazione del Notebook
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Load packages</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"pacman"</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"pacman"</span><span class="op">)</span></span>
-<span><span class="fu">pacman</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pacman/man/p_load.html">p_load</a></span><span class="op">(</span><span class="va">mice</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
-<section id="introduzione" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="introduzione">
-<span class="header-section-number">7.1</span> Introduzione</h2>
-<p>Questo capitolo è dedicato al <a href="https://www.scientificamerican.com/article/how-the-guinness-brewery-invented-the-most-important-statistical-method-in/">test t di Student</a> per campioni indipendenti, uno dei test statistici più utilizzati nella pratica frequentista. Il test t di Student è un metodo che permette di confrontare le medie di due gruppi diversi (o “campioni”) e determinare se la differenza osservata tra le medie sia statisticamente significativa o se possa essere attribuita a semplice casualità.</p>
-<p>Il test è particolarmente utile quando si ha accesso solo a piccoli campioni provenienti da popolazioni sconosciute, ma è importante comprendere bene i suoi principi fondamentali e limiti prima di applicarlo.</p>
-</section><section id="applicazioni-del-test-t-di-student" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="applicazioni-del-test-t-di-student">
-<span class="header-section-number">7.2</span> Applicazioni del Test t di Student</h2>
-<p>Il test t di Student per campioni indipendenti serve per rispondere alla domanda: “Le medie di due gruppi sono significativamente diverse?” Per esempio, potremmo voler sapere se ci sono differenze significative nel peso medio tra uomini e donne.</p>
-</section><section id="assunzioni-principali" class="level2" data-number="7.3"><h2 data-number="7.3" class="anchored" data-anchor-id="assunzioni-principali">
-<span class="header-section-number">7.3</span> Assunzioni Principali</h2>
-<p>Prima di procedere con il test, è essenziale assicurarsi che siano valide le seguenti ipotesi:</p>
-<ol type="1">
-<li>
-<strong>Indipendenza</strong>: Le osservazioni nei due campioni devono essere indipendenti.</li>
-<li>
-<strong>Normalità</strong>: I dati nei due campioni provengono da popolazioni distribuite normalmente.</li>
-<li>
-<strong>Uguaglianza delle Varianze (Omoschedasticità)</strong>: Le varianze delle due popolazioni da cui provengono i campioni sono uguali.</li>
-</ol>
-<p>Se queste condizioni non sono soddisfatte, potrebbe essere necessario considerare alternative come il <strong>test di Welch</strong>, che non richiede l’uguaglianza delle varianze.</p>
-</section><section id="passaggi-del-test-t-di-student" class="level2" data-number="7.4"><h2 data-number="7.4" class="anchored" data-anchor-id="passaggi-del-test-t-di-student">
-<span class="header-section-number">7.4</span> Passaggi del Test t di Student</h2>
-<p>Ecco una panoramica dei passaggi chiave:</p>
-<ol type="1">
-<li>
-<p><strong>Calcolare la Differenza tra le Medie</strong>: Si calcola la differenza tra le medie dei due campioni.</p>
+</div>
+<section id="assunzioni-del-test" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="assunzioni-del-test">
+<span class="header-section-number">6.1</span> Assunzioni del test</h2>
+<p>Nel confronto tra due gruppi indipendenti, il test <span class="math inline">\(t\)</span> di Student richiede che le osservazioni siano indipendenti tra loro, che ciascun gruppo provenga da una popolazione che può essere ragionevolmente approssimata con una distribuzione normale e che le varianze delle due popolazioni siano uguali. Quando quest’ultima condizione non è plausibile, si utilizza la variante proposta da Welch, che corregge la statistica test e i gradi di libertà senza richiedere omoschedasticità.</p>
+</section><section id="formulazione-del-test" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="formulazione-del-test">
+<span class="header-section-number">6.2</span> Formulazione del test</h2>
+<section id="ipotesi" class="level3" data-number="6.2.1"><h3 data-number="6.2.1" class="anchored" data-anchor-id="ipotesi">
+<span class="header-section-number">6.2.1</span> Ipotesi</h3>
+<p>L’ipotesi nulla afferma che le due popolazioni abbiano la stessa media, cioè <span class="math inline">\(H_0: \mu_1 = \mu_2\)</span>. L’ipotesi alternativa considera la possibilità che le medie differiscano, <span class="math inline">\(H_1: \mu_1 \neq \mu_2\)</span>.</p>
+</section><section id="statistica-test" class="level3" data-number="6.2.2"><h3 data-number="6.2.2" class="anchored" data-anchor-id="statistica-test">
+<span class="header-section-number">6.2.2</span> Statistica test</h3>
+<p>La statistica t confronta la differenza tra le due medie con la variabilità attesa sotto l’ipotesi nulla. La formula è:</p>
 <p><span class="math display">\[
-\bar{x}_1 - \bar{x}_2
-\]</span></p>
-<p>dove <span class="math inline">\(\bar{x}_1\)</span> e <span class="math inline">\(\bar{x}_2\)</span> sono le medie dei due campioni.</p>
-</li>
-<li>
-<p><strong>Stimare la Deviazione Standard Combinata</strong>: Se assumiamo che le varianze siano uguali (omoschedasticità), possiamo usare una stima combinata della deviazione standard, chiamata <strong>deviazione standard pooled</strong> <span class="math inline">\(s_p\)</span>:</p>
+t = \frac{\bar{X}_1 - \bar{X}_2}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}},
+\]</span> dove <span class="math inline">\(s_p\)</span> è la deviazione standard pooled:</p>
 <p><span class="math display">\[
-s_p = \sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}}
+s_p = \sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}}.
 \]</span></p>
-<p>dove <span class="math inline">\(n_1\)</span> e <span class="math inline">\(n_2\)</span> sono le dimensioni dei campioni, e <span class="math inline">\(s_1^2\)</span> e <span class="math inline">\(s_2^2\)</span> sono le varianze campionarie.</p>
-</li>
-<li>
-<p><strong>Calcolare la Statistica t</strong>: La statistica t viene calcolata usando la formula seguente:</p>
-<p><span class="math display">\[
-t = \frac{(\bar{x}_1 - \bar{x}_2)}{s_p \sqrt{\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}
-\]</span></p>
-</li>
-<li>
-<p><strong>Determinare i Gradi di Libertà</strong>: I gradi di libertà (<span class="math inline">\(df\)</span>) sono calcolati come:</p>
-<p><span class="math display">\[
-df = n_1 + n_2 - 2
-\]</span></p>
-</li>
-<li><p><strong>Calcolare il Valore-p</strong>: Infine, si confronta la statistica t con la distribuzione t di Student per ottenere il valore-p.&nbsp;Questo valore indica la probabilità di osservare una differenza così estrema tra le medie dei campioni, dato che l’ipotesi nulla è vera.</p></li>
-</ol></section><section id="dimostrazione" class="level2" data-number="7.5"><h2 data-number="7.5" class="anchored" data-anchor-id="dimostrazione">
-<span class="header-section-number">7.5</span> Dimostrazione</h2>
-<p>Per dimostrare come calcolare la varianza della differenza tra due medie campionarie, consideriamo due campioni casuali indipendenti <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> e <span class="math inline">\(Y_1, Y_2, \dots, Y_m\)</span>, estratti dalla stessa popolazione con media <span class="math inline">\(\mu\)</span> e varianza <span class="math inline">\(\sigma^2\)</span>. Definiamo <span class="math inline">\(\bar{X}\)</span> e <span class="math inline">\(\bar{Y}\)</span> come le medie campionarie di questi due campioni, rispettivamente.</p>
-<p>Le medie campionarie <span class="math inline">\(\bar{X}\)</span> e <span class="math inline">\(\bar{Y}\)</span> sono date da:</p>
-<p><span class="math display">\[
-\bar{X} = \frac{1}{n} \sum_{i=1}^n X_i ,
-\]</span> <span class="math display">\[
-\bar{Y} = \frac{1}{m} \sum_{j=1}^m Y_j .
-\]</span></p>
-<p>Entrambe le medie campionarie <span class="math inline">\(\bar{X}\)</span> e <span class="math inline">\(\bar{Y}\)</span> sono stimatori non distorti della media della popolazione <span class="math inline">\(\mu\)</span>. Le loro varianze sono:</p>
-<p><span class="math display">\[
-\text{Var}(\bar{X}) = \frac{\sigma^2}{n} ,
-\]</span> <span class="math display">\[
-\text{Var}(\bar{Y}) = \frac{\sigma^2}{m} .
-\]</span></p>
-<p>Siamo interessati a calcolare la varianza della differenza <span class="math inline">\(\bar{X} - \bar{Y}\)</span>. Utilizzando le proprietà della varianza per combinazioni lineari di variabili aleatorie indipendenti, otteniamo:</p>
-<p><span class="math display">\[
-\text{Var}(\bar{X} - \bar{Y}) = \text{Var}(\bar{X}) + \text{Var}(\bar{Y}) ,
-\]</span></p>
-<p>dato che i termini incrociati si annullano per l’indipendenza di <span class="math inline">\(\bar{X}\)</span> e <span class="math inline">\(\bar{Y}\)</span>. Sostituendo le varianze di <span class="math inline">\(\bar{X}\)</span> e <span class="math inline">\(\bar{Y}\)</span>, abbiamo:</p>
-<p><span class="math display">\[
-\text{Var}(\bar{X} - \bar{Y}) = \frac{\sigma^2}{n} + \frac{\sigma^2}{m} ,
-\]</span> <span class="math display">\[
-\text{Var}(\bar{X} - \bar{Y}) = \sigma^2 \left(\frac{1}{n} + \frac{1}{m}\right) .
-\]</span></p>
-<p>Quindi, la varianza della differenza tra le due medie campionarie è una combinazione delle varianze delle singole medie, ponderate in base alle dimensioni dei campioni corrispondenti.</p>
-<p>Per giungere alla formula del test <span class="math inline">\(t\)</span> di Student per due campioni indipendenti, dobbiamo considerare l’incertezza aggiuntiva derivante dal fatto che non conosciamo <span class="math inline">\(\sigma\)</span>. Il modo migliore per stimare <span class="math inline">\(\sigma\)</span> è utilizzare le due deviazioni standard dei campioni, ponderate per i rispettivi gradi di libertà, come indicato nella formula della deviazione standard <em>pooled</em>:</p>
-<p><span class="math display">\[
-s_p = \sqrt{\frac{(n - 1)s^2_x + (m - 1)s^2_y}{n + m - 2}},
-\]</span></p>
-<p>dove <span class="math inline">\(s_x\)</span> e <span class="math inline">\(s_y\)</span> sono le deviazioni standard dei due campioni, e <span class="math inline">\(n\)</span> e <span class="math inline">\(m\)</span> sono le numerosità dei due campioni.</p>
-</section><section id="esempio-pratico" class="level2" data-number="7.6"><h2 data-number="7.6" class="anchored" data-anchor-id="esempio-pratico">
-<span class="header-section-number">7.6</span> Esempio Pratico</h2>
-<p>Supponiamo di avere due campioni:</p>
-<ul>
-<li>
-<strong>Donne</strong>: Pesi = [38.9, 61.2, 73.3, 21.8, 63.4, 64.6, 48.4, 48.8, 48.5]</li>
-<li>
-<strong>Uomini</strong>: Pesi = [67.8, 60, 63.4, 76, 89.4, 73.3, 67.3, 61.3, 62.4]</li>
-</ul>
-<p>Creiamo un DataFrame in R e calcoliamo la statistica t:</p>
+<p>Sotto l’ipotesi nulla, la statistica <span class="math inline">\(t\)</span> segue una distribuzione <span class="math inline">\(t\)</span> di Student con <span class="math inline">\(n_1 + n_2 - 2\)</span> gradi di libertà.</p>
+</section></section><section id="esempio-pratico" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="esempio-pratico">
+<span class="header-section-number">6.3</span> Esempio pratico</h2>
+<p>Consideriamo un confronto tra il peso corporeo di un gruppo di donne e un gruppo di uomini.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">women_weight</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">38.9</span>, <span class="fl">61.2</span>, <span class="fl">73.3</span>, <span class="fl">21.8</span>, <span class="fl">63.4</span>, <span class="fl">64.6</span>, <span class="fl">48.4</span>, <span class="fl">48.8</span>, <span class="fl">48.5</span><span class="op">)</span></span>
-<span><span class="va">men_weight</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">67.8</span>, <span class="fl">60</span>, <span class="fl">63.4</span>, <span class="fl">76</span>, <span class="fl">89.4</span>, <span class="fl">73.3</span>, <span class="fl">67.3</span>, <span class="fl">61.3</span>, <span class="fl">62.4</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">peso_donne</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">38.9</span>, <span class="fl">61.2</span>, <span class="fl">73.3</span>, <span class="fl">21.8</span>, <span class="fl">63.4</span>, <span class="fl">64.6</span>, <span class="fl">48.4</span>, <span class="fl">48.8</span>, <span class="fl">48.5</span><span class="op">)</span></span>
+<span><span class="va">peso_uomini</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">67.8</span>, <span class="fl">60</span>, <span class="fl">63.4</span>, <span class="fl">76</span>, <span class="fl">89.4</span>, <span class="fl">73.3</span>, <span class="fl">67.3</span>, <span class="fl">61.3</span>, <span class="fl">62.4</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">weight</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">women_weight</span>, <span class="va">men_weight</span><span class="op">)</span></span>
-<span><span class="va">is_female</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">9</span><span class="op">)</span>  <span class="co"># 1 = Femmina, 0 = Maschio</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Donne:\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Donne:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  Media:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">peso_donne</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"kg\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Media: 52.1 kg</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  Dev. std:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">peso_donne</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"kg\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Dev. std: 15.6 kg</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  n:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">peso_donne</span><span class="op">)</span>, <span class="st">"\n\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   n: 9</span></span>
 <span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>is_female <span class="op">=</span> <span class="va">is_female</span>, weight <span class="op">=</span> <span class="va">weight</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Uomini:\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Uomini:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  Media:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">peso_uomini</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"kg\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Media: 69 kg</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  Dev. std:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">peso_uomini</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"kg\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Dev. std: 9.38 kg</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  n:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">peso_uomini</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   n: 9</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Per calcolare manualmente la statistica t:</p>
+<section id="calcolo-manuale" class="level3" data-number="6.3.1"><h3 data-number="6.3.1" class="anchored" data-anchor-id="calcolo-manuale">
+<span class="header-section-number">6.3.1</span> Calcolo manuale</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Estraiamo i pesi per ogni gruppo</span></span>
-<span><span class="va">weight_f</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">$</span><span class="va">weight</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">is_female</span> <span class="op">==</span> <span class="fl">1</span><span class="op">]</span></span>
-<span><span class="va">weight_m</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">$</span><span class="va">weight</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">is_female</span> <span class="op">==</span> <span class="fl">0</span><span class="op">]</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">peso_donne</span><span class="op">)</span></span>
+<span><span class="va">n2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">peso_uomini</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Calcolo della deviazione standard pooled</span></span>
-<span><span class="va">s_pool_num</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">weight_f</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">weight_f</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">weight_m</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">weight_m</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">s_pool_denom</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">weight_f</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">weight_m</span><span class="op">)</span> <span class="op">-</span> <span class="fl">2</span></span>
-<span><span class="va">s_pool</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">s_pool_num</span> <span class="op">/</span> <span class="va">s_pool_denom</span><span class="op">)</span></span>
+<span><span class="va">s_pool</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="op">(</span><span class="va">n1</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">peso_donne</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="va">n2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">peso_uomini</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> </span>
+<span>               <span class="op">(</span><span class="va">n1</span> <span class="op">+</span> <span class="va">n2</span> <span class="op">-</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Calcolo della statistica t</span></span>
-<span><span class="va">t_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">weight_f</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">weight_m</span><span class="op">)</span></span>
-<span><span class="va">t_denom</span> <span class="op">&lt;-</span> <span class="va">s_pool</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">weight_f</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">weight_m</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="cn">T</span> <span class="op">&lt;-</span> <span class="va">t_num</span> <span class="op">/</span> <span class="va">t_denom</span></span>
-<span><span class="cn">T</span></span>
-<span><span class="co">#&gt; [1] -2.78</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="va">t_stat</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">peso_donne</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">peso_uomini</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> </span>
+<span>          <span class="op">(</span><span class="va">s_pool</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fl">1</span><span class="op">/</span><span class="va">n2</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">n1</span> <span class="op">+</span> <span class="va">n2</span> <span class="op">-</span> <span class="fl">2</span></span>
+<span></span>
+<span><span class="va">p_value</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">t_stat</span><span class="op">)</span>, df <span class="op">=</span> <span class="va">df</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Deviazione standard pooled:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">s_pool</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Deviazione standard pooled: 12.9</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Statistica t:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">t_stat</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Statistica t: -2.78</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Gradi di libertà:"</span>, <span class="va">df</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Gradi di libertà: 16</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"P-value:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">p_value</span>, <span class="fl">4</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; P-value: 0.0133</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section><section id="utilizzo-di-t.test" class="level3" data-number="6.3.2"><h3 data-number="6.3.2" class="anchored" data-anchor-id="utilizzo-di-t.test">
+<span class="header-section-number">6.3.2</span> Utilizzo di <code>t.test()</code>
+</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Gradi di libertà</span></span>
-<span><span class="va">df_degrees</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">weight_f</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">weight_m</span><span class="op">)</span> <span class="op">-</span> <span class="fl">2</span></span>
-<span><span class="va">df_degrees</span></span>
-<span><span class="co">#&gt; [1] 16</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calcolo del valore-p</span></span>
-<span><span class="va">p_value</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="cn">T</span><span class="op">)</span>, df <span class="op">=</span> <span class="va">df_degrees</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">p_value</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.0133</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>In alternativa, possiamo usare la funzione <code>t.test</code> di R:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">weight_f</span>, <span class="va">weight_m</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">res</span>, digits <span class="op">=</span> <span class="fl">7</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">peso_donne</span>, <span class="va">peso_uomini</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Two Sample t-test</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; data:  weight_f and weight_m</span></span>
-<span><span class="co">#&gt; t = -2.7842, df = 16, p-value = 0.01327</span></span>
+<span><span class="co">#&gt; data:  peso_donne and peso_uomini</span></span>
+<span><span class="co">#&gt; t = -3, df = 16, p-value = 0.01</span></span>
 <span><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
 <span><span class="co">#&gt; 95 percent confidence interval:</span></span>
-<span><span class="co">#&gt;  -29.748019  -4.029759</span></span>
+<span><span class="co">#&gt;  -29.75  -4.03</span></span>
 <span><span class="co">#&gt; sample estimates:</span></span>
 <span><span class="co">#&gt; mean of x mean of y </span></span>
-<span><span class="co">#&gt;  52.10000  68.98889</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt;      52.1      69.0</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="interpretazione-dei-risultati" class="level3" data-number="7.6.1"><h3 data-number="7.6.1" class="anchored" data-anchor-id="interpretazione-dei-risultati">
-<span class="header-section-number">7.6.1</span> Interpretazione dei Risultati</h3>
-<p>Il test t di Student ha generato un valore-p inferiore a 0.05, indicando che la differenza osservata tra i pesi medi delle donne e degli uomini è statisticamente significativa. Questo significa che, con un livello di confidenza del 95%, possiamo rifiutare l’ipotesi nulla secondo cui le medie dei due gruppi sono uguali.</p>
-<p>È importante ricordare che un basso valore-p suggerisce che la differenza osservata non è dovuta al caso. Tuttavia, ciò non prova automaticamente una relazione causale; piuttosto, apre la strada ad ulteriori indagini sulle cause della differenza.</p>
-</section><section id="riportare-i-risultati" class="level3" data-number="7.6.2"><h3 data-number="7.6.2" class="anchored" data-anchor-id="riportare-i-risultati">
-<span class="header-section-number">7.6.2</span> Riportare i Risultati</h3>
-<p>Quando si riportano i risultati di un test t, è fondamentale adottare pratiche che favoriscano una comprensione approfondita e accurata dei dati. Di seguito viene presentato un confronto tra due versioni dei risultati: una da evitare, che si basa su un’interpretazione tradizionale della significatività statistica, e una versione migliorata che enfatizza l’intervallo di confidenza e l’ampiezza dell’effetto.</p>
-<section id="versione-da-evitare" class="level4" data-number="7.6.2.1"><h4 data-number="7.6.2.1" class="anchored" data-anchor-id="versione-da-evitare">
-<span class="header-section-number">7.6.2.1</span> Versione da Evitare</h4>
-<p>La seguente formulazione segue un approccio tradizionale incentrato sulla “significatività statistica,” che è oggi ritenuto inadeguato per una comunicazione efficace dei risultati:</p>
-<blockquote class="blockquote">
-<p>Abbiamo condotto un test t di Student per confrontare le medie dei due gruppi. I risultati mostrano una differenza significativa tra i pesi medi delle donne e degli uomini (t(16) = -2.78, p-value = 0.01). L’intervallo di confidenza al 95% per la differenza delle medie è [-29.75, -4.03]. L’ampiezza dell’effetto, misurata con Cohen’s d, è 1.31, indicando un effetto grande. La potenza statistica del test è stata stimata al 74.4%.</p>
-</blockquote>
-<p>In questa versione, il focus è eccessivamente concentrato sul valore-p, che può portare a interpretazioni riduttive e distorte dei risultati.</p>
-</section><section id="versione-migliorata" class="level4" data-number="7.6.2.2"><h4 data-number="7.6.2.2" class="anchored" data-anchor-id="versione-migliorata">
-<span class="header-section-number">7.6.2.2</span> Versione Migliorata</h4>
-<p>Ecco invece una versione migliore che mantiene un approccio frequentista, ma sposta l’enfasi sull’intervallo di confidenza e sull’ampiezza dell’effetto, offrendo una descrizione più completa e informativa:</p>
-<blockquote class="blockquote">
-<p>È stato condotto un test t di Student per confrontare le medie dei due gruppi. La differenza tra i pesi medi delle donne e degli uomini è stata stimata in <strong>-16.89 kg</strong> (intervallo di confidenza al 95%: <strong>[-29.75, -4.03]</strong>), suggerendo che il peso medio degli uomini sia maggiore rispetto a quello delle donne nel campione analizzato. Questo intervallo indica che, con una fiducia del 95%, la differenza reale tra i pesi medi potrebbe variare tra circa -29.75 kg e -4.03 kg.</p>
-<p>L’ampiezza dell’effetto, misurata con <strong>Cohen’s d = 1.31</strong>, indica una differenza considerevole, equivalente a oltre una deviazione standard. Questo valore suggerisce che la differenza osservata non solo è statisticamente rilevante, ma anche sostanziale dal punto di vista pratico.</p>
-<p>Inoltre, la potenza del test, considerando la dimensione dell’effetto osservata, è pari al <strong>74.4%</strong>, suggerendo che il test ha una buona capacità di rilevare differenze di questa entità nel campione analizzato. Ciò significa che, se una differenza di tale magnitudine fosse presente nella popolazione, esisterebbe una probabilità superiore al 70% di rilevarla correttamente.</p>
-</blockquote>
-<p>Questa modalità di reporting fornisce una descrizione più dettagliata ed esplicativa dei risultati, evitando interpretazioni basate esclusivamente sul valore-p e concentrandosi invece sulla grandezza e sull’incertezza della stima. Tale approccio consente una valutazione più equilibrata e informata dei dati, promuovendo una comprensione più approfondita delle implicazioni pratiche e scientifiche dei risultati ottenuti.</p>
-</section></section></section><section id="riflessioni-conclusive" class="level2" data-number="7.7"><h2 data-number="7.7" class="anchored" data-anchor-id="riflessioni-conclusive">
-<span class="header-section-number">7.7</span> Riflessioni Conclusive</h2>
-<p>Il <strong>test t di Student</strong> è uno strumento statistico ampiamente utilizzato per l’inferenza su una media o per confrontare le medie di due gruppi. È talmente importante che alcuni lo hanno definito <a href="https://www.scientificamerican.com/article/how-the-guinness-brewery-invented-the-most-important-statistical-method-in/"><em>il metodo statistico più importante nella scienza</em></a>. Tuttavia, come osserva <a href="https://statmodeling.stat.columbia.edu/2025/02/10/what-is-the-correct-value-of-x-in-the-sentence-the-t-test-is-the-xth-most-important-statistical-method-in-science/">Andrew Gelman</a>, questa affermazione non va accettata acriticamente. Benché il test t sia semplice ed efficace in molti contesti, presenta notevoli limitazioni che ne riducono l’affidabilità e l’applicabilità quando si affrontano problemi complessi o si desidera una comprensione più approfondita dei dati <span class="citation" data-cites="kruschke2013bayesian">(<a href="#ref-kruschke2013bayesian" role="doc-biblioref">Kruschke, 2013</a>)</span>.</p>
-<section id="limiti-del-test-t-di-student" class="level3" data-number="7.7.1"><h3 data-number="7.7.1" class="anchored" data-anchor-id="limiti-del-test-t-di-student">
-<span class="header-section-number">7.7.1</span> Limiti del Test t di Student</h3>
-<p>Uno dei principali limiti del test t risiede nell’assunzione che i dati seguano una distribuzione normale (gaussiana). Questa assunzione è spesso violata in pratica, specialmente con campioni piccoli o quando i dati presentano asimmetrie o code pesanti. Inoltre, nel caso di campioni indipendenti, il test richiede l’omogeneità delle varianze, un’altra assunzione frequentemente infondata. Quando queste condizioni non sono soddisfatte, il test può fornire risultati distorti, necessitando di correzioni come quella di Welch per gestire differenze di varianza.</p>
-<p>Un ulteriore limite del test t è legato alla sua dipendenza dalla soglia di significatività <span class="math inline">\(\alpha\)</span>, solitamente fissata a 0.05. Questa scelta è arbitraria e può influenzare criticamente le conclusioni. Il test valuta esclusivamente la compatibilità dei dati con l’ipotesi nulla (<span class="math inline">\(H_0\)</span>) e fornisce solo un p-value, senza offrire informazioni dirette sulla plausibilità dell’ipotesi alternativa (<span class="math inline">\(H_1\)</span>). Ciò significa che un p-value basso non garantisce che <span class="math inline">\(H_1\)</span> sia vera o che i dati supportino tale ipotesi.</p>
-</section><section id="lapproccio-bayesiano-una-soluzione-più-potente" class="level3" data-number="7.7.2"><h3 data-number="7.7.2" class="anchored" data-anchor-id="lapproccio-bayesiano-una-soluzione-più-potente">
-<span class="header-section-number">7.7.2</span> L’Approccio Bayesiano: Una Soluzione Più Potente</h3>
-<p>In contrasto con il paradigma frequentista, l’<strong>approccio bayesiano</strong> offre un quadro statistico più flessibile e informativo. Attraverso il teorema di Bayes, è possibile calcolare direttamente la probabilità di un’ipotesi dato l’insieme dei dati osservati. Questo permette di quantificare la forza dell’evidenza a favore di un’ipotesi rispetto alle altre, superando le limitazioni intrinseche del test t.</p>
-<section id="vantaggi-dellapproccio-bayesiano" class="level4" data-number="7.7.2.1"><h4 data-number="7.7.2.1" class="anchored" data-anchor-id="vantaggi-dellapproccio-bayesiano">
-<span class="header-section-number">7.7.2.1</span> Vantaggi dell’Approccio Bayesiano</h4>
-<ol type="1">
-<li><p><strong>Non richiede assunzioni rigide</strong>: A differenza del test t, che si basa su ipotesi restrittive come la normalità e l’omoschedasticità, l’inferenza bayesiana è in grado di gestire modelli più generali e robusti, adattandosi ai dati reali senza doverli forzare in strutture artificiali.</p></li>
-<li><p><strong>Incorporazione delle informazioni pregresse</strong>: L’approccio bayesiano permette di integrare conoscenze pregresse attraverso distribuzioni a priori, migliorando la qualità delle stime e consentendo analisi più realistiche. Questo è particolarmente utile in situazioni dove i dati disponibili sono scarsi o rumorosi.</p></li>
-<li><p><strong>Inferenze più informative</strong>: Al posto di semplici decisioni binarie (“rifiuto” o “non rifiuto” di <span class="math inline">\(H_0\)</span>), il bayesianismo fornisce distribuzioni a posteriori complete, che descrivono l’incertezza sui parametri di interesse. Questo consente inferenze più dettagliate e interpretabili.</p></li>
-<li><p><strong>Gestione della complessità</strong>: L’approccio bayesiano gestisce in modo naturale modelli complessi e gerarchici, rendendolo ideale per analisi avanzate. Ad esempio, Kruschke (2013) dimostra come tecniche bayesiane possano superare le limitazioni del test t anche in presenza di violazioni delle assunzioni classiche, producendo risultati più stabili e affidabili.</p></li>
-</ol></section><section id="implementazione-pratica" class="level4" data-number="7.7.2.2"><h4 data-number="7.7.2.2" class="anchored" data-anchor-id="implementazione-pratica">
-<span class="header-section-number">7.7.2.2</span> Implementazione Pratica</h4>
-<p>Sebbene l’approccio bayesiano richieda una maggiore attenzione nella scelta delle distribuzioni a priori e nella specificazione del modello, l’avvento di software moderni come Stan, PyMC3 e JAGS ha reso l’implementazione di modelli bayesiani sempre più accessibile. Oggi, anche ricercatori con competenze statistiche moderate possono applicare metodi bayesiani per affrontare problemi complessi con maggiore precisione e coerenza.</p>
-</section></section><section id="conclusioni" class="level3" data-number="7.7.3"><h3 data-number="7.7.3" class="anchored" data-anchor-id="conclusioni">
-<span class="header-section-number">7.7.3</span> Conclusioni</h3>
-<p>Il test t di Student rimane un valido strumento per analisi rapide e semplici, ma le sue limitazioni diventano evidenti quando si lavora con dati complessi o si cerca una comprensione più profonda delle relazioni sottostanti. L’approccio bayesiano rappresenta un’evoluzione concettuale e metodologica rispetto all’inferenza frequentista tradizionale, offrendo numerosi vantaggi: inferenze più ricche, integrazione di informazioni pregresse, gestione delle violazioni delle assunzioni e produzione di stime più robuste. Per questi motivi, il paradigma bayesiano è sempre più considerato come la scelta preferibile per chi desidera un’analisi statistica solida, flessibile e informativa.</p>
-<p>In ultima analisi, mentre il test t resta un punto di partenza utile, l’adozione dell’approccio bayesiano permette di avanzare verso una comprensione più completa e accurata dei dati.</p>
-</section></section><section id="informazioni-sullambiente-di-sviluppo" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="informazioni-sullambiente-di-sviluppo">Informazioni sull’Ambiente di Sviluppo</h2>
+</section><section id="test-di-welch" class="level3" data-number="6.3.3"><h3 data-number="6.3.3" class="anchored" data-anchor-id="test-di-welch">
+<span class="header-section-number">6.3.3</span> Test di Welch</h3>
+<p>Il test di Welch è una variante del test <span class="math inline">\(t\)</span> di Student che non richiede l’uguaglianza delle varianze tra i due gruppi. Invece di stimare una varianza <em>pooled</em>, calcola la variabilità separatamente per ciascun gruppo e utilizza una formula adattiva per i gradi di libertà. Ciò rende il test più affidabile quando le varianze sono diverse o quando la dimensione dei campioni è sbilanciata. In R è l’impostazione predefinita.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; R version 4.5.1 (2025-06-13)</span></span>
-<span><span class="co">#&gt; Platform: aarch64-apple-darwin20</span></span>
-<span><span class="co">#&gt; Running under: macOS Tahoe 26.0</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">peso_donne</span>, <span class="va">peso_uomini</span>, var.equal <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Matrix products: default</span></span>
-<span><span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib </span></span>
-<span><span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1</span></span>
+<span><span class="co">#&gt;  Welch Two Sample t-test</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; locale:</span></span>
-<span><span class="co">#&gt; [1] C.UTF-8/UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; time zone: Europe/Rome</span></span>
-<span><span class="co">#&gt; tzcode source: internal</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; attached base packages:</span></span>
-<span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] mice_3.18.0           pillar_1.11.1         tinytable_0.13.0     </span></span>
-<span><span class="co">#&gt;  [4] patchwork_1.3.2       ggdist_3.3.3          tidybayes_3.0.7      </span></span>
-<span><span class="co">#&gt;  [7] bayesplot_1.14.0      ggplot2_4.0.0         reliabilitydiag_0.2.1</span></span>
-<span><span class="co">#&gt; [10] priorsense_1.1.1      posterior_1.6.1       loo_2.8.0            </span></span>
-<span><span class="co">#&gt; [13] rstan_2.32.7          StanHeaders_2.32.10   brms_2.23.0          </span></span>
-<span><span class="co">#&gt; [16] Rcpp_1.1.0            sessioninfo_1.2.3     conflicted_1.2.0     </span></span>
-<span><span class="co">#&gt; [19] janitor_2.2.1         matrixStats_1.5.0     modelr_0.1.11        </span></span>
-<span><span class="co">#&gt; [22] tibble_3.3.0          dplyr_1.1.4           tidyr_1.3.1          </span></span>
-<span><span class="co">#&gt; [25] rio_1.2.3             here_1.0.2           </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;  [1] Rdpack_2.6.4          gridExtra_2.3         inline_0.3.21        </span></span>
-<span><span class="co">#&gt;  [4] sandwich_3.1-1        rlang_1.1.6           magrittr_2.0.4       </span></span>
-<span><span class="co">#&gt;  [7] multcomp_1.4-28       snakecase_0.11.1      compiler_4.5.1       </span></span>
-<span><span class="co">#&gt; [10] systemfonts_1.2.3     vctrs_0.6.5           stringr_1.5.2        </span></span>
-<span><span class="co">#&gt; [13] shape_1.4.6.1         pkgconfig_2.0.3       arrayhelpers_1.1-0   </span></span>
-<span><span class="co">#&gt; [16] fastmap_1.2.0         backports_1.5.0       rmarkdown_2.29       </span></span>
-<span><span class="co">#&gt; [19] nloptr_2.2.1          ragg_1.5.0            purrr_1.1.0          </span></span>
-<span><span class="co">#&gt; [22] jomo_2.7-6            xfun_0.53             glmnet_4.1-10        </span></span>
-<span><span class="co">#&gt; [25] cachem_1.1.0          jsonlite_2.0.0        pan_1.9              </span></span>
-<span><span class="co">#&gt; [28] broom_1.0.10          parallel_4.5.1        R6_2.6.1             </span></span>
-<span><span class="co">#&gt; [31] stringi_1.8.7         RColorBrewer_1.1-3    rpart_4.1.24         </span></span>
-<span><span class="co">#&gt; [34] boot_1.3-32           lubridate_1.9.4       estimability_1.5.1   </span></span>
-<span><span class="co">#&gt; [37] iterators_1.0.14      knitr_1.50            zoo_1.8-14           </span></span>
-<span><span class="co">#&gt; [40] pacman_0.5.1          nnet_7.3-20           Matrix_1.7-4         </span></span>
-<span><span class="co">#&gt; [43] splines_4.5.1         timechange_0.3.0      tidyselect_1.2.1     </span></span>
-<span><span class="co">#&gt; [46] abind_1.4-8           codetools_0.2-20      curl_7.0.0           </span></span>
-<span><span class="co">#&gt; [49] pkgbuild_1.4.8        lattice_0.22-7        withr_3.0.2          </span></span>
-<span><span class="co">#&gt; [52] bridgesampling_1.1-2  S7_0.2.0              coda_0.19-4.1        </span></span>
-<span><span class="co">#&gt; [55] evaluate_1.0.5        survival_3.8-3        RcppParallel_5.1.11-1</span></span>
-<span><span class="co">#&gt; [58] tensorA_0.36.2.1      checkmate_2.3.3       foreach_1.5.2        </span></span>
-<span><span class="co">#&gt; [61] stats4_4.5.1          reformulas_0.4.1      distributional_0.5.0 </span></span>
-<span><span class="co">#&gt; [64] generics_0.1.4        rprojroot_2.1.1       rstantools_2.5.0     </span></span>
-<span><span class="co">#&gt; [67] scales_1.4.0          minqa_1.2.8           xtable_1.8-4         </span></span>
-<span><span class="co">#&gt; [70] glue_1.8.0            emmeans_1.11.2-8      tools_4.5.1          </span></span>
-<span><span class="co">#&gt; [73] lme4_1.1-37           mvtnorm_1.3-3         grid_4.5.1           </span></span>
-<span><span class="co">#&gt; [76] rbibutils_2.3         QuickJSR_1.8.0        colorspace_2.1-1     </span></span>
-<span><span class="co">#&gt; [79] nlme_3.1-168          cli_3.6.5             textshaping_1.0.3    </span></span>
-<span><span class="co">#&gt; [82] svUnit_1.0.8          Brobdingnag_1.2-9     V8_7.0.0             </span></span>
-<span><span class="co">#&gt; [85] gtable_0.3.6          digest_0.6.37         TH.data_1.1-4        </span></span>
-<span><span class="co">#&gt; [88] htmlwidgets_1.6.4     farver_2.1.2          memoise_2.0.1        </span></span>
-<span><span class="co">#&gt; [91] htmltools_0.5.8.1     lifecycle_1.0.4       mitml_0.4-5          </span></span>
-<span><span class="co">#&gt; [94] MASS_7.3-65</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; data:  peso_donne and peso_uomini</span></span>
+<span><span class="co">#&gt; t = -3, df = 13, p-value = 0.02</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;  -30.0  -3.8</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt; mean of x mean of y </span></span>
+<span><span class="co">#&gt;      52.1      69.0</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="bibliografia" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="bibliografia">Bibliografia</h2>
+</section></section><section id="interpretazione-dei-risultati" class="level2" data-number="6.4"><h2 data-number="6.4" class="anchored" data-anchor-id="interpretazione-dei-risultati">
+<span class="header-section-number">6.4</span> Interpretazione dei risultati</h2>
+<p>Il confronto mostra un valore-<span class="math inline">\(p\)</span> di circa, il che suggerisce che la differenza tra le medie osservate sarebbe difficilmente attribuibile alla sola variabilità campionaria, se si assume l’ipotesi nulla. Per un’interpretazione completa, è però necessario considerare anche l’intervallo di confidenza sulla differenza e la grandezza dell’effetto, che aiutano a valutare la rilevanza pratica del risultato.</p>
+<section id="dimensione-delleffetto-d-di-cohen" class="level3" data-number="6.4.1"><h3 data-number="6.4.1" class="anchored" data-anchor-id="dimensione-delleffetto-d-di-cohen">
+<span class="header-section-number">6.4.1</span> Dimensione dell’effetto: <span class="math inline">\(d\)</span> di Cohen</h3>
+<p>La grandezza della differenza in unità di deviazione standard può essere espressa tramite il <span class="math inline">\(d\)</span> di Cohen:</p>
+<p><span class="math display">\[
+d = \frac{\bar{X}_1 - \bar{X}_2}{s_p}.
+\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cohens_d</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">peso_donne</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">peso_uomini</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="va">s_pool</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Cohen's d:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">cohens_d</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Cohen's d: -1.31</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Un valore pari a 1.31 indica una differenza molto ampia tra i gruppi.</p>
+</section><section id="intervallo-di-confidenza-per-la-differenza" class="level3" data-number="6.4.2"><h3 data-number="6.4.2" class="anchored" data-anchor-id="intervallo-di-confidenza-per-la-differenza">
+<span class="header-section-number">6.4.2</span> Intervallo di confidenza per la differenza</h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">test_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">peso_donne</span>, <span class="va">peso_uomini</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Differenza delle medie:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">test_result</span><span class="op">$</span><span class="va">estimate</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="va">test_result</span><span class="op">$</span><span class="va">estimate</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"kg\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Differenza delle medie: -16.9 kg</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"IC al 95%: ["</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">test_result</span><span class="op">$</span><span class="va">conf.int</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">", "</span>, </span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">test_result</span><span class="op">$</span><span class="va">conf.int</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"] kg\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; IC al 95%: [ -29.8 ,  -4.03 ] kg</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section></section><section id="come-riportare-i-risultati" class="level2" data-number="6.5"><h2 data-number="6.5" class="anchored" data-anchor-id="come-riportare-i-risultati">
+<span class="header-section-number">6.5</span> Come riportare i risultati</h2>
+<section id="versione-sconsigliata" class="level3" data-number="6.5.1"><h3 data-number="6.5.1" class="anchored" data-anchor-id="versione-sconsigliata">
+<span class="header-section-number">6.5.1</span> Versione sconsigliata</h3>
+<p>Una formulazione che si limiti a riportare la sola significatività statistica fornisce un resoconto incompleto:</p>
+<blockquote class="blockquote">
+<p>“I risultati mostrano una differenza significativa tra i pesi medi delle donne e degli uomini (<span class="math inline">\(t\)</span>(16) = −2.78, <span class="math inline">\(p\)</span> = 0.01).”</p>
+</blockquote>
+</section><section id="versione-consigliata" class="level3" data-number="6.5.2"><h3 data-number="6.5.2" class="anchored" data-anchor-id="versione-consigliata">
+<span class="header-section-number">6.5.2</span> Versione consigliata</h3>
+<p>Una comunicazione completa è più trasparente e più informativa:</p>
+<blockquote class="blockquote">
+<p>“Il peso medio delle donne (<span class="math inline">\(M\)</span> = 52.1 kg, <span class="math inline">\(DS\)</span> = 15.6) risulta inferiore a quello degli uomini (<span class="math inline">\(M\)</span> = 69.0 kg, <span class="math inline">\(DS\)</span> = 9.0) di 16.9 kg (<span class="math inline">\(IC\)</span> 95%: [4.0, 29.8]). La differenza è associata a una dimensione dell’effetto molto ampia (<span class="math inline">\(d\)</span> = 1.31).”</p>
+</blockquote>
+<p>Questa forma integra statistiche descrittive, stima puntuale, intervallo di confidenza e grandezza dell’effetto, offrendo un quadro più completo.</p>
+</section></section><section id="limiti-del-test-t" class="level2" data-number="6.6"><h2 data-number="6.6" class="anchored" data-anchor-id="limiti-del-test-t">
+<span class="header-section-number">6.6</span> Limiti del test <span class="math inline">\(t\)</span>
+</h2>
+<p>Il test t si fonda su assunzioni che, se violate, possono alterare l’affidabilità dei risultati. La procedura conduce inoltre a una decisione dicotomica basata su una soglia arbitraria e non consente di quantificare l’evidenza empirica a favore dell’ipotesi nulla. La sensibilità alla dimensione campionaria è marcata: con campioni molto grandi, differenze minime risultano rilevabili; con campioni piccoli, differenze sostanziali possono non emergere.</p>
+</section><section id="lalternativa-bayesiana" class="level2" data-number="6.7"><h2 data-number="6.7" class="anchored" data-anchor-id="lalternativa-bayesiana">
+<span class="header-section-number">6.7</span> L’alternativa bayesiana</h2>
+<p>L’approccio bayesiano, come discusso da <span class="citation" data-cites="kruschke2013bayesian">Kruschke (<a href="#ref-kruschke2013bayesian" role="doc-biblioref">2013</a>)</span>, rappresenta una valida alternativa. Fornisce distribuzioni posteriori complete, consente di esprimere direttamente le probabilità delle ipotesi, integra le informazioni pregresse, gestisce gli outlier con modelli più flessibili e permette di quantificare in modo simmetrico l’evidenza a favore di ciascuna ipotesi tramite il fattore di Bayes.</p>
+</section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
+<p>Il test <span class="math inline">\(t\)</span> di Student è una procedura statistica ampiamente utilizzata in ambito frequentista per il confronto delle medie tra due gruppi. La sua utilità pratica viene migliorata quando l’esito del test viene interpretato in modo integrato, affiancando al valore di significatività statistica l’analisi degli intervalli di confidenza e la stima dell’entità dell’effetto. Questo approccio consente una valutazione più completa che distingue la rilevanza pratica dalla mera significatività campionaria.</p>
+<p>La struttura decisionale del test, di tipo dicotomico e basata su soglie arbitrarie, presenta dei limiti di rigidità che sono stati ampiamente discussi in letteratura. Queste criticità, insieme all’interpretazione spesso ambigua del valore-<span class="math inline">\(p\)</span>, evidenziano la necessità di integrare o affiancare a questo approccio metodologie statistiche che forniscano una quantificazione più diretta e informativa dell’incertezza. Di conseguenza, l’adozione di paradigmi alternativi, in particolare quello bayesiano, rappresenta una risposta metodologicamente migliore e concettualmente più solida.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Preparazione del Notebook">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Attenzione</span>Preparazione del Notebook
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="bibliografia" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="bibliografia">Bibliografia</h2>
 
+
+<!-- -->
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-kruschke2013bayesian" class="csl-entry" role="listitem">
@@ -630,6 +711,19 @@ Kruschke, J. K. (2013). Bayesian estimation supersedes the t test. <em>Journal o
 </div>
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -698,6 +792,57 @@ Kruschke, J. K. (2013). Bayesian estimation supersedes the t test. <em>Journal o
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -1036,7 +1181,7 @@ Kruschke, J. K. (2013). Bayesian estimation supersedes the t test. <em>Journal o
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../chapters/frequentist_inference/05_test_ipotesi.html" class="pagination-link" aria-label="Significatività statistica">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Significatività statistica</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Significatività statistica</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -1044,7 +1189,187 @@ Kruschke, J. K. (2013). Bayesian estimation supersedes the t test. <em>Journal o
         <span class="nav-page-text">Considerazioni Conclusive</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Eseguire il codice</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Test t di Student per campioni indipendenti {#sec-freq-two-samples}</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>::: {.callout-note appearance="minimal"}</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>Il <span class="co">[</span><span class="ot">test t di Student</span><span class="co">](https://www.scientificamerican.com/article/how-the-guinness-brewery-invented-the-most-important-statistical-method-in/)</span> per campioni indipendenti è uno strumento fondamentale nella ricerca psicologica. Consente di confrontare le medie di due gruppi e di valutare se la differenza osservata possa essere attribuita semplicemente alla variabilità campionaria oppure rifletta una reale differenza tra le popolazioni da cui i campioni provengono.</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>::: callout-important</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## In questo capitolo imparerai a</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>eseguire un test t di Student per confrontare le medie di due gruppi indipendenti;</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>interpretare correttamente i risultati, includendo intervalli di confidenza e dimensione dell’effetto;</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>comprendere i limiti del test e le principali alternative.</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prerequisiti</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Conoscere la logica generale del test di ipotesi.</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>Leggere *Bayesian estimation supersedes the t test* <span class="co">[</span><span class="ot">@kruschke2013bayesian</span><span class="co">]</span>.</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>::: {.callout-caution collapse=true title="Preparazione del Notebook"}</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"_common.R"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">source</span>()</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Assunzioni del test</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>Nel confronto tra due gruppi indipendenti, il test $t$ di Student richiede che le osservazioni siano indipendenti tra loro, che ciascun gruppo provenga da una popolazione che può essere ragionevolmente approssimata con una distribuzione normale e che le varianze delle due popolazioni siano uguali. Quando quest’ultima condizione non è plausibile, si utilizza la variante proposta da Welch, che corregge la statistica test e i gradi di libertà senza richiedere omoschedasticità.</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="fu">## Formulazione del test</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="fu">### Ipotesi</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>L’ipotesi nulla afferma che le due popolazioni abbiano la stessa media, cioè $H_0: \mu_1 = \mu_2$. L’ipotesi alternativa considera la possibilità che le medie differiscano, $H_1: \mu_1 \neq \mu_2$.</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="fu">### Statistica test</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>La statistica t confronta la differenza tra le due medie con la variabilità attesa sotto l’ipotesi nulla. La formula è:</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>t = \frac{\bar{X}_1 - \bar{X}_2}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}},</span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>dove $s_p$ è la deviazione standard pooled:</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>s_p = \sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}}.</span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>Sotto l’ipotesi nulla, la statistica $t$ segue una distribuzione $t$ di Student con $n_1 + n_2 - 2$ gradi di libertà.</span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## Esempio pratico</span></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>Consideriamo un confronto tra il peso corporeo di un gruppo di donne e un gruppo di uomini.</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>peso_donne <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">38.9</span>, <span class="fl">61.2</span>, <span class="fl">73.3</span>, <span class="fl">21.8</span>, <span class="fl">63.4</span>, <span class="fl">64.6</span>, <span class="fl">48.4</span>, <span class="fl">48.8</span>, <span class="fl">48.5</span>)</span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>peso_uomini <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">67.8</span>, <span class="dv">60</span>, <span class="fl">63.4</span>, <span class="dv">76</span>, <span class="fl">89.4</span>, <span class="fl">73.3</span>, <span class="fl">67.3</span>, <span class="fl">61.3</span>, <span class="fl">62.4</span>)</span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Donne:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"  Media:"</span>, <span class="fu">round</span>(<span class="fu">mean</span>(peso_donne), <span class="dv">2</span>), <span class="st">"kg</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"  Dev. std:"</span>, <span class="fu">round</span>(<span class="fu">sd</span>(peso_donne), <span class="dv">2</span>), <span class="st">"kg</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"  n:"</span>, <span class="fu">length</span>(peso_donne), <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Uomini:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"  Media:"</span>, <span class="fu">round</span>(<span class="fu">mean</span>(peso_uomini), <span class="dv">2</span>), <span class="st">"kg</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"  Dev. std:"</span>, <span class="fu">round</span>(<span class="fu">sd</span>(peso_uomini), <span class="dv">2</span>), <span class="st">"kg</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"  n:"</span>, <span class="fu">length</span>(peso_uomini), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a><span class="fu">### Calcolo manuale</span></span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">length</span>(peso_donne)</span>
+<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="fu">length</span>(peso_uomini)</span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>s_pool <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(((n1 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">var</span>(peso_donne) <span class="sc">+</span> (n2 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">var</span>(peso_uomini)) <span class="sc">/</span> </span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>               (n1 <span class="sc">+</span> n2 <span class="sc">-</span> <span class="dv">2</span>))</span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a>t_stat <span class="ot">&lt;-</span> (<span class="fu">mean</span>(peso_donne) <span class="sc">-</span> <span class="fu">mean</span>(peso_uomini)) <span class="sc">/</span> </span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a>          (s_pool <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">/</span>n1 <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n2))</span>
+<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> n1 <span class="sc">+</span> n2 <span class="sc">-</span> <span class="dv">2</span></span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(<span class="fu">abs</span>(t_stat), <span class="at">df =</span> df, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Deviazione standard pooled:"</span>, <span class="fu">round</span>(s_pool, <span class="dv">2</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Statistica t:"</span>, <span class="fu">round</span>(t_stat, <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Gradi di libertà:"</span>, df, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"P-value:"</span>, <span class="fu">round</span>(p_value, <span class="dv">4</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a><span class="fu">### Utilizzo di `t.test()`</span></span>
+<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(peso_donne, peso_uomini, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test di Welch</span></span>
+<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a>Il test di Welch è una variante del test $t$ di Student che non richiede l’uguaglianza delle varianze tra i due gruppi. Invece di stimare una varianza *pooled*, calcola la variabilità separatamente per ciascun gruppo e utilizza una formula adattiva per i gradi di libertà. Ciò rende il test più affidabile quando le varianze sono diverse o quando la dimensione dei campioni è sbilanciata. In R è l'impostazione predefinita.</span>
+<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(peso_donne, peso_uomini, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a><span class="fu">## Interpretazione dei risultati</span></span>
+<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>Il confronto mostra un valore-$p$ di circa, il che suggerisce che la differenza tra le medie osservate sarebbe difficilmente attribuibile alla sola variabilità campionaria, se si assume l’ipotesi nulla. Per un'interpretazione completa, è però necessario considerare anche l'intervallo di confidenza sulla differenza e la grandezza dell'effetto, che aiutano a valutare la rilevanza pratica del risultato.</span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a><span class="fu">### Dimensione dell’effetto: $d$ di Cohen</span></span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a>La grandezza della differenza in unità di deviazione standard può essere espressa tramite il $d$ di Cohen:</span>
+<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a>d = \frac{\bar{X}_1 - \bar{X}_2}{s_p}.</span>
+<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a>cohens_d <span class="ot">&lt;-</span> (<span class="fu">mean</span>(peso_donne) <span class="sc">-</span> <span class="fu">mean</span>(peso_uomini)) <span class="sc">/</span> s_pool</span>
+<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Cohen's d:"</span>, <span class="fu">round</span>(cohens_d, <span class="dv">2</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a>Un valore pari a 1.31 indica una differenza molto ampia tra i gruppi.</span>
+<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a><span class="fu">### Intervallo di confidenza per la differenza</span></span>
+<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a>test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(peso_donne, peso_uomini, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Differenza delle medie:"</span>, <span class="fu">round</span>(test_result<span class="sc">$</span>estimate[<span class="dv">1</span>] <span class="sc">-</span> test_result<span class="sc">$</span>estimate[<span class="dv">2</span>], <span class="dv">2</span>), <span class="st">"kg</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"IC al 95%: ["</span>, <span class="fu">round</span>(test_result<span class="sc">$</span>conf.int[<span class="dv">1</span>], <span class="dv">2</span>), <span class="st">", "</span>, </span>
+<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(test_result<span class="sc">$</span>conf.int[<span class="dv">2</span>], <span class="dv">2</span>), <span class="st">"] kg</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a><span class="fu">## Come riportare i risultati</span></span>
+<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a><span class="fu">### Versione sconsigliata</span></span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a>Una formulazione che si limiti a riportare la sola significatività statistica fornisce un resoconto incompleto:</span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; "I risultati mostrano una differenza significativa tra i pesi medi delle donne e degli uomini ($t$(16) = −2.78, $p$ = 0.01)."</span></span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a><span class="fu">### Versione consigliata</span></span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a>Una comunicazione completa è più trasparente e più informativa:</span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; "Il peso medio delle donne ($M$ = 52.1 kg, $DS$ = 15.6) risulta inferiore a quello degli uomini ($M$ = 69.0 kg, $DS$ = 9.0) di 16.9 kg ($IC$ 95%: </span><span class="co">[</span><span class="ot">4.0, 29.8</span><span class="co">]</span><span class="at">). La differenza è associata a una dimensione dell’effetto molto ampia ($d$ = 1.31)."</span></span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a>Questa forma integra statistiche descrittive, stima puntuale, intervallo di confidenza e grandezza dell’effetto, offrendo un quadro più completo.</span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a><span class="fu">## Limiti del test $t$</span></span>
+<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a>Il test t si fonda su assunzioni che, se violate, possono alterare l’affidabilità dei risultati. La procedura conduce inoltre a una decisione dicotomica basata su una soglia arbitraria e non consente di quantificare l’evidenza empirica a favore dell’ipotesi nulla. La sensibilità alla dimensione campionaria è marcata: con campioni molto grandi, differenze minime risultano rilevabili; con campioni piccoli, differenze sostanziali possono non emergere.</span>
+<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-174"><a href="#cb9-174" aria-hidden="true" tabindex="-1"></a><span class="fu">## L’alternativa bayesiana</span></span>
+<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a>L’approccio bayesiano, come discusso da @kruschke2013bayesian, rappresenta una valida alternativa. Fornisce distribuzioni posteriori complete, consente di esprimere direttamente le probabilità delle ipotesi, integra le informazioni pregresse, gestisce gli outlier con modelli più flessibili e permette di quantificare in modo simmetrico l’evidenza a favore di ciascuna ipotesi tramite il fattore di Bayes.</span>
+<span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a><span class="fu">## Riflessioni conclusive {.unnumbered .unlisted}</span></span>
+<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a>Il test $t$ di Student è una procedura statistica ampiamente utilizzata in ambito frequentista per il confronto delle medie tra due gruppi. La sua utilità pratica viene migliorata quando l’esito del test viene interpretato in modo integrato, affiancando al valore di significatività statistica l’analisi degli intervalli di confidenza e la stima dell’entità dell’effetto. Questo approccio consente una valutazione più completa che distingue la rilevanza pratica dalla mera significatività campionaria.</span>
+<span id="cb9-181"><a href="#cb9-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a>La struttura decisionale del test, di tipo dicotomico e basata su soglie arbitrarie, presenta dei limiti di rigidità che sono stati ampiamente discussi in letteratura. Queste criticità, insieme all'interpretazione spesso ambigua del valore-$p$, evidenziano la necessità di integrare o affiancare a questo approccio metodologie statistiche che forniscano una quantificazione più diretta e informativa dell'incertezza. Di conseguenza, l'adozione di paradigmi alternativi, in particolare quello bayesiano, rappresenta una risposta metodologicamente migliore e concettualmente più solida.</span>
+<span id="cb9-183"><a href="#cb9-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a>::: {.callout-caution collapse=true title="Preparazione del Notebook"}</span>
+<span id="cb9-185"><a href="#cb9-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-189"><a href="#cb9-189" aria-hidden="true" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"_common.R"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-190"><a href="#cb9-190" aria-hidden="true" tabindex="-1"></a>  <span class="fu">source</span>()</span>
+<span id="cb9-191"><a href="#cb9-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb9-193"><a href="#cb9-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a><span class="fu">## Bibliografia {.unnumbered .unlisted}</span></span>
+</code></pre></div><button title="Copia negli appunti" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">

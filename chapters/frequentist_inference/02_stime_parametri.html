@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.26">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>3&nbsp; Stime, stimatori e parametri – Inferenza frequentista in psicologia</title>
 <style>
@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-af5d064118ae80f4bafc3d843c3c3870.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
@@ -150,9 +150,7 @@ window.Quarto = {
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../index.html" class="sidebar-logo-link">
-      </a>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Inferenza frequentista in psicologia</a> 
         <div class="sidebar-tools-main">
@@ -202,7 +200,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/01_galton.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Inferenza frequentista</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Origini storiche dell’approccio frequentista</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -262,15 +260,12 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
-<li><a href="#introduzione" id="toc-introduzione" class="nav-link active" data-scroll-target="#introduzione"><span class="header-section-number">3.1</span> Introduzione</a></li>
-  <li><a href="#stime-stimatori-e-parametri" id="toc-stime-stimatori-e-parametri" class="nav-link" data-scroll-target="#stime-stimatori-e-parametri"><span class="header-section-number">3.2</span> Stime, stimatori e parametri</a></li>
-  <li><a href="#distribuzione-campionaria" id="toc-distribuzione-campionaria" class="nav-link" data-scroll-target="#distribuzione-campionaria"><span class="header-section-number">3.3</span> Distribuzione campionaria</a></li>
-  <li><a href="#propriet%C3%A0-della-distribuzione-campionaria" id="toc-proprietà-della-distribuzione-campionaria" class="nav-link" data-scroll-target="#propriet%C3%A0-della-distribuzione-campionaria"><span class="header-section-number">3.4</span> Proprietà della distribuzione campionaria</a></li>
-  <li><a href="#teorema-del-limite-centrale" id="toc-teorema-del-limite-centrale" class="nav-link" data-scroll-target="#teorema-del-limite-centrale"><span class="header-section-number">3.5</span> Teorema del Limite Centrale</a></li>
-  <li><a href="#distribuzioni-campionarie-di-altre-statistiche" id="toc-distribuzioni-campionarie-di-altre-statistiche" class="nav-link" data-scroll-target="#distribuzioni-campionarie-di-altre-statistiche"><span class="header-section-number">3.6</span> Distribuzioni campionarie di altre statistiche</a></li>
-  <li><a href="#riflessioni-conclusive" id="toc-riflessioni-conclusive" class="nav-link" data-scroll-target="#riflessioni-conclusive"><span class="header-section-number">3.7</span> Riflessioni Conclusive</a></li>
-  <li><a href="#esercizi" id="toc-esercizi" class="nav-link" data-scroll-target="#esercizi">Esercizi</a></li>
-  <li><a href="#informazioni-sullambiente-di-sviluppo" id="toc-informazioni-sullambiente-di-sviluppo" class="nav-link" data-scroll-target="#informazioni-sullambiente-di-sviluppo">Informazioni sull’Ambiente di Sviluppo</a></li>
+<li><a href="#concetti-di-base" id="toc-concetti-di-base" class="nav-link active" data-scroll-target="#concetti-di-base"><span class="header-section-number">3.1</span> Concetti di base</a></li>
+  <li><a href="#distribuzione-campionaria" id="toc-distribuzione-campionaria" class="nav-link" data-scroll-target="#distribuzione-campionaria"><span class="header-section-number">3.2</span> Distribuzione campionaria</a></li>
+  <li><a href="#il-teorema-del-limite-centrale" id="toc-il-teorema-del-limite-centrale" class="nav-link" data-scroll-target="#il-teorema-del-limite-centrale"><span class="header-section-number">3.3</span> Il teorema del limite centrale</a></li>
+  <li><a href="#errore-standard" id="toc-errore-standard" class="nav-link" data-scroll-target="#errore-standard"><span class="header-section-number">3.4</span> Errore Standard</a></li>
+  <li><a href="#implicazioni-per-linferenza" id="toc-implicazioni-per-linferenza" class="nav-link" data-scroll-target="#implicazioni-per-linferenza"><span class="header-section-number">3.5</span> Implicazioni per l’inferenza</a></li>
+  <li><a href="#riflessioni-conclusive" id="toc-riflessioni-conclusive" class="nav-link" data-scroll-target="#riflessioni-conclusive"><span class="header-section-number">3.6</span> Riflessioni conclusive</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/02_stime_parametri.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -289,7 +284,17 @@ window.Quarto = {
   
 
 
-</header><div class="callout callout-style-simple callout-important no-icon callout-titled">
+</header><div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>In questo capitolo ci concentreremo sul concetto di <strong>distribuzione campionaria</strong>, uno dei pilastri dell’inferenza statistica frequentista. La distribuzione campionaria descrive come le stime dei parametri della popolazione variano da campione a campione e permette di stabilire proprietà probabilistiche delle stime campionarie, fondamentali per costruire intervalli di confidenza e condurre test di ipotesi.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -300,10 +305,9 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Comprendere il concetto di distribuzione campionaria.</li>
-<li>Familiarizzare con le proprietà della distribuzione campionaria della media dei campioni.</li>
-<li>Comprendere il teorema del limite centrale.</li>
-<li>Acquisire conoscenze sulle proprietà della distribuzione campionaria della varianza.</li>
+<li>comprendere il concetto di distribuzione campionaria;</li>
+<li>familiarizzare con le proprietà della distribuzione campionaria della media;</li>
+<li>comprendere il teorema del limite centrale e le sue implicazioni.</li>
 </ul>
 </div>
 </div>
@@ -319,18 +323,21 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <ul>
 <li>Leggere il capitolo <em>Sampling</em> di <a href="https://moderndive.com/v2/">Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (Second Edition)</a>.</li>
+<li>Consultare il modulo sulla probabilità per i concetti di variabili casuali, valore atteso e varianza.</li>
 </ul>
 </div>
 </div>
-<div class="callout callout-style-simple callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-caution no-icon callout-titled" title="Preparazione del Notebook">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Attenzione</span>Preparazione del Notebook
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -338,1478 +345,216 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="introduzione" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="introduzione">
-<span class="header-section-number">3.1</span> Introduzione</h2>
-<p>In questo capitolo, ci concentreremo sul concetto di <strong>distribuzione campionaria</strong>, uno dei pilastri dell’inferenza statistica frequentista. La distribuzione campionaria descrive come le stime dei parametri della popolazione, come la media o la varianza, variano da campione a campione. Essa permette di stabilire proprietà probabilistiche delle stime campionarie, come la loro media e varianza, che sono fondamentali per costruire intervalli di confidenza e condurre test di ipotesi, strumenti essenziali dell’inferenza statistica frequentista.</p>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Consiglio</span>Domande introduttive
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Prima di iniziare a esplorare il concetto di distribuzione campionaria e il suo ruolo nell’inferenza statistica, considera le seguenti domande. Prova a formulare una risposta intuitiva basata sulle tue conoscenze attuali prima di procedere con la lettura del capitolo. Le simulazioni che seguiranno ti aiuteranno a confermare o rivedere le tue risposte.</p>
-<ol type="1">
-<li><p>Se estraiamo ripetutamente campioni casuali dalla stessa popolazione e calcoliamo la loro media, come saranno distribuite queste medie campionarie rispetto alla media della popolazione?</p></li>
-<li><p>Supponiamo di estrarre campioni di dimensione <span class="math inline">\(n=2\)</span> da una popolazione. L’insieme delle medie campionarie sarà più concentrato intorno alla media della popolazione rispetto ai valori individuali della popolazione stessa?</p></li>
-<li><p>Quale relazione esiste tra la dimensione del campione <span class="math inline">\(n\)</span> e la variabilità delle medie campionarie? In altre parole, se aumentiamo la dimensione del campione, cosa succede alla dispersione della distribuzione campionaria?</p></li>
-<li><p>La distribuzione campionaria della media campionaria sarà sempre normale? Quali fattori influenzano la sua forma?</p></li>
-<li><p>La media della distribuzione campionaria coincide sempre con la media della popolazione? E la sua varianza è maggiore o minore rispetto alla varianza della popolazione?</p></li>
-<li><p>Supponiamo di estrarre piccoli campioni da una popolazione che ha una distribuzione fortemente asimmetrica. Quale forma avrà la distribuzione delle medie campionarie per piccoli campioni? E per campioni più grandi?</p></li>
-</ol>
-</div>
-</div>
-</section><section id="stime-stimatori-e-parametri" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="stime-stimatori-e-parametri">
-<span class="header-section-number">3.2</span> Stime, stimatori e parametri</h2>
-<p>Dopo aver esplorato il contesto culturale del frequentismo nel capitolo precedente, ci spostiamo ora su un piano strettamente statistico per introdurre il concetto di <strong>stima statistica</strong>.</p>
-<p>Quando si analizzano i dati, l’obiettivo è spesso quello di ottenere informazioni su una caratteristica della popolazione. Tuttavia, nella maggior parte dei casi, si ha accesso solo a un campione di osservazioni. La quantità sconosciuta che vogliamo stimare viene chiamata <strong>parametro</strong>, mentre il valore che calcoliamo dal campione per approssimare questo parametro è la <strong>stima</strong>. La formula o il procedimento matematico che utilizziamo per ottenere la stima è detto <strong>stimatore</strong>. Formalmente, uno stimatore è una funzione dei dati osservati utilizzata per produrre una stima di un parametro.</p>
-<p>In altre parole, quando analizziamo un campione, cerchiamo di inferire proprietà della popolazione da cui il campione è tratto. Il parametro rappresenta una misura di queste proprietà, ma raramente può essere calcolato direttamente sulla popolazione intera. Pertanto, utilizziamo le osservazioni campionarie per ottenere una stima del parametro. La stima è quindi un’approssimazione del valore del parametro basata sui dati raccolti, mentre lo stimatore è la regola matematica o statistica che la produce.</p>
-<p>È importante sottolineare che le stime non coincidono necessariamente con il vero valore del parametro, poiché sono soggette a incertezza dovuta alla variabilità del campionamento. In questo capitolo esamineremo come l’approccio frequentista quantifica questa incertezza e come possiamo utilizzare tale quantificazione per trarre conclusioni affidabili sui parametri di interesse.</p>
-</section><section id="distribuzione-campionaria" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="distribuzione-campionaria">
-<span class="header-section-number">3.3</span> Distribuzione campionaria</h2>
-<p>Nell’inferenza frequentista applicata alla psicologia, il parametro di maggiore interesse è spesso la media della popolazione—si veda anche la discussione nella <span class="quarto-unresolved-ref">?sec-eda-ergodic-fallacy</span>. In questo capitolo esploreremo come la media di un campione casuale possa essere utilizzata per stimare la media <span class="math inline">\(\mu\)</span> di una popolazione. Per valutare l’incertezza associata a questa stima, introdurremo il concetto di <strong>distribuzione campionaria</strong>, un principio fondamentale dell’approccio frequentista.</p>
-<p>Per chiarire questa idea, inizieremo con un esempio basato su una popolazione finita di piccole dimensioni, pur consapevoli che le proprietà illustrate si estendono anche a popolazioni di dimensioni maggiori.</p>
-<section id="esempio-introduttivo" class="level3" data-number="3.3.1"><h3 data-number="3.3.1" class="anchored" data-anchor-id="esempio-introduttivo">
-<span class="header-section-number">3.3.1</span> Esempio introduttivo</h3>
-<p>Consideriamo la seguente popolazione:</p>
+<section id="concetti-di-base" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="concetti-di-base">
+<span class="header-section-number">3.1</span> Concetti di base</h2>
+<p>L’analisi statistica ha spesso come obiettivo la conoscenza di una o più caratteristiche di una popolazione di interesse. Tuttavia, nella pratica, l’intera popolazione è raramente osservabile, e l’inferenza deve basarsi su un campione estratto da essa.</p>
+<p>In questo contesto si definiscono tre concetti fondamentali:</p>
+<ul>
+<li>
+<strong>parametro</strong>: quantità fissa ma incognita che descrive una caratteristica della popolazione (ad esempio, la sua media o varianza). Rappresenta il bersaglio dell’inferenza.</li>
+<li>
+<strong>stimatore</strong>: regola o funzione matematica dei dati campionari, utilizzata per ottenere un valore approssimativo del parametro. Formalmente, è una variabile casuale prima dell’osservazione del campione.</li>
+<li>
+<strong>stima</strong>: valore numerico effettivamente calcolato a partire da un campione specifico applicando lo stimatore. È una realizzazione concreta dello stimatore.</li>
+</ul>
+<p>La distinzione tra stimatore (funzione campionaria dotata di proprietà probabilistiche) e stima (valore numerico osservato) è fondamentale. Le stime sono inevitabilmente soggette a incertezza statistica, in quanto dipendono dal campione casuale osservato e, in generale, non corrispondono al valore effettivo del parametro della popolazione.</p>
+</section><section id="distribuzione-campionaria" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="distribuzione-campionaria">
+<span class="header-section-number">3.2</span> Distribuzione campionaria</h2>
+<p>Per introdurre il concetto di <em>distribuzione campionaria</em>, utilizziamo un esempio con una popolazione molto piccola, così da poter enumerare tutti i possibili campioni.</p>
+<section id="esempio-introduttivo" class="level3" data-number="3.2.1"><h3 data-number="3.2.1" class="anchored" data-anchor-id="esempio-introduttivo">
+<span class="header-section-number">3.2.1</span> Esempio introduttivo</h3>
+<p>Supponiamo di avere la seguente popolazione costituita da quattro valori:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4.5</span>, <span class="fl">5</span>, <span class="fl">5.5</span><span class="op">)</span></span>
 <span><span class="va">x</span></span>
 <span><span class="co">#&gt; [1] 2.0 4.5 5.0 5.5</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Questi valori potrebbero rappresentare il tempo di reazione (in secondi) di quattro partecipanti a un esperimento di decisione rapida, in cui devono identificare il colore di uno stimolo visivo. In questo caso, l’intera popolazione è costituita da tutti i partecipanti disponibili per lo studio, ad esempio se l’esperimento è stato condotto in un piccolo gruppo di persone selezionate per caratteristiche specifiche, come quattro gemelli monozigoti in uno studio sulle differenze cognitive intra-familiari.</p>
-<p>L’istogramma sottostante rappresenta la distribuzione di frequenza della popolazione:</p>
+<p>Questi valori potrebbero rappresentare, ad esempio, i tempi di reazione (in secondi) di quattro partecipanti a un esperimento. Calcoliamo la media e la varianza della popolazione:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Creazione del dataframe</span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Valori <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4.5</span>, <span class="fl">5</span>, <span class="fl">5.5</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Istogramma con ggplot2</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Valori</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">5</span>, <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Distribuzione della popolazione"</span>, x <span class="op">=</span> <span class="st">"Valori"</span>, y <span class="op">=</span> <span class="st">"Densità"</span><span class="op">)</span> </span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Calcoliamo la media e la varianza della popolazione:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>  <span class="co"># Media</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>  <span class="co"># Media</span></span>
 <span><span class="co">#&gt; [1] 4.25</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>   <span class="co"># Varianza</span></span>
 <span><span class="co">#&gt; [1] 2.42</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="campionamento" class="level3" data-number="3.3.2"><h3 data-number="3.3.2" class="anchored" data-anchor-id="campionamento">
-<span class="header-section-number">3.3.2</span> Campionamento</h3>
-<p>Consideriamo ora tutti i possibili campioni di dimensione <span class="math inline">\(n = 2\)</span> che possiamo estrarre dalla popolazione. Poiché ogni valore può essere selezionato indipendentemente in entrambe le posizioni del campione, il numero totale di combinazioni possibili si ottiene con il calcolo combinatorio:</p>
+</section><section id="campionamento-e-distribuzione-campionaria" class="level3" data-number="3.2.2"><h3 data-number="3.2.2" class="anchored" data-anchor-id="campionamento-e-distribuzione-campionaria">
+<span class="header-section-number">3.2.2</span> Campionamento e distribuzione campionaria</h3>
+<p>Ora estraiamo <strong>tutti i possibili campioni di dimensione</strong> (n = 2) <strong>con reinserimento</strong> dalla popolazione. Poiché a ogni estrazione esistono quattro possibili valori, il numero totale di campioni distinti è:</p>
 <p><span class="math display">\[
-\text{Numero totale di campioni} = k^n ,
+4^2 = 16.
 \]</span></p>
-<p>dove <span class="math inline">\(k\)</span> è la dimensione della popolazione e <span class="math inline">\(n\)</span> è la dimensione del campione. Nel nostro caso, con <span class="math inline">\(k = 4\)</span> e <span class="math inline">\(n = 2\)</span>, otteniamo:</p>
-<p><span class="math display">\[
-4^2 = 16 .
-\]</span></p>
-<p>Possiamo generare esplicitamente queste combinazioni con il seguente codice:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span><span class="op">)</span></span>
-<span><span class="va">samples</span></span>
-<span><span class="co">#&gt;    Var1 Var2</span></span>
-<span><span class="co">#&gt; 1   2.0  2.0</span></span>
-<span><span class="co">#&gt; 2   4.5  2.0</span></span>
-<span><span class="co">#&gt; 3   5.0  2.0</span></span>
-<span><span class="co">#&gt; 4   5.5  2.0</span></span>
-<span><span class="co">#&gt; 5   2.0  4.5</span></span>
-<span><span class="co">#&gt; 6   4.5  4.5</span></span>
-<span><span class="co">#&gt; 7   5.0  4.5</span></span>
-<span><span class="co">#&gt; 8   5.5  4.5</span></span>
-<span><span class="co">#&gt; 9   2.0  5.0</span></span>
-<span><span class="co">#&gt; 10  4.5  5.0</span></span>
-<span><span class="co">#&gt; 11  5.0  5.0</span></span>
-<span><span class="co">#&gt; 12  5.5  5.0</span></span>
-<span><span class="co">#&gt; 13  2.0  5.5</span></span>
-<span><span class="co">#&gt; 14  4.5  5.5</span></span>
-<span><span class="co">#&gt; 15  5.0  5.5</span></span>
-<span><span class="co">#&gt; 16  5.5  5.5</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Ogni riga rappresenta un campione possibile. Confermiamo il numero totale di campioni con:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 16</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Ora calcoliamo la media di ciascun campione, ottenendo la <strong>distribuzione campionaria delle medie</strong> per <span class="math inline">\(n = 2\)</span>:</p>
+<p>Per ciascun campione calcoliamo la media, ottenendo così la <strong>distribuzione campionaria della media</strong>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span></span>
 <span><span class="va">sample_means</span></span>
 <span><span class="co">#&gt;  [1] 2.00 3.25 3.50 3.75 3.25 4.50 4.75 5.00 3.50 4.75 5.00 5.25 3.75 5.00 5.25</span></span>
 <span><span class="co">#&gt; [16] 5.50</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Questa distribuzione campionaria mostra tutte le possibili medie che possiamo ottenere estraendo campioni casuali di dimensione 2 dalla popolazione. Si tratta di un concetto fondamentale in inferenza statistica frequentista, poiché la distribuzione delle medie campionarie diventa progressivamente più simmetrica e concentrata attorno alla media della popolazione man mano che <span class="math inline">\(n\)</span> aumenta, come previsto dal <strong>teorema del limite centrale</strong>.</p>
-</section><section id="visualizzazione-della-distribuzione-campionaria" class="level3" data-number="3.3.3"><h3 data-number="3.3.3" class="anchored" data-anchor-id="visualizzazione-della-distribuzione-campionaria">
-<span class="header-section-number">3.3.3</span> Visualizzazione della distribuzione campionaria</h3>
-<p>Possiamo visualizzare la distribuzione campionaria delle medie con un istogramma:</p>
+</section><section id="visualizzazione-della-distribuzione-campionaria" class="level3" data-number="3.2.3"><h3 data-number="3.2.3" class="anchored" data-anchor-id="visualizzazione-della-distribuzione-campionaria">
+<span class="header-section-number">3.2.3</span> Visualizzazione della distribuzione campionaria</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Creazione del dataframe</span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Valori <span class="op">=</span> <span class="va">sample_means</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Valori <span class="op">=</span> <span class="va">sample_means</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Istogramma con ggplot2</span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Valori</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_histogram</span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">5</span>, <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Media campionaria"</span>, y <span class="op">=</span> <span class="st">"Densità"</span><span class="op">)</span> </span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span>  <span class="fu">geom_histogram</span><span class="op">(</span></span>
+<span>    bins <span class="op">=</span> <span class="fl">7</span>,</span>
+<span>    <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"steelblue"</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"white"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Distribuzione campionaria delle medie (n = 2)"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Media campionaria"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Densità"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
+<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>L’istogramma mostra come le medie campionarie non siano distribuite uniformemente, ma seguano una struttura precisa determinata dalla distribuzione dei valori originali della popolazione. Con un numero maggiore di osservazioni per campione (<span class="math inline">\(n\)</span> più grande), la distribuzione campionaria delle medie tende a diventare più stretta e simmetrica attorno alla media della popolazione, illustrando così il principio alla base dell’inferenza statistica frequentista.</p>
-</section><section id="verifiche-teoriche" class="level3" data-number="3.3.4"><h3 data-number="3.3.4" class="anchored" data-anchor-id="verifiche-teoriche">
-<span class="header-section-number">3.3.4</span> Verifiche teoriche</h3>
-<section id="media-della-distribuzione-campionaria" class="level4" data-number="3.3.4.1"><h4 data-number="3.3.4.1" class="anchored" data-anchor-id="media-della-distribuzione-campionaria">
-<span class="header-section-number">3.3.4.1</span> Media della distribuzione campionaria</h4>
-<p>Secondo la teoria statistica, la media della distribuzione campionaria deve coincidere con la media della popolazione. Questo implica che, se prendiamo la media di tutti i campioni possibili di una certa dimensione, il valore risultante sarà uguale alla media della popolazione stessa. Possiamo verificarlo con il seguente calcolo:</p>
+<p>L’istogramma mostra chiaramente che le medie campionarie non sono distribuite uniformemente. Alcuni valori di media compaiono più spesso perché possono essere ottenuti in più modi dai valori della popolazione. Questo esempio illustra un punto chiave: anche quando la popolazione è molto semplice, la distribuzione campionaria di una statistica (in questo caso, la media) presenta una struttura propria, determinata sia dalla forma della popolazione sia dalla dimensione del campione.</p>
+</section><section id="proprietà-della-distribuzione-campionaria" class="level3" data-number="3.2.4"><h3 data-number="3.2.4" class="anchored" data-anchor-id="proprietà-della-distribuzione-campionaria">
+<span class="header-section-number">3.2.4</span> Proprietà della distribuzione campionaria</h3>
+<section id="media-della-distribuzione-campionaria" class="level4" data-number="3.2.4.1"><h4 data-number="3.2.4.1" class="anchored" data-anchor-id="media-della-distribuzione-campionaria">
+<span class="header-section-number">3.2.4.1</span> Media della distribuzione campionaria</h4>
+<p>Un risultato fondamentale della teoria della stima afferma che la media della distribuzione campionaria coincide con la media della popolazione. Possiamo verificarlo nel nostro esempio:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>  <span class="co"># Media della popolazione</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>            <span class="co"># Media della popolazione</span></span>
 <span><span class="co">#&gt; [1] 4.25</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sample_means</span><span class="op">)</span>  <span class="co"># Media della distribuzione campionaria</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sample_means</span><span class="op">)</span> <span class="co"># Media della distribuzione campionaria</span></span>
 <span><span class="co">#&gt; [1] 4.25</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="varianza-della-distribuzione-campionaria" class="level4" data-number="3.3.4.2"><h4 data-number="3.3.4.2" class="anchored" data-anchor-id="varianza-della-distribuzione-campionaria">
-<span class="header-section-number">3.3.4.2</span> Varianza della distribuzione campionaria</h4>
-<p>Un altro risultato importante è che la varianza della distribuzione campionaria delle medie è inferiore alla varianza della popolazione. In particolare, la teoria prevede che sia pari alla varianza della popolazione divisa per la dimensione del campione <span class="math inline">\(n\)</span>:</p>
+<p>Questa uguaglianza mostra che la media campionaria ({X}) è uno <strong>stimatore non distorto</strong>: se ripetessimo il campionamento un numero indefinito di volte, la media delle nostre stime tenderebbe al valore reale della popolazione.</p>
+</section><section id="varianza-della-distribuzione-campionaria" class="level4" data-number="3.2.4.2"><h4 data-number="3.2.4.2" class="anchored" data-anchor-id="varianza-della-distribuzione-campionaria">
+<span class="header-section-number">3.2.4.2</span> Varianza della distribuzione campionaria</h4>
+<p>La variabilità delle medie campionarie è descritta da:</p>
 <p><span class="math display">\[
-\mathbb{V}(\bar{X}) = \frac{\sigma^2}{n}
-\]</span></p>
-<p>Poiché in questo caso <span class="math inline">\(n = 2\)</span>, confrontiamo la varianza teorica con quella empirica:</p>
+\text{Var}(\bar{X}) = \frac{\sigma^2}{n},
+\]</span> dove (^2) è la varianza della popolazione e (n) la dimensione del campione. Verifichiamo il risultato nel nostro caso:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Funzione per calcolare la varianza senza la correzione di Bessel</span></span>
-<span><span class="va">variance</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">variance</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span>  <span class="co"># Varianza teorica</span></span>
-<span><span class="co">#&gt; [1] 0.906</span></span>
-<span><span class="fu">variance</span><span class="op">(</span><span class="va">sample_means</span><span class="op">)</span>  <span class="co"># Varianza empirica</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>                    <span class="co"># Varianza della popolazione</span></span>
+<span><span class="co">#&gt; [1] 2.42</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span>                <span class="co"># Varianza teorica (σ²/n per n = 2)</span></span>
+<span><span class="co">#&gt; [1] 1.21</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">sample_means</span><span class="op">)</span> <span class="op">*</span> <span class="fl">15</span><span class="op">/</span><span class="fl">16</span> <span class="co"># Varianza empirica (corretta per popolazione finita)</span></span>
 <span><span class="co">#&gt; [1] 0.906</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Osserviamo che la varianza delle medie campionarie è inferiore alla varianza della popolazione, confermando che le medie campionarie mostrano meno variabilità rispetto alle singole osservazioni.</p>
-</section></section><section id="esempio-di-campione-osservato" class="level3" data-number="3.3.5"><h3 data-number="3.3.5" class="anchored" data-anchor-id="esempio-di-campione-osservato">
-<span class="header-section-number">3.3.5</span> Esempio di campione osservato</h3>
-<p>Per comprendere meglio questi concetti, consideriamo un singolo campione, ad esempio:</p>
+<p>La riduzione della varianza all’aumentare di (n) riflette un principio intuitivo: campioni più grandi forniscono stime più stabili della media.</p>
+</section></section></section><section id="il-teorema-del-limite-centrale" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="il-teorema-del-limite-centrale">
+<span class="header-section-number">3.3</span> Il teorema del limite centrale</h2>
+<p>Il <strong>teorema del limite centrale</strong> (TLC) è uno dei pilastri della statistica inferenziale. Stabilisce che, al crescere della dimensione campionaria, la distribuzione della media campionaria assume una forma approssimativamente normale, anche quando la distribuzione della popolazione non è normale.</p>
+<section id="enunciato-formale" class="level3" data-number="3.3.1"><h3 data-number="3.3.1" class="anchored" data-anchor-id="enunciato-formale">
+<span class="header-section-number">3.3.1</span> Enunciato formale</h3>
+<p>Sia <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> una sequenza di variabili casuali indipendenti e identicamente distribuite, con media <span class="math inline">\(\mu\)</span> e varianza finita <span class="math inline">\(\sigma^2\)</span>. Allora, per <span class="math inline">\(n\)</span> sufficientemente grande:</p>
+<p><span class="math display">\[
+\bar{X} \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right),
+\]</span> e in forma standardizzata:</p>
+<p><span class="math display">\[
+Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} \mathcal{N}(0, 1).
+\]</span></p>
+<p>Questo risultato spiega perché la distribuzione normale compare così spesso in psicologia e nelle scienze empiriche: molte statistiche derivate da campioni, e in particolare la media, tendono naturalmente a distribuirsi in modo approssimativamente gaussiano, anche quando i dati di partenza non lo sono.</p>
+</section><section id="dimostrazione-mediante-simulazione" class="level3" data-number="3.3.2"><h3 data-number="3.3.2" class="anchored" data-anchor-id="dimostrazione-mediante-simulazione">
+<span class="header-section-number">3.3.2</span> Dimostrazione mediante simulazione</h3>
+<p>Per vedere concretamente come opera il teorema del limite centrale, consideriamo una distribuzione uniforme sull’intervallo [0, 1]. Si tratta di una distribuzione molto diversa da quella normale: è piatta, simmetrica e con varianza limitata. Proprio per questo motivo, rappresenta un buon esempio per mostrare come il TLC agisca anche quando la distribuzione di partenza non è affatto “a campana”.</p>
+<p>Il codice seguente genera 10.000 campioni per tre diverse dimensioni campionarie (<span class="math inline">\(n\)</span> = 5, <span class="math inline">\(n\)</span> = 30, <span class="math inline">\(n\)</span> = 100) e calcola la media di ciascun campione.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">observed_sample</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5.5</span><span class="op">)</span></span>
-<span><span class="va">observed_sample</span></span>
-<span><span class="co">#&gt; [1] 5.0 5.5</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Calcoliamo la sua media e deviazione standard:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">observed_sample</span><span class="op">)</span>  <span class="co"># Media del campione</span></span>
-<span><span class="co">#&gt; [1] 5.25</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu">variance</span><span class="op">(</span><span class="va">observed_sample</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Deviazione standard del campione</span></span>
-<span><span class="co">#&gt; [1] 0.25</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Ora confrontiamo questi valori con quelli della popolazione:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>  <span class="co"># Media della popolazione</span></span>
-<span><span class="co">#&gt; [1] 4.25</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu">variance</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Deviazione standard della popolazione</span></span>
-<span><span class="co">#&gt; [1] 1.35</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Osserviamo che la media del campione si avvicina a quella della popolazione, ma non coincide necessariamente con essa. Questo è del tutto normale: ogni campione rappresenta solo una porzione della popolazione e la sua media può variare leggermente a seconda delle osservazioni selezionate.</p>
-<p>Per quanto riguarda la deviazione standard, in questo caso specifico risulta inferiore a quella della popolazione. Tuttavia, in generale, la dispersione di un singolo campione può essere maggiore o minore rispetto a quella della popolazione, poiché dipende dalla variabilità casuale delle osservazioni estratte. Proprio per questo motivo, per trarre inferenze affidabili sulla popolazione, è più utile considerare la distribuzione campionaria delle medie piuttosto che un singolo campione isolato.</p>
-<p>Questo esempio illustra bene il principio della stima campionaria: mentre un singolo campione fornisce un’informazione parziale, l’analisi di molteplici campioni consente di ottenere una stima più precisa e stabile della media della popolazione, riducendo l’incertezza e migliorando l’affidabilità dell’inferenza statistica.</p>
-</section><section id="la-simulazione-illustra-due-principi" class="level3" data-number="3.3.6"><h3 data-number="3.3.6" class="anchored" data-anchor-id="la-simulazione-illustra-due-principi">
-<span class="header-section-number">3.3.6</span> La Simulazione Illustra Due Principi</h3>
-<p>Dalla simulazione emergono due principi fondamentali dell’inferenza statistica:</p>
-<ol type="1">
-<li>
-<p><strong>La media della distribuzione campionaria</strong> coincide con la media della popolazione. Questo implica che se estraiamo molteplici campioni di dimensione <span class="math inline">\(n\)</span> e calcoliamo la loro media, il valore atteso della media campionaria sarà uguale alla media della popolazione <span class="math inline">\(\mu\)</span>. Formalmente:</p>
-<p><span class="math display">\[
-\mathbb{E}(\bar{X}_n) = \mu .
-\]</span></p>
-<p>Questo risultato conferma che la media campionaria è uno stimatore non distorto della media della popolazione.</p>
-</li>
-<li>
-<p><strong>La varianza della distribuzione campionaria</strong> è minore della varianza della popolazione. Questo riflette il fatto che le medie campionarie tendono a essere più stabili rispetto alle singole osservazioni. La relazione teorica che descrive questa proprietà è:</p>
-<p><span class="math display">\[
-\mathbb{V}(\bar{X}) = \frac{\sigma^2}{n} .
-\]</span></p>
-<p>Ciò significa che, aumentando la dimensione del campione <span class="math inline">\(n\)</span>, la variabilità delle medie campionarie si riduce, rendendo la stima della media della popolazione più precisa. Questo concetto è alla base della teoria del <strong>teorema centrale del limite</strong>, che diventa sempre più evidente con campioni di dimensioni maggiori.</p>
-</li>
-</ol>
-<div class="callout callout-style-simple callout-note no-icon callout-titled" title="Dimostrazione che $\bar{X}$ è uno stimatore corretto della media della popolazione">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Dimostrazione che <span class="math inline">\(\bar{X}\)</span> è uno stimatore corretto della media della popolazione
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Dato un campione casuale di <span class="math inline">\(n\)</span> osservazioni <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> estratte da una popolazione con media <span class="math inline">\(\mu\)</span> e varianza <span class="math inline">\(\sigma^2\)</span>, la <strong>media campionaria</strong> è definita come:</p>
-<p><span class="math display">\[
-\bar{X}_n = \frac{1}{n} \sum_{i=1}^{n} X_i .
-\]</span></p>
-<p>Utilizziamo la linearità dell’operatore di aspettativa:</p>
-<p><span class="math display">\[
-\mathbb{E}(\bar{X}_n) = \mathbb{E} \left( \frac{1}{n} \sum_{i=1}^{n} X_i \right) .
-\]</span></p>
-<p>Per la proprietà della linearità dell’aspettativa, possiamo portare fuori il fattore costante <span class="math inline">\(\frac{1}{n}\)</span>:</p>
-<p><span class="math display">\[
-\mathbb{E}(\bar{X}_n) = \frac{1}{n} \sum_{i=1}^{n} \mathbb{E}(X_i) .
-\]</span></p>
-<p>Poiché ogni <span class="math inline">\(X_i\)</span> proviene dalla stessa popolazione, ha la stessa aspettativa <span class="math inline">\(\mathbb{E}(X_i) = \mu\)</span>, quindi:</p>
-<p><span class="math display">\[
-\mathbb{E}(\bar{X}_n) = \frac{1}{n} \sum_{i=1}^{n} \mu .
-\]</span></p>
-<p>Sommando <span class="math inline">\(n\)</span> volte <span class="math inline">\(\mu\)</span>, otteniamo:</p>
-<p><span class="math display">\[
-\mathbb{E}(\bar{X}_n) = \frac{1}{n} (n \mu) = \mu .
-\]</span></p>
-<p>In conclusione, abbiamo dimostrato che:</p>
-<p><span class="math display">\[
-\mathbb{E}(\bar{X}_n) = \mu .
-\]</span></p>
-<p>Questo significa che la media campionaria <span class="math inline">\(\bar{X}_n\)</span> è uno <strong>stimatore corretto</strong> (non distorto) della media della popolazione <span class="math inline">\(\mu\)</span>, poiché il suo valore atteso coincide esattamente con la quantità che vogliamo stimare.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled" title="Dimostrazione della riduzione della varianza nelle medie campionarie">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Dimostrazione della riduzione della varianza nelle medie campionarie
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Sia <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> un campione casuale di <span class="math inline">\(n\)</span> osservazioni indipendenti estratte da una popolazione con media <span class="math inline">\(\mu\)</span> e varianza <span class="math inline">\(\sigma^2\)</span>. La media campionaria è definita come:</p>
-<p><span class="math display">\[
-\bar{X} = \frac{1}{n} \sum_{i=1}^n X_i.
-\]</span></p>
-<p>Per definizione, la varianza di <span class="math inline">\(\bar{X}\)</span> è:</p>
-<p><span class="math display">\[
-\mathbb{V}(\bar{X}) = \mathbb{V}\left(\frac{1}{n} \sum_{i=1}^n X_i\right).
-\]</span></p>
-<p>Poiché una costante moltiplicata da una variabile aleatoria può essere “estratta” dalla varianza, otteniamo:</p>
-<p><span class="math display">\[
-\mathbb{V}(\bar{X}) = \frac{1}{n^2} \mathbb{V}\left(\sum_{i=1}^n X_i\right).
-\]</span></p>
-<p>Ora dobbiamo calcolare <span class="math inline">\(\mathbb{V}\left(\sum_{i=1}^n X_i\right)\)</span>. Le variabili <span class="math inline">\(X_1, X_2, \dots, X_n\)</span> sono indipendenti, quindi la varianza della somma è la somma delle varianze:</p>
-<p><span class="math display">\[
-\mathbb{V}\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n \mathbb{V}(X_i).
-\]</span></p>
-<p>Poiché tutte le variabili <span class="math inline">\(X_i\)</span> hanno la stessa varianza <span class="math inline">\(\sigma^2\)</span>:</p>
-<p><span class="math display">\[
-\mathbb{V}\left(\sum_{i=1}^n X_i\right) = n \sigma^2.
-\]</span></p>
-<p>Sostituendo nella formula precedente, otteniamo:</p>
-<p><span class="math display">\[
-\mathbb{V}(\bar{X}) = \frac{1}{n^2} \cdot n \sigma^2 = \frac{\sigma^2}{n}.
-\]</span></p>
-<p>In generale, dunque, per un campione di ampiezza <span class="math inline">\(n\)</span>, vale la relazione <span class="math inline">\(\mathbb{V}(\bar{X}) = \frac{\sigma^2}{n}\)</span>.</p>
-</div>
-</div>
-</div>
-</section></section><section id="proprietà-della-distribuzione-campionaria" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="proprietà-della-distribuzione-campionaria">
-<span class="header-section-number">3.4</span> Proprietà della distribuzione campionaria</h2>
-<p>Una caratteristica fondamentale della distribuzione campionaria riguarda la sua forma e il modo in cui dipende dalla distribuzione della popolazione da cui vengono estratti i campioni. Possiamo distinguere due casi principali:</p>
-<ul>
-<li><p><strong>Se la popolazione segue una distribuzione normale</strong>, allora anche la distribuzione delle medie campionarie sarà normalmente distribuita, indipendentemente dalla dimensione del campione <span class="math inline">\(n\)</span>. Questo significa che, anche con campioni molto piccoli, la media campionaria manterrà la stessa forma della distribuzione originale.</p></li>
-<li><p><strong>Se la popolazione non segue una distribuzione normale</strong>, entra in gioco il <strong>teorema centrale del limite</strong>. Questo teorema afferma che, man mano che la dimensione del campione <span class="math inline">\(n\)</span> aumenta, la distribuzione delle medie campionarie tenderà comunque a una distribuzione normale, indipendentemente dalla forma della distribuzione di partenza. In pratica, per campioni sufficientemente grandi, possiamo approssimare la distribuzione delle medie campionarie con una normale, anche se la popolazione da cui provengono i dati è asimmetrica o non gaussiana.</p></li>
-</ul>
-<p>Queste proprietà sono fondamentali nell’inferenza statistica frequentista: permettono di stimare e testare parametri della popolazione utilizzando campioni, facilitando l’applicazione di strumenti basati sulla distribuzione normale, come gli intervalli di confidenza e i test di ipotesi.</p>
-</section><section id="teorema-del-limite-centrale" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="teorema-del-limite-centrale">
-<span class="header-section-number">3.5</span> Teorema del Limite Centrale</h2>
-<p>Esaminiamo ora più in dettaglio il <strong>Teorema del Limite Centrale (TLC)</strong>. Nel 1812, Pierre-Simon Laplace dimostrò il TLC, che afferma che la somma (o la media) di una sequenza di variabili casuali indipendenti e identicamente distribuite (i.i.d.) tende a distribuirsi secondo una distribuzione Normale (o Gaussiana), al crescere della dimensione del campione. Inoltre, il TLC specifica i parametri della distribuzione Normale risultante in base ai valori attesi e alle varianze delle variabili casuali sommate.</p>
-<div id="thm-" class="theorem">
-<p><span class="theorem-title"><strong>Teorema 3.1</strong></span> Si consideri una sequenza di variabili aleatorie indipendenti e identicamente distribuite (i.i.d.) <span class="math inline">\(Y_1, Y_2, \dots, Y_n\)</span>, con valore atteso <span class="math inline">\(\mathbb{E}(Y_i) = \mu\)</span> e deviazione standard <span class="math inline">\(\text{SD}(Y_i) = \sigma.\)</span> Si definisca una nuova variabile casuale come la media campionaria:</p>
-<p><span class="math display">\[
-Z = \frac{1}{n} \sum_{i=1}^n Y_i.
-\]</span></p>
-<p>Al tendere di <span class="math inline">\(n\)</span> all’infinito (<span class="math inline">\(n \rightarrow \infty\)</span>), la distribuzione di <span class="math inline">\(Z\)</span> converge a una distribuzione Normale con valore atteso <span class="math inline">\(\mu\)</span> e deviazione standard <span class="math inline">\(\frac{\sigma}{\sqrt{n}}\)</span>:</p>
-<p><span class="math display">\[
-Z \sim \mathcal{N}\left(\mu, \, \frac{\sigma}{\sqrt{n}} \right).
-\]</span></p>
-<p>In altre parole, la densità di probabilità di <span class="math inline">\(Z\)</span> tende a:</p>
-<p><span class="math display">\[
-p_Z(z) \rightarrow \mathcal{N}\left(z \ \Bigg| \ \mu, \, \frac{\sigma}{\sqrt{n}} \right).
-\]</span></p>
-</div>
-<p>Il TLC può essere generalizzato anche a variabili casuali che non sono identicamente distribuite, purché siano indipendenti e abbiano valori attesi e varianze finite. Questo teorema spiega perché molti fenomeni naturali, come l’altezza degli adulti o il peso di una popolazione, tendono a seguire una distribuzione Normale. Infatti, tali fenomeni sono spesso il risultato di una combinazione di numerosi effetti additivi e indipendenti, ciascuno dei quali contribuisce in modo relativamente piccolo. Indipendentemente dalla distribuzione individuale di ciascun effetto, la loro somma (o media) tende a distribuirsi in modo Normale. Questa è la ragione per cui la distribuzione Normale fornisce una buona approssimazione per la distribuzione di molti fenomeni osservati in natura.</p>
-<section id="illustrazione-del-teorema-del-limite-centrale-tlc" class="level3" data-number="3.5.1"><h3 data-number="3.5.1" class="anchored" data-anchor-id="illustrazione-del-teorema-del-limite-centrale-tlc">
-<span class="header-section-number">3.5.1</span> Illustrazione del Teorema del Limite Centrale (TLC)</h3>
-<p>Per comprendere il <strong>Teorema del Limite Centrale (TLC)</strong>, consideriamo una popolazione iniziale che segue una distribuzione fortemente asimmetrica: la distribuzione <strong>Beta(2,1)</strong>, caratterizzata da una forte asimmetria positiva.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Parametri della distribuzione Beta</span></span>
-<span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
-<span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
-<span></span>
-<span><span class="co"># Genera valori per la distribuzione Beta</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, length.out <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span>  <span class="co"># Valori tra 0 e 1</span></span>
-<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">dbeta</a></span><span class="op">(</span><span class="va">x</span>, shape1 <span class="op">=</span> <span class="va">a</span>, shape2 <span class="op">=</span> <span class="va">b</span><span class="op">)</span>  <span class="co"># Densità della distribuzione Beta</span></span>
-<span></span>
-<span><span class="co"># Crea un dataframe per qplot</span></span>
-<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Grafico con qplot</span></span>
-<span><span class="fu">qplot</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, data <span class="op">=</span> <span class="va">data</span>, geom <span class="op">=</span> <span class="st">"line"</span>, </span>
-<span>      main <span class="op">=</span> <span class="st">"Distribuzione Beta(2, 1)"</span>, </span>
-<span>      xlab <span class="op">=</span> <span class="st">"x"</span>, </span>
-<span>      ylab <span class="op">=</span> <span class="st">"Densità"</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Estrarremo più volte campioni casuali di ampiezza <span class="math inline">\(n\)</span> da questa popolazione e calcoleremo le medie campionarie. Il TLC prevede che, all’aumentare della dimensione del campione, la distribuzione delle medie campionarie tenda a una distribuzione normale, indipendentemente dalla forma della popolazione di partenza.</p>
-<p>Per verificare questa proprietà, definiamo una funzione che genera campioni, calcola le medie e visualizza la loro distribuzione campionaria per diversi valori di <span class="math inline">\(n\)</span>:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Parametri della distribuzione Beta</span></span>
-<span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
-<span><span class="va">beta</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
-<span></span>
-<span><span class="co"># Funzione per simulare e visualizzare la distribuzione campionaria</span></span>
-<span><span class="va">plot_samples</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="co"># Media e deviazione standard della distribuzione Beta</span></span>
-<span>  <span class="va">mu</span> <span class="op">&lt;-</span> <span class="va">alpha</span> <span class="op">/</span> <span class="op">(</span><span class="va">alpha</span> <span class="op">+</span> <span class="va">beta</span><span class="op">)</span></span>
-<span>  <span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">alpha</span> <span class="op">*</span> <span class="va">beta</span> <span class="op">/</span> <span class="op">(</span><span class="op">(</span><span class="va">alpha</span> <span class="op">+</span> <span class="va">beta</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="va">alpha</span> <span class="op">+</span> <span class="va">beta</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span>  </span>
-<span>  <span class="co"># Generazione di 50.000 campioni casuali di dimensione n</span></span>
-<span>  <span class="va">sample_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">50000</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Beta.html">rbeta</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">alpha</span>, <span class="va">beta</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span>  </span>
-<span>  <span class="co"># Creazione del dataframe</span></span>
-<span>  <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>MediaCampionaria <span class="op">=</span> <span class="va">sample_means</span><span class="op">)</span></span>
-<span>  </span>
-<span>  <span class="co"># Creazione del grafico con ggplot2</span></span>
-<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="va">df</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">MediaCampionaria</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu">geom_histogram</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">50</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu">stat_function</span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="va">sigma</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, lwd <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Distribuzione campionaria\nper n ="</span>, <span class="va">n</span><span class="op">)</span>,</span>
-<span>         x <span class="op">=</span> <span class="st">"Media campionaria"</span>,</span>
-<span>         y <span class="op">=</span> <span class="st">"Densità"</span><span class="op">)</span> </span>
-<span><span class="op">}</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<section id="visualizzazione-della-convergenza-alla-normalità" class="level4" data-number="3.5.1.1"><h4 data-number="3.5.1.1" class="anchored" data-anchor-id="visualizzazione-della-convergenza-alla-normalità">
-<span class="header-section-number">3.5.1.1</span> Visualizzazione della convergenza alla normalità</h4>
-<p>Analizziamo l’effetto della dimensione del campione sulle medie campionarie:</p>
-<ol type="1">
-<li>
-<p><strong>Campioni di ampiezza <span class="math inline">\(n = 1\)</span></strong></p>
-<p>Se <span class="math inline">\(n = 1\)</span>, la distribuzione campionaria coincide esattamente con la distribuzione della popolazione di partenza, che in questo caso è fortemente asimmetrica:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plot_samples</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</li>
-<li>
-<p><strong>Campioni di ampiezza <span class="math inline">\(n = 2\)</span></strong></p>
-<p>Con <span class="math inline">\(n = 2\)</span>, la distribuzione delle medie campionarie inizia a perdere parte della sua asimmetria:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plot_samples</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</li>
-<li>
-<p><strong>Campioni di ampiezza <span class="math inline">\(n = 4\)</span></strong></p>
-<p>Per <span class="math inline">\(n = 4\)</span>, la distribuzione delle medie campionarie diventa più simmetrica e tende già a una forma più vicina a quella normale:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plot_samples</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</li>
-<li>
-<p><strong>Campioni di ampiezza <span class="math inline">\(n = 30\)</span></strong></p>
-<p>Quando <span class="math inline">\(n\)</span> diventa sufficientemente grande (ad esempio <span class="math inline">\(n = 30\)</span>), la distribuzione campionaria delle medie è praticamente indistinguibile da una normale:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">plot_samples</span><span class="op">(</span><span class="fl">30</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</li>
-</ol></section><section id="conclusione" class="level4" data-number="3.5.1.2"><h4 data-number="3.5.1.2" class="anchored" data-anchor-id="conclusione">
-<span class="header-section-number">3.5.1.2</span> Conclusione</h4>
-<p>Il <strong>Teorema del Limite Centrale (TLC)</strong> afferma che, indipendentemente dalla forma della distribuzione della popolazione:</p>
-<ul>
-<li><p>Se la dimensione del campione è sufficientemente grande, la distribuzione delle medie campionarie <span class="math inline">\(\bar{X}\)</span> sarà <strong>approssimativamente normale</strong>, anche se la popolazione di partenza non lo è.<br></p></li>
-<li>
-<p>La distribuzione delle medie campionarie avrà media uguale a quella della popolazione <span class="math inline">\(\mu\)</span> e deviazione standard pari a:</p>
-<p><span class="math display">\[
-\bar{X} \sim \mathcal{N}(\mu, \sigma / \sqrt{n})
-\]</span></p>
-<p>dove <span class="math inline">\(\sigma\)</span> è la deviazione standard della popolazione e <span class="math inline">\(n\)</span> è la dimensione del campione.</p>
-</li>
-</ul></section></section><section id="implicazioni" class="level3" data-number="3.5.2"><h3 data-number="3.5.2" class="anchored" data-anchor-id="implicazioni">
-<span class="header-section-number">3.5.2</span> Implicazioni</h3>
-<ol type="1">
-<li><p><strong>Normalità emergente</strong><br>
-Il TLC giustifica l’uso della distribuzione normale in molte applicazioni statistiche, anche quando i dati originali non seguono una distribuzione normale.</p></li>
-<li><p><strong>Errore standard e precisione delle stime</strong><br>
-Il TLC fornisce una formula esplicita per calcolare l’<strong>errore standard</strong> <span class="math inline">\(\sigma / \sqrt{n}\)</span>, che quantifica l’incertezza associata alla media campionaria. All’aumentare di <span class="math inline">\(n\)</span>, l’errore standard diminuisce, migliorando la precisione della stima della media della popolazione.</p></li>
-</ol>
-<p>Questa proprietà è alla base di molte tecniche statistiche, come gli intervalli di confidenza e i test di ipotesi, che assumono la normalità della distribuzione campionaria delle medie anche quando la popolazione di partenza non è normale.</p>
-</section><section id="applicazioni-in-psicologia" class="level3" data-number="3.5.3"><h3 data-number="3.5.3" class="anchored" data-anchor-id="applicazioni-in-psicologia">
-<span class="header-section-number">3.5.3</span> Applicazioni in psicologia</h3>
-<p>Molti fenomeni psicologici che misuriamo (ad esempio, il QI come media di molte abilità cognitive) derivano dalla media di più variabili, e quindi seguono la distribuzione normale grazie al TLC. Questo spiega perché la distribuzione normale appare così frequentemente nei dati sperimentali di psicologia e in molte altre discipline scientifiche.</p>
-</section></section><section id="distribuzioni-campionarie-di-altre-statistiche" class="level2" data-number="3.6"><h2 data-number="3.6" class="anchored" data-anchor-id="distribuzioni-campionarie-di-altre-statistiche">
-<span class="header-section-number">3.6</span> Distribuzioni campionarie di altre statistiche</h2>
-<p>Abbiamo già analizzato la distribuzione campionaria della media dei campioni. Tuttavia, è possibile costruire distribuzioni campionarie per altre statistiche campionarie. Ad esempio, consideriamo la distribuzione campionaria del valore massimo e della varianza.</p>
-<section id="distribuzione-campionaria-del-valore-massimo" class="level3" data-number="3.6.1"><h3 data-number="3.6.1" class="anchored" data-anchor-id="distribuzione-campionaria-del-valore-massimo">
-<span class="header-section-number">3.6.1</span> Distribuzione campionaria del valore massimo</h3>
-<p>Supponiamo di avere una popolazione normalmente distribuita con media <span class="math inline">\(\mu = 100\)</span> e deviazione standard <span class="math inline">\(\sigma = 15\)</span>. Generiamo 10.000 campioni casuali di ampiezza <span class="math inline">\(n = 5\)</span> e calcoliamo il valore massimo per ogni campione.</p>
-<section id="simulazione-e-visualizzazione" class="level4" data-number="3.6.1.1"><h4 data-number="3.6.1.1" class="anchored" data-anchor-id="simulazione-e-visualizzazione">
-<span class="header-section-number">3.6.1.1</span> Simulazione e visualizzazione</h4>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>  <span class="co"># Per risultati riproducibili</span></span>
-<span></span>
-<span><span class="co"># Parametri della distribuzione</span></span>
-<span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
-<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fl">15</span></span>
-<span></span>
-<span><span class="co"># Simulazione: calcolo del valore massimo per ciascun campione</span></span>
-<span><span class="va">n_samples</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
-<span><span class="va">sample_maxes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span></span>
-<span>  <span class="va">n_samples</span>, </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">5</span>, mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="va">sigma</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Creazione del dataframe</span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>ValoreMassimo <span class="op">=</span> <span class="va">sample_maxes</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Istogramma con ggplot2</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">ValoreMassimo</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">50</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">stat_function</span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dnorm</span>, args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="va">sigma</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span>, lwd <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Valore massimo"</span>,</span>
-<span>       y <span class="op">=</span> <span class="st">"Densità"</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Osserviamo che il valore atteso della distribuzione campionaria del massimo è maggiore della media della popolazione <span class="math inline">\(\mu\)</span>.</p>
-</section></section><section id="distribuzione-campionaria-della-varianza" class="level3" data-number="3.6.2"><h3 data-number="3.6.2" class="anchored" data-anchor-id="distribuzione-campionaria-della-varianza">
-<span class="header-section-number">3.6.2</span> Distribuzione campionaria della varianza</h3>
-<p>Un’altra statistica interessante è la varianza campionaria. La formula della varianza campionaria, basata sulla statistica descrittiva, è:</p>
-<p><span class="math display">\[
-S^2 = \frac{\sum_{i=1}^n (Y_i - \bar{Y})^2}{n}.
-\]</span></p>
-<p>Calcoliamo la distribuzione campionaria della varianza per campioni di ampiezza <span class="math inline">\(n = 5\)</span>.</p>
-<section id="simulazione-e-visualizzazione-1" class="level4" data-number="3.6.2.1"><h4 data-number="3.6.2.1" class="anchored" data-anchor-id="simulazione-e-visualizzazione-1">
-<span class="header-section-number">3.6.2.1</span> Simulazione e visualizzazione</h4>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Parametri della distribuzione</span></span>
-<span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
-<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fl">15</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">n_samples</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
 <span></span>
-<span><span class="co"># Funzione per calcolare la varianza senza la correzione di Bessel</span></span>
-<span><span class="va">variance</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>  <span class="co"># Divisione per n invece di (n-1)</span></span>
+<span><span class="co"># Funzione per calcolare medie campionarie</span></span>
+<span><span class="va">calculate_means</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">sample_size</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">n_samples</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">sample_size</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="co"># Simulazione: calcolo della varianza per ciascun campione</span></span>
-<span><span class="va">sample_vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span></span>
-<span>  <span class="va">n_samples</span>, </span>
-<span>  <span class="fu">variance</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">5</span>, mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="va">sigma</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
+<span><span class="co"># Medie per diverse dimensioni campionarie</span></span>
+<span><span class="va">means_n5</span> <span class="op">&lt;-</span> <span class="fu">calculate_means</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">means_n30</span> <span class="op">&lt;-</span> <span class="fu">calculate_means</span><span class="op">(</span><span class="fl">30</span><span class="op">)</span></span>
+<span><span class="va">means_n100</span> <span class="op">&lt;-</span> <span class="fu">calculate_means</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Creazione del dataframe</span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Varianza <span class="op">=</span> <span class="va">sample_vars</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Istogramma con ggplot2</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Varianza</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">50</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Varianza"</span>,</span>
-<span>       y <span class="op">=</span> <span class="st">"Densità"</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co"># Visualizzazione</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">means_n5</span>, breaks <span class="op">=</span> <span class="fl">40</span>, main <span class="op">=</span> <span class="st">"n = 5"</span>, xlab <span class="op">=</span> <span class="st">"Media"</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">means_n30</span>, breaks <span class="op">=</span> <span class="fl">40</span>, main <span class="op">=</span> <span class="st">"n = 30"</span>, xlab <span class="op">=</span> <span class="st">"Media"</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">means_n100</span>, breaks <span class="op">=</span> <span class="fl">40</span>, main <span class="op">=</span> <span class="st">"n = 100"</span>, xlab <span class="op">=</span> <span class="st">"Media"</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
+<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Media empirica della varianza campionaria</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sample_vars</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 181</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Sappiamo che la varianza della popolazione è <span class="math inline">\(\sigma^2 = 15^2 = 225\)</span>. Tuttavia, il valore medio empirico delle varianze campionarie calcolate con <span class="math inline">\(S^2\)</span> risulta minore di 225. Questo avviene perché lo stimatore <span class="math inline">\(S^2\)</span> è distorto.</p>
-</section></section><section id="correzione-della-distorsione" class="level3" data-number="3.6.3"><h3 data-number="3.6.3" class="anchored" data-anchor-id="correzione-della-distorsione">
-<span class="header-section-number">3.6.3</span> Correzione della distorsione</h3>
-<p>Per eliminare la distorsione, utilizziamo il seguente stimatore della varianza della popolazione:</p>
+<p>Con l’aumento della dimensione del campione, si osservano due fenomeni chiave:</p>
+<ol type="1">
+<li>
+<strong>la forma della distribuzione delle medie si avvicina rapidamente a una distribuzione normale</strong>, anche se la distribuzione di partenza non lo è;</li>
+<li>
+<strong>la variabilità delle medie diminuisce</strong>: i valori si concentrano sempre più vicino alla media della distribuzione originale (0.5 nel caso della distribuzione uniforme [0,1]).</li>
+</ol>
+<p>Questa simulazione mostra chiaramente la caratteristica centrale del TLC: a prescindere dalla forma della distribuzione iniziale, la distribuzione delle medie campionarie tenderà comunque a una distribuzione normale e sarà sempre più concentrata attorno al valore atteso della popolazione, man mano che il campione aumenta.</p>
+</section></section><section id="errore-standard" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="errore-standard">
+<span class="header-section-number">3.4</span> Errore Standard</h2>
+<p>L’<strong>errore standard</strong> (SE) rappresenta la deviazione standard della distribuzione campionaria di uno stimatore, fornendo quindi una misura della sua variabilità teorica sotto ripetuto campionamento. Nel caso specifico della media campionaria <span class="math inline">\(\bar{X}\)</span>, l’errore standard è definito da:</p>
 <p><span class="math display">\[
-s^2 = \frac{\sum_{i=1}^n (Y_i - \bar{Y})^2}{n-1}.
-\]</span></p>
-<section id="verifica-con-simulazione" class="level4" data-number="3.6.3.1"><h4 data-number="3.6.3.1" class="anchored" data-anchor-id="verifica-con-simulazione">
-<span class="header-section-number">3.6.3.1</span> Verifica con simulazione</h4>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Simulazione: calcolo della varianza con la correzione</span></span>
-<span><span class="va">sample_vars_unbiased</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span></span>
-<span>  <span class="va">n_samples</span>, </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">5</span>, mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="va">sigma</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Creazione del dataframe</span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Varianza <span class="op">=</span> <span class="va">sample_vars_unbiased</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Istogramma con ggplot2</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Varianza</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">50</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Varianza"</span>,</span>
-<span>       y <span class="op">=</span> <span class="st">"Densità"</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Media empirica della varianza corretta</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sample_vars_unbiased</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 226</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Con questo stimatore, la media della distribuzione campionaria coincide con la varianza reale della popolazione <span class="math inline">\(\sigma^2 = 225\)</span>.</p>
-<p>In conclusione:</p>
-<ol type="1">
-<li>La <strong>distribuzione campionaria del massimo</strong> mostra che il valore massimo dei campioni è, in media, maggiore della media della popolazione.</li>
-<li>La <strong>varianza campionaria non corretta</strong> (<span class="math inline">\(S^2\)</span>) è uno stimatore distorto, poiché il suo valore atteso non coincide con la varianza della popolazione.</li>
-<li>Lo stimatore corretto <span class="math inline">\(s^2\)</span>, che utilizza il divisore <span class="math inline">\(n - 1\)</span>, elimina la distorsione e fornisce una stima non distorta della varianza della popolazione.</li>
-</ol>
-<p>In generale, uno stimatore è considerato <strong>non distorto</strong> quando il valore atteso delle sue stime coincide con il valore reale del parametro. Nel caso della media campionaria e della varianza corretta, entrambi gli stimatori sono non distorti.</p>
-</section></section></section><section id="riflessioni-conclusive" class="level2" data-number="3.7"><h2 data-number="3.7" class="anchored" data-anchor-id="riflessioni-conclusive">
-<span class="header-section-number">3.7</span> Riflessioni Conclusive</h2>
-<p>In generale, i parametri della popolazione sono sconosciuti, ma possiamo stimarli utilizzando le informazioni del campione. Di seguito viene presentata una tabella che riassume i simboli comuni utilizzati per indicare le quantità note e sconosciute nel contesto dell’inferenza statistica. Questo ci aiuterà a tenere traccia di ciò che sappiamo e ciò che non sappiamo.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 40%">
-<col style="width: 50%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: left;">Simbolo</th>
-<th style="text-align: left;">Nome</th>
-<th style="text-align: left;">È qualcosa che conosciamo?</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(s\)</span></td>
-<td style="text-align: left;">Deviazione standard del campione</td>
-<td style="text-align: left;">Sì, la calcoliamo dai dati grezzi</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="math inline">\(\sigma\)</span></td>
-<td style="text-align: left;">Deviazione standard della popolazione</td>
-<td style="text-align: left;">No, tranne in casi particolari o nelle simulazioni</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(\hat{\sigma}\)</span></td>
-<td style="text-align: left;">Stima della deviazione standard della popolazione</td>
-<td style="text-align: left;">Sì, ma non è uguale a <span class="math inline">\(\sigma\)</span>
-</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="math inline">\(s^2\)</span></td>
-<td style="text-align: left;">Varianza del campione</td>
-<td style="text-align: left;">Sì, la calcoliamo dai dati grezzi</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(\sigma^2\)</span></td>
-<td style="text-align: left;">Varianza della popolazione</td>
-<td style="text-align: left;">No, tranne in casi particolari o nelle simulazioni</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="math inline">\(\hat{\sigma}^2\)</span></td>
-<td style="text-align: left;">Stima della varianza della popolazione</td>
-<td style="text-align: left;">Sì, ma non è uguale a <span class="math inline">\(\sigma^2\)</span>
-</td>
-</tr>
-</tbody>
-</table>
-<p><br>
-Utilizzando le informazioni di un campione casuale di ampiezza <span class="math inline">\(n\)</span>:</p>
-<ul>
-<li>La stima migliore che possiamo ottenere per la media <span class="math inline">\(\mu\)</span> della popolazione è la media del campione <span class="math inline">\(\bar{Y}\)</span>.</li>
-<li>La stima migliore che possiamo ottenere per la varianza <span class="math inline">\(\sigma^2\)</span> della popolazione è:</li>
-</ul>
+\text{SE}(\bar{X}) = \frac{\sigma}{\sqrt{n}},
+\]</span> dove <span class="math inline">\(\sigma\)</span> è la deviazione standard della popolazione e <span class="math inline">\(n\)</span> la dimensione del campione.</p>
+<p>Poiché nella pratica il parametro <span class="math inline">\(\sigma\)</span> è raramente noto, esso viene sostituito dalla sua stima campionaria, la deviazione standard campionaria <span class="math inline">\(s\)</span>, ottenendo l’errore standard stimato:</p>
 <p><span class="math display">\[
-\hat{\sigma}^2 = \frac{1}{n-1} \sum_{i=1}^n (Y_i - \bar{Y})^2.
+\widehat{\text{SE}}(\bar{X}) = \frac{s}{\sqrt{n}}.
 \]</span></p>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="Risposte alle domande iniziali">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<p>L’errore standard costituisce una misura fondamentale della precisione di uno stimatore: valori più piccoli indicano una minore dispersione attorno al valore atteso, segnalando quindi una maggiore affidabilità della stima.</p>
+</section><section id="implicazioni-per-linferenza" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="implicazioni-per-linferenza">
+<span class="header-section-number">3.5</span> Implicazioni per l’inferenza</h2>
+<p>La distribuzione campionaria e il concetto di errore standard formano il fondamento teorico dell’inferenza frequentista. La comprensione del comportamento di uno stimatore sotto il principio della ripetizione del campionamento consente di:</p>
+<ol type="1">
+<li>
+<strong>quantificare l’incertezza</strong>: attribuire una misura di variabilità (l’errore standard) a una stima puntuale, trasformandola da un singolo numero in un’informazione associata a una distribuzione di probabilità.</li>
+<li>
+<strong>costruire intervalli di confidenza</strong>: derivare un intervallo di valori plausibili per il parametro incognito, la cui interpretazione è legata alla percentuale di copertura della procedura di costruzione nel lungo termine.</li>
+<li>
+<strong>condurre test di ipotesi</strong>: calcolare probabilità (come il p-value) che quantificano quanto estremi siano i dati osservati rispetto a un’ipotesi nulla di riferimento, assumendo la validità di tale ipotesi e del modello di campionamento ripetuto.</li>
+</ol>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Il concetto di distribuzione campionaria può risultare controintuitivo perché richiede di pensare a cosa succederebbe se ripetessimo l’esperimento molte volte, anche se in pratica raccogliamo un solo campione. Questa è una caratteristica distintiva del pensiero frequentista.</p>
+</div>
+</div>
+</div>
+</section><section id="riflessioni-conclusive" class="level2" data-number="3.6"><h2 data-number="3.6" class="anchored" data-anchor-id="riflessioni-conclusive">
+<span class="header-section-number">3.6</span> Riflessioni conclusive</h2>
+<p>In questo capitolo sono stati introdotti i principi fondamentali che governano l’inferenza statistica nell’approccio frequentista. È stato illustrato come la distribuzione campionaria costituisca il concetto centrale, descrivendo la variabilità teorica di uno stimatore nell’ipotesi di ripetuto campionamento dalla stessa popolazione.</p>
+<p>In particolare, per la media campionaria <span class="math inline">\(\bar{X}\)</span> è stato dimostrato che la sua distribuzione campionaria ha valore atteso pari al parametro della popolazione μ, garantendo la proprietà di non distorsione dello stimatore. La sua varianza è data da <span class="math inline">\(\sigma^2/n\)</span>, il che evidenzia come la precisione della stima aumenti con l’aumentare della dimensione del campione, n.&nbsp;Il teorema del limite centrale fornisce il fondamento teorico per l’approssimazione normale di tale distribuzione quando n è sufficientemente grande, a prescindere dalla forma della distribuzione sottostante. L’errore standard, definito come la radice quadrata della varianza della distribuzione campionaria, fornisce una misura quantitativa di tale precisione.</p>
+<p>Questi concetti costituiscono la struttura logica necessaria per sviluppare e comprendere gli strumenti inferenziali fondamentali, ovvero gli intervalli di confidenza e i test di ipotesi, che verranno approfonditi nei capitoli successivi.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled" title="Informazioni sull'ambiente di sviluppo">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Consiglio</span>Risposte alle domande iniziali
+<span class="screen-reader-only">Nota</span>Informazioni sull’ambiente di sviluppo
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Dopo aver esplorato il concetto di distribuzione campionaria attraverso simulazioni ed esempi pratici, possiamo ora confrontare le nostre risposte intuitive con quanto appreso:</p>
-<ol type="1">
-<li><p><strong>Le medie campionarie tendono a distribuirsi intorno alla media della popolazione</strong>, con una variabilità che dipende dalla dimensione del campione.</p></li>
-<li><p><strong>Sì, le medie campionarie sono meno disperse rispetto ai singoli valori della popolazione</strong>, il che significa che forniscono una stima più stabile della media della popolazione.</p></li>
-<li><p><strong>All’aumentare di <span class="math inline">\(n\)</span>, la distribuzione campionaria delle medie diventa più stretta</strong>, ossia la variabilità delle medie campionarie si riduce. La varianza della distribuzione campionaria è pari a <span class="math inline">\(\sigma^2 / n\)</span>, dove <span class="math inline">\(\sigma^2\)</span> è la varianza della popolazione.</p></li>
-<li><p><strong>No, la distribuzione campionaria della media è normale solo se la popolazione di partenza è normale o se la dimensione del campione è sufficientemente grande</strong> (Teorema del Limite Centrale).</p></li>
-<li><p><strong>Sì, la media della distribuzione campionaria coincide con la media della popolazione. Tuttavia, la varianza della distribuzione campionaria è inferiore alla varianza della popolazione</strong>, poiché viene divisa per la dimensione del campione (<span class="math inline">\(n\)</span>).</p></li>
-<li><p><strong>Per campioni piccoli, la distribuzione delle medie campionarie somiglierà alla distribuzione della popolazione originale</strong>. Se la popolazione è fortemente asimmetrica, anche la distribuzione campionaria per piccoli campioni sarà asimmetrica. Tuttavia, aumentando <span class="math inline">\(n\)</span>, la distribuzione delle medie campionarie tenderà a una normale, indipendentemente dalla forma della popolazione di partenza.</p></li>
-</ol>
-</div>
-</div>
-</div>
-</section><section id="esercizi" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="esercizi">Esercizi</h2>
-<div class="callout callout-style-simple callout-important no-icon callout-titled" title="Problemi 1">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>Problemi 1
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Parte 1: Popolazione di Piccole Dimensioni</strong> Si consideri una popolazione con i seguenti valori:</p>
-<p><span class="math display">\[
-x = \{2, 4.5, 5, 5.5\}
-\]</span></p>
-<ol type="1">
-<li>Calcolare la media e la varianza della popolazione.</li>
-<li>Estrarre tutti i possibili campioni di ampiezza <span class="math inline">\(n = 2\)</span> con ripetizione e calcolare la media di ciascun campione.</li>
-<li>Rappresentare graficamente la distribuzione campionaria delle medie.</li>
-<li>Calcolare la probabilità che la media campionaria sia inferiore a 3:
-<ul>
-<li>Esattamente, utilizzando la distribuzione campionaria.</li>
-<li>Approssimativamente, assumendo una distribuzione normale se il campione fosse sufficientemente grande.</li>
-</ul>
-</li>
-</ol>
-<p><strong>Parte 2: Popolazione di Grandi Dimensioni</strong></p>
-<p>Si consideri ora una popolazione più grande, generata da una distribuzione normale con media <span class="math inline">\(\mu = 10\)</span> e deviazione standard <span class="math inline">\(\sigma = 3\)</span>.</p>
-<ol type="1">
-<li>Generare una popolazione di 1000 osservazioni.</li>
-<li>Calcolare la media e la varianza della popolazione.</li>
-<li>Estrarre 10.000 campioni casuali di ampiezza <span class="math inline">\(n = 15\)</span> e calcolare la media campionaria per ciascun campione.</li>
-<li>Rappresentare graficamente la distribuzione campionaria delle medie.</li>
-<li>Calcolare la probabilità che la media campionaria sia inferiore a 9:
-<ul>
-<li>Esattamente, utilizzando la distribuzione campionaria.</li>
-<li>Approssimativamente, utilizzando la distribuzione normale.</li>
-</ul>
-</li>
-</ol>
-<p><strong>Obiettivo</strong>: Verificare sperimentalmente le proprietà della distribuzione campionaria della media e confrontare i risultati con le previsioni teoriche fornite dal Teorema del Limite Centrale.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="Soluzioni 1">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Consiglio</span>Soluzioni 1
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Proprietà della Distribuzione Campionaria della Media</p>
-<ol type="1">
-<li><p>Media: La media della distribuzione campionaria coincide con la media della popolazione:</p></li>
-<li><p>Varianza: La varianza della distribuzione campionaria è pari alla varianza della popolazione divisa per la dimensione del campione:</p></li>
-<li><p>Forma:</p></li>
-</ol>
-<ul>
-<li>Se la popolazione segue una distribuzione normale, anche la distribuzione campionaria della media sarà normale.</li>
-<li>Se la popolazione non è normale, il Teorema del Limite Centrale garantisce che la distribuzione campionaria della media sarà approssimativamente normale per campioni di dimensioni sufficientemente grandi (<span class="math inline">\(n \geq 30\)</span>).</li>
-</ul>
-<p>Definiamo una popolazione e calcoliamo i parametri:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Popolazione</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4.5</span>, <span class="fl">5</span>, <span class="fl">5.5</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>  <span class="co"># Media della popolazione</span></span>
-<span><span class="co">#&gt; [1] 4.25</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>   <span class="co"># Varianza della popolazione</span></span>
-<span><span class="co">#&gt; [1] 2.42</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Estrarre tutti i possibili campioni di ampiezza <span class="math inline">\(n = 2\)</span> e calcolare la media di ciascun campione:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Tutti i campioni di ampiezza 2</span></span>
-<span><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span><span class="op">)</span></span>
-<span><span class="va">sample_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Visualizzare la distribuzione campionaria</span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>sample_means <span class="op">=</span> <span class="va">sample_means</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">sample_means</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">5</span>, alpha <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_density</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Distribuzione campionaria delle medie"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Media campionaria"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Densità"</span></span>
-<span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Calcoliamo la probabilità che, all’interno della distribuzione campionaria, la media del campione sia minore di 3. Troviamo il valore esatto nella simulazione. Approssimiamo il valore esatto con il valore atteso se il campione fosse sufficientemente grande da poter assumere una distribuzione campionaria normale:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Probabilità esatta dalla distribuzione campionaria</span></span>
-<span><span class="va">exact_probability</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sample_means</span> <span class="op">&lt;</span> <span class="fl">3</span><span class="op">)</span></span>
-<span><span class="va">exact_probability</span></span>
-<span><span class="co">#&gt; [1] 0.0625</span></span>
-<span></span>
-<span><span class="co"># Approssimazione tramite distribuzione normale</span></span>
-<span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>  <span class="co"># Media della popolazione</span></span>
-<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span>  <span class="co"># Deviazione standard della distribuzione campionaria</span></span>
-<span><span class="va">approx_probability</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">3</span>, mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="va">sigma</span><span class="op">)</span></span>
-<span><span class="va">approx_probability</span></span>
-<span><span class="co">#&gt; [1] 0.128</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Ripetiamo ora l’esempio, mantenendo la stessa struttura della simulazione, ma considerando una popolazione più grande tale per cui si possa estrarre un campione di ampiezza 15:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Nuova popolazione</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="va">x_large</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">1000</span>, mean <span class="op">=</span> <span class="fl">10</span>, sd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>  <span class="co"># Popolazione più grande</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x_large</span><span class="op">)</span>  <span class="co"># Media della popolazione</span></span>
-<span><span class="co">#&gt; [1] 10</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x_large</span><span class="op">)</span>   <span class="co"># Varianza della popolazione</span></span>
-<span><span class="co">#&gt; [1] 8.85</span></span>
-<span></span>
-<span><span class="co"># Estrazione di campioni di ampiezza 15</span></span>
-<span><span class="va">samples_large</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">10000</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">x_large</span>, size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Creazione del data frame per ggplot2</span></span>
-<span><span class="va">df_large</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>sample_means <span class="op">=</span> <span class="va">samples_large</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Visualizzazione con ggplot2</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df_large</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">sample_means</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">50</span>, alpha <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_density</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"black"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Distribuzione campionaria delle medie (n = 15)"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Media campionaria"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Densità"</span></span>
-<span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Probabilità esatta dalla simulazione</span></span>
-<span><span class="va">exact_probability_large</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">samples_large</span> <span class="op">&lt;</span> <span class="fl">9</span><span class="op">)</span></span>
-<span><span class="va">exact_probability_large</span></span>
-<span><span class="co">#&gt; [1] 0.0834</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Approssimazione tramite distribuzione normale</span></span>
-<span><span class="va">mu_large</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x_large</span><span class="op">)</span></span>
-<span><span class="va">sigma_large</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x_large</span><span class="op">)</span> <span class="op">/</span> <span class="fl">15</span><span class="op">)</span></span>
-<span><span class="va">approx_probability_large</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">9</span>, mean <span class="op">=</span> <span class="va">mu_large</span>, sd <span class="op">=</span> <span class="va">sigma_large</span><span class="op">)</span></span>
-<span><span class="va">approx_probability_large</span></span>
-<span><span class="co">#&gt; [1] 0.0862</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-important no-icon callout-titled" title="Problemi 2">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>Problemi 2
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Distribuzione Campionaria della Differenza tra Medie</strong></p>
-<p>L’obiettivo di questo esercizio è esplorare le proprietà della distribuzione campionaria della differenza tra medie campionarie, analizzando sia il caso di popolazioni finite di piccole dimensioni sia il caso di popolazioni più grandi, con distribuzioni normali.</p>
-<p><strong>Esercizio 1: Simulazione con Popolazioni di Piccole Dimensioni</strong></p>
-<p>Consideriamo due popolazioni finite composte da un numero limitato di elementi:</p>
-<ul>
-<li>
-<strong>Popolazione 1:</strong> <span class="math inline">\(x_1 = \{2, 4.5, 5, 6\}\)</span>
-</li>
-<li>
-<strong>Popolazione 2:</strong> <span class="math inline">\(x_2 = \{3, 3.5, 4, 7\}\)</span>
-</li>
-</ul>
-<section id="compiti" class="level4" data-number="3.7.0.1"><h4 data-number="3.7.0.1" class="anchored" data-anchor-id="compiti">
-<span class="header-section-number">3.7.0.1</span> <strong>Compiti:</strong>
-</h4>
-<ol type="1">
-<li>
-<strong>Calcolo dei parametri delle popolazioni:</strong>
-<ul>
-<li>Determinare la media e la varianza di entrambe le popolazioni.</li>
-</ul>
-</li>
-<li>
-<strong>Estrazione di campioni:</strong>
-<ul>
-<li>Estrarre tutti i possibili campioni di ampiezza <span class="math inline">\(n = 2\)</span> con ripetizione da entrambe le popolazioni.</li>
-<li>Calcolare la media campionaria di ciascun campione.</li>
-</ul>
-</li>
-<li>
-<strong>Distribuzione campionaria della differenza tra le medie:</strong>
-<ul>
-<li>Calcolare la differenza tra le medie di tutti i possibili campioni ottenuti dalle due popolazioni.</li>
-<li>Rappresentare graficamente la distribuzione della differenza tra le medie.</li>
-</ul>
-</li>
-<li>
-<strong>Probabilità della differenza tra le medie:</strong>
-<ul>
-<li>Calcolare la probabilità che la differenza tra le medie campionarie sia maggiore di 1.</li>
-</ul>
-</li>
-</ol>
-<p><strong>Esercizio 2: Simulazione con Popolazioni di Grande Dimensione</strong></p>
-<p>Consideriamo ora due popolazioni più grandi, distribuite normalmente:</p>
-<ul>
-<li>
-<strong>Popolazione 1:</strong> <span class="math inline">\(X_1 \sim N(10, 4^2)\)</span> (media = 10, deviazione standard = 4)</li>
-<li>
-<strong>Popolazione 2:</strong> <span class="math inline">\(X_2 \sim N(8, 3^2)\)</span> (media = 8, deviazione standard = 3)</li>
-</ul>
-<p><strong>Compiti:</strong></p>
-<ol type="1">
-<li>
-<strong>Generazione delle popolazioni:</strong>
-<ul>
-<li>Creare due popolazioni casuali di 10.000 osservazioni ciascuna, distribuite normalmente.</li>
-</ul>
-</li>
-<li>
-<strong>Estrazione di campioni:</strong>
-<ul>
-<li>Estrarre 10.000 campioni casuali di ampiezza <span class="math inline">\(n_1 = 15\)</span> dalla prima popolazione e <span class="math inline">\(n_2 = 20\)</span> dalla seconda popolazione.</li>
-<li>Calcolare la media di ciascun campione.</li>
-</ul>
-</li>
-<li>
-<strong>Distribuzione campionaria della differenza tra le medie:</strong>
-<ul>
-<li>Calcolare la differenza tra le medie campionarie ottenute dalle due popolazioni.</li>
-<li>Rappresentare graficamente la distribuzione della differenza tra le medie.</li>
-</ul>
-</li>
-<li>
-<strong>Probabilità della differenza tra le medie:</strong>
-<ul>
-<li>Calcolare la probabilità che la differenza tra le medie campionarie sia maggiore di 2 in due modi:
-<ul>
-<li>
-<strong>Metodo empirico:</strong> utilizzando la distribuzione ottenuta nella simulazione.</li>
-<li>
-<strong>Metodo teorico:</strong> approssimando la distribuzione con una normale e calcolando la probabilità con la formula teorica della varianza della differenza tra le medie.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p><strong>Domande di Discussione</strong></p>
-<ol type="1">
-<li>Come cambia la forma della distribuzione campionaria al variare delle dimensioni dei campioni <span class="math inline">\(n_1\)</span> e <span class="math inline">\(n_2\)</span>?</li>
-<li>La probabilità stimata tramite simulazione coincide con quella calcolata utilizzando l’approssimazione normale? Perché?</li>
-<li>Cosa accadrebbe alla distribuzione campionaria se le popolazioni originali non fossero normali? Quale sarebbe il ruolo del Teorema del Limite Centrale?</li>
-</ol></section>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="Soluzioni 2">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Consiglio</span>Soluzioni 2
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Esercizio 1: Simulazione con Popolazioni di Piccola Dimensione</strong></p>
-<p>Supponiamo di avere due popolazioni finite definite come segue:</p>
-<ul>
-<li>Popolazione 1: <span class="math inline">\(x_1 = \{2, 4.5, 5, 6\}\)</span>
-</li>
-<li>Popolazione 2: <span class="math inline">\(x_2 = \{3, 3.5, 4, 7\}\)</span>
-</li>
-</ul>
-<ol type="1">
-<li>Calcola le medie e le varianze delle due popolazioni:</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Popolazione 1</span></span>
-<span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4.5</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x1</span><span class="op">)</span>  <span class="co"># Media di x1</span></span>
-<span><span class="co">#&gt; [1] 4.38</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x1</span><span class="op">)</span>   <span class="co"># Varianza di x1</span></span>
-<span><span class="co">#&gt; [1] 2.9</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Popolazione 2</span></span>
-<span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3.5</span>, <span class="fl">4</span>, <span class="fl">7</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x2</span><span class="op">)</span>  <span class="co"># Media di x2</span></span>
-<span><span class="co">#&gt; [1] 4.38</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x2</span><span class="op">)</span>   <span class="co"># Varianza di x2</span></span>
-<span><span class="co">#&gt; [1] 3.23</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ol start="2" type="1">
-<li>Estrai tutti i possibili campioni di ampiezza <span class="math inline">\(n = 2\)</span> da entrambe le popolazioni:</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Tutti i campioni di ampiezza 2</span></span>
-<span><span class="va">samples1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span><span class="va">x1</span>, <span class="va">x1</span><span class="op">)</span></span>
-<span><span class="va">samples2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span><span class="va">x2</span>, <span class="va">x2</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Medie campionarie</span></span>
-<span><span class="va">sample_means1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span><span class="op">(</span><span class="va">samples1</span><span class="op">)</span></span>
-<span><span class="va">sample_means2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span><span class="op">(</span><span class="va">samples2</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ol start="3" type="1">
-<li>Calcola la differenza tra le medie campionarie di ciascuna combinazione di campioni:</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Differenze tra le medie campionarie</span></span>
-<span><span class="va">sample_diff</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/outer.html">outer</a></span><span class="op">(</span><span class="va">sample_means1</span>, <span class="va">sample_means2</span>, <span class="st">"-"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ol start="4" type="1">
-<li>Visualizza la distribuzione campionaria della differenza tra le medie:</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Istogramma della differenza tra medie campionarie</span></span>
-<span></span>
-<span><span class="co"># Creazione del data frame per ggplot2</span></span>
-<span><span class="va">df_diff</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>sample_diff <span class="op">=</span> <span class="va">sample_diff</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Visualizzazione con ggplot2</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df_diff</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">sample_diff</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">10</span>, fill <span class="op">=</span> <span class="st">"blue"</span>, alpha <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_density</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Distribuzione campionaria della differenza tra medie"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Differenza campionaria"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Densità"</span></span>
-<span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<ol start="5" type="1">
-<li>Calcola la probabilità che la differenza campionaria sia maggiore di 1:</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Probabilità esatta dalla distribuzione campionaria</span></span>
-<span><span class="va">exact_probability</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sample_diff</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="va">exact_probability</span></span>
-<span><span class="co">#&gt; [1] 0.266</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><strong>Esercizio 2: Simulazione con Popolazioni di Grande Dimensione</strong></p>
-<p>Ora considera due popolazioni più grandi con distribuzioni normali:</p>
-<ul>
-<li>Popolazione 1: <span class="math inline">\(X_1 \sim N(10, 4^2)\)</span>
-</li>
-<li>Popolazione 2: <span class="math inline">\(X_2 \sim N(8, 3^2)\)</span>
-</li>
-</ul>
-<ol type="1">
-<li>Genera due popolazioni casuali:</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="va">pop1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10000</span>, mean <span class="op">=</span> <span class="fl">10</span>, sd <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
-<span><span class="va">pop2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10000</span>, mean <span class="op">=</span> <span class="fl">8</span>, sd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ol start="2" type="1">
-<li>Estrai 10.000 campioni casuali di ampiezza <span class="math inline">\(n_1 = 15\)</span> e <span class="math inline">\(n_2 = 20\)</span> rispettivamente:</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Estrazione di campioni e calcolo delle medie</span></span>
-<span><span class="va">sample_means1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">10000</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">pop1</span>, size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">sample_means2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">10000</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">pop2</span>, size <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ol start="3" type="1">
-<li>Calcola la differenza tra le medie campionarie:</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Differenze tra medie campionarie</span></span>
-<span><span class="va">sample_diff_large</span> <span class="op">&lt;-</span> <span class="va">sample_means1</span> <span class="op">-</span> <span class="va">sample_means2</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ol start="4" type="1">
-<li>Visualizza la distribuzione campionaria della differenza tra le medie:</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Istogramma della distribuzione campionaria</span></span>
-<span></span>
-<span><span class="co"># Creazione del data frame per ggplot2</span></span>
-<span><span class="va">df_diff_large</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>sample_diff <span class="op">=</span> <span class="va">sample_diff_large</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Visualizzazione con ggplot2</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df_diff_large</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">sample_diff</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">50</span>, fill <span class="op">=</span> <span class="st">"blue"</span>, alpha <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_density</span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Distribuzione campionaria della differenza tra medie (n1 = 15, n2 = 20)"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Differenza campionaria"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Densità"</span></span>
-<span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<ol start="5" type="1">
-<li>
-<p>Calcola la probabilità che la differenza campionaria sia maggiore di 2 utilizzando:</p>
-<ul>
-<li>la simulazione;</li>
-<li>l’approssimazione normale.</li>
-</ul>
-</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Probabilità esatta</span></span>
-<span><span class="va">exact_probability_large</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sample_diff_large</span> <span class="op">&gt;</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="va">exact_probability_large</span></span>
-<span><span class="co">#&gt; [1] 0.505</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Approssimazione normale</span></span>
-<span><span class="va">mu_diff</span> <span class="op">&lt;-</span> <span class="fl">10</span> <span class="op">-</span> <span class="fl">8</span>  <span class="co"># Differenza tra le medie delle popolazioni</span></span>
-<span><span class="va">sigma_diff</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">4</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="fl">15</span> <span class="op">+</span> <span class="fl">3</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="fl">20</span><span class="op">)</span>  <span class="co"># Deviazione standard della differenza</span></span>
-<span><span class="va">approx_probability_large</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">2</span>, mean <span class="op">=</span> <span class="va">mu_diff</span>, sd <span class="op">=</span> <span class="va">sigma_diff</span><span class="op">)</span></span>
-<span><span class="va">approx_probability_large</span></span>
-<span><span class="co">#&gt; [1] 0.5</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><strong>Domande di Discussione.</strong></p>
-<ol type="1">
-<li>Come cambia la forma della distribuzione campionaria al variare delle dimensioni campionarie <span class="math inline">\(n_1\)</span> e <span class="math inline">\(n_2\)</span>?</li>
-<li>La probabilità calcolata tramite simulazione coincide con quella calcolata tramite approssimazione normale? Perché?</li>
-<li>Cosa accadrebbe alla distribuzione campionaria se le popolazioni originali non fossero normali?</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-important no-icon callout-titled" title="Problemi 3">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>Problemi 3
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Problema: Distribuzione Campionaria di una Proporzione</strong></p>
-<p>L’obiettivo di questo esercizio è esplorare la distribuzione campionaria di una proporzione campionaria <span class="math inline">\(\hat{p}\)</span> e verificare l’applicabilità dell’approssimazione normale per grandi dimensioni campionarie, come previsto dal Teorema del Limite Centrale.</p>
-<p><strong>Situazione</strong></p>
-<p>Supponiamo di avere una popolazione infinita in cui ciascun individuo può appartenere a una di due categorie: “successo” (codificato come 1) o “insuccesso” (codificato come 0). La probabilità di successo nella popolazione è data da <span class="math inline">\(p = 0.6\)</span>.</p>
-<p><strong>Compiti</strong></p>
-<ol type="1">
-<li>
-<strong>Definizione della popolazione e dei parametri:</strong>
-<ul>
-<li>La popolazione ha una proporzione di successi pari a <span class="math inline">\(p = 0.6\)</span>.</li>
-<li>La deviazione standard teorica della distribuzione campionaria della proporzione è calcolata come:<br><span class="math display">\[
-\text{SD}(\hat{p}) = \sqrt{\frac{p(1 - p)}{n}}
-\]</span>
-</li>
-<li>Si fissi una dimensione campionaria pari a <span class="math inline">\(n = 100\)</span>.</li>
-</ul>
-</li>
-<li>
-<strong>Simulazione di campioni:</strong>
-<ul>
-<li>Generare 10.000 campioni casuali di ampiezza <span class="math inline">\(n = 100\)</span>.</li>
-<li>Per ogni campione, calcolare la proporzione campionaria <span class="math inline">\(\hat{p}\)</span>, cioè la frazione di successi nel campione.</li>
-</ul>
-</li>
-<li>
-<strong>Distribuzione campionaria delle proporzioni:</strong>
-<ul>
-<li>Rappresentare graficamente la distribuzione delle proporzioni campionarie con un istogramma.</li>
-<li>Sovrapporre la distribuzione normale teorica <span class="math inline">\(N(p, \text{SD}(\hat{p}))\)</span> per confrontare l’andamento empirico con quello teorico.</li>
-</ul>
-</li>
-<li>
-<strong>Analisi della distribuzione:</strong>
-<ul>
-<li>Valutare se la distribuzione campionaria ottenuta rispetta l’approssimazione normale.</li>
-<li>Riflettere su come la dimensione del campione e il valore di <span class="math inline">\(p\)</span> influenzano questa approssimazione.</li>
-</ul>
-</li>
-</ol>
-<p><strong>Domande di Discussione</strong></p>
-<ol type="1">
-<li>La distribuzione campionaria delle proporzioni <span class="math inline">\(\hat{p}\)</span> sembra approssimarsi a una distribuzione normale? Perché?</li>
-<li>Cosa accadrebbe se la dimensione del campione fosse più piccola, ad esempio <span class="math inline">\(n = 30\)</span>?</li>
-<li>Se la probabilità di successo <span class="math inline">\(p\)</span> fosse molto vicina a 0 o 1, l’approssimazione normale sarebbe ancora valida? Perché?</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="Soluzioni 3">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Consiglio</span>Soluzioni 3
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>La distribuzione campionaria di una proporzione descrive come la proporzione campionaria (<span class="math inline">\(\hat{p}\)</span>) varia tra campioni di una popolazione. Per campioni grandi, il Teorema del Limite Centrale garantisce che la distribuzione campionaria di <span class="math inline">\(\hat{p}\)</span> può essere approssimata con una distribuzione normale.</p>
-<ol type="1">
-<li>
-<strong>Supponiamo una popolazione infinita</strong> in cui la probabilità di successo (<span class="math inline">\(p\)</span>) è <span class="math inline">\(p = 0.6\)</span>. Scegli una dimensione campionaria <span class="math inline">\(n = 100\)</span>.</li>
-<li>Simula 10.000 campioni casuali di ampiezza <span class="math inline">\(n\)</span> e calcola le proporzioni campionarie (<span class="math inline">\(\hat{p}\)</span>).</li>
-<li>Confronta l’istogramma delle proporzioni campionarie con la distribuzione normale teorica approssimativa.</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Parametri della popolazione</span></span>
-<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">0.6</span>  <span class="co"># Probabilità di successo nella popolazione</span></span>
-<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span>  <span class="co"># Dimensione del campione</span></span>
-<span></span>
-<span><span class="co"># Simulazione di 10.000 campioni</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="va">sample_props</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">10000</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="va">n</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="va">p</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Creazione di un data frame per ggplot2</span></span>
-<span><span class="va">df_props</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>sample_props <span class="op">=</span> <span class="va">sample_props</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Parametri della distribuzione normale teorica</span></span>
-<span><span class="va">mean_theoretical</span> <span class="op">&lt;-</span> <span class="va">p</span></span>
-<span><span class="va">sd_theoretical</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">p</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">p</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Visualizzazione con ggplot2</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df_props</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">sample_props</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">40</span>, fill <span class="op">=</span> <span class="st">"blue"</span>, alpha <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">stat_function</span><span class="op">(</span></span>
-<span>    fun <span class="op">=</span> <span class="va">dnorm</span>,</span>
-<span>    args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="va">mean_theoretical</span>, sd <span class="op">=</span> <span class="va">sd_theoretical</span><span class="op">)</span>,</span>
-<span>    color <span class="op">=</span> <span class="st">"red"</span>,</span>
-<span>    size <span class="op">=</span> <span class="fl">1</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Distribuzione campionaria di una proporzione (n = 100)"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Proporzione campionaria (\u0302p)"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Densità"</span></span>
-<span>  <span class="op">)</span> </span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<ol type="1">
-<li>
-<strong>Popolazione e parametri</strong>:
-<ul>
-<li>La popolazione è definita da <span class="math inline">\(p = 0.6\)</span>.</li>
-<li>La deviazione standard teorica della distribuzione campionaria è calcolata come <span class="math inline">\(\text{SD}(\hat{p}) = \sqrt{\frac{p(1-p)}{n}}\)</span>.</li>
-</ul>
-</li>
-<li>
-<strong>Simulazione</strong>:
-<ul>
-<li>Per ogni campione, i successi (<span class="math inline">\(0\)</span> o <span class="math inline">\(1\)</span>) sono generati con <code>rbinom</code>, e la proporzione campionaria <span class="math inline">\(\hat{p}\)</span> è calcolata come media.</li>
-</ul>
-</li>
-<li>
-<strong>Grafico</strong>:
-<ul>
-<li>L’istogramma delle proporzioni campionarie è sovrapposto alla curva normale teorica (<span class="math inline">\(N(p, \text{SD}(\hat{p}))\)</span>).</li>
-</ul>
-</li>
-</ol>
-<p><strong>Domande di Discussione.</strong></p>
-<ol type="1">
-<li>La distribuzione campionaria di <span class="math inline">\(\hat{p}\)</span> sembra approssimarsi a una distribuzione normale? Perché?</li>
-<li>Cosa accadrebbe se <span class="math inline">\(n\)</span> fosse più piccolo (es. <span class="math inline">\(n = 30\)</span>)?</li>
-<li>Se <span class="math inline">\(p\)</span> fosse più vicino a <span class="math inline">\(0\)</span> o <span class="math inline">\(1\)</span>, l’approssimazione normale sarebbe ancora valida? Spiega.</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-important no-icon callout-titled" title="Problemi 4">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>Problemi 4
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>Problema: Distribuzione Campionaria della Differenza tra Due Proporzioni</strong></p>
-<p>L’obiettivo di questo esercizio è esplorare la distribuzione campionaria della differenza tra due proporzioni campionarie, <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>, ottenute da due campioni indipendenti estratti da popolazioni diverse. Per campioni sufficientemente grandi, il Teorema del Limite Centrale garantisce che la distribuzione di <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> può essere approssimata con una distribuzione normale.</p>
-<p><strong>Situazione</strong></p>
-<p>Abbiamo due popolazioni con proporzioni di successo diverse:</p>
-<ul>
-<li>
-<strong>Popolazione 1</strong> ha una proporzione di successo <span class="math inline">\(p_1 = 0.6\)</span>.</li>
-<li>
-<strong>Popolazione 2</strong> ha una proporzione di successo <span class="math inline">\(p_2 = 0.4\)</span>.</li>
-</ul>
-<p>Vogliamo studiare il comportamento della distribuzione campionaria della differenza tra le proporzioni campionarie quando preleviamo campioni indipendenti da ciascuna popolazione.</p>
-<p><strong>Compiti</strong></p>
-<ol type="1">
-<li>
-<strong>Definizione delle popolazioni e dei parametri:</strong>
-<ul>
-<li>La proporzione di successi nelle due popolazioni è <span class="math inline">\(p_1 = 0.6\)</span> e <span class="math inline">\(p_2 = 0.4\)</span>.</li>
-<li>Entrambi i campioni hanno dimensione <span class="math inline">\(n_1 = n_2 = 150\)</span>.</li>
-<li>La deviazione standard teorica della distribuzione campionaria della differenza tra proporzioni è calcolata come: <span class="math display">\[
-\text{SD}(\hat{p}_1 - \hat{p}_2) = \sqrt{\frac{p_1 (1-p_1)}{n_1} + \frac{p_2 (1-p_2)}{n_2}}
-\]</span>
-</li>
-</ul>
-</li>
-<li>
-<strong>Simulazione di campioni:</strong>
-<ul>
-<li>Generare 10.000 campioni indipendenti di ampiezza <span class="math inline">\(n_1 = 150\)</span> dalla prima popolazione e <span class="math inline">\(n_2 = 150\)</span> dalla seconda popolazione.</li>
-<li>Calcolare la proporzione campionaria <span class="math inline">\(\hat{p}_1\)</span> e <span class="math inline">\(\hat{p}_2\)</span> per ciascun campione.</li>
-<li>Calcolare la differenza tra le proporzioni campionarie.</li>
-</ul>
-</li>
-<li>
-<strong>Distribuzione campionaria della differenza tra le proporzioni:</strong>
-<ul>
-<li>Rappresentare graficamente la distribuzione di <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> con un istogramma.</li>
-<li>Sovrapporre la distribuzione normale teorica <span class="math inline">\(N(p_1 - p_2, \text{SD}(\hat{p}_1 - \hat{p}_2))\)</span> per confrontare l’andamento empirico con quello teorico.</li>
-</ul>
-</li>
-<li>
-<strong>Calcolo della probabilità che la differenza tra proporzioni sia maggiore di un valore specifico:</strong>
-<ul>
-<li>
-<strong>Metodo empirico:</strong> calcolare la proporzione di campioni in cui <span class="math inline">\(\hat{p}_1 - \hat{p}_2 &gt; 0.1\)</span>.</li>
-<li>
-<strong>Metodo teorico:</strong> utilizzare la distribuzione normale approssimata per stimare la probabilità che <span class="math inline">\(\hat{p}_1 - \hat{p}_2 &gt; 0.1\)</span>.</li>
-</ul>
-</li>
-</ol>
-<p><strong>Domande di Discussione</strong></p>
-<ol type="1">
-<li>L’approssimazione normale è valida in questo caso? Perché?</li>
-<li>Come cambierebbe la distribuzione campionaria se la dimensione del campione <span class="math inline">\(n_1\)</span> o <span class="math inline">\(n_2\)</span> fosse più piccola?</li>
-<li>Se i valori di <span class="math inline">\(p_1\)</span> o <span class="math inline">\(p_2\)</span> fossero più vicini a 0 o 1, come cambierebbe la probabilità calcolata e l’accuratezza dell’approssimazione normale?</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="Soluzioni 4">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Consiglio</span>Soluzioni 4
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>La distribuzione campionaria della differenza tra due proporzioni (<span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>) descrive come la differenza tra le proporzioni campionarie varia tra due campioni indipendenti estratti da due popolazioni.</p>
-<p>Per campioni grandi, il Teorema del Limite Centrale garantisce che <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> segue approssimativamente una distribuzione normale con media e varianza calcolate dalle proporzioni della popolazione.</p>
-<p>Obiettivo:</p>
-<ol type="1">
-<li>Simulare due popolazioni con proporzioni <span class="math inline">\(p_1\)</span> e <span class="math inline">\(p_2\)</span>.</li>
-<li>Estrarre campioni indipendenti da ciascuna popolazione.</li>
-<li>Calcolare la distribuzione campionaria di <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>.</li>
-<li>Calcolare la probabilità che la differenza campionaria sia maggiore di un valore specifico (es. <span class="math inline">\(0.1\)</span>).</li>
-</ol>
-<p>Parametri del Problema:</p>
-<ul>
-<li>Popolazione 1: <span class="math inline">\(p_1 = 0.6\)</span>
-</li>
-<li>Popolazione 2: <span class="math inline">\(p_2 = 0.4\)</span>
-</li>
-<li>Dimensione campionaria: <span class="math inline">\(n_1 = n_2 = 150\)</span>
-</li>
-<li>Valore specifico: <span class="math inline">\(0.1\)</span>
-</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Parametri delle due popolazioni</span></span>
-<span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fl">0.6</span>  <span class="co"># Proporzione di successi nella Popolazione 1</span></span>
-<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fl">0.4</span>  <span class="co"># Proporzione di successi nella Popolazione 2</span></span>
-<span><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fl">150</span>  <span class="co"># Dimensione campionaria per la Popolazione 1</span></span>
-<span><span class="va">n2</span> <span class="op">&lt;-</span> <span class="fl">150</span>  <span class="co"># Dimensione campionaria per la Popolazione 2</span></span>
-<span></span>
-<span><span class="co"># Simulazione di 10.000 campioni indipendenti</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="va">sample_p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">10000</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="va">n1</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="va">p1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">sample_p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">10000</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="va">n2</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="va">p2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Calcolo della differenza tra proporzioni campionarie</span></span>
-<span><span class="va">sample_diff</span> <span class="op">&lt;-</span> <span class="va">sample_p1</span> <span class="op">-</span> <span class="va">sample_p2</span></span>
-<span></span>
-<span><span class="co"># Parametri teorici della distribuzione normale approssimata</span></span>
-<span><span class="va">mean_diff</span> <span class="op">&lt;-</span> <span class="va">p1</span> <span class="op">-</span> <span class="va">p2</span></span>
-<span><span class="va">sd_diff</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="va">p1</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">p1</span><span class="op">)</span> <span class="op">/</span> <span class="va">n1</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="va">p2</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">p2</span><span class="op">)</span> <span class="op">/</span> <span class="va">n2</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Creazione del data frame per ggplot2</span></span>
-<span><span class="va">df_diff</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>sample_diff <span class="op">=</span> <span class="va">sample_diff</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Visualizzazione con ggplot2</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df_diff</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">sample_diff</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_histogram</span><span class="op">(</span></span>
-<span>    <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">40</span>, fill <span class="op">=</span> <span class="st">"blue"</span>, alpha <span class="op">=</span> <span class="fl">0.6</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">stat_function</span><span class="op">(</span></span>
-<span>    fun <span class="op">=</span> <span class="va">dnorm</span>,</span>
-<span>    args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="va">mean_diff</span>, sd <span class="op">=</span> <span class="va">sd_diff</span><span class="op">)</span>,</span>
-<span>    color <span class="op">=</span> <span class="st">"red"</span>,</span>
-<span>    size <span class="op">=</span> <span class="fl">1</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Distribuzione campionaria della differenza tra proporzioni"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Differenza campionaria (p1 - p2)"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Densità"</span></span>
-<span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_stime_parametri_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calcolo della probabilità che la differenza sia maggiore di 0.1</span></span>
-<span><span class="va">exact_probability</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sample_diff</span> <span class="op">&gt;</span> <span class="fl">0.1</span><span class="op">)</span></span>
-<span><span class="va">exact_probability</span></span>
-<span><span class="co">#&gt; [1] 0.96</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Approssimazione tramite distribuzione normale</span></span>
-<span><span class="va">approx_probability</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">0.1</span>, mean <span class="op">=</span> <span class="va">mean_diff</span>, sd <span class="op">=</span> <span class="va">sd_diff</span><span class="op">)</span></span>
-<span><span class="va">approx_probability</span></span>
-<span><span class="co">#&gt; [1] 0.961</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ol type="1">
-<li>
-<strong>Parametri delle popolazioni</strong>:
-<ul>
-<li>Due popolazioni con proporzioni <span class="math inline">\(p_1 = 0.6\)</span> e <span class="math inline">\(p_2 = 0.4\)</span>.</li>
-<li>Dimensioni campionarie <span class="math inline">\(n_1 = n_2 = 150\)</span>.</li>
-</ul>
-</li>
-<li>
-<strong>Simulazione</strong>:
-<ul>
-<li>Per ogni campione, i successi (<span class="math inline">\(0\)</span> o <span class="math inline">\(1\)</span>) sono generati con <code>rbinom</code>.</li>
-<li>Calcoliamo le proporzioni campionarie e la differenza tra di esse.</li>
-</ul>
-</li>
-<li>
-<strong>Distribuzione teorica</strong>:
-<ul>
-<li>Media teorica: <span class="math inline">\(p_1 - p_2\)</span>.</li>
-<li>Deviazione standard teorica: <span class="math inline">\(\sqrt{\frac{p_1 (1-p_1)}{n_1} + \frac{p_2 (1-p_2)}{n_2}}\)</span>.</li>
-</ul>
-</li>
-<li>
-<strong>Visualizzazione</strong>:
-<ul>
-<li>Un istogramma di <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> sovrapposto alla curva della distribuzione normale teorica.</li>
-</ul>
-</li>
-<li>
-<strong>Calcolo della probabilità</strong>:
-<ul>
-<li>Probabilità esatta dalla simulazione: proporzione di <span class="math inline">\(\hat{p}_1 - \hat{p}_2 &gt; 0.1\)</span>.</li>
-<li>Probabilità approssimata dalla distribuzione normale.</li>
-</ul>
-</li>
-</ol>
-<p><strong>Domande di Discussione.</strong></p>
-<ol type="1">
-<li>L’approssimazione normale è valida in questo caso? Perché?</li>
-<li>Come cambierebbe la distribuzione campionaria se <span class="math inline">\(n_1\)</span> o <span class="math inline">\(n_2\)</span> fossero più piccoli?</li>
-<li>Come influenzerebbe la probabilità calcolata un valore <span class="math inline">\(p_1\)</span> o <span class="math inline">\(p_2\)</span> più vicino a <span class="math inline">\(0\)</span> o <span class="math inline">\(1\)</span>?</li>
-</ol>
-</div>
-</div>
-</div>
-</section><section id="informazioni-sullambiente-di-sviluppo" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="informazioni-sullambiente-di-sviluppo">Informazioni sull’Ambiente di Sviluppo</h2>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; R version 4.5.1 (2025-06-13)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; R version 4.5.2 (2025-10-31)</span></span>
 <span><span class="co">#&gt; Platform: aarch64-apple-darwin20</span></span>
-<span><span class="co">#&gt; Running under: macOS Tahoe 26.0</span></span>
+<span><span class="co">#&gt; Running under: macOS Tahoe 26.1</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
-<span><span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib </span></span>
+<span><span class="co">#&gt; BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib </span></span>
 <span><span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; locale:</span></span>
@@ -1822,44 +567,49 @@ x = \{2, 4.5, 5, 5.5\}
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] pillar_1.11.1         tinytable_0.13.0      patchwork_1.3.2      </span></span>
+<span><span class="co">#&gt;  [1] pillar_1.11.1         tinytable_0.15.1      patchwork_1.3.2      </span></span>
 <span><span class="co">#&gt;  [4] ggdist_3.3.3          tidybayes_3.0.7       bayesplot_1.14.0     </span></span>
-<span><span class="co">#&gt;  [7] ggplot2_4.0.0         reliabilitydiag_0.2.1 priorsense_1.1.1     </span></span>
+<span><span class="co">#&gt;  [7] ggplot2_4.0.1         reliabilitydiag_0.2.1 priorsense_1.2.0     </span></span>
 <span><span class="co">#&gt; [10] posterior_1.6.1       loo_2.8.0             rstan_2.32.7         </span></span>
 <span><span class="co">#&gt; [13] StanHeaders_2.32.10   brms_2.23.0           Rcpp_1.1.0           </span></span>
 <span><span class="co">#&gt; [16] sessioninfo_1.2.3     conflicted_1.2.0      janitor_2.2.1        </span></span>
 <span><span class="co">#&gt; [19] matrixStats_1.5.0     modelr_0.1.11         tibble_3.3.0         </span></span>
-<span><span class="co">#&gt; [22] dplyr_1.1.4           tidyr_1.3.1           rio_1.2.3            </span></span>
+<span><span class="co">#&gt; [22] dplyr_1.1.4           tidyr_1.3.1           rio_1.2.4            </span></span>
 <span><span class="co">#&gt; [25] here_1.0.2           </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
 <span><span class="co">#&gt;  [1] svUnit_1.0.8          tidyselect_1.2.1      farver_2.1.2         </span></span>
-<span><span class="co">#&gt;  [4] S7_0.2.0              fastmap_1.2.0         TH.data_1.1-4        </span></span>
-<span><span class="co">#&gt;  [7] tensorA_0.36.2.1      digest_0.6.37         timechange_0.3.0     </span></span>
+<span><span class="co">#&gt;  [4] S7_0.2.1              fastmap_1.2.0         TH.data_1.1-5        </span></span>
+<span><span class="co">#&gt;  [7] tensorA_0.36.2.1      digest_0.6.39         timechange_0.3.0     </span></span>
 <span><span class="co">#&gt; [10] estimability_1.5.1    lifecycle_1.0.4       survival_3.8-3       </span></span>
-<span><span class="co">#&gt; [13] magrittr_2.0.4        compiler_4.5.1        rlang_1.1.6          </span></span>
-<span><span class="co">#&gt; [16] tools_4.5.1           knitr_1.50            labeling_0.4.3       </span></span>
-<span><span class="co">#&gt; [19] bridgesampling_1.1-2  htmlwidgets_1.6.4     curl_7.0.0           </span></span>
-<span><span class="co">#&gt; [22] pkgbuild_1.4.8        RColorBrewer_1.1-3    abind_1.4-8          </span></span>
-<span><span class="co">#&gt; [25] multcomp_1.4-28       withr_3.0.2           purrr_1.1.0          </span></span>
-<span><span class="co">#&gt; [28] grid_4.5.1            stats4_4.5.1          colorspace_2.1-1     </span></span>
-<span><span class="co">#&gt; [31] xtable_1.8-4          inline_0.3.21         emmeans_1.11.2-8     </span></span>
-<span><span class="co">#&gt; [34] scales_1.4.0          MASS_7.3-65           cli_3.6.5            </span></span>
-<span><span class="co">#&gt; [37] mvtnorm_1.3-3         rmarkdown_2.29        ragg_1.5.0           </span></span>
-<span><span class="co">#&gt; [40] generics_0.1.4        RcppParallel_5.1.11-1 cachem_1.1.0         </span></span>
-<span><span class="co">#&gt; [43] stringr_1.5.2         splines_4.5.1         parallel_4.5.1       </span></span>
-<span><span class="co">#&gt; [46] vctrs_0.6.5           V8_7.0.0              Matrix_1.7-4         </span></span>
-<span><span class="co">#&gt; [49] sandwich_3.1-1        jsonlite_2.0.0        arrayhelpers_1.1-0   </span></span>
-<span><span class="co">#&gt; [52] systemfonts_1.2.3     glue_1.8.0            codetools_0.2-20     </span></span>
-<span><span class="co">#&gt; [55] distributional_0.5.0  lubridate_1.9.4       stringi_1.8.7        </span></span>
-<span><span class="co">#&gt; [58] gtable_0.3.6          QuickJSR_1.8.0        htmltools_0.5.8.1    </span></span>
-<span><span class="co">#&gt; [61] Brobdingnag_1.2-9     R6_2.6.1              textshaping_1.0.3    </span></span>
-<span><span class="co">#&gt; [64] rprojroot_2.1.1       evaluate_1.0.5        lattice_0.22-7       </span></span>
-<span><span class="co">#&gt; [67] backports_1.5.0       memoise_2.0.1         broom_1.0.10         </span></span>
-<span><span class="co">#&gt; [70] snakecase_0.11.1      rstantools_2.5.0      gridExtra_2.3        </span></span>
-<span><span class="co">#&gt; [73] coda_0.19-4.1         nlme_3.1-168          checkmate_2.3.3      </span></span>
-<span><span class="co">#&gt; [76] xfun_0.53             zoo_1.8-14            pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; [13] magrittr_2.0.4        compiler_4.5.2        rlang_1.1.6          </span></span>
+<span><span class="co">#&gt; [16] tools_4.5.2           yaml_2.3.11           knitr_1.50           </span></span>
+<span><span class="co">#&gt; [19] labeling_0.4.3        bridgesampling_1.2-1  htmlwidgets_1.6.4    </span></span>
+<span><span class="co">#&gt; [22] curl_7.0.0            pkgbuild_1.4.8        RColorBrewer_1.1-3   </span></span>
+<span><span class="co">#&gt; [25] abind_1.4-8           multcomp_1.4-29       withr_3.0.2          </span></span>
+<span><span class="co">#&gt; [28] purrr_1.2.0           grid_4.5.2            stats4_4.5.2         </span></span>
+<span><span class="co">#&gt; [31] colorspace_2.1-2      xtable_1.8-4          inline_0.3.21        </span></span>
+<span><span class="co">#&gt; [34] emmeans_2.0.0         scales_1.4.0          MASS_7.3-65          </span></span>
+<span><span class="co">#&gt; [37] cli_3.6.5             mvtnorm_1.3-3         rmarkdown_2.30       </span></span>
+<span><span class="co">#&gt; [40] ragg_1.5.0            generics_0.1.4        RcppParallel_5.1.11-1</span></span>
+<span><span class="co">#&gt; [43] cachem_1.1.0          stringr_1.6.0         splines_4.5.2        </span></span>
+<span><span class="co">#&gt; [46] parallel_4.5.2        vctrs_0.6.5           V8_8.0.1             </span></span>
+<span><span class="co">#&gt; [49] Matrix_1.7-4          sandwich_3.1-1        jsonlite_2.0.0       </span></span>
+<span><span class="co">#&gt; [52] arrayhelpers_1.1-0    systemfonts_1.3.1     glue_1.8.0           </span></span>
+<span><span class="co">#&gt; [55] codetools_0.2-20      distributional_0.5.0  lubridate_1.9.4      </span></span>
+<span><span class="co">#&gt; [58] stringi_1.8.7         gtable_0.3.6          QuickJSR_1.8.1       </span></span>
+<span><span class="co">#&gt; [61] htmltools_0.5.9       Brobdingnag_1.2-9     R6_2.6.1             </span></span>
+<span><span class="co">#&gt; [64] textshaping_1.0.4     rprojroot_2.1.1       evaluate_1.0.5       </span></span>
+<span><span class="co">#&gt; [67] lattice_0.22-7        backports_1.5.0       memoise_2.0.1        </span></span>
+<span><span class="co">#&gt; [70] broom_1.0.11          snakecase_0.11.1      rstantools_2.5.0     </span></span>
+<span><span class="co">#&gt; [73] gridExtra_2.3         coda_0.19-4.1         nlme_3.1-168         </span></span>
+<span><span class="co">#&gt; [76] checkmate_2.3.3       xfun_0.54             zoo_1.8-14           </span></span>
+<span><span class="co">#&gt; [79] pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div>
+</div>
+</div>
+</section><section id="bibliografia" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="bibliografia">Bibliografia</h2>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -2269,8 +1019,8 @@ x = \{2, 4.5, 5, 5.5\}
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../../chapters/frequentist_inference/01_galton.html" class="pagination-link" aria-label="Inferenza frequentista">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Inferenza frequentista</span></span>
+      <a href="../../chapters/frequentist_inference/01_galton.html" class="pagination-link" aria-label="Origini storiche dell'approccio frequentista">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Origini storiche dell’approccio frequentista</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
