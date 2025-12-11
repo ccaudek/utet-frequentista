@@ -3,8 +3,7 @@ page-classes: homefront
 toc: false
 ---
 
-Questo sito è il **modulo sull’inferenza frequentista** del progetto UTET a supporto del manuale *Metodi bayesiani in psicologia*.  
-Offre un percorso introduttivo alle tecniche statistiche tradizionali (stime puntuali, intervalli di confidenza, test d’ipotesi), insieme a un’analisi critica delle loro assunzioni e dei limiti che hanno portato alla crisi di replicazione in psicologia.
+Questo sito ospita il **modulo sull’inferenza frequentista** del progetto UTET, concepito a supporto del manuale *Inferenza bayesiana in psicologia: Ragionare con l’incertezza. Fondamenti, workflow e applicazioni*. Il percorso offre un'introduzione critica alle tecniche statistiche tradizionali, quali le stime puntuali, gli intervalli di confidenza e i test di ipotesi, accompagnata da un'approfondita riflessione sulle loro premesse concettuali e sulle criticità metodologiche che hanno contribuito alla crisi di replicabilità nella ricerca psicologica.
 
 ## Percorso e obiettivi {.unnumbered .unlisted}
 
@@ -12,19 +11,18 @@ Offre un percorso introduttivo alle tecniche statistiche tradizionali (stime pun
 - **Stima dei parametri**: concetti di media campionaria, varianza, stimatori corretti.  
 - **Intervalli di confidenza**: costruzione, interpretazione, equivoci comuni.  
 - **Test di ipotesi**: logica, errori di I e II tipo, potenza statistica.  
-- **Campionamento e dimensione campionaria**: criteri per pianificare studi quantitativi.  
-- **Oltre il frequentista**: come queste tecniche hanno aperto la strada a una riflessione metodologica più ampia.
 
-Il sito non sostituisce il manuale, ma lo integra: qui trovi il **background propedeutico** e la cornice critica necessaria a comprendere l’alternativa bayesiana.
+Il sito non intende sostituire il manuale principale, ma integrarlo: fornisce il **background propedeutico** e il contesto critico indispensabili per apprezzare in profondità le ragioni e la struttura dell'alternativa bayesiana.
 
 ## Come usare il modulo {.unnumbered .unlisted}
 
 - **Leggi con spirito critico**: lo scopo è capire potenzialità e limiti del frequentismo.  
-- **Collega al manuale**: ogni tema qui affrontato trova un corrispettivo o un superamento nell’approccio bayesiano.  
-- **Sfrutta le appendici**: notazione matematica, simboli e richiami utili sono raccolti in fondo.
+- **Collega al manuale**: ciascun tema trattato in questo modulo costituisce il presupposto teorico o il termine di confronto necessario per apprezzare l'approccio bayesiano sviluppato nel manuale principale, dove viene proposto un superamento delle criticità discusse.
+- **Utilizza le appendici**: per un riferimento rapido, sono disponibili appendici dedicate alla notazione matematica, ai simboli e a richiami di concetti fondamentali, consultabili sul sito companion [Inferenza bayesiana in psicologia: ragionare con l’incertezza](https://ccaudek.github.io/utet-companion/).
 
 ## Licenza d’uso {.unnumbered .unlisted}
 
-Materiali distribuiti con licenza  
-[CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.it).  
-Condivisione consentita con attribuzione, **solo per usi non commerciali** e **senza modifiche**.
+Materiali rilasciati con licenza  
+[CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.it):  
+è consentita la condivisione con attribuzione **solo per usi non commerciali** e **senza modifiche**.
+

@@ -29,7 +29,7 @@ book:
 
   chapters:
     - index.qmd
-    - prefazione.qmd
+    # - prefazione.qmd
 
     - part: "Frequentismo"
       chapters:
