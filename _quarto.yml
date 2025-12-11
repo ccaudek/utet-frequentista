@@ -37,7 +37,7 @@ book:
         - chapters/frequentist_inference/01_galton.qmd
         - chapters/frequentist_inference/02_stime_parametri.qmd
         - chapters/frequentist_inference/03_conf_interv.qmd
-        - chapters/frequentist_inference/04_sample_size.qmd
+        # - chapters/frequentist_inference/04_sample_size.qmd
         - chapters/frequentist_inference/05_test_ipotesi.qmd
         - chapters/frequentist_inference/06_two_ind_samples.qmd
 
@@ -58,39 +58,46 @@ link-citations: true
 
 format:
   html:
-    theme: cosmo
-    # include-in-header:
-    #   - style/_mathjax-config.html
-    # include-after-body:
-    #   - style/_after-body.html
-    # theme: style/mystyle.scss
-    # css:
-    #   - style/_typography-extras.css
-    #   - style/_code-extras.css
-    #   - style/_math-extras.css
-    #   - style/styles.css
-    fig-format: png
-    dpi: 192
-    fig-responsive: true
-    smooth-scroll: true
+    theme: 
+      light: cosmo
+      dark: darkly
+    mainfont: "system-ui"
     page-layout: article
-    max-width: 72ch
+    max-width: 74ch
     number-sections: true
+    lang: it
+    reader-mode: true
+    toc: true
+    toc-title: "Sommario"
+    toc-expand: 2
+    smooth-scroll: true
+    footnotes-hover: true
     link-external-icon: true
     link-external-newwindow: true
-    footnotes-hover: true
-    reader-mode: true
-    callout-appearance: minimal
-    lang: it
-    title-block-banner: false
-    toc-title: "Sommario"
-    date-format: "D MMMM YYYY"
+
+    # Figure 
+    fig-align: center
+    fig-responsive: true
+    fig-cap-location: bottom
+    fig-format: png 
+  
+    # Matematica
+    html-math-method:
+      method: mathjax
+      # macros: { "\\E": "\\mathbb{E}", "\\Var": "\\mathrm{Var}" }
+
+    # Codice
     code-copy: hover
     code-link: true
     code-overflow: scroll
     code-line-numbers: false
-    code-block-bg: false
+    code-block-bg: true
     code-block-border-left: false
+    code-tools: true
+    highlight-style: github
+
+    # Media
+    lightbox: auto
 
 execute:
   freeze: auto

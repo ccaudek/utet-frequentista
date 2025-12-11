@@ -3,12 +3,15 @@
 ::: callout-important
 ## In questo capitolo imparerai a
 
-- calcolare la grandezza del campione, dato un margine prefissato di errore.
+- Calcolare la dimensione del campione necessaria per ottenere una precisione desiderata.
+- Comprendere il ruolo della potenza statistica nella pianificazione degli studi.
+- Riconoscere i limiti dell'approccio frequentista alla determinazione di $n$.
 :::
 
 ::: callout-tip
 ## Prerequisiti
 
+- Aver compreso gli intervalli di confidenza e le distribuzioni campionarie.
 - Leggere l'articolo *Power to detect what? Considerations for planning and evaluating sample size* [@giner2024power].
 :::
 
@@ -21,327 +24,168 @@ here::here("code", "_common.R") |>
 ```
 :::
 
-
 ## Introduzione
 
-La scelta della dimensione del campione è fondamentale per garantire che i risultati di uno studio siano affidabili, bilanciando precisione e costi. In questo capitolo, esamineremo come calcolare la dimensione minima del campione necessaria per stimare la **media di una popolazione** con un margine di errore prefissato e un determinato livello di confidenza. Utilizzeremo un esempio tratto dalla psicologia per illustrare il processo e fornire implementazioni pratiche in R.
+La scelta della dimensione del campione è fondamentale per garantire che i risultati di uno studio siano affidabili. Un campione troppo piccolo produce stime imprecise e test con scarsa potenza; un campione eccessivamente grande spreca risorse. In questo capitolo esamineremo come determinare la dimensione minima necessaria per raggiungere obiettivi statistici prefissati.
 
-## La Logica Dietro la Scelta della Dimensione Campionaria
+## Dimensione campionaria per la stima della media
 
-In psicologia, è comune stimare la media di una variabile (ad esempio, il punteggio medio di una scala psicometrica). I vantaggi di utilizzare campioni più grandi includono:
+### Derivazione della formula
 
-- **Stime più precise:** Con un campione più grande, la varianza dell'estimatore diminuisce, rendendo le stime più accurate.
-- **Maggiore fiducia nei risultati:** Un campione più grande riduce il margine di errore, aumentando la certezza dei risultati.
-
-Tuttavia, i campioni più grandi richiedono risorse maggiori in termini di tempo e denaro. Pertanto, il problema si riduce spesso a trovare il **campione più piccolo che garantisca la precisione desiderata**.
-
-## Calcolo della Dimensione Campionaria
-
-Per campioni sufficientemente grandi, la media campionaria $\bar{X}$ segue una distribuzione normale:
+Vogliamo trovare la dimensione $n$ tale che la media campionaria $\bar{X}$ abbia una probabilità elevata (es. 95%) di trovarsi entro un margine di errore $E$ dalla vera media $\mu$:
 
 $$
-\bar{X} \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right),
+P\left(|\bar{X} - \mu| < E\right) \geq 0.95
 $$
 
-dove:
-
-- $n$ è la dimensione del campione,
-- $\mu$ è la vera media della popolazione,
-- $\sigma^2$ è la varianza della popolazione.
-
-Il nostro obiettivo è trovare la dimensione campionaria $n$ tale che:
+Poiché $\bar{X}$ è approssimativamente normale con media $\mu$ e deviazione standard $\sigma/\sqrt{n}$, possiamo standardizzare:
 
 $$
-P\left(|\bar{X} - \mu| < E\right) \geq 0.95,
+P\left(\left|\frac{\bar{X} - \mu}{\sigma/\sqrt{n}}\right| < \frac{E}{\sigma/\sqrt{n}}\right) \geq 0.95
 $$
 
-dove:
-
-- $\bar{X}$ è la media campionaria,
-- $\mu$ è la media della popolazione,
-- $E$ è il margine di errore massimo accettabile.
-
-Sappiamo che, per il **teorema centrale del limite**, la media campionaria $\bar{X}$ può essere standardizzata come segue:
+Per una normale standard, la condizione $P(|Z| < z_{0.025}) = 0.95$ è soddisfatta con $z_{0.025} = 1.96$. Quindi:
 
 $$
-Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}}.
+\frac{E}{\sigma/\sqrt{n}} = z_{0.025} = 1.96
 $$
 
-Questa quantità $Z$ segue una distribuzione normale standard $\mathcal{N}(0, 1)$.
-
-Quindi, possiamo riscrivere la probabilità richiesta come:
+Risolvendo per $n$:
 
 $$
-P\left(|\bar{X} - \mu| < E\right) = P\left(|Z| < z_{0.025}\right),
+n = \left(\frac{z_{0.025} \cdot \sigma}{E}\right)^2
 $$
 
-dove $z_{0.025} = 1.96$ è il quantile superiore della distribuzione normale standard corrispondente a un livello di confidenza del $95\%$.
+### Esempio applicativo
 
-Dalla definizione della variabile standardizzata $Z$, possiamo ricavare la relazione per il margine di errore:
-
-$$
-|\bar{X} - \mu| < E \implies Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \implies \left|\frac{\bar{X} - \mu}{\sigma / \sqrt{n}}\right| < \frac{E}{\sigma / \sqrt{n}}.
-$$
-
-Sostituendo la condizione $|Z| < z_{0.025}$, otteniamo:
-
-$$
-\frac{E}{\sigma / \sqrt{n}} = z_{0.025}.
-$$
-
-Risolvendo per $\sqrt{n}$, moltiplichiamo entrambi i membri per $\sigma / \sqrt{n}$:
-
-$$
-E = z_{0.025} \cdot \frac{\sigma}{\sqrt{n}}.
-$$
-
-Isoliamo $\sqrt{n}$ dividendo entrambi i membri per $z_{0.025} \cdot \sigma$:
-
-$$
-\sqrt{n} = \frac{z_{0.025} \cdot \sigma}{E}.
-$$
-
-Infine, eleviamo entrambi i membri al quadrato per ottenere $n$:
-
-$$
-n = \left(\frac{z_{0.025} \cdot \sigma}{E}\right)^2.
-$$
-
-In conclusione, la dimensione campionaria minima $n$ necessaria per soddisfare il margine di errore $E$ e il livello di confidenza richiesto è:
-
-$$
-n = \left(\frac{z_{0.025} \cdot \sigma}{E}\right)^2.
-$$
-
-## Stima della Media del Punteggio di Autostima
-
-Consideriamo un esempio pratico: vogliamo stimare la media del punteggio di autostima in una popolazione di giovani adulti, utilizzando la *Rosenberg Self-Esteem Scale* (RSES), che assegna un punteggio compreso tra 0 e 30.
-
-Dettagli del Problema:
-
-- Deviazione standard del punteggio: $\sigma = 6$ (stimata da studi precedenti).
-- Margine di errore massimo accettabile: $E = 2$.
-- Livello di confidenza: $95\%$.
-
-Implementiamo in R la formula derivata in precedenza.
+Vogliamo stimare la media del punteggio di autostima (scala 0-30) con un margine di errore massimo di 2 punti e confidenza 95%. Da studi precedenti, sappiamo che $\sigma \approx 6$.
 
 ```{r}
-# Parametri del problema
-sigma <- 6     # Deviazione standard del punteggio RSES
-E <- 2         # Margine di errore desiderato
-z_alpha <- qnorm(0.975)  # Quantile superiore della distribuzione normale (95% confidenza)
+# Parametri
+sigma <- 6           # Deviazione standard stimata
+E <- 2               # Margine di errore desiderato
+z_alpha <- qnorm(0.975)  # Quantile per IC al 95%
 
 # Calcolo della dimensione campionaria
 n <- (z_alpha * sigma / E)^2
-n <- ceiling(n)  # Arrotondamento all'intero successivo
-n
+n <- ceiling(n)  # Arrotondamento all'intero superiore
+
+cat("Dimensione campionaria minima necessaria:", n, "\n")
 ```
 
-In conclusione, la dimensione campionaria minima necessaria per stimare la media del punteggio di autostima con un margine di errore massimo di 2 punti e un livello di confidenza del 95% è $n = 35$.
+### Sensibilità ai parametri
 
-### Approfondimenti
+La dimensione campionaria dipende fortemente dai parametri scelti. Esploriamo come varia $n$ al cambiare del margine di errore:
 
-1. **Precisione e Livello di Confidenza**
-   Aumentando $n$, la varianza di $\bar{X}$ diminuisce:
-   
-   $$
-   \text{Var}(\bar{X}) = \frac{\sigma^2}{n}.
-   $$
-   
-   Questo restringe l'intervallo di confidenza e migliora la precisione.
+```{r}
+# Analisi di sensibilità
+margini <- c(1, 1.5, 2, 2.5, 3)
+risultati <- data.frame(
+  Margine = margini,
+  n = ceiling((z_alpha * sigma / margini)^2)
+)
 
-2. **Costo e Praticità**
-   Un campione più grande comporta costi più elevati. È importante trovare il giusto compromesso tra precisione e fattibilità.
+knitr::kable(risultati, 
+             col.names = c("Margine di errore (E)", "n minimo"),
+             caption = "Dimensione campionaria al variare del margine di errore")
+```
 
-3. **Adattamento ad Altri Livelli di Confidenza**
-   Per altri livelli di confidenza, basta modificare il quantile $z_{\alpha/2}$. Ad esempio, per un livello di confidenza del 99%, $z_{0.005} \approx$ 2.576.
+Raddoppiare la precisione (dimezzare $E$) richiede quadruplicare la dimensione campionaria.
 
-## Riflessioni Conclusive
+## Potenza statistica
 
-Definire la dimensione del campione rappresenta un passaggio cruciale nella progettazione di qualsiasi studio psicologico. Un approccio matematico rigoroso, fondato su analisi di potenza statistica e stime di effetti attesi, consente di ottimizzare il bilanciamento tra precisione dei risultati e limitazioni pratiche, come tempi, costi e disponibilità dei partecipanti. Questo equilibrio è fondamentale per garantire che i dati raccolti siano sufficientemente robusti da supportare conclusioni valide, senza tuttavia sprecare risorse in campioni eccessivamente ampi. Una corretta determinazione del campione contribuisce inoltre a ridurre il rischio di errori di tipo I e II, rafforzando l'integrità scientifica della ricerca.
+La **potenza** di un test è la probabilità di rifiutare correttamente l'ipotesi nulla quando essa è falsa. Convenzionalmente, si cerca una potenza di almeno 0.80 (80%).
 
-Nel confronto tra paradigmi statistici, l'approccio frequentista si distingue per la sua enfasi sul controllo degli errori e sulla replicabilità attraverso il calcolo del valore *p* e della potenza statistica. Questo metodo richiede una rigorosa pianificazione preliminare, con la determinazione a priori della dimensione del campione basata su stime dell'effetto atteso e soglie prefissate di significatività e potenza. Tale rigidità metodologica, sebbene garantisca standardizzazione e controllo degli errori di Tipo I, può presentare notevoli limitazioni. In particolare, non permette modifiche alla dimensione del campione durante lo studio senza compromettere la validità statistica e può portare al problema dello "optional stopping", dove il controllo ripetuto dei risultati aumenta il rischio di falsi positivi.
+La potenza dipende da:
 
-L'approccio bayesiano, d'altra parte, offre una prospettiva complementare, ponendo l'accento sulla stima e sull'aggiornamento delle credenze in base ai dati osservati. Nel contesto bayesiano, la dimensione del campione non è solo uno strumento per garantire la significatività statistica, ma diventa un mezzo per affinare la precisione delle stime a posteriori. Questo approccio si caratterizza per una maggiore flessibilità, permettendo il monitoraggio continuo dell'evidenza attraverso i fattori di Bayes e l'aggiornamento sequenziale delle stime di probabilità. L'uso di distribuzioni a priori consente di incorporare conoscenze pregresse, portando a distribuzioni a posteriori che quantificano l'incertezza in modo più intuitivo e direttamente interpretabile.
+1. **Dimensione dell'effetto**: la grandezza della differenza che vogliamo rilevare.
+2. **Variabilità dei dati**: maggiore variabilità riduce la potenza.
+3. **Dimensione campionaria**: campioni più grandi aumentano la potenza.
+4. **Livello di significatività $\alpha$**: soglie più stringenti riducono la potenza.
 
-La scelta di quando interrompere la raccolta dati rappresenta un esempio emblematico delle differenze tra i due approcci. Mentre il metodo frequentista richiede una dimensione campionaria fissa determinata a priori, l'approccio bayesiano permette una maggiore flessibilità, consentendo di interrompere la raccolta quando si raggiunge un livello desiderato di precisione nelle stime posteriori. Tuttavia, questa flessibilità comporta anche sfide specifiche, come la necessità di specificare distribuzioni a priori appropriate e una maggiore complessità computazionale.
+### Esempio: test t per un campione
 
-Una soluzione pragmatica potrebbe essere l'integrazione dei punti di forza di entrambi gli approcci. Si potrebbe utilizzare l'analisi della potenza frequentista per stabilire una dimensione minima del campione, implementando poi un monitoraggio bayesiano per valutare quando l'evidenza raccolta è sufficiente. Questo approccio integrato dovrebbe essere guidato da regole decisionali stabilite a priori e supportato da analisi di sensitività per valutare la robustezza delle conclusioni.
+Supponiamo di voler rilevare una differenza di 3 punti dalla media di riferimento (24) con potenza 80%, $\alpha = 0.05$ e $\sigma = 6$:
 
-In sintesi, la scelta della dimensione del campione e la decisione su quando concludere la raccolta dati non dovrebbero essere viste solo come problemi tecnici, ma come opportunità per riflettere sulle priorità della ricerca, sul contesto teorico e sulle metodologie più adatte. La combinazione dei punti di forza degli approcci frequentista e bayesiano può portare a una ricerca più robusta, flessibile e informativa, contribuendo a un progresso scientifico più solido e sfaccettato. Tale scelta metodologica deve considerare gli obiettivi specifici dello studio, le risorse disponibili, i requisiti delle riviste scientifiche e la natura delle ipotesi da testare, bilanciando le esigenze di precisione con quelle di praticabilità. Pertanto, investire tempo nella pianificazione di questo aspetto non è solo una scelta metodologica, ma un imperativo etico per chiunque si impegni nella produzione di conoscenza psicologica.
+```{r}
+# Calcolo della dimensione campionaria per un test t a una coda
+power.t.test(
+  delta = 3,           # Differenza da rilevare
+  sd = 6,              # Deviazione standard
+  sig.level = 0.05,    # Livello di significatività
+  power = 0.80,        # Potenza desiderata
+  type = "one.sample", # Test a un campione
+  alternative = "two.sided"
+)
+```
 
-## Esercizi {.unnumbered}
+### Esempio: confronto tra due gruppi
 
-::: {.callout-important title="Problemi 1" collapse="true"}
+Per confrontare due gruppi indipendenti con una differenza attesa di 5 punti:
 
-**Esercizio 1: Dimensione del campione per un margine di errore prefissato**
+```{r}
+power.t.test(
+  delta = 5,           # Differenza tra le medie
+  sd = 6,              # Deviazione standard comune
+  sig.level = 0.05,
+  power = 0.80,
+  type = "two.sample",
+  alternative = "two.sided"
+)
+```
 
-1. Esaminando i dati raccolti, hai ottenuto una **deviazione standard campionaria** (stimata) $s \approx 4{,}3$ sui punteggi SWLS.  
-2. Hai stabilito di voler **stimare la media SWLS** con un **margine di errore massimo** $E = 2$ punti e un livello di confidenza del 95%.  
-3. Utilizzando il valore critico $z_{0.025} \approx 1{,}96$ (per il 95%), ipotizza che la **deviazione standard di popolazione** $\sigma$ possa essere approssimata da $s$. Calcola quindi la dimensione del campione $n$ necessaria:
+Sono necessari circa 24 soggetti per gruppo, quindi 48 in totale.
 
-   $$
-   n = \left(\frac{z_{\alpha/2} \times \sigma}{E}\right)^2.
-   $$
+## Analisi di potenza a posteriori
 
-4. **Interpreta** il risultato: è un campione grande o piccolo? Quali fattori potrebbero influenzarne la validità (ad es. la stima di $\sigma$ da soli 10 soggetti)?
+Spesso si desidera calcolare la potenza di uno studio già completato. Tuttavia, questa pratica è stata criticata perché la potenza osservata è strettamente legata al p-value ottenuto e fornisce informazioni ridondanti.
 
-**Esercizio 2: Aumento del livello di confidenza e influenza su $n$**
+```{r}
+# Esempio: studio con n = 30 per gruppo, differenza osservata = 4, sd = 6
+power.t.test(
+  n = 30,
+  delta = 4,
+  sd = 6,
+  sig.level = 0.05,
+  type = "two.sample",
+  alternative = "two.sided"
+)
+```
 
-1. Con gli stessi dati dell’Esercizio 1 (stesso $\sigma\approx4{,}3$, stesso $E=2$), calcola la dimensione $n$ se volessi un **livello di confidenza del 99%**.  
-2. Confronta tale dimensione con quella trovata al 95%.  
-3. Commenta: perché un livello di confidenza più elevato richiede un campione più grande? E in che modo ciò può impattare sull’**organizzazione pratica** della ricerca (tempi, costi, disponibilità di partecipanti)?
-
-**Esercizio 3: Potere statistico per rilevare una differenza dalla media di riferimento**
-
-1. Ipotizza che la **media SWLS** di riferimento (ad es. in letteratura) sia 24.  
-2. Vuoi un test a **una coda** (one-sample t-test o z-test) con $\alpha = 0{,}05$, e desideri un **potere** ($1-\beta$) dell’80% di rivelare una **differenza** di 3 punti (cioè vuoi essere in grado di concludere che la vera media è *almeno* 3 punti più alta o più bassa di 24).  
-3. Usa come stima della **deviazione standard** la stessa $s \approx 4{,}3$. Sulla base delle formule di potenza statistica per un test a una coda, calcola un **numero approssimativo di soggetti** $n$ necessari. *(Suggerimento: puoi usare formule di power analysis o fare riferimento a software R, es. `power.t.test()` o `pwr.t.test()`.)*  
-4. **Interpreta** la dimensione campionaria trovata: è realistica per un esperimento in cui potresti raccogliere partecipanti simili a quelli del pilot? Oppure rappresenta un valore troppo elevato?
-
-**Esercizio 4: Confronto tra due gruppi e potere statistico**
-
-1. Ipotizza di voler confrontare **due gruppi** indipendenti (ognuno con punteggi SWLS) e di voler rilevare una differenza media di **5 punti** tra i due gruppi (Gruppo A vs Gruppo B).  
-2. Assumi che ciascun gruppo abbia la **stessa deviazione standard** $\sigma = 4{,}3$.  
-3. Vuoi un test a due code, $\alpha=0{,}05$, e un potere dell’80%. Utilizza (se vuoi) la formula approssimata per due campioni indipendenti, oppure uno **strumento in R** (ad es. `power.t.test` con `type="two.sample"`).  
-4. Calcola (o stima) la dimensione $n$ per **ciascun gruppo**.  
-5. **Commenta**: confronta il risultato con la disponibilità realistica dei partecipanti. Che implicazioni metodologiche o pratiche emergono?
+::: {.callout-warning}
+**Attenzione**: L'analisi di potenza a posteriori (post-hoc) è di utilità limitata. Un p-value significativo corrisponde sempre a una potenza osservata superiore al 50%, mentre un p-value non significativo corrisponde a una potenza osservata inferiore al 50%. L'analisi di potenza è utile solo nella fase di **pianificazione** dello studio.
 :::
 
-::: {.callout-tip title="Soluzioni 1" collapse="true"}
-**Soluzione Esercizio 1**
+## Limiti dell'approccio frequentista
 
-**Dati principali**:  
-- $\sigma \approx 4{,}3$ (stimata dal pilot)  
-- $E = 2$ (margine di errore)  
-- Livello di confidenza 95% $\Rightarrow z_{\alpha/2} \approx 1{,}96$
+La determinazione frequentista della dimensione campionaria presenta alcune criticità:
 
-La **formula** per la dimensione campionaria:
+1. **Richiede stime a priori**: Occorre stimare $\sigma$ e la dimensione dell'effetto prima di raccogliere i dati, introducendo incertezza.
 
-$$
-n = \left(\frac{z_{\alpha/2} \times \sigma}{E}\right)^2 
-$$
+2. **Dicotomia significativo/non significativo**: La pianificazione è orientata a raggiungere una soglia arbitraria, non a quantificare l'incertezza.
 
-**Calcolo**:
+3. **Optional stopping**: Il protocollo deve essere fissato a priori; non è possibile raccogliere dati aggiuntivi senza inflazionare l'errore di tipo I.
 
-$$
-n 
-= \left(\frac{1{,}96 \times 4{,}3}{2}\right)^2 
-= \left(\frac{8{,}428}{2}\right)^2
-= (4{,}214)^2
-\approx 17{,}76.
-$$
+4. **Focus sull'effetto minimo**: Si calcola la potenza per rilevare un effetto minimo di interesse, ma questo valore è spesso scelto arbitrariamente.
 
-Arrotondando all’intero **superiore**:
+L'approccio bayesiano affronta alcune di queste limitazioni permettendo:
 
-$$
-n \approx 18.
-$$
+- L'aggiornamento sequenziale delle credenze man mano che i dati arrivano.
+- L'integrazione di informazioni pregresse nella pianificazione.
+- Una quantificazione continua dell'incertezza senza dipendenza da soglie arbitrarie.
 
-**Interpretazione**  
+## Riepilogo
 
-- Servirebbero circa **18 partecipanti** (anziché 10) per ottenere un IC al 95% con margine d’errore 2, ipotizzando $\sigma \approx 4{,}3$.  
-- **Limiti**: la $\sigma$ deriva da un campione di sole 10 persone e potrebbe non rappresentare bene la **deviazione standard reale** dell’intera popolazione. Se in realtà $\sigma$ fosse più grande, $n$ andrebbe rivisto al rialzo; se fosse minore, 18 potrebbe essere anche sovrastimato.  
-- 18 non è troppo elevato; potrebbe essere gestibile in uno studio con costi contenuti. Tuttavia, la validità dipende dalla solidità della stima di $\sigma$.
+In questo capitolo abbiamo visto che:
 
-**Soluzione Esercizio 2**
-
-**Cambio di livello di confidenza**: da 95% a 99%. Ora $\alpha=0{,}01$ e $\alpha/2=0{,}005$.  
-Il valore critico $z_{0.005}$ è circa **2,576**.
-
-$$
-n = \left(\frac{2,576 \times 4{,}3}{2}\right)^2
-= \left(\frac{11{,}0768}{2}\right)^2
-= (5{,}5384)^2
-\approx 30{,}7.
-$$
-
-Arrotondato in **eccesso**:
-
-$$
-n \approx 31.
-$$
-
-**Confronto con i 18 trovati prima**  
-- Aumentando la confidenza dal 95% al 99%, la dimensione campionaria passa da ~18 a ~31, cioè un incremento notevole.  
-- **Motivo**: per assicurare un intervallo che, nel lungo periodo, includa il vero valore nel 99% dei casi, occorre un margine di errore più “tollerante” (oppure un campione più grande per mantenere lo stesso $E$).  
-- **Impatto pratico**: reclutare 31 soggetti (invece di 18) può pesare in termini di costi e disponibilità, ma riduce l’incertezza dell’IC dal punto di vista frequentista.
-
-**Soluzione Esercizio 3**
-
-**Potere statistico (80%) per rilevare $\Delta = 3$** in un test a **una coda** contro il valore di riferimento 24.  
-- $\alpha=0{,}05$ (quindi **una coda**, il valore critico si situa intorno a **z=1.645** per la potenza, ma i calcoli precisi si fanno di solito con formule di power analysis).  
-- $\sigma \approx 4{,}3$.  
-- $\Delta = 3$.
-
-In R, con `pwr.t.test()` o `power.t.test()`, l’approssimazione verrebbe impostata come:
-
-```r
-library(pwr)  # se usi pwr
-pwr.t.test(d = 3/4.3, sig.level = 0.05, power = 0.80,
-           type = "one.sample", alternative="greater")
-```
-oppure:
-
-```r
-power.t.test(delta = 3, sd = 4.3, sig.level = 0.05, 
-             power = 0.80, type = "one.sample", 
-             alternative = "one.sided")
-```
-
-**Esempio di risultato** (numeri indicativi): potresti ottenere $n \approx 20$. *(Il valore preciso cambia a seconda delle approssimazioni e del software.)*
-
-**Interpretazione**  
-- Con 20 soggetti, se $\Delta$ fosse veramente di 3 punti rispetto a 24, il test a una coda dovrebbe avere l’80% di chance di rigettare l’ipotesi nulla (cioè di rilevare la differenza) a $\alpha=0{,}05$.  
-- Se cercassi di replicare il pilot (dove avevi 10 soggetti), probabilmente la potenza sarebbe inferiore.  
-- Potresti chiederti se 20 partecipanti siano facili da reclutare o se, dal punto di vista pratico, 20 restino pochi per altre ragioni (ad es. robustezza dei modelli, normalità, outlier).
-
-**Soluzione Esercizio 4**
-
-a) Due campioni indipendenti, differenza attesa = 5 punti, potere = 80%, test a due code
-
-Con formula approssimata (oppure software R), i parametri tipici:
-
-- **Differenza minima rilevabile**: $\Delta = 5$  
-- $\sigma = 4{,}3$ in ciascun gruppo  
-- $\alpha = 0{,}05$ (due code), potere = 80%  
-- Tipo di test: “two-sample t test” (Gruppo A vs Gruppo B, varianze uguali)
-
-In R con `power.t.test()`:
-
-```r
-power.t.test(delta = 5, sd = 4.3, sig.level = 0.05,
-             power = 0.80, type = "two.sample",
-             alternative = "two.sided")
-```
-
-**Esempio di risultato**: potresti ottenere $n \approx 14$ per gruppo (quindi **28** totali). *(Il numero può variare leggermente a seconda delle approssimazioni.)*
-
-b) Commento
-
-- **18** o **20** partecipanti totali potrebbero bastare per un one-sample test (Esercizi 1–3), ma qui **servono 28** (14 per gruppo) per avere lo stesso potere su una differenza di 5 punti.  
-- In **pratica**:  
-  - Se hai risorse per arruolare solo 15–20 persone totali, potrebbe non esserci potere sufficiente (grande rischio di errore di tipo II).  
-  - Potrebbe convenire ridurre la differenza minima desiderata (ma questo cambierebbe le conclusioni) o cercare un campione più grande.  
-- Le **considerazioni metodologiche** includono: “Posso davvero aspettarmi 5 punti di differenza?” Se la differenza reale fosse più piccola, servirebbe un campione ancora più grande per rilevarla con sufficiente potenza.
-
-**Conclusioni Finali**
-
-- La **dimensione del campione** dipende da molti fattori:  
-  1. Varianza (o deviazione standard) stimata.  
-  2. Margine di errore desiderato (o differenza minima rilevabile).  
-  3. Livello di confidenza o $\alpha$.  
-  4. Potere statistico $(1-\beta)$.  
-- I dati **SWLS** di un pilot di 10 persone forniscono **un’indicazione** iniziale (stima di $\sigma$), ma la precisione di quella stima è limitata.  
-- Per studi sperimentali o correlazionali, i calcoli di dimensione campionaria andrebbero fatti **a priori** (idealmente ancor prima di raccogliere i dati) e basati su stime realistiche o su letteratura pre-esistente.  
-- Se la stima di $\sigma$ o della dimensione dell’effetto $\Delta$ è incerta, è utile svolgere **analisi di sensitività**, variando gli input per vedere come cambiano i risultati.
-:::
+- La **dimensione campionaria** determina la precisione delle stime e la potenza dei test.
+- La formula per la stima della media dipende da $\sigma$, $E$ e dal livello di confidenza.
+- La **potenza statistica** è la probabilità di rilevare un effetto quando esiste.
+- L'analisi di potenza è utile nella **pianificazione**, non a posteriori.
+- L'approccio frequentista richiede di fissare il protocollo a priori, con conseguenti rigidità metodologiche.
 
 ## Informazioni sull'Ambiente di Sviluppo {.unnumbered} 
 
 ```{r}
 sessionInfo()
 ```
-
-## Bibliografia {.unnumbered}
-
