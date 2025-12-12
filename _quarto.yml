@@ -24,7 +24,10 @@ book:
     right: |
       Realizzato con <a href="https://quarto.org/">Quarto</a>.
   favicon: style/gauss.png
+
   sidebar:
+    style: "docked"
+    search: true
     collapse-level: 1
 
   chapters:
