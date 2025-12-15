@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -74,14 +39,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-05540d55595997c70632e994ac43b59b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-dbbacf60530752707ffffc1dfc3694f7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-05540d55595997c70632e994ac43b59b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-88f89515ec50d56ed60c0d65bb29dbd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-12c7548f543ff79fe76bca8cab42d0cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-88f89515ec50d56ed60c0d65bb29dbd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -152,7 +117,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -335,7 +300,7 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Inferenza frequentista in psicologia</a> 
@@ -433,7 +398,7 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
@@ -450,7 +415,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/epiloque/epiloque.html">Epilogo</a></li><li class="breadcrumb-item"><a href="../../chapters/epiloque/epiloque.html">Considerazioni conclusive</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Considerazioni conclusive</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Codice</button></div></div>
+<h1 class="title">Considerazioni conclusive</h1>
 </div>
 
 
@@ -504,8 +469,6 @@ window.Quarto = {
 <p>Questa sezione ha l’obiettivo di fornire una solida base per la comprensione dell’approccio frequentista, non per promuoverne un’adozione acritica, ma per consentire una valutazione informata e consapevole dei suoi meriti storici e dei suoi limiti concettuali. La statistica frequentista ha servito la scienza per oltre un secolo, ma la crescente consapevolezza delle sue insufficienze, unita alla disponibilità di strumenti computazionali avanzati, rende oggi non solo possibile, ma anche auspicabile dal punto di vista metodologico, l’esplorazione e l’adozione di paradigmi alternativi.</p>
 <p>Il passaggio dall’inferenza frequentista a quella bayesiana rappresenta molto più di un cambio di strumenti analitici: è un vero e proprio <strong>cambio di paradigma</strong> su come gestire l’incertezza nel ragionamento scientifico. Esplorare e consolidare questo nuovo paradigma è l’obiettivo centrale del manuale <em>“Inferenza bayesiana in psicologia: ragionare con l’incertezza”</em>.</p>
 
-
-<!-- -->
 
 </section>
 
@@ -593,57 +556,6 @@ window.Quarto = {
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
-    }
-    const viewSource = window.document.getElementById('quarto-view-source') ||
-                       window.document.getElementById('quarto-code-tools-source');
-    if (viewSource) {
-      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-      viewSource.addEventListener("click", function(e) {
-        if (sourceUrl) {
-          // rstudio viewer pane
-          if (/\bcapabilities=\b/.test(window.location)) {
-            window.open(sourceUrl);
-          } else {
-            window.location.href = sourceUrl;
-          }
-        } else {
-          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-          modal.show();
-        }
-        return false;
-      });
-    }
-    function toggleCodeHandler(show) {
-      return function(e) {
-        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-        for (let i=0; i<detailsSrc.length; i++) {
-          const details = detailsSrc[i].parentElement;
-          if (show) {
-            details.open = true;
-          } else {
-            details.removeAttribute("open");
-          }
-        }
-        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-        const fromCls = show ? "hidden" : "unhidden";
-        const toCls = show ? "unhidden" : "hidden";
-        for (let i=0; i<cellCodeDivs.length; i++) {
-          const codeDiv = cellCodeDivs[i];
-          if (codeDiv.classList.contains(fromCls)) {
-            codeDiv.classList.remove(fromCls);
-            codeDiv.classList.add(toCls);
-          } 
-        }
-        return false;
-      }
-    }
-    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-    if (hideAllCode) {
-      hideAllCode.addEventListener("click", toggleCodeHandler(false));
-    }
-    const showAllCode = window.document.getElementById("quarto-show-all-code");
-    if (showAllCode) {
-      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -989,47 +901,7 @@ window.Quarto = {
   </div>
   <div class="nav-page nav-page-next">
   </div>
-</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Eseguire il codice</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Considerazioni conclusive {.unnumbered}</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>In questa sezione propedeutica abbiamo esaminato i fondamenti dell'inferenza statistica frequentista, il paradigma che ha dominato la ricerca psicologica per oltre un secolo. Sono state illustrate le sue procedure operative, dalle distribuzioni campionarie agli intervalli di confidenza e ai test di ipotesi, e ne è stata analizzata la logica metodologica sottostante. È giunto il momento di sintetizzare i risultati di questa analisi, focalizzandoci in particolare sui limiti emersi che hanno portato all'adozione di approcci alternativi.</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sintesi dei limiti emersi</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">### L’interpretazione controintuitiva</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Un tema ricorrente nell’analisi dell’inferenza frequentista è la sua distanza dall’intuizione naturale del ricercatore. Questo paradigma fornisce risposte a domande che raramente coincidono con quelle realmente poste nell'indagine scientifica. L’intervallo di confidenza non indica "dove si trova probabilmente il parametro", ma descrive una proprietà della procedura di costruzione: una volta calcolato, l’intervallo contiene o non contiene il parametro, senza possibilità di assegnare una probabilità al singolo risultato. Allo stesso modo, il valore-$p$ non rappresenta la probabilità che l’ipotesi nulla sia vera o che il risultato sia dovuto al caso, ma la probabilità di osservare dati altrettanto o più estremi, assumendo vera l’ipotesi nulla, una quantità che non risponde direttamente alla domanda di ricerca. Anche la potenza statistica fornisce informazioni sul disegno dello studio prima della raccolta dei dati, ma rimane muta riguardo all'evidenza contenuta in uno studio già completato. Queste interpretazioni, sebbene formalmente corrette, sono così lontane dal ragionamento intuitivo da generare fraintendimenti sistematici nella comunità scientifica.</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">### La dipendenza dalle intenzioni del ricercatore</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>Un aspetto particolarmente critico dell’inferenza frequentista risiede nella sua dipendenza non solo dai dati osservati, ma anche dalle intenzioni procedurali e dal piano sperimentale del ricercatore. Il valore-$p$ può infatti variare in base a fattori quali la pianificazione del campionamento, la scelta a priori delle analisi statistiche e persino l’eventuale strategia di esplorazione di dati aggiuntivi che il ricercatore avrebbe potuto seguire. Di conseguenza, due ricercatori che lavorano sugli stessi dati possono giungere a conclusioni inferenziali differenti sulla base del diverso percorso analitico intrapreso. Questa proprietà, per cui l’inferenza dipende sostanzialmente dai cosiddetti “gradi di libertà del ricercatore”, è stata oggetto di profonda critica metodologica, poiché confligge con un ideale di oggettività scientifica fondato esclusivamente sull’evidenza empirica osservata.</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">### La rigidità della decisione dicotomica</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Il test di ipotesi impone una decisione binaria basata su una soglia di significatività arbitraria, generando diverse distorsioni concettuali. Si crea una **discontinuità artificiale** tra risultati sostanzialmente simili: un valore-$p$ di 0.049 porta al rifiuto dell’ipotesi nulla, mentre uno di 0.051 non lo fa, nonostante l’evidenza empirica sia pressoché identica. Si crea inoltre una **confusione sistematica tra significatività statistica e importanza pratica**: con campioni sufficientemente ampi, effetti trascurabili possono diventare statisticamente significativi, mentre con campioni ridotti effetti sostanziali possono non superare la soglia convenzionale. Infine, l’approccio presenta un’**asimmetria logica fondamentale**: esso permette solo di respingere l’ipotesi nulla, ma mai di confermarla o di quantificare l’evidenza a suo favore.</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### L’incapacità di quantificare l’evidenza a favore delle ipotesi</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>Il paradigma frequentista non fornisce uno strumento per misurare direttamente quanto i dati supportino un'ipotesi rispetto a un'altra. Il valore-$p$ valuta esclusivamente la compatibilità dei dati con l’ipotesi nulla, senza prendere in considerazione esplicitamente le ipotesi alternative. Non è quindi possibile esprimere affermazioni come "i dati supportano l'ipotesi alternativa con una forza tre volte maggiore rispetto all'ipotesi nulla", un tipo di quantificazione che sarebbe intuitiva e informativa per il progresso scientifico.</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### L’inflessibilità procedurale</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>L’inferenza frequentista richiede che l’intero protocollo sperimentale, dalla dimensione del campione alle analisi previste, sia fissato in modo irrevocabile prima della raccolta dei dati. Non è consentito, pena l’invalidazione delle conclusioni, raccogliere dati aggiuntivi in caso di risultati ambigui, interrompere la raccolta dei dati in anticipo quando l’evidenza è già convincente o modificare le strategie analitiche in risposta a quanto osservato. Queste restrizioni, sebbene funzionali al controllo dell'errore di tipo I, rendono il frequentismo poco adatto ai contesti di ricerca esplorativa, di decisione sequenziale o di pratica clinica, in cui la flessibilità è spesso necessaria.</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Il contributo storico e metodologico del frequentismo</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>Nonostante i limiti evidenziati, sarebbe riduttivo sminuire il contributo storico del paradigma frequentista. Ha fornito alla comunità scientifica un linguaggio comune che ha facilitato la comunicazione e il confronto tra gli studi. Ha stabilito procedure standardizzate che hanno introdotto una disciplina metodologica essenziale, elevando il rigore della ricerca empirica. Inoltre, ha offerto strumenti computazionalmente accessibili per decenni, fondamentali in un'epoca antecedente alla potenza di calcolo odierna. La sua comprensione rimane dunque un presupposto indispensabile per una lettura critica della vasta letteratura esistente e per un dialogo costruttivo all'interno della comunità scientifica.</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## Verso l’approccio bayesiano</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>I limiti discussi non sono semplici imperfezioni correggibili, ma conseguenze dirette dei presupposti filosofici alla base del frequentismo: l'interpretazione della probabilità come frequenza a lungo termine, il trattamento dei parametri come entità fisse e l'attenzione prevalente alle proprietà delle procedure sottoposte a campionamento ripetuto. L’approccio bayesiano si basa su premesse radicalmente diverse che permettono di superare molte di queste difficoltà. Esso adotta una concezione della probabilità come grado di credenza razionale, che permette di fare affermazioni dirette sull'incertezza riguardo ai parametri. Consente un aggiornamento sequenziale delle convinzioni alla luce di nuove evidenze senza invalidare le inferenze precedenti. Il fattore di Bayes quantifica esplicitamente il supporto relativo che i dati forniscono alle ipotesi alternative. Gli intervalli di credibilità possiedono infine quell'interpretazione intuitiva, ovvero la probabilità che il parametro si trovi all'interno di un determinato intervallo, che i ricercatori erroneamente attribuiscono agli intervalli di confidenza frequentisti. Il manuale principale e il suo complemento sviluppano in dettaglio questi concetti, illustrando come l’inferenza bayesiana fornisca risposte più coerenti e informative alle domande che caratterizzano la pratica della ricerca.</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conclusione</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>Questa sezione ha l'obiettivo di fornire una solida base per la comprensione dell'approccio frequentista, non per promuoverne un'adozione acritica, ma per consentire una valutazione informata e consapevole dei suoi meriti storici e dei suoi limiti concettuali. La statistica frequentista ha servito la scienza per oltre un secolo, ma la crescente consapevolezza delle sue insufficienze, unita alla disponibilità di strumenti computazionali avanzati, rende oggi non solo possibile, ma anche auspicabile dal punto di vista metodologico, l’esplorazione e l’adozione di paradigmi alternativi.</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>Il passaggio dall'inferenza frequentista a quella bayesiana rappresenta molto più di un cambio di strumenti analitici: è un vero e proprio **cambio di paradigma** su come gestire l'incertezza nel ragionamento scientifico. Esplorare e consolidare questo nuovo paradigma è l'obiettivo centrale del manuale *"Inferenza bayesiana in psicologia: ragionare con l'incertezza"*.</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
-</div></div></div></div></div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
