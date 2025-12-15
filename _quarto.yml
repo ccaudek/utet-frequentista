@@ -26,7 +26,7 @@ book:
   favicon: style/gauss.png
 
   sidebar:
-    style: "docked"
+    # style: "docked"
     search: true
     collapse-level: 1
 
@@ -61,18 +61,26 @@ link-citations: true
 
 format:
   html:
+    code-fold: false
+    code-summary: "Code show/hide"
+    code-copy: hover
+    code-link: true
+    code-overflow: scroll
+    code-block-bg: true
+    # highlight-style: github
+    # code-block-border-left: "#6C6C6C"
     theme: 
-      light: cosmo
+      light: 
+        - cosmo
       dark: darkly
     mainfont: "system-ui"
-    page-layout: article
-    max-width: 74ch
-    number-sections: true
+    # max-width: 74ch
+    # number-sections: true
     lang: it
     reader-mode: true
-    toc: true
+    # toc: true
     toc-title: "Sommario"
-    toc-expand: 2
+    # toc-expand: 2
     smooth-scroll: true
     footnotes-hover: true
     link-external-icon: true
@@ -88,16 +96,6 @@ format:
     html-math-method:
       method: mathjax
       # macros: { "\\E": "\\mathbb{E}", "\\Var": "\\mathrm{Var}" }
-
-    # Codice
-    code-copy: hover
-    code-link: true
-    code-overflow: scroll
-    code-line-numbers: false
-    code-block-bg: true
-    code-block-border-left: false
-    code-tools: true
-    highlight-style: github
 
     # Media
     lightbox: auto
