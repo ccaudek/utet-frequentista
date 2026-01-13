@@ -78,7 +78,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-88f89515ec50d56ed60c0d65bb29dbd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-12c7548f543ff79fe76bca8cab42d0cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-88f89515ec50d56ed60c0d65bb29dbd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-88f89515ec50d56ed60c0d65bb29dbd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -111,7 +114,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-QT5S3P9D31', { 'anonymize_ip': true});
 </script><style>html{ scroll-behavior: smooth; }</style>
-<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -136,7 +139,7 @@ const typesetMath = (el) => {
 window.Quarto = {
   typesetMath
 };
-</script>
+</script><link rel="stylesheet" href="../../style/custom.css">
 </head>
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
@@ -417,7 +420,7 @@ window.Quarto = {
   <ul class="collapse">
 <li><a href="#la-logica-del-test-di-ipotesi" id="toc-la-logica-del-test-di-ipotesi" class="nav-link active" data-scroll-target="#la-logica-del-test-di-ipotesi"><span class="header-section-number">4.1</span> La logica del test di ipotesi</a></li>
   <li><a href="#il-test-del-chi-quadrato" id="toc-il-test-del-chi-quadrato" class="nav-link" data-scroll-target="#il-test-del-chi-quadrato"><span class="header-section-number">4.2</span> Il test del Chi-Quadrato</a></li>
-  <li><a href="#il-test-t-per-un-campione" id="toc-il-test-t-per-un-campione" class="nav-link" data-scroll-target="#il-test-t-per-un-campione"><span class="header-section-number">4.3</span> Il test <span class="math inline">\(t\)</span> per un campione</a></li>
+  <li><a href="#il-test-per-una-media" id="toc-il-test-per-una-media" class="nav-link" data-scroll-target="#il-test-per-una-media"><span class="header-section-number">4.3</span> Il test per una media</a></li>
   <li><a href="#interpretazione-corretta-del-p-value" id="toc-interpretazione-corretta-del-p-value" class="nav-link" data-scroll-target="#interpretazione-corretta-del-p-value"><span class="header-section-number">4.4</span> Interpretazione corretta del p-value</a></li>
   <li><a href="#limiti-del-test-di-ipotesi-frequentista" id="toc-limiti-del-test-di-ipotesi-frequentista" class="nav-link" data-scroll-target="#limiti-del-test-di-ipotesi-frequentista"><span class="header-section-number">4.5</span> Limiti del test di ipotesi frequentista</a></li>
   <li><a href="#verso-un-approccio-migliore" id="toc-verso-un-approccio-migliore" class="nav-link" data-scroll-target="#verso-un-approccio-migliore"><span class="header-section-number">4.6</span> Verso un approccio migliore</a></li>
@@ -512,7 +515,17 @@ window.Quarto = {
 <p>Questo meccanismo decisionale comporta due potenziali tipi di errore. È possibile rifiutare <span class="math inline">\(H_0\)</span> quando essa è in realtà vera, producendo un errore di tipo I, oppure non rifiutarla quando è falsa, generando un errore di tipo II. La probabilità complementare a quest’ultimo rappresenta la potenza del test, cioè la capacità di individuare un effetto quando esso è presente.</p>
 </section></section><section id="il-test-del-chi-quadrato" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="il-test-del-chi-quadrato">
 <span class="header-section-number">4.2</span> Il test del Chi-Quadrato</h2>
-<p>Per illustrare in modo concreto questa logica consideriamo il test del chi-quadrato, che permette di valutare se due variabili categoriali sono indipendenti. Immaginiamo di avere una tabella con i conteggi delle diverse specie di pinguini osservate su tre isole.</p>
+<p>Per illustrare in modo concreto la logica del test di ipotesi, consideriamo il test del chi-quadrato di indipendenza, che permette di valutare se due variabili categoriali sono associate oppure indipendenti tra loro.</p>
+<section id="il-concetto-di-indipendenza" class="level3" data-number="4.2.1"><h3 data-number="4.2.1" class="anchored" data-anchor-id="il-concetto-di-indipendenza">
+<span class="header-section-number">4.2.1</span> Il concetto di indipendenza</h3>
+<p>Due variabili categoriali si dicono <em>indipendenti</em> quando la distribuzione di una non dipende dal valore assunto dall’altra. In termini probabilistici, se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono due eventi, l’indipendenza implica che:</p>
+<p><span class="math display">\[
+P(A \cap B) = P(A) \cdot P(B)
+\]</span></p>
+<p>Applicato a una tabella di contingenza, questo significa che la proporzione di osservazioni in ciascuna cella dovrebbe essere determinata esclusivamente dalle proporzioni marginali, senza alcuna “preferenza” sistematica per particolari combinazioni di categorie.</p>
+</section><section id="un-esempio-concreto" class="level3" data-number="4.2.2"><h3 data-number="4.2.2" class="anchored" data-anchor-id="un-esempio-concreto">
+<span class="header-section-number">4.2.2</span> Un esempio concreto</h3>
+<p>Immaginiamo di avere una tabella con i conteggi delle diverse specie di pinguini osservate su tre isole dell’Arcipelago Palmer.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">osservati</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">44</span>, <span class="fl">0</span>, <span class="fl">119</span>,</span>
 <span>                      <span class="fl">55</span>, <span class="fl">68</span>, <span class="fl">0</span>,</span>
@@ -555,7 +568,41 @@ window.Quarto = {
 </table>
 </div>
 </div>
-<p>La domanda è se specie e isola possano essere considerate indipendenti. Per rispondere si calcolano i valori attesi sotto <span class="math inline">\(H_0\)</span>, ottenuti combinando le proporzioni marginali delle righe e delle colonne.</p>
+<p>La domanda che ci poniamo è: la specie di un pinguino è indipendente dall’isola in cui viene osservato? Oppure esistono associazioni sistematiche tra questi due attributi?</p>
+</section><section id="calcolo-dei-valori-attesi-sotto-h_0" class="level3" data-number="4.2.3"><h3 data-number="4.2.3" class="anchored" data-anchor-id="calcolo-dei-valori-attesi-sotto-h_0">
+<span class="header-section-number">4.2.3</span> Calcolo dei valori attesi sotto <span class="math inline">\(H_0\)</span>
+</h3>
+<p>L’ipotesi nulla <span class="math inline">\(H_0\)</span> afferma che le due variabili sono indipendenti. Se questa ipotesi fosse vera, quale distribuzione di frequenze ci aspetteremmo di osservare nella tabella?</p>
+<p>Per rispondere, dobbiamo calcolare i <em>valori attesi</em> sotto l’ipotesi di indipendenza. Il ragionamento procede così:</p>
+<ol type="1">
+<li><p>Calcoliamo i <strong>totali marginali</strong> di riga e di colonna, che rappresentano le frequenze complessive di ciascuna categoria.</p></li>
+<li><p>Se le variabili fossero indipendenti, la frequenza attesa in ciascuna cella sarebbe determinata dal prodotto delle proporzioni marginali, moltiplicato per il totale delle osservazioni.</p></li>
+</ol>
+<p>Formalmente, per una cella nella riga <span class="math inline">\(i\)</span> e colonna <span class="math inline">\(j\)</span>, il valore atteso <span class="math inline">\(E_{ij}\)</span> è dato da:</p>
+<p><span class="math display">\[
+E_{ij} = \frac{(\text{totale riga } i) \times (\text{totale colonna } j)}{\text{totale generale}} = \frac{R_i \times C_j}{N}
+\]</span></p>
+<p>Questa formula deriva direttamente dalla definizione di indipendenza: se le due variabili sono indipendenti, la probabilità di osservare un’unità nella cella <span class="math inline">\((i,j)\)</span> è il prodotto delle probabilità marginali <span class="math inline">\(P(\text{riga } i) \times P(\text{colonna } j)\)</span>. Moltiplicando questa probabilità per il numero totale di osservazioni <span class="math inline">\(N\)</span>, otteniamo il conteggio atteso.</p>
+</section><section id="calcolo-manuale-dei-valori-attesi" class="level3" data-number="4.2.4"><h3 data-number="4.2.4" class="anchored" data-anchor-id="calcolo-manuale-dei-valori-attesi">
+<span class="header-section-number">4.2.4</span> Calcolo manuale dei valori attesi</h3>
+<p>Procediamo al calcolo esplicito. Prima determiniamo i totali marginali:</p>
+<ul>
+<li>
+<strong>Totali di riga:</strong> Biscoe = 44 + 0 + 119 = 163; Dream = 55 + 68 + 0 = 123; Torgersen = 47 + 0 + 0 = 47</li>
+<li>
+<strong>Totali di colonna:</strong> Adelie = 44 + 55 + 47 = 146; Chinstrap = 0 + 68 + 0 = 68; Gentoo = 119 + 0 + 0 = 119</li>
+<li>
+<strong>Totale generale:</strong> <span class="math inline">\(N\)</span> = 333</li>
+</ul>
+<p>Ora calcoliamo i valori attesi per ciascuna cella. Ad esempio, per la cella (Biscoe, Adelie):</p>
+<p><span class="math display">\[
+E_{\text{Biscoe, Adelie}} = \frac{163 \times 146}{333} = \frac{23798}{333} \approx 71.5
+\]</span></p>
+<p>Per la cella (Dream, Chinstrap):</p>
+<p><span class="math display">\[
+E_{\text{Dream, Chinstrap}} = \frac{123 \times 68}{333} = \frac{8364}{333} \approx 25.1
+\]</span></p>
+<p>Procedendo analogamente per tutte le celle, otteniamo la tabella completa dei valori attesi:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">totali_riga</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span></span>
 <span><span class="va">totali_colonna</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span></span>
@@ -595,38 +642,289 @@ window.Quarto = {
 </table>
 </div>
 </div>
-<p>La statistica del chi-quadrato misura quanto i valori osservati si discostano da quelli attesi, ponderando ciascuna differenza per la variabilità prevista dalla teoria.</p>
+</section><section id="la-statistica-del-chi-quadrato" class="level3" data-number="4.2.5"><h3 data-number="4.2.5" class="anchored" data-anchor-id="la-statistica-del-chi-quadrato">
+<span class="header-section-number">4.2.5</span> La statistica del Chi-Quadrato</h3>
+<p>Una volta ottenuti i valori attesi, dobbiamo quantificare quanto i dati osservati si discostano da ciò che l’ipotesi nulla prevedrebbe. La statistica del chi-quadrato di Pearson misura esattamente questa discrepanza globale:</p>
+<p><span class="math display">\[
+\chi^2 = \sum_{i=1}^{r} \sum_{j=1}^{c} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
+\]</span></p>
+<p>dove <span class="math inline">\(O_{ij}\)</span> rappresenta la frequenza osservata nella cella <span class="math inline">\((i,j)\)</span>, <span class="math inline">\(E_{ij}\)</span> la frequenza attesa, <span class="math inline">\(r\)</span> il numero di righe e <span class="math inline">\(c\)</span> il numero di colonne.</p>
+<p>Questa formula ha una struttura intuitiva:</p>
+<ul>
+<li><p>Il numeratore <span class="math inline">\((O_{ij} - E_{ij})^2\)</span> misura la discrepanza al quadrato tra osservato e atteso per ciascuna cella. L’elevamento al quadrato garantisce che scostamenti positivi e negativi contribuiscano entrambi ad aumentare la statistica.</p></li>
+<li><p>Il denominatore <span class="math inline">\(E_{ij}\)</span> funge da fattore di normalizzazione. Dividere per il valore atteso è fondamentale perché una differenza di 10 unità ha un significato molto diverso se il valore atteso è 15 oppure 150. In altre parole, standardizziamo la discrepanza rispetto alla scala della cella.</p></li>
+<li><p>La sommatoria accumula i contributi di tutte le celle, producendo una misura complessiva di quanto la tabella osservata si discosti da quella attesa sotto <span class="math inline">\(H_0\)</span>.</p></li>
+</ul></section><section id="calcolo-manuale-della-statistica" class="level3" data-number="4.2.6"><h3 data-number="4.2.6" class="anchored" data-anchor-id="calcolo-manuale-della-statistica">
+<span class="header-section-number">4.2.6</span> Calcolo manuale della statistica</h3>
+<p>Calcoliamo il contributo di alcune celle per illustrare il procedimento:</p>
+<ul>
+<li><p>Cella (Biscoe, Adelie): <span class="math inline">\(O = 44\)</span>, <span class="math inline">\(E \approx 71.5\)</span> <span class="math display">\[\frac{(44 - 71.5)^2}{71.5} = \frac{(-27.5)^2}{71.5} = \frac{756.25}{71.5} \approx 10.58\]</span></p></li>
+<li><p>Cella (Biscoe, Gentoo): <span class="math inline">\(O = 119\)</span>, <span class="math inline">\(E \approx 58.3\)</span> <span class="math display">\[\frac{(119 - 58.3)^2}{58.3} = \frac{(60.7)^2}{58.3} = \frac{3684.49}{58.3} \approx 63.20\]</span></p></li>
+<li><p>Cella (Dream, Chinstrap): <span class="math inline">\(O = 68\)</span>, <span class="math inline">\(E \approx 25.1\)</span> <span class="math display">\[\frac{(68 - 25.1)^2}{25.1} = \frac{(42.9)^2}{25.1} = \frac{1840.41}{25.1} \approx 73.32\]</span></p></li>
+</ul>
+<p>Come si può notare, le celle con maggiori discrepanze tra osservato e atteso forniscono i contributi più elevati alla statistica complessiva. Sommando i contributi di tutte le nove celle:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">chi2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">osservati</span> <span class="op">-</span> <span class="va">attesi</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">attesi</span><span class="op">)</span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span>
-<span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Chi-quadrato:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">chi2</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Chi-quadrato: 285</span></span>
+<span><span class="co">#&gt; Chi-quadrato: 285</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="gradi-di-libertà-e-distribuzione-di-riferimento" class="level3" data-number="4.2.7"><h3 data-number="4.2.7" class="anchored" data-anchor-id="gradi-di-libertà-e-distribuzione-di-riferimento">
+<span class="header-section-number">4.2.7</span> Gradi di libertà e distribuzione di riferimento</h3>
+<p>Per interpretare il valore della statistica, dobbiamo confrontarlo con la sua distribuzione teorica sotto <span class="math inline">\(H_0\)</span>. Quando l’ipotesi nulla è vera e i conteggi attesi sono sufficientemente elevati, la statistica <span class="math inline">\(\chi^2\)</span> segue approssimativamente una distribuzione chi-quadrato con un certo numero di gradi di libertà.</p>
+<p>I gradi di libertà per una tabella di contingenza sono dati da:</p>
+<p><span class="math display">\[
+\text{df} = (r - 1) \times (c - 1)
+\]</span></p>
+<p>dove <span class="math inline">\(r\)</span> è il numero di righe e <span class="math inline">\(c\)</span> il numero di colonne. Questa formula riflette il fatto che, una volta fissati i totali marginali, non tutte le celle sono libere di variare indipendentemente. Nel nostro caso, con 3 righe e 3 colonne:</p>
+<p><span class="math display">\[
+\text{df} = (3 - 1) \times (3 - 1) = 2 \times 2 = 4
+\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Gradi di libertà:"</span>, <span class="va">df</span>, <span class="st">"\n"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Gradi di libertà: 4</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Dal confronto tra il valore osservato e la distribuzione teorica si ottiene il valore-<span class="math inline">\(p\)</span>.</p>
+</section><section id="il-valore-p" class="level3" data-number="4.2.8"><h3 data-number="4.2.8" class="anchored" data-anchor-id="il-valore-p">
+<span class="header-section-number">4.2.8</span> Il valore-<span class="math inline">\(p\)</span>
+</h3>
+<p>Il valore-<span class="math inline">\(p\)</span> rappresenta la probabilità di osservare una statistica chi-quadrato almeno altrettanto estrema di quella calcolata, assumendo che <span class="math inline">\(H_0\)</span> sia vera. Graficamente, corrisponde all’area sotto la curva della distribuzione <span class="math inline">\(\chi^2\)</span> a destra del valore osservato.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p_value</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">pchisq</a></span><span class="op">(</span><span class="va">chi2</span>, <span class="va">df</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p_value</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">pchisq</a></span><span class="op">(</span><span class="va">chi2</span>, <span class="va">df</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"P-value:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">p_value</span>, scientific <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; P-value: 0e+00</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Un valore estremamente piccolo indica che osservare una tabella così sbilanciata sarebbe improbabile se le due variabili fossero indipendenti. L’evidenza empirica conduce quindi a rifiutare l’ipotesi di indipendenza. La funzione <code><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test()</a></code> permette di giungere alla stessa conclusione.</p>
+<p>Un valore-<span class="math inline">\(p\)</span> estremamente piccolo (in questo caso, virtualmente zero) indica che osservare una tabella così sbilanciata sarebbe praticamente impossibile se specie e isola fossero realmente indipendenti. L’evidenza empirica conduce quindi a rifiutare l’ipotesi nulla di indipendenza: esiste un’associazione statisticamente significativa tra la specie dei pinguini e l’isola in cui vengono osservati.</p>
+</section><section id="verifica-con-r" class="level3" data-number="4.2.9"><h3 data-number="4.2.9" class="anchored" data-anchor-id="verifica-con-r">
+<span class="header-section-number">4.2.9</span> Verifica con R</h3>
+<p>La funzione <code><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test()</a></code> permette di eseguire l’intero procedimento in modo automatico, confermando i risultati ottenuti manualmente:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Pearson's Chi-squared test</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; data:  osservati</span></span>
 <span><span class="co">#&gt; X-squared = 285, df = 4, p-value &lt;2e-16</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="il-test-t-per-un-campione" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="il-test-t-per-un-campione">
-<span class="header-section-number">4.3</span> Il test <span class="math inline">\(t\)</span> per un campione</h2>
-<p>Consideriamo ora un test t applicato a dati continui, in cui si vuole verificare se la media osservata differisce da un valore di riferimento. Se un ricercatore sospetta che i punteggi di benessere di un gruppo si discostino dalla media normativa pari a 24, può utilizzare il test t per verificarlo.</p>
+</section></section><section id="il-test-per-una-media" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="il-test-per-una-media">
+<span class="header-section-number">4.3</span> Il test per una media</h2>
+<p>Passiamo ora a considerare dati continui. Supponiamo di voler verificare se la media di una popolazione differisce da un valore di riferimento noto. Questo tipo di domanda è molto comune in psicologia: un trattamento ha modificato i punteggi rispetto alla norma? Un gruppo clinico differisce dalla popolazione generale?</p>
+<section id="il-punto-di-partenza-la-distribuzione-campionaria-della-media" class="level3" data-number="4.3.1"><h3 data-number="4.3.1" class="anchored" data-anchor-id="il-punto-di-partenza-la-distribuzione-campionaria-della-media">
+<span class="header-section-number">4.3.1</span> Il punto di partenza: la distribuzione campionaria della media</h3>
+<p>Prima di affrontare il test di ipotesi, richiamiamo un risultato fondamentale. Se estraiamo ripetutamente campioni di dimensione <span class="math inline">\(n\)</span> da una popolazione con media <span class="math inline">\(\mu\)</span> e deviazione standard <span class="math inline">\(\sigma\)</span>, per campioni sufficientemente grandi le medie campionarie <span class="math inline">\(\bar{X}\)</span> si distribuiscono secondo una distribuzione normale con:</p>
+<ul>
+<li>media: <span class="math inline">\(\mu_{\bar{X}} = \mu\)</span>;</li>
+<li>errore standard: <span class="math inline">\(\sigma_{\bar{X}} = \frac{\sigma}{\sqrt{n}}\)</span>.</li>
+</ul>
+<p>Questo risultato, noto come teorema del limite centrale, ci permette di sapere cosa aspettarci quando calcoliamo una media campionaria: essa oscillerà attorno al vero valore <span class="math inline">\(\mu\)</span> con una variabilità che diminuisce all’aumentare della dimensione del campione.</p>
+</section><section id="un-esempio-concreto-1" class="level3" data-number="4.3.2"><h3 data-number="4.3.2" class="anchored" data-anchor-id="un-esempio-concreto-1">
+<span class="header-section-number">4.3.2</span> Un esempio concreto</h3>
+<p>Un ricercatore vuole verificare se i punteggi di benessere psicologico di un gruppo di studenti universitari siano superiori alla media normativa della popolazione, pari a <span class="math inline">\(\mu_0 = 24\)</span>. Ha raccolto i seguenti punteggi da un campione di 10 studenti:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">punteggi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">28</span>, <span class="fl">22</span>, <span class="fl">26</span>, <span class="fl">18</span>, <span class="fl">30</span>, <span class="fl">24</span>, <span class="fl">27</span>, <span class="fl">17</span>, <span class="fl">21</span>, <span class="fl">25</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">punteggi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">28</span>, <span class="fl">22</span>, <span class="fl">26</span>, <span class="fl">18</span>, <span class="fl">30</span>, <span class="fl">24</span>, <span class="fl">27</span>, <span class="fl">17</span>, <span class="fl">21</span>, <span class="fl">25</span><span class="op">)</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">punteggi</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Calcoliamo la media campionaria:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">media_campione</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">punteggi</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Media campionaria:"</span>, <span class="va">media_campione</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Media campionaria: 23.8</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Numerosità:"</span>, <span class="va">n</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Numerosità: 10</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>La media osservata è 23.8, leggermente inferiore al valore di riferimento 24. Ma questa differenza è compatibile con la normale variabilità campionaria, oppure indica una reale differenza nella popolazione?</p>
+</section><section id="la-logica-del-test-il-caso-ideale-con-sigma-nota" class="level3" data-number="4.3.3"><h3 data-number="4.3.3" class="anchored" data-anchor-id="la-logica-del-test-il-caso-ideale-con-sigma-nota">
+<span class="header-section-number">4.3.3</span> La logica del test: il caso ideale con <span class="math inline">\(\sigma\)</span> nota</h3>
+<p>Per comprendere la logica del test, partiamo da una situazione semplificata in cui assumiamo di conoscere la deviazione standard della popolazione. Supponiamo che studi precedenti abbiano stabilito che <span class="math inline">\(\sigma = 4\)</span>.</p>
+<section id="costruzione-della-distribuzione-campionaria-sotto-h_0" class="level4" data-number="4.3.3.1"><h4 data-number="4.3.3.1" class="anchored" data-anchor-id="costruzione-della-distribuzione-campionaria-sotto-h_0">
+<span class="header-section-number">4.3.3.1</span> Costruzione della distribuzione campionaria sotto <span class="math inline">\(H_0\)</span>
+</h4>
+<p>Il test di ipotesi procede così:</p>
+<ol type="1">
+<li>
+<strong>Formuliamo le ipotesi.</strong> Poiché il ricercatore sospetta che gli studenti abbiano un benessere <em>superiore</em> alla norma, impostiamo un test monodirezionale:
+<ul>
+<li>
+<span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu = 24\)</span> (la media della popolazione è uguale alla norma);</li>
+<li>
+<span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &gt; 24\)</span> (la media della popolazione è superiore alla norma).</li>
+</ul>
+</li>
+<li>
+<strong>Costruiamo la distribuzione campionaria assumendo vera <span class="math inline">\(H_0\)</span>.</strong> Se <span class="math inline">\(H_0\)</span> fosse vera, le medie campionarie di campioni di dimensione 10 si distribuirebbero normalmente con:
+<ul>
+<li>media: <span class="math inline">\(\mu_{\bar{X}} = 24\)</span>;</li>
+<li>errore standard: <span class="math inline">\(\sigma_{\bar{X}} = \frac{4}{\sqrt{10}} = \frac{4}{3.162} \approx 1.265\)</span>.</li>
+</ul>
+</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sigma_nota</span> <span class="op">&lt;-</span> <span class="fl">4</span></span>
+<span><span class="va">mu_0</span> <span class="op">&lt;-</span> <span class="fl">24</span></span>
+<span><span class="va">errore_standard</span> <span class="op">&lt;-</span> <span class="va">sigma_nota</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Errore standard:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">errore_standard</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Errore standard: 1.26</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="3" type="1">
+<li>
+<strong>Posizioniamo il nostro risultato in questa distribuzione.</strong> La domanda diventa: quanto è estrema la nostra media campionaria di 23.8 rispetto a ciò che ci aspetteremmo se <span class="math inline">\(H_0\)</span> fosse vera?</li>
+</ol></section><section id="la-statistica-z-standardizzare-la-media-campionaria" class="level4" data-number="4.3.3.2"><h4 data-number="4.3.3.2" class="anchored" data-anchor-id="la-statistica-z-standardizzare-la-media-campionaria">
+<span class="header-section-number">4.3.3.2</span> La statistica <span class="math inline">\(Z\)</span>: standardizzare la media campionaria</h4>
+<p>Per rispondere, trasformiamo la media campionaria in un punteggio standardizzato. La statistica <span class="math inline">\(Z\)</span> non è altro che la standardizzazione della media osservata nella distribuzione campionaria costruita sotto <span class="math inline">\(H_0\)</span>:</p>
+<p><span class="math display">\[
+Z = \frac{\bar{X} - \mu_0}{\sigma_{\bar{X}}} = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}.
+\]</span></p>
+<p>Questa formula dovrebbe risultare familiare: è la stessa logica della standardizzazione di un punteggio individuale, <span class="math inline">\(z = (x - \mu)/\sigma\)</span>, applicata però alla media campionaria. Il numeratore misura quanto la media osservata si discosta dal valore ipotizzato sotto <span class="math inline">\(H_0\)</span>; il denominatore normalizza questa distanza rispetto alla variabilità attesa delle medie campionarie.</p>
+<p>Calcoliamo il valore di <span class="math inline">\(Z\)</span> per il nostro esempio:</p>
+<p><span class="math display">\[
+Z = \frac{23.8 - 24}{1.265} = \frac{-0.2}{1.265} \approx -0.158
+\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Z</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">media_campione</span> <span class="op">-</span> <span class="va">mu_0</span><span class="op">)</span> <span class="op">/</span> <span class="va">errore_standard</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Statistica Z:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">Z</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Statistica Z: -0.158</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="il-valore-p-1" class="level4" data-number="4.3.3.3"><h4 data-number="4.3.3.3" class="anchored" data-anchor-id="il-valore-p-1">
+<span class="header-section-number">4.3.3.3</span> Il valore-<span class="math inline">\(p\)</span>
+</h4>
+<p>Poiché abbiamo formulato un’ipotesi alternativa direzionale (<span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &gt; 24\)</span>), il valore-<span class="math inline">\(p\)</span> corrisponde alla probabilità di osservare una media campionaria <em>almeno altrettanto grande</em> di quella osservata, assumendo vera <span class="math inline">\(H_0\)</span>. In termini della statistica <span class="math inline">\(Z\)</span>, questo equivale a calcolare l’area sotto la curva normale standard a destra del valore <span class="math inline">\(Z\)</span> osservato.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p_value_Z</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="va">Z</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"P-value (test Z monodirezionale):"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">p_value_Z</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; P-value (test Z monodirezionale): 0.563</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Un valore-<span class="math inline">\(p\)</span> di circa 0.56 indica che, se <span class="math inline">\(H_0\)</span> fosse vera, avremmo circa il 56% di probabilità di osservare una media campionaria pari o superiore a 23.8. In altre parole, il nostro risultato è perfettamente compatibile con l’ipotesi nulla: non c’è alcuna evidenza che la media della popolazione sia superiore a 24.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nota che il valore-<span class="math inline">\(p\)</span> è così alto perché la media osservata (23.8) è addirittura <em>inferiore</em> al valore ipotizzato (24), mentre noi stavamo cercando evidenze di una media <em>superiore</em>.</p>
+</div>
+</div>
+</section></section><section id="il-problema-sigma-è-sconosciuta" class="level3" data-number="4.3.4"><h3 data-number="4.3.4" class="anchored" data-anchor-id="il-problema-sigma-è-sconosciuta">
+<span class="header-section-number">4.3.4</span> Il problema: <span class="math inline">\(\sigma\)</span> è sconosciuta</h3>
+<p>Nel ragionamento precedente abbiamo assunto di conoscere la deviazione standard della popolazione, <span class="math inline">\(\sigma = 4\)</span>. Nella pratica della ricerca, tuttavia, questo valore è quasi sempre ignoto e deve essere stimato dai dati stessi.</p>
+<p>La soluzione naturale è sostituire <span class="math inline">\(\sigma\)</span> con la deviazione standard campionaria <span class="math inline">\(s\)</span>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">punteggi</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Deviazione standard campionaria:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">s</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Deviazione standard campionaria: 4.26</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>L’errore standard stimato diventa quindi:</p>
+<p><span class="math display">\[
+SE = \frac{s}{\sqrt{n}} = \frac{4.211}{\sqrt{10}} \approx 1.332
+\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">SE</span> <span class="op">&lt;-</span> <span class="va">s</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Errore standard stimato:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">SE</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Errore standard stimato: 1.35</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="dalla-statistica-z-alla-statistica-t" class="level3" data-number="4.3.5"><h3 data-number="4.3.5" class="anchored" data-anchor-id="dalla-statistica-z-alla-statistica-t">
+<span class="header-section-number">4.3.5</span> Dalla statistica <span class="math inline">\(Z\)</span> alla statistica <span class="math inline">\(t\)</span>
+</h3>
+<p>Quando sostituiamo <span class="math inline">\(\sigma\)</span> con <span class="math inline">\(s\)</span>, la statistica diventa:</p>
+<p><span class="math display">\[
+t = \frac{\bar{X} - \mu_0}{s / \sqrt{n}}.
+\]</span></p>
+<p>La formula è identica a quella della statistica <span class="math inline">\(Z\)</span>, con l’unica differenza che utilizziamo la stima campionaria <span class="math inline">\(s\)</span> invece del valore noto <span class="math inline">\(\sigma\)</span>. Potrebbe sembrare un dettaglio minore, ma ha una conseguenza importante: <strong>introduciamo ulteriore incertezza nel nostro calcolo</strong>.</p>
+<p>Il valore di <span class="math inline">\(s\)</span> che calcoliamo dal campione è esso stesso una stima, soggetta a variabilità campionaria. A volte sovrastimerà <span class="math inline">\(\sigma\)</span>, altre volte lo sottostimerà. Questa incertezza aggiuntiva si propaga nella statistica test, rendendola più variabile di quanto sarebbe se conoscessimo il vero valore di <span class="math inline">\(\sigma\)</span>.</p>
+</section><section id="la-distribuzione-t-di-student" class="level3" data-number="4.3.6"><h3 data-number="4.3.6" class="anchored" data-anchor-id="la-distribuzione-t-di-student">
+<span class="header-section-number">4.3.6</span> La distribuzione <span class="math inline">\(t\)</span> di Student</h3>
+<p>Per tenere conto di questa maggiore incertezza, non possiamo più usare la distribuzione normale standard come riferimento. Dobbiamo invece utilizzare la <strong>distribuzione <span class="math inline">\(t\)</span> di Student</strong>, che ha una forma simile alla normale ma con <strong>code più pesanti</strong>.</p>
+<p>Le code più pesanti riflettono il fatto che, quando stimiamo <span class="math inline">\(\sigma\)</span> dal campione, valori estremi della statistica test diventano più probabili. In altre parole, la distribuzione <span class="math inline">\(t\)</span> è più “cauta” della normale: assegna maggiore probabilità a risultati lontani dal centro.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">4</span>, <span class="fl">4</span>, length.out <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
+<span><span class="va">df_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">4</span><span class="op">)</span>,</span>
+<span>  densita <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">dt</a></span><span class="op">(</span><span class="va">x</span>, df <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">dt</a></span><span class="op">(</span><span class="va">x</span>, df <span class="op">=</span> <span class="fl">9</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">dt</a></span><span class="op">(</span><span class="va">x</span>, df <span class="op">=</span> <span class="fl">30</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  distribuzione <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Normale"</span>, <span class="st">"t (df=3)"</span>, <span class="st">"t (df=9)"</span>, <span class="st">"t (df=30)"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">punteggi</span>, mu <span class="op">=</span> <span class="fl">24</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df_plot</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">densita</span>, color <span class="op">=</span> <span class="va">distribuzione</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Valore"</span>, y <span class="op">=</span> <span class="st">"Densità"</span>, color <span class="op">=</span> <span class="st">"Distribuzione"</span><span class="op">)</span> </span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-t-vs-normale" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-t-vs-normale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="05_test_ipotesi_files/figure-html/fig-t-vs-normale-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figura&nbsp;4.1: Confronto tra distribuzione normale standard e distribuzione t con diversi gradi di libertà"><img src="05_test_ipotesi_files/figure-html/fig-t-vs-normale-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t-vs-normale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4.1: Confronto tra distribuzione normale standard e distribuzione t con diversi gradi di libertà
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="i-gradi-di-libertà" class="level3" data-number="4.3.7"><h3 data-number="4.3.7" class="anchored" data-anchor-id="i-gradi-di-libertà">
+<span class="header-section-number">4.3.7</span> I gradi di libertà</h3>
+<p>Una caratteristica distintiva della distribuzione <span class="math inline">\(t\)</span> è che la sua forma dipende dai <strong>gradi di libertà</strong> (df), che nel caso del test per una media sono pari a <span class="math inline">\(n - 1\)</span>:</p>
+<p><span class="math display">\[
+\text{df} = n - 1.
+\]</span></p>
+<p>Nel nostro esempio, con 10 osservazioni, abbiamo <span class="math inline">\(\text{df} = 9\)</span>.</p>
+<p>I gradi di libertà determinano quanto le code della distribuzione <span class="math inline">\(t\)</span> siano pesanti:</p>
+<ul>
+<li>Con pochi gradi di libertà (campioni piccoli), l’incertezza nella stima di <span class="math inline">\(\sigma\)</span> è elevata, e la distribuzione <span class="math inline">\(t\)</span> ha code molto più pesanti della normale.</li>
+<li>Con molti gradi di libertà (campioni grandi), la stima di <span class="math inline">\(\sigma\)</span> diventa più precisa, e la distribuzione <span class="math inline">\(t\)</span> converge progressivamente verso la normale standard.</li>
+</ul>
+<p>Questo comportamento ha perfettamente senso: con un campione di 10 osservazioni, la nostra stima di <span class="math inline">\(\sigma\)</span> è piuttosto incerta; con un campione di 1000 osservazioni, possiamo fidarci molto di più della stima.</p>
+</section><section id="calcolo-della-statistica-t-e-del-valore-p" class="level3" data-number="4.3.8"><h3 data-number="4.3.8" class="anchored" data-anchor-id="calcolo-della-statistica-t-e-del-valore-p">
+<span class="header-section-number">4.3.8</span> Calcolo della statistica <span class="math inline">\(t\)</span> e del valore-<span class="math inline">\(p\)</span>
+</h3>
+<p>Applichiamo ora questi concetti al nostro esempio:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">t_obs</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">media_campione</span> <span class="op">-</span> <span class="va">mu_0</span><span class="op">)</span> <span class="op">/</span> <span class="va">SE</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">n</span> <span class="op">-</span> <span class="fl">1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Statistica t:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">t_obs</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Statistica t: -0.148</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Gradi di libertà:"</span>, <span class="va">df</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Gradi di libertà: 9</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Per il test monodirezionale (<span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu &gt; 24\)</span>), il valore-<span class="math inline">\(p\)</span> è l’area sotto la curva della distribuzione <span class="math inline">\(t\)</span> con 9 gradi di libertà, a destra del valore osservato:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p_value_t</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="va">t_obs</span>, <span class="va">df</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"P-value (test t monodirezionale):"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">p_value_t</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; P-value (test t monodirezionale): 0.557</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="interpretazione" class="level3" data-number="4.3.9"><h3 data-number="4.3.9" class="anchored" data-anchor-id="interpretazione">
+<span class="header-section-number">4.3.9</span> Interpretazione</h3>
+<p>Il valore-<span class="math inline">\(p\)</span> di circa 0.56 ci dice che, se la vera media della popolazione fosse 24, avremmo circa il 56% di probabilità di osservare una media campionaria pari o superiore a 23.8. Questo risultato è completamente compatibile con l’ipotesi nulla: i dati non forniscono alcuna evidenza che il benessere degli studenti sia superiore alla norma.</p>
+</section><section id="verifica-con-r-1" class="level3" data-number="4.3.10"><h3 data-number="4.3.10" class="anchored" data-anchor-id="verifica-con-r-1">
+<span class="header-section-number">4.3.10</span> Verifica con R</h3>
+<p>La funzione <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> esegue automaticamente tutti questi calcoli. Per un test monodirezionale in cui l’ipotesi alternativa è <span class="math inline">\(\mu &gt; 24\)</span>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">punteggi</span>, mu <span class="op">=</span> <span class="fl">24</span>, alternative <span class="op">=</span> <span class="st">"greater"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  One Sample t-test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  punteggi</span></span>
+<span><span class="co">#&gt; t = -0.1, df = 9, p-value = 0.6</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true mean is greater than 24</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;  21.3  Inf</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt; mean of x </span></span>
+<span><span class="co">#&gt;      23.8</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>I risultati confermano i nostri calcoli manuali: <span class="math inline">\(t = -0.15\)</span>, <span class="math inline">\(\text{df} = 9\)</span>, <span class="math inline">\(p = 0.56\)</span>.</p>
+</section><section id="il-test-bidirezionale" class="level3" data-number="4.3.11"><h3 data-number="4.3.11" class="anchored" data-anchor-id="il-test-bidirezionale">
+<span class="header-section-number">4.3.11</span> Il test bidirezionale</h3>
+<p>Se il ricercatore non avesse una direzione specifica in mente e volesse semplicemente verificare se la media differisce da 24 (in qualsiasi direzione), dovrebbe formulare un test bidirezionale:</p>
+<ul>
+<li>
+<span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu = 24\)</span>
+</li>
+<li>
+<span class="math inline">\(H_1\)</span>: <span class="math inline">\(\mu \neq 24\)</span>
+</li>
+</ul>
+<p>In questo caso, il valore-<span class="math inline">\(p\)</span> considera entrambe le code della distribuzione:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">punteggi</span>, mu <span class="op">=</span> <span class="fl">24</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  One Sample t-test</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -639,8 +937,8 @@ window.Quarto = {
 <span><span class="co">#&gt; mean of x </span></span>
 <span><span class="co">#&gt;      23.8</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Un valore-<span class="math inline">\(p\)</span> prossimo a 1 segnala che i dati sono perfettamente compatibili con il valore teorico e non forniscono alcuna ragione per rifiutare <span class="math inline">\(H_0\)</span>.</p>
-</section><section id="interpretazione-corretta-del-p-value" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="interpretazione-corretta-del-p-value">
+<p>Anche in questo caso, il valore-<span class="math inline">\(p\)</span> elevato (0.88) indica che i dati sono perfettamente compatibili con l’ipotesi nulla.</p>
+</section></section><section id="interpretazione-corretta-del-p-value" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="interpretazione-corretta-del-p-value">
 <span class="header-section-number">4.4</span> Interpretazione corretta del p-value</h2>
 <p>Il p-value non esprime la probabilità che l’ipotesi nulla sia vera; descrive invece quanto sarebbero rari dati come quelli osservati se <span class="math inline">\(H_0\)</span> fosse valida. Un valore elevato non fornisce alcun supporto a <span class="math inline">\(H_0\)</span>; indica soltanto che i dati non sono sufficientemente discordanti da essa. Inoltre non misura l’importanza dell’effetto, non quantifica la replicabilità di un risultato e non dice nulla sulle ipotesi post-hoc del ricercatore.</p>
 </section><section id="limiti-del-test-di-ipotesi-frequentista" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="limiti-del-test-di-ipotesi-frequentista">
@@ -652,7 +950,7 @@ window.Quarto = {
 </section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
 <p>Il test di ipotesi consente di valutare la compatibilità tra i dati e un modello teorico, ma il valore-<span class="math inline">\(p\)</span> ha un significato più limitato di quanto comunemente si creda. La sua interpretazione non riguarda la verità di <span class="math inline">\(H_0\)</span> ma l’eventualità di osservare dati almeno altrettanto estremi sotto quella stessa ipotesi. La distanza tra significatività statistica e rilevanza pratica, insieme ai vincoli strutturali del metodo frequentista, rende utile affiancare o sostituire questa procedura con strumenti più informativi e interpretabili, come quelli offerti dall’approccio bayesiano.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Informazioni sull'ambiente di sviluppo">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -661,13 +959,13 @@ window.Quarto = {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.5.2 (2025-10-31)</span></span>
 <span><span class="co">#&gt; Platform: aarch64-apple-darwin20</span></span>
-<span><span class="co">#&gt; Running under: macOS Tahoe 26.1</span></span>
+<span><span class="co">#&gt; Running under: macOS Tahoe 26.2</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
 <span><span class="co">#&gt; BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib </span></span>
@@ -683,43 +981,43 @@ window.Quarto = {
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] pillar_1.11.1         tinytable_0.15.1      patchwork_1.3.2      </span></span>
-<span><span class="co">#&gt;  [4] ggdist_3.3.3          tidybayes_3.0.7       bayesplot_1.14.0     </span></span>
-<span><span class="co">#&gt;  [7] ggplot2_4.0.1         reliabilitydiag_0.2.1 priorsense_1.2.0     </span></span>
-<span><span class="co">#&gt; [10] posterior_1.6.1       loo_2.8.0             rstan_2.32.7         </span></span>
-<span><span class="co">#&gt; [13] StanHeaders_2.32.10   brms_2.23.0           Rcpp_1.1.0           </span></span>
-<span><span class="co">#&gt; [16] sessioninfo_1.2.3     conflicted_1.2.0      janitor_2.2.1        </span></span>
-<span><span class="co">#&gt; [19] matrixStats_1.5.0     modelr_0.1.11         tibble_3.3.0         </span></span>
-<span><span class="co">#&gt; [22] dplyr_1.1.4           tidyr_1.3.1           rio_1.2.4            </span></span>
-<span><span class="co">#&gt; [25] here_1.0.2           </span></span>
+<span><span class="co">#&gt;  [1] ragg_1.5.0            tinytable_0.15.2      withr_3.0.2          </span></span>
+<span><span class="co">#&gt;  [4] systemfonts_1.3.1     patchwork_1.3.2       ggdist_3.3.3         </span></span>
+<span><span class="co">#&gt;  [7] tidybayes_3.0.7       bayesplot_1.15.0      ggplot2_4.0.1        </span></span>
+<span><span class="co">#&gt; [10] reliabilitydiag_0.2.1 priorsense_1.2.0      posterior_1.6.1      </span></span>
+<span><span class="co">#&gt; [13] loo_2.9.0             rstan_2.32.7          StanHeaders_2.32.10  </span></span>
+<span><span class="co">#&gt; [16] brms_2.23.0           Rcpp_1.1.0            sessioninfo_1.2.3    </span></span>
+<span><span class="co">#&gt; [19] conflicted_1.2.0      janitor_2.2.1         matrixStats_1.5.0    </span></span>
+<span><span class="co">#&gt; [22] modelr_0.1.11         tibble_3.3.0          dplyr_1.1.4          </span></span>
+<span><span class="co">#&gt; [25] tidyr_1.3.2           rio_1.2.4             here_1.0.2           </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
 <span><span class="co">#&gt;  [1] svUnit_1.0.8          tidyselect_1.2.1      farver_2.1.2         </span></span>
 <span><span class="co">#&gt;  [4] S7_0.2.1              fastmap_1.2.0         TH.data_1.1-5        </span></span>
 <span><span class="co">#&gt;  [7] tensorA_0.36.2.1      digest_0.6.39         timechange_0.3.0     </span></span>
-<span><span class="co">#&gt; [10] estimability_1.5.1    lifecycle_1.0.4       survival_3.8-3       </span></span>
-<span><span class="co">#&gt; [13] magrittr_2.0.4        compiler_4.5.2        rlang_1.1.6          </span></span>
-<span><span class="co">#&gt; [16] tools_4.5.2           knitr_1.50            bridgesampling_1.2-1 </span></span>
-<span><span class="co">#&gt; [19] htmlwidgets_1.6.4     curl_7.0.0            pkgbuild_1.4.8       </span></span>
-<span><span class="co">#&gt; [22] RColorBrewer_1.1-3    abind_1.4-8           multcomp_1.4-29      </span></span>
-<span><span class="co">#&gt; [25] withr_3.0.2           purrr_1.2.0           grid_4.5.2           </span></span>
-<span><span class="co">#&gt; [28] stats4_4.5.2          colorspace_2.1-2      xtable_1.8-4         </span></span>
-<span><span class="co">#&gt; [31] inline_0.3.21         emmeans_2.0.0         scales_1.4.0         </span></span>
-<span><span class="co">#&gt; [34] MASS_7.3-65           cli_3.6.5             mvtnorm_1.3-3        </span></span>
-<span><span class="co">#&gt; [37] rmarkdown_2.30        ragg_1.5.0            generics_0.1.4       </span></span>
-<span><span class="co">#&gt; [40] RcppParallel_5.1.11-1 cachem_1.1.0          stringr_1.6.0        </span></span>
-<span><span class="co">#&gt; [43] splines_4.5.2         parallel_4.5.2        vctrs_0.6.5          </span></span>
-<span><span class="co">#&gt; [46] V8_8.0.1              Matrix_1.7-4          sandwich_3.1-1       </span></span>
-<span><span class="co">#&gt; [49] jsonlite_2.0.0        arrayhelpers_1.1-0    systemfonts_1.3.1    </span></span>
+<span><span class="co">#&gt; [10] estimability_1.5.1    lifecycle_1.0.5       survival_3.8-3       </span></span>
+<span><span class="co">#&gt; [13] magrittr_2.0.4        compiler_4.5.2        rlang_1.1.7          </span></span>
+<span><span class="co">#&gt; [16] tools_4.5.2           yaml_2.3.12           knitr_1.51           </span></span>
+<span><span class="co">#&gt; [19] labeling_0.4.3        bridgesampling_1.2-1  htmlwidgets_1.6.4    </span></span>
+<span><span class="co">#&gt; [22] curl_7.0.0            pkgbuild_1.4.8        RColorBrewer_1.1-3   </span></span>
+<span><span class="co">#&gt; [25] abind_1.4-8           multcomp_1.4-29       purrr_1.2.1          </span></span>
+<span><span class="co">#&gt; [28] grid_4.5.2            stats4_4.5.2          colorspace_2.1-2     </span></span>
+<span><span class="co">#&gt; [31] xtable_1.8-4          inline_0.3.21         emmeans_2.0.1        </span></span>
+<span><span class="co">#&gt; [34] scales_1.4.0          MASS_7.3-65           cli_3.6.5            </span></span>
+<span><span class="co">#&gt; [37] mvtnorm_1.3-3         rmarkdown_2.30        generics_0.1.4       </span></span>
+<span><span class="co">#&gt; [40] otel_0.2.0            RcppParallel_5.1.11-1 cachem_1.1.0         </span></span>
+<span><span class="co">#&gt; [43] stringr_1.6.0         splines_4.5.2         parallel_4.5.2       </span></span>
+<span><span class="co">#&gt; [46] vctrs_0.6.5           V8_8.0.1              Matrix_1.7-4         </span></span>
+<span><span class="co">#&gt; [49] sandwich_3.1-1        jsonlite_2.0.0        arrayhelpers_1.1-0   </span></span>
 <span><span class="co">#&gt; [52] glue_1.8.0            codetools_0.2-20      distributional_0.5.0 </span></span>
 <span><span class="co">#&gt; [55] lubridate_1.9.4       stringi_1.8.7         gtable_0.3.6         </span></span>
-<span><span class="co">#&gt; [58] QuickJSR_1.8.1        htmltools_0.5.9       Brobdingnag_1.2-9    </span></span>
-<span><span class="co">#&gt; [61] R6_2.6.1              textshaping_1.0.4     rprojroot_2.1.1      </span></span>
-<span><span class="co">#&gt; [64] evaluate_1.0.5        lattice_0.22-7        backports_1.5.0      </span></span>
-<span><span class="co">#&gt; [67] memoise_2.0.1         broom_1.0.11          snakecase_0.11.1     </span></span>
-<span><span class="co">#&gt; [70] rstantools_2.5.0      gridExtra_2.3         coda_0.19-4.1        </span></span>
-<span><span class="co">#&gt; [73] nlme_3.1-168          checkmate_2.3.3       xfun_0.54            </span></span>
-<span><span class="co">#&gt; [76] zoo_1.8-14            pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; [58] QuickJSR_1.8.1        pillar_1.11.1         htmltools_0.5.9      </span></span>
+<span><span class="co">#&gt; [61] Brobdingnag_1.2-9     R6_2.6.1              textshaping_1.0.4    </span></span>
+<span><span class="co">#&gt; [64] rprojroot_2.1.1       evaluate_1.0.5        lattice_0.22-7       </span></span>
+<span><span class="co">#&gt; [67] backports_1.5.0       memoise_2.0.1         broom_1.0.11         </span></span>
+<span><span class="co">#&gt; [70] snakecase_0.11.1      rstantools_2.5.0      gridExtra_2.3        </span></span>
+<span><span class="co">#&gt; [73] coda_0.19-4.1         nlme_3.1-168          checkmate_2.3.3      </span></span>
+<span><span class="co">#&gt; [76] xfun_0.55             zoo_1.8-15            pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1168,7 +1466,38 @@ window.Quarto = {
 <p>Realizzato con <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
-</footer>
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 <script src="../../site_libs/quarto-html/zenscroll-min.js"></script>

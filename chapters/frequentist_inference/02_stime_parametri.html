@@ -114,7 +114,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-QT5S3P9D31', { 'anonymize_ip': true});
 </script><style>html{ scroll-behavior: smooth; }</style>
-<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -139,7 +139,7 @@ const typesetMath = (el) => {
 window.Quarto = {
   typesetMath
 };
-</script>
+</script><link rel="stylesheet" href="../../style/custom.css">
 </head>
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
@@ -543,12 +543,32 @@ window.Quarto = {
 \]</span></p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span></span>
+<span><span class="va">samples</span></span>
+<span><span class="co">#&gt;    Var1 Var2</span></span>
+<span><span class="co">#&gt; 1   2.0  2.0</span></span>
+<span><span class="co">#&gt; 2   4.5  2.0</span></span>
+<span><span class="co">#&gt; 3   5.0  2.0</span></span>
+<span><span class="co">#&gt; 4   5.5  2.0</span></span>
+<span><span class="co">#&gt; 5   2.0  4.5</span></span>
+<span><span class="co">#&gt; 6   4.5  4.5</span></span>
+<span><span class="co">#&gt; 7   5.0  4.5</span></span>
+<span><span class="co">#&gt; 8   5.5  4.5</span></span>
+<span><span class="co">#&gt; 9   2.0  5.0</span></span>
+<span><span class="co">#&gt; 10  4.5  5.0</span></span>
+<span><span class="co">#&gt; 11  5.0  5.0</span></span>
+<span><span class="co">#&gt; 12  5.5  5.0</span></span>
+<span><span class="co">#&gt; 13  2.0  5.5</span></span>
+<span><span class="co">#&gt; 14  4.5  5.5</span></span>
+<span><span class="co">#&gt; 15  5.0  5.5</span></span>
+<span><span class="co">#&gt; 16  5.5  5.5</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 16</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Per ciascun campione calcoliamo la media, ottenendo così la <strong>distribuzione campionaria della media</strong>:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span></span>
 <span><span class="va">sample_means</span></span>
 <span><span class="co">#&gt;  [1] 2.00 3.25 3.50 3.75 3.25 4.50 4.75 5.00 3.50 4.75 5.00 5.25 3.75 5.00 5.25</span></span>
 <span><span class="co">#&gt; [16] 5.50</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
@@ -556,7 +576,7 @@ window.Quarto = {
 </section><section id="visualizzazione-della-distribuzione-campionaria" class="level3" data-number="2.2.3"><h3 data-number="2.2.3" class="anchored" data-anchor-id="visualizzazione-della-distribuzione-campionaria">
 <span class="header-section-number">2.2.3</span> Visualizzazione della distribuzione campionaria</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Valori <span class="op">=</span> <span class="va">sample_means</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Valori <span class="op">=</span> <span class="va">sample_means</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Valori</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_histogram</span><span class="op">(</span></span>
@@ -572,7 +592,7 @@ window.Quarto = {
 <span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="02_stime_parametri_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="02_stime_parametri_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
+<figure class="figure"><p><a href="02_stime_parametri_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="02_stime_parametri_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
 </figure>
 </div>
 </div>
@@ -584,20 +604,20 @@ window.Quarto = {
 <span class="header-section-number">2.2.4.1</span> Media della distribuzione campionaria</h4>
 <p>Un risultato fondamentale della teoria della stima afferma che la media della distribuzione campionaria coincide con la media della popolazione. Possiamo verificarlo nel nostro esempio:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>            <span class="co"># Media della popolazione</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>            <span class="co"># Media della popolazione</span></span>
 <span><span class="co">#&gt; [1] 4.25</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sample_means</span><span class="op">)</span> <span class="co"># Media della distribuzione campionaria</span></span>
 <span><span class="co">#&gt; [1] 4.25</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Questa uguaglianza mostra che la media campionaria ({X}) è uno <strong>stimatore non distorto</strong>: se ripetessimo il campionamento un numero indefinito di volte, la media delle nostre stime tenderebbe al valore reale della popolazione.</p>
+<p>Questa uguaglianza mostra che la media campionaria <span class="math inline">\(\bar{X}\)</span> è uno <strong>stimatore non distorto</strong>: se ripetessimo il campionamento un numero indefinito di volte, la media delle nostre stime tenderebbe al valore reale della popolazione.</p>
 </section><section id="varianza-della-distribuzione-campionaria" class="level4" data-number="2.2.4.2"><h4 data-number="2.2.4.2" class="anchored" data-anchor-id="varianza-della-distribuzione-campionaria">
 <span class="header-section-number">2.2.4.2</span> Varianza della distribuzione campionaria</h4>
 <p>La variabilità delle medie campionarie è descritta da:</p>
 <p><span class="math display">\[
 \text{Var}(\bar{X}) = \frac{\sigma^2}{n},
-\]</span> dove (^2) è la varianza della popolazione e (n) la dimensione del campione. Verifichiamo il risultato nel nostro caso:</p>
+\]</span> dove <span class="math inline">\(\sigma^2\)</span> è la varianza della popolazione e <span class="math inline">\(n\)</span> la dimensione del campione. Verifichiamo il risultato nel nostro caso:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>                    <span class="co"># Varianza della popolazione</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>                    <span class="co"># Varianza della popolazione</span></span>
 <span><span class="co">#&gt; [1] 2.42</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span>                <span class="co"># Varianza teorica (σ²/n per n = 2)</span></span>
 <span><span class="co">#&gt; [1] 1.21</span></span>
@@ -623,7 +643,7 @@ Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} \mathcal{N}(0, 1).
 <p>Per vedere concretamente come opera il teorema del limite centrale, consideriamo una distribuzione uniforme sull’intervallo [0, 1]. Si tratta di una distribuzione molto diversa da quella normale: è piatta, simmetrica e con varianza limitata. Proprio per questo motivo, rappresenta un buon esempio per mostrare come il TLC agisca anche quando la distribuzione di partenza non è affatto “a campana”.</p>
 <p>Il codice seguente genera 10.000 campioni per tre diverse dimensioni campionarie (<span class="math inline">\(n\)</span> = 5, <span class="math inline">\(n\)</span> = 30, <span class="math inline">\(n\)</span> = 100) e calcola la media di ciascun campione.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">n_samples</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
 <span></span>
 <span><span class="co"># Funzione per calcolare medie campionarie</span></span>
@@ -643,7 +663,7 @@ Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} \mathcal{N}(0, 1).
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">means_n100</span>, breaks <span class="op">=</span> <span class="fl">40</span>, main <span class="op">=</span> <span class="st">"n = 100"</span>, xlab <span class="op">=</span> <span class="st">"Media"</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="02_stime_parametri_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="02_stime_parametri_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
+<figure class="figure"><p><a href="02_stime_parametri_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="02_stime_parametri_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
 </figure>
 </div>
 </div>
@@ -709,10 +729,10 @@ Nota
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.5.2 (2025-10-31)</span></span>
 <span><span class="co">#&gt; Platform: aarch64-apple-darwin20</span></span>
-<span><span class="co">#&gt; Running under: macOS Tahoe 26.1</span></span>
+<span><span class="co">#&gt; Running under: macOS Tahoe 26.2</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
 <span><span class="co">#&gt; BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib </span></span>
@@ -728,44 +748,43 @@ Nota
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] pillar_1.11.1         tinytable_0.15.1      patchwork_1.3.2      </span></span>
-<span><span class="co">#&gt;  [4] ggdist_3.3.3          tidybayes_3.0.7       bayesplot_1.14.0     </span></span>
-<span><span class="co">#&gt;  [7] ggplot2_4.0.1         reliabilitydiag_0.2.1 priorsense_1.2.0     </span></span>
-<span><span class="co">#&gt; [10] posterior_1.6.1       loo_2.8.0             rstan_2.32.7         </span></span>
-<span><span class="co">#&gt; [13] StanHeaders_2.32.10   brms_2.23.0           Rcpp_1.1.0           </span></span>
-<span><span class="co">#&gt; [16] sessioninfo_1.2.3     conflicted_1.2.0      janitor_2.2.1        </span></span>
-<span><span class="co">#&gt; [19] matrixStats_1.5.0     modelr_0.1.11         tibble_3.3.0         </span></span>
-<span><span class="co">#&gt; [22] dplyr_1.1.4           tidyr_1.3.1           rio_1.2.4            </span></span>
-<span><span class="co">#&gt; [25] here_1.0.2           </span></span>
+<span><span class="co">#&gt;  [1] ragg_1.5.0            tinytable_0.15.2      withr_3.0.2          </span></span>
+<span><span class="co">#&gt;  [4] systemfonts_1.3.1     patchwork_1.3.2       ggdist_3.3.3         </span></span>
+<span><span class="co">#&gt;  [7] tidybayes_3.0.7       bayesplot_1.15.0      ggplot2_4.0.1        </span></span>
+<span><span class="co">#&gt; [10] reliabilitydiag_0.2.1 priorsense_1.2.0      posterior_1.6.1      </span></span>
+<span><span class="co">#&gt; [13] loo_2.9.0             rstan_2.32.7          StanHeaders_2.32.10  </span></span>
+<span><span class="co">#&gt; [16] brms_2.23.0           Rcpp_1.1.0            sessioninfo_1.2.3    </span></span>
+<span><span class="co">#&gt; [19] conflicted_1.2.0      janitor_2.2.1         matrixStats_1.5.0    </span></span>
+<span><span class="co">#&gt; [22] modelr_0.1.11         tibble_3.3.0          dplyr_1.1.4          </span></span>
+<span><span class="co">#&gt; [25] tidyr_1.3.2           rio_1.2.4             here_1.0.2           </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
 <span><span class="co">#&gt;  [1] svUnit_1.0.8          tidyselect_1.2.1      farver_2.1.2         </span></span>
 <span><span class="co">#&gt;  [4] S7_0.2.1              fastmap_1.2.0         TH.data_1.1-5        </span></span>
 <span><span class="co">#&gt;  [7] tensorA_0.36.2.1      digest_0.6.39         timechange_0.3.0     </span></span>
-<span><span class="co">#&gt; [10] estimability_1.5.1    lifecycle_1.0.4       survival_3.8-3       </span></span>
-<span><span class="co">#&gt; [13] magrittr_2.0.4        compiler_4.5.2        rlang_1.1.6          </span></span>
-<span><span class="co">#&gt; [16] tools_4.5.2           yaml_2.3.11           knitr_1.50           </span></span>
+<span><span class="co">#&gt; [10] estimability_1.5.1    lifecycle_1.0.5       survival_3.8-3       </span></span>
+<span><span class="co">#&gt; [13] magrittr_2.0.4        compiler_4.5.2        rlang_1.1.7          </span></span>
+<span><span class="co">#&gt; [16] tools_4.5.2           yaml_2.3.12           knitr_1.51           </span></span>
 <span><span class="co">#&gt; [19] labeling_0.4.3        bridgesampling_1.2-1  htmlwidgets_1.6.4    </span></span>
 <span><span class="co">#&gt; [22] curl_7.0.0            pkgbuild_1.4.8        RColorBrewer_1.1-3   </span></span>
-<span><span class="co">#&gt; [25] abind_1.4-8           multcomp_1.4-29       withr_3.0.2          </span></span>
-<span><span class="co">#&gt; [28] purrr_1.2.0           grid_4.5.2            stats4_4.5.2         </span></span>
-<span><span class="co">#&gt; [31] colorspace_2.1-2      xtable_1.8-4          inline_0.3.21        </span></span>
-<span><span class="co">#&gt; [34] emmeans_2.0.0         scales_1.4.0          MASS_7.3-65          </span></span>
-<span><span class="co">#&gt; [37] cli_3.6.5             mvtnorm_1.3-3         rmarkdown_2.30       </span></span>
-<span><span class="co">#&gt; [40] ragg_1.5.0            generics_0.1.4        RcppParallel_5.1.11-1</span></span>
-<span><span class="co">#&gt; [43] cachem_1.1.0          stringr_1.6.0         splines_4.5.2        </span></span>
-<span><span class="co">#&gt; [46] parallel_4.5.2        vctrs_0.6.5           V8_8.0.1             </span></span>
-<span><span class="co">#&gt; [49] Matrix_1.7-4          sandwich_3.1-1        jsonlite_2.0.0       </span></span>
-<span><span class="co">#&gt; [52] arrayhelpers_1.1-0    systemfonts_1.3.1     glue_1.8.0           </span></span>
-<span><span class="co">#&gt; [55] codetools_0.2-20      distributional_0.5.0  lubridate_1.9.4      </span></span>
-<span><span class="co">#&gt; [58] stringi_1.8.7         gtable_0.3.6          QuickJSR_1.8.1       </span></span>
-<span><span class="co">#&gt; [61] htmltools_0.5.9       Brobdingnag_1.2-9     R6_2.6.1             </span></span>
-<span><span class="co">#&gt; [64] textshaping_1.0.4     rprojroot_2.1.1       evaluate_1.0.5       </span></span>
-<span><span class="co">#&gt; [67] lattice_0.22-7        backports_1.5.0       memoise_2.0.1        </span></span>
-<span><span class="co">#&gt; [70] broom_1.0.11          snakecase_0.11.1      rstantools_2.5.0     </span></span>
-<span><span class="co">#&gt; [73] gridExtra_2.3         coda_0.19-4.1         nlme_3.1-168         </span></span>
-<span><span class="co">#&gt; [76] checkmate_2.3.3       xfun_0.54             zoo_1.8-14           </span></span>
-<span><span class="co">#&gt; [79] pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; [25] abind_1.4-8           multcomp_1.4-29       purrr_1.2.1          </span></span>
+<span><span class="co">#&gt; [28] grid_4.5.2            stats4_4.5.2          colorspace_2.1-2     </span></span>
+<span><span class="co">#&gt; [31] xtable_1.8-4          inline_0.3.21         emmeans_2.0.1        </span></span>
+<span><span class="co">#&gt; [34] scales_1.4.0          MASS_7.3-65           cli_3.6.5            </span></span>
+<span><span class="co">#&gt; [37] mvtnorm_1.3-3         rmarkdown_2.30        generics_0.1.4       </span></span>
+<span><span class="co">#&gt; [40] otel_0.2.0            RcppParallel_5.1.11-1 cachem_1.1.0         </span></span>
+<span><span class="co">#&gt; [43] stringr_1.6.0         splines_4.5.2         parallel_4.5.2       </span></span>
+<span><span class="co">#&gt; [46] vctrs_0.6.5           V8_8.0.1              Matrix_1.7-4         </span></span>
+<span><span class="co">#&gt; [49] sandwich_3.1-1        jsonlite_2.0.0        arrayhelpers_1.1-0   </span></span>
+<span><span class="co">#&gt; [52] glue_1.8.0            codetools_0.2-20      distributional_0.5.0 </span></span>
+<span><span class="co">#&gt; [55] lubridate_1.9.4       stringi_1.8.7         gtable_0.3.6         </span></span>
+<span><span class="co">#&gt; [58] QuickJSR_1.8.1        pillar_1.11.1         htmltools_0.5.9      </span></span>
+<span><span class="co">#&gt; [61] Brobdingnag_1.2-9     R6_2.6.1              textshaping_1.0.4    </span></span>
+<span><span class="co">#&gt; [64] rprojroot_2.1.1       evaluate_1.0.5        lattice_0.22-7       </span></span>
+<span><span class="co">#&gt; [67] backports_1.5.0       memoise_2.0.1         broom_1.0.11         </span></span>
+<span><span class="co">#&gt; [70] snakecase_0.11.1      rstantools_2.5.0      gridExtra_2.3        </span></span>
+<span><span class="co">#&gt; [73] coda_0.19-4.1         nlme_3.1-168          checkmate_2.3.3      </span></span>
+<span><span class="co">#&gt; [76] xfun_0.55             zoo_1.8-15            pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
