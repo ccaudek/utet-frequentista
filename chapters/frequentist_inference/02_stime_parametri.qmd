@@ -70,6 +70,10 @@ $$
 
 ```{r}
 samples <- expand.grid(x, x)
+samples
+```
+
+```{r}
 nrow(samples)
 ```
 
@@ -112,7 +116,7 @@ mean(x)            # Media della popolazione
 mean(sample_means) # Media della distribuzione campionaria
 ```
 
-Questa uguaglianza mostra che la media campionaria (\bar{X}) è uno **stimatore non distorto**: se ripetessimo il campionamento un numero indefinito di volte, la media delle nostre stime tenderebbe al valore reale della popolazione.
+Questa uguaglianza mostra che la media campionaria $\bar{X}$ è uno **stimatore non distorto**: se ripetessimo il campionamento un numero indefinito di volte, la media delle nostre stime tenderebbe al valore reale della popolazione.
 
 #### Varianza della distribuzione campionaria
 
@@ -121,7 +125,7 @@ La variabilità delle medie campionarie è descritta da:
 $$
 \text{Var}(\bar{X}) = \frac{\sigma^2}{n},
 $$
-dove (\sigma^2) è la varianza della popolazione e (n) la dimensione del campione. Verifichiamo il risultato nel nostro caso:
+dove $\sigma^2$ è la varianza della popolazione e $n$ la dimensione del campione. Verifichiamo il risultato nel nostro caso:
 
 ```{r}
 var(x)                    # Varianza della popolazione

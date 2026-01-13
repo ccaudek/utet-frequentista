@@ -61,44 +61,46 @@ link-citations: true
 
 format:
   html:
+    # -------- Codice --------
     code-fold: false
-    code-summary: "Code show/hide"
+    code-summary: "Mostra/Nascondi codice"
     code-copy: hover
     code-link: true
     code-overflow: scroll
     code-block-bg: true
-    # highlight-style: github
-    # code-block-border-left: "#6C6C6C"
-    theme: 
-      light: 
-        - cosmo
+    
+    # -------- Tema --------
+    theme:
+      light: cosmo
       dark: darkly
+    css: style/custom.css
     mainfont: "system-ui"
-    # max-width: 74ch
-    # number-sections: true
     lang: it
+    
+    # -------- Navigazione --------
     reader-mode: true
-    # toc: true
+    toc: true              # TOC va qui sotto format:html:
+    toc-depth: 2           # E anche toc-depth
     toc-title: "Sommario"
-    # toc-expand: 2
     smooth-scroll: true
+    
+    # -------- Link e note --------
     footnotes-hover: true
     link-external-icon: true
     link-external-newwindow: true
-
-    # Figure 
-    fig-align: center
-    fig-responsive: true
-    fig-cap-location: bottom
-    fig-format: png 
-  
-    # Matematica
+    
+    # -------- Media --------
+    lightbox: auto
+    
+    # -------- Matematica --------
     html-math-method:
       method: mathjax
-      # macros: { "\\E": "\\mathbb{E}", "\\Var": "\\mathrm{Var}" }
-
-    # Media
-    lightbox: auto
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+      # Macro opzionali (decommentare se serve)
+      # macros:
+      #   "\\E": "\\mathbb{E}"
+      #   "\\Var": "\\mathrm{Var}"
+      #   "\\Cov": "\\mathrm{Cov}"
 
 execute:
   freeze: auto

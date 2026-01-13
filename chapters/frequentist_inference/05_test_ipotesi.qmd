@@ -42,7 +42,21 @@ Questo meccanismo decisionale comporta due potenziali tipi di errore. È possibi
 
 ## Il test del Chi-Quadrato
 
-Per illustrare in modo concreto questa logica consideriamo il test del chi-quadrato, che permette di valutare se due variabili categoriali sono indipendenti. Immaginiamo di avere una tabella con i conteggi delle diverse specie di pinguini osservate su tre isole.
+Per illustrare in modo concreto la logica del test di ipotesi, consideriamo il test del chi-quadrato di indipendenza, che permette di valutare se due variabili categoriali sono associate oppure indipendenti tra loro.
+
+### Il concetto di indipendenza
+
+Due variabili categoriali si dicono *indipendenti* quando la distribuzione di una non dipende dal valore assunto dall'altra. In termini probabilistici, se $A$ e $B$ sono due eventi, l'indipendenza implica che:
+
+$$
+P(A \cap B) = P(A) \cdot P(B)
+$$
+
+Applicato a una tabella di contingenza, questo significa che la proporzione di osservazioni in ciascuna cella dovrebbe essere determinata esclusivamente dalle proporzioni marginali, senza alcuna "preferenza" sistematica per particolari combinazioni di categorie.
+
+### Un esempio concreto
+
+Immaginiamo di avere una tabella con i conteggi delle diverse specie di pinguini osservate su tre isole dell'Arcipelago Palmer.
 
 ```{r}
 osservati <- matrix(c(44, 0, 119,
@@ -56,7 +70,47 @@ colnames(osservati) <- c("Adelie", "Chinstrap", "Gentoo")
 knitr::kable(osservati, caption = "Distribuzione delle specie per isola")
 ```
 
-La domanda è se specie e isola possano essere considerate indipendenti. Per rispondere si calcolano i valori attesi sotto $H_0$, ottenuti combinando le proporzioni marginali delle righe e delle colonne.
+La domanda che ci poniamo è: la specie di un pinguino è indipendente dall'isola in cui viene osservato? Oppure esistono associazioni sistematiche tra questi due attributi?
+
+### Calcolo dei valori attesi sotto $H_0$
+
+L'ipotesi nulla $H_0$ afferma che le due variabili sono indipendenti. Se questa ipotesi fosse vera, quale distribuzione di frequenze ci aspetteremmo di osservare nella tabella?
+
+Per rispondere, dobbiamo calcolare i *valori attesi* sotto l'ipotesi di indipendenza. Il ragionamento procede così:
+
+1. Calcoliamo i **totali marginali** di riga e di colonna, che rappresentano le frequenze complessive di ciascuna categoria.
+
+2. Se le variabili fossero indipendenti, la frequenza attesa in ciascuna cella sarebbe determinata dal prodotto delle proporzioni marginali, moltiplicato per il totale delle osservazioni.
+
+Formalmente, per una cella nella riga $i$ e colonna $j$, il valore atteso $E_{ij}$ è dato da:
+
+$$
+E_{ij} = \frac{(\text{totale riga } i) \times (\text{totale colonna } j)}{\text{totale generale}} = \frac{R_i \times C_j}{N}
+$$
+
+Questa formula deriva direttamente dalla definizione di indipendenza: se le due variabili sono indipendenti, la probabilità di osservare un'unità nella cella $(i,j)$ è il prodotto delle probabilità marginali $P(\text{riga } i) \times P(\text{colonna } j)$. Moltiplicando questa probabilità per il numero totale di osservazioni $N$, otteniamo il conteggio atteso.
+
+### Calcolo manuale dei valori attesi
+
+Procediamo al calcolo esplicito. Prima determiniamo i totali marginali:
+
+- **Totali di riga:** Biscoe = 44 + 0 + 119 = 163; Dream = 55 + 68 + 0 = 123; Torgersen = 47 + 0 + 0 = 47
+- **Totali di colonna:** Adelie = 44 + 55 + 47 = 146; Chinstrap = 0 + 68 + 0 = 68; Gentoo = 119 + 0 + 0 = 119
+- **Totale generale:** $N$ = 333
+
+Ora calcoliamo i valori attesi per ciascuna cella. Ad esempio, per la cella (Biscoe, Adelie):
+
+$$
+E_{\text{Biscoe, Adelie}} = \frac{163 \times 146}{333} = \frac{23798}{333} \approx 71.5
+$$
+
+Per la cella (Dream, Chinstrap):
+
+$$
+E_{\text{Dream, Chinstrap}} = \frac{123 \times 68}{333} = \frac{8364}{333} \approx 25.1
+$$
+
+Procedendo analogamente per tutte le celle, otteniamo la tabella completa dei valori attesi:
 
 ```{r}
 totali_riga <- rowSums(osservati)
@@ -67,40 +121,296 @@ attesi <- outer(totali_riga, totali_colonna) / totale
 knitr::kable(round(attesi, 1), caption = "Valori attesi sotto H0")
 ```
 
-La statistica del chi-quadrato misura quanto i valori osservati si discostano da quelli attesi, ponderando ciascuna differenza per la variabilità prevista dalla teoria.
+### La statistica del Chi-Quadrato
+
+Una volta ottenuti i valori attesi, dobbiamo quantificare quanto i dati osservati si discostano da ciò che l'ipotesi nulla prevedrebbe. La statistica del chi-quadrato di Pearson misura esattamente questa discrepanza globale:
+
+$$
+\chi^2 = \sum_{i=1}^{r} \sum_{j=1}^{c} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
+$$
+
+dove $O_{ij}$ rappresenta la frequenza osservata nella cella $(i,j)$, $E_{ij}$ la frequenza attesa, $r$ il numero di righe e $c$ il numero di colonne.
+
+Questa formula ha una struttura intuitiva:
+
+- Il numeratore $(O_{ij} - E_{ij})^2$ misura la discrepanza al quadrato tra osservato e atteso per ciascuna cella. L'elevamento al quadrato garantisce che scostamenti positivi e negativi contribuiscano entrambi ad aumentare la statistica.
+
+- Il denominatore $E_{ij}$ funge da fattore di normalizzazione. Dividere per il valore atteso è fondamentale perché una differenza di 10 unità ha un significato molto diverso se il valore atteso è 15 oppure 150. In altre parole, standardizziamo la discrepanza rispetto alla scala della cella.
+
+- La sommatoria accumula i contributi di tutte le celle, producendo una misura complessiva di quanto la tabella osservata si discosti da quella attesa sotto $H_0$.
+
+### Calcolo manuale della statistica
+
+Calcoliamo il contributo di alcune celle per illustrare il procedimento:
+
+- Cella (Biscoe, Adelie): $O = 44$, $E \approx 71.5$
+  $$\frac{(44 - 71.5)^2}{71.5} = \frac{(-27.5)^2}{71.5} = \frac{756.25}{71.5} \approx 10.58$$
+
+- Cella (Biscoe, Gentoo): $O = 119$, $E \approx 58.3$
+  $$\frac{(119 - 58.3)^2}{58.3} = \frac{(60.7)^2}{58.3} = \frac{3684.49}{58.3} \approx 63.20$$
+
+- Cella (Dream, Chinstrap): $O = 68$, $E \approx 25.1$
+  $$\frac{(68 - 25.1)^2}{25.1} = \frac{(42.9)^2}{25.1} = \frac{1840.41}{25.1} \approx 73.32$$
+
+Come si può notare, le celle con maggiori discrepanze tra osservato e atteso forniscono i contributi più elevati alla statistica complessiva. Sommando i contributi di tutte le nove celle:
 
 ```{r}
 chi2 <- sum((osservati - attesi)^2 / attesi)
-df <- (nrow(osservati) - 1) * (ncol(osservati) - 1)
-
 cat("Chi-quadrato:", round(chi2, 2), "\n")
+```
+
+### Gradi di libertà e distribuzione di riferimento
+
+Per interpretare il valore della statistica, dobbiamo confrontarlo con la sua distribuzione teorica sotto $H_0$. Quando l'ipotesi nulla è vera e i conteggi attesi sono sufficientemente elevati, la statistica $\chi^2$ segue approssimativamente una distribuzione chi-quadrato con un certo numero di gradi di libertà.
+
+I gradi di libertà per una tabella di contingenza sono dati da:
+
+$$
+\text{df} = (r - 1) \times (c - 1)
+$$
+
+dove $r$ è il numero di righe e $c$ il numero di colonne. Questa formula riflette il fatto che, una volta fissati i totali marginali, non tutte le celle sono libere di variare indipendentemente. Nel nostro caso, con 3 righe e 3 colonne:
+
+$$
+\text{df} = (3 - 1) \times (3 - 1) = 2 \times 2 = 4
+$$
+
+```{r}
+df <- (nrow(osservati) - 1) * (ncol(osservati) - 1)
 cat("Gradi di libertà:", df, "\n")
 ```
 
-Dal confronto tra il valore osservato e la distribuzione teorica si ottiene il valore-$p$.
+### Il valore-$p$
+
+Il valore-$p$ rappresenta la probabilità di osservare una statistica chi-quadrato almeno altrettanto estrema di quella calcolata, assumendo che $H_0$ sia vera. Graficamente, corrisponde all'area sotto la curva della distribuzione $\chi^2$ a destra del valore osservato.
 
 ```{r}
 p_value <- 1 - pchisq(chi2, df)
 cat("P-value:", format(p_value, scientific = TRUE), "\n")
 ```
 
-Un valore estremamente piccolo indica che osservare una tabella così sbilanciata sarebbe improbabile se le due variabili fossero indipendenti. L’evidenza empirica conduce quindi a rifiutare l’ipotesi di indipendenza. La funzione `chisq.test()` permette di giungere alla stessa conclusione.
+Un valore-$p$ estremamente piccolo (in questo caso, virtualmente zero) indica che osservare una tabella così sbilanciata sarebbe praticamente impossibile se specie e isola fossero realmente indipendenti. L'evidenza empirica conduce quindi a rifiutare l'ipotesi nulla di indipendenza: esiste un'associazione statisticamente significativa tra la specie dei pinguini e l'isola in cui vengono osservati.
+
+### Verifica con R
+
+La funzione `chisq.test()` permette di eseguire l'intero procedimento in modo automatico, confermando i risultati ottenuti manualmente:
 
 ```{r}
 chisq.test(osservati)
 ```
 
-## Il test $t$ per un campione
+## Il test per una media
 
-Consideriamo ora un test t applicato a dati continui, in cui si vuole verificare se la media osservata differisce da un valore di riferimento. Se un ricercatore sospetta che i punteggi di benessere di un gruppo si discostino dalla media normativa pari a 24, può utilizzare il test t per verificarlo.
+Passiamo ora a considerare dati continui. Supponiamo di voler verificare se la media di una popolazione differisce da un valore di riferimento noto. Questo tipo di domanda è molto comune in psicologia: un trattamento ha modificato i punteggi rispetto alla norma? Un gruppo clinico differisce dalla popolazione generale?
+
+### Il punto di partenza: la distribuzione campionaria della media
+
+Prima di affrontare il test di ipotesi, richiamiamo un risultato fondamentale. Se estraiamo ripetutamente campioni di dimensione $n$ da una popolazione con media $\mu$ e deviazione standard $\sigma$, per campioni sufficientemente grandi le medie campionarie $\bar{X}$ si distribuiscono secondo una distribuzione normale con:
+
+- media: $\mu_{\bar{X}} = \mu$;
+- errore standard: $\sigma_{\bar{X}} = \frac{\sigma}{\sqrt{n}}$.
+
+Questo risultato, noto come teorema del limite centrale, ci permette di sapere cosa aspettarci quando calcoliamo una media campionaria: essa oscillerà attorno al vero valore $\mu$ con una variabilità che diminuisce all'aumentare della dimensione del campione.
+
+### Un esempio concreto
+
+Un ricercatore vuole verificare se i punteggi di benessere psicologico di un gruppo di studenti universitari siano superiori alla media normativa della popolazione, pari a $\mu_0 = 24$. Ha raccolto i seguenti punteggi da un campione di 10 studenti:
 
 ```{r}
 punteggi <- c(28, 22, 26, 18, 30, 24, 27, 17, 21, 25)
+n <- length(punteggi)
+```
 
+Calcoliamo la media campionaria:
+
+```{r}
+media_campione <- mean(punteggi)
+cat("Media campionaria:", media_campione, "\n")
+cat("Numerosità:", n, "\n")
+```
+
+La media osservata è 23.8, leggermente inferiore al valore di riferimento 24. Ma questa differenza è compatibile con la normale variabilità campionaria, oppure indica una reale differenza nella popolazione?
+
+### La logica del test: il caso ideale con $\sigma$ nota
+
+Per comprendere la logica del test, partiamo da una situazione semplificata in cui assumiamo di conoscere la deviazione standard della popolazione. Supponiamo che studi precedenti abbiano stabilito che $\sigma = 4$.
+
+#### Costruzione della distribuzione campionaria sotto $H_0$
+
+Il test di ipotesi procede così:
+
+1. **Formuliamo le ipotesi.** Poiché il ricercatore sospetta che gli studenti abbiano un benessere *superiore* alla norma, impostiamo un test monodirezionale:
+   - $H_0$: $\mu = 24$ (la media della popolazione è uguale alla norma);
+   - $H_1$: $\mu > 24$ (la media della popolazione è superiore alla norma).
+
+2. **Costruiamo la distribuzione campionaria assumendo vera $H_0$.** Se $H_0$ fosse vera, le medie campionarie di campioni di dimensione 10 si distribuirebbero normalmente con:
+   - media: $\mu_{\bar{X}} = 24$;
+   - errore standard: $\sigma_{\bar{X}} = \frac{4}{\sqrt{10}} = \frac{4}{3.162} \approx 1.265$.
+
+```{r}
+sigma_nota <- 4
+mu_0 <- 24
+errore_standard <- sigma_nota / sqrt(n)
+cat("Errore standard:", round(errore_standard, 3), "\n")
+```
+
+3. **Posizioniamo il nostro risultato in questa distribuzione.** La domanda diventa: quanto è estrema la nostra media campionaria di 23.8 rispetto a ciò che ci aspetteremmo se $H_0$ fosse vera?
+
+#### La statistica $Z$: standardizzare la media campionaria
+
+Per rispondere, trasformiamo la media campionaria in un punteggio standardizzato. La statistica $Z$ non è altro che la standardizzazione della media osservata nella distribuzione campionaria costruita sotto $H_0$:
+
+$$
+Z = \frac{\bar{X} - \mu_0}{\sigma_{\bar{X}}} = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}.
+$$
+
+Questa formula dovrebbe risultare familiare: è la stessa logica della standardizzazione di un punteggio individuale, $z = (x - \mu)/\sigma$, applicata però alla media campionaria. Il numeratore misura quanto la media osservata si discosta dal valore ipotizzato sotto $H_0$; il denominatore normalizza questa distanza rispetto alla variabilità attesa delle medie campionarie.
+
+Calcoliamo il valore di $Z$ per il nostro esempio:
+
+$$
+Z = \frac{23.8 - 24}{1.265} = \frac{-0.2}{1.265} \approx -0.158
+$$
+
+```{r}
+Z <- (media_campione - mu_0) / errore_standard
+cat("Statistica Z:", round(Z, 3), "\n")
+```
+
+#### Il valore-$p$
+
+Poiché abbiamo formulato un'ipotesi alternativa direzionale ($H_1$: $\mu > 24$), il valore-$p$ corrisponde alla probabilità di osservare una media campionaria *almeno altrettanto grande* di quella osservata, assumendo vera $H_0$. In termini della statistica $Z$, questo equivale a calcolare l'area sotto la curva normale standard a destra del valore $Z$ osservato.
+
+```{r}
+p_value_Z <- 1 - pnorm(Z)
+cat("P-value (test Z monodirezionale):", round(p_value_Z, 3), "\n")
+```
+
+Un valore-$p$ di circa 0.56 indica che, se $H_0$ fosse vera, avremmo circa il 56% di probabilità di osservare una media campionaria pari o superiore a 23.8. In altre parole, il nostro risultato è perfettamente compatibile con l'ipotesi nulla: non c'è alcuna evidenza che la media della popolazione sia superiore a 24.
+
+::: {.callout-note}
+Nota che il valore-$p$ è così alto perché la media osservata (23.8) è addirittura *inferiore* al valore ipotizzato (24), mentre noi stavamo cercando evidenze di una media *superiore*.
+:::
+
+### Il problema: $\sigma$ è sconosciuta
+
+Nel ragionamento precedente abbiamo assunto di conoscere la deviazione standard della popolazione, $\sigma = 4$. Nella pratica della ricerca, tuttavia, questo valore è quasi sempre ignoto e deve essere stimato dai dati stessi.
+
+La soluzione naturale è sostituire $\sigma$ con la deviazione standard campionaria $s$:
+
+```{r}
+s <- sd(punteggi)
+cat("Deviazione standard campionaria:", round(s, 3), "\n")
+```
+
+L'errore standard stimato diventa quindi:
+
+$$
+SE = \frac{s}{\sqrt{n}} = \frac{4.211}{\sqrt{10}} \approx 1.332
+$$
+
+```{r}
+SE <- s / sqrt(n)
+cat("Errore standard stimato:", round(SE, 3), "\n")
+```
+
+### Dalla statistica $Z$ alla statistica $t$
+
+Quando sostituiamo $\sigma$ con $s$, la statistica diventa:
+
+$$
+t = \frac{\bar{X} - \mu_0}{s / \sqrt{n}}.
+$$
+
+La formula è identica a quella della statistica $Z$, con l'unica differenza che utilizziamo la stima campionaria $s$ invece del valore noto $\sigma$. Potrebbe sembrare un dettaglio minore, ma ha una conseguenza importante: **introduciamo ulteriore incertezza nel nostro calcolo**.
+
+Il valore di $s$ che calcoliamo dal campione è esso stesso una stima, soggetta a variabilità campionaria. A volte sovrastimerà $\sigma$, altre volte lo sottostimerà. Questa incertezza aggiuntiva si propaga nella statistica test, rendendola più variabile di quanto sarebbe se conoscessimo il vero valore di $\sigma$.
+
+### La distribuzione $t$ di Student
+
+Per tenere conto di questa maggiore incertezza, non possiamo più usare la distribuzione normale standard come riferimento. Dobbiamo invece utilizzare la **distribuzione $t$ di Student**, che ha una forma simile alla normale ma con **code più pesanti**.
+
+Le code più pesanti riflettono il fatto che, quando stimiamo $\sigma$ dal campione, valori estremi della statistica test diventano più probabili. In altre parole, la distribuzione $t$ è più "cauta" della normale: assegna maggiore probabilità a risultati lontani dal centro.
+
+```{r}
+#| label: fig-t-vs-normale
+#| fig-cap: "Confronto tra distribuzione normale standard e distribuzione t con diversi gradi di libertà"
+
+x <- seq(-4, 4, length.out = 200)
+df_plot <- data.frame(
+  x = rep(x, 4),
+  densita = c(dnorm(x), dt(x, df = 3), dt(x, df = 9), dt(x, df = 30)),
+  distribuzione = rep(c("Normale", "t (df=3)", "t (df=9)", "t (df=30)"), each = 200)
+)
+
+ggplot(df_plot, aes(x = x, y = densita, color = distribuzione)) +
+  geom_line(linewidth = 1) +
+  labs(x = "Valore", y = "Densità", color = "Distribuzione") 
+```
+
+### I gradi di libertà
+
+Una caratteristica distintiva della distribuzione $t$ è che la sua forma dipende dai **gradi di libertà** (df), che nel caso del test per una media sono pari a $n - 1$:
+
+$$
+\text{df} = n - 1.
+$$
+
+Nel nostro esempio, con 10 osservazioni, abbiamo $\text{df} = 9$.
+
+I gradi di libertà determinano quanto le code della distribuzione $t$ siano pesanti:
+
+- Con pochi gradi di libertà (campioni piccoli), l'incertezza nella stima di $\sigma$ è elevata, e la distribuzione $t$ ha code molto più pesanti della normale.
+- Con molti gradi di libertà (campioni grandi), la stima di $\sigma$ diventa più precisa, e la distribuzione $t$ converge progressivamente verso la normale standard.
+
+Questo comportamento ha perfettamente senso: con un campione di 10 osservazioni, la nostra stima di $\sigma$ è piuttosto incerta; con un campione di 1000 osservazioni, possiamo fidarci molto di più della stima.
+
+### Calcolo della statistica $t$ e del valore-$p$
+
+Applichiamo ora questi concetti al nostro esempio:
+
+```{r}
+t_obs <- (media_campione - mu_0) / SE
+df <- n - 1
+cat("Statistica t:", round(t_obs, 3), "\n")
+cat("Gradi di libertà:", df, "\n")
+```
+
+Per il test monodirezionale ($H_1$: $\mu > 24$), il valore-$p$ è l'area sotto la curva della distribuzione $t$ con 9 gradi di libertà, a destra del valore osservato:
+
+```{r}
+p_value_t <- 1 - pt(t_obs, df)
+cat("P-value (test t monodirezionale):", round(p_value_t, 3), "\n")
+```
+
+### Interpretazione
+
+Il valore-$p$ di circa 0.56 ci dice che, se la vera media della popolazione fosse 24, avremmo circa il 56% di probabilità di osservare una media campionaria pari o superiore a 23.8. Questo risultato è completamente compatibile con l'ipotesi nulla: i dati non forniscono alcuna evidenza che il benessere degli studenti sia superiore alla norma.
+
+### Verifica con R
+
+La funzione `t.test()` esegue automaticamente tutti questi calcoli. Per un test monodirezionale in cui l'ipotesi alternativa è $\mu > 24$:
+
+```{r}
+t.test(punteggi, mu = 24, alternative = "greater")
+```
+
+I risultati confermano i nostri calcoli manuali: $t = -0.15$, $\text{df} = 9$, $p = 0.56$.
+
+### Il test bidirezionale
+
+Se il ricercatore non avesse una direzione specifica in mente e volesse semplicemente verificare se la media differisce da 24 (in qualsiasi direzione), dovrebbe formulare un test bidirezionale:
+
+- $H_0$: $\mu = 24$
+- $H_1$: $\mu \neq 24$
+
+In questo caso, il valore-$p$ considera entrambe le code della distribuzione:
+
+```{r}
 t.test(punteggi, mu = 24, alternative = "two.sided")
 ```
 
-Un valore-$p$ prossimo a 1 segnala che i dati sono perfettamente compatibili con il valore teorico e non forniscono alcuna ragione per rifiutare $H_0$.
+Anche in questo caso, il valore-$p$ elevato (0.88) indica che i dati sono perfettamente compatibili con l'ipotesi nulla.
 
 ## Interpretazione corretta del p-value
 

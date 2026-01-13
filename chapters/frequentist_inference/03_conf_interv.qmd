@@ -36,7 +36,7 @@ here::here("code", "_common.R") |>
 Consideriamo una popolazione distribuita normalmente con media $\mu$ sconosciuta e varianza $\sigma^2$ nota. In questo contesto, la media campionaria $\bar{X}$ ha una distribuzione normale:
 
 $$
-\bar{X} \sim \mathcal{N}!\left(\mu,; \frac{\sigma^2}{n}\right).
+\bar{X} \sim \mathcal{N}\!\left(\mu, \; \frac{\sigma^2}{n}\right).
 $$
 
 Standardizzando otteniamo una variabile normale standard:
@@ -54,8 +54,8 @@ $$
 A questo punto possiamo “invertire” la standardizzazione, isolando (\mu) all’interno della doppia disuguaglianza. Il risultato è l’intervallo di confidenza al 95% per la media:
 
 $$
-\left(\bar{X} - 1.96 ,\frac{\sigma}{\sqrt{n}},\quad
-\bar{X} + 1.96 ,\frac{\sigma}{\sqrt{n}}\right).
+\left(\bar{X} - 1.96 \,\frac{\sigma}{\sqrt{n}},\quad
+\bar{X} + 1.96 \,\frac{\sigma}{\sqrt{n}}\right).
 $$
 
 Questo intervallo rappresenta l’insieme dei valori di $\mu$ compatibili con i dati osservati, dato il modello assunto e il livello di confidenza scelto.
@@ -75,12 +75,12 @@ L’intervallo di confidenza per $\mu$, con livello di confidenza $\gamma$, assu
 
 $$
 \left(
-\bar{X} - t^{*}_{,n-1},\frac{s}{\sqrt{n}},
+\bar{X} - t^{*}_{\,n-1},\frac{s}{\sqrt{n}},
 \quad
-\bar{X} + t^{*}_{,n-1},\frac{s}{\sqrt{n}}
+\bar{X} + t^{*}_{\,n-1},\frac{s}{\sqrt{n}}
 \right),
 $$
-dove $t^{*}_{,n-1}$ è il quantile corrispondente della distribuzione $t$ con $n-1$ gradi di libertà.
+dove $t^{*}_{\,n-1}$ è il quantile corrispondente della distribuzione $t$ con $n-1$ gradi di libertà.
 
 Rispetto al caso con varianza nota, l’intervallo è leggermente più ampio: la distribuzione $t$ tiene conto dell’incertezza aggiuntiva legata alla stima di $s$, soprattutto quando il campione è di piccole dimensioni.
 
@@ -179,8 +179,7 @@ ggplot(df_ic, aes(x = id)) +
   labs(title = "50 intervalli di confidenza al 95%",
        subtitle = "La linea tratteggiata indica il valore reale di μ",
        x = "Campione", y = "Intervallo di confidenza", color = "") +
-  coord_flip() +
-  theme_minimal()
+  coord_flip()
 ```
 
 ## Interpretazione corretta e fraintendimenti comuni
