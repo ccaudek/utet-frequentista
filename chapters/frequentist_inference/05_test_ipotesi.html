@@ -418,10 +418,10 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
-<li><a href="#la-logica-del-test-di-ipotesi" id="toc-la-logica-del-test-di-ipotesi" class="nav-link active" data-scroll-target="#la-logica-del-test-di-ipotesi"><span class="header-section-number">4.1</span> La logica del test di ipotesi</a></li>
+<li><a href="#la-logica-del-test-dipotesi" id="toc-la-logica-del-test-dipotesi" class="nav-link active" data-scroll-target="#la-logica-del-test-dipotesi"><span class="header-section-number">4.1</span> La logica del test d’ipotesi</a></li>
   <li><a href="#il-test-del-chi-quadrato" id="toc-il-test-del-chi-quadrato" class="nav-link" data-scroll-target="#il-test-del-chi-quadrato"><span class="header-section-number">4.2</span> Il test del Chi-Quadrato</a></li>
   <li><a href="#il-test-per-una-media" id="toc-il-test-per-una-media" class="nav-link" data-scroll-target="#il-test-per-una-media"><span class="header-section-number">4.3</span> Il test per una media</a></li>
-  <li><a href="#interpretazione-corretta-del-p-value" id="toc-interpretazione-corretta-del-p-value" class="nav-link" data-scroll-target="#interpretazione-corretta-del-p-value"><span class="header-section-number">4.4</span> Interpretazione corretta del p-value</a></li>
+  <li><a href="#interpretazione-corretta-del-valore-p" id="toc-interpretazione-corretta-del-valore-p" class="nav-link" data-scroll-target="#interpretazione-corretta-del-valore-p"><span class="header-section-number">4.4</span> Interpretazione corretta del valore-<span class="math inline">\(p\)</span></a></li>
   <li><a href="#limiti-del-test-di-ipotesi-frequentista" id="toc-limiti-del-test-di-ipotesi-frequentista" class="nav-link" data-scroll-target="#limiti-del-test-di-ipotesi-frequentista"><span class="header-section-number">4.5</span> Limiti del test di ipotesi frequentista</a></li>
   <li><a href="#verso-un-approccio-migliore" id="toc-verso-un-approccio-migliore" class="nav-link" data-scroll-target="#verso-un-approccio-migliore"><span class="header-section-number">4.6</span> Verso un approccio migliore</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/05_test_ipotesi.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
@@ -505,104 +505,119 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="la-logica-del-test-di-ipotesi" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="la-logica-del-test-di-ipotesi">
-<span class="header-section-number">4.1</span> La logica del test di ipotesi</h2>
+<section id="la-logica-del-test-dipotesi" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="la-logica-del-test-dipotesi">
+<span class="header-section-number">4.1</span> La logica del test d’ipotesi</h2>
 <section id="elementi-fondamentali" class="level3" data-number="4.1.1"><h3 data-number="4.1.1" class="anchored" data-anchor-id="elementi-fondamentali">
 <span class="header-section-number">4.1.1</span> Elementi fondamentali</h3>
-<p>Nel test di ipotesi si confronta un modello che rappresenta l’assenza di un effetto, l’ipotesi nulla <span class="math inline">\(H_0\)</span>, con un modello alternativo che riflette la presenza di un effetto, l’ipotesi <span class="math inline">\(H_1\)</span>. L’idea di fondo è misurare quanto i dati osservati si discostino da ciò che ci aspetteremmo se <span class="math inline">\(H_0\)</span> fosse vera. Per farlo si costruisce una statistica test, una quantità derivata dai dati che quantifica questa discrepanza, e si descrive la sua distribuzione campionaria sotto l’assunzione che <span class="math inline">\(H_0\)</span> sia effettivamente corretta. Confrontando il valore osservato della statistica con questa distribuzione otteniamo il valore-<span class="math inline">\(p\)</span>, che rappresenta la probabilità di ottenere un risultato almeno altrettanto estremo, assumendo che <span class="math inline">\(H_0\)</span> sia vera. La decisione finale si basa sul confronto tra il valore-<span class="math inline">\(p\)</span> e una soglia prefissata, indicata con <span class="math inline">\(\alpha\)</span>, spesso pari a 0.05.</p>
+<p>Il test d’ipotesi parte dal confronto tra due modelli contrapposti:</p>
+<ul>
+<li>il modello basato sull’<strong>ipotesi nulla</strong> (<span class="math inline">\(H_0\)</span>), che rappresenta l’assenza di un effetto o di una differenza;<br>
+</li>
+<li>il modello basato sull’<strong>ipotesi alternativa</strong> (<span class="math inline">\(H_1\)</span>), che descrive la presenza dell’effetto oggetto di studio.</li>
+</ul>
+<p>Il procedimento consiste nel misurare quanto i dati osservati siano compatibili con <span class="math inline">\(H_0\)</span>. A tale scopo, si utilizza una <strong>statistica test</strong>, una quantità calcolata a partire dal campione che sintetizza il grado di discrepanza tra i dati e quanto ci si aspetterebbe se l’ipotesi nulla fosse vera.</p>
+<p>Sotto l’assunzione che <span class="math inline">\(H_0\)</span> sia corretta, si determina la <strong>distribuzione campionaria</strong> di tale statistica. Confrontando il valore effettivamente osservato con tale distribuzione si ricava il <strong>valore-<span class="math inline">\(p\)</span></strong>, definito come la probabilità, se <span class="math inline">\(H_0\)</span> fosse vera, di ottenere un risultato uguale o più estremo di quello osservato.</p>
+<p>La decisione finale si basa sul confronto del valore-<span class="math inline">\(p\)</span> con un livello di significatività prefissato <span class="math inline">\(\alpha\)</span> (solitamente fissato a <span class="math inline">\(\alpha = 0.05\)</span>). Se <span class="math inline">\(p \leq \alpha\)</span>, si rifiuta <span class="math inline">\(H_0\)</span> a favore di <span class="math inline">\(H_1\)</span>; in caso contrario, non si hanno elementi sufficienti per respingere l’ipotesi nulla.</p>
 </section><section id="tipi-di-errore" class="level3" data-number="4.1.2"><h3 data-number="4.1.2" class="anchored" data-anchor-id="tipi-di-errore">
 <span class="header-section-number">4.1.2</span> Tipi di errore</h3>
-<p>Questo meccanismo decisionale comporta due potenziali tipi di errore. È possibile rifiutare <span class="math inline">\(H_0\)</span> quando essa è in realtà vera, producendo un errore di tipo I, oppure non rifiutarla quando è falsa, generando un errore di tipo II. La probabilità complementare a quest’ultimo rappresenta la potenza del test, cioè la capacità di individuare un effetto quando esso è presente.</p>
+<p>Questo meccanismo decisionale comporta due possibili tipi di errore. È possibile rifiutare l’ipotesi nulla <span class="math inline">\(H_0\)</span> quando essa è in realtà vera, commettendo un <strong>errore di tipo I</strong>, oppure non rifiutarla quando è falsa, incorrendo in un <strong>errore di tipo II</strong>. La probabilità complementare a quest’ultimo definisce la <strong>potenza del test</strong>, ossia la capacità del test di individuare un effetto quando esso è effettivamente presente.</p>
 </section></section><section id="il-test-del-chi-quadrato" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="il-test-del-chi-quadrato">
 <span class="header-section-number">4.2</span> Il test del Chi-Quadrato</h2>
-<p>Per illustrare in modo concreto la logica del test di ipotesi, consideriamo il test del chi-quadrato di indipendenza, che permette di valutare se due variabili categoriali sono associate oppure indipendenti tra loro.</p>
+<p>Per illustrare in modo concreto la logica del test di ipotesi, consideriamo il <strong>test del chi-quadrato di indipendenza</strong>, che permette di valutare se due variabili categoriali sono associate oppure indipendenti tra loro.</p>
 <section id="il-concetto-di-indipendenza" class="level3" data-number="4.2.1"><h3 data-number="4.2.1" class="anchored" data-anchor-id="il-concetto-di-indipendenza">
 <span class="header-section-number">4.2.1</span> Il concetto di indipendenza</h3>
 <p>Due variabili categoriali si dicono <em>indipendenti</em> quando la distribuzione di una non dipende dal valore assunto dall’altra. In termini probabilistici, se <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> sono due eventi, l’indipendenza implica che:</p>
 <p><span class="math display">\[
-P(A \cap B) = P(A) \cdot P(B)
+P(A \cap B) = P(A) \cdot P(B).
 \]</span></p>
-<p>Applicato a una tabella di contingenza, questo significa che la proporzione di osservazioni in ciascuna cella dovrebbe essere determinata esclusivamente dalle proporzioni marginali, senza alcuna “preferenza” sistematica per particolari combinazioni di categorie.</p>
+<p>Applicato a una tabella di contingenza, questo significa che la proporzione di osservazioni in ciascuna cella dovrebbe essere determinata esclusivamente dalle proporzioni marginali, senza alcuna associazione sistematica tra le categorie.</p>
 </section><section id="un-esempio-concreto" class="level3" data-number="4.2.2"><h3 data-number="4.2.2" class="anchored" data-anchor-id="un-esempio-concreto">
 <span class="header-section-number">4.2.2</span> Un esempio concreto</h3>
-<p>Immaginiamo di avere una tabella con i conteggi delle diverse specie di pinguini osservate su tre isole dell’Arcipelago Palmer.</p>
+<p>Immaginiamo uno studio psicologico che indaga la relazione tra <strong>livello di stress percepito</strong> e <strong>qualità del sonno</strong> in un campione di adulti.</p>
+<p>Le due variabili categoriali sono:</p>
+<ul>
+<li>
+<strong>Stress percepito:</strong> Basso / Alto.</li>
+<li>
+<strong>Qualità del sonno:</strong> Buona / Scarsa.</li>
+</ul>
+<p>I dati osservati sono riassunti nella seguente tabella di contingenza 2×2:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">osservati</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">44</span>, <span class="fl">0</span>, <span class="fl">119</span>,</span>
-<span>                      <span class="fl">55</span>, <span class="fl">68</span>, <span class="fl">0</span>,</span>
-<span>                      <span class="fl">47</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>,</span>
-<span>                    nrow <span class="op">=</span> <span class="fl">3</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">osservati</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">42</span>, <span class="fl">40</span>,</span>
+<span><span class="fl">19</span>, <span class="fl">39</span><span class="op">)</span>,</span>
+<span>nrow <span class="op">=</span> <span class="fl">2</span>, byrow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Biscoe"</span>, <span class="st">"Dream"</span>, <span class="st">"Torgersen"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Stress basso"</span>, <span class="st">"Stress alto"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sonno buono"</span>, <span class="st">"Sonno scarso"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">osservati</span>, caption <span class="op">=</span> <span class="st">"Distribuzione delle specie per isola"</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">osservati</span>, caption <span class="op">=</span> <span class="st">"Distribuzione di stress percepito e qualità del sonno"</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
-<caption>Distribuzione delle specie per isola</caption>
+<caption>Distribuzione di stress percepito e qualità del sonno</caption>
 <thead><tr class="header">
 <th style="text-align: left;"></th>
-<th style="text-align: right;">Adelie</th>
-<th style="text-align: right;">Chinstrap</th>
-<th style="text-align: right;">Gentoo</th>
+<th style="text-align: right;">Sonno buono</th>
+<th style="text-align: right;">Sonno scarso</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Biscoe</td>
-<td style="text-align: right;">44</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">119</td>
+<td style="text-align: left;">Stress basso</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">40</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Dream</td>
-<td style="text-align: right;">55</td>
-<td style="text-align: right;">68</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Torgersen</td>
-<td style="text-align: right;">47</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: left;">Stress alto</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">39</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>La domanda che ci poniamo è: la specie di un pinguino è indipendente dall’isola in cui viene osservato? Oppure esistono associazioni sistematiche tra questi due attributi?</p>
+<p>La domanda di ricerca è la seguente: <strong>il livello di stress percepito è indipendente dalla qualità del sonno, oppure esiste un’associazione tra le due variabili?</strong></p>
 </section><section id="calcolo-dei-valori-attesi-sotto-h_0" class="level3" data-number="4.2.3"><h3 data-number="4.2.3" class="anchored" data-anchor-id="calcolo-dei-valori-attesi-sotto-h_0">
 <span class="header-section-number">4.2.3</span> Calcolo dei valori attesi sotto <span class="math inline">\(H_0\)</span>
 </h3>
 <p>L’ipotesi nulla <span class="math inline">\(H_0\)</span> afferma che le due variabili sono indipendenti. Se questa ipotesi fosse vera, quale distribuzione di frequenze ci aspetteremmo di osservare nella tabella?</p>
-<p>Per rispondere, dobbiamo calcolare i <em>valori attesi</em> sotto l’ipotesi di indipendenza. Il ragionamento procede così:</p>
+<p>Il procedimento è il seguente:</p>
 <ol type="1">
-<li><p>Calcoliamo i <strong>totali marginali</strong> di riga e di colonna, che rappresentano le frequenze complessive di ciascuna categoria.</p></li>
-<li><p>Se le variabili fossero indipendenti, la frequenza attesa in ciascuna cella sarebbe determinata dal prodotto delle proporzioni marginali, moltiplicato per il totale delle osservazioni.</p></li>
+<li>calcoliamo i <strong>totali marginali</strong> di riga e di colonna;</li>
+<li>se le variabili fossero indipendenti, la frequenza attesa in ciascuna cella sarebbe determinata dal prodotto delle proporzioni marginali, moltiplicato per il totale delle osservazioni.</li>
 </ol>
-<p>Formalmente, per una cella nella riga <span class="math inline">\(i\)</span> e colonna <span class="math inline">\(j\)</span>, il valore atteso <span class="math inline">\(E_{ij}\)</span> è dato da:</p>
+<p>Formalmente, per la cella nella riga <span class="math inline">\(i\)</span> e colonna <span class="math inline">\(j\)</span>, il valore atteso <span class="math inline">\(E_{ij}\)</span> è:</p>
 <p><span class="math display">\[
-E_{ij} = \frac{(\text{totale riga } i) \times (\text{totale colonna } j)}{\text{totale generale}} = \frac{R_i \times C_j}{N}
+E_{ij} = \frac{(\text{totale riga } i) \times (\text{totale colonna } j)}{\text{totale generale}} = \frac{R_i \times C_j}{N}.
 \]</span></p>
-<p>Questa formula deriva direttamente dalla definizione di indipendenza: se le due variabili sono indipendenti, la probabilità di osservare un’unità nella cella <span class="math inline">\((i,j)\)</span> è il prodotto delle probabilità marginali <span class="math inline">\(P(\text{riga } i) \times P(\text{colonna } j)\)</span>. Moltiplicando questa probabilità per il numero totale di osservazioni <span class="math inline">\(N\)</span>, otteniamo il conteggio atteso.</p>
+<p>Questa formula deriva direttamente dalla definizione di indipendenza: se le variabili sono indipendenti, la probabilità congiunta è il prodotto delle probabilità marginali.</p>
 </section><section id="calcolo-manuale-dei-valori-attesi" class="level3" data-number="4.2.4"><h3 data-number="4.2.4" class="anchored" data-anchor-id="calcolo-manuale-dei-valori-attesi">
 <span class="header-section-number">4.2.4</span> Calcolo manuale dei valori attesi</h3>
-<p>Procediamo al calcolo esplicito. Prima determiniamo i totali marginali:</p>
+<p>Calcoliamo prima i totali marginali:</p>
 <ul>
 <li>
-<strong>Totali di riga:</strong> Biscoe = 44 + 0 + 119 = 163; Dream = 55 + 68 + 0 = 123; Torgersen = 47 + 0 + 0 = 47</li>
-<li>
-<strong>Totali di colonna:</strong> Adelie = 44 + 55 + 47 = 146; Chinstrap = 0 + 68 + 0 = 68; Gentoo = 119 + 0 + 0 = 119</li>
-<li>
-<strong>Totale generale:</strong> <span class="math inline">\(N\)</span> = 333</li>
+<p><strong>Totali di riga:</strong></p>
+<ul>
+<li>Stress basso = 42 + 40 = 82</li>
+<li>Stress alto = 19 + 39 = 58</li>
 </ul>
-<p>Ora calcoliamo i valori attesi per ciascuna cella. Ad esempio, per la cella (Biscoe, Adelie):</p>
+</li>
+<li>
+<p><strong>Totali di colonna:</strong></p>
+<ul>
+<li>Sonno buono = 42 + 19 = 61</li>
+<li>Sonno scarso = 40 + 39 = 79</li>
+</ul>
+</li>
+<li><p><strong>Totale generale:</strong> <span class="math inline">\(N = 140\)</span></p></li>
+</ul>
+<p>Ora calcoliamo alcuni valori attesi. Ad esempio, per la cella (Stress basso, Sonno buono):</p>
 <p><span class="math display">\[
-E_{\text{Biscoe, Adelie}} = \frac{163 \times 146}{333} = \frac{23798}{333} \approx 71.5
+E_{\text{SB, buono}} = \frac{82 \times 61}{140} = \frac{5002}{140} \approx 35.7
 \]</span></p>
-<p>Per la cella (Dream, Chinstrap):</p>
+<p>Per la cella (Stress alto, Sonno scarso):</p>
 <p><span class="math display">\[
-E_{\text{Dream, Chinstrap}} = \frac{123 \times 68}{333} = \frac{8364}{333} \approx 25.1
+E_{\text{SA, scarso}} = \frac{58 \times 79}{140} = \frac{4582}{140} \approx 32.7
 \]</span></p>
-<p>Procedendo analogamente per tutte le celle, otteniamo la tabella completa dei valori attesi:</p>
+<p>La tabella completa dei valori attesi è:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">totali_riga</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span></span>
 <span><span class="va">totali_colonna</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span></span>
@@ -615,28 +630,19 @@ E_{\text{Dream, Chinstrap}} = \frac{123 \times 68}{333} = \frac{8364}{333} \appr
 <caption>Valori attesi sotto H0</caption>
 <thead><tr class="header">
 <th style="text-align: left;"></th>
-<th style="text-align: right;">Adelie</th>
-<th style="text-align: right;">Chinstrap</th>
-<th style="text-align: right;">Gentoo</th>
+<th style="text-align: right;">Sonno buono</th>
+<th style="text-align: right;">Sonno scarso</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Biscoe</td>
-<td style="text-align: right;">71.5</td>
-<td style="text-align: right;">33.3</td>
-<td style="text-align: right;">58.2</td>
+<td style="text-align: left;">Stress basso</td>
+<td style="text-align: right;">35.7</td>
+<td style="text-align: right;">46.3</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Dream</td>
-<td style="text-align: right;">53.9</td>
-<td style="text-align: right;">25.1</td>
-<td style="text-align: right;">44.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Torgersen</td>
-<td style="text-align: right;">20.6</td>
-<td style="text-align: right;">9.6</td>
-<td style="text-align: right;">16.8</td>
+<td style="text-align: left;">Stress alto</td>
+<td style="text-align: right;">25.3</td>
+<td style="text-align: right;">32.7</td>
 </tr>
 </tbody>
 </table>
@@ -644,67 +650,108 @@ E_{\text{Dream, Chinstrap}} = \frac{123 \times 68}{333} = \frac{8364}{333} \appr
 </div>
 </section><section id="la-statistica-del-chi-quadrato" class="level3" data-number="4.2.5"><h3 data-number="4.2.5" class="anchored" data-anchor-id="la-statistica-del-chi-quadrato">
 <span class="header-section-number">4.2.5</span> La statistica del Chi-Quadrato</h3>
-<p>Una volta ottenuti i valori attesi, dobbiamo quantificare quanto i dati osservati si discostano da ciò che l’ipotesi nulla prevedrebbe. La statistica del chi-quadrato di Pearson misura esattamente questa discrepanza globale:</p>
+<p>Per quantificare la discrepanza complessiva tra frequenze osservate e attese utilizziamo la statistica del chi-quadrato di Pearson:</p>
 <p><span class="math display">\[
-\chi^2 = \sum_{i=1}^{r} \sum_{j=1}^{c} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
-\]</span></p>
-<p>dove <span class="math inline">\(O_{ij}\)</span> rappresenta la frequenza osservata nella cella <span class="math inline">\((i,j)\)</span>, <span class="math inline">\(E_{ij}\)</span> la frequenza attesa, <span class="math inline">\(r\)</span> il numero di righe e <span class="math inline">\(c\)</span> il numero di colonne.</p>
-<p>Questa formula ha una struttura intuitiva:</p>
+\chi^2 = \sum_{i=1}^{r} \sum_{j=1}^{c} \frac{(O_{ij} - E_{ij})^2}{E_{ij}},
+\]</span> dove:</p>
 <ul>
-<li><p>Il numeratore <span class="math inline">\((O_{ij} - E_{ij})^2\)</span> misura la discrepanza al quadrato tra osservato e atteso per ciascuna cella. L’elevamento al quadrato garantisce che scostamenti positivi e negativi contribuiscano entrambi ad aumentare la statistica.</p></li>
-<li><p>Il denominatore <span class="math inline">\(E_{ij}\)</span> funge da fattore di normalizzazione. Dividere per il valore atteso è fondamentale perché una differenza di 10 unità ha un significato molto diverso se il valore atteso è 15 oppure 150. In altre parole, standardizziamo la discrepanza rispetto alla scala della cella.</p></li>
-<li><p>La sommatoria accumula i contributi di tutte le celle, producendo una misura complessiva di quanto la tabella osservata si discosti da quella attesa sotto <span class="math inline">\(H_0\)</span>.</p></li>
+<li>
+<span class="math inline">\(O_{ij}\)</span> è la frequenza osservata,</li>
+<li>
+<span class="math inline">\(E_{ij}\)</span> è la frequenza attesa,</li>
+<li>
+<span class="math inline">\(r\)</span> è il numero di righe,</li>
+<li>
+<span class="math inline">\(c\)</span> è il numero di colonne.</li>
+</ul>
+<p>La struttura della formula è intuitiva:</p>
+<ul>
+<li>il numeratore misura la discrepanza tra osservato e atteso;</li>
+<li>il denominatore normalizza tale discrepanza rispetto alla scala della cella;</li>
+<li>la somma aggrega i contributi di tutte le celle.</li>
 </ul></section><section id="calcolo-manuale-della-statistica" class="level3" data-number="4.2.6"><h3 data-number="4.2.6" class="anchored" data-anchor-id="calcolo-manuale-della-statistica">
 <span class="header-section-number">4.2.6</span> Calcolo manuale della statistica</h3>
-<p>Calcoliamo il contributo di alcune celle per illustrare il procedimento:</p>
+<p>Calcoliamo il contributo di alcune celle:</p>
 <ul>
-<li><p>Cella (Biscoe, Adelie): <span class="math inline">\(O = 44\)</span>, <span class="math inline">\(E \approx 71.5\)</span> <span class="math display">\[\frac{(44 - 71.5)^2}{71.5} = \frac{(-27.5)^2}{71.5} = \frac{756.25}{71.5} \approx 10.58\]</span></p></li>
-<li><p>Cella (Biscoe, Gentoo): <span class="math inline">\(O = 119\)</span>, <span class="math inline">\(E \approx 58.3\)</span> <span class="math display">\[\frac{(119 - 58.3)^2}{58.3} = \frac{(60.7)^2}{58.3} = \frac{3684.49}{58.3} \approx 63.20\]</span></p></li>
-<li><p>Cella (Dream, Chinstrap): <span class="math inline">\(O = 68\)</span>, <span class="math inline">\(E \approx 25.1\)</span> <span class="math display">\[\frac{(68 - 25.1)^2}{25.1} = \frac{(42.9)^2}{25.1} = \frac{1840.41}{25.1} \approx 73.32\]</span></p></li>
+<li>
+<strong>Stress basso, Sonno buono:</strong> <span class="math inline">\(O = 42\)</span>, <span class="math inline">\(E \approx 35.7\)</span>
+</li>
 </ul>
-<p>Come si può notare, le celle con maggiori discrepanze tra osservato e atteso forniscono i contributi più elevati alla statistica complessiva. Sommando i contributi di tutte le nove celle:</p>
+<p><span class="math display">\[
+\frac{(42 - 35.7)^2}{35.7} \approx \frac{(6.3)^2}{35.7} \approx 1.11
+\]</span></p>
+<ul>
+<li>
+<strong>Stress alto, Sonno buono:</strong> <span class="math inline">\(O = 19\)</span>, <span class="math inline">\(E \approx 25.3\)</span>
+</li>
+</ul>
+<p><span class="math display">\[
+\frac{(19 - 25.3)^2}{25.3} \approx \frac{(-6.3)^2}{25.3} \approx 1.57
+\]</span></p>
+<p>Sommando i contributi di tutte le celle:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">chi2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">osservati</span> <span class="op">-</span> <span class="va">attesi</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">attesi</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Chi-quadrato:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">chi2</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Chi-quadrato: 285</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Chi-quadrato:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">chi2</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Chi-quadrato: 4.71</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="gradi-di-libertà-e-distribuzione-di-riferimento" class="level3" data-number="4.2.7"><h3 data-number="4.2.7" class="anchored" data-anchor-id="gradi-di-libertà-e-distribuzione-di-riferimento">
 <span class="header-section-number">4.2.7</span> Gradi di libertà e distribuzione di riferimento</h3>
-<p>Per interpretare il valore della statistica, dobbiamo confrontarlo con la sua distribuzione teorica sotto <span class="math inline">\(H_0\)</span>. Quando l’ipotesi nulla è vera e i conteggi attesi sono sufficientemente elevati, la statistica <span class="math inline">\(\chi^2\)</span> segue approssimativamente una distribuzione chi-quadrato con un certo numero di gradi di libertà.</p>
-<p>I gradi di libertà per una tabella di contingenza sono dati da:</p>
+<p>Quando l’ipotesi nulla è vera e i conteggi attesi sono sufficientemente grandi, la statistica <span class="math inline">\(\chi^2\)</span> segue approssimativamente una distribuzione chi-quadrato con:</p>
 <p><span class="math display">\[
-\text{df} = (r - 1) \times (c - 1)
+\text{df} = (r - 1)(c - 1).
 \]</span></p>
-<p>dove <span class="math inline">\(r\)</span> è il numero di righe e <span class="math inline">\(c\)</span> il numero di colonne. Questa formula riflette il fatto che, una volta fissati i totali marginali, non tutte le celle sono libere di variare indipendentemente. Nel nostro caso, con 3 righe e 3 colonne:</p>
+<p>Nel nostro caso, con una tabella 2×2:</p>
 <p><span class="math display">\[
-\text{df} = (3 - 1) \times (3 - 1) = 2 \times 2 = 4
+\text{df} = (2 - 1)(2 - 1) = 1.
 \]</span></p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Gradi di libertà:"</span>, <span class="va">df</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Gradi di libertà: 4</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; Gradi di libertà: 1</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="il-valore-p" class="level3" data-number="4.2.8"><h3 data-number="4.2.8" class="anchored" data-anchor-id="il-valore-p">
 <span class="header-section-number">4.2.8</span> Il valore-<span class="math inline">\(p\)</span>
 </h3>
-<p>Il valore-<span class="math inline">\(p\)</span> rappresenta la probabilità di osservare una statistica chi-quadrato almeno altrettanto estrema di quella calcolata, assumendo che <span class="math inline">\(H_0\)</span> sia vera. Graficamente, corrisponde all’area sotto la curva della distribuzione <span class="math inline">\(\chi^2\)</span> a destra del valore osservato.</p>
+<p>Il valore-<span class="math inline">\(p\)</span> è la probabilità di osservare una statistica chi-quadrato almeno altrettanto grande di quella ottenuta, assumendo vera l’ipotesi nulla.</p>
+<p>Graficamente, corrisponde all’area sotto la curva <span class="math inline">\(\chi^2\)</span> (con 1 grado di libertà) <strong>a destra del valore osservato</strong>, ed è confrontabile con il livello di significatività <span class="math inline">\(\alpha = 0.05\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p_value</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">pchisq</a></span><span class="op">(</span><span class="va">chi2</span>, <span class="va">df</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"P-value:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">p_value</span>, scientific <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; P-value: 0e+00</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"P-value:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">p_value</span>, <span class="fl">4</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; P-value: 0.03</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Un valore-<span class="math inline">\(p\)</span> estremamente piccolo (in questo caso, virtualmente zero) indica che osservare una tabella così sbilanciata sarebbe praticamente impossibile se specie e isola fossero realmente indipendenti. L’evidenza empirica conduce quindi a rifiutare l’ipotesi nulla di indipendenza: esiste un’associazione statisticamente significativa tra la specie dei pinguini e l’isola in cui vengono osservati.</p>
+<p>In questo caso, il valore-<span class="math inline">\(p\)</span> risulta circa <strong>0.03</strong>. Si noti che è <strong>inferiore a 0.05</strong>. Riassumendo,</p>
+<ul>
+<li>
+<strong>valore-p</strong> (area a destra di <span class="math inline">\(\chi^2_{\text{obs}}\)</span>),</li>
+<li>
+<strong><span class="math inline">\(\alpha\)</span></strong> e <strong>regione critica</strong> (area a destra di <span class="math inline">\(\chi^2_{\text{crit}}\)</span>),</li>
+<li>decisione del test (qui: rifiuto di <span class="math inline">\(H_0\)</span> perché <span class="math inline">\(\chi^2_{\text{obs}} &gt; \chi^2_{\text{crit}}\)</span>).</li>
+</ul>
+<p>Concludiamo quindi che <strong>esiste un’associazione statisticamente significativa tra stress percepito e qualità del sonno</strong> nel campione osservato.</p>
 </section><section id="verifica-con-r" class="level3" data-number="4.2.9"><h3 data-number="4.2.9" class="anchored" data-anchor-id="verifica-con-r">
 <span class="header-section-number">4.2.9</span> Verifica con R</h3>
-<p>La funzione <code><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test()</a></code> permette di eseguire l’intero procedimento in modo automatico, confermando i risultati ottenuti manualmente:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test</a></span><span class="op">(</span><span class="va">osservati</span>, correct <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Pearson's Chi-squared test</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; data:  osservati</span></span>
-<span><span class="co">#&gt; X-squared = 285, df = 4, p-value &lt;2e-16</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; X-squared = 5, df = 1, p-value = 0.03</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p><em>(La correzione di continuità è disattivata per mantenere coerenza con il calcolo manuale e con la rappresentazione grafica della distribuzione <span class="math inline">\(\chi^2\)</span>.)</em></p>
+</section><section id="distribuzione-chi2-valore-p-alpha-e-regione-critica" class="level3" data-number="4.2.10"><h3 data-number="4.2.10" class="anchored" data-anchor-id="distribuzione-chi2-valore-p-alpha-e-regione-critica">
+<span class="header-section-number">4.2.10</span> Distribuzione <span class="math inline">\(\chi^2\)</span>, valore-<span class="math inline">\(p\)</span>, <span class="math inline">\(\alpha\)</span> e regione critica</h3>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="05_test_ipotesi_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="05_test_ipotesi_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La linea <strong>punteggiata</strong> delimita la <strong>regione di rifiuto dell’ipotesi nulla</strong>: l’area sottesa alla curva a destra del valore di <span class="math inline">\(x\)</span> individuato da tale linea, fino a <span class="math inline">\(+\infty\)</span>, è pari ad <span class="math inline">\(\alpha\)</span>. La linea <strong>tratteggiata</strong> indica invece la posizione della <strong>statistica test</strong>.</p>
+<p>Poiché la statistica test cade all’interno della regione di rifiuto dell’ipotesi nulla, l’ipotesi <span class="math inline">\(H_0\)</span> viene rifiutata. L’area compresa tra il valore osservato della statistica test e <span class="math inline">\(+\infty\)</span> rappresenta il <strong>valore-<span class="math inline">\(p\)</span></strong>.</p>
+<p>Quando il valore-<span class="math inline">\(p\)</span> è minore di <span class="math inline">\(\alpha\)</span>, si rifiuta <span class="math inline">\(H_0\)</span>. I due criteri, ovvero il confronto con la regione critica e confronto tra valore-<span class="math inline">\(p\)</span> e <span class="math inline">\(\alpha\)</span>, conducono sempre alla stessa decisione inferenziale.</p>
 </section></section><section id="il-test-per-una-media" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="il-test-per-una-media">
 <span class="header-section-number">4.3</span> Il test per una media</h2>
 <p>Passiamo ora a considerare dati continui. Supponiamo di voler verificare se la media di una popolazione differisce da un valore di riferimento noto. Questo tipo di domanda è molto comune in psicologia: un trattamento ha modificato i punteggi rispetto alla norma? Un gruppo clinico differisce dalla popolazione generale?</p>
@@ -851,7 +898,7 @@ t = \frac{\bar{X} - \mu_0}{s / \sqrt{n}}.
 <div class="cell-output-display">
 <div id="fig-t-vs-normale" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-t-vs-normale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="05_test_ipotesi_files/figure-html/fig-t-vs-normale-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figura&nbsp;4.1: Confronto tra distribuzione normale standard e distribuzione t con diversi gradi di libertà"><img src="05_test_ipotesi_files/figure-html/fig-t-vs-normale-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a>
+<a href="05_test_ipotesi_files/figure-html/fig-t-vs-normale-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figura&nbsp;4.1: Confronto tra distribuzione normale standard e distribuzione t con diversi gradi di libertà"><img src="05_test_ipotesi_files/figure-html/fig-t-vs-normale-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-t-vs-normale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figura&nbsp;4.1: Confronto tra distribuzione normale standard e distribuzione t con diversi gradi di libertà
@@ -938,9 +985,10 @@ Figura&nbsp;4.1: Confronto tra distribuzione normale standard e distribuzione t 
 <span><span class="co">#&gt;      23.8</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Anche in questo caso, il valore-<span class="math inline">\(p\)</span> elevato (0.88) indica che i dati sono perfettamente compatibili con l’ipotesi nulla.</p>
-</section></section><section id="interpretazione-corretta-del-p-value" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="interpretazione-corretta-del-p-value">
-<span class="header-section-number">4.4</span> Interpretazione corretta del p-value</h2>
-<p>Il p-value non esprime la probabilità che l’ipotesi nulla sia vera; descrive invece quanto sarebbero rari dati come quelli osservati se <span class="math inline">\(H_0\)</span> fosse valida. Un valore elevato non fornisce alcun supporto a <span class="math inline">\(H_0\)</span>; indica soltanto che i dati non sono sufficientemente discordanti da essa. Inoltre non misura l’importanza dell’effetto, non quantifica la replicabilità di un risultato e non dice nulla sulle ipotesi post-hoc del ricercatore.</p>
+</section></section><section id="interpretazione-corretta-del-valore-p" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="interpretazione-corretta-del-valore-p">
+<span class="header-section-number">4.4</span> Interpretazione corretta del valore-<span class="math inline">\(p\)</span>
+</h2>
+<p>Il valore-<span class="math inline">\(p\)</span> non esprime la probabilità che l’ipotesi nulla sia vera; descrive invece quanto sarebbero rari dati come quelli osservati se <span class="math inline">\(H_0\)</span> fosse valida. Un valore elevato non fornisce alcun supporto a <span class="math inline">\(H_0\)</span>; indica soltanto che i dati non sono sufficientemente discordanti da essa. Inoltre non misura l’importanza dell’effetto, non quantifica la replicabilità di un risultato e non dice nulla sulle ipotesi post-hoc del ricercatore.</p>
 </section><section id="limiti-del-test-di-ipotesi-frequentista" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="limiti-del-test-di-ipotesi-frequentista">
 <span class="header-section-number">4.5</span> Limiti del test di ipotesi frequentista</h2>
 <p>La procedura frequentista presenta diversi limiti concettuali. La decisione finale è dicotomica e dipende da una soglia arbitraria: valori-<span class="math inline">\(p\)</span> molto vicini su lati opposti del limite conducono a conclusioni opposte, anche se l’evidenza empirica è praticamente identica. La statistica test cresce con la dimensione campionaria: con campioni molto grandi anche differenze minime diventano rilevabili, il che amplifica la discrepanza tra “significatività statistica” e importanza sostanziale. Inoltre un valore-<span class="math inline">\(p\)</span> elevato riflette solo scarsa informazione, non una conferma dell’assenza di effetto. L’ipotesi nulla puntuale, spesso utilizzata, è quasi sempre implausibile perché nella realtà qualunque intervento produce effetti, seppur molto piccoli. Infine il valore-<span class="math inline">\(p\)</span> dipende dal piano di campionamento, cioè da ciò che il ricercatore <em>avrebbe</em> fatto in condizioni diverse, includendo quindi anche esiti mai osservati.</p>
