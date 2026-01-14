@@ -30,87 +30,111 @@ here::here("code", "_common.R") |>
 ```
 :::
 
-## La logica del test di ipotesi
+## La logica del test d’ipotesi  
 
-### Elementi fondamentali
+### Elementi fondamentali  
 
-Nel test di ipotesi si confronta un modello che rappresenta l’assenza di un effetto, l’ipotesi nulla $H_0$, con un modello alternativo che riflette la presenza di un effetto, l’ipotesi $H_1$. L’idea di fondo è misurare quanto i dati osservati si discostino da ciò che ci aspetteremmo se $H_0$ fosse vera. Per farlo si costruisce una statistica test, una quantità derivata dai dati che quantifica questa discrepanza, e si descrive la sua distribuzione campionaria sotto l’assunzione che $H_0$ sia effettivamente corretta. Confrontando il valore osservato della statistica con questa distribuzione otteniamo il valore-$p$, che rappresenta la probabilità di ottenere un risultato almeno altrettanto estremo, assumendo che $H_0$ sia vera. La decisione finale si basa sul confronto tra il valore-$p$ e una soglia prefissata, indicata con $\alpha$, spesso pari a 0.05.
+Il test d’ipotesi parte dal confronto tra due modelli contrapposti:  
+
+- il modello basato sull'**ipotesi nulla** ($H_0$), che rappresenta l’assenza di un effetto o di una differenza;  
+- il modello basato sull'**ipotesi alternativa** ($H_1$), che descrive la presenza dell’effetto oggetto di studio.  
+
+Il procedimento consiste nel misurare quanto i dati osservati siano compatibili con $H_0$. A tale scopo, si utilizza una **statistica test**, una quantità calcolata a partire dal campione che sintetizza il grado di discrepanza tra i dati e quanto ci si aspetterebbe se l'ipotesi nulla fosse vera.   
+
+Sotto l’assunzione che $H_0$ sia corretta, si determina la **distribuzione campionaria** di tale statistica. Confrontando il valore effettivamente osservato con tale distribuzione si ricava il **valore-$p$**, definito come la probabilità, se $H_0$ fosse vera, di ottenere un risultato uguale o più estremo di quello osservato.  
+
+La decisione finale si basa sul confronto del valore-$p$ con un livello di significatività prefissato $\alpha$ (solitamente fissato a $\alpha = 0.05$). Se $p \leq \alpha$, si rifiuta $H_0$ a favore di $H_1$; in caso contrario, non si hanno elementi sufficienti per respingere l’ipotesi nulla.
 
 ### Tipi di errore
 
-Questo meccanismo decisionale comporta due potenziali tipi di errore. È possibile rifiutare $H_0$ quando essa è in realtà vera, producendo un errore di tipo I, oppure non rifiutarla quando è falsa, generando un errore di tipo II. La probabilità complementare a quest’ultimo rappresenta la potenza del test, cioè la capacità di individuare un effetto quando esso è presente.
+Questo meccanismo decisionale comporta due possibili tipi di errore. È possibile rifiutare l’ipotesi nulla $H_0$ quando essa è in realtà vera, commettendo un **errore di tipo I**, oppure non rifiutarla quando è falsa, incorrendo in un **errore di tipo II**. La probabilità complementare a quest’ultimo definisce la **potenza del test**, ossia la capacità del test di individuare un effetto quando esso è effettivamente presente.
 
 ## Il test del Chi-Quadrato
 
-Per illustrare in modo concreto la logica del test di ipotesi, consideriamo il test del chi-quadrato di indipendenza, che permette di valutare se due variabili categoriali sono associate oppure indipendenti tra loro.
+Per illustrare in modo concreto la logica del test di ipotesi, consideriamo il **test del chi-quadrato di indipendenza**, che permette di valutare se due variabili categoriali sono associate oppure indipendenti tra loro.
 
 ### Il concetto di indipendenza
 
-Due variabili categoriali si dicono *indipendenti* quando la distribuzione di una non dipende dal valore assunto dall'altra. In termini probabilistici, se $A$ e $B$ sono due eventi, l'indipendenza implica che:
+Due variabili categoriali si dicono *indipendenti* quando la distribuzione di una non dipende dal valore assunto dall’altra. In termini probabilistici, se $A$ e $B$ sono due eventi, l’indipendenza implica che:
 
 $$
-P(A \cap B) = P(A) \cdot P(B)
+P(A \cap B) = P(A) \cdot P(B).
 $$
 
-Applicato a una tabella di contingenza, questo significa che la proporzione di osservazioni in ciascuna cella dovrebbe essere determinata esclusivamente dalle proporzioni marginali, senza alcuna "preferenza" sistematica per particolari combinazioni di categorie.
+Applicato a una tabella di contingenza, questo significa che la proporzione di osservazioni in ciascuna cella dovrebbe essere determinata esclusivamente dalle proporzioni marginali, senza alcuna associazione sistematica tra le categorie.
 
 ### Un esempio concreto
 
-Immaginiamo di avere una tabella con i conteggi delle diverse specie di pinguini osservate su tre isole dell'Arcipelago Palmer.
+Immaginiamo uno studio psicologico che indaga la relazione tra **livello di stress percepito** e **qualità del sonno** in un campione di adulti.
+
+Le due variabili categoriali sono:
+
+* **Stress percepito:** Basso / Alto.
+* **Qualità del sonno:** Buona / Scarsa.
+
+I dati osservati sono riassunti nella seguente tabella di contingenza 2×2:
 
 ```{r}
-osservati <- matrix(c(44, 0, 119,
-                      55, 68, 0,
-                      47, 0, 0),
-                    nrow = 3, byrow = TRUE)
+osservati <- matrix(c(42, 40,
+19, 39),
+nrow = 2, byrow = TRUE)
 
-rownames(osservati) <- c("Biscoe", "Dream", "Torgersen")
-colnames(osservati) <- c("Adelie", "Chinstrap", "Gentoo")
+rownames(osservati) <- c("Stress basso", "Stress alto")
+colnames(osservati) <- c("Sonno buono", "Sonno scarso")
 
-knitr::kable(osservati, caption = "Distribuzione delle specie per isola")
+knitr::kable(osservati, caption = "Distribuzione di stress percepito e qualità del sonno")
 ```
 
-La domanda che ci poniamo è: la specie di un pinguino è indipendente dall'isola in cui viene osservato? Oppure esistono associazioni sistematiche tra questi due attributi?
+La domanda di ricerca è la seguente: **il livello di stress percepito è indipendente dalla qualità del sonno, oppure esiste un’associazione tra le due variabili?**
 
 ### Calcolo dei valori attesi sotto $H_0$
 
-L'ipotesi nulla $H_0$ afferma che le due variabili sono indipendenti. Se questa ipotesi fosse vera, quale distribuzione di frequenze ci aspetteremmo di osservare nella tabella?
+L’ipotesi nulla $H_0$ afferma che le due variabili sono indipendenti. Se questa ipotesi fosse vera, quale distribuzione di frequenze ci aspetteremmo di osservare nella tabella?
 
-Per rispondere, dobbiamo calcolare i *valori attesi* sotto l'ipotesi di indipendenza. Il ragionamento procede così:
+Il procedimento è il seguente:
 
-1. Calcoliamo i **totali marginali** di riga e di colonna, che rappresentano le frequenze complessive di ciascuna categoria.
+1. calcoliamo i **totali marginali** di riga e di colonna;
+2. se le variabili fossero indipendenti, la frequenza attesa in ciascuna cella sarebbe determinata dal prodotto delle proporzioni marginali, moltiplicato per il totale delle osservazioni.
 
-2. Se le variabili fossero indipendenti, la frequenza attesa in ciascuna cella sarebbe determinata dal prodotto delle proporzioni marginali, moltiplicato per il totale delle osservazioni.
-
-Formalmente, per una cella nella riga $i$ e colonna $j$, il valore atteso $E_{ij}$ è dato da:
+Formalmente, per la cella nella riga $i$ e colonna $j$, il valore atteso $E_{ij}$ è:
 
 $$
-E_{ij} = \frac{(\text{totale riga } i) \times (\text{totale colonna } j)}{\text{totale generale}} = \frac{R_i \times C_j}{N}
+E_{ij} = \frac{(\text{totale riga } i) \times (\text{totale colonna } j)}{\text{totale generale}} = \frac{R_i \times C_j}{N}.
 $$
 
-Questa formula deriva direttamente dalla definizione di indipendenza: se le due variabili sono indipendenti, la probabilità di osservare un'unità nella cella $(i,j)$ è il prodotto delle probabilità marginali $P(\text{riga } i) \times P(\text{colonna } j)$. Moltiplicando questa probabilità per il numero totale di osservazioni $N$, otteniamo il conteggio atteso.
+Questa formula deriva direttamente dalla definizione di indipendenza: se le variabili sono indipendenti, la probabilità congiunta è il prodotto delle probabilità marginali.
+
 
 ### Calcolo manuale dei valori attesi
 
-Procediamo al calcolo esplicito. Prima determiniamo i totali marginali:
+Calcoliamo prima i totali marginali:
 
-- **Totali di riga:** Biscoe = 44 + 0 + 119 = 163; Dream = 55 + 68 + 0 = 123; Torgersen = 47 + 0 + 0 = 47
-- **Totali di colonna:** Adelie = 44 + 55 + 47 = 146; Chinstrap = 0 + 68 + 0 = 68; Gentoo = 119 + 0 + 0 = 119
-- **Totale generale:** $N$ = 333
+* **Totali di riga:**
 
-Ora calcoliamo i valori attesi per ciascuna cella. Ad esempio, per la cella (Biscoe, Adelie):
+  * Stress basso = 42 + 40 = 82
+  * Stress alto = 19 + 39 = 58
+
+* **Totali di colonna:**
+
+  * Sonno buono = 42 + 19 = 61
+  * Sonno scarso = 40 + 39 = 79
+
+* **Totale generale:**
+  $N = 140$
+
+Ora calcoliamo alcuni valori attesi. Ad esempio, per la cella (Stress basso, Sonno buono):
 
 $$
-E_{\text{Biscoe, Adelie}} = \frac{163 \times 146}{333} = \frac{23798}{333} \approx 71.5
+E_{\text{SB, buono}} = \frac{82 \times 61}{140} = \frac{5002}{140} \approx 35.7
 $$
 
-Per la cella (Dream, Chinstrap):
+Per la cella (Stress alto, Sonno scarso):
 
 $$
-E_{\text{Dream, Chinstrap}} = \frac{123 \times 68}{333} = \frac{8364}{333} \approx 25.1
+E_{\text{SA, scarso}} = \frac{58 \times 79}{140} = \frac{4582}{140} \approx 32.7
 $$
 
-Procedendo analogamente per tutte le celle, otteniamo la tabella completa dei valori attesi:
+La tabella completa dei valori attesi è:
 
 ```{r}
 totali_riga <- rowSums(osservati)
@@ -123,56 +147,61 @@ knitr::kable(round(attesi, 1), caption = "Valori attesi sotto H0")
 
 ### La statistica del Chi-Quadrato
 
-Una volta ottenuti i valori attesi, dobbiamo quantificare quanto i dati osservati si discostano da ciò che l'ipotesi nulla prevedrebbe. La statistica del chi-quadrato di Pearson misura esattamente questa discrepanza globale:
+Per quantificare la discrepanza complessiva tra frequenze osservate e attese utilizziamo la statistica del chi-quadrato di Pearson:
 
 $$
-\chi^2 = \sum_{i=1}^{r} \sum_{j=1}^{c} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
+\chi^2 = \sum_{i=1}^{r} \sum_{j=1}^{c} \frac{(O_{ij} - E_{ij})^2}{E_{ij}},
 $$
+dove:
 
-dove $O_{ij}$ rappresenta la frequenza osservata nella cella $(i,j)$, $E_{ij}$ la frequenza attesa, $r$ il numero di righe e $c$ il numero di colonne.
+* $O_{ij}$ è la frequenza osservata,
+* $E_{ij}$ è la frequenza attesa,
+* $r$ è il numero di righe,
+* $c$ è il numero di colonne.
 
-Questa formula ha una struttura intuitiva:
+La struttura della formula è intuitiva:
 
-- Il numeratore $(O_{ij} - E_{ij})^2$ misura la discrepanza al quadrato tra osservato e atteso per ciascuna cella. L'elevamento al quadrato garantisce che scostamenti positivi e negativi contribuiscano entrambi ad aumentare la statistica.
-
-- Il denominatore $E_{ij}$ funge da fattore di normalizzazione. Dividere per il valore atteso è fondamentale perché una differenza di 10 unità ha un significato molto diverso se il valore atteso è 15 oppure 150. In altre parole, standardizziamo la discrepanza rispetto alla scala della cella.
-
-- La sommatoria accumula i contributi di tutte le celle, producendo una misura complessiva di quanto la tabella osservata si discosti da quella attesa sotto $H_0$.
+* il numeratore misura la discrepanza tra osservato e atteso;
+* il denominatore normalizza tale discrepanza rispetto alla scala della cella;
+* la somma aggrega i contributi di tutte le celle.
 
 ### Calcolo manuale della statistica
 
-Calcoliamo il contributo di alcune celle per illustrare il procedimento:
+Calcoliamo il contributo di alcune celle:
 
-- Cella (Biscoe, Adelie): $O = 44$, $E \approx 71.5$
-  $$\frac{(44 - 71.5)^2}{71.5} = \frac{(-27.5)^2}{71.5} = \frac{756.25}{71.5} \approx 10.58$$
+* **Stress basso, Sonno buono:**
+  $O = 42$, $E \approx 35.7$
 
-- Cella (Biscoe, Gentoo): $O = 119$, $E \approx 58.3$
-  $$\frac{(119 - 58.3)^2}{58.3} = \frac{(60.7)^2}{58.3} = \frac{3684.49}{58.3} \approx 63.20$$
+$$
+\frac{(42 - 35.7)^2}{35.7} \approx \frac{(6.3)^2}{35.7} \approx 1.11
+$$
 
-- Cella (Dream, Chinstrap): $O = 68$, $E \approx 25.1$
-  $$\frac{(68 - 25.1)^2}{25.1} = \frac{(42.9)^2}{25.1} = \frac{1840.41}{25.1} \approx 73.32$$
+* **Stress alto, Sonno buono:**
+  $O = 19$, $E \approx 25.3$
 
-Come si può notare, le celle con maggiori discrepanze tra osservato e atteso forniscono i contributi più elevati alla statistica complessiva. Sommando i contributi di tutte le nove celle:
+$$
+\frac{(19 - 25.3)^2}{25.3} \approx \frac{(-6.3)^2}{25.3} \approx 1.57
+$$
+
+Sommando i contributi di tutte le celle:
 
 ```{r}
 chi2 <- sum((osservati - attesi)^2 / attesi)
-cat("Chi-quadrato:", round(chi2, 2), "\n")
+cat("Chi-quadrato:", round(chi2, 3), "\n")
 ```
 
 ### Gradi di libertà e distribuzione di riferimento
 
-Per interpretare il valore della statistica, dobbiamo confrontarlo con la sua distribuzione teorica sotto $H_0$. Quando l'ipotesi nulla è vera e i conteggi attesi sono sufficientemente elevati, la statistica $\chi^2$ segue approssimativamente una distribuzione chi-quadrato con un certo numero di gradi di libertà.
-
-I gradi di libertà per una tabella di contingenza sono dati da:
+Quando l’ipotesi nulla è vera e i conteggi attesi sono sufficientemente grandi, la statistica $\chi^2$ segue approssimativamente una distribuzione chi-quadrato con:
 
 $$
-\text{df} = (r - 1) \times (c - 1)
+\text{df} = (r - 1)(c - 1).
 $$
 
-dove $r$ è il numero di righe e $c$ il numero di colonne. Questa formula riflette il fatto che, una volta fissati i totali marginali, non tutte le celle sono libere di variare indipendentemente. Nel nostro caso, con 3 righe e 3 colonne:
+Nel nostro caso, con una tabella 2×2:
 
 $$
-\text{df} = (3 - 1) \times (3 - 1) = 2 \times 2 = 4
+\text{df} = (2 - 1)(2 - 1) = 1.
 $$
 
 ```{r}
@@ -182,22 +211,94 @@ cat("Gradi di libertà:", df, "\n")
 
 ### Il valore-$p$
 
-Il valore-$p$ rappresenta la probabilità di osservare una statistica chi-quadrato almeno altrettanto estrema di quella calcolata, assumendo che $H_0$ sia vera. Graficamente, corrisponde all'area sotto la curva della distribuzione $\chi^2$ a destra del valore osservato.
+Il valore-$p$ è la probabilità di osservare una statistica chi-quadrato almeno altrettanto grande di quella ottenuta, assumendo vera l’ipotesi nulla.
+
+Graficamente, corrisponde all’area sotto la curva $\chi^2$ (con 1 grado di libertà) **a destra del valore osservato**, ed è confrontabile con il livello di significatività $\alpha = 0.05$.
 
 ```{r}
 p_value <- 1 - pchisq(chi2, df)
-cat("P-value:", format(p_value, scientific = TRUE), "\n")
+cat("P-value:", round(p_value, 4), "\n")
 ```
 
-Un valore-$p$ estremamente piccolo (in questo caso, virtualmente zero) indica che osservare una tabella così sbilanciata sarebbe praticamente impossibile se specie e isola fossero realmente indipendenti. L'evidenza empirica conduce quindi a rifiutare l'ipotesi nulla di indipendenza: esiste un'associazione statisticamente significativa tra la specie dei pinguini e l'isola in cui vengono osservati.
+In questo caso, il valore-$p$ risulta circa **0.03**. Si noti che è **inferiore a 0.05**. Riassumendo,
+
+* **valore-p** (area a destra di $\chi^2_{\text{obs}}$),
+* **$\alpha$** e **regione critica** (area a destra di $\chi^2_{\text{crit}}$),
+* decisione del test (qui: rifiuto di $H_0$ perché $\chi^2_{\text{obs}} > \chi^2_{\text{crit}}$).
+
+Concludiamo quindi che **esiste un’associazione statisticamente significativa tra stress percepito e qualità del sonno** nel campione osservato.
 
 ### Verifica con R
 
-La funzione `chisq.test()` permette di eseguire l'intero procedimento in modo automatico, confermando i risultati ottenuti manualmente:
+```{r}
+chisq.test(osservati, correct = FALSE)
+```
+
+*(La correzione di continuità è disattivata per mantenere coerenza con il calcolo manuale e con la rappresentazione grafica della distribuzione $\chi^2$.)*
+
+
+### Distribuzione $\chi^2$, valore-$p$, $\alpha$ e regione critica
 
 ```{r}
-chisq.test(osservati)
+#| echo: false
+#| 
+# Parametri del test
+df <- 1
+alpha <- 0.05
+
+# Statistica osservata e p-value 
+totali_riga <- rowSums(osservati)
+totali_colonna <- colSums(osservati)
+totale <- sum(osservati)
+attesi <- outer(totali_riga, totali_colonna) / totale
+chi2 <- sum((osservati - attesi)^2 / attesi)
+p_value <- 1 - pchisq(chi2, df)
+
+# Valore critico per alpha
+chi2_crit <- qchisq(1 - alpha, df)
+
+# Griglia x per la densità
+x_max <- qchisq(0.99, df)   # limite destro "comodo" per il grafico
+dens_df <- data.frame(x = seq(0.02, x_max, length.out = 2000))
+dens_df$y <- dchisq(dens_df$x, df)
+
+# Dati per le aree (p-value e alpha)
+
+p_area <- subset(dens_df, x >= chi2)
+alpha_area <- subset(dens_df, x >= chi2_crit)
+
+ggplot(dens_df, aes(x, y)) +
+geom_line(linewidth = 1) +
+
+# Area del valore-p (a destra di chi2)
+
+geom_area(data = p_area, aes(x = x, y = y), alpha = 0.35) +
+
+# Area di alpha (a destra del valore critico)
+
+geom_area(data = alpha_area, aes(x = x, y = y), alpha = 0.20) +
+
+# Linee verticali: chi2 osservato e chi2 critico
+
+geom_vline(xintercept = chi2, linetype = "dashed", linewidth = 0.9) +
+geom_vline(xintercept = chi2_crit, linetype = "dotted", linewidth = 0.9) +
+labs(
+title = expression(paste("Distribuzione ", chi^2, " (df = 1)")),
+subtitle = paste0(
+"chi2 osservato = ", round(chi2, 3),
+" | p-value = ", round(p_value, 4),
+" | chi2 critico (alpha=0.05) = ", round(chi2_crit, 3)
+),
+x = expression(chi^2),
+y = "Densità"
+)
 ```
+ 
+La linea **punteggiata** delimita la **regione di rifiuto dell’ipotesi nulla**: l’area sottesa alla curva a destra del valore di $x$ individuato da tale linea, fino a $+\infty$, è pari ad $\alpha$. La linea **tratteggiata** indica invece la posizione della **statistica test**.
+
+Poiché la statistica test cade all’interno della regione di rifiuto dell’ipotesi nulla, l’ipotesi $H_0$ viene rifiutata. L’area compresa tra il valore osservato della statistica test e $+\infty$ rappresenta il **valore-$p$**.
+
+Quando il valore-$p$ è minore di $\alpha$, si rifiuta $H_0$. I due criteri, ovvero il confronto con la regione critica e confronto tra valore-$p$ e $\alpha$, conducono sempre alla stessa decisione inferenziale.
 
 ## Il test per una media
 
@@ -412,9 +513,9 @@ t.test(punteggi, mu = 24, alternative = "two.sided")
 
 Anche in questo caso, il valore-$p$ elevato (0.88) indica che i dati sono perfettamente compatibili con l'ipotesi nulla.
 
-## Interpretazione corretta del p-value
+## Interpretazione corretta del valore-$p$
 
-Il p-value non esprime la probabilità che l’ipotesi nulla sia vera; descrive invece quanto sarebbero rari dati come quelli osservati se $H_0$ fosse valida. Un valore elevato non fornisce alcun supporto a $H_0$; indica soltanto che i dati non sono sufficientemente discordanti da essa. Inoltre non misura l’importanza dell’effetto, non quantifica la replicabilità di un risultato e non dice nulla sulle ipotesi post-hoc del ricercatore.
+Il valore-$p$ non esprime la probabilità che l’ipotesi nulla sia vera; descrive invece quanto sarebbero rari dati come quelli osservati se $H_0$ fosse valida. Un valore elevato non fornisce alcun supporto a $H_0$; indica soltanto che i dati non sono sufficientemente discordanti da essa. Inoltre non misura l’importanza dell’effetto, non quantifica la replicabilità di un risultato e non dice nulla sulle ipotesi post-hoc del ricercatore.
 
 ## Limiti del test di ipotesi frequentista
 
