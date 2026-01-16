@@ -1,24 +1,25 @@
 # Test t di Student per campioni indipendenti {#sec-freq-two-samples}
 
 ::: {.callout-note appearance="minimal"}
-Il [test t di Student](https://www.scientificamerican.com/article/how-the-guinness-brewery-invented-the-most-important-statistical-method-in/) per campioni indipendenti è uno strumento fondamentale nella ricerca psicologica. Consente di confrontare le medie di due gruppi e di valutare se la differenza osservata possa essere attribuita semplicemente alla variabilità campionaria oppure rifletta una reale differenza tra le popolazioni da cui i campioni provengono.
+Il [test *t* di Student](https://www.scientificamerican.com/article/how-the-guinness-brewery-invented-the-most-important-statistical-method-in/) per campioni indipendenti è uno degli strumenti più utilizzati nella ricerca psicologica. Esso consente di confrontare le medie di due gruppi distinti e di valutare se la differenza osservata possa essere attribuita alla sola variabilità campionaria oppure indichi una differenza sistematica tra le popolazioni di riferimento.
 :::
 
 ::: callout-important
 
 ## In questo capitolo imparerai a
 
-* eseguire un test t di Student per confrontare le medie di due gruppi indipendenti;
-* interpretare correttamente i risultati, includendo intervalli di confidenza e dimensione dell’effetto;
-* comprendere i limiti del test e le principali alternative.
+* eseguire un test *t* di Student per il confronto tra due gruppi indipendenti;
+* interpretare correttamente i risultati integrando valore-*p*, intervalli di confidenza e dimensione dell’effetto;
+* comprendere i limiti concettuali e operativi del test e le principali alternative metodologiche.
 :::
 
 ::: callout-tip
 
 ## Prerequisiti
 
-* Conoscere la logica generale del test di ipotesi.
-* Leggere *Bayesian estimation supersedes the t test* [@kruschke2013bayesian].
+* Comprendere la logica generale del test di ipotesi frequentista.
+* Avere familiarità con la distinzione tra significatività statistica ed entità dell’effetto.
+* Lettura consigliata: *Bayesian estimation supersedes the t test* [@kruschke2013bayesian].
 :::
 
 ::: {.callout-caution collapse=true title="Preparazione del Notebook"}
@@ -29,19 +30,49 @@ here::here("code", "_common.R") |>
 ```
 :::
 
+## Inquadramento epistemologico
+
+Il test *t* per campioni indipendenti affronta una domanda inferenziale ricorrente nelle scienze empiriche:
+
+> *le differenze osservate tra due gruppi riflettono una reale differenza tra le popolazioni, oppure possono essere spiegate come fluttuazioni casuali del campionamento?*
+
+Nel paradigma frequentista, questa domanda viene riformulata in termini **controfattuali**: si assume inizialmente che le popolazioni abbiano la stessa media (ipotesi nulla) e si valuta quanto i dati osservati sarebbero rari se tale assunzione fosse vera. Come per tutti i test di ipotesi frequentisti, l’obiettivo non è stimare la probabilità dell’ipotesi, ma **controllare errori decisionali nel lungo periodo**.
+
 ## Assunzioni del test
 
-Nel confronto tra due gruppi indipendenti, il test $t$ di Student richiede che le osservazioni siano indipendenti tra loro, che ciascun gruppo provenga da una popolazione che può essere ragionevolmente approssimata con una distribuzione normale e che le varianze delle due popolazioni siano uguali. Quando quest’ultima condizione non è plausibile, si utilizza la variante proposta da Welch, che corregge la statistica test e i gradi di libertà senza richiedere omoschedasticità.
+Nel confronto tra due gruppi indipendenti, il test *t* di Student classico si basa su alcune assunzioni fondamentali:
+
+1. **Indipendenza delle osservazioni.**
+   Le osservazioni all’interno e tra i gruppi devono essere indipendenti. Questa è un’assunzione di disegno sperimentale, non verificabile a posteriori.
+
+2. **Normalità delle popolazioni.**
+   Ciascun gruppo dovrebbe provenire da una popolazione approssimabile con una distribuzione normale. In pratica, il test è relativamente robusto a violazioni moderate di questa assunzione, soprattutto per campioni di dimensione non troppo piccola.
+
+3. **Uguaglianza delle varianze (omoschedasticità).**
+   Le varianze delle due popolazioni dovrebbero essere uguali. Quando questa assunzione non è plausibile, si utilizza il **test *t* di Welch**, che corregge sia la statistica test sia i gradi di libertà.
+
+Dal punto di vista epistemologico, è importante notare che queste assunzioni definiscono il **modello probabilistico** entro cui il valore-$p$ è interpretabile.
 
 ## Formulazione del test
 
 ### Ipotesi
 
-L’ipotesi nulla afferma che le due popolazioni abbiano la stessa media, cioè $H_0: \mu_1 = \mu_2$. L’ipotesi alternativa considera la possibilità che le medie differiscano, $H_1: \mu_1 \neq \mu_2$.
+Nel caso più comune, l’ipotesi nulla afferma che le due popolazioni abbiano la stessa media:
+
+$$
+H_0: \mu_1 = \mu_2.
+$$
+
+L’ipotesi alternativa considera la possibilità che le medie differiscano:
+
+$$
+H_1: \mu_1 \neq \mu_2,
+$$
+oppure, in versioni direzionali, che una media sia maggiore o minore dell’altra.
 
 ### Statistica test
 
-La statistica t confronta la differenza tra le due medie con la variabilità attesa sotto l’ipotesi nulla. La formula è:
+La statistica *t* confronta la **differenza osservata tra le medie** con la **variabilità attesa sotto l’ipotesi nulla**:
 
 $$
 t = \frac{\bar{X}_1 - \bar{X}_2}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}},
@@ -52,11 +83,13 @@ $$
 s_p = \sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}}.
 $$
 
-Sotto l’ipotesi nulla, la statistica $t$ segue una distribuzione $t$ di Student con $n_1 + n_2 - 2$ gradi di libertà.
+Sotto l’ipotesi nulla, la statistica *t* segue una distribuzione *t* di Student con $n_1 + n_2 - 2$ gradi di libertà.
+
+Questa costruzione riflette una logica già vista nel test per una media: la differenza tra medie viene **standardizzata** rispetto alla sua incertezza campionaria.
 
 ## Esempio pratico
 
-Consideriamo un confronto tra il peso corporeo di un gruppo di donne e un gruppo di uomini.
+Consideriamo un confronto tra il **peso corporeo** di un gruppo di donne e un gruppo di uomini:
 
 ```{r}
 peso_donne <- c(38.9, 61.2, 73.3, 21.8, 63.4, 64.6, 48.4, 48.8, 48.5)
@@ -95,6 +128,8 @@ cat("Gradi di libertà:", df, "\n")
 cat("P-value:", round(p_value, 4), "\n")
 ```
 
+Il valore-*p* quantifica quanto una differenza almeno così grande sarebbe rara **assumendo che le due popolazioni abbiano la stessa media**.
+
 ### Utilizzo di `t.test()`
 
 ```{r}
@@ -103,19 +138,26 @@ t.test(peso_donne, peso_uomini, var.equal = TRUE)
 
 ### Test di Welch
 
-Il test di Welch è una variante del test $t$ di Student che non richiede l’uguaglianza delle varianze tra i due gruppi. Invece di stimare una varianza *pooled*, calcola la variabilità separatamente per ciascun gruppo e utilizza una formula adattiva per i gradi di libertà. Ciò rende il test più affidabile quando le varianze sono diverse o quando la dimensione dei campioni è sbilanciata. In R è l'impostazione predefinita.
+Il **test *t* di Welch** rappresenta una generalizzazione più robusta del test classico. Non assume uguaglianza delle varianze e utilizza:
+
+* varianze separate per ciascun gruppo;
+* gradi di libertà adattivi.
+
+In R è l’opzione predefinita:
 
 ```{r}
 t.test(peso_donne, peso_uomini, var.equal = FALSE)
 ```
 
+Dal punto di vista metodologico, il test di Welch è spesso preferibile, poiché riduce il rischio di errori quando le assunzioni di omoschedasticità sono violate.
+
 ## Interpretazione dei risultati
 
-Il confronto mostra un valore-$p$ di circa, il che suggerisce che la differenza tra le medie osservate sarebbe difficilmente attribuibile alla sola variabilità campionaria, se si assume l’ipotesi nulla. Per un'interpretazione completa, è però necessario considerare anche l'intervallo di confidenza sulla differenza e la grandezza dell'effetto, che aiutano a valutare la rilevanza pratica del risultato.
+Il valore-*p* suggerisce che la differenza osservata sarebbe poco compatibile con l’ipotesi di uguaglianza delle medie. Tuttavia, **la significatività statistica da sola è insufficiente** per una valutazione scientificamente completa.
 
 ### Dimensione dell’effetto: $d$ di Cohen
 
-La grandezza della differenza in unità di deviazione standard può essere espressa tramite il $d$ di Cohen:
+La **dimensione dell’effetto** quantifica la differenza in unità di deviazione standard:
 
 $$
 d = \frac{\bar{X}_1 - \bar{X}_2}{s_p}.
@@ -126,7 +168,7 @@ cohens_d <- (mean(peso_donne) - mean(peso_uomini)) / s_pool
 cat("Cohen's d:", round(cohens_d, 2), "\n")
 ```
 
-Un valore pari a 1.31 indica una differenza molto ampia tra i gruppi.
+Un valore pari a 1.31 indica una differenza molto ampia sul piano pratico.
 
 ### Intervallo di confidenza per la differenza
 
@@ -136,6 +178,8 @@ cat("Differenza delle medie:", round(test_result$estimate[1] - test_result$estim
 cat("IC al 95%: [", round(test_result$conf.int[1], 2), ", ", 
     round(test_result$conf.int[2], 2), "] kg\n")
 ```
+
+L’intervallo di confidenza fornisce una stima della **precisione** e consente di valutare la plausibilità di diverse grandezze dell’effetto.
 
 ## Come riportare i risultati
 
@@ -149,23 +193,28 @@ Una formulazione che si limiti a riportare la sola significatività statistica f
 
 Una comunicazione completa è più trasparente e più informativa:
 
-> "Il peso medio delle donne ($M$ = 52.1 kg, $DS$ = 15.6) risulta inferiore a quello degli uomini ($M$ = 69.0 kg, $DS$ = 9.0) di 16.9 kg ($IC$ 95%: [4.0, 29.8]). La differenza è associata a una dimensione dell’effetto molto ampia ($d$ = 1.31)."
+> "Il peso medio delle donne ($M$ = 52.1 kg, $DS$ = 15.6) è inferiore a quello degli uomini ($M$ = 69.0 kg, $DS$ = 9.0) di 16.9 kg ($IC$ 95%: [4.0, 29.8]). La differenza è associata a una dimensione dell’effetto molto ampia ($d$ = 1.31)."
 
-Questa forma integra statistiche descrittive, stima puntuale, intervallo di confidenza e grandezza dell’effetto, offrendo un quadro più completo.
+Questa formulazione integra **stima**, **incertezza** e **rilevanza pratica**.
 
 ## Limiti del test $t$
 
-Il test t si fonda su assunzioni che, se violate, possono alterare l’affidabilità dei risultati. La procedura conduce inoltre a una decisione dicotomica basata su una soglia arbitraria e non consente di quantificare l’evidenza empirica a favore dell’ipotesi nulla. La sensibilità alla dimensione campionaria è marcata: con campioni molto grandi, differenze minime risultano rilevabili; con campioni piccoli, differenze sostanziali possono non emergere.
+Il test *t* condivide i limiti strutturali dei test di ipotesi frequentisti:
+
+* decisione dicotomica basata su soglie convenzionali;
+* dipendenza dalla dimensione campionaria;
+* incapacità di quantificare l’evidenza a favore dell’ipotesi nulla;
+* interpretazione spesso ambigua del valore-*p*.
 
 ## L’alternativa bayesiana
 
-L’approccio bayesiano, come discusso da @kruschke2013bayesian, rappresenta una valida alternativa. Fornisce distribuzioni posteriori complete, consente di esprimere direttamente le probabilità delle ipotesi, integra le informazioni pregresse, gestisce gli outlier con modelli più flessibili e permette di quantificare in modo simmetrico l’evidenza a favore di ciascuna ipotesi tramite il fattore di Bayes.
+L’approccio bayesiano, come discusso da @kruschke2013bayesian, rappresenta una valida alternativa. Fornisce distribuzioni posteriori complete, consente di esprimere direttamente le probabilità delle ipotesi, integra le informazioni pregresse, gestisce gli outlier con modelli più flessibili e separa chiaramente **assenza di evidenza** ed **evidenza di assenza**.
 
 ## Riflessioni conclusive {.unnumbered .unlisted}
 
-Il test $t$ di Student è una procedura statistica ampiamente utilizzata in ambito frequentista per il confronto delle medie tra due gruppi. La sua utilità pratica viene migliorata quando l’esito del test viene interpretato in modo integrato, affiancando al valore di significatività statistica l’analisi degli intervalli di confidenza e la stima dell’entità dell’effetto. Questo approccio consente una valutazione più completa che distingue la rilevanza pratica dalla mera significatività campionaria.
+Il test *t* di Student per campioni indipendenti rappresenta uno strumento centrale dell’inferenza frequentista per il confronto tra medie. Il suo uso risulta metodologicamente più solido quando l’interpretazione non si limita alla significatività statistica, ma integra stime puntuali, intervalli di confidenza e dimensioni dell’effetto.
 
-La struttura decisionale del test, di tipo dicotomico e basata su soglie arbitrarie, presenta dei limiti di rigidità che sono stati ampiamente discussi in letteratura. Queste criticità, insieme all'interpretazione spesso ambigua del valore-$p$, evidenziano la necessità di integrare o affiancare a questo approccio metodologie statistiche che forniscano una quantificazione più diretta e informativa dell'incertezza. Di conseguenza, l'adozione di paradigmi alternativi, in particolare quello bayesiano, rappresenta una risposta metodologicamente migliore e concettualmente più solida.
+La rigidità decisionale e le ambiguità interpretative del valore-$p$ rendono tuttavia evidente la necessità di affiancare a questa procedura strumenti inferenziali più informativi. In questo senso, l’approccio bayesiano non va inteso come semplice alternativa tecnica, ma come **paradigma epistemologico distinto**, che affronta in modo più diretto le domande scientifiche sulla plausibilità delle ipotesi e sull’incertezza dei parametri.
 
 ::: {.callout-note collapse=true title="Informazioni sull'ambiente di sviluppo"}
 ```{r}

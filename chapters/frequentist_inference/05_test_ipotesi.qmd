@@ -2,9 +2,12 @@
 
 ::: {.callout-note appearance="minimal"}
 
-Il test di ipotesi rappresenta il pilastro metodologico dell'approccio frequentista e costituisce lo strumento principale per valutare la compatibilità dei dati empirici con un'ipotesi teorica predeterminata. In discipline come la psicologia, questo procedimento è ampiamente adottato per indagare l'efficacia di interventi sperimentali, confrontare le caratteristiche di gruppi distinti e analizzare le relazioni tra variabili.
+Il **test di ipotesi** costituisce il pilastro metodologico dell’inferenza statistica frequentista e rappresenta lo strumento principale attraverso cui si valuta la **compatibilità dei dati empirici** con un’ipotesi teorica formulata *a priori*. All’interno di questo paradigma, il test non mira a stimare direttamente la plausibilità di un’ipotesi, ma a stabilire se i dati osservati risultino sufficientemente incompatibili con un modello di riferimento, tipicamente espresso dall’**ipotesi nulla**.
 
-In questo capitolo verrà illustrata la logica alla base del test di ipotesi, insieme alle sue principali applicazioni pratiche. Un'attenzione particolare sarà tuttavia dedicata alla discussione critica dei suoi limiti intrinseci, sia concettuali che operativi. È proprio la consapevolezza di queste criticità che ha spinto, nel tempo, alla ricerca e allo sviluppo di paradigmi alternativi, tra i quali l'approccio bayesiano occupa un ruolo di primo piano.
+In discipline come la psicologia e le scienze sociali, il test di ipotesi è ampiamente utilizzato per valutare l’efficacia di interventi sperimentali, confrontare gruppi distinti e analizzare relazioni tra variabili. La sua diffusione è dovuta in larga misura alla semplicità procedurale e alla presenza di regole decisionali standardizzate, che consentono di giungere a conclusioni formalmente replicabili.
+
+In questo capitolo verrà ricostruita la **logica inferenziale** che sottende il test di ipotesi, mettendo in evidenza il ruolo della distribuzione campionaria, della significatività statistica e del valore-$p$. Parallelamente, verrà sviluppata una riflessione critica sui **limiti intrinseci** di questo approccio, sia sul piano concettuale sia su quello operativo. Proprio la consapevolezza di tali criticità ha alimentato, nel tempo, il dibattito metodologico e favorito l’emergere di paradigmi alternativi all’inferenza frequentista, tra i quali l’**approccio bayesiano** occupa un ruolo di primo piano.
+
 :::
 
 ::: callout-important
@@ -30,47 +33,75 @@ here::here("code", "_common.R") |>
 ```
 :::
 
-## La logica del test d’ipotesi  
+## La logica del test d’ipotesi
 
-### Elementi fondamentali  
+### Elementi fondamentali
 
-Il test d’ipotesi parte dal confronto tra due modelli contrapposti:  
+Il test d’ipotesi frequentista si fonda sul confronto tra due **modelli inferenziali contrapposti**, formulati *a priori*:
 
-- il modello basato sull'**ipotesi nulla** ($H_0$), che rappresenta l’assenza di un effetto o di una differenza;  
-- il modello basato sull'**ipotesi alternativa** ($H_1$), che descrive la presenza dell’effetto oggetto di studio.  
+* il modello basato sull’**ipotesi nulla** ($H_0$), che rappresenta una situazione di riferimento, tipicamente caratterizzata dall’assenza di un effetto, di una differenza o di un’associazione;
+* il modello basato sull’**ipotesi alternativa** ($H_1$), che descrive la presenza dell’effetto oggetto di studio.
 
-Il procedimento consiste nel misurare quanto i dati osservati siano compatibili con $H_0$. A tale scopo, si utilizza una **statistica test**, una quantità calcolata a partire dal campione che sintetizza il grado di discrepanza tra i dati e quanto ci si aspetterebbe se l'ipotesi nulla fosse vera.   
+È importante sottolineare che, nel paradigma frequentista, il test non confronta direttamente la plausibilità relativa di $H_0$ e $H_1$. L’intero procedimento è invece costruito **condizionatamente all’assunzione che $H_0$ sia vera**. Il problema inferenziale viene così riformulato in termini controfattuali: *quanto sono compatibili i dati osservati con il mondo descritto dall’ipotesi nulla?*
 
-Sotto l’assunzione che $H_0$ sia corretta, si determina la **distribuzione campionaria** di tale statistica. Confrontando il valore effettivamente osservato con tale distribuzione si ricava il **valore-$p$**, definito come la probabilità, se $H_0$ fosse vera, di ottenere un risultato uguale o più estremo di quello osservato.  
+Per rispondere a questa domanda si introduce una **statistica test**, ossia una funzione dei dati campionari progettata per misurare la discrepanza tra quanto osservato e quanto ci si attenderebbe sotto $H_0$. Esempi comuni di statistiche test sono la statistica $t$, la statistica $z$ o la statistica $\chi^2$, a seconda del contesto analitico.
 
-La decisione finale si basa sul confronto del valore-$p$ con un livello di significatività prefissato $\alpha$ (solitamente fissato a $\alpha = 0.05$). Se $p \leq \alpha$, si rifiuta $H_0$ a favore di $H_1$; in caso contrario, non si hanno elementi sufficienti per respingere l’ipotesi nulla.
+Sotto l’ipotesi che $H_0$ sia corretta, la statistica test possiede una **distribuzione campionaria nota**, che può essere dedotta teoricamente. Confrontando il valore osservato della statistica con questa distribuzione si ottiene il **valore-p**, definito come:
+
+> la probabilità di osservare un valore della statistica test **uguale o più estremo** di quello effettivamente ottenuto, **assumendo che l’ipotesi nulla sia vera**.
+
+Il valore-$p$ quantifica dunque un grado di incompatibilità tra i dati e il modello rappresentato da $H_0$, ma **non** la probabilità che l’ipotesi nulla sia vera.
+
+La decisione inferenziale è formalizzata confrontando il valore-$p$ con un **livello di significatività** prefissato $\alpha$ (per convenzione spesso pari a 0.05). Se $p \leq \alpha$, il risultato è considerato sufficientemente raro sotto $H_0$ da giustificare il **rifiuto dell’ipotesi nulla**; se $p > \alpha$, non si dispone di evidenza sufficiente per respingerla.
+
+Dal punto di vista epistemologico, è cruciale notare che il test d’ipotesi non produce una dimostrazione né una conferma dell’ipotesi alternativa. Esso fornisce piuttosto una **regola decisionale** basata su probabilità di lungo periodo, coerente con l’impostazione frequentista dell’inferenza.
 
 ### Tipi di errore
 
-Questo meccanismo decisionale comporta due possibili tipi di errore. È possibile rifiutare l’ipotesi nulla $H_0$ quando essa è in realtà vera, commettendo un **errore di tipo I**, oppure non rifiutarla quando è falsa, incorrendo in un **errore di tipo II**. La probabilità complementare a quest’ultimo definisce la **potenza del test**, ossia la capacità del test di individuare un effetto quando esso è effettivamente presente.
+Il test d’ipotesi frequentista, in quanto procedura decisionale basata su probabilità di lungo periodo, comporta inevitabilmente la possibilità di **errori inferenziali**. Poiché la decisione viene presa sulla base di un campione finito e di una soglia convenzionale, non esiste una regola che garantisca simultaneamente l’assenza di errori in tutti i casi.
+
+Si distinguono due tipi fondamentali di errore:
+
+* **Errore di tipo I**: consiste nel **rifiutare l’ipotesi nulla $H_0$ quando essa è in realtà vera**. La probabilità di commettere questo errore è controllata dal livello di significatività $\alpha$, fissato *a priori*. In altri termini, $\alpha$ rappresenta la frequenza massima tollerata di falsi positivi nel lungo periodo.
+
+* **Errore di tipo II**: consiste nel **non rifiutare l’ipotesi nulla quando essa è falsa**, ossia nel non rilevare un effetto che è effettivamente presente nella popolazione. La probabilità di questo errore è indicata con $\beta$.
+
+La **potenza del test**, definita come $1 - \beta$, misura la capacità del test di individuare un effetto quando esso esiste realmente. Dal punto di vista inferenziale, la potenza quantifica la sensibilità della procedura decisionale ed è influenzata da diversi fattori, tra cui la dimensione dell’effetto, la variabilità dei dati, il livello di significatività $\alpha$ e la dimensione campionaria.
+
+È importante sottolineare che, nel paradigma frequentista, sia $\alpha$ sia $\beta$ sono proprietà della **procedura di test** sotto ripetizione del campionamento, non del singolo studio osservato. La scelta del livello di significatività implica quindi un compromesso: ridurre la probabilità di errore di tipo I tende ad aumentare la probabilità di errore di tipo II, a meno di intervenire su altri aspetti del disegno sperimentale, come la numerosità del campione.
+
+Questa tensione tra i due tipi di errore costituisce uno dei nodi centrali della metodologia dei test di ipotesi e anticipa alcune delle criticità che verranno discusse nelle sezioni successive.
 
 ## Il test del Chi-Quadrato
 
-Per illustrare in modo concreto la logica del test di ipotesi, consideriamo il **test del chi-quadrato di indipendenza**, che permette di valutare se due variabili categoriali sono associate oppure indipendenti tra loro.
+Per illustrare in modo concreto la logica del test d’ipotesi, consideriamo il **test del chi-quadrato di indipendenza**, uno strumento largamente utilizzato per valutare se due variabili categoriali siano **statisticamente associate** oppure possano essere considerate **indipendenti**.
+
+Questo test incarna in modo particolarmente chiaro la filosofia frequentista: l’inferenza non riguarda la probabilità che esista un’associazione, ma la probabilità di osservare una discrepanza tra dati e modello di riferimento **assumendo vera l’ipotesi di indipendenza**.
 
 ### Il concetto di indipendenza
 
-Due variabili categoriali si dicono *indipendenti* quando la distribuzione di una non dipende dal valore assunto dall’altra. In termini probabilistici, se $A$ e $B$ sono due eventi, l’indipendenza implica che:
+Due variabili categoriali si dicono *indipendenti* quando la distribuzione di una non dipende dal valore assunto dall’altra. In termini probabilistici, se (A) e (B) sono due eventi, l’indipendenza implica:
 
 $$
 P(A \cap B) = P(A) \cdot P(B).
 $$
 
-Applicato a una tabella di contingenza, questo significa che la proporzione di osservazioni in ciascuna cella dovrebbe essere determinata esclusivamente dalle proporzioni marginali, senza alcuna associazione sistematica tra le categorie.
+Trasposto nel contesto di una **tabella di contingenza**, questo significa che la frequenza attesa in ciascuna cella è determinata unicamente dalle **distribuzioni marginali**, e non da un legame sistematico tra le categorie delle due variabili.
+
+L’ipotesi nulla del test del chi-quadrato formalizza esattamente questa idea:
+
+$$
+H_0:\ \text{le due variabili sono indipendenti}.
+$$
 
 ### Un esempio concreto
 
-Immaginiamo uno studio psicologico che indaga la relazione tra **livello di stress percepito** e **qualità del sonno** in un campione di adulti.
+Supponiamo di condurre uno studio psicologico volto a indagare la relazione tra **livello di stress percepito** e **qualità del sonno** in un campione di adulti.
 
-Le due variabili categoriali sono:
+Le due variabili categoriali considerate sono:
 
-* **Stress percepito:** Basso / Alto.
-* **Qualità del sonno:** Buona / Scarsa.
+* **Stress percepito**: Basso / Alto.
+* **Qualità del sonno**: Buona / Scarsa.
 
 I dati osservati sono riassunti nella seguente tabella di contingenza 2×2:
 
@@ -85,16 +116,18 @@ colnames(osservati) <- c("Sonno buono", "Sonno scarso")
 knitr::kable(osservati, caption = "Distribuzione di stress percepito e qualità del sonno")
 ```
 
-La domanda di ricerca è la seguente: **il livello di stress percepito è indipendente dalla qualità del sonno, oppure esiste un’associazione tra le due variabili?**
+La domanda di ricerca è:
 
-### Calcolo dei valori attesi sotto $H_0$
+> **Il livello di stress percepito è indipendente dalla qualità del sonno, oppure esiste un’associazione tra le due variabili?**
 
-L’ipotesi nulla $H_0$ afferma che le due variabili sono indipendenti. Se questa ipotesi fosse vera, quale distribuzione di frequenze ci aspetteremmo di osservare nella tabella?
+### Valori attesi sotto l’ipotesi nulla
 
-Il procedimento è il seguente:
+Sotto l’ipotesi nulla di indipendenza, possiamo calcolare quali frequenze ci aspetteremmo di osservare nella tabella **se non esistesse alcuna associazione** tra le variabili.
 
-1. calcoliamo i **totali marginali** di riga e di colonna;
-2. se le variabili fossero indipendenti, la frequenza attesa in ciascuna cella sarebbe determinata dal prodotto delle proporzioni marginali, moltiplicato per il totale delle osservazioni.
+Il procedimento segue una logica rigorosamente probabilistica:
+
+1. si calcolano i **totali marginali** di riga e di colonna;
+2. la frequenza attesa in ciascuna cella è data dal prodotto dei totali marginali, normalizzato per il totale generale.
 
 Formalmente, per la cella nella riga $i$ e colonna $j$, il valore atteso $E_{ij}$ è:
 
@@ -104,10 +137,9 @@ $$
 
 Questa formula deriva direttamente dalla definizione di indipendenza: se le variabili sono indipendenti, la probabilità congiunta è il prodotto delle probabilità marginali.
 
-
 ### Calcolo manuale dei valori attesi
 
-Calcoliamo prima i totali marginali:
+Calcoliamo dapprima i totali marginali:
 
 * **Totali di riga:**
 
@@ -122,13 +154,13 @@ Calcoliamo prima i totali marginali:
 * **Totale generale:**
   $N = 140$
 
-Ora calcoliamo alcuni valori attesi. Ad esempio, per la cella (Stress basso, Sonno buono):
+Ad esempio, il valore atteso per la cella *(Stress basso, Sonno buono)* è:
 
 $$
 E_{\text{SB, buono}} = \frac{82 \times 61}{140} = \frac{5002}{140} \approx 35.7
 $$
 
-Per la cella (Stress alto, Sonno scarso):
+Per la cella (Stress alto, Sonno scarso) abbiamo:
 
 $$
 E_{\text{SA, scarso}} = \frac{58 \times 79}{140} = \frac{4582}{140} \approx 32.7
@@ -147,7 +179,7 @@ knitr::kable(round(attesi, 1), caption = "Valori attesi sotto H0")
 
 ### La statistica del Chi-Quadrato
 
-Per quantificare la discrepanza complessiva tra frequenze osservate e attese utilizziamo la statistica del chi-quadrato di Pearson:
+Per quantificare la **discrepanza complessiva** tra frequenze osservate e attese utilizziamo la statistica del chi-quadrato di Pearson:
 
 $$
 \chi^2 = \sum_{i=1}^{r} \sum_{j=1}^{c} \frac{(O_{ij} - E_{ij})^2}{E_{ij}},
@@ -159,11 +191,12 @@ dove:
 * $r$ è il numero di righe,
 * $c$ è il numero di colonne.
 
-La struttura della formula è intuitiva:
+Questa statistica aggrega, su tutte le celle, la distanza tra il valore osservato e il valore atteso, normalizzata rispetto alla scala delle frequenze attese.
 
-* il numeratore misura la discrepanza tra osservato e atteso;
-* il denominatore normalizza tale discrepanza rispetto alla scala della cella;
-* la somma aggrega i contributi di tutte le celle.
+L’interpretazione è intuitiva:
+
+* valori piccoli di $\chi^2$ indicano buona compatibilità con l’ipotesi di indipendenza;
+* valori grandi indicano una discrepanza difficilmente attribuibile al solo caso.
 
 ### Calcolo manuale della statistica
 
@@ -190,15 +223,15 @@ chi2 <- sum((osservati - attesi)^2 / attesi)
 cat("Chi-quadrato:", round(chi2, 3), "\n")
 ```
 
-### Gradi di libertà e distribuzione di riferimento
+### Distribuzione di riferimento e gradi di libertà
 
-Quando l’ipotesi nulla è vera e i conteggi attesi sono sufficientemente grandi, la statistica $\chi^2$ segue approssimativamente una distribuzione chi-quadrato con:
+Sotto l’ipotesi nulla e in presenza di frequenze attese sufficientemente grandi, la statistica $\chi^2$ segue approssimativamente una **distribuzione chi-quadrato** con:
 
 $$
 \text{df} = (r - 1)(c - 1).
 $$
 
-Nel nostro caso, con una tabella 2×2:
+Nel nostro caso:
 
 $$
 \text{df} = (2 - 1)(2 - 1) = 1.
@@ -211,7 +244,7 @@ cat("Gradi di libertà:", df, "\n")
 
 ### Il valore-$p$
 
-Il valore-$p$ è la probabilità di osservare una statistica chi-quadrato almeno altrettanto grande di quella ottenuta, assumendo vera l’ipotesi nulla.
+Il **valore-p** è definito come la probabilità di osservare un valore della statistica $\chi^2$ **almeno altrettanto grande di quello ottenuto**, assumendo vera l’ipotesi nulla di indipendenza.
 
 Graficamente, corrisponde all’area sotto la curva $\chi^2$ (con 1 grado di libertà) **a destra del valore osservato**, ed è confrontabile con il livello di significatività $\alpha = 0.05$.
 
@@ -220,13 +253,13 @@ p_value <- 1 - pchisq(chi2, df)
 cat("P-value:", round(p_value, 4), "\n")
 ```
 
-In questo caso, il valore-$p$ risulta circa **0.03**. Si noti che è **inferiore a 0.05**. Riassumendo,
+Nel nostro esempio, il valore-$p$ risulta circa **0.03** ed è inferiore al livello di significatività convenzionale $\alpha = 0.05$. Questo indica che la discrepanza osservata sarebbe rara se le variabili fossero davvero indipendenti.
 
-* **valore-p** (area a destra di $\chi^2_{\text{obs}}$),
-* **$\alpha$** e **regione critica** (area a destra di $\chi^2_{\text{crit}}$),
-* decisione del test (qui: rifiuto di $H_0$ perché $\chi^2_{\text{obs}} > \chi^2_{\text{crit}}$).
+### Decisione inferenziale
 
-Concludiamo quindi che **esiste un’associazione statisticamente significativa tra stress percepito e qualità del sonno** nel campione osservato.
+Poiché la statistica test cade nella **regione di rifiuto** dell’ipotesi nulla (equivalentemente, poiché $p < \alpha$), **rifiutiamo $H_0$** e concludiamo che:
+
+> esiste un’associazione statisticamente significativa tra stress percepito e qualità del sonno nel campione osservato.
 
 ### Verifica con R
 
@@ -298,24 +331,31 @@ La linea **punteggiata** delimita la **regione di rifiuto dell’ipotesi nulla**
 
 Poiché la statistica test cade all’interno della regione di rifiuto dell’ipotesi nulla, l’ipotesi $H_0$ viene rifiutata. L’area compresa tra il valore osservato della statistica test e $+\infty$ rappresenta il **valore-$p$**.
 
-Quando il valore-$p$ è minore di $\alpha$, si rifiuta $H_0$. I due criteri, ovvero il confronto con la regione critica e confronto tra valore-$p$ e $\alpha$, conducono sempre alla stessa decisione inferenziale.
+Quando il valore-$p$ è minore di $\alpha$, si rifiuta $H_0$. I due criteri, ovvero il confronto con la regione critica e confronto tra valore-$p$ e $\alpha$, sono formalmente equivalenti e conducono sempre alla stessa decisione.
 
 ## Il test per una media
 
-Passiamo ora a considerare dati continui. Supponiamo di voler verificare se la media di una popolazione differisce da un valore di riferimento noto. Questo tipo di domanda è molto comune in psicologia: un trattamento ha modificato i punteggi rispetto alla norma? Un gruppo clinico differisce dalla popolazione generale?
+Passiamo ora a considerare il caso di **dati continui**. Una delle domande inferenziali più comuni nelle scienze psicologiche consiste nel verificare se la **media di una popolazione** differisca da un valore di riferimento noto. Esempi tipici includono:
+
+* un trattamento ha modificato i punteggi rispetto a una norma prestabilita?
+* un gruppo clinico differisce dalla popolazione generale?
+* una prestazione media è superiore (o inferiore) a un valore soglia teoricamente rilevante?
+
+Dal punto di vista frequentista, queste domande vengono affrontate valutando la **compatibilità dei dati osservati** con un’ipotesi nulla che specifica un valore preciso della media.
 
 ### Il punto di partenza: la distribuzione campionaria della media
 
-Prima di affrontare il test di ipotesi, richiamiamo un risultato fondamentale. Se estraiamo ripetutamente campioni di dimensione $n$ da una popolazione con media $\mu$ e deviazione standard $\sigma$, per campioni sufficientemente grandi le medie campionarie $\bar{X}$ si distribuiscono secondo una distribuzione normale con:
+La logica del test per una media si fonda direttamente sulla **distribuzione campionaria della media**. Se estraiamo ripetutamente campioni di dimensione $n$ da una popolazione con media $\mu$ e deviazione standard $\sigma$, allora, per campioni sufficientemente grandi, le medie campionarie $\bar{X}$ seguono una distribuzione approssimativamente normale con:
 
-- media: $\mu_{\bar{X}} = \mu$;
-- errore standard: $\sigma_{\bar{X}} = \frac{\sigma}{\sqrt{n}}$.
+* media: $\mu_{\bar{X}} = \mu$;
+* errore standard: $\sigma_{\bar{X}} = \dfrac{\sigma}{\sqrt{n}}$.
 
-Questo risultato, noto come teorema del limite centrale, ci permette di sapere cosa aspettarci quando calcoliamo una media campionaria: essa oscillerà attorno al vero valore $\mu$ con una variabilità che diminuisce all'aumentare della dimensione del campione.
+Questo risultato, garantito dal **teorema del limite centrale**, ci fornisce un modello probabilistico per valutare quanto una media campionaria osservata sia “estrema” rispetto a ciò che ci aspetteremmo sotto una data ipotesi sulla popolazione.
+
 
 ### Un esempio concreto
 
-Un ricercatore vuole verificare se i punteggi di benessere psicologico di un gruppo di studenti universitari siano superiori alla media normativa della popolazione, pari a $\mu_0 = 24$. Ha raccolto i seguenti punteggi da un campione di 10 studenti:
+Un ricercatore vuole verificare se i punteggi di **benessere psicologico** di un gruppo di studenti universitari differiscano dalla media normativa della popolazione, pari a $\mu_0 = 24$. I punteggi osservati in un campione di 10 studenti sono:
 
 ```{r}
 punteggi <- c(28, 22, 26, 18, 30, 24, 27, 17, 21, 25)
@@ -330,23 +370,30 @@ cat("Media campionaria:", media_campione, "\n")
 cat("Numerosità:", n, "\n")
 ```
 
-La media osservata è 23.8, leggermente inferiore al valore di riferimento 24. Ma questa differenza è compatibile con la normale variabilità campionaria, oppure indica una reale differenza nella popolazione?
+La media osservata è pari a **23.8**, leggermente inferiore al valore di riferimento. La domanda inferenziale diventa quindi:
+
+> questa differenza è spiegabile come fluttuazione casuale del campionamento, oppure indica una differenza reale nella popolazione?
 
 ### La logica del test: il caso ideale con $\sigma$ nota
 
-Per comprendere la logica del test, partiamo da una situazione semplificata in cui assumiamo di conoscere la deviazione standard della popolazione. Supponiamo che studi precedenti abbiano stabilito che $\sigma = 4$.
+Per chiarire la logica del test, consideriamo inizialmente una situazione ideale in cui la **deviazione standard della popolazione** sia nota. Supponiamo che studi precedenti abbiano stabilito $\sigma = 4$.
 
-#### Costruzione della distribuzione campionaria sotto $H_0$
+#### Formulazione delle ipotesi
 
-Il test di ipotesi procede così:
+Poiché il ricercatore ipotizza un benessere *superiore* alla norma, impostiamo un **test monodirezionale**:
 
-1. **Formuliamo le ipotesi.** Poiché il ricercatore sospetta che gli studenti abbiano un benessere *superiore* alla norma, impostiamo un test monodirezionale:
-   - $H_0$: $\mu = 24$ (la media della popolazione è uguale alla norma);
-   - $H_1$: $\mu > 24$ (la media della popolazione è superiore alla norma).
+- $H_0$: $\mu = 24$ (la media della popolazione è uguale alla norma);
+- $H_1$: $\mu > 24$ (la media della popolazione è superiore alla norma).
 
-2. **Costruiamo la distribuzione campionaria assumendo vera $H_0$.** Se $H_0$ fosse vera, le medie campionarie di campioni di dimensione 10 si distribuirebbero normalmente con:
-   - media: $\mu_{\bar{X}} = 24$;
-   - errore standard: $\sigma_{\bar{X}} = \frac{4}{\sqrt{10}} = \frac{4}{3.162} \approx 1.265$.
+#### Distribuzione campionaria sotto $H_0$
+
+Assumendo vera $H_0$, la distribuzione delle medie campionarie sarebbe normale con:
+
+- media: $\mu_{\bar{X}} = 24$;
+- errore standard: 
+  $$
+  \sigma_{\bar{X}} = \frac{4}{\sqrt{10}} = \frac{4}{3.162} \approx 1.265.
+  $$
 
 ```{r}
 sigma_nota <- 4
@@ -355,17 +402,15 @@ errore_standard <- sigma_nota / sqrt(n)
 cat("Errore standard:", round(errore_standard, 3), "\n")
 ```
 
-3. **Posizioniamo il nostro risultato in questa distribuzione.** La domanda diventa: quanto è estrema la nostra media campionaria di 23.8 rispetto a ciò che ci aspetteremmo se $H_0$ fosse vera?
+#### La statistica $Z$: standardizzare la media osservata
 
-#### La statistica $Z$: standardizzare la media campionaria
-
-Per rispondere, trasformiamo la media campionaria in un punteggio standardizzato. La statistica $Z$ non è altro che la standardizzazione della media osservata nella distribuzione campionaria costruita sotto $H_0$:
+Per valutare quanto la media osservata sia estrema rispetto a questa distribuzione, calcoliamo la statistica:
 
 $$
 Z = \frac{\bar{X} - \mu_0}{\sigma_{\bar{X}}} = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}.
 $$
 
-Questa formula dovrebbe risultare familiare: è la stessa logica della standardizzazione di un punteggio individuale, $z = (x - \mu)/\sigma$, applicata però alla media campionaria. Il numeratore misura quanto la media osservata si discosta dal valore ipotizzato sotto $H_0$; il denominatore normalizza questa distanza rispetto alla variabilità attesa delle medie campionarie.
+Questa è una **standardizzazione della media campionaria**, del tutto analoga allo *z-score* di un punteggio individuale, ma applicata alla distribuzione delle medie.
 
 Calcoliamo il valore di $Z$ per il nostro esempio:
 
@@ -380,20 +425,20 @@ cat("Statistica Z:", round(Z, 3), "\n")
 
 #### Il valore-$p$
 
-Poiché abbiamo formulato un'ipotesi alternativa direzionale ($H_1$: $\mu > 24$), il valore-$p$ corrisponde alla probabilità di osservare una media campionaria *almeno altrettanto grande* di quella osservata, assumendo vera $H_0$. In termini della statistica $Z$, questo equivale a calcolare l'area sotto la curva normale standard a destra del valore $Z$ osservato.
+Poiché il test è monodirezionale ($H_1$: $\mu > 24$), il **valore-p** è la probabilità, sotto $H_0$, di osservare una media **almeno altrettanto grande** di quella ottenuta. In termini della statistica $Z$, questo equivale a calcolare l'area sotto la curva normale standard a destra del valore $Z$ osservato.
 
 ```{r}
 p_value_Z <- 1 - pnorm(Z)
 cat("P-value (test Z monodirezionale):", round(p_value_Z, 3), "\n")
 ```
 
-Un valore-$p$ di circa 0.56 indica che, se $H_0$ fosse vera, avremmo circa il 56% di probabilità di osservare una media campionaria pari o superiore a 23.8. In altre parole, il nostro risultato è perfettamente compatibile con l'ipotesi nulla: non c'è alcuna evidenza che la media della popolazione sia superiore a 24.
+Un valore-$p$ di circa 0.56 indica che, se $H_0$ fosse vera, risultati come quello osservato sarebbero molto comuni. I dati sono quindi **perfettamente compatibili** con l’ipotesi nulla.
 
 ::: {.callout-note}
-Nota che il valore-$p$ è così alto perché la media osservata (23.8) è addirittura *inferiore* al valore ipotizzato (24), mentre noi stavamo cercando evidenze di una media *superiore*.
+Nota che il valore-$p$ è così alto perché la media osservata è addirittura *inferiore* al valore ipotizzato, mentre il test cercava evidenze in direzione opposta.
 :::
 
-### Il problema: $\sigma$ è sconosciuta
+### Il problema realistico: $\sigma$ è sconosciuta
 
 Nel ragionamento precedente abbiamo assunto di conoscere la deviazione standard della popolazione, $\sigma = 4$. Nella pratica della ricerca, tuttavia, questo valore è quasi sempre ignoto e deve essere stimato dai dati stessi.
 
@@ -404,7 +449,7 @@ s <- sd(punteggi)
 cat("Deviazione standard campionaria:", round(s, 3), "\n")
 ```
 
-L'errore standard stimato diventa quindi:
+L'errore standard stimato diventa:
 
 $$
 SE = \frac{s}{\sqrt{n}} = \frac{4.211}{\sqrt{10}} \approx 1.332
@@ -417,7 +462,7 @@ cat("Errore standard stimato:", round(SE, 3), "\n")
 
 ### Dalla statistica $Z$ alla statistica $t$
 
-Quando sostituiamo $\sigma$ con $s$, la statistica diventa:
+Sostituendo $\sigma$ con $s$, la statistica diventa:
 
 $$
 t = \frac{\bar{X} - \mu_0}{s / \sqrt{n}}.
@@ -429,9 +474,13 @@ Il valore di $s$ che calcoliamo dal campione è esso stesso una stima, soggetta 
 
 ### La distribuzione $t$ di Student
 
-Per tenere conto di questa maggiore incertezza, non possiamo più usare la distribuzione normale standard come riferimento. Dobbiamo invece utilizzare la **distribuzione $t$ di Student**, che ha una forma simile alla normale ma con **code più pesanti**.
+Per tenere conto di questa maggiore incertezza, la statistica $t$ segue una **distribuzione *t* di Student**, caratterizzata da:
 
-Le code più pesanti riflettono il fatto che, quando stimiamo $\sigma$ dal campione, valori estremi della statistica test diventano più probabili. In altre parole, la distribuzione $t$ è più "cauta" della normale: assegna maggiore probabilità a risultati lontani dal centro.
+* forma simile alla normale;
+* **code più pesanti**, che riflettono la variabilità introdotta dalla stima di $\sigma$;
+* dipendenza dai **gradi di libertà**.
+
+In altre parole, la distribuzione $t$ è più "cauta" della normale: assegna maggiore probabilità a risultati lontani dal centro.
 
 ```{r}
 #| label: fig-t-vs-normale
@@ -461,8 +510,8 @@ Nel nostro esempio, con 10 osservazioni, abbiamo $\text{df} = 9$.
 
 I gradi di libertà determinano quanto le code della distribuzione $t$ siano pesanti:
 
-- Con pochi gradi di libertà (campioni piccoli), l'incertezza nella stima di $\sigma$ è elevata, e la distribuzione $t$ ha code molto più pesanti della normale.
-- Con molti gradi di libertà (campioni grandi), la stima di $\sigma$ diventa più precisa, e la distribuzione $t$ converge progressivamente verso la normale standard.
+- con pochi gradi di libertà (campioni piccoli), l'incertezza nella stima di $\sigma$ è elevata, e la distribuzione $t$ ha code molto più pesanti della normale;
+- con molti gradi di libertà (campioni grandi), la stima di $\sigma$ diventa più precisa, e la distribuzione $t$ converge progressivamente verso la normale standard.
 
 Questo comportamento ha perfettamente senso: con un campione di 10 osservazioni, la nostra stima di $\sigma$ è piuttosto incerta; con un campione di 1000 osservazioni, possiamo fidarci molto di più della stima.
 
@@ -515,19 +564,52 @@ Anche in questo caso, il valore-$p$ elevato (0.88) indica che i dati sono perfet
 
 ## Interpretazione corretta del valore-$p$
 
-Il valore-$p$ non esprime la probabilità che l’ipotesi nulla sia vera; descrive invece quanto sarebbero rari dati come quelli osservati se $H_0$ fosse valida. Un valore elevato non fornisce alcun supporto a $H_0$; indica soltanto che i dati non sono sufficientemente discordanti da essa. Inoltre non misura l’importanza dell’effetto, non quantifica la replicabilità di un risultato e non dice nulla sulle ipotesi post-hoc del ricercatore.
+È essenziale ribadire che il **valore-p**:
+
+* **non** è la probabilità che $H_0$ sia vera;
+* **non** misura l’importanza o la grandezza dell’effetto;
+* **non** quantifica la probabilità di replicazione del risultato.
+
+Il valore-$p$ esprime esclusivamente quanto sarebbero rari dati come quelli osservati **assumendo vera l’ipotesi nulla**. Un valore elevato non “conferma” $H_0$: indica semplicemente che i dati non sono sufficientemente incompatibili con essa.
 
 ## Limiti del test di ipotesi frequentista
 
-La procedura frequentista presenta diversi limiti concettuali. La decisione finale è dicotomica e dipende da una soglia arbitraria: valori-$p$ molto vicini su lati opposti del limite conducono a conclusioni opposte, anche se l’evidenza empirica è praticamente identica. La statistica test cresce con la dimensione campionaria: con campioni molto grandi anche differenze minime diventano rilevabili, il che amplifica la discrepanza tra “significatività statistica” e importanza sostanziale. Inoltre un valore-$p$ elevato riflette solo scarsa informazione, non una conferma dell’assenza di effetto. L’ipotesi nulla puntuale, spesso utilizzata, è quasi sempre implausibile perché nella realtà qualunque intervento produce effetti, seppur molto piccoli. Infine il valore-$p$ dipende dal piano di campionamento, cioè da ciò che il ricercatore *avrebbe* fatto in condizioni diverse, includendo quindi anche esiti mai osservati.
+Pur essendo storicamente e operativamente centrale nella pratica scientifica, il test d’ipotesi frequentista presenta limiti rilevanti, soprattutto quando lo si interpreta come strumento generale per valutare l’evidenza empirica. Molte criticità non riguardano singole scelte tecniche, ma discendono dalla **struttura logica** del procedimento: un’inferenza costruita attorno a decisioni di lungo periodo, formalizzate tramite soglie convenzionali.
+
+1. **Decisione dicotomica e soglia convenzionale.**
+   L’esito del test è tipicamente binario (*rifiuta* / *non rifiuta* $H_0$) e dipende da una soglia (\alpha) scelta per convenzione. Ne consegue una discontinuità interpretativa: valori-$p$ quasi identici ma situati su lati opposti della soglia (ad esempio 0.049 vs 0.051) producono conclusioni formalmente opposte, pur corrispondendo a evidenza empirica praticamente indistinguibile.
+
+2. **Dipendenza dalla dimensione campionaria.**
+   A parità di effetto reale, la statistica test tende a crescere con l’aumento di (n), perché l’errore standard diminuisce. Con campioni molto grandi, anche differenze minime possono diventare “significative”, amplificando la distanza tra **significatività statistica** e **rilevanza sostanziale** (o importanza teorica/pratica). In assenza di una misura dell’effetto e della sua incertezza, il valore-$p$ può indurre interpretazioni fuorvianti.
+
+3. **Asimmetria informativa dei risultati non significativi.**
+   Un valore-$p$ elevato non fornisce evidenza a favore di $H_0$: indica soltanto che, dato il disegno dello studio e la variabilità dei dati, non si è osservata una discrepanza sufficientemente grande rispetto al modello nullo. In molti casi, un esito “non significativo” riflette semplicemente **scarsa informazione** (ad esempio potenza bassa), non l’assenza di un effetto.
+
+4. **Problema dell’ipotesi nulla puntuale.**
+   Nella pratica si testa spesso un’ipotesi nulla del tipo $H_0:\ \delta = 0$ (effetto esattamente nullo). Tuttavia, in molti contesti empirici questa ipotesi è **ontologicamente implausibile**: è raro che un intervento, una manipolazione o una differenza tra gruppi produca un effetto esattamente pari a zero. Il test finisce così per rispondere a una domanda formalmente precisa ma talvolta scientificamente marginale: se l’effetto è *esattamente* nullo, non se sia *piccolo, trascurabile o irrilevante*.
+
+5. **Dipendenza dal piano di campionamento e “controfattualità” del valore-p.**
+   Il valore-$p$ è definito rispetto a ciò che sarebbe accaduto **sotto ripetizione** del campionamento e quindi dipende dal piano sperimentale e dalle regole procedurali (ad esempio stop rule, numero di confronti, strategia di raccolta dati). In altre parole, esso incorpora anche esiti “possibili” ma non osservati: la misura di evidenza dipende, in parte, da ciò che il ricercatore *avrebbe potuto* osservare se le circostanze fossero state diverse.
+
+Nel loro insieme, questi limiti suggeriscono che il test d’ipotesi e il valore-$p$ funzionano bene come strumenti di controllo procedurale degli errori nel lungo periodo, ma sono meno adatti quando l’obiettivo è esprimere in modo diretto e graduato l’evidenza empirica o la plausibilità di ipotesi scientifiche. È in questo spazio che si collocano molte delle motivazioni storiche e concettuali che hanno alimentato l’interesse per approcci alternativi, in particolare quelli di matrice bayesiana.
 
 ## Verso un approccio migliore
 
-Una presentazione più completa dei risultati dovrebbe includere intervalli di confidenza, stime delle dimensioni dell’effetto ed evitare soglie rigide per interpretare i risultati. L’analisi bayesiana offre ulteriori vantaggi: permette di assegnare probabilità alle ipotesi date le osservazioni, integra conoscenza pregressa, distingue in modo chiaro tra assenza di evidenza ed evidenza di assenza e quantifica l’evidenza tramite strumenti come il fattore di Bayes.
+Una comunicazione statistica più informativa e scientificamente solida dovrebbe andare oltre il semplice esito dicotomico del test di ipotesi. In particolare, la presentazione dei risultati dovrebbe includere **intervalli di confidenza**, **stime delle dimensioni dell’effetto** e una discussione esplicita dell’incertezza associata alle stime, evitando l’uso rigido di soglie convenzionali per distinguere tra risultati “significativi” e “non significativi”.
+
+In questa prospettiva, l’attenzione si sposta dal quesito *“l’effetto esiste?”* a domande più rilevanti sul piano scientifico, quali *“quanto è grande l’effetto?”*, *“con quale precisione è stimato?”* e *“quanto è compatibile con le ipotesi teoriche in gioco?”*. Questo cambiamento di enfasi favorisce interpretazioni più graduali e cumulative dell’evidenza empirica.
+
+L’**approccio bayesiano** offre, in questo contesto, una cornice concettuale alternativa che risponde in modo diretto ad alcune delle criticità del frequentismo. Esso consente di formulare **affermazioni probabilistiche sui parametri e sulle ipotesi**, condizionate ai dati osservati, e di **integrare esplicitamente informazioni pregresse**, teoriche o empiriche, nel processo inferenziale. Inoltre, distingue in modo concettualmente chiaro tra **assenza di evidenza** e **evidenza a favore dell’assenza di un effetto**, una distinzione che risulta difficile da articolare nel linguaggio dei test di significatività.
+
+Nel complesso, questo approccio promuove una visione dell’inferenza statistica come processo di **aggiornamento razionale della conoscenza**, piuttosto che come meccanismo decisionale basato su soglie arbitrarie. Senza sostituire automaticamente gli strumenti frequentisti, esso offre un quadro interpretativo più flessibile e spesso più aderente alle domande che guidano la ricerca scientifica.
 
 ## Riflessioni conclusive {.unnumbered .unlisted}
 
-Il test di ipotesi consente di valutare la compatibilità tra i dati e un modello teorico, ma il valore-$p$ ha un significato più limitato di quanto comunemente si creda. La sua interpretazione non riguarda la verità di $H_0$ ma l’eventualità di osservare dati almeno altrettanto estremi sotto quella stessa ipotesi. La distanza tra significatività statistica e rilevanza pratica, insieme ai vincoli strutturali del metodo frequentista, rende utile affiancare o sostituire questa procedura con strumenti più informativi e interpretabili, come quelli offerti dall’approccio bayesiano.
+In questo capitolo abbiamo analizzato il **test di ipotesi frequentista** come strumento per valutare la compatibilità tra dati empirici e un modello teorico di riferimento, formalizzato attraverso l’ipotesi nulla. È emerso con chiarezza che il **valore-p** possiede un significato molto più circoscritto di quanto suggeriscano molte interpretazioni correnti: esso non fornisce la probabilità che $H_0$ sia vera, né misura direttamente la forza di un effetto, ma quantifica esclusivamente quanto sarebbero rari dati come quelli osservati **assumendo valida l’ipotesi nulla**.
+
+Questa limitazione interpretativa, unita alla natura dicotomica della decisione inferenziale e alla dipendenza della significatività statistica da fattori come la dimensione campionaria, mette in luce una distanza strutturale tra **significatività statistica** e **rilevanza pratica o teorica** dei risultati. In molti contesti applicativi, tali vincoli rendono il test di ipotesi poco adatto a rispondere in modo diretto alle domande che guidano la ricerca scientifica.
+
+Per queste ragioni, appare opportuno sostituire il test di significatività con strumenti inferenziali più informativi e interpretabili, capaci di esprimere in modo graduale l’incertezza e di fornire stime direttamente utilizzabili sul piano teorico e applicativo. L’**approccio bayesiano** rappresenta una di queste alternative: esso propone una concezione diversa della probabilità e dell’inferenza, consentendo di formulare affermazioni probabilistiche sui parametri e di integrare in modo esplicito l’informazione disponibile.
 
 ::: {.callout-note collapse=true title="Informazioni sull'ambiente di sviluppo"}
 ```{r}

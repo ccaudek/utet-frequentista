@@ -2,7 +2,9 @@
 
 ::: {.callout-note appearance="minimal"}
 
-Gli intervalli di confidenza sono uno strumento fondamentale dell'inferenza statistica frequentista. Essi permettono di stimare un parametro sconosciuto della popolazione, come la media $\mu$, tenendo conto dell'incertezza derivante dal fatto che la stima si basa su un campione.
+Gli **intervalli di confidenza** costituiscono uno degli strumenti centrali dell’inferenza statistica frequentista. Essi non si limitano a fornire una stima puntuale di un parametro sconosciuto della popolazione, come la media $\mu$, ma integrano esplicitamente l’**incertezza statistica** inevitabilmente associata al fatto che tale stima è ottenuta a partire da un campione finito.
+
+Dal punto di vista concettuale, l’intervallo di confidenza rappresenta una risposta formale al problema dell’affidabilità della stima: esso traduce la variabilità descritta dalla distribuzione campionaria in un **insieme di valori compatibili** con i dati osservati, secondo una procedura di costruzione ben definita. In questo senso, gli intervalli di confidenza incarnano l’impostazione frequentista, poiché la loro interpretazione è legata al comportamento della **procedura inferenziale sotto ripetizione del campionamento**, e non a una probabilità assegnata direttamente al parametro.
 :::
 
 ::: callout-important
@@ -33,60 +35,91 @@ here::here("code", "_common.R") |>
 
 ### Caso con varianza nota
 
-Consideriamo una popolazione distribuita normalmente con media $\mu$ sconosciuta e varianza $\sigma^2$ nota. In questo contesto, la media campionaria $\bar{X}$ ha una distribuzione normale:
+Consideriamo il caso ideale in cui la popolazione di interesse sia distribuita normalmente, con media $\mu$ sconosciuta e **varianza $\sigma^2$ nota**. Sebbene questa situazione sia rara nelle applicazioni reali, essa rappresenta un punto di partenza concettualmente semplice per comprendere la logica di costruzione degli intervalli di confidenza.
+
+In tali condizioni, la **media campionaria** $\bar{X}$, calcolata su un campione di dimensione $n$, segue una distribuzione normale:
+
 
 $$
 \bar{X} \sim \mathcal{N}\!\left(\mu, \; \frac{\sigma^2}{n}\right).
 $$
 
-Standardizzando otteniamo una variabile normale standard:
+Standardizzando la media campionaria otteniamo una variabile casuale con distribuzione normale standard:
 
 $$
 Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \sim \mathcal{N}(0, 1).
 $$
 
-Per un livello di confidenza del 95%, il valore critico della normale standard è (z_{0.025} = 1.96). Questo garantisce che:
+Questa trasformazione consente di sfruttare le proprietà note della distribuzione normale standard. In particolare, fissato un **livello di confidenza** del 95%, esiste un valore critico $z_{0.025} = 1.96$ tale che:
 
 $$
 P(-1.96 \leq Z \leq 1.96) = 0.95.
 $$
 
-A questo punto possiamo “invertire” la standardizzazione, isolando (\mu) all’interno della doppia disuguaglianza. Il risultato è l’intervallo di confidenza al 95% per la media:
+Questa probabilità va interpretata come una proprietà della variabile casuale $Z$, e dunque della procedura di costruzione dell’intervallo, non del parametro $\mu$.
+
+Sostituendo l’espressione di $Z$ e **invertendo la disuguaglianza**, si isola il parametro $\mu$ all’interno di un intervallo dipendente dai dati osservati:
 
 $$
-\left(\bar{X} - 1.96 \,\frac{\sigma}{\sqrt{n}},\quad
-\bar{X} + 1.96 \,\frac{\sigma}{\sqrt{n}}\right).
+P\!\left(
+\bar{X} - 1.96\,\frac{\sigma}{\sqrt{n}}
+\;\leq\;
+\mu
+\;\leq\;
+\bar{X} + 1.96\,\frac{\sigma}{\sqrt{n}}
+\right)
+= 0.95.
 $$
 
-Questo intervallo rappresenta l’insieme dei valori di $\mu$ compatibili con i dati osservati, dato il modello assunto e il livello di confidenza scelto.
-
-### Caso con varianza incognita
-
-Nella maggior parte delle applicazioni reali la varianza della popolazione (\sigma^2) non è disponibile. In questi casi la stimiamo tramite la varianza campionaria (s^2). Questa sostituzione introduce un’ulteriore fonte di incertezza, che viene tenuta in conto utilizzando la distribuzione (t) di Student anziché la normale standard.
-
-La statistica di interesse diventa:
-
-$$
-T = \frac{\bar{X} - \mu}{s / \sqrt{n}} \sim t_{,n-1},
-$$
-dove i $n-1$ gradi di libertà riflettono il fatto che la varianza viene stimata dai dati.
-
-L’intervallo di confidenza per $\mu$, con livello di confidenza $\gamma$, assume quindi la forma:
+L’espressione tra parentesi definisce l’**intervallo di confidenza al 95% per la media**:
 
 $$
 \left(
-\bar{X} - t^{*}_{\,n-1},\frac{s}{\sqrt{n}},
-\quad
-\bar{X} + t^{*}_{\,n-1},\frac{s}{\sqrt{n}}
+\bar{X} - 1.96\,\frac{\sigma}{\sqrt{n}},
+\;\;
+\bar{X} + 1.96\,\frac{\sigma}{\sqrt{n}}
+\right).
+$$
+
+Dal punto di vista frequentista, questo intervallo non assegna una probabilità al parametro (\mu). Esso rappresenta piuttosto il risultato di una **procedura inferenziale** che, se ripetuta indefinitamente su campioni estratti dalla stessa popolazione, produrrebbe intervalli contenenti il valore vero di (\mu) nel 95% dei casi.
+
+In questo senso, l’intervallo di confidenza individua l’insieme dei valori del parametro **compatibili con i dati osservati**, dato il modello probabilistico assunto e il livello di confidenza prescelto.
+
+### Caso con varianza incognita
+
+Nella maggior parte delle applicazioni empiriche, la varianza della popolazione $\sigma^2$ non è nota e deve essere stimata a partire dai dati. In questo caso, essa viene sostituita dalla **varianza campionaria** $s^2$. Tale sostituzione introduce un’ulteriore fonte di incertezza, poiché la dispersione della popolazione non è più un parametro noto, ma una quantità stimata.
+
+Questa incertezza aggiuntiva modifica la distribuzione della statistica standardizzata. In particolare, quando la popolazione è normale (o quando $n$ è sufficientemente grande), la statistica
+
+$$
+T = \frac{\bar{X} - \mu}{s / \sqrt{n}}
+$$
+non segue più una distribuzione normale standard, ma una **distribuzione *t* di Student** con $n - 1$ gradi di libertà:
+
+$$
+T \sim t_{n-1}.
+$$
+
+I gradi di libertà $n - 1$ riflettono il fatto che la varianza campionaria è calcolata utilizzando una stima della media, riducendo di un’unità l’informazione indipendente disponibile nei dati.
+
+Fissato un livello di confidenza $\gamma$ (ad esempio, $\gamma = 0.95$), l’intervallo di confidenza per la media $\mu$ assume la forma:
+
+$$
+\left(
+\bar{X} - t^{*}_{,n-1},\frac{s}{\sqrt{n}},
+;;
+\bar{X} + t^{*}_{,n-1},\frac{s}{\sqrt{n}}
 \right),
 $$
-dove $t^{*}_{\,n-1}$ è il quantile corrispondente della distribuzione $t$ con $n-1$ gradi di libertà.
+dove $t^{*}_{,n-1}$ è il quantile della distribuzione *t* con $n - 1$ gradi di libertà corrispondente al livello di confidenza scelto.
 
-Rispetto al caso con varianza nota, l’intervallo è leggermente più ampio: la distribuzione $t$ tiene conto dell’incertezza aggiuntiva legata alla stima di $s$, soprattutto quando il campione è di piccole dimensioni.
+Rispetto al caso con varianza nota, l’intervallo risulta in genere **più ampio**. La distribuzione *t* presenta infatti code più pesanti rispetto alla normale standard, riflettendo la maggiore incertezza associata alla stima della varianza. Questa differenza è particolarmente rilevante per campioni di piccole dimensioni e tende a ridursi progressivamente all’aumentare di $n$: per $n$ grandi, la distribuzione *t* converge alla distribuzione normale standard, e i due intervalli diventano praticamente indistinguibili.
+
+Dal punto di vista inferenziale, l’uso della distribuzione *t* consente quindi di preservare la corretta copertura dell’intervallo di confidenza anche in presenza di varianza ignota, mantenendo la coerenza interna dell’approccio frequentista.
 
 ## Esempio pratico in R
 
-Consideriamo un campione di punteggi di benessere psicologico, con l'obiettivo di stimare la media della popolazione tramite un intervallo di confidenza.
+Per rendere concreti i concetti introdotti, consideriamo un campione di punteggi di benessere psicologico e utilizziamolo per stimare la media della popolazione mediante un intervallo di confidenza.
 
 ```{r}
 # Dati campionari
@@ -102,7 +135,11 @@ cat("Deviazione standard:", round(dev_std, 2), "\n")
 cat("Dimensione campionaria:", n, "\n")
 ```
 
-Successivamente, procediamo alla costruzione manuale di un intervallo di confidenza al 95% per la media della popolazione, utilizzando la distribuzione $t$ di Student.
+Queste quantità riassumono il campione osservato e costituiscono i mattoni di base per la costruzione dell’intervallo di confidenza. Poiché la varianza della popolazione è ignota, utilizzeremo la distribuzione t di Student con $n − 1$ gradi di libertà.
+
+**Costruzione manuale dell’intervallo di confidenza.**
+
+Procediamo ora al calcolo esplicito di un intervallo di confidenza al 95% per la media della popolazione. Questo passaggio rende trasparente il legame tra teoria e procedura computazionale.
 
 ```{r}
 # Calcolo manuale dell'intervallo di confidenza al 95%
@@ -120,19 +157,35 @@ cat("Intervallo di confidenza al 95%: [",
     round(limite_inf, 2), ", ", round(limite_sup, 2), "]\n")
 ```
 
-Il risultato può essere verificato utilizzando la funzione `t.test()`, che fornisce direttamente l'intervallo di confidenza e altre statistiche rilevanti:
+Il procedimento riflette direttamente la formula teorica:
+
+$$
+\bar{X} \pm t^{*}_{n-1},\frac{s}{\sqrt{n}}.
+$$
+
+Il **margine di errore** dipende sia dalla variabilità del campione (tramite $s$) sia dalla dimensione campionaria ($n$), ed è modulato dal valore critico della distribuzione *t*, che tiene conto dell’incertezza associata alla stima della varianza.
+
+**Verifica con le funzioni di R.**
+
+Il risultato ottenuto può essere verificato utilizzando la funzione `t.test()`, che implementa la stessa procedura inferenziale in modo automatico:
 
 ```{r}
 t.test(punteggi, conf.level = 0.95)
 ```
 
-L'output della funzione conferma i limiti dell'intervallo calcolati manualmente, offrendo al contempo il valore della statistica test e il relativo valore-$p$ per la verifica dell'ipotesi nulla.
+L’output conferma i limiti dell’intervallo di confidenza calcolati manualmente e fornisce, inoltre, la **statistica test *t*** e il relativo **valore-*p*** per la verifica dell’ipotesi nulla $H_0 : \mu = \mu_0$.
 
 ## Il significato del livello di copertura
 
-Il **livello di copertura** rappresenta la proporzione di intervalli che, sul lungo periodo, includerà il vero valore del parametro. Si tratta di un concetto riferito alla procedura utilizzata per costruire gli intervalli e non al singolo intervallo ottenuto.
+Il **livello di copertura** è il concetto che definisce in modo rigoroso il significato di un intervallo di confidenza nel paradigma frequentista. Esso rappresenta la **proporzione di intervalli** che, nel lungo periodo, contengono il vero valore del parametro quando la procedura di costruzione dell’intervallo viene applicata ripetutamente a campioni estratti dalla stessa popolazione.
+
+È essenziale sottolineare che il livello di copertura è una **proprietà della procedura inferenziale**, non del singolo intervallo ottenuto a partire da un campione specifico. Un intervallo di confidenza al 95% è tale perché la procedura che lo genera garantisce una copertura del 95% nel lungo periodo, non perché il singolo intervallo abbia una “probabilità del 95%” di contenere il parametro.
+
+Questa distinzione è centrale per comprendere correttamente l’interpretazione frequentista degli intervalli di confidenza.
 
 ### Simulazione del livello di copertura
+
+Per rendere operativa questa idea, possiamo simulare il processo di campionamento ripetuto e verificare empiricamente la copertura degli intervalli di confidenza.
 
 ```{r}
 set.seed(42)
@@ -158,7 +211,11 @@ cat("Copertura empirica:", round(copertura_empirica * 100, 1), "%\n")
 cat("Copertura teorica: 95%\n")
 ```
 
-### Visualizzazione
+Il valore della **copertura empirica** oscilla attorno al 95%, con piccole fluttuazioni dovute al numero finito di simulazioni. All’aumentare del numero di ripetizioni, la copertura empirica tende a convergere al valore teorico, illustrando il significato operativo del livello di confidenza.
+
+### Visualizzazione del concetto di copertura
+
+Per rendere ancora più intuitiva questa idea, visualizziamo un sottoinsieme degli intervalli ottenuti:
 
 ```{r}
 # Mostriamo i primi 50 intervalli
@@ -182,34 +239,43 @@ ggplot(df_ic, aes(x = id)) +
   coord_flip()
 ```
 
+In questo grafico, ciascun segmento rappresenta un intervallo di confidenza costruito a partire da un campione diverso. La linea tratteggiata indica il valore vero del parametro $\mu$. Come previsto, **la maggior parte degli intervalli contiene $\mu$**, mentre una frazione (circa il 5%) non lo include. Non esiste alcun modo, osservando un singolo intervallo, di sapere se esso appartenga al gruppo “corretto” o a quello “errato”: questa incertezza è intrinseca all’inferenza frequentista.
+
+
 ## Interpretazione corretta e fraintendimenti comuni
 
 ::: {.callout-warning}
 
 ### Interpretazione corretta
 
-“Se ripetessimo lo stesso studio molte volte, il 95% degli intervalli costruiti con questa procedura includerebbe il vero valore del parametro.”
+> *“Se ripetessimo lo stesso studio molte volte, il 95% degli intervalli costruiti con questa procedura includerebbe il vero valore del parametro.”*
 
-L’enfasi è sulla **procedura**, non sul singolo intervallo.
+L’enfasi è posta sulla **procedura inferenziale** e sul comportamento nel lungo periodo, non sul singolo intervallo osservato.
 :::
 
 ::: {.callout-caution}
 
 ### Fraintendimenti da evitare
 
-1. ❌ *“C’è il 95% di probabilità che il parametro sia in questo intervallo.”*
-   Nel framework frequentista il parametro è fisso: non ha una distribuzione di probabilità.
+1. ❌ **“C’è il 95% di probabilità che il parametro sia in questo intervallo.”**
+   Nel paradigma frequentista il parametro è una quantità fissa e ignota, non una variabile casuale a cui assegnare probabilità.
 
-2. ❌ *“Il 95% dei valori della popolazione cade nell’intervallo.”*
-   L’intervallo riguarda la stima della media, non la dispersione dei dati.
+2. ❌ **“Il 95% dei valori della popolazione cade nell’intervallo.”**
+   L’intervallo di confidenza riguarda la stima della media (o di un altro parametro), non la dispersione dei dati individuali.
 
-3. ❌ *“Valori più centrali nell’intervallo sono più probabili.”*
-   L’intervallo di confidenza non fornisce una densità di probabilità sul parametro.
+3. ❌ **“I valori centrali dell’intervallo sono più probabili.”**
+   L’intervallo di confidenza non fornisce una distribuzione di probabilità sul parametro e non attribuisce maggiore plausibilità a valori “più centrali”.
+
 :::
+
+Questa sezione chiarisce uno dei punti più delicati dell’inferenza frequentista: l’intervallo di confidenza non è uno strumento probabilistico sul parametro, ma una **garanzia procedurale** sul comportamento a lungo termine del metodo di stima. Comprendere questa distinzione è essenziale per un uso corretto e consapevole degli intervalli di confidenza nella pratica scientifica.
+
 
 ## Effetto del livello di confidenza
 
-Aumentando il livello di confidenza, l’intervallo si fa più ampio:
+Il livello di confidenza influisce direttamente sull’ampiezza dell’intervallo. A parità di dati e di modello statistico, aumentare il livello di confidenza implica rendere l’intervallo più ampio, poiché è necessario garantire una copertura più elevata nel lungo periodo.
+
+Questo effetto può essere illustrato confrontando intervalli di confidenza costruiti sullo stesso campione, ma con livelli di confidenza differenti:
 
 ```{r}
 # Confronto tra livelli di confidenza
@@ -223,11 +289,19 @@ for (liv in livelli) {
 }
 ```
 
-Livelli più elevati aumentano la “copertura”, ma riducono la **precisione** dell’intervallo: un tipico compromesso in statistica inferenziale.
+Come atteso, all’aumentare del livello di confidenza l’ampiezza dell’intervallo cresce progressivamente. Questo riflette un compromesso fondamentale dell’inferenza frequentista:
+
+* livelli di confidenza più elevati garantiscono una maggiore copertura nel lungo periodo;
+* tale garanzia è ottenuta al prezzo di una minore precisione, poiché l’intervallo diventa meno informativo.
+
+In altri termini, richiedere maggiore sicurezza procedurale implica accettare una stima meno precisa del parametro.
 
 ## Effetto della dimensione campionaria
 
-All’aumentare della dimensione del campione, l’intervallo si restringe:
+Un secondo fattore cruciale che influenza l’ampiezza dell’intervallo di confidenza è la dimensione del campione. A differenza del livello di confidenza, che modifica la soglia di copertura, l’aumento di $n$ agisce direttamente sulla variabilità della stima, riducendo l’errore standard.
+
+Questo effetto può essere illustrato costruendo intervalli di confidenza al 95% per campioni di dimensione crescente:
+
 
 ```{r}
 set.seed(123)
@@ -244,31 +318,49 @@ for (n in dimensioni) {
 }
 ```
 
-L’ampiezza dell’intervallo decresce come (1 / \sqrt{n}): per ottenere intervalli più stretti occorrono aumenti sostanziali della numerosità.
+All’aumentare della dimensione campionaria, l’intervallo si restringe in modo sistematico. Questo comportamento è una conseguenza diretta della relazione teorica:
 
+$$
+\text{ampiezza dell’intervallo} \;\propto\; \frac{1}{\sqrt{n}}.
+$$
+
+Ne segue un risultato concettualmente importante: ottenere intervalli sensibilmente più stretti richiede aumenti sostanziali della numerosità campionaria. Raddoppiare la precisione (ossia dimezzare l’ampiezza dell’intervallo) richiede, in linea teorica, quadruplicare la dimensione del campione.
+
+### Sintesi concettuale
+
+Nel paradigma frequentista, la precisione di un intervallo di confidenza è determinata dall’interazione di due fattori principali:
+
+* il **livello di confidenza**, che controlla la copertura procedurale;
+* la **dimensione campionaria**, che controlla la variabilità della stima.
+
+Questa duplice dipendenza rende esplicito il carattere non arbitrario degli intervalli di confidenza: essi riflettono scelte metodologiche (livello di confidenza) e vincoli empirici (numerosità del campione), e devono essere interpretati alla luce di entrambi.
 
 ## Limiti dell’approccio frequentista
 
-L’interpretazione degli intervalli di confidenza solleva alcune difficoltà concettuali:
+Pur rappresentando uno strumento metodologicamente rigoroso e ampiamente utilizzato, l’approccio frequentista agli intervalli di confidenza presenta alcune **difficoltà concettuali e interpretative** che emergono con particolare evidenza nella pratica scientifica.
 
 1. **Riferimento al lungo periodo.**
-   L’inferenza si basa su ripetizioni ipotetiche dell’esperimento, mentre in pratica disponiamo di un solo campione.
+   L’interpretazione degli intervalli di confidenza è intrinsecamente legata a un’idea di ripetizione ideale dell’esperimento: la copertura è definita in termini di ciò che accadrebbe su un numero molto elevato di campioni ipotetici. Tuttavia, nella pratica empirica lo sperimentatore osserva un solo campione e un solo intervallo. Questo scarto tra il riferimento teorico (il lungo periodo) e la situazione concreta (il singolo studio) può rendere l’interpretazione controintuitiva, soprattutto in contesti applicativi.
 
 2. **Assenza di probabilità sul parametro.**
-   Non è possibile formulare affermazioni probabilistiche sul parametro stesso.
+   Nel paradigma frequentista, il parametro è considerato una quantità fissa e ignota, non una variabile casuale. Di conseguenza, non è possibile formulare affermazioni probabilistiche dirette del tipo “la probabilità che $\mu$ appartenga a questo intervallo è 0.95”. Questa restrizione, pur coerente dal punto di vista formale, può risultare poco naturale quando l’obiettivo dell’analisi è esprimere in modo diretto il grado di incertezza su un parametro specifico.
 
 3. **Dipendenza dal piano di campionamento.**
-   Due intervalli costruiti con dati identici possono differire se differente era il piano sperimentale.
+   Gli intervalli di confidenza dipendono non solo dai dati osservati, ma anche dal piano di campionamento e dalle assunzioni del modello statistico. In linea di principio, due analisi basate sugli stessi dati numerici possono produrre intervalli diversi se derivano da disegni sperimentali o strategie di campionamento differenti. Questo aspetto evidenzia come l’inferenza frequentista sia sensibile al contesto procedurale in cui i dati sono stati raccolti.
 
-Questi aspetti motivano la prospettiva bayesiana, che consente di formulare direttamente affermazioni probabilistiche sul parametro tramite gli **intervalli di credibilità**, basati sulla distribuzione a posteriori.
+Nel loro insieme, questi limiti non invalidano l’approccio frequentista, ma ne chiariscono la portata e le condizioni di applicabilità. Essi motivano l’interesse per la **prospettiva bayesiana**, che adotta una concezione diversa della probabilità e consente di formulare affermazioni probabilistiche dirette sui parametri di interesse attraverso gli **intervalli di credibilità**, basati sulla distribuzione *a posteriori*.
 
-## Riflessioni conclusive
+## Riflessioni conclusive {.unnumbered .unlisted}
 
-Gli intervalli di confidenza sono lo strumento utilizzato dall'approccio frequentista per esprimere l'incertezza associata alla stima di un parametro di popolazione. È importante interpretarli nel modo corretto: il livello di confidenza (ad esempio, il 95%) si riferisce alla **performance della procedura di costruzione nel lungo periodo**, non alla probabilità che un singolo intervallo calcolato contenga il parametro. Una volta osservati i dati, l'intervallo ottenuto è un'entità deterministica: esso contiene o non contiene il valore vero, e non è possibile attribuirgli una probabilità.
+In questo capitolo abbiamo esaminato gli **intervalli di confidenza** come lo strumento mediante il quale l’approccio frequentista esprime l’incertezza associata alla stima di un parametro di popolazione. È emerso con chiarezza che la loro interpretazione corretta richiede un cambio di prospettiva rispetto all’intuizione immediata: il livello di confidenza (ad esempio, il 95%) non rappresenta la probabilità che un singolo intervallo osservato contenga il parametro, bensì una proprietà della **procedura di costruzione** nel lungo periodo.
 
-L'ampiezza dell'intervallo di confidenza è determinata da tre fattori principali: la variabilità intrinseca dei dati, il livello di confidenza scelto (con livelli più elevati che producono intervalli più ampi) e la dimensione del campione, che generalmente porta a stime più precise e intervalli più stretti.
+Una volta osservati i dati e calcolato l’intervallo, quest’ultimo è un oggetto deterministico: esso contiene oppure non contiene il valore vero del parametro, senza che sia epistemologicamente legittimo attribuirgli una probabilità. La nozione di copertura si riferisce esclusivamente al comportamento dell’intervallo sotto ripetizione ideale del campionamento, e costituisce uno degli aspetti più distintivi — e al tempo stesso più controintuitivi — dell’inferenza frequentista.
 
-Nonostante la loro diffusione, gli intervalli di confidenza frequentisti sono spesso soggetti a fraintendimenti interpretativi, in particolare alla tentazione di assegnare loro una probabilità  riguardo al parametro. Questa difficoltà interpretativa evidenzia una differenza filosofica fondamentale tra i diversi paradigmi statistici e motiva l'esplorazione di approcci alternativi. L'inferenza bayesiana, in particolare, fornisce un quadro concettuale diverso che permette di quantificare l'incertezza sui parametri in modo più intuitivo, attraverso la distribuzione di probabilità a posteriori. Questo sarà il tema centrale dei capitoli successivi.
+Abbiamo inoltre visto che l’**ampiezza dell’intervallo di confidenza** è determinata dall’interazione di tre fattori fondamentali: la variabilità intrinseca dei dati, il livello di confidenza scelto (con livelli più elevati che garantiscono maggiore copertura al prezzo di una minore precisione) e la dimensione del campione, che riduce l’errore standard e conduce a stime progressivamente più precise.
+
+Nonostante il loro ruolo centrale nella pratica scientifica, gli intervalli di confidenza frequentisti sono frequentemente oggetto di fraintendimenti interpretativi, in particolare della tendenza ad attribuire loro un significato probabilistico diretto sul parametro. Questa difficoltà non è semplicemente un problema didattico, ma riflette una **differenza filosofica profonda** tra i paradigmi statistici: nel frequentismo la probabilità è una proprietà delle procedure e dei dati possibili, non dei parametri.
+
+Questa distinzione concettuale motiva l’esplorazione di approcci alternativi all’inferenza statistica. In particolare, l’inferenza bayesiana propone una concezione diversa della probabilità, che consente di quantificare direttamente l’incertezza sui parametri attraverso distribuzioni *a posteriori* e intervalli di credibilità, offrendo un linguaggio inferenziale spesso più aderente alle domande poste nella ricerca empirica. L’analisi sistematica di questo approccio costituirà il tema centrale dei capitoli successivi.
 
 ::: {.callout-note collapse=true title="Informazioni sull'ambiente di sviluppo"}
 ```{r}
