@@ -419,11 +419,10 @@ window.Quarto = {
    
   <ul class="collapse">
 <li><a href="#concetti-di-base" id="toc-concetti-di-base" class="nav-link active" data-scroll-target="#concetti-di-base"><span class="header-section-number">2.1</span> Concetti di base</a></li>
-  <li><a href="#distribuzione-campionaria" id="toc-distribuzione-campionaria" class="nav-link" data-scroll-target="#distribuzione-campionaria"><span class="header-section-number">2.2</span> Distribuzione campionaria</a></li>
+  <li><a href="#la-distribuzione-campionaria-intuizione-e-definizione" id="toc-la-distribuzione-campionaria-intuizione-e-definizione" class="nav-link" data-scroll-target="#la-distribuzione-campionaria-intuizione-e-definizione"><span class="header-section-number">2.2</span> La distribuzione campionaria: intuizione e definizione</a></li>
   <li><a href="#il-teorema-del-limite-centrale" id="toc-il-teorema-del-limite-centrale" class="nav-link" data-scroll-target="#il-teorema-del-limite-centrale"><span class="header-section-number">2.3</span> Il teorema del limite centrale</a></li>
-  <li><a href="#errore-standard" id="toc-errore-standard" class="nav-link" data-scroll-target="#errore-standard"><span class="header-section-number">2.4</span> Errore Standard</a></li>
+  <li><a href="#errore-standard" id="toc-errore-standard" class="nav-link" data-scroll-target="#errore-standard"><span class="header-section-number">2.4</span> Errore standard</a></li>
   <li><a href="#implicazioni-per-linferenza" id="toc-implicazioni-per-linferenza" class="nav-link" data-scroll-target="#implicazioni-per-linferenza"><span class="header-section-number">2.5</span> Implicazioni per l’inferenza</a></li>
-  <li><a href="#riflessioni-conclusive" id="toc-riflessioni-conclusive" class="nav-link" data-scroll-target="#riflessioni-conclusive"><span class="header-section-number">2.6</span> Riflessioni conclusive</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/02_stime_parametri.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -506,38 +505,38 @@ window.Quarto = {
 </div>
 <section id="concetti-di-base" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="concetti-di-base">
 <span class="header-section-number">2.1</span> Concetti di base</h2>
-<p>L’analisi statistica ha spesso come obiettivo la conoscenza di una o più caratteristiche di una popolazione di interesse. Tuttavia, nella pratica, l’intera popolazione è raramente osservabile, e l’inferenza deve basarsi su un campione estratto da essa.</p>
-<p>In questo contesto si definiscono tre concetti fondamentali:</p>
+<p>L’analisi statistica ha come obiettivo fondamentale la conoscenza di una o più caratteristiche di una <strong>popolazione</strong> di interesse. Nella pratica scientifica, tuttavia, l’osservazione dell’intera popolazione è quasi sempre impraticabile, sia per vincoli materiali sia per ragioni concettuali. Di conseguenza, l’inferenza statistica si fonda sull’osservazione di un <strong>campione</strong>, estratto dalla popolazione secondo un meccanismo di campionamento formalmente specificato.</p>
+<p>Questo passaggio dalla popolazione al campione introduce inevitabilmente un elemento di incertezza, che costituisce il nucleo stesso dell’inferenza statistica. Per formalizzare tale incertezza è necessario distinguere con chiarezza alcuni concetti fondamentali:</p>
 <ul>
-<li>
-<strong>parametro</strong>: quantità fissa ma incognita che descrive una caratteristica della popolazione (ad esempio, la sua media o varianza). Rappresenta il bersaglio dell’inferenza.</li>
-<li>
-<strong>stimatore</strong>: regola o funzione matematica dei dati campionari, utilizzata per ottenere un valore approssimativo del parametro. Formalmente, è una variabile casuale prima dell’osservazione del campione.</li>
-<li>
-<strong>stima</strong>: valore numerico effettivamente calcolato a partire da un campione specifico applicando lo stimatore. È una realizzazione concreta dello stimatore.</li>
+<li><p><strong>Parametro</strong>: quantità fissa ma incognita che descrive una caratteristica della popolazione (ad esempio, la media <span class="math inline">\(\mu\)</span> o la varianza <span class="math inline">\(\sigma^2\)</span>). Il parametro non è oggetto di osservazione diretta e rappresenta l’<strong>oggetto primario dell’inferenza</strong>.</p></li>
+<li><p><strong>Stimatore</strong>: regola o funzione matematica dei dati campionari impiegata per approssimare il valore del parametro. Prima dell’osservazione del campione, uno stimatore è una <strong>variabile casuale</strong>, poiché il suo valore dipende dall’esito aleatorio del processo di campionamento.</p></li>
+<li><p><strong>Stima</strong>: valore numerico specifico ottenuto applicando uno stimatore a un campione concreto. La stima è quindi una <strong>realizzazione osservata</strong> dello stimatore.</p></li>
 </ul>
-<p>La distinzione tra stimatore (funzione campionaria dotata di proprietà probabilistiche) e stima (valore numerico osservato) è fondamentale. Le stime sono inevitabilmente soggette a incertezza statistica, in quanto dipendono dal campione casuale osservato e, in generale, non corrispondono al valore effettivo del parametro della popolazione.</p>
-</section><section id="distribuzione-campionaria" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="distribuzione-campionaria">
-<span class="header-section-number">2.2</span> Distribuzione campionaria</h2>
-<p>Per introdurre il concetto di <em>distribuzione campionaria</em>, utilizziamo un esempio con una popolazione molto piccola, così da poter enumerare tutti i possibili campioni.</p>
+<p>La distinzione tra stimatore e stima è concettualmente cruciale. Le proprietà inferenziali, come correttezza, variabilità o consistenza, riguardano lo <strong>stimatore</strong> in quanto oggetto probabilistico, non la singola stima osservata. Quest’ultima, essendo il risultato di un campionamento casuale, è inevitabilmente affetta da incertezza statistica e, in generale, non coincide esattamente con il valore vero del parametro della popolazione.</p>
+<p>Questa incertezza, lungi dall’essere un difetto, costituisce il punto di partenza per lo studio della <strong>distribuzione campionaria</strong>, che descrive il comportamento probabilistico di uno stimatore al variare dei campioni possibili e fornisce il fondamento teorico dell’inferenza statistica frequentista.</p>
+</section><section id="la-distribuzione-campionaria-intuizione-e-definizione" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="la-distribuzione-campionaria-intuizione-e-definizione">
+<span class="header-section-number">2.2</span> La distribuzione campionaria: intuizione e definizione</h2>
+<p>Per introdurre il concetto di <strong>distribuzione campionaria</strong>, è utile partire da un esempio volutamente semplice che consente di enumerare esplicitamente tutti i campioni possibili. L’obiettivo non è simulare una situazione realistica di analisi dei dati, bensì costruire un <strong>dispositivo concettuale</strong> che permetta di rendere visibile un’idea altrimenti astratta: il comportamento probabilistico di una statistica al variare dei campioni.</p>
 <section id="esempio-introduttivo" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="esempio-introduttivo">
 <span class="header-section-number">2.2.1</span> Esempio introduttivo</h3>
-<p>Supponiamo di avere la seguente popolazione costituita da quattro valori:</p>
+<p>Consideriamo una popolazione estremamente ridotta, composta da quattro valori:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4.5</span>, <span class="fl">5</span>, <span class="fl">5.5</span><span class="op">)</span></span>
 <span><span class="va">x</span></span>
 <span><span class="co">#&gt; [1] 2.0 4.5 5.0 5.5</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Questi valori potrebbero rappresentare, ad esempio, i tempi di reazione (in secondi) di quattro partecipanti a un esperimento. Calcoliamo la media e la varianza della popolazione:</p>
+<p>Questi valori potrebbero rappresentare, ad esempio, i tempi di reazione (in secondi) di quattro partecipanti a un esperimento. Poiché stiamo trattando l’insieme completo delle osservazioni disponibili, possiamo calcolarne direttamente la <strong>media</strong> e la <strong>varianza</strong>, che in questo contesto assumono il ruolo di parametri della popolazione:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>  <span class="co"># Media</span></span>
 <span><span class="co">#&gt; [1] 4.25</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>   <span class="co"># Varianza</span></span>
 <span><span class="co">#&gt; [1] 2.42</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="campionamento-e-distribuzione-campionaria" class="level3" data-number="2.2.2"><h3 data-number="2.2.2" class="anchored" data-anchor-id="campionamento-e-distribuzione-campionaria">
-<span class="header-section-number">2.2.2</span> Campionamento e distribuzione campionaria</h3>
-<p>Ora estraiamo <strong>tutti i possibili campioni di dimensione</strong> (n = 2) <strong>con reinserimento</strong> dalla popolazione. Poiché a ogni estrazione esistono quattro possibili valori, il numero totale di campioni distinti è:</p>
+<p>Queste quantità descrivono la popolazione nel suo complesso e costituiscono il riferimento rispetto al quale confronteremo i risultati ottenuti dai campioni.</p>
+</section><section id="campionamento-e-costruzione-della-distribuzione-campionaria" class="level3" data-number="2.2.2"><h3 data-number="2.2.2" class="anchored" data-anchor-id="campionamento-e-costruzione-della-distribuzione-campionaria">
+<span class="header-section-number">2.2.2</span> Campionamento e costruzione della distribuzione campionaria</h3>
+<p>Supponiamo ora di estrarre <strong>tutti i possibili campioni di dimensione</strong> <span class="math inline">\(n = 2\)</span> <strong>con reinserimento</strong> dalla popolazione. L’uso del reinserimento garantisce che ogni estrazione sia indipendente e che ciascun valore della popolazione possa comparire più volte nello stesso campione.</p>
+<p>Poiché a ogni estrazione sono disponibili quattro valori distinti, il numero totale di campioni ordinati possibili è:</p>
 <p><span class="math display">\[
 4^2 = 16.
 \]</span></p>
@@ -560,144 +559,301 @@ window.Quarto = {
 <span><span class="co">#&gt; 13  2.0  5.5</span></span>
 <span><span class="co">#&gt; 14  4.5  5.5</span></span>
 <span><span class="co">#&gt; 15  5.0  5.5</span></span>
-<span><span class="co">#&gt; 16  5.5  5.5</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 16  5.5  5.5</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 16</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Per ciascun campione calcoliamo la media, ottenendo così la <strong>distribuzione campionaria della media</strong>:</p>
+<p>Ogni riga della tabella rappresenta un possibile campione di dimensione 2. Per ciascun campione calcoliamo ora la <strong>media campionaria</strong>, ottenendo così l’insieme di tutti i valori che tale statistica può assumere sotto ripetizione del campionamento:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span></span>
 <span><span class="va">sample_means</span></span>
 <span><span class="co">#&gt;  [1] 2.00 3.25 3.50 3.75 3.25 4.50 4.75 5.00 3.50 4.75 5.00 5.25 3.75 5.00 5.25</span></span>
 <span><span class="co">#&gt; [16] 5.50</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>Questo insieme di valori costituisce la <strong>distribuzione campionaria della media</strong> per campioni di dimensione <span class="math inline">\(n = 2\)</span>.</p>
 </section><section id="visualizzazione-della-distribuzione-campionaria" class="level3" data-number="2.2.3"><h3 data-number="2.2.3" class="anchored" data-anchor-id="visualizzazione-della-distribuzione-campionaria">
 <span class="header-section-number">2.2.3</span> Visualizzazione della distribuzione campionaria</h3>
+<p>Per rendere più intuitiva la struttura di questa distribuzione, rappresentiamo graficamente le medie campionarie ottenute:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Valori <span class="op">=</span> <span class="va">sample_means</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Valori <span class="op">=</span> <span class="va">sample_means</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Valori</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_histogram</span><span class="op">(</span></span>
-<span>    bins <span class="op">=</span> <span class="fl">7</span>,</span>
-<span>    <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>    fill <span class="op">=</span> <span class="st">"steelblue"</span>,</span>
-<span>    color <span class="op">=</span> <span class="st">"white"</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Distribuzione campionaria delle medie (n = 2)"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Media campionaria"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Densità"</span></span>
-<span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu">geom_histogram</span><span class="op">(</span></span>
+<span>bins <span class="op">=</span> <span class="fl">7</span>,</span>
+<span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>fill <span class="op">=</span> <span class="st">"steelblue"</span>,</span>
+<span>color <span class="op">=</span> <span class="st">"white"</span></span>
+<span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu">labs</span><span class="op">(</span></span>
+<span>title <span class="op">=</span> <span class="st">"Distribuzione campionaria delle medie (n = 2)"</span>,</span>
+<span>x <span class="op">=</span> <span class="st">"Media campionaria"</span>,</span>
+<span>y <span class="op">=</span> <span class="st">"Densità"</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="02_stime_parametri_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="02_stime_parametri_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
+<figure class="figure"><p><a href="02_stime_parametri_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="02_stime_parametri_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<p>L’istogramma mostra chiaramente che le medie campionarie non sono distribuite uniformemente. Alcuni valori di media compaiono più spesso perché possono essere ottenuti in più modi dai valori della popolazione. Questo esempio illustra un punto chiave: anche quando la popolazione è molto semplice, la distribuzione campionaria di una statistica (in questo caso, la media) presenta una struttura propria, determinata sia dalla forma della popolazione sia dalla dimensione del campione.</p>
-</section><section id="proprietà-della-distribuzione-campionaria" class="level3" data-number="2.2.4"><h3 data-number="2.2.4" class="anchored" data-anchor-id="proprietà-della-distribuzione-campionaria">
-<span class="header-section-number">2.2.4</span> Proprietà della distribuzione campionaria</h3>
-<section id="media-della-distribuzione-campionaria" class="level4" data-number="2.2.4.1"><h4 data-number="2.2.4.1" class="anchored" data-anchor-id="media-della-distribuzione-campionaria">
-<span class="header-section-number">2.2.4.1</span> Media della distribuzione campionaria</h4>
-<p>Un risultato fondamentale della teoria della stima afferma che la media della distribuzione campionaria coincide con la media della popolazione. Possiamo verificarlo nel nostro esempio:</p>
+<p>L’istogramma mostra chiaramente che le medie campionarie <strong>non sono distribuite uniformemente</strong>. Alcuni valori compaiono più frequentemente di altri perché possono essere ottenuti da un numero maggiore di combinazioni dei valori della popolazione. In altre parole, anche se il campionamento dalla popolazione avviene in modo casuale e uniforme (cioè ogni unità ha la stessa probabilità di essere estratta), la distribuzione della statistica calcolata (in questo caso, la media) non è necessariamente uniforme.</p>
+<p>Questo esempio mette in evidenza un punto concettuale fondamentale: la <strong>distribuzione campionaria</strong> di una statistica possiede una struttura propria, che dipende sia dalla distribuzione della popolazione sia dalla dimensione del campione. Essa non coincide né con la distribuzione della popolazione né con quella dei singoli campioni osservati.</p>
+<p>L’esempio precedente ci ha permesso di costruire esplicitamente una distribuzione campionaria in un caso elementare. Nel seguito, generalizzeremo questa idea, introducendo la definizione formale di distribuzione campionaria e analizzandone le proprietà teoriche, che costituiscono il fondamento dell’inferenza statistica frequentista.</p>
+</section><section id="cosè-una-distribuzione-campionaria" class="level3" data-number="2.2.4"><h3 data-number="2.2.4" class="anchored" data-anchor-id="cosè-una-distribuzione-campionaria">
+<span class="header-section-number">2.2.4</span> Cos’è una distribuzione campionaria</h3>
+<p>Nel lavoro empirico emerge un’apparente tensione epistemologica: l’analisi statistica si fonda sull’osservazione di un <strong>singolo campione</strong>, dal quale otteniamo una <strong>singola stima</strong> del parametro di interesse (ad esempio, una media campionaria). Tuttavia, l’obiettivo dell’inferenza non è il campione in sé, bensì la valutazione dell’<strong>affidabilità</strong> di tale stima rispetto al parametro della popolazione. Come può essere quantificata questa affidabilità a partire da un’unica osservazione?</p>
+<p>L’inferenza frequentista risolve questo problema adottando un punto di vista esplicitamente <strong>controfattuale</strong>: si chiede cosa accadrebbe se lo stesso studio potesse essere ripetuto un numero molto elevato (idealmente infinito) di volte, mantenendo inalterate le condizioni sperimentali e lo schema di campionamento.</p>
+<p>In termini concettuali, questo equivale a immaginare che:</p>
+<ol type="1">
+<li>dalla medesima popolazione vengano estratti ripetutamente campioni della <strong>stessa dimensione</strong> <span class="math inline">\(n\)</span>;</li>
+<li>per ciascun campione venga calcolata la <strong>medesima statistica</strong> (ad esempio, la media campionaria).</li>
+</ol>
+<p>Poiché ogni campione differisce dagli altri per composizione, anche i valori assunti dalla statistica varieranno da un campione all’altro. Se si potessero raccogliere tutte queste stime e rappresentarle graficamente, emergerebbe una forma regolare: una <strong>distribuzione di probabilità</strong>.</p>
+<p>Questa distribuzione teorica, che descrive come una statistica varia al variare del campione estratto, prende il nome di <strong>distribuzione campionaria</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definizione">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Definizione
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La <strong>distribuzione campionaria</strong> di una statistica è la distribuzione di probabilità dei valori che tale statistica assume su tutti i possibili campioni di dimensione <span class="math inline">\(n\)</span> estraibili dalla stessa popolazione, secondo uno specifico schema di campionamento.</p>
+<p>Essa rappresenta una mappa dell’<strong>incertezza campionaria</strong>, ossia della variabilità intrinseca della stima dovuta esclusivamente al carattere aleatorio del campionamento.</p>
+</div>
+</div>
+<p>È essenziale chiarire cosa la distribuzione campionaria <strong>non</strong> rappresenta:</p>
+<ul>
+<li>
+<strong>non</strong> è la distribuzione dei dati nella popolazione;</li>
+<li>
+<strong>non</strong> è la distribuzione dei dati osservati in un singolo campione;</li>
+<li>è, piuttosto, una <strong>proprietà teorica dello stimatore</strong>, che dipende dalla dimensione del campione <span class="math inline">\(n\)</span>, dalla variabilità della popolazione e dallo schema di campionamento adottato.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+</li>
+</ul>
+<p>La distinzione concettuale fondamentale può essere così riassunta:</p>
+<ul>
+<li>la <strong>distribuzione della popolazione</strong> descrive la variabilità di un <strong>tratto</strong> tra gli individui;</li>
+<li>la <strong>distribuzione campionaria</strong> descrive la variabilità di una <strong>stima</strong> di quel tratto tra esperimenti ripetuti.</li>
+</ul>
+<p>Questa distinzione costituisce il nucleo dell’inferenza statistica frequentista. Sebbene nella pratica si osservi un solo campione, gli strumenti inferenziali, come gli intervalli di confidenza e i test di ipotesi, traggono la loro giustificazione teorica dal comportamento a <strong>lungo termine</strong> della statistica, così come descritto dalla sua distribuzione campionaria. Ogni stimatore, che si tratti di una media, di una proporzione o di un coefficiente di regressione, possiede una propria distribuzione campionaria, dalla quale discendono le sue proprietà di accuratezza, precisione e affidabilità inferenziale.</p>
+</section><section id="proprietà-della-distribuzione-campionaria" class="level3" data-number="2.2.5"><h3 data-number="2.2.5" class="anchored" data-anchor-id="proprietà-della-distribuzione-campionaria">
+<span class="header-section-number">2.2.5</span> Proprietà della distribuzione campionaria</h3>
+<p>Per chiarire le proprietà fondamentali delle distribuzioni campionarie, ci concentreremo sulla <strong>media campionaria</strong> come stimatore principale. Questa scelta non è casuale: la media rappresenta lo strumento di stima più utilizzato in psicologia e nelle scienze sociali e costituisce un caso paradigmatico per comprendere i meccanismi generali dell’inferenza frequentista.</p>
+<section id="una-proprietà-fondamentale-la-correttezza" class="level4" data-number="2.2.5.1"><h4 data-number="2.2.5.1" class="anchored" data-anchor-id="una-proprietà-fondamentale-la-correttezza">
+<span class="header-section-number">2.2.5.1</span> Una proprietà fondamentale: la correttezza</h4>
+<p>Un primo risultato teorico di rilievo riguarda il <strong>valore atteso della media campionaria</strong>. La teoria statistica dimostra che la media della distribuzione campionaria di <span class="math inline">\(\bar{X}\)</span> coincide esattamente con la <strong>media della popolazione</strong> <span class="math inline">\(\mu\)</span>:</p>
+<p><span class="math display">\[
+\mathbb{E}(\bar{X}) = \mu.
+\]</span></p>
+<p>Nel nostro esempio empirico, questa uguaglianza può essere verificata direttamente:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>            <span class="co"># Media della popolazione</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>            <span class="co"># Media della popolazione (μ)</span></span>
 <span><span class="co">#&gt; [1] 4.25</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sample_means</span><span class="op">)</span> <span class="co"># Media della distribuzione campionaria</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sample_means</span><span class="op">)</span> <span class="co"># Media della distribuzione campionaria della media dei campioni</span></span>
 <span><span class="co">#&gt; [1] 4.25</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Questa uguaglianza mostra che la media campionaria <span class="math inline">\(\bar{X}\)</span> è uno <strong>stimatore non distorto</strong>: se ripetessimo il campionamento un numero indefinito di volte, la media delle nostre stime tenderebbe al valore reale della popolazione.</p>
-</section><section id="varianza-della-distribuzione-campionaria" class="level4" data-number="2.2.4.2"><h4 data-number="2.2.4.2" class="anchored" data-anchor-id="varianza-della-distribuzione-campionaria">
-<span class="header-section-number">2.2.4.2</span> Varianza della distribuzione campionaria</h4>
-<p>La variabilità delle medie campionarie è descritta da:</p>
+<p>Questo risultato non è un fatto contingente, ma esprime una proprietà formale cruciale: la media campionaria <span class="math inline">\(\bar{X}\)</span> è uno <strong>stimatore corretto</strong> (o <em>non distorto</em>) del parametro <span class="math inline">\(\mu\)</span>. In termini concettuali, la correttezza implica che lo stimatore non presenta una tendenza sistematica a sovrastimare o sottostimare il valore vero della popolazione.</p>
+<p>Dal punto di vista frequentista, ciò significa che <strong>nel lungo periodo</strong>, ossia sotto ripetizione indefinita del processo di campionamento, la media delle stime converge al parametro vero. La correttezza non garantisce che una singola stima sia vicina a <span class="math inline">\(\mu\)</span>, ma assicura che eventuali errori di stima si compensino nel complesso delle ripetizioni.</p>
+</section></section><section id="varianza-della-distribuzione-campionaria" class="level3" data-number="2.2.6"><h3 data-number="2.2.6" class="anchored" data-anchor-id="varianza-della-distribuzione-campionaria">
+<span class="header-section-number">2.2.6</span> Varianza della distribuzione campionaria</h3>
+<p>Se la correttezza riguarda il <em>centro</em> della distribuzione campionaria, la <strong>varianza della distribuzione campionaria</strong> ne quantifica invece la <strong>dispersione</strong>, fornendo una misura della <strong>precisione</strong> dello stimatore. Essa descrive quanto le stime della media tendano a fluttuare attorno al valore vero <span class="math inline">\(\mu\)</span> al variare del campione.</p>
+<p>La teoria statistica fornisce una relazione fondamentale:</p>
 <p><span class="math display">\[
-\text{Var}(\bar{X}) = \frac{\sigma^2}{n},
-\]</span> dove <span class="math inline">\(\sigma^2\)</span> è la varianza della popolazione e <span class="math inline">\(n\)</span> la dimensione del campione. Verifichiamo il risultato nel nostro caso:</p>
+\mathrm{Var}(\bar{X}) = \frac{\sigma^2}{n},
+\]</span> dove:</p>
+<ul>
+<li>
+<span class="math inline">\(\sigma^2\)</span> è la varianza della popolazione,</li>
+<li>
+<span class="math inline">\(n\)</span> è la dimensione del campione.</li>
+</ul>
+<p>Nel nostro esempio, tale relazione può essere verificata empiricamente:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>                    <span class="co"># Varianza della popolazione</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>                    <span class="co"># σ²: Varianza della popolazione</span></span>
 <span><span class="co">#&gt; [1] 2.42</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span>                <span class="co"># Varianza teorica (σ²/n per n = 2)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span>                <span class="co"># σ²/n: Varianza teorica per n = 2</span></span>
 <span><span class="co">#&gt; [1] 1.21</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">sample_means</span><span class="op">)</span> <span class="op">*</span> <span class="fl">15</span><span class="op">/</span><span class="fl">16</span> <span class="co"># Varianza empirica (corretta per popolazione finita)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">sample_means</span><span class="op">)</span> <span class="op">*</span> <span class="fl">15</span><span class="op">/</span><span class="fl">16</span> <span class="co"># Varianza empirica corretta per popolazione finita</span></span>
 <span><span class="co">#&gt; [1] 0.906</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>La riduzione della varianza all’aumentare di (n) riflette un principio intuitivo: campioni più grandi forniscono stime più stabili della media.</p>
-</section></section></section><section id="il-teorema-del-limite-centrale" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="il-teorema-del-limite-centrale">
+<p>Questa formula racchiude uno dei principi più importanti dell’inferenza statistica: <strong>la variabilità delle medie campionarie diminuisce all’aumentare della dimensione del campione</strong>. In altri termini, la precisione dello stimatore cresce con <span class="math inline">\(n\)</span>.</p>
+<p>L’interpretazione intuitiva è che campioni più ampi tendono a “compensare” le fluttuazioni casuali dovute a osservazioni estreme o atipiche. Di conseguenza, le stime ottenute da campioni grandi risultano più <strong>stabili e replicabili</strong>. Due campioni indipendenti di dimensione <span class="math inline">\(n = 100\)</span> produrranno, in media, stime della media molto più simili tra loro rispetto a due campioni di dimensione <span class="math inline">\(n = 10\)</span>.</p>
+<p>Questa proprietà fornisce il fondamento teorico del principio secondo cui <strong>l’aumento della dimensione campionaria riduce l’incertezza inferenziale</strong>, e prepara il terreno per risultati più generali, come il teorema del limite centrale, che verrà discusso nella sezione successiva.</p>
+</section></section><section id="il-teorema-del-limite-centrale" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="il-teorema-del-limite-centrale">
 <span class="header-section-number">2.3</span> Il teorema del limite centrale</h2>
-<p>Il <strong>teorema del limite centrale</strong> (TLC) è uno dei pilastri della statistica inferenziale. Stabilisce che, al crescere della dimensione campionaria, la distribuzione della media campionaria assume una forma approssimativamente normale, anche quando la distribuzione della popolazione non è normale.</p>
+<p>Il <strong>teorema del limite centrale</strong> (TLC) rappresenta uno dei pilastri concettuali della statistica inferenziale. La sua importanza non risiede soltanto nel contenuto matematico, ma nel ruolo epistemologico che esso svolge: il TLC fornisce il collegamento teorico tra la variabilità individuale dei dati e le regolarità aggregative emergenti nelle statistiche di sintesi. Il suo nucleo concettuale può essere riassunto nel seguente enunciato: la media (o la somma) di un numero sufficientemente elevato di variabili casuali indipendenti e identicamente distribuite converge a una distribuzione normale, indipendentemente dalla forma della distribuzione originaria delle variabili stesse.</p>
 <section id="enunciato-formale" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="enunciato-formale">
 <span class="header-section-number">2.3.1</span> Enunciato formale</h3>
-<p>Sia <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> una sequenza di variabili casuali indipendenti e identicamente distribuite, con media <span class="math inline">\(\mu\)</span> e varianza finita <span class="math inline">\(\sigma^2\)</span>. Allora, per <span class="math inline">\(n\)</span> sufficientemente grande:</p>
+<p>Siano <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> una sequenza di variabili casuali <strong>indipendenti e identicamente distribuite</strong> (<em>i.i.d.</em>), ciascuna con valore atteso <span class="math inline">\(\mathbb{E}[X_i] = \mu\)</span> e varianza finita <span class="math inline">\(\mathrm{Var}(X_i) = \sigma^2\)</span>.</p>
+<p>Allora, per <span class="math inline">\(n\)</span> sufficientemente grande, la distribuzione della <strong>media campionaria</strong></p>
 <p><span class="math display">\[
-\bar{X} \sim \mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right),
-\]</span> e in forma standardizzata:</p>
+\bar{X}_n = \frac{1}{n} \sum_{i=1}^n X_i
+\]</span> può essere approssimata da una distribuzione normale con la stessa media <span class="math inline">\(\mu\)</span> e varianza ridotta di un fattore <span class="math inline">\(n\)</span>:</p>
 <p><span class="math display">\[
-Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} \mathcal{N}(0, 1).
+\bar{X}_n \;\stackrel{\text{appross.}}{\sim}\; \mathcal{N}\!\left(\mu,\; \frac{\sigma^2}{n}\right).
 \]</span></p>
-<p>Questo risultato spiega perché la distribuzione normale compare così spesso in psicologia e nelle scienze empiriche: molte statistiche derivate da campioni, e in particolare la media, tendono naturalmente a distribuirsi in modo approssimativamente gaussiano, anche quando i dati di partenza non lo sono.</p>
-</section><section id="dimostrazione-mediante-simulazione" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="dimostrazione-mediante-simulazione">
-<span class="header-section-number">2.3.2</span> Dimostrazione mediante simulazione</h3>
-<p>Per vedere concretamente come opera il teorema del limite centrale, consideriamo una distribuzione uniforme sull’intervallo [0, 1]. Si tratta di una distribuzione molto diversa da quella normale: è piatta, simmetrica e con varianza limitata. Proprio per questo motivo, rappresenta un buon esempio per mostrare come il TLC agisca anche quando la distribuzione di partenza non è affatto “a campana”.</p>
-<p>Il codice seguente genera 10.000 campioni per tre diverse dimensioni campionarie (<span class="math inline">\(n\)</span> = 5, <span class="math inline">\(n\)</span> = 30, <span class="math inline">\(n\)</span> = 100) e calcola la media di ciascun campione.</p>
+<p>In forma standardizzata, il teorema afferma che la variabile</p>
+<p><span class="math display">\[
+Z_n = \frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}} .
+\]</span></p>
+<p><strong>converge in distribuzione</strong> a una normale standard:</p>
+<p><span class="math display">\[
+Z_n \xrightarrow[]{\;d\;} \mathcal{N}(0, 1), \qquad \text{per } n \to \infty.
+\]</span></p>
+<p>È importante sottolineare che questa convergenza riguarda la <strong>forma della distribuzione</strong> e non i singoli valori osservati: il TLC è un risultato asintotico e probabilistico, non deterministico.</p>
+</section><section id="perché-il-tlc-è-così-rilevante" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="perché-il-tlc-è-così-rilevante">
+<span class="header-section-number">2.3.2</span> Perché il TLC è così rilevante?</h3>
+<p>Il teorema del limite centrale spiega l’<strong>ubiquità empirica della distribuzione normale</strong> nelle scienze sperimentali e sociali, psicologia compresa. Molte delle quantità di interesse, ovvero medie, somme, proporzioni, sono, nella loro struttura matematica, il risultato di aggregazioni di osservazioni individuali. Il TLC garantisce che, anche quando la distribuzione della popolazione è asimmetrica, multimodale o irregolare, la <strong>distribuzione campionaria della media</strong> tende ad assumere una forma approssimativamente normale al crescere della dimensione campionaria.</p>
+<p>È cruciale mantenere distinta la portata del teorema:</p>
+<ul>
+<li>il TLC <strong>non</strong> afferma che i <strong>dati grezzi</strong> <span class="math inline">\(X_i\)</span> siano normalmente distribuiti;</li>
+<li>il TLC <strong>garantisce</strong> che la <strong>distribuzione campionaria della media</strong> <span class="math inline">\(\bar{X}_n\)</span> diventi approssimativamente normale per campioni sufficientemente grandi.</li>
+</ul>
+<p>Questa distinzione è spesso fonte di fraintendimenti nella pratica applicativa, ma è centrale per una corretta interpretazione dei metodi inferenziali frequentisti.</p>
+</section><section id="implicazioni-inferenziali" class="level3" data-number="2.3.3"><h3 data-number="2.3.3" class="anchored" data-anchor-id="implicazioni-inferenziali">
+<span class="header-section-number">2.3.3</span> Implicazioni inferenziali</h3>
+<p>Dal punto di vista metodologico, il TLC costituisce il fondamento teorico che rende possibile:</p>
+<ul>
+<li>la costruzione di <strong>intervalli di confidenza</strong> per la media,</li>
+<li>l’applicazione di <strong>test di ipotesi</strong> basati sulla distribuzione normale,</li>
+</ul>
+<p>anche in situazioni in cui l’assunzione di normalità della popolazione non è verificabile o risulta chiaramente violata. In tal senso, il TLC giustifica l’uso estensivo della distribuzione normale come modello approssimante nell’inferenza frequentista.</p>
+<p>Al tempo stesso, il teorema chiarisce il ruolo cruciale della <strong>dimensione campionaria</strong>: quanto più <span class="math inline">\(n\)</span> è grande, tanto migliore è l’approssimazione normale. Nei capitoli successivi vedremo come questa dipendenza da <span class="math inline">\(n\)</span> condizioni la validità pratica dei risultati inferenziali e come, in presenza di campioni piccoli o distribuzioni fortemente asimmetriche, sia necessario ricorrere a strumenti alternativi o a cautele interpretative.</p>
+</section><section id="dimostrazione-mediante-simulazione-la-normalizzazione-dellasimmetria" class="level3" data-number="2.3.4"><h3 data-number="2.3.4" class="anchored" data-anchor-id="dimostrazione-mediante-simulazione-la-normalizzazione-dellasimmetria">
+<span class="header-section-number">2.3.4</span> Dimostrazione mediante simulazione: la normalizzazione dell’asimmetria</h3>
+<p>Per cogliere in modo intuitivo la portata del teorema del limite centrale, è istruttivo partire da una distribuzione che violi in modo netto l’assunzione di normalità. Consideriamo quindi una <strong>distribuzione esponenziale</strong> con parametro <span class="math inline">\(\lambda = 1\)</span>, che presenta caratteristiche opposte a quelle di una distribuzione normale:</p>
+<ul>
+<li>è <strong>fortemente asimmetrica</strong> (asimmetria positiva pari a 2);</li>
+<li>è <strong>limitata inferiormente</strong> (assume solo valori positivi);</li>
+<li>presenta una <strong>coda lunga</strong> verso destra.</li>
+</ul>
+<p>Distribuzioni di questo tipo sono comuni in contesti empirici, ad esempio nello studio dei tempi di attesa, delle durate o dei tempi di reazione. Proprio per la loro marcata non-normalità, esse costituiscono un banco di prova ideale per osservare l’azione del TLC.</p>
+<p>L’idea della simulazione è la seguente: estrarre ripetutamente campioni dalla distribuzione esponenziale, calcolare la media di ciascun campione e osservare come si distribuiscono queste medie al variare della dimensione campionaria <span class="math inline">\(n\)</span>.</p>
+<p>Il codice seguente genera 10,000 campioni indipendenti per tre diverse dimensioni campionarie (<span class="math inline">\(n = 3\)</span>, <span class="math inline">\(n = 30\)</span>, <span class="math inline">\(n = 300\)</span>), calcolando ogni volta la media campionaria:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
 <span><span class="va">n_samples</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
 <span></span>
-<span><span class="co"># Funzione per calcolare medie campionarie</span></span>
+<span><span class="co"># Funzione per calcolare medie campionarie da distribuzione esponenziale</span></span>
 <span><span class="va">calculate_means</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">sample_size</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">n_samples</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">sample_size</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">n_samples</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="va">sample_size</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="co"># Medie per diverse dimensioni campionarie</span></span>
-<span><span class="va">means_n5</span> <span class="op">&lt;-</span> <span class="fu">calculate_means</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">means_n3</span> <span class="op">&lt;-</span> <span class="fu">calculate_means</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="va">means_n30</span> <span class="op">&lt;-</span> <span class="fu">calculate_means</span><span class="op">(</span><span class="fl">30</span><span class="op">)</span></span>
-<span><span class="va">means_n100</span> <span class="op">&lt;-</span> <span class="fu">calculate_means</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
+<span><span class="va">means_n300</span> <span class="op">&lt;-</span> <span class="fu">calculate_means</span><span class="op">(</span><span class="fl">300</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Parametri teorici</span></span>
+<span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fl">1</span>  <span class="co"># Media della popolazione esponenziale(1)</span></span>
+<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fl">1</span>  <span class="co"># Deviazione standard della popolazione esponenziale(1)</span></span>
 <span></span>
 <span><span class="co"># Visualizzazione</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">means_n5</span>, breaks <span class="op">=</span> <span class="fl">40</span>, main <span class="op">=</span> <span class="st">"n = 5"</span>, xlab <span class="op">=</span> <span class="st">"Media"</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">means_n30</span>, breaks <span class="op">=</span> <span class="fl">40</span>, main <span class="op">=</span> <span class="st">"n = 30"</span>, xlab <span class="op">=</span> <span class="st">"Media"</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">means_n100</span>, breaks <span class="op">=</span> <span class="fl">40</span>, main <span class="op">=</span> <span class="st">"n = 100"</span>, xlab <span class="op">=</span> <span class="st">"Media"</span>, probability <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># n = 5</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">means_n3</span>, breaks <span class="op">=</span> <span class="fl">40</span>, main <span class="op">=</span> <span class="st">"n = 3"</span>, xlab <span class="op">=</span> <span class="st">"Media campionaria"</span>, </span>
+<span>     probability <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="st">"lightblue"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="va">sigma</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>      col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># n = 30</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">means_n30</span>, breaks <span class="op">=</span> <span class="fl">40</span>, main <span class="op">=</span> <span class="st">"n = 30"</span>, xlab <span class="op">=</span> <span class="st">"Media campionaria"</span>, </span>
+<span>     probability <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="st">"lightblue"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1.8</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="va">sigma</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>      col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># n = 100</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">means_n300</span>, breaks <span class="op">=</span> <span class="fl">40</span>, main <span class="op">=</span> <span class="st">"n = 300"</span>, xlab <span class="op">=</span> <span class="st">"Media campionaria"</span>, </span>
+<span>     probability <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="st">"lightblue"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.7</span>, <span class="fl">1.4</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="va">sigma</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">300</span><span class="op">)</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>      col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="02_stime_parametri_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="02_stime_parametri_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
+<figure class="figure"><p><a href="02_stime_parametri_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="02_stime_parametri_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Con l’aumento della dimensione del campione, si osservano due fenomeni chiave:</p>
-<ol type="1">
+<section id="interpretazione-dei-risultati" class="level4" data-number="2.3.4.1"><h4 data-number="2.3.4.1" class="anchored" data-anchor-id="interpretazione-dei-risultati">
+<span class="header-section-number">2.3.4.1</span> Interpretazione dei risultati</h4>
+<p>Il confronto tra i tre pannelli rende visibile il teorema del limite centrale in azione.</p>
+<p><strong>1. Dalla asimmetria alla simmetria</strong></p>
+<ul>
+<li>Con <strong><span class="math inline">\(n = 3\)</span></strong>, la distribuzione delle medie campionarie conserva una marcata asimmetria verso destra. La forma riflette ancora chiaramente la distribuzione esponenziale di partenza.</li>
+<li>Con <strong><span class="math inline">\(n = 30\)</span></strong>, l’asimmetria si riduce drasticamente. La distribuzione appare ormai campanulare e quasi simmetrica.</li>
+<li>Con <strong><span class="math inline">\(n = 300\)</span></strong>, la distribuzione delle medie è praticamente indistinguibile da una distribuzione normale. L’asimmetria originaria è scomparsa.</li>
+</ul>
+<p>Questo mostra come il TLC operi una vera e propria <strong>normalizzazione dell’asimmetria</strong>, anche quando la popolazione di origine è fortemente non-normale.</p>
+<p><strong>2. Riduzione progressiva della dispersione</strong></p>
+<p>Parallelamente, si osserva una chiara riduzione della dispersione delle medie campionarie:</p>
+<ul>
+<li>la varianza teorica della media diminuisce come <span class="math inline">\(\sigma^2/n = 1/n\)</span>;</li>
+<li>l’intervallo di variazione si restringe progressivamente: per <span class="math inline">\(n = 300\)</span>, la maggior parte delle medie si concentra in un intorno molto stretto del valore vero <span class="math inline">\(\mu = 1\)</span>.</li>
+</ul>
+<p>Questa riduzione riflette l’aumento della <strong>precisione inferenziale</strong> associato a campioni più grandi.</p>
+</section><section id="due-messaggi-chiave-del-tlc" class="level4" data-number="2.3.4.2"><h4 data-number="2.3.4.2" class="anchored" data-anchor-id="due-messaggi-chiave-del-tlc">
+<span class="header-section-number">2.3.4.2</span> Due messaggi chiave del TLC</h4>
+<p>La simulazione evidenzia in modo diretto i due aspetti centrali del teorema del limite centrale:</p>
+<ul>
+<li><p><strong>Normalizzazione della forma.</strong> Anche partendo da una distribuzione estremamente asimmetrica, la distribuzione campionaria della media tende a una forma gaussiana al crescere di <span class="math inline">\(n\)</span>.</p></li>
 <li>
-<strong>la forma della distribuzione delle medie si avvicina rapidamente a una distribuzione normale</strong>, anche se la distribuzione di partenza non lo è;</li>
-<li>
-<strong>la variabilità delle medie diminuisce</strong>: i valori si concentrano sempre più vicino alla media della distribuzione originale (0.5 nel caso della distribuzione uniforme [0,1]).</li>
-</ol>
-<p>Questa simulazione mostra chiaramente la caratteristica centrale del TLC: a prescindere dalla forma della distribuzione iniziale, la distribuzione delle medie campionarie tenderà comunque a una distribuzione normale e sarà sempre più concentrata attorno al valore atteso della popolazione, man mano che il campione aumenta.</p>
-</section></section><section id="errore-standard" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="errore-standard">
-<span class="header-section-number">2.4</span> Errore Standard</h2>
-<p>L’<strong>errore standard</strong> (SE) rappresenta la deviazione standard della distribuzione campionaria di uno stimatore, fornendo quindi una misura della sua variabilità teorica sotto ripetuto campionamento. Nel caso specifico della media campionaria <span class="math inline">\(\bar{X}\)</span>, l’errore standard è definito da:</p>
+<p><strong>Ruolo cruciale della dimensione campionaria.</strong> La dimensione del campione controlla simultaneamente:</p>
+<ul>
+<li>la <strong>velocità di convergenza alla normalità</strong>;</li>
+<li>la <strong>precisione della stima</strong>, che cresce come <span class="math inline">\(1/\sqrt{n}\)</span>.</li>
+</ul>
+</li>
+</ul>
+<p>La curva rossa tratteggiata in ciascun pannello rappresenta la distribuzione normale teorica prevista dal TLC, <span class="math inline">\(\mathcal{N}(1, 1/n)\)</span>. Il buon accordo osservato, soprattutto per <span class="math inline">\(n\)</span> grandi, mostra come il TLC fornisca una base solida per l’uso della distribuzione normale nell’inferenza statistica frequentista, anche quando i dati di partenza non presentano alcuna somiglianza con una gaussiana.</p>
+</section></section></section><section id="errore-standard" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="errore-standard">
+<span class="header-section-number">2.4</span> Errore standard</h2>
+<p>L’<strong>errore standard</strong> (<em>Standard Error</em>, SE) rappresenta la <strong>deviazione standard della distribuzione campionaria</strong> di uno stimatore. Esso quantifica, in forma sintetica, la variabilità teorica della stima dovuta esclusivamente al processo di campionamento e fornisce quindi una misura diretta della precisione inferenziale.</p>
+<p>Nel caso della <strong>media campionaria</strong> <span class="math inline">\(\bar{X}\)</span>, l’errore standard è definito come:</p>
 <p><span class="math display">\[
-\text{SE}(\bar{X}) = \frac{\sigma}{\sqrt{n}},
-\]</span> dove <span class="math inline">\(\sigma\)</span> è la deviazione standard della popolazione e <span class="math inline">\(n\)</span> la dimensione del campione.</p>
-<p>Poiché nella pratica il parametro <span class="math inline">\(\sigma\)</span> è raramente noto, esso viene sostituito dalla sua stima campionaria, la deviazione standard campionaria <span class="math inline">\(s\)</span>, ottenendo l’errore standard stimato:</p>
+\mathrm{SE}(\bar{X}) = \frac{\sigma}{\sqrt{n}},
+\]</span> dove <span class="math inline">\(\sigma\)</span> è la deviazione standard della popolazione e <span class="math inline">\(n\)</span> la dimensione del campione. Questa espressione discende direttamente dalla varianza della distribuzione campionaria della media e rende esplicita una relazione cruciale: la precisione della stima cresce con la dimensione del campione, ma con un rendimento decrescente, poiché dipende dalla radice quadrata di <span class="math inline">\(n\)</span>.</p>
+<p>Dal punto di vista teorico, l’errore standard è dunque una <strong>proprietà dello stimatore</strong>, non dei dati osservati. Esso descrive quanto la stima fluttuerebbe, in media, se il processo di campionamento fosse ripetuto molte volte nelle stesse condizioni.</p>
+<section id="errore-standard-stimato" class="level3" data-number="2.4.1"><h3 data-number="2.4.1" class="anchored" data-anchor-id="errore-standard-stimato">
+<span class="header-section-number">2.4.1</span> Errore standard stimato</h3>
+<p>Nella pratica applicativa, la deviazione standard della popolazione <span class="math inline">\(\sigma\)</span> è quasi sempre ignota. Per questo motivo, essa viene sostituita dalla <strong>deviazione standard campionaria</strong> <span class="math inline">\(s\)</span>, ottenendo una stima empirica dell’errore standard:</p>
 <p><span class="math display">\[
-\widehat{\text{SE}}(\bar{X}) = \frac{s}{\sqrt{n}}.
+\widehat{\mathrm{SE}}(\bar{X}) = \frac{s}{\sqrt{n}}.
 \]</span></p>
-<p>L’errore standard costituisce una misura fondamentale della precisione di uno stimatore: valori più piccoli indicano una minore dispersione attorno al valore atteso, segnalando quindi una maggiore affidabilità della stima.</p>
-</section><section id="implicazioni-per-linferenza" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="implicazioni-per-linferenza">
+<p>Questa quantità è essa stessa una stima e introduce un ulteriore livello di incertezza, particolarmente rilevante per campioni di piccola dimensione. Tuttavia, per campioni moderati o grandi, l’errore standard stimato fornisce un’approssimazione affidabile della variabilità reale della media campionaria.</p>
+</section><section id="interpretazione-concettuale" class="level3" data-number="2.4.2"><h3 data-number="2.4.2" class="anchored" data-anchor-id="interpretazione-concettuale">
+<span class="header-section-number">2.4.2</span> Interpretazione concettuale</h3>
+<p>L’errore standard svolge un ruolo centrale nell’inferenza frequentista perché connette tre livelli concettuali distinti:</p>
+<ul>
+<li>la <strong>variabilità della popolazione</strong> (<span class="math inline">\(\sigma\)</span>);</li>
+<li>la <strong>dimensione del campione</strong> (<span class="math inline">\(n\)</span>);</li>
+<li>la <strong>variabilità della stima</strong> sotto campionamento ripetuto.</li>
+</ul>
+<p>Un errore standard piccolo indica che la distribuzione campionaria della media è fortemente concentrata attorno al valore atteso, e quindi che stime ottenute da campioni diversi tenderebbero a essere simili. Al contrario, un errore standard elevato segnala una maggiore instabilità inferenziale.</p>
+<p>È importante sottolineare che l’errore standard <strong>non misura la dispersione dei dati</strong>, ma la dispersione delle <strong>stime</strong>. Confondere l’errore standard con la deviazione standard dei dati è uno degli errori interpretativi più comuni nella pratica empirica.</p>
+</section><section id="ruolo-inferenziale-dellerrore-standard" class="level3" data-number="2.4.3"><h3 data-number="2.4.3" class="anchored" data-anchor-id="ruolo-inferenziale-dellerrore-standard">
+<span class="header-section-number">2.4.3</span> Ruolo inferenziale dell’errore standard</h3>
+<p>Dal punto di vista operativo, l’errore standard costituisce l’elemento chiave per:</p>
+<ul>
+<li>la costruzione di <strong>intervalli di confidenza</strong>, che quantificano l’incertezza frequentista associata alla stima;</li>
+<li>il calcolo delle <strong>statistiche test</strong> nei test di ipotesi frequentisti;</li>
+<li>la valutazione della <strong>precisione comparativa</strong> tra studi con dimensioni campionarie diverse.</li>
+</ul>
+<p>In questo senso, l’errore standard rappresenta il punto di incontro tra la teoria delle distribuzioni campionarie, il teorema del limite centrale e le procedure inferenziali applicate. Nei prossimi paragrafi vedremo come esso venga utilizzato esplicitamente nella costruzione degli intervalli di confidenza per la media e nei test statistici basati sulla distribuzione normale e sulla distribuzione <em>t</em> di Student.</p>
+</section></section><section id="implicazioni-per-linferenza" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="implicazioni-per-linferenza">
 <span class="header-section-number">2.5</span> Implicazioni per l’inferenza</h2>
-<p>La distribuzione campionaria e il concetto di errore standard formano il fondamento teorico dell’inferenza frequentista. La comprensione del comportamento di uno stimatore sotto il principio della ripetizione del campionamento consente di:</p>
+<p>I concetti di <strong>distribuzione campionaria</strong> ed <strong>errore standard</strong> costituiscono il fondamento teorico dell’inferenza frequentista. Essi formalizzano l’idea centrale secondo cui la conoscenza statistica non riguarda il singolo campione osservato, ma il <strong>comportamento di una procedura inferenziale sotto la ripetizione ideale del campionamento</strong>.</p>
+<p>Comprendere come uno stimatore si comporta nel lungo periodo consente di affrontare in modo sistematico tre problemi fondamentali dell’inferenza statistica:</p>
 <ol type="1">
-<li>
-<strong>quantificare l’incertezza</strong>: attribuire una misura di variabilità (l’errore standard) a una stima puntuale, trasformandola da un singolo numero in un’informazione associata a una distribuzione di probabilità.</li>
-<li>
-<strong>costruire intervalli di confidenza</strong>: derivare un intervallo di valori plausibili per il parametro incognito, la cui interpretazione è legata alla percentuale di copertura della procedura di costruzione nel lungo termine.</li>
-<li>
-<strong>condurre test di ipotesi</strong>: calcolare probabilità (come il p-value) che quantificano quanto estremi siano i dati osservati rispetto a un’ipotesi nulla di riferimento, assumendo la validità di tale ipotesi e del modello di campionamento ripetuto.</li>
+<li><p><strong>Quantificare l’incertezza.</strong> L’errore standard permette di associare a una stima puntuale una misura della sua variabilità teorica. In questo modo, la stima non è più interpretata come un valore isolato, ma come il risultato di un processo aleatorio, la cui dispersione è descritta dalla distribuzione campionaria dello stimatore.</p></li>
+<li><p><strong>Costruire intervalli di confidenza.</strong> La conoscenza della distribuzione campionaria consente di derivare intervalli di valori per il parametro incognito, la cui interpretazione è <strong>intrinsecamente procedurale</strong>: un intervallo di confidenza è definito dalla sua <strong>percentuale di copertura nel lungo periodo</strong>, non dalla probabilità che il parametro si trovi in un singolo intervallo osservato.</p></li>
+<li><p><strong>Condurre test di ipotesi.</strong> I test statistici utilizzano la distribuzione campionaria di una statistica test per valutare quanto i dati osservati siano compatibili con un’ipotesi nulla di riferimento. Il valore-<span class="math inline">\(p\)</span> quantifica la probabilità di osservare dati almeno altrettanto estremi, <strong>assumendo la validità dell’ipotesi nulla e del modello di campionamento ripetuto</strong>.</p></li>
 </ol>
+<p>In ciascuno di questi casi, l’inferenza frequentista non attribuisce probabilità ai parametri o alle ipotesi, ma alle <strong>procedure</strong> e ai <strong>dati possibili</strong> generati sotto specifiche assunzioni.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -708,16 +864,16 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Il concetto di distribuzione campionaria può risultare controintuitivo perché richiede di pensare a cosa succederebbe se ripetessimo l’esperimento molte volte, anche se in pratica raccogliamo un solo campione. Questa è una caratteristica distintiva del pensiero frequentista.</p>
+<p>Il concetto di distribuzione campionaria può risultare controintuitivo, poiché richiede di ragionare in termini di esperimenti ipoteticamente ripetuti, nonostante nella pratica si osservi un solo campione. Questa prospettiva controfattuale costituisce una caratteristica distintiva del pensiero frequentista e ne definisce tanto la forza metodologica quanto il limite interpretativo.</p>
 </div>
 </div>
-</section><section id="riflessioni-conclusive" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="riflessioni-conclusive">
-<span class="header-section-number">2.6</span> Riflessioni conclusive</h2>
-<p>In questo capitolo sono stati introdotti i principi fondamentali che governano l’inferenza statistica nell’approccio frequentista. È stato illustrato come la distribuzione campionaria costituisca il concetto centrale, descrivendo la variabilità teorica di uno stimatore nell’ipotesi di ripetuto campionamento dalla stessa popolazione.</p>
-<p>In particolare, per la media campionaria <span class="math inline">\(\bar{X}\)</span> è stato dimostrato che la sua distribuzione campionaria ha valore atteso pari al parametro della popolazione μ, garantendo la proprietà di non distorsione dello stimatore. La sua varianza è data da <span class="math inline">\(\sigma^2/n\)</span>, il che evidenzia come la precisione della stima aumenti con l’aumentare della dimensione del campione, n.&nbsp;Il teorema del limite centrale fornisce il fondamento teorico per l’approssimazione normale di tale distribuzione quando n è sufficientemente grande, a prescindere dalla forma della distribuzione sottostante. L’errore standard, definito come la radice quadrata della varianza della distribuzione campionaria, fornisce una misura quantitativa di tale precisione.</p>
-<p>Questi concetti costituiscono la struttura logica necessaria per sviluppare e comprendere gli strumenti inferenziali fondamentali, ovvero gli intervalli di confidenza e i test di ipotesi, che verranno approfonditi nei capitoli successivi.</p>
+</section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
+<p>In questo capitolo sono stati introdotti i principi fondamentali che governano l’inferenza statistica nell’approccio frequentista, mettendo in luce il ruolo centrale della <strong>distribuzione campionaria</strong> come strumento concettuale per comprendere l’incertezza statistica. È stato mostrato come l’inferenza frequentista si fondi sull’analisi del comportamento di uno stimatore sotto l’ipotesi di <strong>campionamento ripetuto</strong> dalla stessa popolazione, piuttosto che sull’interpretazione di un singolo campione osservato.</p>
+<p>Con riferimento alla <strong>media campionaria</strong> <span class="math inline">\(\bar{X}\)</span>, è stato dimostrato che la sua distribuzione campionaria ha valore atteso pari al parametro della popolazione <span class="math inline">\(\mu\)</span>, garantendo la proprietà di <strong>correttezza</strong> (assenza di distorsione) dello stimatore. È stato inoltre evidenziato come la varianza della distribuzione campionaria, pari a <span class="math inline">\(\sigma^2 / n\)</span>, diminuisca all’aumentare della dimensione del campione, mostrando che la <strong>precisione inferenziale</strong> cresce con <span class="math inline">\(n\)</span>. Il <strong>teorema del limite centrale</strong> ha fornito il fondamento teorico per l’approssimazione normale della distribuzione campionaria della media, quando la dimensione campionaria è sufficientemente grande, indipendentemente dalla forma della distribuzione della popolazione.</p>
+<p>In questo quadro, l’<strong>errore standard</strong>, definito come la radice quadrata della varianza della distribuzione campionaria, emerge come una quantità chiave per quantificare la precisione di una stima e per collegare la teoria delle distribuzioni campionarie alle procedure inferenziali operative.</p>
+<p>Nel loro insieme, questi concetti costituiscono l’ossatura logica dell’inferenza frequentista e forniscono il fondamento teorico necessario per comprendere strumenti quali gli <strong>intervalli di confidenza</strong> e i <strong>test di ipotesi</strong>, che verranno sviluppati nei capitoli successivi. Comprendere tali strumenti richiede, infatti, una chiara consapevolezza del quadro probabilistico che li giustifica e dei presupposti concettuali su cui essi si basano.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Informazioni sull'ambiente di sviluppo">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -726,10 +882,10 @@ Nota
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.5.2 (2025-10-31)</span></span>
 <span><span class="co">#&gt; Platform: aarch64-apple-darwin20</span></span>
 <span><span class="co">#&gt; Running under: macOS Tahoe 26.2</span></span>
@@ -791,7 +947,10 @@ Nota
 </div>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+<ol>
+<li id="fn1"><p><strong>Schema di campionamento</strong>: si riferisce al metodo con cui vengono selezionate le unità dalla popolazione. Nell’esempio specifico, poiché si considerano tutte le possibili coppie ordinate (<code>expand.grid</code>), lo schema è equivalente a un <strong>campionamento casuale con reimmissione</strong> (ogni estrazione è indipendente e la popolazione rimane identica).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
