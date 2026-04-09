@@ -106,9 +106,9 @@ Fissato un livello di confidenza $\gamma$ (ad esempio, $\gamma = 0.95$), l’int
 
 $$
 \left(
-\bar{X} - t^{*}_{,n-1},\frac{s}{\sqrt{n}},
-;;
-\bar{X} + t^{*}_{,n-1},\frac{s}{\sqrt{n}}
+\bar{X} - t^{*}_{\,n-1}\,\frac{s}{\sqrt{n}},
+\;\;
+\bar{X} + t^{*}_{\,n-1}\,\frac{s}{\sqrt{n}}
 \right),
 $$
 dove $t^{*}_{,n-1}$ è il quantile della distribuzione *t* con $n - 1$ gradi di libertà corrispondente al livello di confidenza scelto.
@@ -160,7 +160,7 @@ cat("Intervallo di confidenza al 95%: [",
 Il procedimento riflette direttamente la formula teorica:
 
 $$
-\bar{X} \pm t^{*}_{n-1},\frac{s}{\sqrt{n}}.
+\bar{X} \pm t^{*}_{n-1}\,\frac{s}{\sqrt{n}}.
 $$
 
 Il **margine di errore** dipende sia dalla variabilità del campione (tramite $s$) sia dalla dimensione campionaria ($n$), ed è modulato dal valore critico della distribuzione *t*, che tiene conto dell’incertezza associata alla stima della varianza.
