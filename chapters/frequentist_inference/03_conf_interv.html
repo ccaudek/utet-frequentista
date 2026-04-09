@@ -2,10 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.36">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>3&nbsp; Intervalli di fiducia – Inferenza frequentista in psicologia</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -66,19 +69,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../style/gauss.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-88f89515ec50d56ed60c0d65bb29dbd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-12c7548f543ff79fe76bca8cab42d0cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-88f89515ec50d56ed60c0d65bb29dbd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-8aa23a9843243c7502dfe35b5a3a66a2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-57725ed9215a77f36b0b859489c6b50e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-8aa23a9843243c7502dfe35b5a3a66a2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
@@ -114,7 +116,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-QT5S3P9D31', { 'anonymize_ip': true});
 </script><style>html{ scroll-behavior: smooth; }</style>
-<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script><script type="text/javascript">
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -405,7 +407,7 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/epiloque/epiloque.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Considerazioni conclusive</span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Considerazioni conclusive</span></span></a>
   </div>
 </li>
       </ul>
@@ -556,9 +558,9 @@ T \sim t_{n-1}.
 <p>Fissato un livello di confidenza <span class="math inline">\(\gamma\)</span> (ad esempio, <span class="math inline">\(\gamma = 0.95\)</span>), l’intervallo di confidenza per la media <span class="math inline">\(\mu\)</span> assume la forma:</p>
 <p><span class="math display">\[
 \left(
-\bar{X} - t^{*}_{,n-1},\frac{s}{\sqrt{n}},
-;;
-\bar{X} + t^{*}_{,n-1},\frac{s}{\sqrt{n}}
+\bar{X} - t^{*}_{\,n-1}\,\frac{s}{\sqrt{n}},
+\;\;
+\bar{X} + t^{*}_{\,n-1}\,\frac{s}{\sqrt{n}}
 \right),
 \]</span> dove <span class="math inline">\(t^{*}_{,n-1}\)</span> è il quantile della distribuzione <em>t</em> con <span class="math inline">\(n - 1\)</span> gradi di libertà corrispondente al livello di confidenza scelto.</p>
 <p>Rispetto al caso con varianza nota, l’intervallo risulta in genere <strong>più ampio</strong>. La distribuzione <em>t</em> presenta infatti code più pesanti rispetto alla normale standard, riflettendo la maggiore incertezza associata alla stima della varianza. Questa differenza è particolarmente rilevante per campioni di piccole dimensioni e tende a ridursi progressivamente all’aumentare di <span class="math inline">\(n\)</span>: per <span class="math inline">\(n\)</span> grandi, la distribuzione <em>t</em> converge alla distribuzione normale standard, e i due intervalli diventano praticamente indistinguibili.</p>
@@ -605,7 +607,7 @@ T \sim t_{n-1}.
 </div>
 <p>Il procedimento riflette direttamente la formula teorica:</p>
 <p><span class="math display">\[
-\bar{X} \pm t^{*}_{n-1},\frac{s}{\sqrt{n}}.
+\bar{X} \pm t^{*}_{n-1}\,\frac{s}{\sqrt{n}}.
 \]</span></p>
 <p>Il <strong>margine di errore</strong> dipende sia dalla variabilità del campione (tramite <span class="math inline">\(s\)</span>) sia dalla dimensione campionaria (<span class="math inline">\(n\)</span>), ed è modulato dal valore critico della distribuzione <em>t</em>, che tiene conto dell’incertezza associata alla stima della varianza.</p>
 <p><strong>Verifica con le funzioni di R.</strong></p>
@@ -815,12 +817,12 @@ T \sim t_{n-1}.
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; R version 4.5.2 (2025-10-31)</span></span>
+<span><span class="co">#&gt; R version 4.5.3 (2026-03-11)</span></span>
 <span><span class="co">#&gt; Platform: aarch64-apple-darwin20</span></span>
-<span><span class="co">#&gt; Running under: macOS Tahoe 26.2</span></span>
+<span><span class="co">#&gt; Running under: macOS Tahoe 26.4</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
-<span><span class="co">#&gt; BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib </span></span>
+<span><span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib </span></span>
 <span><span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; locale:</span></span>
@@ -833,42 +835,42 @@ T \sim t_{n-1}.
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] ragg_1.5.0            tinytable_0.15.2      withr_3.0.2          </span></span>
-<span><span class="co">#&gt;  [4] systemfonts_1.3.1     patchwork_1.3.2       ggdist_3.3.3         </span></span>
-<span><span class="co">#&gt;  [7] tidybayes_3.0.7       bayesplot_1.15.0      ggplot2_4.0.1        </span></span>
-<span><span class="co">#&gt; [10] reliabilitydiag_0.2.1 priorsense_1.2.0      posterior_1.6.1      </span></span>
+<span><span class="co">#&gt;  [1] ragg_1.5.2            tinytable_0.16.0      withr_3.0.2          </span></span>
+<span><span class="co">#&gt;  [4] systemfonts_1.3.2     patchwork_1.3.2       ggdist_3.3.3         </span></span>
+<span><span class="co">#&gt;  [7] tidybayes_3.0.7       bayesplot_1.15.0      ggplot2_4.0.2        </span></span>
+<span><span class="co">#&gt; [10] reliabilitydiag_0.2.1 priorsense_1.2.0      posterior_1.7.0      </span></span>
 <span><span class="co">#&gt; [13] loo_2.9.0             rstan_2.32.7          StanHeaders_2.32.10  </span></span>
-<span><span class="co">#&gt; [16] brms_2.23.0           Rcpp_1.1.0            sessioninfo_1.2.3    </span></span>
+<span><span class="co">#&gt; [16] brms_2.23.0           Rcpp_1.1.1            sessioninfo_1.2.3    </span></span>
 <span><span class="co">#&gt; [19] conflicted_1.2.0      janitor_2.2.1         matrixStats_1.5.0    </span></span>
-<span><span class="co">#&gt; [22] modelr_0.1.11         tibble_3.3.0          dplyr_1.1.4          </span></span>
-<span><span class="co">#&gt; [25] tidyr_1.3.2           rio_1.2.4             here_1.0.2           </span></span>
+<span><span class="co">#&gt; [22] modelr_0.1.11         tibble_3.3.1          dplyr_1.2.1          </span></span>
+<span><span class="co">#&gt; [25] tidyr_1.3.2           rio_1.3.0             here_1.0.2           </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
 <span><span class="co">#&gt;  [1] svUnit_1.0.8          tidyselect_1.2.1      farver_2.1.2         </span></span>
 <span><span class="co">#&gt;  [4] S7_0.2.1              fastmap_1.2.0         TH.data_1.1-5        </span></span>
-<span><span class="co">#&gt;  [7] tensorA_0.36.2.1      digest_0.6.39         timechange_0.3.0     </span></span>
-<span><span class="co">#&gt; [10] estimability_1.5.1    lifecycle_1.0.5       survival_3.8-3       </span></span>
-<span><span class="co">#&gt; [13] magrittr_2.0.4        compiler_4.5.2        rlang_1.1.7          </span></span>
-<span><span class="co">#&gt; [16] tools_4.5.2           knitr_1.51            labeling_0.4.3       </span></span>
+<span><span class="co">#&gt;  [7] tensorA_0.36.2.1      digest_0.6.39         timechange_0.4.0     </span></span>
+<span><span class="co">#&gt; [10] estimability_1.5.1    lifecycle_1.0.5       survival_3.8-6       </span></span>
+<span><span class="co">#&gt; [13] magrittr_2.0.5        compiler_4.5.3        rlang_1.1.7          </span></span>
+<span><span class="co">#&gt; [16] tools_4.5.3           knitr_1.51            labeling_0.4.3       </span></span>
 <span><span class="co">#&gt; [19] bridgesampling_1.2-1  htmlwidgets_1.6.4     curl_7.0.0           </span></span>
 <span><span class="co">#&gt; [22] pkgbuild_1.4.8        RColorBrewer_1.1-3    abind_1.4-8          </span></span>
-<span><span class="co">#&gt; [25] multcomp_1.4-29       purrr_1.2.1           grid_4.5.2           </span></span>
-<span><span class="co">#&gt; [28] stats4_4.5.2          colorspace_2.1-2      xtable_1.8-4         </span></span>
-<span><span class="co">#&gt; [31] inline_0.3.21         emmeans_2.0.1         scales_1.4.0         </span></span>
-<span><span class="co">#&gt; [34] MASS_7.3-65           cli_3.6.5             mvtnorm_1.3-3        </span></span>
-<span><span class="co">#&gt; [37] rmarkdown_2.30        generics_0.1.4        otel_0.2.0           </span></span>
-<span><span class="co">#&gt; [40] RcppParallel_5.1.11-1 cachem_1.1.0          stringr_1.6.0        </span></span>
-<span><span class="co">#&gt; [43] splines_4.5.2         parallel_4.5.2        vctrs_0.6.5          </span></span>
-<span><span class="co">#&gt; [46] V8_8.0.1              Matrix_1.7-4          sandwich_3.1-1       </span></span>
+<span><span class="co">#&gt; [25] multcomp_1.4-30       purrr_1.2.1           grid_4.5.3           </span></span>
+<span><span class="co">#&gt; [28] stats4_4.5.3          colorspace_2.1-2      xtable_1.8-8         </span></span>
+<span><span class="co">#&gt; [31] inline_0.3.21         emmeans_2.0.2         scales_1.4.0         </span></span>
+<span><span class="co">#&gt; [34] MASS_7.3-65           cli_3.6.5             mvtnorm_1.3-6        </span></span>
+<span><span class="co">#&gt; [37] rmarkdown_2.31        generics_0.1.4        otel_0.2.0           </span></span>
+<span><span class="co">#&gt; [40] RcppParallel_5.1.11-2 cachem_1.1.0          stringr_1.6.0        </span></span>
+<span><span class="co">#&gt; [43] splines_4.5.3         parallel_4.5.3        vctrs_0.7.2          </span></span>
+<span><span class="co">#&gt; [46] V8_8.0.1              Matrix_1.7-5          sandwich_3.1-1       </span></span>
 <span><span class="co">#&gt; [49] jsonlite_2.0.0        arrayhelpers_1.1-0    glue_1.8.0           </span></span>
-<span><span class="co">#&gt; [52] codetools_0.2-20      distributional_0.5.0  lubridate_1.9.4      </span></span>
-<span><span class="co">#&gt; [55] stringi_1.8.7         gtable_0.3.6          QuickJSR_1.8.1       </span></span>
+<span><span class="co">#&gt; [52] codetools_0.2-20      distributional_0.7.0  lubridate_1.9.5      </span></span>
+<span><span class="co">#&gt; [55] stringi_1.8.7         gtable_0.3.6          QuickJSR_1.9.0       </span></span>
 <span><span class="co">#&gt; [58] pillar_1.11.1         htmltools_0.5.9       Brobdingnag_1.2-9    </span></span>
-<span><span class="co">#&gt; [61] R6_2.6.1              textshaping_1.0.4     rprojroot_2.1.1      </span></span>
-<span><span class="co">#&gt; [64] evaluate_1.0.5        lattice_0.22-7        backports_1.5.0      </span></span>
-<span><span class="co">#&gt; [67] memoise_2.0.1         broom_1.0.11          snakecase_0.11.1     </span></span>
-<span><span class="co">#&gt; [70] rstantools_2.5.0      gridExtra_2.3         coda_0.19-4.1        </span></span>
-<span><span class="co">#&gt; [73] nlme_3.1-168          checkmate_2.3.3       xfun_0.55            </span></span>
+<span><span class="co">#&gt; [61] R6_2.6.1              textshaping_1.0.5     rprojroot_2.1.1      </span></span>
+<span><span class="co">#&gt; [64] evaluate_1.0.5        lattice_0.22-9        backports_1.5.1      </span></span>
+<span><span class="co">#&gt; [67] memoise_2.0.1         broom_1.0.12          snakecase_0.11.1     </span></span>
+<span><span class="co">#&gt; [70] rstantools_2.6.0      gridExtra_2.3         coda_0.19-4.1        </span></span>
+<span><span class="co">#&gt; [73] nlme_3.1-169          checkmate_2.3.4       xfun_0.57            </span></span>
 <span><span class="co">#&gt; [76] zoo_1.8-15            pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
