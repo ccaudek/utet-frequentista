@@ -2,58 +2,33 @@ project:
   type: book
   output-dir: docs
 
-lang: it
-
 book:
   title: "Inferenza frequentista in psicologia"
   subtitle: "Modulo introduttivo"
-  description: "Modulo introduttivo sull'inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Metodi bayesiani in psicologia."
-  license: "CC BY-NC-ND 4.0"
-  favicon: style/gauss.png
+  license: "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)"
+  reader-mode: true
+  google-analytics: G-QT5S3P9D31
 
-  author:
+  author: 
     - name: "Corrado Caudek"
       orcid: "0000-0002-1404-0420"
-
-  date: last-modified
-  date-format: "DD MMMM YYYY"
-
-  site-url: https://ccaudek.github.io/utet-frequentista/
+  date: "last-modified"
+  search: true
   repo-url: https://github.com/ccaudek/utet-frequentista/
   repo-actions: [source, issue]
-
-  reader-mode: true
-  page-navigation: true
   back-to-top-navigation: true
-
-  search:
-    location: sidebar
-    type: overlay
-    copy-button: true
-    show-item-context: true
-
-  sidebar:
-    collapse-level: 1
-
-  google-analytics:
-    tracking-id: "G-QT5S3P9D31"
-    anonymize-ip: true
-
-  cookie-consent:
-    type: express
-    style: headline
-    palette: light
-    language: it
-    prefs-text: "Preferenze cookie"
-
-  open-graph: true
-  twitter-card: true
-
+  site-url: https://ccaudek.github.io/utet-frequentista/
   page-footer:
     left: |
       **Inferenza frequentista in psicologia** — Modulo del progetto UTET a supporto del manuale *Metodi bayesiani in psicologia*.
     right: |
-      Realizzato con [Quarto](https://quarto.org/).
+      Realizzato con <a href="https://quarto.org/">Quarto</a>.
+  favicon: style/gauss.png
+
+  sidebar:
+    # style: "docked"
+    search: true
+    collapse-level: 1
 
   chapters:
     - index.qmd
@@ -79,59 +54,53 @@ crossref:
 toc: true
 toc-depth: 2
 
-bibliography: references.bib
+bibliography: ./references.bib
+biblio-style: apalike
 csl: apa.csl
 link-citations: true
 
 format:
   html:
-    theme:
-      light: cosmo
-      dark: darkly
-    css: style/custom.css
-
-    respect-user-color-scheme: true
-    canonical-url: true
-
-    toc: true
-    toc-depth: 2
-    toc-title: "Sommario"
-    toc-expand: 2
-    smooth-scroll: true
-    anchor-sections: true
-
+    # -------- Codice --------
     code-fold: false
     code-summary: "Mostra/Nascondi codice"
     code-copy: hover
     code-link: true
     code-overflow: scroll
     code-block-bg: true
-
-    fig-responsive: true
-    fig-align: center
-    fig-cap-location: bottom
-    tbl-cap-location: top
-    lightbox: auto
-    df-print: paged
-
+    
+    # -------- Tema --------
+    theme:
+      light: cosmo
+      dark: darkly
+    css: style/custom.css
+    mainfont: "system-ui"
+    lang: it
+    
+    # -------- Navigazione --------
+    reader-mode: true
+    toc: true              # TOC va qui sotto format:html:
+    toc-depth: 2           # E anche toc-depth
+    toc-title: "Sommario"
+    smooth-scroll: true
+    
+    # -------- Link e note --------
     footnotes-hover: true
-    citations-hover: true
-    crossrefs-hover: true
-
     link-external-icon: true
     link-external-newwindow: true
-    link-external-filter: '^(?:https?:)?//ccaudek\.github\.io/utet-frequentista/'
-
+    
+    # -------- Media --------
+    lightbox: auto
+    
+    # -------- Matematica --------
     html-math-method:
       method: mathjax
       url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-      # Macro opzionali, da attivare se usate spesso nel testo:
+      # Macro opzionali (decommentare se serve)
       # macros:
       #   "\\E": "\\mathbb{E}"
       #   "\\Var": "\\mathrm{Var}"
       #   "\\Cov": "\\mathrm{Cov}"
-      #   "\\SE": "\\mathrm{SE}"
-      #   "\\CI": "\\mathrm{CI}"
 
 execute:
   freeze: auto
@@ -141,9 +110,15 @@ execute:
   fig.width: 6
   fig.asp: 0.618
   fig.retina: 2
-  fig.align: center
-  fig.show: hold
+  fig.align: "center"
+  fig.show: "hold"
   options:
     width: 120
     pillar.width: Inf
     tibble.width: Inf
+
+website:
+  cookie-consent:
+    type: express
+    style: headline
+    anonymize-ip: true
