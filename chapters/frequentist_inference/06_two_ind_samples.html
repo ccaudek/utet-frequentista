@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.38">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Metodi bayesiani in psicologia.">
+
 <title>5&nbsp; Test t di Student per campioni indipendenti – Inferenza frequentista in psicologia</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -74,6 +81,7 @@ div.csl-indent {
   margin-left: 2em;
 }</style>
 
+
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -84,33 +92,35 @@ div.csl-indent {
 <link href="../../chapters/epiloque/epiloque.html" rel="next">
 <link href="../../chapters/frequentist_inference/05_test_ipotesi.html" rel="prev">
 <link href="../../style/gauss.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-88f89515ec50d56ed60c0d65bb29dbd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-12c7548f543ff79fe76bca8cab42d0cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-88f89515ec50d56ed60c0d65bb29dbd0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-aa873432a3c62897e6c2091c0d30a948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
-  "copy-button": false,
+  "copy-button": true,
   "collapse-after": 3,
   "panel-placement": "start",
-  "type": "textbox",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
-  "show-item-context": false,
+  "show-item-context": true,
   "language": {
     "search-no-results-text": "Nessun risultato",
     "search-matching-documents-text": "documenti trovati",
@@ -124,14 +134,42 @@ div.csl-indent {
     "search-submit-button-title": "Inviare",
     "search-label": "Ricerca"
   }
-}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-QT5S3P9D31"></script><script type="text/javascript">
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-QT5S3P9D31"></script>
+
+<script type="text/plain" cookie-consent="tracking">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-QT5S3P9D31', { 'anonymize_ip': true});
-</script><style>html{ scroll-behavior: smooth; }</style>
-<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script><script type="text/javascript">
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"it"
+  });
+});
+</script> 
+  
+<style>html{ scroll-behavior: smooth; }</style>
+<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -156,8 +194,18 @@ const typesetMath = (el) => {
 window.Quarto = {
   typesetMath
 };
-</script><link rel="stylesheet" href="../../style/custom.css">
+</script>
+
+<link rel="stylesheet" href="../../style/custom.css">
+<meta property="og:title" content="5&nbsp; Test t di Student per campioni indipendenti – Inferenza frequentista in psicologia">
+<meta property="og:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Metodi bayesiani in psicologia.">
+<meta property="og:site_name" content="Inferenza frequentista in psicologia">
+<meta name="twitter:title" content="5&nbsp; Test t di Student per campioni indipendenti – Inferenza frequentista in psicologia">
+<meta name="twitter:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Metodi bayesiani in psicologia.">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/06_two_ind_samples.html">
 </head>
+
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -301,7 +349,8 @@ window.Quarto = {
       }
     };
     const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
       document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
       document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
@@ -314,6 +363,14 @@ window.Quarto = {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -323,7 +380,9 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -334,30 +393,30 @@ window.Quarto = {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Inferenza frequentista in psicologia</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/ccaudek/utet-frequentista/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/ccaudek/utet-frequentista/" title="Eseguire il codice" class="quarto-navigation-tool px-1" aria-label="Eseguire il codice"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Attiva/disattiva la modalità oscura"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Attiva/disattiva la modalità lettore">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
+    <div id="quarto-search" class="quarto-navigation-tool px-1" title="Ricerca"></div>
 </div>
     </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Ricerca"></div>
-        </div>
-        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Percorso e obiettivi</span></a>
@@ -371,8 +430,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduzione</span></a>
@@ -409,7 +468,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
@@ -418,24 +477,26 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/epiloque/epiloque.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Considerazioni conclusive</span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Considerazioni conclusive</span></span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+    <h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
-<li><a href="#inquadramento-epistemologico" id="toc-inquadramento-epistemologico" class="nav-link active" data-scroll-target="#inquadramento-epistemologico"><span class="header-section-number">5.1</span> Inquadramento epistemologico</a></li>
+  <li><a href="#inquadramento-epistemologico" id="toc-inquadramento-epistemologico" class="nav-link active" data-scroll-target="#inquadramento-epistemologico"><span class="header-section-number">5.1</span> Inquadramento epistemologico</a></li>
   <li><a href="#assunzioni-del-test" id="toc-assunzioni-del-test" class="nav-link" data-scroll-target="#assunzioni-del-test"><span class="header-section-number">5.2</span> Assunzioni del test</a></li>
   <li><a href="#formulazione-del-test" id="toc-formulazione-del-test" class="nav-link" data-scroll-target="#formulazione-del-test"><span class="header-section-number">5.3</span> Formulazione del test</a></li>
   <li><a href="#esempio-pratico" id="toc-esempio-pratico" class="nav-link" data-scroll-target="#esempio-pratico"><span class="header-section-number">5.4</span> Esempio pratico</a></li>
@@ -443,10 +504,15 @@ window.Quarto = {
   <li><a href="#come-riportare-i-risultati" id="toc-come-riportare-i-risultati" class="nav-link" data-scroll-target="#come-riportare-i-risultati"><span class="header-section-number">5.6</span> Come riportare i risultati</a></li>
   <li><a href="#limiti-del-test-t" id="toc-limiti-del-test-t" class="nav-link" data-scroll-target="#limiti-del-test-t"><span class="header-section-number">5.7</span> Limiti del test <span class="math inline">\(t\)</span></a></li>
   <li><a href="#lalternativa-bayesiana" id="toc-lalternativa-bayesiana" class="nav-link" data-scroll-target="#lalternativa-bayesiana"><span class="header-section-number">5.8</span> L’alternativa bayesiana</a></li>
-  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/06_two_ind_samples.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/06_two_ind_samples.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/06_two_ind_samples.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/06_two_ind_samples.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></a></li></ol></nav>
+<div class="quarto-title">
 <h1 class="title"><span id="sec-freq-two-samples" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></span></h1>
 </div>
 
@@ -461,7 +527,10 @@ window.Quarto = {
   
 
 
-</header><div class="callout callout-style-simple callout-note no-icon">
+</header>
+
+
+<div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -518,21 +587,22 @@ window.Quarto = {
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"_common.R"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">source</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
-<section id="inquadramento-epistemologico" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="inquadramento-epistemologico">
-<span class="header-section-number">5.1</span> Inquadramento epistemologico</h2>
+<section id="inquadramento-epistemologico" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="inquadramento-epistemologico"><span class="header-section-number">5.1</span> Inquadramento epistemologico</h2>
 <p>Il test <em>t</em> per campioni indipendenti affronta una domanda inferenziale ricorrente nelle scienze empiriche:</p>
 <blockquote class="blockquote">
 <p><em>le differenze osservate tra due gruppi riflettono una reale differenza tra le popolazioni, oppure possono essere spiegate come fluttuazioni casuali del campionamento?</em></p>
 </blockquote>
 <p>Nel paradigma frequentista, questa domanda viene riformulata in termini <strong>controfattuali</strong>: si assume inizialmente che le popolazioni abbiano la stessa media (ipotesi nulla) e si valuta quanto i dati osservati sarebbero rari se tale assunzione fosse vera. Come per tutti i test di ipotesi frequentisti, l’obiettivo non è stimare la probabilità dell’ipotesi, ma <strong>controllare errori decisionali nel lungo periodo</strong>.</p>
-</section><section id="assunzioni-del-test" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="assunzioni-del-test">
-<span class="header-section-number">5.2</span> Assunzioni del test</h2>
+</section>
+<section id="assunzioni-del-test" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="assunzioni-del-test"><span class="header-section-number">5.2</span> Assunzioni del test</h2>
 <p>Nel confronto tra due gruppi indipendenti, il test <em>t</em> di Student classico si basa su alcune assunzioni fondamentali:</p>
 <ol type="1">
 <li><p><strong>Indipendenza delle osservazioni.</strong> Le osservazioni all’interno e tra i gruppi devono essere indipendenti. Questa è un’assunzione di disegno sperimentale, non verificabile a posteriori.</p></li>
@@ -540,10 +610,11 @@ window.Quarto = {
 <li><p><strong>Uguaglianza delle varianze (omoschedasticità).</strong> Le varianze delle due popolazioni dovrebbero essere uguali. Quando questa assunzione non è plausibile, si utilizza il <strong>test <em>t</em> di Welch</strong>, che corregge sia la statistica test sia i gradi di libertà.</p></li>
 </ol>
 <p>Dal punto di vista epistemologico, è importante notare che queste assunzioni definiscono il <strong>modello probabilistico</strong> entro cui il valore-<span class="math inline">\(p\)</span> è interpretabile.</p>
-</section><section id="formulazione-del-test" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="formulazione-del-test">
-<span class="header-section-number">5.3</span> Formulazione del test</h2>
-<section id="ipotesi" class="level3" data-number="5.3.1"><h3 data-number="5.3.1" class="anchored" data-anchor-id="ipotesi">
-<span class="header-section-number">5.3.1</span> Ipotesi</h3>
+</section>
+<section id="formulazione-del-test" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="formulazione-del-test"><span class="header-section-number">5.3</span> Formulazione del test</h2>
+<section id="ipotesi" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="ipotesi"><span class="header-section-number">5.3.1</span> Ipotesi</h3>
 <p>Nel caso più comune, l’ipotesi nulla afferma che le due popolazioni abbiano la stessa media:</p>
 <p><span class="math display">\[
 H_0: \mu_1 = \mu_2.
@@ -552,8 +623,9 @@ H_0: \mu_1 = \mu_2.
 <p><span class="math display">\[
 H_1: \mu_1 \neq \mu_2,
 \]</span> oppure, in versioni direzionali, che una media sia maggiore o minore dell’altra.</p>
-</section><section id="statistica-test" class="level3" data-number="5.3.2"><h3 data-number="5.3.2" class="anchored" data-anchor-id="statistica-test">
-<span class="header-section-number">5.3.2</span> Statistica test</h3>
+</section>
+<section id="statistica-test" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="statistica-test"><span class="header-section-number">5.3.2</span> Statistica test</h3>
 <p>La statistica <em>t</em> confronta la <strong>differenza osservata tra le medie</strong> con la <strong>variabilità attesa sotto l’ipotesi nulla</strong>:</p>
 <p><span class="math display">\[
 t = \frac{\bar{X}_1 - \bar{X}_2}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}},
@@ -563,76 +635,79 @@ s_p = \sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}}.
 \]</span></p>
 <p>Sotto l’ipotesi nulla, la statistica <em>t</em> segue una distribuzione <em>t</em> di Student con <span class="math inline">\(n_1 + n_2 - 2\)</span> gradi di libertà.</p>
 <p>Questa costruzione riflette una logica già vista nel test per una media: la differenza tra medie viene <strong>standardizzata</strong> rispetto alla sua incertezza campionaria.</p>
-</section></section><section id="esempio-pratico" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="esempio-pratico">
-<span class="header-section-number">5.4</span> Esempio pratico</h2>
+</section>
+</section>
+<section id="esempio-pratico" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="esempio-pratico"><span class="header-section-number">5.4</span> Esempio pratico</h2>
 <p>Consideriamo un confronto tra il <strong>peso corporeo</strong> di un gruppo di donne e un gruppo di uomini:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">peso_donne</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">38.9</span>, <span class="fl">61.2</span>, <span class="fl">73.3</span>, <span class="fl">21.8</span>, <span class="fl">63.4</span>, <span class="fl">64.6</span>, <span class="fl">48.4</span>, <span class="fl">48.8</span>, <span class="fl">48.5</span><span class="op">)</span></span>
-<span><span class="va">peso_uomini</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">67.8</span>, <span class="fl">60</span>, <span class="fl">63.4</span>, <span class="fl">76</span>, <span class="fl">89.4</span>, <span class="fl">73.3</span>, <span class="fl">67.3</span>, <span class="fl">61.3</span>, <span class="fl">62.4</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Donne:\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Donne:</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  Media:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">peso_donne</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"kg\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Media: 52.1 kg</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  Dev. std:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">peso_donne</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"kg\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Dev. std: 15.6 kg</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  n:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">peso_donne</span><span class="op">)</span>, <span class="st">"\n\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   n: 9</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Uomini:\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Uomini:</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  Media:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">peso_uomini</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"kg\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Media: 69 kg</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  Dev. std:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">peso_uomini</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"kg\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Dev. std: 9.38 kg</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  n:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">peso_uomini</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   n: 9</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>peso_donne <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">38.9</span>, <span class="fl">61.2</span>, <span class="fl">73.3</span>, <span class="fl">21.8</span>, <span class="fl">63.4</span>, <span class="fl">64.6</span>, <span class="fl">48.4</span>, <span class="fl">48.8</span>, <span class="fl">48.5</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>peso_uomini <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">67.8</span>, <span class="dv">60</span>, <span class="fl">63.4</span>, <span class="dv">76</span>, <span class="fl">89.4</span>, <span class="fl">73.3</span>, <span class="fl">67.3</span>, <span class="fl">61.3</span>, <span class="fl">62.4</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Donne:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Donne:</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"  Media:"</span>, <span class="fu">round</span>(<span class="fu">mean</span>(peso_donne), <span class="dv">2</span>), <span class="st">"kg</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Media: 52.1 kg</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"  Dev. std:"</span>, <span class="fu">round</span>(<span class="fu">sd</span>(peso_donne), <span class="dv">2</span>), <span class="st">"kg</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Dev. std: 15.6 kg</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"  n:"</span>, <span class="fu">length</span>(peso_donne), <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   n: 9</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Uomini:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Uomini:</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"  Media:"</span>, <span class="fu">round</span>(<span class="fu">mean</span>(peso_uomini), <span class="dv">2</span>), <span class="st">"kg</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Media: 69 kg</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"  Dev. std:"</span>, <span class="fu">round</span>(<span class="fu">sd</span>(peso_uomini), <span class="dv">2</span>), <span class="st">"kg</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Dev. std: 9.38 kg</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"  n:"</span>, <span class="fu">length</span>(peso_uomini), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   n: 9</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="calcolo-manuale" class="level3" data-number="5.4.1"><h3 data-number="5.4.1" class="anchored" data-anchor-id="calcolo-manuale">
-<span class="header-section-number">5.4.1</span> Calcolo manuale</h3>
+<section id="calcolo-manuale" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="calcolo-manuale"><span class="header-section-number">5.4.1</span> Calcolo manuale</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">peso_donne</span><span class="op">)</span></span>
-<span><span class="va">n2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">peso_uomini</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">s_pool</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="op">(</span><span class="va">n1</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">peso_donne</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="va">n2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">peso_uomini</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> </span>
-<span>               <span class="op">(</span><span class="va">n1</span> <span class="op">+</span> <span class="va">n2</span> <span class="op">-</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">t_stat</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">peso_donne</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">peso_uomini</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> </span>
-<span>          <span class="op">(</span><span class="va">s_pool</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fl">1</span><span class="op">/</span><span class="va">n2</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">n1</span> <span class="op">+</span> <span class="va">n2</span> <span class="op">-</span> <span class="fl">2</span></span>
-<span></span>
-<span><span class="va">p_value</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">t_stat</span><span class="op">)</span>, df <span class="op">=</span> <span class="va">df</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Deviazione standard pooled:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">s_pool</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Deviazione standard pooled: 12.9</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Statistica t:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">t_stat</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Statistica t: -2.78</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Gradi di libertà:"</span>, <span class="va">df</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Gradi di libertà: 16</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"P-value:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">p_value</span>, <span class="fl">4</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; P-value: 0.0133</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">length</span>(peso_donne)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="fu">length</span>(peso_uomini)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>s_pool <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(((n1 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">var</span>(peso_donne) <span class="sc">+</span> (n2 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">var</span>(peso_uomini)) <span class="sc">/</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>               (n1 <span class="sc">+</span> n2 <span class="sc">-</span> <span class="dv">2</span>))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>t_stat <span class="ot">&lt;-</span> (<span class="fu">mean</span>(peso_donne) <span class="sc">-</span> <span class="fu">mean</span>(peso_uomini)) <span class="sc">/</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>          (s_pool <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">/</span>n1 <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>n2))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> n1 <span class="sc">+</span> n2 <span class="sc">-</span> <span class="dv">2</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(<span class="fu">abs</span>(t_stat), <span class="at">df =</span> df, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Deviazione standard pooled:"</span>, <span class="fu">round</span>(s_pool, <span class="dv">2</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Deviazione standard pooled: 12.9</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Statistica t:"</span>, <span class="fu">round</span>(t_stat, <span class="dv">3</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Statistica t: -2.78</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Gradi di libertà:"</span>, df, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Gradi di libertà: 16</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"P-value:"</span>, <span class="fu">round</span>(p_value, <span class="dv">4</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; P-value: 0.0133</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Il valore-<em>p</em> quantifica quanto una differenza almeno così grande sarebbe rara <strong>assumendo che le due popolazioni abbiano la stessa media</strong>.</p>
-</section><section id="utilizzo-di-t.test" class="level3" data-number="5.4.2"><h3 data-number="5.4.2" class="anchored" data-anchor-id="utilizzo-di-t.test">
-<span class="header-section-number">5.4.2</span> Utilizzo di <code>t.test()</code>
-</h3>
+</section>
+<section id="utilizzo-di-t.test" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="utilizzo-di-t.test"><span class="header-section-number">5.4.2</span> Utilizzo di <code>t.test()</code></h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">peso_donne</span>, <span class="va">peso_uomini</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Two Sample t-test</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; data:  peso_donne and peso_uomini</span></span>
-<span><span class="co">#&gt; t = -3, df = 16, p-value = 0.01</span></span>
-<span><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
-<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
-<span><span class="co">#&gt;  -29.75  -4.03</span></span>
-<span><span class="co">#&gt; sample estimates:</span></span>
-<span><span class="co">#&gt; mean of x mean of y </span></span>
-<span><span class="co">#&gt;      52.1      69.0</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(peso_donne, peso_uomini, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Two Sample t-test</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; data:  peso_donne and peso_uomini</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; t = -3, df = 16, p-value = 0.01</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  -29.75  -4.03</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sample estimates:</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mean of x mean of y </span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      52.1      69.0</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="test-di-welch" class="level3" data-number="5.4.3"><h3 data-number="5.4.3" class="anchored" data-anchor-id="test-di-welch">
-<span class="header-section-number">5.4.3</span> Test di Welch</h3>
+</section>
+<section id="test-di-welch" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="test-di-welch"><span class="header-section-number">5.4.3</span> Test di Welch</h3>
 <p>Il <strong>test <em>t</em> di Welch</strong> rappresenta una generalizzazione più robusta del test classico. Non assume uguaglianza delle varianze e utilizza:</p>
 <ul>
 <li>varianze separate per ciascun gruppo;</li>
@@ -640,74 +715,85 @@ s_p = \sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}}.
 </ul>
 <p>In R è l’opzione predefinita:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">peso_donne</span>, <span class="va">peso_uomini</span>, var.equal <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Welch Two Sample t-test</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; data:  peso_donne and peso_uomini</span></span>
-<span><span class="co">#&gt; t = -3, df = 13, p-value = 0.02</span></span>
-<span><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
-<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
-<span><span class="co">#&gt;  -30.0  -3.8</span></span>
-<span><span class="co">#&gt; sample estimates:</span></span>
-<span><span class="co">#&gt; mean of x mean of y </span></span>
-<span><span class="co">#&gt;      52.1      69.0</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(peso_donne, peso_uomini, <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Welch Two Sample t-test</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; data:  peso_donne and peso_uomini</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; t = -3, df = 13, p-value = 0.02</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  -30.0  -3.8</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sample estimates:</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; mean of x mean of y </span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      52.1      69.0</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Dal punto di vista metodologico, il test di Welch è spesso preferibile, poiché riduce il rischio di errori quando le assunzioni di omoschedasticità sono violate.</p>
-</section></section><section id="interpretazione-dei-risultati" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="interpretazione-dei-risultati">
-<span class="header-section-number">5.5</span> Interpretazione dei risultati</h2>
+</section>
+</section>
+<section id="interpretazione-dei-risultati" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="interpretazione-dei-risultati"><span class="header-section-number">5.5</span> Interpretazione dei risultati</h2>
 <p>Il valore-<em>p</em> suggerisce che la differenza osservata sarebbe poco compatibile con l’ipotesi di uguaglianza delle medie. Tuttavia, <strong>la significatività statistica da sola è insufficiente</strong> per una valutazione scientificamente completa.</p>
-<section id="dimensione-delleffetto-d-di-cohen" class="level3" data-number="5.5.1"><h3 data-number="5.5.1" class="anchored" data-anchor-id="dimensione-delleffetto-d-di-cohen">
-<span class="header-section-number">5.5.1</span> Dimensione dell’effetto: <span class="math inline">\(d\)</span> di Cohen</h3>
+<section id="dimensione-delleffetto-d-di-cohen" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="dimensione-delleffetto-d-di-cohen"><span class="header-section-number">5.5.1</span> Dimensione dell’effetto: <span class="math inline">\(d\)</span> di Cohen</h3>
 <p>La <strong>dimensione dell’effetto</strong> quantifica la differenza in unità di deviazione standard:</p>
 <p><span class="math display">\[
 d = \frac{\bar{X}_1 - \bar{X}_2}{s_p}.
 \]</span></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cohens_d</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">peso_donne</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">peso_uomini</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="va">s_pool</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Cohen's d:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">cohens_d</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Cohen's d: -1.31</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cohens_d <span class="ot">&lt;-</span> (<span class="fu">mean</span>(peso_donne) <span class="sc">-</span> <span class="fu">mean</span>(peso_uomini)) <span class="sc">/</span> s_pool</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Cohen's d:"</span>, <span class="fu">round</span>(cohens_d, <span class="dv">2</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Cohen's d: -1.31</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Un valore pari a 1.31 indica una differenza molto ampia sul piano pratico.</p>
-</section><section id="intervallo-di-confidenza-per-la-differenza" class="level3" data-number="5.5.2"><h3 data-number="5.5.2" class="anchored" data-anchor-id="intervallo-di-confidenza-per-la-differenza">
-<span class="header-section-number">5.5.2</span> Intervallo di confidenza per la differenza</h3>
+</section>
+<section id="intervallo-di-confidenza-per-la-differenza" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="intervallo-di-confidenza-per-la-differenza"><span class="header-section-number">5.5.2</span> Intervallo di confidenza per la differenza</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">test_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">peso_donne</span>, <span class="va">peso_uomini</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Differenza delle medie:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">test_result</span><span class="op">$</span><span class="va">estimate</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="va">test_result</span><span class="op">$</span><span class="va">estimate</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"kg\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Differenza delle medie: -16.9 kg</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"IC al 95%: ["</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">test_result</span><span class="op">$</span><span class="va">conf.int</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">", "</span>, </span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">test_result</span><span class="op">$</span><span class="va">conf.int</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"] kg\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; IC al 95%: [ -29.8 ,  -4.03 ] kg</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(peso_donne, peso_uomini, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Differenza delle medie:"</span>, <span class="fu">round</span>(test_result<span class="sc">$</span>estimate[<span class="dv">1</span>] <span class="sc">-</span> test_result<span class="sc">$</span>estimate[<span class="dv">2</span>], <span class="dv">2</span>), <span class="st">"kg</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Differenza delle medie: -16.9 kg</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"IC al 95%: ["</span>, <span class="fu">round</span>(test_result<span class="sc">$</span>conf.int[<span class="dv">1</span>], <span class="dv">2</span>), <span class="st">", "</span>, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(test_result<span class="sc">$</span>conf.int[<span class="dv">2</span>], <span class="dv">2</span>), <span class="st">"] kg</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; IC al 95%: [ -29.8 ,  -4.03 ] kg</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>L’intervallo di confidenza fornisce una stima della <strong>precisione</strong> e consente di valutare la plausibilità di diverse grandezze dell’effetto.</p>
-</section></section><section id="come-riportare-i-risultati" class="level2" data-number="5.6"><h2 data-number="5.6" class="anchored" data-anchor-id="come-riportare-i-risultati">
-<span class="header-section-number">5.6</span> Come riportare i risultati</h2>
-<section id="versione-sconsigliata" class="level3" data-number="5.6.1"><h3 data-number="5.6.1" class="anchored" data-anchor-id="versione-sconsigliata">
-<span class="header-section-number">5.6.1</span> Versione sconsigliata</h3>
+</section>
+</section>
+<section id="come-riportare-i-risultati" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="come-riportare-i-risultati"><span class="header-section-number">5.6</span> Come riportare i risultati</h2>
+<section id="versione-sconsigliata" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="versione-sconsigliata"><span class="header-section-number">5.6.1</span> Versione sconsigliata</h3>
 <p>Una formulazione che si limiti a riportare la sola significatività statistica fornisce un resoconto incompleto:</p>
 <blockquote class="blockquote">
 <p>“I risultati mostrano una differenza significativa tra i pesi medi delle donne e degli uomini (<span class="math inline">\(t\)</span>(16) = −2.78, <span class="math inline">\(p\)</span> = 0.01).”</p>
 </blockquote>
-</section><section id="versione-consigliata" class="level3" data-number="5.6.2"><h3 data-number="5.6.2" class="anchored" data-anchor-id="versione-consigliata">
-<span class="header-section-number">5.6.2</span> Versione consigliata</h3>
+</section>
+<section id="versione-consigliata" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="versione-consigliata"><span class="header-section-number">5.6.2</span> Versione consigliata</h3>
 <p>Una comunicazione completa è più trasparente e più informativa:</p>
 <blockquote class="blockquote">
 <p>“Il peso medio delle donne (<span class="math inline">\(M\)</span> = 52.1 kg, <span class="math inline">\(DS\)</span> = 15.6) è inferiore a quello degli uomini (<span class="math inline">\(M\)</span> = 69.0 kg, <span class="math inline">\(DS\)</span> = 9.0) di 16.9 kg (<span class="math inline">\(IC\)</span> 95%: [4.0, 29.8]). La differenza è associata a una dimensione dell’effetto molto ampia (<span class="math inline">\(d\)</span> = 1.31).”</p>
 </blockquote>
 <p>Questa formulazione integra <strong>stima</strong>, <strong>incertezza</strong> e <strong>rilevanza pratica</strong>.</p>
-</section></section><section id="limiti-del-test-t" class="level2" data-number="5.7"><h2 data-number="5.7" class="anchored" data-anchor-id="limiti-del-test-t">
-<span class="header-section-number">5.7</span> Limiti del test <span class="math inline">\(t\)</span>
-</h2>
+</section>
+</section>
+<section id="limiti-del-test-t" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="limiti-del-test-t"><span class="header-section-number">5.7</span> Limiti del test <span class="math inline">\(t\)</span></h2>
 <p>Il test <em>t</em> condivide i limiti strutturali dei test di ipotesi frequentisti:</p>
 <ul>
 <li>decisione dicotomica basata su soglie convenzionali;</li>
 <li>dipendenza dalla dimensione campionaria;</li>
 <li>incapacità di quantificare l’evidenza a favore dell’ipotesi nulla;</li>
 <li>interpretazione spesso ambigua del valore-<em>p</em>.</li>
-</ul></section><section id="lalternativa-bayesiana" class="level2" data-number="5.8"><h2 data-number="5.8" class="anchored" data-anchor-id="lalternativa-bayesiana">
-<span class="header-section-number">5.8</span> L’alternativa bayesiana</h2>
+</ul>
+</section>
+<section id="lalternativa-bayesiana" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="lalternativa-bayesiana"><span class="header-section-number">5.8</span> L’alternativa bayesiana</h2>
 <p>L’approccio bayesiano, come discusso da <span class="citation" data-cites="kruschke2013bayesian">Kruschke (<a href="#ref-kruschke2013bayesian" role="doc-biblioref">2013</a>)</span>, rappresenta una valida alternativa. Fornisce distribuzioni posteriori complete, consente di esprimere direttamente le probabilità delle ipotesi, integra le informazioni pregresse, gestisce gli outlier con modelli più flessibili e separa chiaramente <strong>assenza di evidenza</strong> ed <strong>evidenza di assenza</strong>.</p>
-</section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
+</section>
+<section id="riflessioni-conclusive" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
 <p>Il test <em>t</em> di Student per campioni indipendenti rappresenta uno strumento centrale dell’inferenza frequentista per il confronto tra medie. Il suo uso risulta metodologicamente più solido quando l’interpretazione non si limita alla significatività statistica, ma integra stime puntuali, intervalli di confidenza e dimensioni dell’effetto.</p>
 <p>La rigidità decisionale e le ambiguità interpretative del valore-<span class="math inline">\(p\)</span> rendono tuttavia evidente la necessità di affiancare a questa procedura strumenti inferenziali più informativi. In questo senso, l’approccio bayesiano non va inteso come semplice alternativa tecnica, ma come <strong>paradigma epistemologico distinto</strong>, che affronta in modo più diretto le domande scientifiche sulla plausibilità delle ipotesi e sull’incertezza dei parametri.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Informazioni sull'ambiente di sviluppo">
@@ -723,67 +809,66 @@ d = \frac{\bar{X}_1 - \bar{X}_2}{s_p}.
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; R version 4.5.2 (2025-10-31)</span></span>
-<span><span class="co">#&gt; Platform: aarch64-apple-darwin20</span></span>
-<span><span class="co">#&gt; Running under: macOS Tahoe 26.2</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Matrix products: default</span></span>
-<span><span class="co">#&gt; BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib </span></span>
-<span><span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; locale:</span></span>
-<span><span class="co">#&gt; [1] C.UTF-8/UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; time zone: Europe/Rome</span></span>
-<span><span class="co">#&gt; tzcode source: internal</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; attached base packages:</span></span>
-<span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] ragg_1.5.0            tinytable_0.15.2      withr_3.0.2          </span></span>
-<span><span class="co">#&gt;  [4] systemfonts_1.3.1     patchwork_1.3.2       ggdist_3.3.3         </span></span>
-<span><span class="co">#&gt;  [7] tidybayes_3.0.7       bayesplot_1.15.0      ggplot2_4.0.1        </span></span>
-<span><span class="co">#&gt; [10] reliabilitydiag_0.2.1 priorsense_1.2.0      posterior_1.6.1      </span></span>
-<span><span class="co">#&gt; [13] loo_2.9.0             rstan_2.32.7          StanHeaders_2.32.10  </span></span>
-<span><span class="co">#&gt; [16] brms_2.23.0           Rcpp_1.1.0            sessioninfo_1.2.3    </span></span>
-<span><span class="co">#&gt; [19] conflicted_1.2.0      janitor_2.2.1         matrixStats_1.5.0    </span></span>
-<span><span class="co">#&gt; [22] modelr_0.1.11         tibble_3.3.0          dplyr_1.1.4          </span></span>
-<span><span class="co">#&gt; [25] tidyr_1.3.2           rio_1.2.4             here_1.0.2           </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;  [1] svUnit_1.0.8          tidyselect_1.2.1      farver_2.1.2         </span></span>
-<span><span class="co">#&gt;  [4] S7_0.2.1              fastmap_1.2.0         TH.data_1.1-5        </span></span>
-<span><span class="co">#&gt;  [7] tensorA_0.36.2.1      digest_0.6.39         timechange_0.3.0     </span></span>
-<span><span class="co">#&gt; [10] estimability_1.5.1    lifecycle_1.0.5       survival_3.8-3       </span></span>
-<span><span class="co">#&gt; [13] magrittr_2.0.4        compiler_4.5.2        rlang_1.1.7          </span></span>
-<span><span class="co">#&gt; [16] tools_4.5.2           knitr_1.51            bridgesampling_1.2-1 </span></span>
-<span><span class="co">#&gt; [19] htmlwidgets_1.6.4     curl_7.0.0            pkgbuild_1.4.8       </span></span>
-<span><span class="co">#&gt; [22] RColorBrewer_1.1-3    abind_1.4-8           multcomp_1.4-29      </span></span>
-<span><span class="co">#&gt; [25] purrr_1.2.1           grid_4.5.2            stats4_4.5.2         </span></span>
-<span><span class="co">#&gt; [28] colorspace_2.1-2      xtable_1.8-4          inline_0.3.21        </span></span>
-<span><span class="co">#&gt; [31] emmeans_2.0.1         scales_1.4.0          MASS_7.3-65          </span></span>
-<span><span class="co">#&gt; [34] cli_3.6.5             mvtnorm_1.3-3         rmarkdown_2.30       </span></span>
-<span><span class="co">#&gt; [37] generics_0.1.4        otel_0.2.0            RcppParallel_5.1.11-1</span></span>
-<span><span class="co">#&gt; [40] cachem_1.1.0          stringr_1.6.0         splines_4.5.2        </span></span>
-<span><span class="co">#&gt; [43] parallel_4.5.2        vctrs_0.6.5           V8_8.0.1             </span></span>
-<span><span class="co">#&gt; [46] Matrix_1.7-4          sandwich_3.1-1        jsonlite_2.0.0       </span></span>
-<span><span class="co">#&gt; [49] arrayhelpers_1.1-0    glue_1.8.0            codetools_0.2-20     </span></span>
-<span><span class="co">#&gt; [52] distributional_0.5.0  lubridate_1.9.4       stringi_1.8.7        </span></span>
-<span><span class="co">#&gt; [55] gtable_0.3.6          QuickJSR_1.8.1        pillar_1.11.1        </span></span>
-<span><span class="co">#&gt; [58] htmltools_0.5.9       Brobdingnag_1.2-9     R6_2.6.1             </span></span>
-<span><span class="co">#&gt; [61] textshaping_1.0.4     rprojroot_2.1.1       evaluate_1.0.5       </span></span>
-<span><span class="co">#&gt; [64] lattice_0.22-7        backports_1.5.0       memoise_2.0.1        </span></span>
-<span><span class="co">#&gt; [67] broom_1.0.11          snakecase_0.11.1      rstantools_2.5.0     </span></span>
-<span><span class="co">#&gt; [70] gridExtra_2.3         coda_0.19-4.1         nlme_3.1-168         </span></span>
-<span><span class="co">#&gt; [73] checkmate_2.3.3       xfun_0.55             zoo_1.8-15           </span></span>
-<span><span class="co">#&gt; [76] pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R version 4.6.0 (2026-04-24)</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Platform: aarch64-apple-darwin23</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Running under: macOS Tahoe 26.5.1</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Matrix products: default</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.6/Resources/lib/libRblas.0.dylib </span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.6/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; locale:</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] C.UTF-8/UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; time zone: Europe/Rome</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; tzcode source: internal</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; attached base packages:</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; other attached packages:</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] ragg_1.5.2            tinytable_0.17.0      withr_3.0.3          </span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4] systemfonts_1.3.2     patchwork_1.3.2       ggdist_3.3.3         </span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] tidybayes_3.0.7       bayesplot_1.15.0      ggplot2_4.0.3        </span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] reliabilitydiag_0.2.1 priorsense_1.2.0      posterior_1.7.0      </span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] loo_2.10.0            rstan_2.32.7          StanHeaders_2.32.10  </span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [16] brms_2.23.0           Rcpp_1.1.1-1.1        sessioninfo_1.2.4    </span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] conflicted_1.2.0      janitor_2.2.1         matrixStats_1.5.0    </span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [22] modelr_0.1.11         tibble_3.3.1          dplyr_1.2.1          </span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] tidyr_1.3.2           rio_1.3.0             here_1.0.2           </span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] svUnit_1.0.8          tidyselect_1.2.1      farver_2.1.2         </span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4] S7_0.2.2              fastmap_1.2.0         tensorA_0.36.2.1     </span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] digest_0.6.39         timechange_0.4.0      estimability_2.0.0   </span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] lifecycle_1.0.5       magrittr_2.0.5        compiler_4.6.0       </span></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] rlang_1.2.0           tools_4.6.0           knitr_1.51           </span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [16] bridgesampling_1.2-1  htmlwidgets_1.6.4     pkgbuild_1.4.8       </span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] curl_7.1.0            RColorBrewer_1.1-3    abind_1.4-8          </span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [22] purrr_1.2.2           grid_4.6.0            stats4_4.6.0         </span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] xtable_1.8-8          inline_0.3.21         emmeans_2.0.3        </span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [28] scales_1.4.0          cli_3.6.6             mvtnorm_1.4-1        </span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [31] rmarkdown_2.31        generics_0.1.4        otel_0.2.0           </span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [34] RcppParallel_5.1.11-2 cachem_1.1.0          stringr_1.6.0        </span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [37] parallel_4.6.0        vctrs_0.7.3           V8_8.2.0             </span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [40] Matrix_1.7-5          jsonlite_2.0.0        arrayhelpers_1.1-1   </span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [43] glue_1.8.1            codetools_0.2-20      distributional_0.8.1 </span></span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [46] lubridate_1.9.5       stringi_1.8.7         gtable_0.3.6         </span></span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [49] QuickJSR_1.10.0       pillar_1.11.1         htmltools_0.5.9      </span></span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [52] Brobdingnag_1.2-9     R6_2.6.1              textshaping_1.0.5    </span></span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [55] rprojroot_2.1.1       evaluate_1.0.5        lattice_0.22-9       </span></span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [58] backports_1.5.1       memoise_2.0.1         broom_1.0.13         </span></span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [61] snakecase_0.11.1      rstantools_2.6.0      coda_0.19-4.1        </span></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [64] gridExtra_2.3.1       nlme_3.1-169          checkmate_2.3.4      </span></span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [67] xfun_0.59             pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
-</section><section id="bibliografia" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="bibliografia">Bibliografia</h2>
+</section>
+<section id="bibliografia" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="bibliografia">Bibliografia</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
@@ -791,7 +876,10 @@ d = \frac{\bar{X}_1 - \bar{X}_2}{s_p}.
 Kruschke, J. K. (2013). Bayesian estimation supersedes the t test. <em>Journal of Experimental Psychology: General</em>, <em>142</em>(2), 573–603.
 </div>
 </div>
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -877,7 +965,7 @@ Kruschke, J. K. (2013). Bayesian estimation supersedes the t test. <em>Journal o
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/ccaudek\.github\.io\/utet-frequentista\/");
+        var filterRegex = new RegExp("^(?:https?:)?//ccaudek\.github\.io/utet-frequentista/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1210,30 +1298,35 @@ Kruschke, J. K. (2013). Bayesian estimation supersedes the t test. <em>Journal o
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
       <a href="../../chapters/frequentist_inference/05_test_ipotesi.html" class="pagination-link" aria-label="Significatività statistica">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Significatività statistica</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="../../chapters/epiloque/epiloque.html" class="pagination-link" aria-label="Considerazioni conclusive">
-        <span class="nav-page-text">Considerazioni conclusive</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Considerazioni conclusive</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p><strong>Inferenza frequentista in psicologia</strong> — Modulo del progetto UTET a supporto del manuale <em>Metodi bayesiani in psicologia</em>.</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/06_two_ind_samples.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/06_two_ind_samples.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Preferenze cookie</a></div></div>
     <div class="nav-footer-right">
 <p>Realizzato con <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
 </footer>
+
+
 
 
 <script src="../../site_libs/quarto-html/zenscroll-min.js"></script>

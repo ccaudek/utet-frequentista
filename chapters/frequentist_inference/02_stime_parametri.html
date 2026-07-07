@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.38">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Metodi bayesiani in psicologia.">
+
 <title>2&nbsp; Stime, stimatori e parametri – Inferenza frequentista in psicologia</title>
 <style>
 /* Default styles provided by pandoc.
@@ -57,6 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -67,35 +72,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../chapters/frequentist_inference/03_conf_interv.html" rel="next">
 <link href="../../chapters/frequentist_inference/01_galton.html" rel="prev">
 <link href="../../style/gauss.png" rel="icon" type="image/png">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-8aa23a9843243c7502dfe35b5a3a66a2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-57725ed9215a77f36b0b859489c6b50e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-8aa23a9843243c7502dfe35b5a3a66a2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-aa873432a3c62897e6c2091c0d30a948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
-  "copy-button": false,
+  "copy-button": true,
   "collapse-after": 3,
   "panel-placement": "start",
-  "type": "textbox",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
-  "show-item-context": false,
+  "show-item-context": true,
   "language": {
     "search-no-results-text": "Nessun risultato",
     "search-matching-documents-text": "documenti trovati",
@@ -109,14 +117,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Inviare",
     "search-label": "Ricerca"
   }
-}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-QT5S3P9D31"></script><script type="text/javascript">
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-QT5S3P9D31"></script>
+
+<script type="text/plain" cookie-consent="tracking">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-QT5S3P9D31', { 'anonymize_ip': true});
-</script><style>html{ scroll-behavior: smooth; }</style>
-<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script><script type="text/javascript">
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"it"
+  });
+});
+</script> 
+  
+<style>html{ scroll-behavior: smooth; }</style>
+<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -141,8 +177,24 @@ const typesetMath = (el) => {
 window.Quarto = {
   typesetMath
 };
-</script><link rel="stylesheet" href="../../style/custom.css">
+</script>
+
+<link rel="stylesheet" href="../../style/custom.css">
+<meta property="og:title" content="2&nbsp; Stime, stimatori e parametri – Inferenza frequentista in psicologia">
+<meta property="og:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Metodi bayesiani in psicologia.">
+<meta property="og:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/02_stime_parametri_files/figure-html/unnamed-chunk-6-1.png">
+<meta property="og:site_name" content="Inferenza frequentista in psicologia">
+<meta property="og:image:height" content="1297">
+<meta property="og:image:width" content="2100">
+<meta name="twitter:title" content="2&nbsp; Stime, stimatori e parametri – Inferenza frequentista in psicologia">
+<meta name="twitter:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Metodi bayesiani in psicologia.">
+<meta name="twitter:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/02_stime_parametri_files/figure-html/unnamed-chunk-6-1.png">
+<meta name="twitter:image-height" content="1297">
+<meta name="twitter:image-width" content="2100">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/02_stime_parametri.html">
 </head>
+
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -286,7 +338,8 @@ window.Quarto = {
       }
     };
     const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
       document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
       document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
@@ -299,6 +352,14 @@ window.Quarto = {
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
     };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
     // Switch to dark mode if need be
     if (hasAlternateSentinel()) {
       toggleColorMode(true);
@@ -308,7 +369,9 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -319,30 +382,30 @@ window.Quarto = {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Inferenza frequentista in psicologia</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/ccaudek/utet-frequentista/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/ccaudek/utet-frequentista/" title="Eseguire il codice" class="quarto-navigation-tool px-1" aria-label="Eseguire il codice"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Attiva/disattiva la modalità oscura"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Attiva/disattiva la modalità lettore">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
+    <div id="quarto-search" class="quarto-navigation-tool px-1" title="Ricerca"></div>
 </div>
     </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Ricerca"></div>
-        </div>
-        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Percorso e obiettivi</span></a>
@@ -356,8 +419,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduzione</span></a>
@@ -394,7 +457,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
@@ -403,32 +466,39 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/epiloque/epiloque.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Considerazioni conclusive</span></span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Sommario</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+    <h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
-<li><a href="#concetti-di-base" id="toc-concetti-di-base" class="nav-link active" data-scroll-target="#concetti-di-base"><span class="header-section-number">2.1</span> Concetti di base</a></li>
+  <li><a href="#concetti-di-base" id="toc-concetti-di-base" class="nav-link active" data-scroll-target="#concetti-di-base"><span class="header-section-number">2.1</span> Concetti di base</a></li>
   <li><a href="#la-distribuzione-campionaria-intuizione-e-definizione" id="toc-la-distribuzione-campionaria-intuizione-e-definizione" class="nav-link" data-scroll-target="#la-distribuzione-campionaria-intuizione-e-definizione"><span class="header-section-number">2.2</span> La distribuzione campionaria: intuizione e definizione</a></li>
   <li><a href="#il-teorema-del-limite-centrale" id="toc-il-teorema-del-limite-centrale" class="nav-link" data-scroll-target="#il-teorema-del-limite-centrale"><span class="header-section-number">2.3</span> Il teorema del limite centrale</a></li>
   <li><a href="#errore-standard" id="toc-errore-standard" class="nav-link" data-scroll-target="#errore-standard"><span class="header-section-number">2.4</span> Errore standard</a></li>
   <li><a href="#implicazioni-per-linferenza" id="toc-implicazioni-per-linferenza" class="nav-link" data-scroll-target="#implicazioni-per-linferenza"><span class="header-section-number">2.5</span> Implicazioni per l’inferenza</a></li>
-  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/02_stime_parametri.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/02_stime_parametri.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/02_stime_parametri.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Stime, stimatori e parametri</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/02_stime_parametri.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Stime, stimatori e parametri</span></a></li></ol></nav>
+<div class="quarto-title">
 <h1 class="title"><span id="sec-freq-stime-parametri" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Stime, stimatori e parametri</span></span></h1>
 </div>
 
@@ -443,7 +513,10 @@ window.Quarto = {
   
 
 
-</header><div class="callout callout-style-simple callout-note no-icon">
+</header>
+
+
+<div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -499,14 +572,14 @@ window.Quarto = {
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"code"</span>, <span class="st">"_common.R"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">source</span>()</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
-<section id="concetti-di-base" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="concetti-di-base">
-<span class="header-section-number">2.1</span> Concetti di base</h2>
+<section id="concetti-di-base" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="concetti-di-base"><span class="header-section-number">2.1</span> Concetti di base</h2>
 <p>L’analisi statistica ha come obiettivo fondamentale la conoscenza di una o più caratteristiche di una <strong>popolazione</strong> di interesse. Nella pratica scientifica, tuttavia, l’osservazione dell’intera popolazione è quasi sempre impraticabile, sia per vincoli materiali sia per ragioni concettuali. Di conseguenza, l’inferenza statistica si fonda sull’osservazione di un <strong>campione</strong>, estratto dalla popolazione secondo un meccanismo di campionamento formalmente specificato.</p>
 <p>Questo passaggio dalla popolazione al campione introduce inevitabilmente un elemento di incertezza, che costituisce il nucleo stesso dell’inferenza statistica. Per formalizzare tale incertezza è necessario distinguere con chiarezza alcuni concetti fondamentali:</p>
 <ul>
@@ -516,85 +589,79 @@ window.Quarto = {
 </ul>
 <p>La distinzione tra stimatore e stima è concettualmente cruciale. Le proprietà inferenziali, come correttezza, variabilità o consistenza, riguardano lo <strong>stimatore</strong> in quanto oggetto probabilistico, non la singola stima osservata. Quest’ultima, essendo il risultato di un campionamento casuale, è inevitabilmente affetta da incertezza statistica e, in generale, non coincide esattamente con il valore vero del parametro della popolazione.</p>
 <p>Questa incertezza, lungi dall’essere un difetto, costituisce il punto di partenza per lo studio della <strong>distribuzione campionaria</strong>, che descrive il comportamento probabilistico di uno stimatore al variare dei campioni possibili e fornisce il fondamento teorico dell’inferenza statistica frequentista.</p>
-</section><section id="la-distribuzione-campionaria-intuizione-e-definizione" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="la-distribuzione-campionaria-intuizione-e-definizione">
-<span class="header-section-number">2.2</span> La distribuzione campionaria: intuizione e definizione</h2>
+</section>
+<section id="la-distribuzione-campionaria-intuizione-e-definizione" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="la-distribuzione-campionaria-intuizione-e-definizione"><span class="header-section-number">2.2</span> La distribuzione campionaria: intuizione e definizione</h2>
 <p>Per introdurre il concetto di <strong>distribuzione campionaria</strong>, è utile partire da un esempio volutamente semplice che consente di enumerare esplicitamente tutti i campioni possibili. L’obiettivo non è simulare una situazione realistica di analisi dei dati, bensì costruire un <strong>dispositivo concettuale</strong> che permetta di rendere visibile un’idea altrimenti astratta: il comportamento probabilistico di una statistica al variare dei campioni.</p>
-<section id="esempio-introduttivo" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="esempio-introduttivo">
-<span class="header-section-number">2.2.1</span> Esempio introduttivo</h3>
+<section id="esempio-introduttivo" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="esempio-introduttivo"><span class="header-section-number">2.2.1</span> Esempio introduttivo</h3>
 <p>Consideriamo una popolazione estremamente ridotta, composta da quattro valori:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4.5</span>, <span class="fl">5</span>, <span class="fl">5.5</span><span class="op">)</span></span>
-<span><span class="va">x</span></span>
-<span><span class="co">#&gt; [1] 2.0 4.5 5.0 5.5</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="fl">4.5</span>, <span class="dv">5</span>, <span class="fl">5.5</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.0 4.5 5.0 5.5</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Questi valori potrebbero rappresentare, ad esempio, i tempi di reazione (in secondi) di quattro partecipanti a un esperimento. Poiché stiamo trattando l’insieme completo delle osservazioni disponibili, possiamo calcolarne direttamente la <strong>media</strong> e la <strong>varianza</strong>, che in questo contesto assumono il ruolo di parametri della popolazione:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>  <span class="co"># Media della popolazione (μ)</span></span>
-<span><span class="co">#&gt; [1] 4.25</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>   <span class="co"># Varianza della popolazione (σ²)</span></span>
-<span><span class="co">#&gt; [1] 2.42</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)  <span class="co"># Media della popolazione (μ)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.25</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)   <span class="co"># Varianza della popolazione (σ²)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.42</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Queste quantità descrivono la popolazione nel suo complesso e costituiscono il riferimento rispetto al quale confronteremo i risultati ottenuti dai campioni.</p>
-</section><section id="campionamento-e-costruzione-della-distribuzione-campionaria" class="level3" data-number="2.2.2"><h3 data-number="2.2.2" class="anchored" data-anchor-id="campionamento-e-costruzione-della-distribuzione-campionaria">
-<span class="header-section-number">2.2.2</span> Campionamento e costruzione della distribuzione campionaria</h3>
+</section>
+<section id="campionamento-e-costruzione-della-distribuzione-campionaria" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="campionamento-e-costruzione-della-distribuzione-campionaria"><span class="header-section-number">2.2.2</span> Campionamento e costruzione della distribuzione campionaria</h3>
 <p>Supponiamo ora di estrarre <strong>tutti i possibili campioni di dimensione</strong> <span class="math inline">\(n = 2\)</span> <strong>con reinserimento</strong> dalla popolazione. L’uso del reinserimento garantisce che ogni estrazione sia indipendente e che ciascun valore della popolazione possa comparire più volte nello stesso campione.</p>
 <p>Poiché a ogni estrazione sono disponibili quattro valori distinti, il numero totale di campioni ordinati possibili è:</p>
 <p><span class="math display">\[
 4^2 = 16.
 \]</span></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">x</span><span class="op">)</span></span>
-<span><span class="va">samples</span></span>
-<span><span class="co">#&gt;    Var1 Var2</span></span>
-<span><span class="co">#&gt; 1   2.0  2.0</span></span>
-<span><span class="co">#&gt; 2   4.5  2.0</span></span>
-<span><span class="co">#&gt; 3   5.0  2.0</span></span>
-<span><span class="co">#&gt; 4   5.5  2.0</span></span>
-<span><span class="co">#&gt; 5   2.0  4.5</span></span>
-<span><span class="co">#&gt; 6   4.5  4.5</span></span>
-<span><span class="co">#&gt; 7   5.0  4.5</span></span>
-<span><span class="co">#&gt; 8   5.5  4.5</span></span>
-<span><span class="co">#&gt; 9   2.0  5.0</span></span>
-<span><span class="co">#&gt; 10  4.5  5.0</span></span>
-<span><span class="co">#&gt; 11  5.0  5.0</span></span>
-<span><span class="co">#&gt; 12  5.5  5.0</span></span>
-<span><span class="co">#&gt; 13  2.0  5.5</span></span>
-<span><span class="co">#&gt; 14  4.5  5.5</span></span>
-<span><span class="co">#&gt; 15  5.0  5.5</span></span>
-<span><span class="co">#&gt; 16  5.5  5.5</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 16</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(x, x)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>samples</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Var1"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Var2"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"2.0","2":"2.0"},{"1":"4.5","2":"2.0"},{"1":"5.0","2":"2.0"},{"1":"5.5","2":"2.0"},{"1":"2.0","2":"4.5"},{"1":"4.5","2":"4.5"},{"1":"5.0","2":"4.5"},{"1":"5.5","2":"4.5"},{"1":"2.0","2":"5.0"},{"1":"4.5","2":"5.0"},{"1":"5.0","2":"5.0"},{"1":"5.5","2":"5.0"},{"1":"2.0","2":"5.5"},{"1":"4.5","2":"5.5"},{"1":"5.0","2":"5.5"},{"1":"5.5","2":"5.5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(samples)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 16</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Ogni riga della tabella rappresenta un possibile campione di dimensione 2. Per ciascun campione calcoliamo ora la <strong>media campionaria</strong>, ottenendo così l’insieme di tutti i valori che tale statistica può assumere sotto ripetizione del campionamento:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowMeans</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span></span>
-<span><span class="va">sample_means</span></span>
-<span><span class="co">#&gt;  [1] 2.00 3.25 3.50 3.75 3.25 4.50 4.75 5.00 3.50 4.75 5.00 5.25 3.75 5.00 5.25</span></span>
-<span><span class="co">#&gt; [16] 5.50</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sample_means <span class="ot">&lt;-</span> <span class="fu">rowMeans</span>(samples)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sample_means</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] 2.00 3.25 3.50 3.75 3.25 4.50 4.75 5.00 3.50 4.75 5.00 5.25 3.75 5.00 5.25</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [16] 5.50</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Questo insieme di valori costituisce la <strong>distribuzione campionaria della media</strong> per campioni di dimensione <span class="math inline">\(n = 2\)</span>.</p>
-</section><section id="visualizzazione-della-distribuzione-campionaria" class="level3" data-number="2.2.3"><h3 data-number="2.2.3" class="anchored" data-anchor-id="visualizzazione-della-distribuzione-campionaria">
-<span class="header-section-number">2.2.3</span> Visualizzazione della distribuzione campionaria</h3>
+</section>
+<section id="visualizzazione-della-distribuzione-campionaria" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="visualizzazione-della-distribuzione-campionaria"><span class="header-section-number">2.2.3</span> Visualizzazione della distribuzione campionaria</h3>
 <p>Per rendere più intuitiva la struttura di questa distribuzione, rappresentiamo graficamente le medie campionarie ottenute:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Valori <span class="op">=</span> <span class="va">sample_means</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Valori</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_histogram</span><span class="op">(</span></span>
-<span>    bins <span class="op">=</span> <span class="fl">7</span>,</span>
-<span>    <span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="fu">after_stat</span><span class="op">(</span><span class="va">density</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>    fill <span class="op">=</span> <span class="st">"steelblue"</span>,</span>
-<span>    color <span class="op">=</span> <span class="st">"white"</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Distribuzione campionaria delle medie (n = 2)"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Media campionaria"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Densità"</span></span>
-<span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Valori =</span> sample_means)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Valori)) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">bins =</span> <span class="dv">7</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"steelblue"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"white"</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribuzione campionaria delle medie (n = 2)"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Media campionaria"</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Densità"</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="02_stime_parametri_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="02_stime_parametri_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
+<figure class="figure">
+<p><a href="02_stime_parametri_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="02_stime_parametri_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
 </figure>
 </div>
 </div>
@@ -602,8 +669,9 @@ window.Quarto = {
 <p>L’istogramma mostra chiaramente che le medie campionarie <strong>non sono distribuite uniformemente</strong>. Alcuni valori compaiono più frequentemente di altri perché possono essere ottenuti da un numero maggiore di combinazioni dei valori della popolazione. In altre parole, anche se il campionamento dalla popolazione avviene in modo casuale e uniforme (cioè ogni unità ha la stessa probabilità di essere estratta), la distribuzione della statistica calcolata (in questo caso, la media) non è necessariamente uniforme.</p>
 <p>Questo esempio mette in evidenza un punto concettuale fondamentale: la <strong>distribuzione campionaria</strong> di una statistica possiede una struttura propria, che dipende sia dalla distribuzione della popolazione sia dalla dimensione del campione. Essa non coincide né con la distribuzione della popolazione né con quella dei singoli campioni osservati.</p>
 <p>L’esempio precedente ci ha permesso di costruire esplicitamente una distribuzione campionaria in un caso elementare. Nel seguito, generalizzeremo questa idea, introducendo la definizione formale di distribuzione campionaria e analizzandone le proprietà teoriche, che costituiscono il fondamento dell’inferenza statistica frequentista.</p>
-</section><section id="cosè-una-distribuzione-campionaria" class="level3" data-number="2.2.4"><h3 data-number="2.2.4" class="anchored" data-anchor-id="cosè-una-distribuzione-campionaria">
-<span class="header-section-number">2.2.4</span> Cos’è una distribuzione campionaria</h3>
+</section>
+<section id="cosè-una-distribuzione-campionaria" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="cosè-una-distribuzione-campionaria"><span class="header-section-number">2.2.4</span> Cos’è una distribuzione campionaria</h3>
 <p>Nel lavoro empirico emerge un’apparente tensione epistemologica: l’analisi statistica si fonda sull’osservazione di un <strong>singolo campione</strong>, dal quale otteniamo una <strong>singola stima</strong> del parametro di interesse (ad esempio, una media campionaria). Tuttavia, l’obiettivo dell’inferenza non è il campione in sé, bensì la valutazione dell’<strong>affidabilità</strong> di tale stima rispetto al parametro della popolazione. Come può essere quantificata questa affidabilità a partire da un’unica osservazione?</p>
 <p>L’inferenza frequentista risolve questo problema adottando un punto di vista esplicitamente <strong>controfattuale</strong>: si chiede cosa accadrebbe se lo stesso studio potesse essere ripetuto un numero molto elevato (idealmente infinito) di volte, mantenendo inalterate le condizioni sperimentali e lo schema di campionamento.</p>
 <p>In termini concettuali, questo equivale a immaginare che:</p>
@@ -629,12 +697,9 @@ window.Quarto = {
 </div>
 <p>È essenziale chiarire cosa la distribuzione campionaria <strong>non</strong> rappresenta:</p>
 <ul>
-<li>
-<strong>non</strong> è la distribuzione dei dati nella popolazione;</li>
-<li>
-<strong>non</strong> è la distribuzione dei dati osservati in un singolo campione;</li>
-<li>è, piuttosto, una <strong>proprietà teorica dello stimatore</strong>, che dipende dalla dimensione del campione <span class="math inline">\(n\)</span>, dalla variabilità della popolazione e dallo schema di campionamento adottato.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
-</li>
+<li><strong>non</strong> è la distribuzione dei dati nella popolazione;</li>
+<li><strong>non</strong> è la distribuzione dei dati osservati in un singolo campione;</li>
+<li>è, piuttosto, una <strong>proprietà teorica dello stimatore</strong>, che dipende dalla dimensione del campione <span class="math inline">\(n\)</span>, dalla variabilità della popolazione e dallo schema di campionamento adottato.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
 </ul>
 <p>La distinzione concettuale fondamentale può essere così riassunta:</p>
 <ul>
@@ -642,21 +707,22 @@ window.Quarto = {
 <li>la <strong>distribuzione campionaria</strong> descrive la variabilità di una <strong>stima</strong> di quel tratto tra esperimenti ripetuti.</li>
 </ul>
 <p>Questa distinzione costituisce il nucleo dell’inferenza statistica frequentista. Sebbene nella pratica si osservi un solo campione, gli strumenti inferenziali, come gli intervalli di confidenza e i test di ipotesi, traggono la loro giustificazione teorica dal comportamento a <strong>lungo termine</strong> della statistica, così come descritto dalla sua distribuzione campionaria. Ogni stimatore, che si tratti di una media, di una proporzione o di un coefficiente di regressione, possiede una propria distribuzione campionaria, dalla quale discendono le sue proprietà di accuratezza, precisione e affidabilità inferenziale.</p>
-</section><section id="proprietà-della-distribuzione-campionaria" class="level3" data-number="2.2.5"><h3 data-number="2.2.5" class="anchored" data-anchor-id="proprietà-della-distribuzione-campionaria">
-<span class="header-section-number">2.2.5</span> Proprietà della distribuzione campionaria</h3>
+</section>
+<section id="proprietà-della-distribuzione-campionaria" class="level3" data-number="2.2.5">
+<h3 data-number="2.2.5" class="anchored" data-anchor-id="proprietà-della-distribuzione-campionaria"><span class="header-section-number">2.2.5</span> Proprietà della distribuzione campionaria</h3>
 <p>Per chiarire le proprietà fondamentali delle distribuzioni campionarie, ci concentreremo sulla <strong>media campionaria</strong> come stimatore principale. Questa scelta non è casuale: la media rappresenta lo strumento di stima più utilizzato in psicologia e nelle scienze sociali e costituisce un caso paradigmatico per comprendere i meccanismi generali dell’inferenza frequentista.</p>
-<section id="una-proprietà-fondamentale-la-correttezza" class="level4" data-number="2.2.5.1"><h4 data-number="2.2.5.1" class="anchored" data-anchor-id="una-proprietà-fondamentale-la-correttezza">
-<span class="header-section-number">2.2.5.1</span> Una proprietà fondamentale: la correttezza</h4>
+<section id="una-proprietà-fondamentale-la-correttezza" class="level4" data-number="2.2.5.1">
+<h4 data-number="2.2.5.1" class="anchored" data-anchor-id="una-proprietà-fondamentale-la-correttezza"><span class="header-section-number">2.2.5.1</span> Una proprietà fondamentale: la correttezza</h4>
 <p>Un primo risultato teorico di rilievo riguarda il <strong>valore atteso della media campionaria</strong>. La teoria statistica dimostra che la media della distribuzione campionaria di <span class="math inline">\(\bar{X}\)</span> coincide esattamente con la <strong>media della popolazione</strong> <span class="math inline">\(\mu\)</span>:</p>
 <p><span class="math display">\[
 \mathbb{E}(\bar{X}) = \mu.
 \]</span></p>
 <p>Nel nostro esempio empirico, questa uguaglianza può essere verificata direttamente:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>            <span class="co"># Media della popolazione (μ)</span></span>
-<span><span class="co">#&gt; [1] 4.25</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sample_means</span><span class="op">)</span> <span class="co"># Media della distribuzione campionaria di X̄</span></span>
-<span><span class="co">#&gt; [1] 4.25</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)            <span class="co"># Media della popolazione (μ)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.25</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sample_means) <span class="co"># Media della distribuzione campionaria di X̄</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4.25</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Questo risultato non è un fatto contingente, ma esprime una proprietà formale cruciale: la media campionaria <span class="math inline">\(\bar{X}\)</span> è uno <strong>stimatore corretto</strong> (<em>unbiased</em>, o non distorto) del parametro <span class="math inline">\(\mu\)</span>. In termini concettuali, la correttezza implica che lo stimatore non presenta una tendenza sistematica a sovrastimare o sottostimare il valore vero della popolazione.</p>
 <p>Dal punto di vista frequentista, ciò significa che <strong>nel lungo periodo</strong>, ossia sotto ripetizione indefinita del processo di campionamento, la media delle stime converge al parametro vero. La correttezza non garantisce che una singola stima sia vicina a <span class="math inline">\(\mu\)</span>, ma assicura che eventuali errori di stima si compensino nel complesso delle ripetizioni.</p>
@@ -678,8 +744,10 @@ window.Quarto = {
 <p>Uno stimatore ideale è sia corretto sia preciso. Nella pratica, tuttavia, esiste spesso un compromesso tra le due proprietà: stimatori leggermente distorti possono avere varianza molto più piccola, risultando complessivamente più utili. Questo tema, noto come <em>bias-variance tradeoff</em>, sarà ripreso nei capitoli successivi.</p>
 </div>
 </div>
-</section></section><section id="varianza-della-distribuzione-campionaria" class="level3" data-number="2.2.6"><h3 data-number="2.2.6" class="anchored" data-anchor-id="varianza-della-distribuzione-campionaria">
-<span class="header-section-number">2.2.6</span> Varianza della distribuzione campionaria</h3>
+</section>
+</section>
+<section id="varianza-della-distribuzione-campionaria" class="level3" data-number="2.2.6">
+<h3 data-number="2.2.6" class="anchored" data-anchor-id="varianza-della-distribuzione-campionaria"><span class="header-section-number">2.2.6</span> Varianza della distribuzione campionaria</h3>
 <p>Se la correttezza riguarda il <em>centro</em> della distribuzione campionaria, la <strong>varianza della distribuzione campionaria</strong> ne quantifica invece la <strong>dispersione</strong>, fornendo una misura della <strong>precisione</strong> dello stimatore. Essa descrive quanto le stime della media tendano a fluttuare attorno al valore vero <span class="math inline">\(\mu\)</span> al variare del campione.</p>
 <p>La teoria statistica fornisce una relazione fondamentale:</p>
 <p><span class="math display">\[
@@ -687,22 +755,20 @@ window.Quarto = {
 \]</span></p>
 <p>dove:</p>
 <ul>
-<li>
-<span class="math inline">\(\sigma^2\)</span> è la varianza della popolazione,</li>
-<li>
-<span class="math inline">\(n\)</span> è la dimensione del campione.</li>
+<li><span class="math inline">\(\sigma^2\)</span> è la varianza della popolazione,</li>
+<li><span class="math inline">\(n\)</span> è la dimensione del campione.</li>
 </ul>
 <p>Nel nostro esempio, tale relazione può essere verificata empiricamente:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>                    <span class="co"># σ²: varianza della popolazione</span></span>
-<span><span class="co">#&gt; [1] 2.42</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span>                <span class="co"># σ²/n: varianza teorica della media per n = 2</span></span>
-<span><span class="co">#&gt; [1] 1.21</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">sample_means</span><span class="op">)</span> <span class="op">*</span> <span class="fl">15</span><span class="op">/</span><span class="fl">16</span> <span class="co"># varianza empirica corretta per popolazione finita</span></span>
-<span><span class="co">#&gt; [1] 0.906</span></span>
-<span><span class="co"># Nota: si moltiplica per (N-1)/N = 15/16 perché var() usa n-1 al</span></span>
-<span><span class="co"># denominatore (varianza campionaria), mentre qui serve la varianza</span></span>
-<span><span class="co"># di popolazione sull'insieme dei 16 campioni possibili.</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)                    <span class="co"># σ²: varianza della popolazione</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 2.42</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x) <span class="sc">/</span> <span class="dv">2</span>                <span class="co"># σ²/n: varianza teorica della media per n = 2</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.21</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(sample_means) <span class="sc">*</span> <span class="dv">15</span><span class="sc">/</span><span class="dv">16</span> <span class="co"># varianza empirica corretta per popolazione finita</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.906</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Nota: si moltiplica per (N-1)/N = 15/16 perché var() usa n-1 al</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># denominatore (varianza campionaria), mentre qui serve la varianza</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># di popolazione sull'insieme dei 16 campioni possibili.</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Dimostrazione: valore atteso e varianza della media campionaria">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
@@ -721,9 +787,8 @@ window.Quarto = {
 <p><span class="math display">\[
 \bar{X} = \frac{1}{n} \sum_{i=1}^n X_i.
 \]</span></p>
-<section id="valore-atteso-mathbbebarx-mu" class="level4" data-number="2.2.6.1"><h4 data-number="2.2.6.1" class="anchored" data-anchor-id="valore-atteso-mathbbebarx-mu">
-<span class="header-section-number">2.2.6.1</span> Valore atteso: <span class="math inline">\(\mathbb{E}(\bar{X}) = \mu\)</span>
-</h4>
+<section id="valore-atteso-mathbbebarx-mu" class="level4" data-number="2.2.6.1">
+<h4 data-number="2.2.6.1" class="anchored" data-anchor-id="valore-atteso-mathbbebarx-mu"><span class="header-section-number">2.2.6.1</span> Valore atteso: <span class="math inline">\(\mathbb{E}(\bar{X}) = \mu\)</span></h4>
 <p>Applicando la <strong>linearità del valore atteso</strong>, che vale senza alcuna assunzione di indipendenza:</p>
 <p><span class="math display">\[
 \mathbb{E}(\bar{X})
@@ -734,9 +799,9 @@ window.Quarto = {
 = \mu.
 \]</span></p>
 <p>Lo stimatore <span class="math inline">\(\bar{X}\)</span> è quindi <strong>corretto</strong> (non distorto): il suo valore atteso coincide esattamente con il parametro di interesse, qualunque sia la distribuzione della popolazione e qualunque sia <span class="math inline">\(n\)</span>.</p>
-</section><section id="varianza-mathrmvarbarx-sigma2n" class="level4" data-number="2.2.6.2"><h4 data-number="2.2.6.2" class="anchored" data-anchor-id="varianza-mathrmvarbarx-sigma2n">
-<span class="header-section-number">2.2.6.2</span> Varianza: <span class="math inline">\(\mathrm{Var}(\bar{X}) = \sigma^2/n\)</span>
-</h4>
+</section>
+<section id="varianza-mathrmvarbarx-sigma2n" class="level4" data-number="2.2.6.2">
+<h4 data-number="2.2.6.2" class="anchored" data-anchor-id="varianza-mathrmvarbarx-sigma2n"><span class="header-section-number">2.2.6.2</span> Varianza: <span class="math inline">\(\mathrm{Var}(\bar{X}) = \sigma^2/n\)</span></h4>
 <p>Per la varianza si utilizza la proprietà secondo cui, per variabili <strong>indipendenti</strong>, la varianza della somma è la somma delle varianze, e la varianza di una costante per una variabile casuale soddisfa <span class="math inline">\(\mathrm{Var}(cX) = c^2 \mathrm{Var}(X)\)</span>:</p>
 <p><span class="math display">\[
 \mathrm{Var}(\bar{X})
@@ -747,17 +812,20 @@ window.Quarto = {
 = \frac{\sigma^2}{n}.
 \]</span></p>
 <p>Il passaggio cruciale è il terzo: la varianza della somma si semplifica nella somma delle varianze <strong>solo grazie all’indipendenza</strong> tra le <span class="math inline">\(X_i\)</span>. In assenza di indipendenza, i termini di covarianza <span class="math inline">\(\mathrm{Cov}(X_i, X_j)\)</span> con <span class="math inline">\(i \neq j\)</span> non si annullerebbero, e la formula sarebbe più complessa.</p>
-</section><section id="riepilogo" class="level4" data-number="2.2.6.3"><h4 data-number="2.2.6.3" class="anchored" data-anchor-id="riepilogo">
-<span class="header-section-number">2.2.6.3</span> Riepilogo</h4>
+</section>
+<section id="riepilogo" class="level4" data-number="2.2.6.3">
+<h4 data-number="2.2.6.3" class="anchored" data-anchor-id="riepilogo"><span class="header-section-number">2.2.6.3</span> Riepilogo</h4>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 55%">
 <col style="width: 45%">
 </colgroup>
-<thead><tr class="header">
+<thead>
+<tr class="header">
 <th>Proprietà</th>
 <th>Formula</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td>Valore atteso</td>
@@ -781,11 +849,13 @@ window.Quarto = {
 <p>Questa formula racchiude uno dei principi più importanti dell’inferenza statistica: <strong>la variabilità delle medie campionarie diminuisce all’aumentare della dimensione del campione</strong>. In altri termini, la precisione dello stimatore cresce con <span class="math inline">\(n\)</span>.</p>
 <p>L’interpretazione intuitiva è che campioni più ampi tendono a “compensare” le fluttuazioni casuali dovute a osservazioni estreme o atipiche. Di conseguenza, le stime ottenute da campioni grandi risultano più <strong>stabili e replicabili</strong>. Due campioni indipendenti di dimensione <span class="math inline">\(n = 100\)</span> produrranno, in media, stime della media molto più simili tra loro rispetto a due campioni di dimensione <span class="math inline">\(n = 10\)</span>.</p>
 <p>Questa proprietà fornisce il fondamento teorico del principio secondo cui <strong>l’aumento della dimensione campionaria riduce l’incertezza inferenziale</strong>, e prepara il terreno per risultati più generali, come il teorema del limite centrale, che verrà discusso nella sezione successiva.</p>
-</section></section><section id="il-teorema-del-limite-centrale" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="il-teorema-del-limite-centrale">
-<span class="header-section-number">2.3</span> Il teorema del limite centrale</h2>
+</section>
+</section>
+<section id="il-teorema-del-limite-centrale" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="il-teorema-del-limite-centrale"><span class="header-section-number">2.3</span> Il teorema del limite centrale</h2>
 <p>Il <strong>teorema del limite centrale</strong> (TLC) rappresenta uno dei pilastri concettuali della statistica inferenziale. La sua importanza non risiede soltanto nel contenuto matematico, ma nel ruolo epistemologico che esso svolge: il TLC fornisce il collegamento teorico tra la variabilità individuale dei dati e le regolarità aggregative emergenti nelle statistiche di sintesi. Il suo nucleo concettuale può essere riassunto nel seguente enunciato: la media (o la somma) di un numero sufficientemente elevato di variabili casuali indipendenti e identicamente distribuite converge a una distribuzione normale, indipendentemente dalla forma della distribuzione originaria delle variabili stesse.</p>
-<section id="enunciato-formale" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="enunciato-formale">
-<span class="header-section-number">2.3.1</span> Enunciato formale</h3>
+<section id="enunciato-formale" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="enunciato-formale"><span class="header-section-number">2.3.1</span> Enunciato formale</h3>
 <p>Siano <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> una sequenza di variabili casuali <strong>indipendenti e identicamente distribuite</strong> (<em>i.i.d.</em>), ciascuna con valore atteso <span class="math inline">\(\mathbb{E}[X_i] = \mu\)</span> e varianza finita <span class="math inline">\(\mathrm{Var}(X_i) = \sigma^2\)</span>.</p>
 <p>Allora, per <span class="math inline">\(n\)</span> sufficientemente grande, la distribuzione della <strong>media campionaria</strong></p>
 <p><span class="math display">\[
@@ -804,8 +874,9 @@ Z_n = \frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}}
 Z_n \xrightarrow[]{\;d\;} \mathcal{N}(0, 1), \qquad \text{per } n \to \infty.
 \]</span></p>
 <p>È importante sottolineare che questa convergenza riguarda la <strong>forma della distribuzione</strong> e non i singoli valori osservati: il TLC è un risultato asintotico e probabilistico, non deterministico.</p>
-</section><section id="perché-il-tlc-è-così-rilevante" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="perché-il-tlc-è-così-rilevante">
-<span class="header-section-number">2.3.2</span> Perché il TLC è così rilevante?</h3>
+</section>
+<section id="perché-il-tlc-è-così-rilevante" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="perché-il-tlc-è-così-rilevante"><span class="header-section-number">2.3.2</span> Perché il TLC è così rilevante?</h3>
 <p>Il teorema del limite centrale spiega l’<strong>ubiquità empirica della distribuzione normale</strong> nelle scienze sperimentali e sociali, psicologia compresa. Molte delle quantità di interesse, ovvero medie, somme, proporzioni, sono, nella loro struttura matematica, il risultato di aggregazioni di osservazioni individuali. Il TLC garantisce che, anche quando la distribuzione della popolazione è asimmetrica, multimodale o irregolare, la <strong>distribuzione campionaria della media</strong> tende ad assumere una forma approssimativamente normale al crescere della dimensione campionaria.</p>
 <p>È cruciale mantenere distinta la portata del teorema:</p>
 <ul>
@@ -813,8 +884,9 @@ Z_n \xrightarrow[]{\;d\;} \mathcal{N}(0, 1), \qquad \text{per } n \to \infty.
 <li>il TLC <strong>garantisce</strong> che la <strong>distribuzione campionaria della media</strong> <span class="math inline">\(\bar{X}_n\)</span> diventi approssimativamente normale per campioni sufficientemente grandi.</li>
 </ul>
 <p>Questa distinzione è spesso fonte di fraintendimenti nella pratica applicativa, ma è centrale per una corretta interpretazione dei metodi inferenziali frequentisti.</p>
-</section><section id="implicazioni-inferenziali" class="level3" data-number="2.3.3"><h3 data-number="2.3.3" class="anchored" data-anchor-id="implicazioni-inferenziali">
-<span class="header-section-number">2.3.3</span> Implicazioni inferenziali</h3>
+</section>
+<section id="implicazioni-inferenziali" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="implicazioni-inferenziali"><span class="header-section-number">2.3.3</span> Implicazioni inferenziali</h3>
 <p>Dal punto di vista metodologico, il TLC costituisce il fondamento teorico che rende possibile:</p>
 <ul>
 <li>la costruzione di <strong>intervalli di confidenza</strong> per la media,</li>
@@ -822,8 +894,9 @@ Z_n \xrightarrow[]{\;d\;} \mathcal{N}(0, 1), \qquad \text{per } n \to \infty.
 </ul>
 <p>anche in situazioni in cui l’assunzione di normalità della popolazione non è verificabile o risulta chiaramente violata. In tal senso, il TLC giustifica l’uso estensivo della distribuzione normale come modello approssimante nell’inferenza frequentista.</p>
 <p>Al tempo stesso, il teorema chiarisce il ruolo cruciale della <strong>dimensione campionaria</strong>: quanto più <span class="math inline">\(n\)</span> è grande, tanto migliore è l’approssimazione normale. Nei capitoli successivi vedremo come questa dipendenza da <span class="math inline">\(n\)</span> condizioni la validità pratica dei risultati inferenziali e come, in presenza di campioni piccoli o distribuzioni fortemente asimmetriche, sia necessario ricorrere a strumenti alternativi o a cautele interpretative.</p>
-</section><section id="dimostrazione-mediante-simulazione-la-normalizzazione-dellasimmetria" class="level3" data-number="2.3.4"><h3 data-number="2.3.4" class="anchored" data-anchor-id="dimostrazione-mediante-simulazione-la-normalizzazione-dellasimmetria">
-<span class="header-section-number">2.3.4</span> Dimostrazione mediante simulazione: la normalizzazione dell’asimmetria</h3>
+</section>
+<section id="dimostrazione-mediante-simulazione-la-normalizzazione-dellasimmetria" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="dimostrazione-mediante-simulazione-la-normalizzazione-dellasimmetria"><span class="header-section-number">2.3.4</span> Dimostrazione mediante simulazione: la normalizzazione dell’asimmetria</h3>
 <p>Per cogliere in modo intuitivo la portata del teorema del limite centrale, è istruttivo partire da una distribuzione che violi in modo netto l’assunzione di normalità. Consideriamo quindi una <strong>distribuzione esponenziale</strong> con parametro <span class="math inline">\(\lambda = 1\)</span>, che presenta caratteristiche opposte a quelle di una distribuzione normale:</p>
 <ul>
 <li>è <strong>fortemente asimmetrica</strong> (asimmetria positiva pari a 2);</li>
@@ -834,53 +907,54 @@ Z_n \xrightarrow[]{\;d\;} \mathcal{N}(0, 1), \qquad \text{per } n \to \infty.
 <p>L’idea della simulazione è la seguente: estrarre ripetutamente campioni dalla distribuzione esponenziale, calcolare la media di ciascun campione e osservare come si distribuiscono queste medie al variare della dimensione campionaria <span class="math inline">\(n\)</span>.</p>
 <p>Il codice seguente genera 10,000 campioni indipendenti per tre diverse dimensioni campionarie (<span class="math inline">\(n = 3\)</span>, <span class="math inline">\(n = 30\)</span>, <span class="math inline">\(n = 300\)</span>), calcolando ogni volta la media campionaria:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="va">n_samples</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
-<span></span>
-<span><span class="co"># Funzione per calcolare medie campionarie da distribuzione esponenziale</span></span>
-<span><span class="va">calculate_means</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">sample_size</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">n_samples</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html">rexp</a></span><span class="op">(</span><span class="va">sample_size</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="co"># Medie per diverse dimensioni campionarie</span></span>
-<span><span class="va">means_n3</span>   <span class="op">&lt;-</span> <span class="fu">calculate_means</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
-<span><span class="va">means_n30</span>  <span class="op">&lt;-</span> <span class="fu">calculate_means</span><span class="op">(</span><span class="fl">30</span><span class="op">)</span></span>
-<span><span class="va">means_n300</span> <span class="op">&lt;-</span> <span class="fu">calculate_means</span><span class="op">(</span><span class="fl">300</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Parametri teorici della distribuzione esponenziale(1):</span></span>
-<span><span class="co"># media = 1/λ = 1, deviazione standard = 1/λ = 1</span></span>
-<span><span class="va">mu</span>    <span class="op">&lt;-</span> <span class="fl">1</span></span>
-<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
-<span></span>
-<span><span class="co"># Visualizzazione</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># n = 3</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">means_n3</span>, breaks <span class="op">=</span> <span class="fl">40</span>, main <span class="op">=</span> <span class="st">"n = 3"</span>, xlab <span class="op">=</span> <span class="st">"Media campionaria"</span>,</span>
-<span>     probability <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="st">"lightblue"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="va">sigma</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>      col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># n = 30</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">means_n30</span>, breaks <span class="op">=</span> <span class="fl">40</span>, main <span class="op">=</span> <span class="st">"n = 30"</span>, xlab <span class="op">=</span> <span class="st">"Media campionaria"</span>,</span>
-<span>     probability <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="st">"lightblue"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1.8</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="va">sigma</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>      col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># n = 300</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">means_n300</span>, breaks <span class="op">=</span> <span class="fl">40</span>, main <span class="op">=</span> <span class="st">"n = 300"</span>, xlab <span class="op">=</span> <span class="st">"Media campionaria"</span>,</span>
-<span>     probability <span class="op">=</span> <span class="cn">TRUE</span>, col <span class="op">=</span> <span class="st">"lightblue"</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.7</span>, <span class="fl">1.4</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="va">mu</span>, sd <span class="op">=</span> <span class="va">sigma</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">300</span><span class="op">)</span><span class="op">)</span>, add <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>      col <span class="op">=</span> <span class="st">"red"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>n_samples <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Funzione per calcolare medie campionarie da distribuzione esponenziale</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>calculate_means <span class="ot">&lt;-</span> <span class="cf">function</span>(sample_size) {</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replicate</span>(n_samples, <span class="fu">mean</span>(<span class="fu">rexp</span>(sample_size, <span class="at">rate =</span> <span class="dv">1</span>)))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Medie per diverse dimensioni campionarie</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>means_n3   <span class="ot">&lt;-</span> <span class="fu">calculate_means</span>(<span class="dv">3</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>means_n30  <span class="ot">&lt;-</span> <span class="fu">calculate_means</span>(<span class="dv">30</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>means_n300 <span class="ot">&lt;-</span> <span class="fu">calculate_means</span>(<span class="dv">300</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Parametri teorici della distribuzione esponenziale(1):</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># media = 1/λ = 1, deviazione standard = 1/λ = 1</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>mu    <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizzazione</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>))</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co"># n = 3</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(means_n3, <span class="at">breaks =</span> <span class="dv">40</span>, <span class="at">main =</span> <span class="st">"n = 3"</span>, <span class="at">xlab =</span> <span class="st">"Media campionaria"</span>,</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">probability =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>))</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">3</span>)), <span class="at">add =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="co"># n = 30</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(means_n30, <span class="at">breaks =</span> <span class="dv">40</span>, <span class="at">main =</span> <span class="st">"n = 30"</span>, <span class="at">xlab =</span> <span class="st">"Media campionaria"</span>,</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>     <span class="at">probability =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">1.8</span>))</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">30</span>)), <span class="at">add =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co"># n = 300</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(means_n300, <span class="at">breaks =</span> <span class="dv">40</span>, <span class="at">main =</span> <span class="st">"n = 300"</span>, <span class="at">xlab =</span> <span class="st">"Media campionaria"</span>,</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>     <span class="at">probability =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.7</span>, <span class="fl">1.4</span>))</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">300</span>)), <span class="at">add =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="02_stime_parametri_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="02_stime_parametri_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
+<figure class="figure">
+<p><a href="02_stime_parametri_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="02_stime_parametri_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="interpretazione-dei-risultati" class="level4" data-number="2.3.4.1"><h4 data-number="2.3.4.1" class="anchored" data-anchor-id="interpretazione-dei-risultati">
-<span class="header-section-number">2.3.4.1</span> Interpretazione dei risultati</h4>
+<section id="interpretazione-dei-risultati" class="level4" data-number="2.3.4.1">
+<h4 data-number="2.3.4.1" class="anchored" data-anchor-id="interpretazione-dei-risultati"><span class="header-section-number">2.3.4.1</span> Interpretazione dei risultati</h4>
 <p>Il confronto tra i tre pannelli rende visibile il teorema del limite centrale in azione.</p>
 <p><strong>1. Dalla asimmetria alla simmetria</strong></p>
 <ul>
@@ -896,22 +970,24 @@ Z_n \xrightarrow[]{\;d\;} \mathcal{N}(0, 1), \qquad \text{per } n \to \infty.
 <li>l’intervallo di variazione si restringe progressivamente: per <span class="math inline">\(n = 300\)</span>, la maggior parte delle medie si concentra in un intorno molto stretto del valore vero <span class="math inline">\(\mu = 1\)</span>.</li>
 </ul>
 <p>Questa riduzione riflette l’aumento della <strong>precisione inferenziale</strong> associato a campioni più grandi.</p>
-</section><section id="due-messaggi-chiave-del-tlc" class="level4" data-number="2.3.4.2"><h4 data-number="2.3.4.2" class="anchored" data-anchor-id="due-messaggi-chiave-del-tlc">
-<span class="header-section-number">2.3.4.2</span> Due messaggi chiave del TLC</h4>
+</section>
+<section id="due-messaggi-chiave-del-tlc" class="level4" data-number="2.3.4.2">
+<h4 data-number="2.3.4.2" class="anchored" data-anchor-id="due-messaggi-chiave-del-tlc"><span class="header-section-number">2.3.4.2</span> Due messaggi chiave del TLC</h4>
 <p>La simulazione evidenzia in modo diretto i due aspetti centrali del teorema del limite centrale:</p>
 <ul>
 <li><p><strong>Normalizzazione della forma.</strong> Anche partendo da una distribuzione estremamente asimmetrica, la distribuzione campionaria della media tende a una forma gaussiana al crescere di <span class="math inline">\(n\)</span>.</p></li>
-<li>
-<p><strong>Ruolo cruciale della dimensione campionaria.</strong> La dimensione del campione controlla simultaneamente:</p>
+<li><p><strong>Ruolo cruciale della dimensione campionaria.</strong> La dimensione del campione controlla simultaneamente:</p>
 <ul>
 <li>la <strong>velocità di convergenza alla normalità</strong>;</li>
 <li>la <strong>precisione della stima</strong>, che cresce come <span class="math inline">\(1/\sqrt{n}\)</span>.</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <p>La curva rossa tratteggiata in ciascun pannello rappresenta la distribuzione normale teorica prevista dal TLC, <span class="math inline">\(\mathcal{N}(1, 1/n)\)</span>. Il buon accordo osservato, soprattutto per <span class="math inline">\(n\)</span> grandi, mostra come il TLC fornisca una base solida per l’uso della distribuzione normale nell’inferenza statistica frequentista, anche quando i dati di partenza non presentano alcuna somiglianza con una gaussiana.</p>
-</section></section></section><section id="errore-standard" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="errore-standard">
-<span class="header-section-number">2.4</span> Errore standard</h2>
+</section>
+</section>
+</section>
+<section id="errore-standard" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="errore-standard"><span class="header-section-number">2.4</span> Errore standard</h2>
 <p>L’<strong>errore standard</strong> (<em>Standard Error</em>, SE) rappresenta la <strong>deviazione standard della distribuzione campionaria</strong> di uno stimatore. Esso quantifica, in forma sintetica, la variabilità teorica della stima dovuta esclusivamente al processo di campionamento e fornisce quindi una misura diretta della precisione inferenziale.</p>
 <p>Nel caso della <strong>media campionaria</strong> <span class="math inline">\(\bar{X}\)</span>, l’errore standard è definito come:</p>
 <p><span class="math display">\[
@@ -919,15 +995,16 @@ Z_n \xrightarrow[]{\;d\;} \mathcal{N}(0, 1), \qquad \text{per } n \to \infty.
 \]</span></p>
 <p>dove <span class="math inline">\(\sigma\)</span> è la deviazione standard della popolazione e <span class="math inline">\(n\)</span> la dimensione del campione. Questa espressione discende direttamente dalla varianza della distribuzione campionaria della media e rende esplicita una relazione cruciale: la precisione della stima cresce con la dimensione del campione, ma con un rendimento decrescente, poiché dipende dalla radice quadrata di <span class="math inline">\(n\)</span>.</p>
 <p>Dal punto di vista teorico, l’errore standard è dunque una <strong>proprietà dello stimatore</strong>, non dei dati osservati. Esso descrive quanto la stima fluttuerebbe, in media, se il processo di campionamento fosse ripetuto molte volte nelle stesse condizioni.</p>
-<section id="errore-standard-stimato" class="level3" data-number="2.4.1"><h3 data-number="2.4.1" class="anchored" data-anchor-id="errore-standard-stimato">
-<span class="header-section-number">2.4.1</span> Errore standard stimato</h3>
+<section id="errore-standard-stimato" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="errore-standard-stimato"><span class="header-section-number">2.4.1</span> Errore standard stimato</h3>
 <p>Nella pratica applicativa, la deviazione standard della popolazione <span class="math inline">\(\sigma\)</span> è quasi sempre ignota. Per questo motivo, essa viene sostituita dalla <strong>deviazione standard campionaria</strong> <span class="math inline">\(s\)</span>, ottenendo una stima empirica dell’errore standard:</p>
 <p><span class="math display">\[
 \widehat{\mathrm{SE}}(\bar{X}) = \frac{s}{\sqrt{n}}.
 \]</span></p>
 <p>Questa quantità è essa stessa una stima e introduce un ulteriore livello di incertezza, particolarmente rilevante per campioni di piccola dimensione. Tuttavia, per campioni moderati o grandi, l’errore standard stimato fornisce un’approssimazione affidabile della variabilità reale della media campionaria.</p>
-</section><section id="interpretazione-concettuale" class="level3" data-number="2.4.2"><h3 data-number="2.4.2" class="anchored" data-anchor-id="interpretazione-concettuale">
-<span class="header-section-number">2.4.2</span> Interpretazione concettuale</h3>
+</section>
+<section id="interpretazione-concettuale" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="interpretazione-concettuale"><span class="header-section-number">2.4.2</span> Interpretazione concettuale</h3>
 <p>L’errore standard svolge un ruolo centrale nell’inferenza frequentista perché connette tre livelli concettuali distinti:</p>
 <ul>
 <li>la <strong>variabilità della popolazione</strong> (<span class="math inline">\(\sigma\)</span>);</li>
@@ -936,8 +1013,9 @@ Z_n \xrightarrow[]{\;d\;} \mathcal{N}(0, 1), \qquad \text{per } n \to \infty.
 </ul>
 <p>Un errore standard piccolo indica che la distribuzione campionaria della media è fortemente concentrata attorno al valore atteso, e quindi che stime ottenute da campioni diversi tenderebbero a essere simili. Al contrario, un errore standard elevato segnala una maggiore instabilità inferenziale.</p>
 <p>È importante sottolineare che l’errore standard <strong>non misura la dispersione dei dati</strong>, ma la dispersione delle <strong>stime</strong>. Confondere l’errore standard con la deviazione standard dei dati è uno degli errori interpretativi più comuni nella pratica empirica.</p>
-</section><section id="ruolo-inferenziale-dellerrore-standard" class="level3" data-number="2.4.3"><h3 data-number="2.4.3" class="anchored" data-anchor-id="ruolo-inferenziale-dellerrore-standard">
-<span class="header-section-number">2.4.3</span> Ruolo inferenziale dell’errore standard</h3>
+</section>
+<section id="ruolo-inferenziale-dellerrore-standard" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="ruolo-inferenziale-dellerrore-standard"><span class="header-section-number">2.4.3</span> Ruolo inferenziale dell’errore standard</h3>
 <p>Dal punto di vista operativo, l’errore standard costituisce l’elemento chiave per:</p>
 <ul>
 <li>la costruzione di <strong>intervalli di confidenza</strong>, che quantificano l’incertezza frequentista associata alla stima;</li>
@@ -945,8 +1023,10 @@ Z_n \xrightarrow[]{\;d\;} \mathcal{N}(0, 1), \qquad \text{per } n \to \infty.
 <li>la valutazione della <strong>precisione comparativa</strong> tra studi con dimensioni campionarie diverse.</li>
 </ul>
 <p>In questo senso, l’errore standard rappresenta il punto di incontro tra la teoria delle distribuzioni campionarie, il teorema del limite centrale e le procedure inferenziali applicate. Nei prossimi paragrafi vedremo come esso venga utilizzato esplicitamente nella costruzione degli intervalli di confidenza per la media e nei test statistici basati sulla distribuzione normale e sulla distribuzione <em>t</em> di Student.</p>
-</section></section><section id="implicazioni-per-linferenza" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="implicazioni-per-linferenza">
-<span class="header-section-number">2.5</span> Implicazioni per l’inferenza</h2>
+</section>
+</section>
+<section id="implicazioni-per-linferenza" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="implicazioni-per-linferenza"><span class="header-section-number">2.5</span> Implicazioni per l’inferenza</h2>
 <p>I concetti di <strong>distribuzione campionaria</strong> ed <strong>errore standard</strong> costituiscono il fondamento teorico dell’inferenza frequentista. Essi formalizzano l’idea centrale secondo cui la conoscenza statistica non riguarda il singolo campione osservato, ma il <strong>comportamento di una procedura inferenziale sotto la ripetizione ideale del campionamento</strong>.</p>
 <p>Comprendere come uno stimatore si comporta nel lungo periodo consente di affrontare in modo sistematico tre problemi fondamentali dell’inferenza statistica:</p>
 <ol type="1">
@@ -968,7 +1048,9 @@ Nota
 <p>Il concetto di distribuzione campionaria può risultare controintuitivo, poiché richiede di ragionare in termini di esperimenti ipoteticamente ripetuti, nonostante nella pratica si osservi un solo campione. Questa prospettiva controfattuale costituisce una caratteristica distintiva del pensiero frequentista e ne definisce tanto la forza metodologica quanto il limite interpretativo.</p>
 </div>
 </div>
-</section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
+</section>
+<section id="riflessioni-conclusive" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
 <p>In questo capitolo sono stati introdotti i principi fondamentali che governano l’inferenza statistica nell’approccio frequentista, mettendo in luce il ruolo centrale della <strong>distribuzione campionaria</strong> come strumento concettuale per comprendere l’incertezza statistica. È stato mostrato come l’inferenza frequentista si fondi sull’analisi del comportamento di uno stimatore sotto l’ipotesi di <strong>campionamento ripetuto</strong> dalla stessa popolazione, piuttosto che sull’interpretazione di un singolo campione osservato.</p>
 <p>Con riferimento alla <strong>media campionaria</strong> <span class="math inline">\(\bar{X}\)</span>, è stato dimostrato — sia formalmente che mediante verifica empirica — che la sua distribuzione campionaria ha valore atteso pari al parametro della popolazione <span class="math inline">\(\mu\)</span>, garantendo la proprietà di <strong>correttezza</strong> (<em>unbiasedness</em>, assenza di distorsione) dello stimatore. È stato inoltre evidenziato come la varianza della distribuzione campionaria, pari a <span class="math inline">\(\sigma^2 / n\)</span>, diminuisca all’aumentare della dimensione del campione, mostrando che la <strong>precisione inferenziale</strong> cresce con <span class="math inline">\(n\)</span>. Il <strong>teorema del limite centrale</strong> ha fornito il fondamento teorico per l’approssimazione normale della distribuzione campionaria della media, quando la dimensione campionaria è sufficientemente grande, indipendentemente dalla forma della distribuzione della popolazione.</p>
 <p>In questo quadro, l’<strong>errore standard</strong>, definito come la radice quadrata della varianza della distribuzione campionaria, emerge come una quantità chiave per quantificare la precisione di una stima e per collegare la teoria delle distribuzioni campionarie alle procedure inferenziali operative.</p>
@@ -986,72 +1068,76 @@ Nota
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; R version 4.5.3 (2026-03-11)</span></span>
-<span><span class="co">#&gt; Platform: aarch64-apple-darwin20</span></span>
-<span><span class="co">#&gt; Running under: macOS Tahoe 26.4</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Matrix products: default</span></span>
-<span><span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRblas.0.dylib </span></span>
-<span><span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; locale:</span></span>
-<span><span class="co">#&gt; [1] C.UTF-8/UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; time zone: Europe/Rome</span></span>
-<span><span class="co">#&gt; tzcode source: internal</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; attached base packages:</span></span>
-<span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt;  [1] ragg_1.5.2            tinytable_0.16.0      withr_3.0.2          </span></span>
-<span><span class="co">#&gt;  [4] systemfonts_1.3.2     patchwork_1.3.2       ggdist_3.3.3         </span></span>
-<span><span class="co">#&gt;  [7] tidybayes_3.0.7       bayesplot_1.15.0      ggplot2_4.0.2        </span></span>
-<span><span class="co">#&gt; [10] reliabilitydiag_0.2.1 priorsense_1.2.0      posterior_1.6.1      </span></span>
-<span><span class="co">#&gt; [13] loo_2.9.0             rstan_2.32.7          StanHeaders_2.32.10  </span></span>
-<span><span class="co">#&gt; [16] brms_2.23.0           Rcpp_1.1.1            sessioninfo_1.2.3    </span></span>
-<span><span class="co">#&gt; [19] conflicted_1.2.0      janitor_2.2.1         matrixStats_1.5.0    </span></span>
-<span><span class="co">#&gt; [22] modelr_0.1.11         tibble_3.3.1          dplyr_1.2.0          </span></span>
-<span><span class="co">#&gt; [25] tidyr_1.3.2           rio_1.2.4             here_1.0.2           </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;  [1] svUnit_1.0.8          tidyselect_1.2.1      farver_2.1.2         </span></span>
-<span><span class="co">#&gt;  [4] S7_0.2.1              fastmap_1.2.0         TH.data_1.1-5        </span></span>
-<span><span class="co">#&gt;  [7] tensorA_0.36.2.1      digest_0.6.39         timechange_0.4.0     </span></span>
-<span><span class="co">#&gt; [10] estimability_1.5.1    lifecycle_1.0.5       survival_3.8-6       </span></span>
-<span><span class="co">#&gt; [13] magrittr_2.0.4        compiler_4.5.3        rlang_1.1.7          </span></span>
-<span><span class="co">#&gt; [16] tools_4.5.3           yaml_2.3.12           knitr_1.51           </span></span>
-<span><span class="co">#&gt; [19] labeling_0.4.3        bridgesampling_1.2-1  htmlwidgets_1.6.4    </span></span>
-<span><span class="co">#&gt; [22] curl_7.0.0            pkgbuild_1.4.8        RColorBrewer_1.1-3   </span></span>
-<span><span class="co">#&gt; [25] abind_1.4-8           multcomp_1.4-30       purrr_1.2.1          </span></span>
-<span><span class="co">#&gt; [28] grid_4.5.3            stats4_4.5.3          colorspace_2.1-2     </span></span>
-<span><span class="co">#&gt; [31] xtable_1.8-8          inline_0.3.21         emmeans_2.0.2        </span></span>
-<span><span class="co">#&gt; [34] scales_1.4.0          MASS_7.3-65           cli_3.6.5            </span></span>
-<span><span class="co">#&gt; [37] mvtnorm_1.3-6         rmarkdown_2.31        generics_0.1.4       </span></span>
-<span><span class="co">#&gt; [40] otel_0.2.0            RcppParallel_5.1.11-2 cachem_1.1.0         </span></span>
-<span><span class="co">#&gt; [43] stringr_1.6.0         splines_4.5.3         parallel_4.5.3       </span></span>
-<span><span class="co">#&gt; [46] vctrs_0.7.2           V8_8.0.1              Matrix_1.7-5         </span></span>
-<span><span class="co">#&gt; [49] sandwich_3.1-1        jsonlite_2.0.0        arrayhelpers_1.1-0   </span></span>
-<span><span class="co">#&gt; [52] glue_1.8.0            codetools_0.2-20      distributional_0.7.0 </span></span>
-<span><span class="co">#&gt; [55] lubridate_1.9.5       stringi_1.8.7         gtable_0.3.6         </span></span>
-<span><span class="co">#&gt; [58] QuickJSR_1.9.0        pillar_1.11.1         htmltools_0.5.9      </span></span>
-<span><span class="co">#&gt; [61] Brobdingnag_1.2-9     R6_2.6.1              textshaping_1.0.5    </span></span>
-<span><span class="co">#&gt; [64] rprojroot_2.1.1       evaluate_1.0.5        lattice_0.22-9       </span></span>
-<span><span class="co">#&gt; [67] backports_1.5.0       memoise_2.0.1         broom_1.0.12         </span></span>
-<span><span class="co">#&gt; [70] snakecase_0.11.1      rstantools_2.6.0      gridExtra_2.3        </span></span>
-<span><span class="co">#&gt; [73] coda_0.19-4.1         nlme_3.1-169          checkmate_2.3.4      </span></span>
-<span><span class="co">#&gt; [76] xfun_0.57             zoo_1.8-15            pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R version 4.6.0 (2026-04-24)</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Platform: aarch64-apple-darwin23</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Running under: macOS Tahoe 26.5.1</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Matrix products: default</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.6/Resources/lib/libRblas.0.dylib </span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.6/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.1</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; locale:</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] C.UTF-8/UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; time zone: Europe/Rome</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; tzcode source: internal</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; attached base packages:</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; other attached packages:</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] ragg_1.5.2            tinytable_0.17.0      withr_3.0.3          </span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4] systemfonts_1.3.2     patchwork_1.3.2       ggdist_3.3.3         </span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] tidybayes_3.0.7       bayesplot_1.15.0      ggplot2_4.0.3        </span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] reliabilitydiag_0.2.1 priorsense_1.2.0      posterior_1.7.0      </span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] loo_2.10.0            rstan_2.32.7          StanHeaders_2.32.10  </span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [16] brms_2.23.0           Rcpp_1.1.1-1.1        sessioninfo_1.2.4    </span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] conflicted_1.2.0      janitor_2.2.1         matrixStats_1.5.0    </span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [22] modelr_0.1.11         tibble_3.3.1          dplyr_1.2.1          </span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] tidyr_1.3.2           rio_1.3.0             here_1.0.2           </span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] svUnit_1.0.8          tidyselect_1.2.1      farver_2.1.2         </span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4] S7_0.2.2              fastmap_1.2.0         tensorA_0.36.2.1     </span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] digest_0.6.39         timechange_0.4.0      estimability_2.0.0   </span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] lifecycle_1.0.5       magrittr_2.0.5        compiler_4.6.0       </span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] rlang_1.2.0           tools_4.6.0           yaml_2.3.12          </span></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [16] knitr_1.51            labeling_0.4.3        bridgesampling_1.2-1 </span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [19] htmlwidgets_1.6.4     pkgbuild_1.4.8        curl_7.1.0           </span></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [22] RColorBrewer_1.1-3    abind_1.4-8           purrr_1.2.2          </span></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] grid_4.6.0            stats4_4.6.0          xtable_1.8-8         </span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [28] inline_0.3.21         emmeans_2.0.3         scales_1.4.0         </span></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [31] cli_3.6.6             mvtnorm_1.4-1         rmarkdown_2.31       </span></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [34] generics_0.1.4        otel_0.2.0            RcppParallel_5.1.11-2</span></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [37] cachem_1.1.0          stringr_1.6.0         parallel_4.6.0       </span></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [40] vctrs_0.7.3           V8_8.2.0              Matrix_1.7-5         </span></span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [43] jsonlite_2.0.0        arrayhelpers_1.1-1    glue_1.8.1           </span></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [46] codetools_0.2-20      distributional_0.8.1  lubridate_1.9.5      </span></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [49] stringi_1.8.7         gtable_0.3.6          QuickJSR_1.10.0      </span></span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [52] pillar_1.11.1         htmltools_0.5.9       Brobdingnag_1.2-9    </span></span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [55] R6_2.6.1              textshaping_1.0.5     rprojroot_2.1.1      </span></span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [58] evaluate_1.0.5        lattice_0.22-9        backports_1.5.1      </span></span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [61] memoise_2.0.1         broom_1.0.13          snakecase_0.11.1     </span></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [64] rstantools_2.6.0      coda_0.19-4.1         gridExtra_2.3.1      </span></span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [67] nlme_3.1-169          checkmate_2.3.4       xfun_0.59            </span></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [70] pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 
 
-</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
 <ol>
 <li id="fn1"><p><strong>Schema di campionamento</strong>: si riferisce al metodo con cui vengono selezionate le unità dalla popolazione. Nell’esempio specifico, poiché si considerano tutte le possibili coppie ordinate (<code>expand.grid</code>), lo schema è equivalente a un <strong>campionamento casuale con reimmissione</strong> (ogni estrazione è indipendente e la popolazione rimane identica).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1137,7 +1223,7 @@ Nota
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/ccaudek\.github\.io\/utet-frequentista\/");
+        var filterRegex = new RegExp("^(?:https?:)?//ccaudek\.github\.io/utet-frequentista/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1470,7 +1556,9 @@ Nota
       }
     }
   });
-  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
       <a href="../../chapters/frequentist_inference/01_galton.html" class="pagination-link" aria-label="Origini storiche dell'approccio frequentista">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Origini storiche dell’approccio frequentista</span></span>
       </a>          
@@ -1482,18 +1570,20 @@ Nota
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p><strong>Inferenza frequentista in psicologia</strong> — Modulo del progetto UTET a supporto del manuale <em>Metodi bayesiani in psicologia</em>.</p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/02_stime_parametri.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></div>
+
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/02_stime_parametri.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Preferenze cookie</a></div></div>
     <div class="nav-footer-right">
 <p>Realizzato con <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
-</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
@@ -1525,6 +1615,8 @@ Nota
   
 })();
           </script>
+
+
 
 
 <script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
