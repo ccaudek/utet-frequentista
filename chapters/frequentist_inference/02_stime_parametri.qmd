@@ -1,503 +1,275 @@
 # Stime, stimatori e parametri {#sec-freq-stime-parametri}
 
 ::: {.callout-note appearance="minimal"}
-
-In questo capitolo ci concentreremo sul concetto di **distribuzione campionaria**, uno dei pilastri dell'inferenza statistica frequentista. La distribuzione campionaria descrive come le stime dei parametri della popolazione variano da campione a campione e permette di stabilire proprietà probabilistiche delle stime campionarie, fondamentali per costruire intervalli di confidenza e condurre test di ipotesi.
+Questo capitolo introduce il modo in cui l'inferenza frequentista affronta il problema della **stima dei parametri**. Nel companion sulla probabilità abbiamo già discusso distribuzioni campionarie, errore standard, Legge dei Grandi Numeri e Teorema del Limite Centrale. Qui non ripeteremo quei risultati: li useremo come strumenti per comprendere che cosa significa, nel paradigma frequentista, stimare una quantità sconosciuta a partire da un campione.
 :::
 
-::: callout-important
+::: {.callout-important}
 ## In questo capitolo imparerai a
 
-- comprendere il concetto di distribuzione campionaria;
-- familiarizzare con le proprietà della distribuzione campionaria della media;
-- comprendere il teorema del limite centrale e le sue implicazioni.
+- distinguere tra **parametro**, **stimatore** e **stima**;
+- capire perché, nel frequentismo, il parametro è considerato fisso ma ignoto;
+- descrivere le proprietà desiderabili di uno stimatore: correttezza, consistenza, efficienza e compromesso bias-varianza;
+- interpretare l'errore standard come misura operativa dell'incertezza campionaria;
+- comprendere perché la stima puntuale conduce naturalmente agli intervalli di confidenza.
 :::
 
-::: callout-tip
+::: {.callout-tip collapse="true"}
 ## Prerequisiti
 
-- Leggere il capitolo *Sampling* di [Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (Second Edition)](https://moderndive.com/v2/).
-- Consultare il modulo sulla probabilità per i concetti di variabili casuali, valore atteso e varianza.
+Per seguire questo capitolo è utile aver letto:
+
+- il capitolo sul campione e l'evidenza del companion sulla probabilità, in particolare @sec-prob-inference-uncertainty;
+- il capitolo sulle proprietà delle variabili casuali, per valore atteso e varianza;
+- il capitolo introduttivo di questo modulo, in cui sono state distinte le domande frequentiste dalle domande bayesiane.
+
+In questo capitolo useremo espressioni come "distribuzione campionaria" ed "errore standard" senza ridimostrarle. Il punto non è ripetere la teoria probabilistica, ma chiarire come essa viene impiegata nelle procedure frequentiste di stima.
 :::
 
 ::: {.callout-caution collapse=true title="Preparazione del Notebook"}
 
 ```{r}
-here::here("code", "_common.R") |> 
+here::here("code", "_common.R") |>
   source()
 ```
 :::
 
-## Concetti di base
+## Il problema della stima {#sec-freq-estimation-problem}
 
-L'analisi statistica ha come obiettivo fondamentale la conoscenza di una o più caratteristiche di una **popolazione** di interesse. Nella pratica scientifica, tuttavia, l'osservazione dell'intera popolazione è quasi sempre impraticabile, sia per vincoli materiali sia per ragioni concettuali. Di conseguenza, l'inferenza statistica si fonda sull'osservazione di un **campione**, estratto dalla popolazione secondo un meccanismo di campionamento formalmente specificato.
+Una ricercatrice vuole stimare il livello medio di ansia in una popolazione di studenti universitari. Non può osservare tutti gli studenti, quindi raccoglie un campione e calcola la media osservata. Ottiene, per esempio, una media pari a 18.4 su una scala psicometrica.
 
-Questo passaggio dalla popolazione al campione introduce inevitabilmente un elemento di incertezza, che costituisce il nucleo stesso dell'inferenza statistica. Per formalizzare tale incertezza è necessario distinguere con chiarezza alcuni concetti fondamentali:
+Questo numero è utile, ma da solo non risponde alla domanda inferenziale principale. La media osservata è solo il risultato di uno specifico campione. Se la ricercatrice avesse osservato un altro campione, avrebbe probabilmente ottenuto un valore diverso.
 
-* **Parametro**: quantità fissa ma incognita che descrive una caratteristica della popolazione (ad esempio, la media $\mu$ o la varianza $\sigma^2$). Il parametro non è oggetto di osservazione diretta e rappresenta l'**oggetto primario dell'inferenza**.
+Il problema della stima nasce da questa distanza tra due livelli:
 
-* **Stimatore**: regola o funzione matematica dei dati campionari impiegata per approssimare il valore del parametro. Prima dell'osservazione del campione, uno stimatore è una **variabile casuale**, poiché il suo valore dipende dall'esito aleatorio del processo di campionamento.
+- la **popolazione**, che contiene la quantità di interesse;
+- il **campione**, che fornisce solo un'osservazione parziale e variabile.
 
-* **Stima**: valore numerico specifico ottenuto applicando uno stimatore a un campione concreto. La stima è quindi una **realizzazione osservata** dello stimatore.
+Nel paradigma frequentista, il parametro della popolazione è considerato una quantità fissa ma ignota. L'incertezza non riguarda il parametro in sé, ma la procedura usata per stimarlo a partire da campioni possibili.
 
-La distinzione tra stimatore e stima è concettualmente cruciale. Le proprietà inferenziali, come correttezza, variabilità o consistenza, riguardano lo **stimatore** in quanto oggetto probabilistico, non la singola stima osservata. Quest'ultima, essendo il risultato di un campionamento casuale, è inevitabilmente affetta da incertezza statistica e, in generale, non coincide esattamente con il valore vero del parametro della popolazione.
+::: {.callout-note title="La domanda frequentista"}
+Una domanda frequentista tipica non è:
 
-Questa incertezza, lungi dall'essere un difetto, costituisce il punto di partenza per lo studio della **distribuzione campionaria**, che descrive il comportamento probabilistico di uno stimatore al variare dei campioni possibili e fornisce il fondamento teorico dell'inferenza statistica frequentista.
+> Qual è la probabilità che il parametro abbia un certo valore, dati questi dati?
 
-## La distribuzione campionaria: intuizione e definizione
+ma piuttosto:
 
-Per introdurre il concetto di **distribuzione campionaria**, è utile partire da un esempio volutamente semplice che consente di enumerare esplicitamente tutti i campioni possibili. L'obiettivo non è simulare una situazione realistica di analisi dei dati, bensì costruire un **dispositivo concettuale** che permetta di rendere visibile un'idea altrimenti astratta: il comportamento probabilistico di una statistica al variare dei campioni.
-
-### Esempio introduttivo
-
-Consideriamo una popolazione estremamente ridotta, composta da quattro valori:
-
-```{r}
-x <- c(2, 4.5, 5, 5.5)
-x
-```
-
-Questi valori potrebbero rappresentare, ad esempio, i tempi di reazione (in secondi) di quattro partecipanti a un esperimento. Poiché stiamo trattando l'insieme completo delle osservazioni disponibili, possiamo calcolarne direttamente la **media** e la **varianza**, che in questo contesto assumono il ruolo di parametri della popolazione:
-
-```{r}
-mean(x)  # Media della popolazione (μ)
-var(x)   # Varianza della popolazione (σ²)
-```
-
-Queste quantità descrivono la popolazione nel suo complesso e costituiscono il riferimento rispetto al quale confronteremo i risultati ottenuti dai campioni.
-
-### Campionamento e costruzione della distribuzione campionaria
-
-Supponiamo ora di estrarre **tutti i possibili campioni di dimensione** $n = 2$ **con reinserimento** dalla popolazione. L'uso del reinserimento garantisce che ogni estrazione sia indipendente e che ciascun valore della popolazione possa comparire più volte nello stesso campione.
-
-Poiché a ogni estrazione sono disponibili quattro valori distinti, il numero totale di campioni ordinati possibili è:
-
-$$
-4^2 = 16.
-$$
-
-```{r}
-samples <- expand.grid(x, x)
-samples
-
-nrow(samples)
-```
-
-Ogni riga della tabella rappresenta un possibile campione di dimensione 2. Per ciascun campione calcoliamo ora la **media campionaria**, ottenendo così l'insieme di tutti i valori che tale statistica può assumere sotto ripetizione del campionamento:
-
-```{r}
-sample_means <- rowMeans(samples)
-sample_means
-```
-
-Questo insieme di valori costituisce la **distribuzione campionaria della media** per campioni di dimensione $n = 2$.
-
-### Visualizzazione della distribuzione campionaria
-
-Per rendere più intuitiva la struttura di questa distribuzione, rappresentiamo graficamente le medie campionarie ottenute:
-
-```{r}
-df <- data.frame(Valori = sample_means)
-
-ggplot(df, aes(x = Valori)) +
-  geom_histogram(
-    bins = 7,
-    aes(y = after_stat(density)),
-    fill = "steelblue",
-    color = "white"
-  ) +
-  labs(
-    title = "Distribuzione campionaria delle medie (n = 2)",
-    x = "Media campionaria",
-    y = "Densità"
-  )
-```
-
-L'istogramma mostra chiaramente che le medie campionarie **non sono distribuite uniformemente**. Alcuni valori compaiono più frequentemente di altri perché possono essere ottenuti da un numero maggiore di combinazioni dei valori della popolazione. In altre parole, anche se il campionamento dalla popolazione avviene in modo casuale e uniforme (cioè ogni unità ha la stessa probabilità di essere estratta), la distribuzione della statistica calcolata (in questo caso, la media) non è necessariamente uniforme.
-
-Questo esempio mette in evidenza un punto concettuale fondamentale: la **distribuzione campionaria** di una statistica possiede una struttura propria, che dipende sia dalla distribuzione della popolazione sia dalla dimensione del campione. Essa non coincide né con la distribuzione della popolazione né con quella dei singoli campioni osservati.
-
-L'esempio precedente ci ha permesso di costruire esplicitamente una distribuzione campionaria in un caso elementare. Nel seguito, generalizzeremo questa idea, introducendo la definizione formale di distribuzione campionaria e analizzandone le proprietà teoriche, che costituiscono il fondamento dell'inferenza statistica frequentista.
-
-### Cos'è una distribuzione campionaria
-
-Nel lavoro empirico emerge un'apparente tensione epistemologica: l'analisi statistica si fonda sull'osservazione di un **singolo campione**, dal quale otteniamo una **singola stima** del parametro di interesse (ad esempio, una media campionaria). Tuttavia, l'obiettivo dell'inferenza non è il campione in sé, bensì la valutazione dell'**affidabilità** di tale stima rispetto al parametro della popolazione. Come può essere quantificata questa affidabilità a partire da un'unica osservazione?
-
-L'inferenza frequentista risolve questo problema adottando un punto di vista esplicitamente **controfattuale**: si chiede cosa accadrebbe se lo stesso studio potesse essere ripetuto un numero molto elevato (idealmente infinito) di volte, mantenendo inalterate le condizioni sperimentali e lo schema di campionamento.
-
-In termini concettuali, questo equivale a immaginare che:
-
-1. dalla medesima popolazione vengano estratti ripetutamente campioni della **stessa dimensione** $n$;
-2. per ciascun campione venga calcolata la **medesima statistica** (ad esempio, la media campionaria).
-
-Poiché ogni campione differisce dagli altri per composizione, anche i valori assunti dalla statistica varieranno da un campione all'altro. Se si potessero raccogliere tutte queste stime e rappresentarle graficamente, emergerebbe una forma regolare: una **distribuzione di probabilità**.
-
-Questa distribuzione teorica, che descrive come una statistica varia al variare del campione estratto, prende il nome di **distribuzione campionaria**.
-
-::: {.callout-note title="Definizione"}
-La **distribuzione campionaria** di una statistica è la distribuzione di probabilità dei valori che tale statistica assume su tutti i possibili campioni di dimensione $n$ estraibili dalla stessa popolazione, secondo uno specifico schema di campionamento.
-
-Essa rappresenta una mappa dell'**incertezza campionaria**, ossia della variabilità intrinseca della stima dovuta esclusivamente al carattere aleatorio del campionamento.
+> Se applicassimo questa procedura a molti campioni estratti nelle stesse condizioni, quali proprietà avrebbe la stima prodotta?
 :::
 
-È essenziale chiarire cosa la distribuzione campionaria **non** rappresenta:
+Questa distinzione è essenziale. In un approccio bayesiano, l'incertezza sul parametro viene rappresentata direttamente mediante una distribuzione di probabilità. In un approccio frequentista, invece, la probabilità descrive il comportamento dei dati e delle statistiche campionarie nel caso di ipotetiche ripetizioni del campionamento.
 
-* **non** è la distribuzione dei dati nella popolazione;
-* **non** è la distribuzione dei dati osservati in un singolo campione;
-* è, piuttosto, una **proprietà teorica dello stimatore**, che dipende dalla dimensione del campione $n$, dalla variabilità della popolazione e dallo schema di campionamento adottato.[^schema_campionamento]
+## Parametro, stimatore e stima {#sec-freq-parameter-estimator-estimate}
 
-[^schema_campionamento]: **Schema di campionamento**: si riferisce al metodo con cui vengono selezionate le unità dalla popolazione. Nell'esempio specifico, poiché si considerano tutte le possibili coppie ordinate (`expand.grid`), lo schema è equivalente a un **campionamento casuale con reimmissione** (ogni estrazione è indipendente e la popolazione rimane identica).
+Per evitare ambiguità, introduciamo tre termini fondamentali.
 
-La distinzione concettuale fondamentale può essere così riassunta:
+::: {.callout-note title="Tre livelli da distinguere"}
 
-* la **distribuzione della popolazione** descrive la variabilità di un **tratto** tra gli individui;
-* la **distribuzione campionaria** descrive la variabilità di una **stima** di quel tratto tra esperimenti ripetuti.
+| Termine | Significato | Esempio |
+|---|---|---|
+| **Parametro** | Quantità fissa ma ignota della popolazione | La media vera dell'ansia, $\mu$ |
+| **Stimatore** | Regola che usa i dati per stimare il parametro | La media campionaria, $\bar X$ |
+| **Stima** | Valore numerico ottenuto nel campione osservato | $\bar x = 18.4$ |
 
-Questa distinzione costituisce il nucleo dell'inferenza statistica frequentista. Sebbene nella pratica si osservi un solo campione, gli strumenti inferenziali, come gli intervalli di confidenza e i test di ipotesi, traggono la loro giustificazione teorica dal comportamento a **lungo termine** della statistica, così come descritto dalla sua distribuzione campionaria. Ogni stimatore, che si tratti di una media, di una proporzione o di un coefficiente di regressione, possiede una propria distribuzione campionaria, dalla quale discendono le sue proprietà di accuratezza, precisione e affidabilità inferenziale.
-
-### Proprietà della distribuzione campionaria
-
-Per chiarire le proprietà fondamentali delle distribuzioni campionarie, ci concentreremo sulla **media campionaria** come stimatore principale. Questa scelta non è casuale: la media rappresenta lo strumento di stima più utilizzato in psicologia e nelle scienze sociali e costituisce un caso paradigmatico per comprendere i meccanismi generali dell'inferenza frequentista.
-
-#### Una proprietà fondamentale: la correttezza
-
-Un primo risultato teorico di rilievo riguarda il **valore atteso della media campionaria**. La teoria statistica dimostra che la media della distribuzione campionaria di $\bar{X}$ coincide esattamente con la **media della popolazione** $\mu$:
-
-$$
-\mathbb{E}(\bar{X}) = \mu.
-$$
-
-Nel nostro esempio empirico, questa uguaglianza può essere verificata direttamente:
-
-```{r}
-mean(x)            # Media della popolazione (μ)
-mean(sample_means) # Media della distribuzione campionaria di X̄
-```
-
-Questo risultato non è un fatto contingente, ma esprime una proprietà formale cruciale: la media campionaria $\bar{X}$ è uno **stimatore corretto** (*unbiased*, o non distorto) del parametro $\mu$. In termini concettuali, la correttezza implica che lo stimatore non presenta una tendenza sistematica a sovrastimare o sottostimare il valore vero della popolazione.
-
-Dal punto di vista frequentista, ciò significa che **nel lungo periodo**, ossia sotto ripetizione indefinita del processo di campionamento, la media delle stime converge al parametro vero. La correttezza non garantisce che una singola stima sia vicina a $\mu$, ma assicura che eventuali errori di stima si compensino nel complesso delle ripetizioni.
-
-::: {.callout-note title="Correttezza e precisione: un'analogia"}
-La distinzione tra correttezza e varianza dello stimatore può essere visualizzata con l'analogia di un arciere che spara ripetutamente a un bersaglio.
-
-- La **correttezza** equivale ad avere il centro del raggruppamento dei colpi coincidente con il centro del bersaglio: lo stimatore non presenta distorsione sistematica.
-- La **precisione** equivale alla concentrazione dei colpi, indipendentemente dalla loro posizione rispetto al centro: uno stimatore preciso produce stime poco dispersa attorno al proprio valore atteso.
-
-Uno stimatore ideale è sia corretto sia preciso. Nella pratica, tuttavia, esiste spesso un compromesso tra le due proprietà: stimatori leggermente distorti possono avere varianza molto più piccola, risultando complessivamente più utili. Questo tema, noto come *bias-variance tradeoff*, sarà ripreso nei capitoli successivi.
 :::
 
-### Varianza della distribuzione campionaria
+Il **parametro** è l'obiettivo dell'inferenza. Può essere una media, una proporzione, una varianza, una differenza tra medie, una correlazione o un coefficiente di regressione. Nel frequentismo il parametro non è casuale: ha un valore vero, anche se sconosciuto.
 
-Se la correttezza riguarda il *centro* della distribuzione campionaria, la **varianza della distribuzione campionaria** ne quantifica invece la **dispersione**, fornendo una misura della **precisione** dello stimatore. Essa descrive quanto le stime della media tendano a fluttuare attorno al valore vero $\mu$ al variare del campione.
+Lo **stimatore** è invece una funzione dei dati. Prima di osservare il campione, il suo valore è incerto perché dipende da quali osservazioni verranno effettivamente selezionate. Per questo motivo, lo stimatore ha una distribuzione campionaria.
 
-La teoria statistica fornisce una relazione fondamentale:
+La **stima** è il valore che otteniamo dopo aver osservato i dati. È il numero che compare nel report, nell'articolo o nella tabella dei risultati.
 
-$$
-\mathrm{Var}(\bar{X}) = \frac{\sigma^2}{n},
-$$
-
-dove:
-
-* $\sigma^2$ è la varianza della popolazione,
-* $n$ è la dimensione del campione.
-
-Nel nostro esempio, tale relazione può essere verificata empiricamente:
-
-```{r}
-var(x)                    # σ²: varianza della popolazione
-var(x) / 2                # σ²/n: varianza teorica della media per n = 2
-var(sample_means) * 15/16 # varianza empirica corretta per popolazione finita
-# Nota: si moltiplica per (N-1)/N = 15/16 perché var() usa n-1 al
-# denominatore (varianza campionaria), mentre qui serve la varianza
-# di popolazione sull'insieme dei 16 campioni possibili.
-```
-
-::: {.callout-tip collapse=true title="Dimostrazione: valore atteso e varianza della media campionaria"}
-
-Sia $X_1, X_2, \ldots, X_n$ un campione casuale semplice estratto da una popolazione con media $\mu$ e varianza $\sigma^2$. Per definizione di campionamento casuale semplice, le variabili $X_i$ sono **indipendenti e identicamente distribuite** (*i.i.d.*), con $\mathbb{E}[X_i] = \mu$ e $\mathrm{Var}(X_i) = \sigma^2$ per ogni $i$.
-
-La media campionaria è definita come:
-
-$$
-\bar{X} = \frac{1}{n} \sum_{i=1}^n X_i.
-$$
-
-#### Valore atteso: $\mathbb{E}(\bar{X}) = \mu$
-
-Applicando la **linearità del valore atteso**, che vale senza alcuna assunzione di indipendenza:
-
-$$
-\mathbb{E}(\bar{X})
-= \mathbb{E}\!\left[\frac{1}{n} \sum_{i=1}^n X_i\right]
-= \frac{1}{n} \sum_{i=1}^n \mathbb{E}[X_i]
-= \frac{1}{n} \sum_{i=1}^n \mu
-= \frac{1}{n} \cdot n\mu
-= \mu.
-$$
-
-Lo stimatore $\bar{X}$ è quindi **corretto** (non distorto): il suo valore atteso coincide esattamente con il parametro di interesse, qualunque sia la distribuzione della popolazione e qualunque sia $n$.
-
-#### Varianza: $\mathrm{Var}(\bar{X}) = \sigma^2/n$
-
-Per la varianza si utilizza la proprietà secondo cui, per variabili **indipendenti**, la varianza della somma è la somma delle varianze, e la varianza di una costante per una variabile casuale soddisfa $\mathrm{Var}(cX) = c^2 \mathrm{Var}(X)$:
-
-$$
-\mathrm{Var}(\bar{X})
-= \mathrm{Var}\!\left[\frac{1}{n} \sum_{i=1}^n X_i\right]
-= \frac{1}{n^2} \,\mathrm{Var}\!\left[\sum_{i=1}^n X_i\right]
-= \frac{1}{n^2} \sum_{i=1}^n \mathrm{Var}(X_i)
-= \frac{1}{n^2} \cdot n\sigma^2
-= \frac{\sigma^2}{n}.
-$$
-
-Il passaggio cruciale è il terzo: la varianza della somma si semplifica nella somma delle varianze **solo grazie all'indipendenza** tra le $X_i$. In assenza di indipendenza, i termini di covarianza $\mathrm{Cov}(X_i, X_j)$ con $i \neq j$ non si annullerebbero, e la formula sarebbe più complessa.
-
-#### Riepilogo
-
-| Proprietà | Formula |
-|-----------|---------|
-| Valore atteso | $\mathbb{E}(\bar{X}) = \mu$ |
-| Varianza | $\mathrm{Var}(\bar{X}) = \sigma^2/n$ |
-| Deviazione standard (errore standard) | $\mathrm{SE}(\bar{X}) = \sigma/\sqrt{n}$ |
-
-Queste tre quantità descrivono completamente la **posizione** e la **dispersione** della distribuzione campionaria della media. Insieme al teorema del limite centrale, esse costituiscono il fondamento matematico di tutti i metodi inferenziali basati sulla media campionaria.
+::: {.callout-warning title="Errore comune"}
+Non bisogna confondere lo stimatore con la stima. Le proprietà teoriche, come correttezza o efficienza, riguardano lo **stimatore** come procedura. La singola **stima** osservata può essere vicina o lontana dal parametro, ma da sola non permette di sapere quanto sia accurata.
 :::
 
-Questa formula racchiude uno dei principi più importanti dell'inferenza statistica: **la variabilità delle medie campionarie diminuisce all'aumentare della dimensione del campione**. In altri termini, la precisione dello stimatore cresce con $n$.
+## La stima puntuale {#sec-freq-point-estimate}
 
-L'interpretazione intuitiva è che campioni più ampi tendono a "compensare" le fluttuazioni casuali dovute a osservazioni estreme o atipiche. Di conseguenza, le stime ottenute da campioni grandi risultano più **stabili e replicabili**. Due campioni indipendenti di dimensione $n = 100$ produrranno, in media, stime della media molto più simili tra loro rispetto a due campioni di dimensione $n = 10$.
+La forma più semplice di inferenza è la **stima puntuale**: si usa un singolo numero per rappresentare il valore più plausibile o più naturale del parametro.
 
-Questa proprietà fornisce il fondamento teorico del principio secondo cui **l'aumento della dimensione campionaria riduce l'incertezza inferenziale**, e prepara il terreno per risultati più generali, come il teorema del limite centrale, che verrà discusso nella sezione successiva.
+Esempi comuni sono:
 
-## Il teorema del limite centrale
+- la media campionaria $\bar x$ come stima della media della popolazione $\mu$;
+- la proporzione campionaria $\hat p$ come stima della proporzione della popolazione $p$;
+- la differenza tra due medie campionarie come stima della differenza tra due medie di popolazione;
+- il coefficiente di correlazione campionario $r$ come stima della correlazione nella popolazione $\rho$.
 
-Il **teorema del limite centrale** (TLC) rappresenta uno dei pilastri concettuali della statistica inferenziale. La sua importanza non risiede soltanto nel contenuto matematico, ma nel ruolo epistemologico che esso svolge: il TLC fornisce il collegamento teorico tra la variabilità individuale dei dati e le regolarità aggregative emergenti nelle statistiche di sintesi. Il suo nucleo concettuale può essere riassunto nel seguente enunciato: la media (o la somma) di un numero sufficientemente elevato di variabili casuali indipendenti e identicamente distribuite converge a una distribuzione normale, indipendentemente dalla forma della distribuzione originaria delle variabili stesse.
+La stima puntuale è indispensabile perché fornisce una sintesi dei dati. Tuttavia, non basta. Una stima puntuale non comunica quanta incertezza sia associata al risultato.
 
-### Enunciato formale
-
-Siano $X_1, X_2, \ldots, X_n$ una sequenza di variabili casuali **indipendenti e identicamente distribuite** (*i.i.d.*), ciascuna con valore atteso $\mathbb{E}[X_i] = \mu$ e varianza finita $\mathrm{Var}(X_i) = \sigma^2$.
-
-Allora, per $n$ sufficientemente grande, la distribuzione della **media campionaria**
-
-$$
-\bar{X}_n = \frac{1}{n} \sum_{i=1}^n X_i
-$$
-
-può essere approssimata da una distribuzione normale con la stessa media $\mu$ e varianza ridotta di un fattore $n$:
-
-$$
-\bar{X}_n \;\stackrel{\text{appross.}}{\sim}\; \mathcal{N}\!\left(\mu,\; \frac{\sigma^2}{n}\right).
-$$
-
-In forma standardizzata, il teorema afferma che la variabile
-
-$$
-Z_n = \frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}}
-$$
-
-**converge in distribuzione** a una normale standard:
-
-$$
-Z_n \xrightarrow[]{\;d\;} \mathcal{N}(0, 1), \qquad \text{per } n \to \infty.
-$$
-
-È importante sottolineare che questa convergenza riguarda la **forma della distribuzione** e non i singoli valori osservati: il TLC è un risultato asintotico e probabilistico, non deterministico.
-
-### Perché il TLC è così rilevante?
-
-Il teorema del limite centrale spiega l'**ubiquità empirica della distribuzione normale** nelle scienze sperimentali e sociali, psicologia compresa. Molte delle quantità di interesse, ovvero medie, somme, proporzioni, sono, nella loro struttura matematica, il risultato di aggregazioni di osservazioni individuali. Il TLC garantisce che, anche quando la distribuzione della popolazione è asimmetrica, multimodale o irregolare, la **distribuzione campionaria della media** tende ad assumere una forma approssimativamente normale al crescere della dimensione campionaria.
-
-È cruciale mantenere distinta la portata del teorema:
-
-* il TLC **non** afferma che i **dati grezzi** $X_i$ siano normalmente distribuiti;
-* il TLC **garantisce** che la **distribuzione campionaria della media** $\bar{X}_n$ diventi approssimativamente normale per campioni sufficientemente grandi.
-
-Questa distinzione è spesso fonte di fraintendimenti nella pratica applicativa, ma è centrale per una corretta interpretazione dei metodi inferenziali frequentisti.
-
-### Implicazioni inferenziali
-
-Dal punto di vista metodologico, il TLC costituisce il fondamento teorico che rende possibile:
-
-* la costruzione di **intervalli di confidenza** per la media,
-* l'applicazione di **test di ipotesi** basati sulla distribuzione normale,
-
-anche in situazioni in cui l'assunzione di normalità della popolazione non è verificabile o risulta chiaramente violata. In tal senso, il TLC giustifica l'uso estensivo della distribuzione normale come modello approssimante nell'inferenza frequentista.
-
-Al tempo stesso, il teorema chiarisce il ruolo cruciale della **dimensione campionaria**: quanto più $n$ è grande, tanto migliore è l'approssimazione normale. Nei capitoli successivi vedremo come questa dipendenza da $n$ condizioni la validità pratica dei risultati inferenziali e come, in presenza di campioni piccoli o distribuzioni fortemente asimmetriche, sia necessario ricorrere a strumenti alternativi o a cautele interpretative.
-
-### Dimostrazione mediante simulazione: la normalizzazione dell'asimmetria
-
-Per cogliere in modo intuitivo la portata del teorema del limite centrale, è istruttivo partire da una distribuzione che violi in modo netto l'assunzione di normalità. Consideriamo quindi una **distribuzione esponenziale** con parametro $\lambda = 1$, che presenta caratteristiche opposte a quelle di una distribuzione normale:
-
-* è **fortemente asimmetrica** (asimmetria positiva pari a 2);
-* è **limitata inferiormente** (assume solo valori positivi);
-* presenta una **coda lunga** verso destra.
-
-Distribuzioni di questo tipo sono comuni in contesti empirici, ad esempio nello studio dei tempi di attesa, delle durate o dei tempi di reazione. Proprio per la loro marcata non-normalità, esse costituiscono un banco di prova ideale per osservare l'azione del TLC.
-
-L'idea della simulazione è la seguente: estrarre ripetutamente campioni dalla distribuzione esponenziale, calcolare la media di ciascun campione e osservare come si distribuiscono queste medie al variare della dimensione campionaria $n$.
-
-Il codice seguente genera 10,000 campioni indipendenti per tre diverse dimensioni campionarie ($n = 3$, $n = 30$, $n = 300$), calcolando ogni volta la media campionaria:
+Supponiamo che due studi stimino la stessa media:
 
 ```{r}
-set.seed(123)
-n_samples <- 10000
+stima_A <- 18.4
+se_A <- 0.30
 
-# Funzione per calcolare medie campionarie da distribuzione esponenziale
-calculate_means <- function(sample_size) {
-  replicate(n_samples, mean(rexp(sample_size, rate = 1)))
-}
+stima_B <- 18.4
+se_B <- 1.80
 
-# Medie per diverse dimensioni campionarie
-means_n3   <- calculate_means(3)
-means_n30  <- calculate_means(30)
-means_n300 <- calculate_means(300)
+risultati <- data.frame(
+  Studio = c("A", "B"),
+  Stima = c(stima_A, stima_B),
+  Errore_standard = c(se_A, se_B)
+)
 
-# Parametri teorici della distribuzione esponenziale(1):
-# media = 1/λ = 1, deviazione standard = 1/λ = 1
-mu    <- 1
-sigma <- 1
-
-# Visualizzazione
-par(mfrow = c(1, 3), mar = c(4, 4, 3, 1))
-
-# n = 3
-hist(means_n3, breaks = 40, main = "n = 3", xlab = "Media campionaria",
-     probability = TRUE, col = "lightblue", xlim = c(0, 3))
-curve(dnorm(x, mean = mu, sd = sigma / sqrt(3)), add = TRUE,
-      col = "red", lwd = 2, lty = 2)
-
-# n = 30
-hist(means_n30, breaks = 40, main = "n = 30", xlab = "Media campionaria",
-     probability = TRUE, col = "lightblue", xlim = c(0.5, 1.8))
-curve(dnorm(x, mean = mu, sd = sigma / sqrt(30)), add = TRUE,
-      col = "red", lwd = 2, lty = 2)
-
-# n = 300
-hist(means_n300, breaks = 40, main = "n = 300", xlab = "Media campionaria",
-     probability = TRUE, col = "lightblue", xlim = c(0.7, 1.4))
-curve(dnorm(x, mean = mu, sd = sigma / sqrt(300)), add = TRUE,
-      col = "red", lwd = 2, lty = 2)
+risultati
 ```
 
-```{r}
-#| echo: false
-par(mfrow = c(1, 1))
-```
+Le due stime puntuali sono identiche, ma non hanno lo stesso significato inferenziale. Nel primo caso la procedura produce stime più stabili; nel secondo, la stessa stima è associata a maggiore variabilità campionaria. Questo esempio anticipa il ruolo degli intervalli di confidenza: una stima va sempre accompagnata da una misura della sua incertezza.
 
-#### Interpretazione dei risultati
+## Che cosa rende buono uno stimatore? {#sec-freq-good-estimators}
 
-Il confronto tra i tre pannelli rende visibile il teorema del limite centrale in azione.
+Nel frequentismo, uno stimatore viene valutato in base al suo comportamento nel lungo periodo, cioè sotto ripetizione ideale dello stesso procedimento di campionamento. Le proprietà più importanti sono correttezza, consistenza, efficienza e, più in generale, errore quadratico medio.
 
-**1. Dalla asimmetria alla simmetria**
+### Correttezza
 
-* Con **$n = 3$**, la distribuzione delle medie campionarie conserva una marcata asimmetria verso destra. La forma riflette ancora chiaramente la distribuzione esponenziale di partenza.
-* Con **$n = 30$**, l'asimmetria si riduce drasticamente. La distribuzione appare ormai campanulare e quasi simmetrica.
-* Con **$n = 300$**, la distribuzione delle medie è praticamente indistinguibile da una distribuzione normale. L'asimmetria originaria è scomparsa.
-
-Questo mostra come il TLC operi una vera e propria **normalizzazione dell'asimmetria**, anche quando la popolazione di origine è fortemente non-normale.
-
-**2. Riduzione progressiva della dispersione**
-
-Parallelamente, si osserva una chiara riduzione della dispersione delle medie campionarie:
-
-* la varianza teorica della media diminuisce come $\sigma^2/n = 1/n$;
-* l'intervallo di variazione si restringe progressivamente: per $n = 300$, la maggior parte delle medie si concentra in un intorno molto stretto del valore vero $\mu = 1$.
-
-Questa riduzione riflette l'aumento della **precisione inferenziale** associato a campioni più grandi.
-
-#### Due messaggi chiave del TLC
-
-La simulazione evidenzia in modo diretto i due aspetti centrali del teorema del limite centrale:
-
-* **Normalizzazione della forma.**
-  Anche partendo da una distribuzione estremamente asimmetrica, la distribuzione campionaria della media tende a una forma gaussiana al crescere di $n$.
-
-* **Ruolo cruciale della dimensione campionaria.**
-  La dimensione del campione controlla simultaneamente:
-
-  * la **velocità di convergenza alla normalità**;
-  * la **precisione della stima**, che cresce come $1/\sqrt{n}$.
-
-La curva rossa tratteggiata in ciascun pannello rappresenta la distribuzione normale teorica prevista dal TLC, $\mathcal{N}(1, 1/n)$. Il buon accordo osservato, soprattutto per $n$ grandi, mostra come il TLC fornisca una base solida per l'uso della distribuzione normale nell'inferenza statistica frequentista, anche quando i dati di partenza non presentano alcuna somiglianza con una gaussiana.
-
-## Errore standard
-
-L'**errore standard** (*Standard Error*, SE) rappresenta la **deviazione standard della distribuzione campionaria** di uno stimatore. Esso quantifica, in forma sintetica, la variabilità teorica della stima dovuta esclusivamente al processo di campionamento e fornisce quindi una misura diretta della precisione inferenziale.
-
-Nel caso della **media campionaria** $\bar{X}$, l'errore standard è definito come:
+Uno stimatore è **corretto** o **non distorto** se, nel lungo periodo, il suo valore medio coincide con il parametro che intende stimare:
 
 $$
-\mathrm{SE}(\bar{X}) = \frac{\sigma}{\sqrt{n}},
+E(\hat\theta) = \theta.
 $$
 
-dove $\sigma$ è la deviazione standard della popolazione e $n$ la dimensione del campione. Questa espressione discende direttamente dalla varianza della distribuzione campionaria della media e rende esplicita una relazione cruciale: la precisione della stima cresce con la dimensione del campione, ma con un rendimento decrescente, poiché dipende dalla radice quadrata di $n$.
+Intuitivamente, uno stimatore corretto non tende sistematicamente né a sovrastimare né a sottostimare il parametro. Questo non significa che ogni singola stima sia vicina al valore vero. Significa che gli errori positivi e negativi si compensano nel lungo periodo.
 
-Dal punto di vista teorico, l'errore standard è dunque una **proprietà dello stimatore**, non dei dati osservati. Esso descrive quanto la stima fluttuerebbe, in media, se il processo di campionamento fosse ripetuto molte volte nelle stesse condizioni.
+### Bias
 
-### Errore standard stimato
-
-Nella pratica applicativa, la deviazione standard della popolazione $\sigma$ è quasi sempre ignota. Per questo motivo, essa viene sostituita dalla **deviazione standard campionaria** $s$, ottenendo una stima empirica dell'errore standard:
+Il **bias** di uno stimatore misura la distanza tra il valore atteso dello stimatore e il parametro:
 
 $$
-\widehat{\mathrm{SE}}(\bar{X}) = \frac{s}{\sqrt{n}}.
+\mathrm{Bias}(\hat\theta) = E(\hat\theta) - \theta.
 $$
 
-Questa quantità è essa stessa una stima e introduce un ulteriore livello di incertezza, particolarmente rilevante per campioni di piccola dimensione. Tuttavia, per campioni moderati o grandi, l'errore standard stimato fornisce un'approssimazione affidabile della variabilità reale della media campionaria.
+Uno stimatore con bias positivo tende a sovrastimare il parametro; uno stimatore con bias negativo tende a sottostimarlo. Il bias può derivare dalla formula dello stimatore, ma anche da problemi più sostanziali: campionamento non rappresentativo, strumenti di misura distorti, dati mancanti non casuali.
 
-### Interpretazione concettuale
-
-L'errore standard svolge un ruolo centrale nell'inferenza frequentista perché connette tre livelli concettuali distinti:
-
-* la **variabilità della popolazione** ($\sigma$);
-* la **dimensione del campione** ($n$);
-* la **variabilità della stima** sotto campionamento ripetuto.
-
-Un errore standard piccolo indica che la distribuzione campionaria della media è fortemente concentrata attorno al valore atteso, e quindi che stime ottenute da campioni diversi tenderebbero a essere simili. Al contrario, un errore standard elevato segnala una maggiore instabilità inferenziale.
-
-È importante sottolineare che l'errore standard **non misura la dispersione dei dati**, ma la dispersione delle **stime**. Confondere l'errore standard con la deviazione standard dei dati è uno degli errori interpretativi più comuni nella pratica empirica.
-
-### Ruolo inferenziale dell'errore standard
-
-Dal punto di vista operativo, l'errore standard costituisce l'elemento chiave per:
-
-* la costruzione di **intervalli di confidenza**, che quantificano l'incertezza frequentista associata alla stima;
-* il calcolo delle **statistiche test** nei test di ipotesi frequentisti;
-* la valutazione della **precisione comparativa** tra studi con dimensioni campionarie diverse.
-
-In questo senso, l'errore standard rappresenta il punto di incontro tra la teoria delle distribuzioni campionarie, il teorema del limite centrale e le procedure inferenziali applicate. Nei prossimi paragrafi vedremo come esso venga utilizzato esplicitamente nella costruzione degli intervalli di confidenza per la media e nei test statistici basati sulla distribuzione normale e sulla distribuzione *t* di Student.
-
-## Implicazioni per l'inferenza
-
-I concetti di **distribuzione campionaria** ed **errore standard** costituiscono il fondamento teorico dell'inferenza frequentista. Essi formalizzano l'idea centrale secondo cui la conoscenza statistica non riguarda il singolo campione osservato, ma il **comportamento di una procedura inferenziale sotto la ripetizione ideale del campionamento**.
-
-Comprendere come uno stimatore si comporta nel lungo periodo consente di affrontare in modo sistematico tre problemi fondamentali dell'inferenza statistica:
-
-1. **Quantificare l'incertezza.**
-   L'errore standard permette di associare a una stima puntuale una misura della sua variabilità teorica. In questo modo, la stima non è più interpretata come un valore isolato, ma come il risultato di un processo aleatorio, la cui dispersione è descritta dalla distribuzione campionaria dello stimatore.
-
-2. **Costruire intervalli di confidenza.**
-   La conoscenza della distribuzione campionaria consente di derivare intervalli di valori per il parametro incognito, la cui interpretazione è **intrinsecamente procedurale**: un intervallo di confidenza è definito dalla sua **percentuale di copertura nel lungo periodo**, non dalla probabilità che il parametro si trovi in un singolo intervallo osservato.
-
-3. **Condurre test di ipotesi.**
-   I test statistici utilizzano la distribuzione campionaria di una statistica test per valutare quanto i dati osservati siano compatibili con un'ipotesi nulla di riferimento. Il valore-$p$ quantifica la probabilità di osservare dati almeno altrettanto estremi, **assumendo la validità dell'ipotesi nulla e del modello di campionamento ripetuto**.
-
-In ciascuno di questi casi, l'inferenza frequentista non attribuisce probabilità ai parametri o alle ipotesi, ma alle **procedure** e ai **dati possibili** generati sotto specifiche assunzioni.
-
-::: {.callout-note}
-Il concetto di distribuzione campionaria può risultare controintuitivo, poiché richiede di ragionare in termini di esperimenti ipoteticamente ripetuti, nonostante nella pratica si osservi un solo campione. Questa prospettiva controfattuale costituisce una caratteristica distintiva del pensiero frequentista e ne definisce tanto la forza metodologica quanto il limite interpretativo.
+::: {.callout-important title="Bias statistico e bias metodologico"}
+Nel linguaggio tecnico, il bias può indicare una proprietà matematica dello stimatore. Nella pratica della ricerca psicologica, però, molte distorsioni nascono prima dell'analisi: dalla selezione dei partecipanti, dalla qualità della misura, dal disegno dello studio o dal modo in cui i dati sono raccolti. Un campione grande riduce l'incertezza campionaria, ma non elimina automaticamente le distorsioni sistematiche.
 :::
+
+### Consistenza
+
+Uno stimatore è **consistente** se, al crescere della dimensione del campione, tende ad avvicinarsi al valore vero del parametro. In forma intuitiva:
+
+$$
+\hat\theta_n \longrightarrow \theta \quad \text{quando} \quad n \longrightarrow \infty.
+$$
+
+La consistenza collega la stima al comportamento asintotico della procedura. Uno stimatore consistente può essere impreciso in campioni piccoli, ma diventa affidabile quando il campione cresce.
+
+### Efficienza
+
+Tra due stimatori corretti dello stesso parametro, si dice più **efficiente** quello con varianza minore. In termini pratici, uno stimatore efficiente produce stime meno disperse da campione a campione.
+
+Questo concetto è importante perché due stimatori possono essere entrambi centrati sul parametro, ma avere livelli molto diversi di precisione.
+
+### Il compromesso bias-varianza
+
+In molti problemi reali non esiste uno stimatore perfetto. A volte uno stimatore leggermente distorto può avere una varianza molto più piccola di uno stimatore non distorto. Per valutare complessivamente uno stimatore si considera spesso l'**errore quadratico medio**:
+
+$$
+\mathrm{MSE}(\hat\theta) = \mathrm{Var}(\hat\theta) + \mathrm{Bias}(\hat\theta)^2.
+$$
+
+Questa formula mostra che l'accuratezza di una procedura dipende sia dalla variabilità delle stime sia dalla loro eventuale distorsione sistematica.
+
+## Il ruolo della distribuzione campionaria {#sec-freq-role-sampling-distribution}
+
+La distribuzione campionaria è il concetto che permette al frequentismo di valutare una procedura di stima. Essa descrive come cambierebbe lo stimatore se lo studio fosse ripetuto molte volte nelle stesse condizioni.
+
+Nel companion sulla probabilità abbiamo visto che la media campionaria ha alcune proprietà fondamentali: è centrata sulla media della popolazione, la sua variabilità diminuisce al crescere di $n$ e, sotto condizioni ampie, la sua distribuzione diventa approssimativamente normale per campioni grandi. Qui useremo questi risultati senza ridimostrarli.
+
+::: {.callout-note title="Funzione della distribuzione campionaria in questo modulo"}
+La distribuzione campionaria non viene introdotta qui come nuovo oggetto probabilistico, ma come fondamento delle procedure frequentiste:
+
+- consente di definire l'errore standard;
+- permette di costruire intervalli di confidenza;
+- permette di valutare test di ipotesi;
+- giustifica affermazioni sul comportamento a lungo termine delle procedure.
+:::
+
+La logica è questa: anche se osserviamo un solo campione, possiamo progettare procedure che, se applicate molte volte a campioni simili, abbiano proprietà controllate. Gli intervalli di confidenza e i test di ipotesi sono costruiti precisamente in questo modo.
+
+## L'errore standard come misura operativa {#sec-freq-standard-error-operational}
+
+L'**errore standard** è la deviazione standard della distribuzione campionaria di uno stimatore. Esso misura quanto lo stimatore varierebbe da campione a campione.
+
+Per la media campionaria, quando la deviazione standard della popolazione è $\sigma$, l'errore standard teorico è:
+
+$$
+SE(\bar X) = \frac{\sigma}{\sqrt n}.
+$$
+
+Nella pratica, $\sigma$ non è nota, quindi viene sostituita dalla deviazione standard campionaria $s$:
+
+$$
+\widehat{SE}(\bar X) = \frac{s}{\sqrt n}.
+$$
+
+Il messaggio operativo è semplice: l'errore standard misura l'incertezza della **stima**, non la variabilità dei singoli dati. Una deviazione standard descrive quanto differiscono gli individui; un errore standard descrive quanto differirebbero le stime se ripetessimo il campionamento.
+
+::: {.callout-warning title="Deviazione standard ed errore standard"}
+La **deviazione standard** descrive la dispersione delle osservazioni. L'**errore standard** descrive la dispersione di uno stimatore sotto campionamento ripetuto. Confondere queste due quantità porta a interpretazioni errate dei risultati empirici.
+:::
+
+## Dal numero osservato alla procedura {#sec-freq-from-estimate-to-procedure}
+
+Una stima puntuale risponde alla domanda:
+
+> Qual è il valore osservato nel mio campione?
+
+L'inferenza frequentista aggiunge una seconda domanda:
+
+> Quali garanzie avrebbe la procedura che ha prodotto questa stima se fosse applicata ripetutamente?
+
+Questa seconda domanda è il tratto distintivo del paradigma frequentista. Il singolo risultato osservato viene interpretato alla luce di una procedura più ampia: la procedura di campionamento, lo stimatore scelto, la sua distribuzione campionaria e le regole usate per costruire intervalli o test.
+
+Per questo motivo, la stima puntuale non è il punto di arrivo, ma il punto di partenza. Nei capitoli successivi vedremo due modi frequentisti di trasformare una stima in un risultato inferenziale:
+
+1. gli **intervalli di confidenza**, che associano alla procedura una proprietà di copertura nel lungo periodo;
+2. i **test di ipotesi**, che valutano la compatibilità dei dati con un'ipotesi di riferimento attraverso il comportamento atteso della statistica test.
+
+## Confronto con la prospettiva bayesiana {#sec-freq-estimation-bayes-contrast}
+
+Il confronto con il bayesianesimo aiuta a chiarire che le differenze non sono soltanto tecniche, ma riguardano il significato attribuito alla probabilità.
+
+| Aspetto | Frequentismo | Bayesianesimo |
+|---|---|---|
+| Parametro | Fisso ma ignoto | Incerto e descritto da una distribuzione |
+| Fonte della probabilità | Ripetizione ipotetica del campionamento | Grado di credenza razionale dato il modello |
+| Oggetto dell'incertezza | Stimatore, dati possibili, procedura | Parametro dato il campione osservato |
+| Risultato tipico | Stima, errore standard, intervallo di confidenza | Distribuzione posterior, intervallo di credibilità |
+| Domanda centrale | Come si comporta la procedura nel lungo periodo? | Che cosa crediamo sul parametro dopo aver visto i dati? |
+
+Questa differenza diventerà particolarmente importante nel capitolo sugli intervalli di confidenza. Un intervallo di confidenza al 95% non significa che ci sia il 95% di probabilità che il parametro cada nell'intervallo osservato. Significa che la procedura, applicata molte volte in condizioni analoghe, produce intervalli che contengono il parametro nel 95% dei casi.
 
 ## Riflessioni conclusive {.unnumbered .unlisted}
 
-In questo capitolo sono stati introdotti i principi fondamentali che governano l'inferenza statistica nell'approccio frequentista, mettendo in luce il ruolo centrale della **distribuzione campionaria** come strumento concettuale per comprendere l'incertezza statistica. È stato mostrato come l'inferenza frequentista si fondi sull'analisi del comportamento di uno stimatore sotto l'ipotesi di **campionamento ripetuto** dalla stessa popolazione, piuttosto che sull'interpretazione di un singolo campione osservato.
+In questo capitolo abbiamo ridefinito il problema della stima dal punto di vista frequentista. Il parametro è trattato come una quantità fissa ma ignota; lo stimatore è una procedura che varia da campione a campione; la stima è il valore ottenuto nel campione osservato.
 
-Con riferimento alla **media campionaria** $\bar{X}$, è stato dimostrato — sia formalmente che mediante verifica empirica — che la sua distribuzione campionaria ha valore atteso pari al parametro della popolazione $\mu$, garantendo la proprietà di **correttezza** (*unbiasedness*, assenza di distorsione) dello stimatore. È stato inoltre evidenziato come la varianza della distribuzione campionaria, pari a $\sigma^2 / n$, diminuisca all'aumentare della dimensione del campione, mostrando che la **precisione inferenziale** cresce con $n$. Il **teorema del limite centrale** ha fornito il fondamento teorico per l'approssimazione normale della distribuzione campionaria della media, quando la dimensione campionaria è sufficientemente grande, indipendentemente dalla forma della distribuzione della popolazione.
+Le proprietà di uno stimatore, come correttezza, consistenza ed efficienza, riguardano il suo comportamento sotto ripetizione ipotetica del campionamento. L'errore standard sintetizza la variabilità dello stimatore e permette di passare dalla stima puntuale alla quantificazione dell'incertezza.
 
-In questo quadro, l'**errore standard**, definito come la radice quadrata della varianza della distribuzione campionaria, emerge come una quantità chiave per quantificare la precisione di una stima e per collegare la teoria delle distribuzioni campionarie alle procedure inferenziali operative.
+Il punto essenziale è che l'inferenza frequentista fornisce garanzie sulle **procedure**, non probabilità dirette sui parametri. Questa impostazione è potente e ha avuto un ruolo centrale nella ricerca psicologica, ma richiede cautela interpretativa. Il prossimo capitolo mostrerà come questa logica conduce agli intervalli di confidenza.
 
-Nel loro insieme, questi concetti costituiscono l'ossatura logica dell'inferenza frequentista e forniscono il fondamento teorico necessario per comprendere strumenti quali gli **intervalli di confidenza** e i **test di ipotesi**, che verranno sviluppati nei capitoli successivi. Comprendere tali strumenti richiede, infatti, una chiara consapevolezza del quadro probabilistico che li giustifica e dei presupposti concettuali su cui essi si basano.
+## Punti chiave da ricordare {.unnumbered}
+
+::: {.callout-important}
+
+1. Un **parametro** è una quantità fissa ma ignota della popolazione.
+2. Uno **stimatore** è una funzione dei dati e varia da campione a campione.
+3. Una **stima** è il valore numerico ottenuto nel campione osservato.
+4. Uno stimatore corretto non tende sistematicamente a sovrastimare o sottostimare il parametro.
+5. L'errore standard misura la variabilità dello stimatore, non la dispersione dei dati grezzi.
+6. Nel frequentismo, le garanzie principali riguardano il comportamento a lungo termine delle procedure.
+7. La stima puntuale deve essere accompagnata da una misura dell'incertezza.
+
+:::
+
+::: {.callout-important title="Esercizi" collapse="true"}
+
+1. In uno studio su 120 studenti, la media osservata a una scala di stress è 24.6. Qual è il parametro? Qual è lo stimatore? Qual è la stima?
+2. Spiega con parole tue perché uno stimatore corretto può produrre una singola stima lontana dal parametro.
+3. Perché l'errore standard non deve essere interpretato come misura della variabilità individuale?
+4. Quale differenza c'è tra dire "il parametro è incerto" e dire "lo stimatore è variabile"?
+
+:::
 
 ::: {.callout-note collapse=true title="Informazioni sull'ambiente di sviluppo"}
 ```{r}

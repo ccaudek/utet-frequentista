@@ -1,0 +1,558 @@
+/*-- scss:defaults --*/
+
+// ============================================
+// PALETTE DARK OTTIMIZZATA
+// ============================================
+
+$body-bg: #111418;
+$body-color: #e6edf3;
+$headings-color: #f5f7fa;
+$link-color: #8fbfff;
+$link-hover-color: #b8d7ff;
+
+$code-block-bg: #1b2028;
+$code-bg: #1b2028;
+$code-color: #e6edf3;
+
+$border-color: #303743;
+
+/*-- scss:rules --*/
+
+// ============================================
+// VARIABILI BOOTSTRAP / QUARTO
+// ============================================
+
+:root,
+[data-bs-theme="dark"] {
+  --bs-body-bg: #111418;
+  --bs-body-color: #e6edf3;
+  --bs-emphasis-color: #f5f7fa;
+  --bs-secondary-color: #aeb8c4;
+  --bs-tertiary-color: #8894a3;
+  --bs-border-color: #303743;
+
+  --bs-link-color: #8fbfff;
+  --bs-link-hover-color: #b8d7ff;
+
+  --bs-code-color: #e6edf3;
+  --bs-code-bg: #1b2028;
+
+  --quarto-body-bg: #111418;
+  --quarto-body-color: #e6edf3;
+}
+
+// ============================================
+// BASE
+// ============================================
+
+html,
+body {
+  color: #e6edf3;
+  background-color: #111418;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga", "kern";
+}
+
+// Regola di sicurezza: forza il testo del contenuto principale.
+// Serve a evitare eredità scure da Bootstrap/Quarto.
+main.content,
+#quarto-document-content,
+.quarto-content,
+.page-columns,
+.content {
+  color: #e6edf3;
+}
+
+main.content p,
+main.content li,
+main.content dd,
+main.content dt,
+main.content figcaption,
+main.content .figure-caption,
+main.content .cell-output,
+main.content .cell-output-stdout,
+main.content .cell-output-stderr,
+main.content .callout-body,
+main.content table,
+main.content td,
+main.content th {
+  color: #e6edf3;
+}
+
+// Non applicare max-width ai contenitori generali.
+// Limitalo solo al testo vero.
+main.content p,
+main.content ul,
+main.content ol,
+main.content blockquote {
+  max-width: 72ch;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+// ============================================
+// TITOLI
+// ============================================
+
+h1, h2, h3, h4, h5, h6 {
+  color: #f5f7fa;
+}
+
+h1 {
+  color: #ffffff;
+}
+
+h2 {
+  color: #f5f7fa;
+  border-bottom-color: #303743;
+}
+
+h6 {
+  color: #b8c2cf;
+}
+
+// ============================================
+// LINK
+// ============================================
+
+a {
+  color: #8fbfff;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-bottom-color 0.15s ease;
+}
+
+a:hover {
+  color: #b8d7ff;
+  border-bottom-color: #8fbfff;
+}
+
+// ============================================
+// NAVIGAZIONE, SIDEBAR, TOC
+// ============================================
+
+.sidebar,
+.sidebar-title,
+.sidebar nav,
+.sidebar-navigation,
+#quarto-sidebar,
+#TOC,
+.toc-title,
+.navbar,
+.nav-tabs,
+.quarto-title-meta,
+.quarto-listing,
+.quarto-categories,
+.quarto-page-breadcrumbs {
+  color: #d7dee8;
+}
+
+.sidebar a,
+#TOC a,
+.navbar a {
+  color: #cbd8e6;
+  border-bottom: none;
+}
+
+.sidebar a:hover,
+#TOC a:hover,
+.navbar a:hover {
+  color: #ffffff;
+}
+
+.sidebar .active,
+#TOC .active,
+.sidebar a.active,
+#TOC a.active {
+  color: #8fbfff;
+}
+
+.toc-title {
+  color: #f0f3f6;
+  font-weight: 600;
+}
+
+// ============================================
+// TESTO SECONDARIO E METADATI
+// ============================================
+
+.quarto-title-meta,
+.quarto-title-meta .author,
+.quarto-title-meta .date,
+.figure-caption,
+figcaption,
+.footnotes {
+  color: #aeb8c4;
+}
+
+.quarto-title-meta {
+  border-bottom-color: #303743;
+}
+
+// ============================================
+// MATEMATICA
+// ============================================
+
+mjx-container {
+  color: #f0f3f6;
+}
+
+mjx-container[display="true"] {
+  font-size: 108%;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+mjx-container:not([display="true"]) {
+  font-size: 103%;
+  vertical-align: 0.03em;
+}
+
+// ============================================
+// CODE BLOCKS
+// ============================================
+
+pre {
+  background-color: #1b2028;
+  color: #e6edf3;
+  border: 1px solid #303743;
+  border-radius: 0.5rem;
+  padding: 1rem 1.2rem;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+code {
+  background-color: #1b2028;
+  color: #e6edf3;
+  border-radius: 0.25rem;
+  padding: 0.1em 0.3em;
+}
+
+pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+}
+
+// Output testuale di R / knitr
+.cell-output,
+.cell-output pre,
+.cell-output-stdout,
+.cell-output-stderr {
+  color: #d7dee8;
+  background-color: transparent;
+}
+
+// ============================================
+// CALLOUT
+// ============================================
+
+.callout {
+  background-color: #171c23;
+  border-color: #303743;
+  border-radius: 0.55rem;
+}
+
+.callout-title {
+  color: #f5f7fa;
+  font-weight: 600;
+}
+
+.callout-body {
+  color: #e6edf3;
+}
+
+.callout-note {
+  background-color: #152235;
+  border-left-color: #8fbfff;
+}
+
+.callout-tip {
+  background-color: #13261c;
+  border-left-color: #4ade80;
+}
+
+.callout-warning {
+  background-color: #2a2112;
+  border-left-color: #fbbf24;
+}
+
+.callout-important {
+  background-color: #2a171a;
+  border-left-color: #f87171;
+}
+
+.callout-caution {
+  background-color: #2a1c13;
+  border-left-color: #fb923c;
+}
+
+// ============================================
+// TABELLE
+// ============================================
+
+table {
+  color: #e6edf3;
+  border-color: #303743;
+}
+
+th {
+  color: #f5f7fa;
+  border-bottom-color: #3a4350;
+}
+
+td {
+  color: #e6edf3;
+  border-bottom-color: #303743;
+}
+
+tbody tr:hover {
+  background-color: rgba(143, 191, 255, 0.08);
+}
+
+// ============================================
+// TAB PANEL
+// ============================================
+
+.nav-tabs {
+  border-bottom-color: #303743;
+}
+
+.nav-tabs .nav-item .nav-link {
+  background-color: #1b2028;
+  color: #cbd8e6;
+  border-color: #303743;
+  border-bottom: none;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+  background-color: #24476f;
+  color: #ffffff;
+  border-color: #2f5f95;
+}
+
+.nav-tabs .nav-link:hover {
+  background-color: #253142;
+  color: #ffffff;
+  border-color: #3a4a61;
+}
+
+// ============================================
+// CITAZIONI
+// ============================================
+
+blockquote {
+  color: #d7dee8;
+  background-color: #171c23;
+  border-left: 4px solid #8fbfff;
+  border-radius: 0 0.45rem 0.45rem 0;
+  padding: 0.6rem 0 0.6rem 1.4rem;
+}
+
+// ============================================
+// FIGURE E IMMAGINI
+// ============================================
+
+.figure {
+  margin: 2rem 0;
+}
+
+.figure-caption {
+  color: #aeb8c4;
+  text-align: center;
+  margin-top: 0.6rem;
+}
+
+// Mantiene leggibili le figure generate in R con testo scuro.
+.cell-output-display img,
+.quarto-figure img,
+.figure-img {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 0.45rem;
+  box-shadow: 0 0.25rem 1.2rem rgba(0, 0, 0, 0.35);
+  max-width: 100%;
+  height: auto;
+}
+
+// ============================================
+// FOOTNOTE
+// ============================================
+
+.footnotes {
+  border-top: 1px solid #303743;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+}
+
+.footnote-ref {
+  color: #8fbfff;
+}
+
+// ============================================
+// FORM, BUTTON, SEARCH
+// ============================================
+
+input,
+textarea,
+select,
+.form-control {
+  background-color: #1b2028;
+  color: #e6edf3;
+  border-color: #303743;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8894a3;
+}
+
+.btn,
+button {
+  background-color: #1b2028;
+  color: #e6edf3;
+  border-color: #303743;
+}
+
+.btn:hover,
+button:hover {
+  background-color: #253142;
+  color: #ffffff;
+}
+
+// ============================================
+// SEPARATORI
+// ============================================
+
+hr {
+  border-color: #303743;
+  margin: 2rem 0;
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+
+@media (max-width: 768px) {
+  main.content {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  main.content p,
+  main.content ul,
+  main.content ol,
+  main.content blockquote {
+    max-width: 100%;
+  }
+}
+
+// ============================================
+// PRINT
+// ============================================
+
+@media print {
+  html,
+  body {
+    color: #000000;
+    background-color: #ffffff;
+  }
+
+  main.content,
+  #quarto-document-content,
+  .quarto-content,
+  .page-columns,
+  .content,
+  p,
+  li,
+  td,
+  th,
+  blockquote,
+  .callout-body {
+    color: #000000;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #000000;
+  }
+
+  a {
+    color: #000000;
+    text-decoration: underline;
+  }
+
+  .nav-tabs,
+  .navbar,
+  #quarto-sidebar,
+  #TOC {
+    display: none !important;
+  }
+
+  pre,
+  code {
+    background-color: #f5f5f5;
+    color: #000000;
+    border-color: #dddddd;
+  }
+
+  .callout {
+    background-color: #f5f5f5;
+    border-color: #dddddd;
+  }
+
+  .callout-title,
+  .callout-body {
+    color: #000000;
+  }
+
+  .cell-output-display img,
+  .quarto-figure img,
+  .figure-img {
+    background-color: #ffffff;
+    box-shadow: none;
+    padding: 0.5rem;
+  }
+}
+
+// ============================================
+// NUMERI DEI CAPITOLI NELLA SIDEBAR
+// ============================================
+
+#quarto-sidebar .chapter-number,
+#quarto-sidebar .section-number,
+.sidebar .chapter-number,
+.sidebar .section-number {
+  color: #aeb8c4;
+  opacity: 1;
+  font-weight: 500;
+  margin-right: 0.35rem;
+}
+
+#quarto-sidebar .sidebar-link.active .chapter-number,
+#quarto-sidebar .sidebar-link.active .section-number,
+.sidebar .sidebar-link.active .chapter-number,
+.sidebar .sidebar-link.active .section-number {
+  color: #8fbfff;
+  opacity: 1;
+  font-weight: 600;
+}
+
+#quarto-sidebar .sidebar-link:hover .chapter-number,
+#quarto-sidebar .sidebar-link:hover .section-number,
+.sidebar .sidebar-link:hover .chapter-number,
+.sidebar .sidebar-link:hover .section-number {
+  color: #ffffff;
+  opacity: 1;
+}

@@ -1,148 +1,220 @@
-# Origini storiche dell'approccio frequentista {#sec-freq-intro}
+# Origini storiche dell'approccio frequentista {#sec-freq-origini}
 
 ::: {.callout-note appearance="minimal"}
+Questo capitolo introduce le origini storiche e concettuali dell'approccio frequentista. Non lo faremo per trasformare la storia della statistica in una semplice sequenza di nomi e date, ma per capire da quali problemi scientifici, istituzionali ed epistemologici siano nati molti strumenti ancora oggi centrali nella ricerca psicologica: correlazione, regressione, distribuzione normale, test di ipotesi, intervalli di confidenza e valore-$p$.
 
-In questo capitolo, esamineremo le origini storiche ed epistemologiche della statistica frequentista, ricostruendone la genesi nel contesto scientifico e culturale della fine dell'Ottocento e dell'inizio del Novecento. Comprendere tali origini non solo permette di contestualizzare i metodi statistici ancora oggi ampiamente utilizzati, ma consente anche di sviluppare uno sguardo critico sui presupposti concettuali che ne guidano l'uso e l'interpretazione.
+Il capitolo mantiene la prospettiva del manuale: studiamo il frequentismo perché è indispensabile per leggere gran parte della letteratura empirica, ma lo collochiamo dentro un percorso più ampio che condurrà all'inferenza bayesiana.
 :::
 
-::: callout-important
+::: {.callout-important}
 ## In questo capitolo imparerai a
 
-- Comprendere il contesto storico e culturale da cui si è sviluppato l'approccio frequentista.
-- Riconoscere le connessioni tra le origini della statistica moderna e le ideologie dell'epoca.
-- Identificare i principi fondamentali del paradigma frequentista.
+- Riconoscere il contesto storico in cui si è sviluppata la statistica frequentista.
+- Comprendere perché la variabilità individuale è diventata un oggetto centrale della misurazione scientifica.
+- Distinguere il contributo tecnico di Galton, Pearson e Fisher dal contesto ideologico in cui alcuni di questi strumenti sono nati.
+- Riassumere i principi di base del paradigma frequentista: probabilità come frequenza, parametri fissi e dati variabili, valutazione delle procedure nel lungo periodo.
+- Preparare il terreno per i capitoli successivi su stime, intervalli di confidenza, test di ipotesi e potenza statistica.
 :::
 
-::: callout-tip
+::: {.callout-tip collapse="true"}
 ## Prerequisiti
 
-- Leggere il capitolo *Sampling* di [Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (Second Edition)](https://moderndive.com/v2/).
+Per seguire questo capitolo è utile aver letto l'introduzione al modulo sull'inferenza frequentista. Non sono richieste conoscenze tecniche avanzate: l'obiettivo è costruire una mappa concettuale prima di entrare nei dettagli matematici.
+
+Lettura complementare consigliata:
+
+- il capitolo *Sampling* di [Statistical Inference via Data Science: A ModernDive into R and the Tidyverse](https://moderndive.com/v2/).
 :::
 
-## Contesto storico ed epistemologico della statistica moderna
+## Perché partire dalla storia?
 
-### La quantificazione dell’umano come progetto scientifico
+La statistica non è soltanto un insieme di formule. È anche un modo di organizzare l'incertezza, di definire cosa conta come evidenza e di stabilire quali conclusioni sono considerate giustificate. Per questo motivo, quando studiamo un paradigma inferenziale, è utile chiederci non solo *come* funziona, ma anche *quali domande* è stato progettato per rispondere.
 
-La nascita della statistica moderna è strettamente legata al tentativo, tipico dell'Ottocento, di applicare il paradigma quantitativo delle scienze naturali allo studio dell'uomo. In questo passaggio si afferma l'idea che i fenomeni biologici, psicologici e sociali possano essere descritti mediante leggi statistiche, analogamente a quanto avviene per i fenomeni fisici. La variabilità individuale, lungi dall'essere considerata un disturbo accidentale, diventa così un legittimo oggetto di analisi scientifica.
+L'approccio frequentista nasce dall'esigenza di costruire procedure di analisi che siano ripetibili, standardizzate e il meno possibile dipendenti dal giudizio individuale del ricercatore. Questa aspirazione all'oggettività ha avuto un'enorme importanza nella scienza moderna. Allo stesso tempo, ha prodotto un modo specifico di interpretare l'incertezza: non come grado di credenza in un'ipotesi, ma come variabilità che emerge ripetendo idealmente lo stesso procedimento di raccolta dei dati.
 
-È in questo contesto che si colloca l’opera di **Francis Galton** (1822–1911), figura chiave nella trasformazione della statistica da strumento amministrativo-descrittivo a linguaggio matematico della variazione.
+::: {.callout-note title="Una chiave di lettura"}
+Nel frequentismo, la domanda tipica non è: “Quanto è plausibile questa ipotesi alla luce dei dati?”. La domanda è piuttosto: “Come si comporterebbe questa procedura se la ripetessimo molte volte in condizioni analoghe?”.
 
-### Francis Galton: tra la misura dell’ereditarietà e le ombre dell’eugenetica
+Questa distinzione sarà centrale nei capitoli successivi, soprattutto quando confronteremo gli intervalli di confidenza e gli intervalli di credibilità bayesiani.
+:::
 
-Galton concepì un ambizioso progetto di **misurazione sistematica dell’umano**, basato sull’assunzione epistemologica secondo cui i tratti individuali sono distribuiti secondo regolarità matematiche stabili. In questa prospettiva, Galton estese l’uso della **distribuzione normale** ai caratteri umani, interpretandola come legge empirica della variazione naturale. Egli mostrò come tratti fisici e mentali tendano a distribuirsi simmetricamente attorno a una media, con valori estremi via via più rari. 
+## La quantificazione della variabilità umana
 
-Questo passaggio ha un significato epistemologico cruciale. Considerare le popolazioni umane come **collettivi statistici** implica uno spostamento dell’oggetto della conoscenza: non più l’individuo singolare, ma le regolarità che emergono da grandi insiemi di osservazioni. La conoscenza scientifica assume quindi una forma intrinsecamente probabilistica.
+### Dal singolo individuo alla distribuzione
 
-Da questo programma derivano alcuni concetti fondamentali della statistica moderna:
+Nel corso dell'Ottocento, si afferma l'idea che molti fenomeni biologici, psicologici e sociali possano essere studiati in modo quantitativo. L'attenzione si sposta progressivamente dal singolo individuo alla distribuzione dei tratti all'interno di una popolazione. Altezza, peso, tempi di reazione, prestazioni cognitive, risposte a questionari e differenze individuali vengono considerati come grandezze che variano da persona a persona, ma non in modo completamente casuale.
 
-1. **la regressione verso la media** (da lui inizialmente definita “verso la mediocrità”), che introduce una concezione non deterministica dell’ereditarietà, descritta in termini di tendenze probabilistiche piuttosto che di causalità lineare;
-2. **la deviazione standard**, che formalizza la dispersione come grandezza misurabile e comparabile, trasformando la variabilità in informazione quantitativa.
+Questa intuizione è fondamentale per la psicologia scientifica. Se un tratto psicologico varia da individuo a individuo, allora è possibile descriverne la distribuzione, calcolare la media, misurarne la dispersione e studiare le relazioni con altri tratti. La variabilità non è più soltanto rumore, ma diventa informazione.
 
-Questi strumenti segnano il passaggio da una scienza qualitativa delle differenze individuali a una scienza quantitativa della variabilità.
+In questo contesto si inserisce l'opera di **Francis Galton** (1822-1911), figura centrale nella trasformazione della statistica da strumento prevalentemente descrittivo-amministrativo a linguaggio matematico della variazione individuale.
 
-La celebre dicotomia ***nature and nurture*** (natura ed educazione), coniata da Galton, riflette ulteriormente questa impostazione. Tale dicotomia tenta di articolare concettualmente il rapporto tra determinazione biologica e influenza ambientale, assumendo che entrambe possano essere indagate e separate mediante strumenti statistici. Questioni tradizionalmente di natura speculativa, come l'origine delle differenze individuali, vengono così riformulate in termini quantitativi e inferenziali.
+### Galton: misurare, confrontare, ordinare
 
-#### Statistica ed eugenetica: una genealogia ambivalente
+Galton si interessò alla misurazione sistematica delle differenze individuali. Raccolse dati su caratteristiche fisiche e psicologiche, studiò la trasmissione dei tratti tra le generazioni e contribuì a diffondere l'idea che le popolazioni possano essere rappresentate mediante distribuzioni.
 
-Il progetto epistemico di Galton, tuttavia, non è neutrale. È infatti intrinsecamente legato a un programma normativo: l’**eugenetica**, da lui fondata e denominata. In questo contesto, la statistica non opera soltanto come strumento descrittivo, ma anche come apparato di legittimazione scientifica di una visione gerarchica dell'umanità. La quantificazione delle differenze individuali viene reinterpretata come valutazione del valore biologico e la media statistica assume implicitamente una funzione normativa.
+Due concetti associati al suo lavoro sono particolarmente importanti per la statistica e per la psicologia:
 
-Dal punto di vista storico-epistemologico, è cruciale riconoscere che lo sviluppo della statistica matematica è avvenuto anche in risposta a esigenze di natura ideologica e istituzionale. Il progetto di misurare, classificare e confrontare le popolazioni umane ha fornito un potente incentivo alla formalizzazione di metodi quantitativi sempre più raffinati. Ciò non invalida necessariamente tali strumenti, ma impone una riflessione critica sul contesto concettuale e valoriale della loro nascita.
+1. **Regressione verso la media.** Galton osservò che, quando un tratto viene misurato nei genitori e nei figli, i valori estremi dei genitori tendono a essere seguiti da valori meno estremi nei figli. Questo fenomeno, oggi noto come "regressione verso la media", dimostra che le relazioni tra le misure non devono essere interpretate in modo deterministico: anche quando esiste una relazione, rimane una componente di variabilità.
 
-L'eredità di Galton è dunque strutturalmente ambigua: egli ha contribuito in modo decisivo alla costruzione di un linguaggio matematico della variabilità, ma a prezzo di un uso normativo e riduzionista della misura che ha segnato profondamente il dibattito scientifico e filosofico del secolo successivo.
+2. **Correlazione.** Lo studio della relazione tra due variabili ha portato allo sviluppo di strumenti per quantificare quanto due misure variano insieme. La correlazione è uno dei concetti più utilizzati nella ricerca psicologica, dalla validazione dei test alla psicometria fino allo studio delle differenze individuali.
 
-### Pearson e Fisher: la costruzione dell’oggettività frequentista
+L'importanza didattica di Galton in questo modulo non sta nel presentarlo come modello di buona pratica scientifica. Piuttosto, sta nel mostrare un passaggio concettuale fondamentale: molti problemi psicologici possono essere formulati come problemi di variabilità, associazione e previsione.
 
-Il programma galtoniano trovò una sistematizzazione rigorosa nell’opera di **Karl Pearson** (1857–1936) e **Ronald A. Fisher** (1890–1962), che diedero forma a quella che oggi è nota come **statistica frequentista**. Dal punto di vista epistemologico, il loro contributo può essere interpretato come un tentativo di fondare l’inferenza statistica su criteri di **oggettività formale**, indipendenti dallo stato di conoscenza del soggetto osservante.
+::: {.callout-tip title="Collegamento con la psicologia"}
+Quando ci chiediamo se due scale psicologiche misurano costrutti correlati, se un punteggio predice un esito clinico o se un trattamento modifica una variabile psicologica, stiamo lavorando all'interno di una tradizione che ha imparato a descrivere gli individui come osservazioni all'interno di distribuzioni.
+:::
 
-Karl Pearson, successore di Galton alla cattedra di eugenetica presso l’*University College* di Londra, contribuì a una profonda matematizzazione della statistica. Introdusse strumenti come il **test del chi-quadrato**, il **coefficiente di correlazione lineare** e una definizione rigorosa della deviazione standard. La sua concezione della statistica si basa sul confronto tra dati empirici e modelli teorici e prevede che la validità di un'ipotesi possa essere valutata tramite procedure standardizzate e replicabili.
+## Statistica ed eugenetica: una genealogia ambivalente
 
-In questa prospettiva, l'oggettività non è garantita da un riferimento diretto alla realtà, ma dalla conformità a regole formali di calcolo. La statistica diventa, quindi, una tecnologia epistemica finalizzata a limitare l'arbitrarietà del giudizio individuale.
+La storia della statistica moderna presenta anche aspetti problematici. Galton è stato il fondatore dell'eugenetica, un programma che mirava a misurare e selezionare i tratti umani al fine di migliorare la popolazione. In questo contesto, strumenti nati per descrivere la variabilità sono stati spesso associati a classificazioni gerarchiche e a giudizi normativi sulle persone.
 
-Ronald Fisher radicalizzò ulteriormente questo orientamento. Con l’introduzione dell’**analisi della varianza** (ANOVA), del concetto di **significatività statistica** e dei **valori-*p***, egli sviluppò una concezione dell’inferenza in cui l’incertezza è attribuita esclusivamente al processo di campionamento, non come espressione di ignoranza soggettiva. Il metodo della **massima verosimiglianza** rappresenta, in questo senso, il tentativo di derivare stime “ottimali” esclusivamente dalla struttura probabilistica dei dati osservati.
+Questa eredità va affrontata con chiarezza. Da un lato, concetti come regressione, correlazione e distribuzione normale sono oggi strumenti matematici generali utilizzabili in contesti scientifici molto diversi. D'altro canto, la loro storia ci ricorda che la misurazione non è mai completamente neutra: scegliere cosa misurare, come misurarlo e come interpretare le differenze osservate comporta sempre delle responsabilità, sia scientifiche che etiche [@chivers2024everything].
 
-Il rifiuto esplicito dell'approccio bayesiano, accusato di introdurre elementi soggettivi attraverso le distribuzioni a priori, va letto non solo come una disputa tecnica, ma anche come una presa di posizione epistemologica. Fisher mirava a una scienza statistica che potesse rivendicare un'**oggettività metodologica assoluta**, in cui l'inferenza non dipende dalle credenze dell'osservatore, ma da procedure universalmente applicabili.
+::: {.callout-warning title="Un punto etico importante"}
+Riconoscere il contesto eugenetico in cui una parte della statistica moderna si è sviluppata non significa rifiutare in blocco gli strumenti statistici. Significa usarli con maggiore consapevolezza: le differenze osservate tra persone o gruppi non devono essere trasformate automaticamente in gerarchie di valore né interpretate senza considerare il contesto, la misurazione, il campionamento e le assunzioni del modello.
+:::
 
-Storicamente, questa concezione dell’oggettività è sviluppata all’interno del quadro ideologico dell’eugenetica, che richiedeva strumenti in grado di produrre decisioni apparentemente neutrali e scientificamente fondate. La statistica frequentista rispondeva perfettamente a tale esigenza, offrendo un linguaggio matematico che separava formalmente il risultato dall’intenzione normativa.
+Questa riflessione è particolarmente rilevante per gli studenti di psicologia. Molte misure psicologiche riguardano persone, gruppi, diagnosi, abilità, vulnerabilità e differenze socialmente sensibili. Una statistica responsabile richiede quindi sia competenza tecnica sia attenzione al significato delle misure.
 
-Nel corso del XX secolo, questa impostazione è diventata dominante, relegando la tradizione bayesiana a un ruolo marginale per gran parte del Novecento. Solo con il rinnovato interesse per l'interpretazione epistemica della probabilità e con lo sviluppo del calcolo computazionale, i metodi bayesiani hanno conosciuto una rivalutazione, riaprendo il dibattito sul rapporto tra oggettività, inferenza e conoscenza scientifica.
+## Pearson e Fisher: la formalizzazione dell'approccio frequentista
 
-## Il paradigma frequentista
+### Karl Pearson e la statistica come tecnologia della regolarità
 
-Alla luce di questo sviluppo storico, il frequentismo può essere compreso come un paradigma metodologico coerente, basato su una specifica concezione della probabilità, dell’inferenza e dell’oggettività scientifica.
+**Karl Pearson** (1857-1936) contribuì in modo decisivo alla matematizzazione della statistica. Il suo lavoro rese più rigorosi concetti quali la correlazione, la deviazione standard e il confronto tra dati osservati e modelli teorici. Tra gli strumenti associati alla sua tradizione vi è anche il test del chi-quadrato che permette di valutare quanto le frequenze osservate si discostino da quelle attese in base a un modello.
 
-### Principi fondanti
+Il suo contributo è importante perché rafforza un'idea centrale del frequentismo: una procedura statistica deve essere definita in modo esplicito, replicabile e applicabile a nuovi dati. L'obiettivo è ridurre l'arbitrarietà del giudizio individuale attraverso regole comuni di calcolo e valutazione.
 
-**La probabilità come frequenza.**
-Nel paradigma frequentista, la probabilità è definita come il **limite della  frequenza relativa** di un evento in una lunga serie (idealmente infinita) di ripetizioni indipendenti. Essa non esprime un grado di credenza, ma una **proprietà oggettiva** del processo generatore dei dati. La probabilità è dunque intrinsecamente legata alla ripetibilità e si riferisce a insiemi di eventi possibili, non a singoli casi.
+Questa impostazione ha avuto un impatto enorme sulla ricerca empirica. In psicologia, per esempio, ha contribuito a rendere ordinario il ragionamento in termini di campioni, distribuzioni, associazioni tra variabili e confronto tra dati osservati e valori attesi.
 
-**Il modello concettuale: parametri fissi e dati aleatori.**
-L’inferenza frequentista si basa su una distinzione concettuale precisa:
+### Ronald Fisher e la logica della significatività
 
-* il **parametro** di interesse (ad esempio, la media vera di una popolazione, *μ*) è una quantità **fissa ma sconosciuta**;
-* i **dati osservati** costituiscono una realizzazione aleatoria, ottenuta tramite campionamento da un processo generatore stabile;
-* il modello statistico descrive la **distribuzione dei dati** condizionata al valore ignoto del parametro;
-* la **variabilità** è attribuita esclusivamente al campionamento: campioni diversi, estratti dallo stesso processo, producono stime diverse dello stesso parametro fisso.
+**Ronald A. Fisher** (1890-1962) sviluppò strumenti che sono diventati centrali nella pratica statistica del Novecento: il disegno sperimentale, l'analisi della varianza, la massima verosimiglianza, la significatività statistica e il valore-$p$.
 
-### Inferenza come comportamento a lungo termine
+Nel quadro fisheriano, l'inferenza parte spesso da un modello nullo. Ci si chiede se i dati osservati sarebbero insoliti se quel modello fosse vero. Il valore-$p$ nasce in questo contesto: misura quanto sarebbe sorprendente osservare dati almeno così estremi, assumendo vera l'ipotesi nulla.
 
-Nel frequentismo, l’inferenza viene valutata in base al **comportamento a lungo termine** di una procedura. Un intervallo di confidenza o un test statistico non forniscono una probabilità relativa a un’ipotesi specifica o a un parametro sconosciuto, ma garantiscono il tasso di successo che la procedura avrebbe se fosse applicata ripetutamente a nuovi campioni.
+È importante sottolineare subito ciò che il valore-$p$ non dice. Non è la probabilità che l'ipotesi nulla sia vera. Non è la probabilità che il risultato sia dovuto al caso. Non misura direttamente la grandezza dell'effetto. Si tratta di una quantità definita all'interno di una procedura che immagina la ripetizione ipotetica dell'esperimento.
 
-Questa impostazione riflette una visione operativa della conoscenza statistica, in cui la validità è definita in termini di prestazioni frequenziali (ad esempio, la percentuale di intervalli che contengono il valore effettivo del parametro) e non in termini di plausibilità epistemica o di aggiornamento delle credenze soggettive.
+::: {.callout-note title="Da ricordare fin da ora"}
+Un valore-$p$ risponde a una domanda frequentista:
 
-### Strumenti inferenziali e interpretazione
+> se l'ipotesi nulla fosse vera, quanto sarebbero insoliti dati come quelli osservati, o più estremi?
 
-#### Stima puntuale: gli stimatori
+Non risponde direttamente alla domanda bayesiana:
 
-Nel paradigma frequentista, l’inferenza sul valore di un parametro si realizza mediante **stimatori**, ossia funzioni dei dati campionari progettate per fornire approssimazioni del parametro fisso ma sconosciuto (ad esempio, la media campionaria $\bar{x}$ come stimatore della media della popolazione $\mu$). Lo stimatore non viene valutato in base al singolo valore osservato, ma in base alle sue **proprietà distribuzionali** sotto ripetizione del campionamento.
+> quanto è plausibile l'ipotesi dopo aver osservato questi dati?
+:::
 
-La qualità di uno stimatore è quindi definita in termini di **comportamento a lungo termine**, ossia considerando la distribuzione delle stime che si otterrebbero ripetendo l’esperimento un numero molto elevato di volte. In questo contesto assumono particolare rilievo le seguenti proprietà:
+Fisher contribuì anche allo sviluppo del principio della **massima verosimiglianza**. Questo concetto sarà importante più avanti, perché la verosimiglianza rappresenta un ponte naturale tra il frequentismo e il bayesianesimo. Nel frequentismo può essere utilizzata per ottenere stime dei parametri, mentre nell'inferenza bayesiana entra a far parte della regola di aggiornamento insieme alla distribuzione a priori.
 
-* **Correttezza (assenza di distorsione)**: uno stimatore è detto corretto se il suo valore atteso, calcolato rispetto alla distribuzione campionaria, coincide con il valore vero del parametro;
-* **Consistenza**: uno stimatore è consistente se, con l'aumentare della dimensione del campione, tende (in probabilità) al valore del parametro, garantendo che l'errore di stima diminuisca progressivamente con l'aumentare dell'informazione disponibile.
+## Il paradigma frequentista in sintesi
 
-Queste proprietà riflettono l’impostazione epistemologica del frequentismo: la bontà di una procedura di stima non viene giudicata in base a un singolo risultato, ma in base alla sua affidabilità media e asintotica nel contesto di ripetizioni ideali dell'esperimento.
+Dopo questa breve ricostruzione storica, possiamo riassumere il nucleo concettuale dell'approccio frequentista.
 
-#### Stima intervallare: gli intervalli di confidenza
+### Probabilità come frequenza a lungo termine
 
-Per rappresentare l’incertezza associata alla stima puntuale, il paradigma frequentista introduce gli **intervalli di confidenza**, che forniscono una regione di valori plausibili per il parametro sulla base di una procedura di campionamento formalmente specificata. L’interpretazione di tali intervalli è strettamente legata al **meccanismo procedurale** che ne determina la costruzione.
+Nel frequentismo, la probabilità è interpretata come frequenza relativa nel lungo periodo. Affermare che un evento ha una probabilità dello 0.30 significa immaginare che, ripetendo molte volte lo stesso processo nelle stesse condizioni, tale evento si verificherebbe circa il 30% delle volte.
 
-In particolare, un **intervallo di confidenza al 95%** non esprime la probabilità che il parametro si trovi nell’intervallo calcolato a partire dai dati osservati. Esso indica, piuttosto, che **ripetendo indefinitamente l’esperimento e applicando la medesima procedura di costruzione**, il 95% degli intervalli così ottenuti conterrà il valore vero del parametro fisso.
+Questa interpretazione è molto naturale per i fenomeni ripetibili, come i lanci di moneta, le estrazioni casuali, i campionamenti da una popolazione o gli esperimenti randomizzati. È meno diretta quando si vuole esprimere l'incertezza su un'ipotesi unica, su un parametro sconosciuto o su un evento irripetibile. In questi casi, la prospettiva bayesiana offre un linguaggio diverso.
 
-È cruciale sottolineare che il livello di confidenza è una proprietà della **procedura inferenziale**, non del singolo intervallo osservato. Una volta calcolato a partire dai dati, l’intervallo è un oggetto deterministico: o include il parametro o non lo include, senza che sia lecito dal punto di vista epistemologico attribuire una probabilità a questo singolo evento. Questa distinzione riflette coerentemente l'impostazione frequentista, che localizza l'incertezza nelle procedure di campionamento e non nei parametri oggetto di stima.
+### Parametri fissi, dati variabili
 
-#### Test di ipotesi: fondamenti e criticità
+Nel modello frequentista classico:
 
-Nel paradigma frequentista, l’inferenza statistica prevede la verifica formale di un’**ipotesi nulla** (*H₀*), che solitamente rappresenta l’assenza di un effetto, di una differenza o di un’associazione. Il procedimento di test è strutturato come un problema decisionale e conduce a un esito **dicotomico**: l'ipotesi nulla viene rifiutata o non viene rifiutata.
+- il parametro di interesse, come una media $\mu$ o una proporzione $\theta$, è considerato **fisso ma sconosciuto**;
+- i dati osservati sono una delle molte realizzazioni possibili del processo di campionamento;
+- l'incertezza nasce dal fatto che campioni diversi avrebbero prodotto risultati diversi;
+- la bontà di una procedura è valutata considerando come si comporterebbe in molte ripetizioni ideali dello stesso studio.
 
-La procedura richiede la fissazione preliminare di un **livello di significatività** $\alpha$ (tradizionalmente pari a 0.05), interpretato come la massima probabilità accettabile di rifiutare erroneamente un’ipotesi nulla vera (errore di primo tipo). Sulla base di $\alpha$ viene definita una **regione critica** per la statistica test. Se il valore osservato cade in tale regione, *H₀* viene rifiutata; in caso contrario, non viene rifiutata.
+Questa è una differenza fondamentale rispetto all'approccio bayesiano, in cui il parametro sconosciuto può essere rappresentato tramite una distribuzione di probabilità che esprime l'incertezza epistemica del ricercatore.
 
-È importante sottolineare che questo schema inferenziale non fornisce una misura diretta dell’evidenza a favore dell’ipotesi alternativa.  Esso valuta esclusivamente il grado di incompatibilità dei dati osservati con l’ipotesi nulla, a condizione che quest’ultima sia vera.
+### Procedure valutate nel lungo periodo
 
-Da un punto di vista epistemologico e operativo, tale metodologia presenta diverse criticità rilevanti:
+Il frequentismo giudica le procedure statistiche in base alle loro proprietà a lungo termine. Per esempio:
 
-1. **Rigidità della decisione binaria.**
-   L’esito del test riduce l’inferenza a una scelta dicotomica, che non esprime gradi di evidenza e può risultare inadeguata nella descrizione di fenomeni complessi o di effetti di piccola entità, frequenti nelle scienze empiriche.
+- uno stimatore è apprezzato se, ripetendo il campionamento, tende in media al valore vero o si avvicina ad esso al crescere del campione;
+- un intervallo di confidenza al 95% è una procedura che, in condizioni ideali, produce intervalli contenenti il parametro vero nel 95% dei casi;
+- un test con livello di significatività $\alpha = 0.05$ controlla, nel lungo periodo, la probabilità di rigettare erroneamente un'ipotesi nulla vera.
 
-2. **Arbitrarietà della soglia di significatività.**
-   Il valore di $\alpha$, spesso fissato per convenzione storica, non possiede una giustificazione teorica intrinseca. Di conseguenza, lievi variazioni nei dati possono produrre decisioni opposte: valori-$p$ pari a 0.049 e 0.051 non differiscono in modo sostanziale sul piano dell’evidenza empirica, ma conducono a esiti inferenziali diversi.
+Queste garanzie sono importanti e hanno reso il frequentismo uno strumento potente per la ricerca empirica. Tuttavia, richiedono un'interpretazione attenta: non sempre una garanzia a lungo termine corrisponde a ciò che vorremmo sapere riguardo allo studio concreto che abbiamo appena condotto.
 
-3. **Ambiguità e fraintendimenti del valore-$p$.**
-   Un valore-$p$ basso non rappresenta la probabilità che l’ipotesi nulla sia vera. Esso indica esclusivamente la probabilità di osservare dati almeno altrettanto estremi di quelli ottenuti, **assumendo che l’ipotesi nulla sia corretta**. L’interpretazione del valore-$p$ come misura diretta della plausibilità di un’ipotesi costituisce uno degli errori concettuali più diffusi nella pratica scientifica.
+## Una mappa dei capitoli successivi
 
-Nel loro insieme, queste criticità evidenziano come il test di ipotesi frequentista, pur offrendo una procedura formalmente rigorosa e standardizzata, presenti notevoli limiti interpretativi che ne rendono problematico l’uso come strumento esclusivo di inferenza scientifica.
+Nei capitoli successivi, entreremo nei principali strumenti frequentisti, mantenendo una distinzione costante tra la procedura matematica e la sua corretta interpretazione.
+
+1. **Stime dei parametri.** Studieremo come un campione viene utilizzato per stimare una quantità sconosciuta della popolazione, e perché la distribuzione campionaria è centrale nel frequentismo.
+
+2. **Intervalli di confidenza.** Vedremo come costruire intervalli che quantificano l'incertezza procedurale e chiariremo perché non vanno interpretati come probabilità dirette sul parametro.
+
+3. **Test di ipotesi.** Analizzeremo la logica dell'ipotesi nulla, della statistica test, del valore-$p$ e della decisione statistica.
+
+4. **Dimensione campionaria e potenza.** Dopo aver introdotto i test, discuteremo perché la numerosità campionaria influenza la probabilità di individuare effetti reali.
+
+5. **Confronto tra due gruppi.** Useremo il test $t$ per campioni indipendenti come esempio applicativo di una procedura frequentista molto diffusa nella ricerca psicologica.
+
+Questa sequenza non ha lo scopo di presentare il frequentismo come un ostacolo da superare, ma come un linguaggio da comprendere. Solo dopo aver compreso a fondo le domande poste dal frequentismo, sarà possibile apprezzare con precisione le domande diverse poste dall'inferenza bayesiana.
+
+## Frequentismo e bayesianesimo: non una guerra, ma due domande diverse
+
+È facile presentare il frequentismo e il bayesianesimo come due scuole contrapposte. In parte lo sono, in quanto adottano interpretazioni diverse della probabilità e dell'inferenza. Tuttavia, dal punto di vista didattico, è più utile partire da una distinzione di domande.
+
+Il frequentismo si chiede:
+
+> Se ripetessimo molte volte questa procedura, con quale frequenza produrrebbe risultati corretti o errori controllati?
+
+Il bayesianesimo, invece, si chiede:
+
+> Alla luce dei dati osservati e delle informazioni disponibili, come dovremmo aggiornare la nostra incertezza sui parametri o sulle ipotesi?
+
+Entrambe le domande sono legittime, ma non sono equivalenti. Molti fraintendimenti nascono quando si usa uno strumento frequentista per rispondere implicitamente a una domanda bayesiana. Per esempio, interpretare un valore-$p$ come probabilità che l'ipotesi nulla sia vera significa attribuire a una quantità frequentista un significato che non le appartiene.
+
+::: {.callout-important title="Messaggio centrale"}
+Il frequentismo fornisce regole per costruire procedure che abbiano buone proprietà nel lungo periodo. L'inferenza bayesiana fornisce invece regole per aggiornare l'incertezza alla luce dei dati osservati.
+
+Nel resto del modulo useremo questa distinzione come bussola interpretativa.
+:::
+
+## Una riflessione per la ricerca psicologica
+
+La psicologia ha fatto ampio uso di strumenti frequentisti: test $t$, ANOVA, regressioni, intervalli di confidenza, valori-$p$ e analisi di potenza sono parte del linguaggio comune della disciplina. Conoscerli è quindi indispensabile per leggere gli articoli, progettare gli studi e interpretare i risultati.
+
+Tuttavia, la crisi della replicabilità ha dimostrato che l'applicazione meccanica di procedure standardizzate non garantisce automaticamente la produzione di conoscenze affidabili. Campioni piccoli, bassa potenza, selezione dei risultati, interpretazioni improprie del valore-$p$ e attenzione eccessiva alla soglia 0,05 possono produrre evidenze fragili.
+
+Questo non significa che il frequentismo sia inutile. La lezione è che nessuna procedura statistica può sostituire il ragionamento scientifico. Ogni analisi richiede un disegno di ricerca solido, misure valide, trasparenza, attenzione alla dimensione degli effetti e interpretazioni coerenti con le assunzioni del metodo.
 
 ## Riflessioni conclusive {.unnumbered .unlisted}
 
-In questo capitolo abbiamo ricostruito la genesi storica ed epistemologica della statistica frequentista, mostrando come la sua centralità attuale nella ricerca psicologica e nelle scienze empiriche non sia il risultato di una necessità puramente tecnica, ma l’esito di un contesto storico, culturale e filosofico ben definito. Tale ricostruzione ha messo in evidenza il principio guida che ne ha orientato lo sviluppo: l'ideale di **oggettività metodologica**, inteso come progressiva eliminazione di ogni elemento di giudizio soggettivo dall’inferenza scientifica. Come osserva @chivers2024everything, questo ideale ha operato anche come dispositivo di legittimazione epistemica del progetto eugenetico, rendendo esplicite le assunzioni teoriche e le contingenze pratiche che hanno plasmato i fondamenti del frequentismo.
+In questo capitolo abbiamo collocato l'approccio frequentista nel suo contesto storico e concettuale. Abbiamo visto che la statistica moderna nasce anche dal tentativo di misurare e ordinare la variabilità umana, un progetto che ha prodotto strumenti fondamentali per la scienza, ma che ha anche dato luogo a usi eticamente problematici. Questa doppia eredità invita a una posizione equilibrata: competenza tecnica, consapevolezza storica e responsabilità interpretativa.
 
-L'analisi storica proposta non ha solo un valore ricostruttivo, ma svolge anche una funzione critica nei confronti della pratica scientifica contemporanea. In discipline come la psicologia, la cosiddetta "crisi della replicabilità" può essere interpretata, almeno in parte, come il risultato di un'adozione acritica e procedurale dell'inferenza frequentista, in cui la ricerca di un valore $p$ "significativo" tende a sostituirsi a un'analisi sostanziale dei fenomeni studiati e alla verifica della loro robustezza empirica.
+Abbiamo inoltre introdotto i principi del frequentismo: la probabilità come frequenza a lungo termine, i parametri come valori fissi ma sconosciuti, i dati come variabili e le procedure come oggetti da valutare in base al comportamento che avrebbero in ripetizioni ideali. Questi principi saranno alla base dei prossimi capitoli dedicati a stima, intervalli di confidenza, test di ipotesi, dimensione campionaria e confronto tra gruppi.
 
-In questa prospettiva, il frequentismo non può essere considerato un insieme neutrale di strumenti tecnici, ma deve essere riconosciuto come un **paradigma scientifico** dotato di implicazioni metodologiche, epistemologiche ed etiche rilevanti. Comprenderne i presupposti storici e concettuali diventa pertanto una condizione necessaria per un uso consapevole e responsabile delle sue procedure inferenziali.
+Il filo conduttore sarà sempre lo stesso: imparare a usare e interpretare gli strumenti frequentisti senza attribuirgli significati che non hanno. Questo lavoro preparerà il passaggio all'inferenza bayesiana, in cui l'incertezza sui parametri e sulle ipotesi viene rappresentata direttamente tramite distribuzioni di probabilità.
 
-Nei capitoli successivi, esamineremo in modo sistematico le principali tecniche inferenziali del paradigma frequentista, mettendone in luce la coerenza interna e i limiti intrinseci. Questo percorso critico costituirà il fondamento per l'introduzione dell'approccio bayesiano che, proponendo una concezione diversa della probabilità e dell'inferenza, offrirà una prospettiva alternativa e complementare al frequentismo e costituirà il fulcro teorico del presente manuale.
+## Punti chiave da ricordare {.unnumbered}
 
-::: {.callout-note}
-**Nota didattica.** L’approccio frequentista viene qui presentato con un duplice obiettivo: da un lato, fornire gli strumenti concettuali indispensabili per interpretare criticamente la letteratura scientifica esistente; dall’altro, motivare l’esplorazione di paradigmi inferenziali alternativi. La sua comprensione rimane un passaggio formativo essenziale per una preparazione statistica rigorosa, critica e consapevole.
+::: {.callout-important}
+
+1. **La statistica moderna nasce dallo studio della variabilità.**
+   Galton, Pearson e Fisher contribuirono a trasformare la variabilità individuale in un oggetto di misurazione e modellizzazione.
+
+2. **La genealogia della statistica è ambivalente.**
+   Alcuni strumenti fondamentali sono nati in contesti legati all'eugenetica. Questo non li rende inutilizzabili, ma richiede consapevolezza storica ed etica.
+
+3. **Nel frequentismo la probabilità è frequenza a lungo termine.**
+   La probabilità riguarda ciò che accadrebbe in molte ripetizioni dello stesso processo, non direttamente il grado di credenza su un'ipotesi.
+
+4. **I parametri sono fissi, i dati sono variabili.**
+   L'incertezza frequentista deriva dal campionamento: campioni diversi produrrebbero stime diverse.
+
+5. **Le procedure sono valutate nel lungo periodo.**
+   Stimatori, intervalli di confidenza e test sono giudicati in base alle loro proprietà sotto ripetizione dell'esperimento.
+
+6. **Il confronto con il bayesianesimo riguarda le domande inferenziali.**
+   Il frequentismo controlla le proprietà delle procedure; il bayesianesimo aggiorna esplicitamente l'incertezza sui parametri o sulle ipotesi.
+
+:::
+
+::: {.callout-note title="Per il prossimo capitolo"}
+Nel prossimo capitolo passeremo dalla cornice storica alla prima procedura inferenziale: la **stima dei parametri**. Vedremo come una statistica calcolata su un campione può essere utilizzata per stimare una quantità sconosciuta della popolazione e perché la distribuzione campionaria è al centro del ragionamento frequentista.
 :::
 
 ## Bibliografia {.unnumbered .unlisted}
