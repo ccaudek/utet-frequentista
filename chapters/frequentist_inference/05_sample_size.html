@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Metodi bayesiani in psicologia.">
-<title>2&nbsp; Stime, stimatori e parametri – Inferenza frequentista in psicologia</title>
+<title>5&nbsp; Dimensione campionaria, errore e potenza – Inferenza frequentista in psicologia</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -56,7 +56,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -65,8 +85,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../chapters/frequentist_inference/03_conf_interv.html" rel="next">
-<link href="../../chapters/frequentist_inference/01_galton.html" rel="prev">
+<link href="../../chapters/frequentist_inference/06_two_ind_samples.html" rel="next">
+<link href="../../chapters/frequentist_inference/04_test_ipotesi.html" rel="prev">
 <link href="../../style/gauss.png" rel="icon" type="image/png">
 <script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -158,13 +178,13 @@ window.Quarto = {
   typesetMath
 };
 </script>
-<meta property="og:title" content="2&nbsp; Stime, stimatori e parametri – Inferenza frequentista in psicologia">
+<meta property="og:title" content="5&nbsp; Dimensione campionaria, errore e potenza – Inferenza frequentista in psicologia">
 <meta property="og:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Metodi bayesiani in psicologia.">
 <meta property="og:site_name" content="Inferenza frequentista in psicologia">
-<meta name="twitter:title" content="2&nbsp; Stime, stimatori e parametri – Inferenza frequentista in psicologia">
+<meta name="twitter:title" content="5&nbsp; Dimensione campionaria, errore e potenza – Inferenza frequentista in psicologia">
 <meta name="twitter:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Metodi bayesiani in psicologia.">
 <meta name="twitter:card" content="summary">
-<link rel="canonical" href="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/02_stime_parametri.html">
+<link rel="canonical" href="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/05_sample_size.html">
 </head>
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
@@ -344,7 +364,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/02_stime_parametri.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Stime, stimatori e parametri</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/05_sample_size.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Ricerca" onclick="window.quartoOpenSearch();">
@@ -399,7 +419,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/frequentist_inference/02_stime_parametri.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../chapters/frequentist_inference/02_stime_parametri.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Stime, stimatori e parametri</span></span></a>
   </div>
 </li>
@@ -417,7 +437,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/frequentist_inference/05_sample_size.html" class="sidebar-item-text sidebar-link">
+  <a href="../../chapters/frequentist_inference/05_sample_size.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></span></a>
   </div>
 </li>
@@ -454,20 +474,22 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2"><h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
-<li><a href="#sec-freq-estimation-problem" id="toc-sec-freq-estimation-problem" class="nav-link active" data-scroll-target="#sec-freq-estimation-problem"><span class="header-section-number">2.1</span> Il problema della stima</a></li>
-  <li><a href="#sec-freq-parameter-estimator-estimate" id="toc-sec-freq-parameter-estimator-estimate" class="nav-link" data-scroll-target="#sec-freq-parameter-estimator-estimate"><span class="header-section-number">2.2</span> Parametro, stimatore e stima</a></li>
-  <li><a href="#sec-freq-point-estimate" id="toc-sec-freq-point-estimate" class="nav-link" data-scroll-target="#sec-freq-point-estimate"><span class="header-section-number">2.3</span> La stima puntuale</a></li>
-  <li><a href="#sec-freq-good-estimators" id="toc-sec-freq-good-estimators" class="nav-link" data-scroll-target="#sec-freq-good-estimators"><span class="header-section-number">2.4</span> Che cosa rende buono uno stimatore?</a></li>
-  <li><a href="#sec-freq-role-sampling-distribution" id="toc-sec-freq-role-sampling-distribution" class="nav-link" data-scroll-target="#sec-freq-role-sampling-distribution"><span class="header-section-number">2.5</span> Il ruolo della distribuzione campionaria</a></li>
-  <li><a href="#sec-freq-standard-error-operational" id="toc-sec-freq-standard-error-operational" class="nav-link" data-scroll-target="#sec-freq-standard-error-operational"><span class="header-section-number">2.6</span> L’errore standard come misura operativa</a></li>
-  <li><a href="#sec-freq-from-estimate-to-procedure" id="toc-sec-freq-from-estimate-to-procedure" class="nav-link" data-scroll-target="#sec-freq-from-estimate-to-procedure"><span class="header-section-number">2.7</span> Dal numero osservato alla procedura</a></li>
-  <li><a href="#sec-freq-estimation-bayes-contrast" id="toc-sec-freq-estimation-bayes-contrast" class="nav-link" data-scroll-target="#sec-freq-estimation-bayes-contrast"><span class="header-section-number">2.8</span> Confronto con la prospettiva bayesiana</a></li>
-  <li><a href="#punti-chiave-da-ricordare" id="toc-punti-chiave-da-ricordare" class="nav-link" data-scroll-target="#punti-chiave-da-ricordare">Punti chiave da ricordare</a></li>
-  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/02_stime_parametri.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+<li><a href="#perch%C3%A9-pianificare-la-numerosit%C3%A0-campionaria" id="toc-perché-pianificare-la-numerosità-campionaria" class="nav-link active" data-scroll-target="#perch%C3%A9-pianificare-la-numerosit%C3%A0-campionaria"><span class="header-section-number">5.1</span> Perché pianificare la numerosità campionaria</a></li>
+  <li><a href="#numerosit%C3%A0-campionaria-per-la-precisione-di-una-stima" id="toc-numerosità-campionaria-per-la-precisione-di-una-stima" class="nav-link" data-scroll-target="#numerosit%C3%A0-campionaria-per-la-precisione-di-una-stima"><span class="header-section-number">5.2</span> Numerosità campionaria per la precisione di una stima</a></li>
+  <li><a href="#numerosit%C3%A0-campionaria-per-un-test-di-ipotesi" id="toc-numerosità-campionaria-per-un-test-di-ipotesi" class="nav-link" data-scroll-target="#numerosit%C3%A0-campionaria-per-un-test-di-ipotesi"><span class="header-section-number">5.3</span> Numerosità campionaria per un test di ipotesi</a></li>
+  <li><a href="#effetto-minimo-di-interesse" id="toc-effetto-minimo-di-interesse" class="nav-link" data-scroll-target="#effetto-minimo-di-interesse"><span class="header-section-number">5.4</span> Effetto minimo di interesse</a></li>
+  <li><a href="#esempio-test-t-per-un-campione" id="toc-esempio-test-t-per-un-campione" class="nav-link" data-scroll-target="#esempio-test-t-per-un-campione"><span class="header-section-number">5.5</span> Esempio: test t per un campione</a></li>
+  <li><a href="#esempio-confronto-tra-due-gruppi-indipendenti" id="toc-esempio-confronto-tra-due-gruppi-indipendenti" class="nav-link" data-scroll-target="#esempio-confronto-tra-due-gruppi-indipendenti"><span class="header-section-number">5.6</span> Esempio: confronto tra due gruppi indipendenti</a></li>
+  <li><a href="#potenza-numerosit%C3%A0-e-interpretazione-dei-risultati" id="toc-potenza-numerosità-e-interpretazione-dei-risultati" class="nav-link" data-scroll-target="#potenza-numerosit%C3%A0-e-interpretazione-dei-risultati"><span class="header-section-number">5.7</span> Potenza, numerosità e interpretazione dei risultati</a></li>
+  <li><a href="#analisi-di-potenza-post-hoc" id="toc-analisi-di-potenza-post-hoc" class="nav-link" data-scroll-target="#analisi-di-potenza-post-hoc"><span class="header-section-number">5.8</span> Analisi di potenza post-hoc</a></li>
+  <li><a href="#limiti-della-pianificazione-frequentista" id="toc-limiti-della-pianificazione-frequentista" class="nav-link" data-scroll-target="#limiti-della-pianificazione-frequentista"><span class="header-section-number">5.9</span> Limiti della pianificazione frequentista</a></li>
+  <li><a href="#collegamento-con-la-prospettiva-bayesiana" id="toc-collegamento-con-la-prospettiva-bayesiana" class="nav-link" data-scroll-target="#collegamento-con-la-prospettiva-bayesiana"><span class="header-section-number">5.10</span> Collegamento con la prospettiva bayesiana</a></li>
+  <li><a href="#riepilogo" id="toc-riepilogo" class="nav-link" data-scroll-target="#riepilogo"><span class="header-section-number">5.11</span> Riepilogo</a></li>
+  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/05_sample_size.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/02_stime_parametri.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Stime, stimatori e parametri</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-freq-stime-parametri" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Stime, stimatori e parametri</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/05_sample_size.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-frequentist-sample-size" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></span></h1>
 </div>
 
 
@@ -481,17 +503,7 @@ window.Quarto = {
   
 
 
-</header><div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Questo capitolo introduce il modo in cui l’inferenza frequentista affronta il problema della <strong>stima dei parametri</strong>. Nel companion sulla probabilità abbiamo già discusso distribuzioni campionarie, errore standard, Legge dei Grandi Numeri e Teorema del Limite Centrale. Qui non ripeteremo quei risultati: li useremo come strumenti per comprendere che cosa significa, nel paradigma frequentista, stimare una quantità sconosciuta a partire da un campione.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
+</header><div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -502,387 +514,460 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>distinguere tra <strong>parametro</strong>, <strong>stimatore</strong> e <strong>stima</strong>;</li>
-<li>capire perché, nel frequentismo, il parametro è considerato fisso ma ignoto;</li>
-<li>descrivere le proprietà desiderabili di uno stimatore: correttezza, consistenza, efficienza e compromesso bias-varianza;</li>
-<li>interpretare l’errore standard come misura operativa dell’incertezza campionaria;</li>
-<li>comprendere perché la stima puntuale conduce naturalmente agli intervalli di confidenza.</li>
+<li>Distinguere due obiettivi di pianificazione: <strong>stimare con precisione</strong> e <strong>testare un’ipotesi con potenza adeguata</strong>.</li>
+<li>Comprendere il ruolo di errore di I tipo, errore di II tipo, potenza e dimensione dell’effetto.</li>
+<li>Calcolare una numerosità campionaria per una stima di media con margine di errore prefissato.</li>
+<li>Usare <code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code> per pianificare test su una media e confronti tra due gruppi.</li>
+<li>Riconoscere i limiti dell’analisi di potenza, in particolare dell’uso post-hoc.</li>
 </ul>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Consiglio</span>Prerequisiti
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Per seguire questo capitolo è utile aver letto:</p>
 <ul>
-<li>il capitolo sul campione e l’evidenza del companion sulla probabilità, in particolare <span class="quarto-unresolved-ref">?sec-prob-inference-uncertainty</span>;</li>
-<li>il capitolo sulle proprietà delle variabili casuali, per valore atteso e varianza;</li>
-<li>il capitolo introduttivo di questo modulo, in cui sono state distinte le domande frequentiste dalle domande bayesiane.</li>
+<li>il capitolo su stime, stimatori e stima puntuale;</li>
+<li>il capitolo sugli intervalli di confidenza;</li>
+<li>il capitolo sui test di ipotesi, in particolare il valore-<span class="math inline">\(p\)</span>, il livello di significatività <span class="math inline">\(\alpha\)</span> e la distinzione tra errore di I tipo ed errore di II tipo.</li>
 </ul>
-<p>In questo capitolo useremo espressioni come “distribuzione campionaria” ed “errore standard” senza ridimostrarle. Il punto non è ripetere la teoria probabilistica, ma chiarire come essa viene impiegata nelle procedure frequentiste di stima.</p>
+<p>Come lettura complementare, si veda <em>Power to detect what? Considerations for planning and evaluating sample size</em> <span class="citation" data-cites="giner2024power">(<a href="#ref-giner2024power" role="doc-biblioref"><span class="nocase">Giner-Sorolla et al.</span>, 2024</a>)</span>.</p>
 </div>
 </div>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled" title="Preparazione del Notebook">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Attenzione</span>Preparazione del Notebook
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
+<section id="perché-pianificare-la-numerosità-campionaria" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="perché-pianificare-la-numerosità-campionaria">
+<span class="header-section-number">5.1</span> Perché pianificare la numerosità campionaria</h2>
+<p>La scelta della numerosità campionaria non è un dettaglio tecnico da rimandare alla fine del progetto. Si tratta di una decisione metodologica che dovrebbe essere presa <strong>prima</strong> di raccogliere i dati, in quanto condiziona ciò che lo studio potrà dire.</p>
+<p>Un campione troppo piccolo può produrre risultati molto incerti: le stime saranno imprecise e i test avranno bassa probabilità di rilevare effetti anche quando questi sono reali. Un campione troppo grande, invece, può richiedere risorse eccessive e può rendere statisticamente significative differenze molto piccole, che potrebbero essere prive di rilevanza teorica o clinica.</p>
+<p>Nel quadro frequentista, la numerosità campionaria viene solitamente pianificata in relazione a due obiettivi distinti:</p>
+<ol type="1">
+<li>
+<strong>Precisione della stima</strong>: quanto stretto vogliamo che sia l’intervallo di confidenza?</li>
+<li>
+<strong>Potenza del test</strong>: con quale probabilità vogliamo rilevare un effetto di una certa dimensione, se quell’effetto esiste?</li>
+</ol>
+<p>Questi due obiettivi sono correlati, ma non coincidono. Nel primo caso, ci interessa la precisione con cui stimiamo un parametro. Nel secondo caso, invece, ci interessa il comportamento di una procedura decisionale: se rifiutare o meno l’ipotesi nulla.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<section id="sec-freq-estimation-problem" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="sec-freq-estimation-problem">
-<span class="header-section-number">2.1</span> Il problema della stima</h2>
-<p>Una ricercatrice vuole stimare il livello medio di ansia in una popolazione di studenti universitari. Non può osservare tutti gli studenti, quindi raccoglie un campione e calcola la media osservata. Ottiene, per esempio, una media pari a 18.4 su una scala psicometrica.</p>
-<p>Questo numero è utile, ma da solo non risponde alla domanda inferenziale principale. La media osservata è solo il risultato di uno specifico campione. Se la ricercatrice avesse osservato un altro campione, avrebbe probabilmente ottenuto un valore diverso.</p>
-<p>Il problema della stima nasce da questa distanza tra due livelli:</p>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Due domande diverse
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Domanda di stima</strong><br>
+&gt; Quanti partecipanti servono per stimare una media con un margine di errore accettabile?</p>
+<p><strong>Domanda di test</strong><br>
+&gt; Quanti partecipanti servono perché un test abbia una probabilità adeguata di rilevare un effetto considerato rilevante?</p>
+<p>Tenere separate queste due domande aiuta a evitare confusione tra precisione, significatività statistica e rilevanza sostantiva.</p>
+</div>
+</div>
+</section><section id="numerosità-campionaria-per-la-precisione-di-una-stima" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="numerosità-campionaria-per-la-precisione-di-una-stima">
+<span class="header-section-number">5.2</span> Numerosità campionaria per la precisione di una stima</h2>
+<p>Supponiamo di voler stimare la media <span class="math inline">\(\mu\)</span> di una variabile psicologica, ad esempio un punteggio di autostima. Nel capitolo sugli intervalli di confidenza abbiamo visto che, in condizioni standard, un intervallo di confidenza per la media può essere approssimativamente espresso come:</p>
+<p><span class="math display">\[
+\bar{x} \pm z_{1-\alpha/2} \frac{\sigma}{\sqrt{n}}.
+\]</span></p>
+<p>La quantità</p>
+<p><span class="math display">\[
+E = z_{1-\alpha/2} \frac{\sigma}{\sqrt{n}}
+\]</span></p>
+<p>è il <strong>margine di errore</strong>: indica di quanto l’intervallo si estende a sinistra e a destra della stima puntuale.</p>
+<p>Se vogliamo progettare uno studio in modo che il margine di errore non superi un valore prefissato <span class="math inline">\(E\)</span>, possiamo risolvere l’equazione rispetto a <span class="math inline">\(n\)</span>:</p>
+<p><span class="math display">\[
+n = \left(\frac{z_{1-\alpha/2} \sigma}{E}\right)^2.
+\]</span></p>
+<p>Questa formula illustra tre concetti importanti:</p>
 <ul>
-<li>la <strong>popolazione</strong>, che contiene la quantità di interesse;</li>
-<li>il <strong>campione</strong>, che fornisce solo un’osservazione parziale e variabile.</li>
+<li>richiedere un intervallo più stretto aumenta il numero di dati necessario;</li>
+<li>una maggiore variabilità dei dati richiede campioni più grandi;</li>
+<li>passare, per esempio, da un margine di errore di 2 punti a 1 punto non raddoppia il campione, ma lo quadruplica.</li>
 </ul>
-<p>Nel paradigma frequentista, il parametro della popolazione è considerato una quantità fissa ma ignota. L’incertezza non riguarda il parametro in sé, ma la procedura usata per stimarlo a partire da campioni possibili.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="La domanda frequentista">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>La domanda frequentista
+<span class="screen-reader-only">Avviso</span>Attenzione alla notazione
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Una domanda frequentista tipica non è:</p>
-<blockquote class="blockquote">
-<p>Qual è la probabilità che il parametro abbia un certo valore, dati questi dati?</p>
-</blockquote>
-<p>ma piuttosto:</p>
-<blockquote class="blockquote">
-<p>Se applicassimo questa procedura a molti campioni estratti nelle stesse condizioni, quali proprietà avrebbe la stima prodotta?</p>
-</blockquote>
+<p>Per un intervallo di confidenza al 95%, si usa di solito <span class="math inline">\(z_{1-\alpha/2} = z_{0.975} \approx 1.96\)</span>, non <span class="math inline">\(z_{0.025}\)</span>. I due quantili sono simmetrici nella normale standard, ma il valore positivo usato nella formula del margine di errore è <span class="math inline">\(z_{0.975}\)</span>.</p>
 </div>
 </div>
-<p>Questa distinzione è essenziale. In un approccio bayesiano, l’incertezza sul parametro viene rappresentata direttamente mediante una distribuzione di probabilità. In un approccio frequentista, invece, la probabilità descrive il comportamento dei dati e delle statistiche campionarie nel caso di ipotetiche ripetizioni del campionamento.</p>
-</section><section id="sec-freq-parameter-estimator-estimate" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="sec-freq-parameter-estimator-estimate">
-<span class="header-section-number">2.2</span> Parametro, stimatore e stima</h2>
-<p>Per evitare ambiguità, introduciamo tre termini fondamentali.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Tre livelli da distinguere">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Tre livelli da distinguere
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead><tr class="header">
-<th>Termine</th>
-<th>Significato</th>
-<th>Esempio</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><strong>Parametro</strong></td>
-<td>Quantità fissa ma ignota della popolazione</td>
-<td>La media vera dell’ansia, <span class="math inline">\(\mu\)</span>
-</td>
-</tr>
-<tr class="even">
-<td><strong>Stimatore</strong></td>
-<td>Regola che usa i dati per stimare il parametro</td>
-<td>La media campionaria, <span class="math inline">\(\bar X\)</span>
-</td>
-</tr>
-<tr class="odd">
-<td><strong>Stima</strong></td>
-<td>Valore numerico ottenuto nel campione osservato</td>
-<td><span class="math inline">\(\bar x = 18.4\)</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Il <strong>parametro</strong> è l’obiettivo dell’inferenza. Può essere una media, una proporzione, una varianza, una differenza tra medie, una correlazione o un coefficiente di regressione. Nel frequentismo il parametro non è casuale: ha un valore vero, anche se sconosciuto.</p>
-<p>Lo <strong>stimatore</strong> è invece una funzione dei dati. Prima di osservare il campione, il suo valore è incerto perché dipende da quali osservazioni verranno effettivamente selezionate. Per questo motivo, lo stimatore ha una distribuzione campionaria.</p>
-<p>La <strong>stima</strong> è il valore che otteniamo dopo aver osservato i dati. È il numero che compare nel report, nell’articolo o nella tabella dei risultati.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="Errore comune">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avviso</span>Errore comune
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Non bisogna confondere lo stimatore con la stima. Le proprietà teoriche, come correttezza o efficienza, riguardano lo <strong>stimatore</strong> come procedura. La singola <strong>stima</strong> osservata può essere vicina o lontana dal parametro, ma da sola non permette di sapere quanto sia accurata.</p>
-</div>
-</div>
-</section><section id="sec-freq-point-estimate" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="sec-freq-point-estimate">
-<span class="header-section-number">2.3</span> La stima puntuale</h2>
-<p>La forma più semplice di inferenza è la <strong>stima puntuale</strong>: si usa un singolo numero per rappresentare il valore più plausibile o più naturale del parametro.</p>
-<p>Esempi comuni sono:</p>
-<ul>
-<li>la media campionaria <span class="math inline">\(\bar x\)</span> come stima della media della popolazione <span class="math inline">\(\mu\)</span>;</li>
-<li>la proporzione campionaria <span class="math inline">\(\hat p\)</span> come stima della proporzione della popolazione <span class="math inline">\(p\)</span>;</li>
-<li>la differenza tra due medie campionarie come stima della differenza tra due medie di popolazione;</li>
-<li>il coefficiente di correlazione campionario <span class="math inline">\(r\)</span> come stima della correlazione nella popolazione <span class="math inline">\(\rho\)</span>.</li>
-</ul>
-<p>La stima puntuale è indispensabile perché fornisce una sintesi dei dati. Tuttavia, non basta. Una stima puntuale non comunica quanta incertezza sia associata al risultato.</p>
-<p>Supponiamo che due studi stimino la stessa media:</p>
+<section id="esempio-stimare-un-punteggio-medio-di-autostima" class="level3" data-number="5.2.1"><h3 data-number="5.2.1" class="anchored" data-anchor-id="esempio-stimare-un-punteggio-medio-di-autostima">
+<span class="header-section-number">5.2.1</span> Esempio: stimare un punteggio medio di autostima</h3>
+<p>Immaginiamo di voler stimare il punteggio medio di autostima di una popolazione di studenti. La scala varia da 0 a 30. Da studi precedenti sappiamo che la deviazione standard è approssimativamente pari a <span class="math inline">\(\sigma = 6\)</span>. Vogliamo un intervallo di confidenza al 95% con un margine di errore massimo di 2 punti.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stima_A</span> <span class="op">&lt;-</span> <span class="fl">18.4</span></span>
-<span><span class="va">se_A</span> <span class="op">&lt;-</span> <span class="fl">0.30</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Parametri della pianificazione</span></span>
+<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fl">6</span>              <span class="co"># Deviazione standard attesa</span></span>
+<span><span class="va">E</span> <span class="op">&lt;-</span> <span class="fl">2</span>                  <span class="co"># Margine di errore desiderato</span></span>
+<span><span class="va">z_alpha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.975</span><span class="op">)</span> <span class="co"># Quantile per IC al 95%</span></span>
 <span></span>
-<span><span class="va">stima_B</span> <span class="op">&lt;-</span> <span class="fl">18.4</span></span>
-<span><span class="va">se_B</span> <span class="op">&lt;-</span> <span class="fl">1.80</span></span>
+<span><span class="co"># Numerosità richiesta</span></span>
+<span><span class="va">n_stima</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">z_alpha</span> <span class="op">*</span> <span class="va">sigma</span> <span class="op">/</span> <span class="va">E</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">n_stima</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 35</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Il risultato va sempre arrotondato all’intero superiore, perché non è possibile reclutare una frazione di partecipante.</p>
+</section><section id="sensibilità-al-margine-di-errore" class="level3" data-number="5.2.2"><h3 data-number="5.2.2" class="anchored" data-anchor-id="sensibilità-al-margine-di-errore">
+<span class="header-section-number">5.2.2</span> Sensibilità al margine di errore</h3>
+<p>La scelta del margine di errore è una decisione sostantiva. Un errore massimo di 1 punto può essere necessario in alcuni contesti, ma eccessivo in altri. La tabella seguente mostra come varia la numerosità al variare di <span class="math inline">\(E\)</span>, mantenendo <span class="math inline">\(\sigma = 6\)</span> e una confidenza al 95%.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">margini</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1.5</span>, <span class="fl">2</span>, <span class="fl">2.5</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">risultati</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
-<span>  Studio <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>,</span>
-<span>  Stima <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">stima_A</span>, <span class="va">stima_B</span><span class="op">)</span>,</span>
-<span>  Errore_standard <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">se_A</span>, <span class="va">se_B</span><span class="op">)</span></span>
+<span><span class="va">risultati_precisione</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  `Margine di errore desiderato` <span class="op">=</span> <span class="va">margini</span>,</span>
+<span>  `n minimo` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="op">(</span><span class="va">z_alpha</span> <span class="op">*</span> <span class="va">sigma</span> <span class="op">/</span> <span class="va">margini</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">risultati</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span></span>
+<span>  <span class="va">risultati_precisione</span>,</span>
+<span>  caption <span class="op">=</span> <span class="st">"Numerosità campionaria richiesta al variare del margine di errore."</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div data-pagedtable="false">
-  <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["Studio"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Stima"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Errore_standard"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"A","2":"18.4","3":"0.3"},{"1":"B","2":"18.4","3":"1.8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-</div>
-</div>
-<p>Le due stime puntuali sono identiche, ma non hanno lo stesso significato inferenziale. Nel primo caso la procedura produce stime più stabili; nel secondo, la stessa stima è associata a maggiore variabilità campionaria. Questo esempio anticipa il ruolo degli intervalli di confidenza: una stima va sempre accompagnata da una misura della sua incertezza.</p>
-</section><section id="sec-freq-good-estimators" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="sec-freq-good-estimators">
-<span class="header-section-number">2.4</span> Che cosa rende buono uno stimatore?</h2>
-<p>Nel frequentismo, uno stimatore viene valutato in base al suo comportamento nel lungo periodo, cioè sotto ripetizione ideale dello stesso procedimento di campionamento. Le proprietà più importanti sono correttezza, consistenza, efficienza e, più in generale, errore quadratico medio.</p>
-<section id="correttezza" class="level3" data-number="2.4.1"><h3 data-number="2.4.1" class="anchored" data-anchor-id="correttezza">
-<span class="header-section-number">2.4.1</span> Correttezza</h3>
-<p>Uno stimatore è <strong>corretto</strong> o <strong>non distorto</strong> se, nel lungo periodo, il suo valore medio coincide con il parametro che intende stimare:</p>
-<p><span class="math display">\[
-E(\hat\theta) = \theta.
-\]</span></p>
-<p>Intuitivamente, uno stimatore corretto non tende sistematicamente né a sovrastimare né a sottostimare il parametro. Questo non significa che ogni singola stima sia vicina al valore vero. Significa che gli errori positivi e negativi si compensano nel lungo periodo.</p>
-</section><section id="bias" class="level3" data-number="2.4.2"><h3 data-number="2.4.2" class="anchored" data-anchor-id="bias">
-<span class="header-section-number">2.4.2</span> Bias</h3>
-<p>Il <strong>bias</strong> di uno stimatore misura la distanza tra il valore atteso dello stimatore e il parametro:</p>
-<p><span class="math display">\[
-\mathrm{Bias}(\hat\theta) = E(\hat\theta) - \theta.
-\]</span></p>
-<p>Uno stimatore con bias positivo tende a sovrastimare il parametro; uno stimatore con bias negativo tende a sottostimarlo. Il bias può derivare dalla formula dello stimatore, ma anche da problemi più sostanziali: campionamento non rappresentativo, strumenti di misura distorti, dati mancanti non casuali.</p>
-<div class="callout callout-style-default callout-important callout-titled" title="Bias statistico e bias metodologico">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>Bias statistico e bias metodologico
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Nel linguaggio tecnico, il bias può indicare una proprietà matematica dello stimatore. Nella pratica della ricerca psicologica, però, molte distorsioni nascono prima dell’analisi: dalla selezione dei partecipanti, dalla qualità della misura, dal disegno dello studio o dal modo in cui i dati sono raccolti. Un campione grande riduce l’incertezza campionaria, ma non elimina automaticamente le distorsioni sistematiche.</p>
-</div>
-</div>
-</section><section id="consistenza" class="level3" data-number="2.4.3"><h3 data-number="2.4.3" class="anchored" data-anchor-id="consistenza">
-<span class="header-section-number">2.4.3</span> Consistenza</h3>
-<p>Uno stimatore è <strong>consistente</strong> se, al crescere della dimensione del campione, tende ad avvicinarsi al valore vero del parametro. In forma intuitiva:</p>
-<p><span class="math display">\[
-\hat\theta_n \longrightarrow \theta \quad \text{quando} \quad n \longrightarrow \infty.
-\]</span></p>
-<p>La consistenza collega la stima al comportamento asintotico della procedura. Uno stimatore consistente può essere impreciso in campioni piccoli, ma diventa affidabile quando il campione cresce.</p>
-</section><section id="efficienza" class="level3" data-number="2.4.4"><h3 data-number="2.4.4" class="anchored" data-anchor-id="efficienza">
-<span class="header-section-number">2.4.4</span> Efficienza</h3>
-<p>Tra due stimatori corretti dello stesso parametro, si dice più <strong>efficiente</strong> quello con varianza minore. In termini pratici, uno stimatore efficiente produce stime meno disperse da campione a campione.</p>
-<p>Questo concetto è importante perché due stimatori possono essere entrambi centrati sul parametro, ma avere livelli molto diversi di precisione.</p>
-</section><section id="il-compromesso-bias-varianza" class="level3" data-number="2.4.5"><h3 data-number="2.4.5" class="anchored" data-anchor-id="il-compromesso-bias-varianza">
-<span class="header-section-number">2.4.5</span> Il compromesso bias-varianza</h3>
-<p>In molti problemi reali non esiste uno stimatore perfetto. A volte uno stimatore leggermente distorto può avere una varianza molto più piccola di uno stimatore non distorto. Per valutare complessivamente uno stimatore si considera spesso l’<strong>errore quadratico medio</strong>:</p>
-<p><span class="math display">\[
-\mathrm{MSE}(\hat\theta) = \mathrm{Var}(\hat\theta) + \mathrm{Bias}(\hat\theta)^2.
-\]</span></p>
-<p>Questa formula mostra che l’accuratezza di una procedura dipende sia dalla variabilità delle stime sia dalla loro eventuale distorsione sistematica.</p>
-</section></section><section id="sec-freq-role-sampling-distribution" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="sec-freq-role-sampling-distribution">
-<span class="header-section-number">2.5</span> Il ruolo della distribuzione campionaria</h2>
-<p>La distribuzione campionaria è il concetto che permette al frequentismo di valutare una procedura di stima. Essa descrive come cambierebbe lo stimatore se lo studio fosse ripetuto molte volte nelle stesse condizioni.</p>
-<p>Nel companion sulla probabilità abbiamo visto che la media campionaria ha alcune proprietà fondamentali: è centrata sulla media della popolazione, la sua variabilità diminuisce al crescere di <span class="math inline">\(n\)</span> e, sotto condizioni ampie, la sua distribuzione diventa approssimativamente normale per campioni grandi. Qui useremo questi risultati senza ridimostrarli.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Funzione della distribuzione campionaria in questo modulo">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Funzione della distribuzione campionaria in questo modulo
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>La distribuzione campionaria non viene introdotta qui come nuovo oggetto probabilistico, ma come fondamento delle procedure frequentiste:</p>
-<ul>
-<li>consente di definire l’errore standard;</li>
-<li>permette di costruire intervalli di confidenza;</li>
-<li>permette di valutare test di ipotesi;</li>
-<li>giustifica affermazioni sul comportamento a lungo termine delle procedure.</li>
-</ul>
-</div>
-</div>
-<p>La logica è questa: anche se osserviamo un solo campione, possiamo progettare procedure che, se applicate molte volte a campioni simili, abbiano proprietà controllate. Gli intervalli di confidenza e i test di ipotesi sono costruiti precisamente in questo modo.</p>
-</section><section id="sec-freq-standard-error-operational" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="sec-freq-standard-error-operational">
-<span class="header-section-number">2.6</span> L’errore standard come misura operativa</h2>
-<p>L’<strong>errore standard</strong> è la deviazione standard della distribuzione campionaria di uno stimatore. Esso misura quanto lo stimatore varierebbe da campione a campione.</p>
-<p>Per la media campionaria, quando la deviazione standard della popolazione è <span class="math inline">\(\sigma\)</span>, l’errore standard teorico è:</p>
-<p><span class="math display">\[
-SE(\bar X) = \frac{\sigma}{\sqrt n}.
-\]</span></p>
-<p>Nella pratica, <span class="math inline">\(\sigma\)</span> non è nota, quindi viene sostituita dalla deviazione standard campionaria <span class="math inline">\(s\)</span>:</p>
-<p><span class="math display">\[
-\widehat{SE}(\bar X) = \frac{s}{\sqrt n}.
-\]</span></p>
-<p>Il messaggio operativo è semplice: l’errore standard misura l’incertezza della <strong>stima</strong>, non la variabilità dei singoli dati. Una deviazione standard descrive quanto differiscono gli individui; un errore standard descrive quanto differirebbero le stime se ripetessimo il campionamento.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="Deviazione standard ed errore standard">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avviso</span>Deviazione standard ed errore standard
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>La <strong>deviazione standard</strong> descrive la dispersione delle osservazioni. L’<strong>errore standard</strong> descrive la dispersione di uno stimatore sotto campionamento ripetuto. Confondere queste due quantità porta a interpretazioni errate dei risultati empirici.</p>
-</div>
-</div>
-</section><section id="sec-freq-from-estimate-to-procedure" class="level2" data-number="2.7"><h2 data-number="2.7" class="anchored" data-anchor-id="sec-freq-from-estimate-to-procedure">
-<span class="header-section-number">2.7</span> Dal numero osservato alla procedura</h2>
-<p>Una stima puntuale risponde alla domanda:</p>
-<blockquote class="blockquote">
-<p>Qual è il valore osservato nel mio campione?</p>
-</blockquote>
-<p>L’inferenza frequentista aggiunge una seconda domanda:</p>
-<blockquote class="blockquote">
-<p>Quali garanzie avrebbe la procedura che ha prodotto questa stima se fosse applicata ripetutamente?</p>
-</blockquote>
-<p>Questa seconda domanda è il tratto distintivo del paradigma frequentista. Il singolo risultato osservato viene interpretato alla luce di una procedura più ampia: la procedura di campionamento, lo stimatore scelto, la sua distribuzione campionaria e le regole usate per costruire intervalli o test.</p>
-<p>Per questo motivo, la stima puntuale non è il punto di arrivo, ma il punto di partenza. Nei capitoli successivi vedremo due modi frequentisti di trasformare una stima in un risultato inferenziale:</p>
-<ol type="1">
-<li>gli <strong>intervalli di confidenza</strong>, che associano alla procedura una proprietà di copertura nel lungo periodo;</li>
-<li>i <strong>test di ipotesi</strong>, che valutano la compatibilità dei dati con un’ipotesi di riferimento attraverso il comportamento atteso della statistica test.</li>
-</ol></section><section id="sec-freq-estimation-bayes-contrast" class="level2" data-number="2.8"><h2 data-number="2.8" class="anchored" data-anchor-id="sec-freq-estimation-bayes-contrast">
-<span class="header-section-number">2.8</span> Confronto con la prospettiva bayesiana</h2>
-<p>Il confronto con il bayesianesimo aiuta a chiarire che le differenze non sono soltanto tecniche, ma riguardano il significato attribuito alla probabilità.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
+<table class="caption-top table table-sm table-striped small">
+<caption>Numerosità campionaria richiesta al variare del margine di errore.</caption>
 <thead><tr class="header">
-<th>Aspetto</th>
-<th>Frequentismo</th>
-<th>Bayesianesimo</th>
+<th style="text-align: right;">Margine.di.errore.desiderato</th>
+<th style="text-align: right;">n.minimo</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>Parametro</td>
-<td>Fisso ma ignoto</td>
-<td>Incerto e descritto da una distribuzione</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">139</td>
 </tr>
 <tr class="even">
-<td>Fonte della probabilità</td>
-<td>Ripetizione ipotetica del campionamento</td>
-<td>Grado di credenza razionale dato il modello</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">62</td>
 </tr>
 <tr class="odd">
-<td>Oggetto dell’incertezza</td>
-<td>Stimatore, dati possibili, procedura</td>
-<td>Parametro dato il campione osservato</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">35</td>
 </tr>
 <tr class="even">
-<td>Risultato tipico</td>
-<td>Stima, errore standard, intervallo di confidenza</td>
-<td>Distribuzione posterior, intervallo di credibilità</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">23</td>
 </tr>
 <tr class="odd">
-<td>Domanda centrale</td>
-<td>Come si comporta la procedura nel lungo periodo?</td>
-<td>Che cosa crediamo sul parametro dopo aver visto i dati?</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">16</td>
 </tr>
 </tbody>
 </table>
-<p>Questa differenza diventerà particolarmente importante nel capitolo sugli intervalli di confidenza. Un intervallo di confidenza al 95% non significa che ci sia il 95% di probabilità che il parametro cada nell’intervallo osservato. Significa che la procedura, applicata molte volte in condizioni analoghe, produce intervalli che contengono il parametro nel 95% dei casi.</p>
-</section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
-<p>In questo capitolo abbiamo ridefinito il problema della stima dal punto di vista frequentista. Il parametro è trattato come una quantità fissa ma ignota; lo stimatore è una procedura che varia da campione a campione; la stima è il valore ottenuto nel campione osservato.</p>
-<p>Le proprietà di uno stimatore, come correttezza, consistenza ed efficienza, riguardano il suo comportamento sotto ripetizione ipotetica del campionamento. L’errore standard sintetizza la variabilità dello stimatore e permette di passare dalla stima puntuale alla quantificazione dell’incertezza.</p>
-<p>Il punto essenziale è che l’inferenza frequentista fornisce garanzie sulle <strong>procedure</strong>, non probabilità dirette sui parametri. Questa impostazione è potente e ha avuto un ruolo centrale nella ricerca psicologica, ma richiede cautela interpretativa. Il prossimo capitolo mostrerà come questa logica conduce agli intervalli di confidenza.</p>
-</section><section id="punti-chiave-da-ricordare" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="punti-chiave-da-ricordare">Punti chiave da ricordare</h2>
+</div>
+</div>
+<p>La relazione quadratica è il punto da ricordare: <strong>dimezzare il margine di errore richiede circa quattro volte più partecipanti</strong>.</p>
+</section></section><section id="numerosità-campionaria-per-un-test-di-ipotesi" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="numerosità-campionaria-per-un-test-di-ipotesi">
+<span class="header-section-number">5.3</span> Numerosità campionaria per un test di ipotesi</h2>
+<p>Nel capitolo precedente abbiamo introdotto la logica dei test di ipotesi. Un test frequentista parte da un’ipotesi nulla <span class="math inline">\(H_0\)</span>, calcola quanto i dati siano sorprendenti se <span class="math inline">\(H_0\)</span> fosse vera e produce una decisione rispetto a una soglia <span class="math inline">\(\alpha\)</span>.</p>
+<p>Quando pianifichiamo uno studio, però, non basta controllare l’errore di I tipo. Dobbiamo anche chiederci se lo studio avrà una probabilità ragionevole di rilevare un effetto quando questo è effettivamente presente.</p>
+<section id="errori-e-potenza" class="level3" data-number="5.3.1"><h3 data-number="5.3.1" class="anchored" data-anchor-id="errori-e-potenza">
+<span class="header-section-number">5.3.1</span> Errori e potenza</h3>
+<p>Nella logica frequentista dei test, esistono due tipi di errore:</p>
+<ul>
+<li>
+<strong>Errore di I tipo</strong>: rifiutare <span class="math inline">\(H_0\)</span> quando <span class="math inline">\(H_0\)</span> è vera. La probabilità massima accettata di questo errore è indicata con <span class="math inline">\(\alpha\)</span>.</li>
+<li>
+<strong>Errore di II tipo</strong>: non rifiutare <span class="math inline">\(H_0\)</span> quando esiste un effetto reale. La probabilità di questo errore è indicata con <span class="math inline">\(\beta\)</span>.</li>
+</ul>
+<p>La <strong>potenza statistica</strong> è:</p>
+<p><span class="math display">\[
+1 - \beta.
+\]</span></p>
+<p>Essa rappresenta la probabilità di ottenere un risultato statisticamente significativo quando l’effetto specificato nella pianificazione è reale.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Importante
+<span class="screen-reader-only">Importante</span>Che cosa significa potenza 80%?
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>Una potenza dell’80% non significa che l’ipotesi alternativa abbia una probabilità 0.80 di essere vera. Significa che, se l’effetto specificato esistesse davvero e se ripetessimo molte volte lo stesso studio, il test rifiuterebbe <span class="math inline">\(H_0\)</span> in circa l’80% degli studi.</p>
+<p>Anche in questo caso l’interpretazione è frequentista e riguarda il comportamento della procedura nel lungo periodo.</p>
+</div>
+</div>
+</section><section id="da-cosa-dipende-la-potenza" class="level3" data-number="5.3.2"><h3 data-number="5.3.2" class="anchored" data-anchor-id="da-cosa-dipende-la-potenza">
+<span class="header-section-number">5.3.2</span> Da cosa dipende la potenza</h3>
+<p>La potenza dipende da diversi elementi:</p>
 <ol type="1">
-<li>Un <strong>parametro</strong> è una quantità fissa ma ignota della popolazione.</li>
-<li>Uno <strong>stimatore</strong> è una funzione dei dati e varia da campione a campione.</li>
-<li>Una <strong>stima</strong> è il valore numerico ottenuto nel campione osservato.</li>
-<li>Uno stimatore corretto non tende sistematicamente a sovrastimare o sottostimare il parametro.</li>
-<li>L’errore standard misura la variabilità dello stimatore, non la dispersione dei dati grezzi.</li>
-<li>Nel frequentismo, le garanzie principali riguardano il comportamento a lungo termine delle procedure.</li>
-<li>La stima puntuale deve essere accompagnata da una misura dell’incertezza.</li>
+<li>
+<strong>Dimensione dell’effetto</strong>: gli effetti più grandi sono più facili da rilevare;</li>
+<li>
+<strong>Variabilità dei dati</strong>: maggiore è la variabilità, più difficile è distinguere il segnale dal rumore.</li>
+<li>
+<strong>Numerosità campionaria</strong>: campioni più grandi aumentano la potenza.</li>
+<li>
+<strong>Livello di significatività <span class="math inline">\(\alpha\)</span></strong>: soglie più stringenti riducono la probabilità di rifiutare <span class="math inline">\(H_0\)</span>.</li>
+<li>
+<strong>Tipo di test</strong>: i test a una coda, i test a due code, i gruppi indipendenti e le misure appaiate hanno requisiti diversi.</li>
 </ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled" title="Esercizi">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<p>In pratica, la pianificazione richiede di specificare quale effetto sarebbe abbastanza rilevante da meritare attenzione. Questo valore è spesso chiamato <strong>effetto minimo di interesse</strong> (<em>smallest effect size of interest</em>, SESOI).</p>
+</section></section><section id="effetto-minimo-di-interesse" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="effetto-minimo-di-interesse">
+<span class="header-section-number">5.4</span> Effetto minimo di interesse</h2>
+<p>Un errore comune è quello di pianificare lo studio sulla base di un effetto atteso ottimistico, magari tratto da studi precedenti con campioni piccoli. Ciò può produrre stime di numerosità troppo basse.</p>
+<p>Una strategia più trasparente è chiedersi:</p>
+<blockquote class="blockquote">
+<p>Qual è il più piccolo effetto che sarebbe teoricamente, clinicamente o praticamente rilevante?</p>
+</blockquote>
+<p>Nel caso di una scala psicologica, una differenza di 0.2 punti potrebbe essere rilevabile statisticamente con campioni molto grandi, ma priva di significato pratico. Una differenza di 3 punti, invece, potrebbe essere abbastanza grande da modificare una decisione di tipo clinico o educativo.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>Esercizi
+<span class="screen-reader-only">Nota</span>La numerosità dipende dalla domanda sostantiva
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>La potenza non è solo un problema tecnico. Dipende da una decisione di natura teorica: che tipo di effetto vogliamo essere in grado di rilevare?</p>
+<p>Per questo motivo, il calcolo di <span class="math inline">\(n\)</span> dovrebbe essere accompagnato da una giustificazione della dimensione dell’effetto scelta.</p>
+</div>
+</div>
+</section><section id="esempio-test-t-per-un-campione" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="esempio-test-t-per-un-campione">
+<span class="header-section-number">5.5</span> Esempio: test t per un campione</h2>
+<p>Supponiamo di voler confrontare il punteggio medio di autostima di un gruppo di studenti con un valore di riferimento pari a 24. Consideriamo rilevante una differenza di almeno 3 punti. Supponiamo che <span class="math inline">\(\sigma = 6\)</span>, <span class="math inline">\(\alpha = 0.05\)</span> e che desideriamo una potenza pari a 0.80.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
+<span>  delta <span class="op">=</span> <span class="fl">3</span>,            <span class="co"># Differenza minima da rilevare</span></span>
+<span>  sd <span class="op">=</span> <span class="fl">6</span>,               <span class="co"># Deviazione standard attesa</span></span>
+<span>  sig.level <span class="op">=</span> <span class="fl">0.05</span>,     <span class="co"># Errore di I tipo</span></span>
+<span>  power <span class="op">=</span> <span class="fl">0.80</span>,         <span class="co"># Potenza desiderata</span></span>
+<span>  type <span class="op">=</span> <span class="st">"one.sample"</span>,</span>
+<span>  alternative <span class="op">=</span> <span class="st">"two.sided"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;      One-sample t test power calculation </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;               n = 33.4</span></span>
+<span><span class="co">#&gt;           delta = 3</span></span>
+<span><span class="co">#&gt;              sd = 6</span></span>
+<span><span class="co">#&gt;       sig.level = 0.05</span></span>
+<span><span class="co">#&gt;           power = 0.8</span></span>
+<span><span class="co">#&gt;     alternative = two.sided</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Il risultato fornisce il numero di elementi richiesto per il test su un campione. L’interpretazione corretta è la seguente: se la differenza reale fosse pari a 3 punti, il test avrebbe circa l’80% di probabilità di risultare significativo al livello <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+</section><section id="esempio-confronto-tra-due-gruppi-indipendenti" class="level2" data-number="5.6"><h2 data-number="5.6" class="anchored" data-anchor-id="esempio-confronto-tra-due-gruppi-indipendenti">
+<span class="header-section-number">5.6</span> Esempio: confronto tra due gruppi indipendenti</h2>
+<p>Consideriamo ora uno studio che confronta due gruppi indipendenti, ad esempio un gruppo che riceve un intervento e un gruppo di controllo. Supponiamo di considerare rilevante una differenza di almeno 5 punti e di aspettarci una deviazione standard comune pari a 6.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
+<span>  delta <span class="op">=</span> <span class="fl">5</span>,            <span class="co"># Differenza tra le medie dei due gruppi</span></span>
+<span>  sd <span class="op">=</span> <span class="fl">6</span>,               <span class="co"># Deviazione standard comune attesa</span></span>
+<span>  sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>  power <span class="op">=</span> <span class="fl">0.80</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"two.sample"</span>,</span>
+<span>  alternative <span class="op">=</span> <span class="st">"two.sided"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;      Two-sample t test power calculation </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;               n = 23.6</span></span>
+<span><span class="co">#&gt;           delta = 5</span></span>
+<span><span class="co">#&gt;              sd = 6</span></span>
+<span><span class="co">#&gt;       sig.level = 0.05</span></span>
+<span><span class="co">#&gt;           power = 0.8</span></span>
+<span><span class="co">#&gt;     alternative = two.sided</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; NOTE: n is number in *each* group</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Nel caso <code>type = "two.sample"</code>, il valore di <code>n</code> restituito da <code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code> indica la numerosità <strong>per ciascun gruppo</strong>, non il totale complessivo.</p>
+<section id="sensibilità-alla-dimensione-delleffetto" class="level3" data-number="5.6.1"><h3 data-number="5.6.1" class="anchored" data-anchor-id="sensibilità-alla-dimensione-delleffetto">
+<span class="header-section-number">5.6.1</span> Sensibilità alla dimensione dell’effetto</h3>
+<p>La numerosità richiesta cambia molto in base all’effetto minimo che si vuole rilevare. Riprendiamo l’esempio precedente, mantenendo <span class="math inline">\(\sigma = 6\)</span>, <span class="math inline">\(\alpha = 0.05\)</span> e potenza 0.80.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">delta_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">n_per_group</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">delta_values</span>, <span class="kw">function</span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
+<span>    delta <span class="op">=</span> <span class="va">d</span>,</span>
+<span>    sd <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>    sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>    power <span class="op">=</span> <span class="fl">0.80</span>,</span>
+<span>    type <span class="op">=</span> <span class="st">"two.sample"</span>,</span>
+<span>    alternative <span class="op">=</span> <span class="st">"two.sided"</span></span>
+<span>  <span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">risultati_potenza</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  `Differenza minima da rilevare` <span class="op">=</span> <span class="va">delta_values</span>,</span>
+<span>  `n per gruppo` <span class="op">=</span> <span class="va">n_per_group</span>,</span>
+<span>  `n totale` <span class="op">=</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">n_per_group</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span></span>
+<span>  <span class="va">risultati_potenza</span>,</span>
+<span>  caption <span class="op">=</span> <span class="st">"Numerosità richiesta per un test t a due campioni al variare della differenza minima rilevante."</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Numerosità richiesta per un test t a due campioni al variare della differenza minima rilevante.</caption>
+<thead><tr class="header">
+<th style="text-align: right;">Differenza.minima.da.rilevare</th>
+<th style="text-align: right;">n.per.gruppo</th>
+<th style="text-align: right;">n.totale</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">143</td>
+<td style="text-align: right;">286</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">128</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">74</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">48</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">34</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Questa tabella mostra perché è fondamentale dichiarare in anticipo l’effetto che si intende rilevare. Gli effetti piccoli richiedono campioni molto più grandi.</p>
+</section></section><section id="potenza-numerosità-e-interpretazione-dei-risultati" class="level2" data-number="5.7"><h2 data-number="5.7" class="anchored" data-anchor-id="potenza-numerosità-e-interpretazione-dei-risultati">
+<span class="header-section-number">5.7</span> Potenza, numerosità e interpretazione dei risultati</h2>
+<p>Uno studio con bassa potenza presenta problemi per almeno due ragioni.</p>
+<p>In primo luogo, ha una probabilità elevata di non rilevare effetti che sarebbero invece rilevanti. In questo caso, un risultato non significativo è difficile da interpretare: potrebbe indicare l’assenza di un effetto oppure semplicemente la mancanza di informazioni.</p>
+<p>In secondo luogo, nei contesti in cui vengono pubblicati o enfatizzati solo i risultati significativi, gli studi con bassa potenza tendono a produrre stime instabili e spesso sovrastimate. Questo problema è particolarmente rilevante nella ricerca psicologica, dove i campioni sono piccoli e i gradi di libertà analitici sono molteplici, il che può rendere fragile l’evidenza empirica.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Non significativo non significa assenza di effetto
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un test non significativo non dimostra che l’effetto sia nullo. Indica soltanto che, dati il modello, la soglia <span class="math inline">\(\alpha\)</span>, la numerosità e la variabilità osservate, non abbiamo ottenuto un risultato abbastanza estremo da poter rifiutare l’ipotesi <span class="math inline">\(H_0\)</span>.</p>
+<p>Per valutare se i dati siano compatibili con effetti piccoli, medi o nulli, sono necessarie anche stime, intervalli di confidenza e, in un quadro bayesiano, distribuzioni posteriori o fattori di Bayes.</p>
+</div>
+</div>
+</section><section id="analisi-di-potenza-post-hoc" class="level2" data-number="5.8"><h2 data-number="5.8" class="anchored" data-anchor-id="analisi-di-potenza-post-hoc">
+<span class="header-section-number">5.8</span> Analisi di potenza post-hoc</h2>
+<p>Dopo aver completato uno studio, può essere naturale chiedersi: “Qual era la potenza osservata?”. Tuttavia, questa pratica è di utilità limitata quando la potenza viene calcolata utilizzando l’effetto osservato nello stesso studio.</p>
+<p>Il problema è che la potenza post hoc così definita è quasi interamente determinata dal valore-<em>p</em>: se il risultato è significativo, la potenza osservata tenderà a risultare alta; se il risultato non è significativo, tenderà a risultare bassa. In questo senso, non fornisce informazioni aggiuntive rispetto al risultato già ottenuto.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Esempio illustrativo: studio con n = 30 per gruppo,</span></span>
+<span><span class="co"># differenza osservata = 4 e sd = 6.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
+<span>  n <span class="op">=</span> <span class="fl">30</span>,</span>
+<span>  delta <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  sd <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>  sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"two.sample"</span>,</span>
+<span>  alternative <span class="op">=</span> <span class="st">"two.sided"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;      Two-sample t test power calculation </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;               n = 30</span></span>
+<span><span class="co">#&gt;           delta = 4</span></span>
+<span><span class="co">#&gt;              sd = 6</span></span>
+<span><span class="co">#&gt;       sig.level = 0.05</span></span>
+<span><span class="co">#&gt;           power = 0.719</span></span>
+<span><span class="co">#&gt;     alternative = two.sided</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; NOTE: n is number in *each* group</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Quando usare l’analisi di potenza
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>L’analisi di potenza è utile soprattutto <strong>prima</strong> di raccogliere i dati, quando serve a pianificare lo studio.</p>
+<p>Dopo l’osservazione dei dati, è generalmente più informativo riportare la stima dell’effetto, il suo intervallo di confidenza e una discussione sulla rilevanza sostanziale dell’effetto osservato.</p>
+</div>
+</div>
+</section><section id="limiti-della-pianificazione-frequentista" class="level2" data-number="5.9"><h2 data-number="5.9" class="anchored" data-anchor-id="limiti-della-pianificazione-frequentista">
+<span class="header-section-number">5.9</span> Limiti della pianificazione frequentista</h2>
+<p>La pianificazione frequentista è utile perché costringe il ricercatore a rendere espliciti alcuni elementi del disegno:</p>
+<ul>
+<li>quale errore di I tipo è disposto ad accettare;</li>
+<li>quale potenza desidera ottenere;</li>
+<li>quale effetto considera sufficientemente importante;</li>
+<li>quale variabilità si aspetta nei dati.</li>
+</ul>
+<p>Tuttavia, questa impostazione presenta anche limiti importanti.</p>
 <ol type="1">
-<li>In uno studio su 120 studenti, la media osservata a una scala di stress è 24.6. Qual è il parametro? Qual è lo stimatore? Qual è la stima?</li>
-<li>Spiega con parole tue perché uno stimatore corretto può produrre una singola stima lontana dal parametro.</li>
-<li>Perché l’errore standard non deve essere interpretato come misura della variabilità individuale?</li>
-<li>Quale differenza c’è tra dire “il parametro è incerto” e dire “lo stimatore è variabile”?</li>
-</ol>
-</div>
-</div>
-</div>
+<li><p><strong>Richiede valori ipotetici prima dello studio</strong>. La deviazione standard e l’effetto minimo devono essere specificati in anticipo, spesso sulla base di evidenze incerte.</p></li>
+<li><p><strong>Dipende da una soglia decisionale</strong>. La pianificazione è spesso costruita attorno alla probabilità di ottenere <span class="math inline">\(p &lt; \alpha\)</span>, non direttamente attorno alla precisione della conoscenza acquisita.</p></li>
+<li><p><strong>Può incoraggiare una lettura dicotomica</strong>. Uno studio viene talvolta interpretato come “riuscito” o “fallito” in base alla significatività, anche se l’informazione contenuta nei dati è più sfumata.</p></li>
+<li><p><strong>Richiede attenzione allo stopping rule</strong>. Se si decide di aggiungere partecipanti dopo aver guardato i risultati, il controllo frequentista dell’errore di I tipo può non essere più valido, a meno che il disegno sequenziale sia stato pianificato esplicitamente.</p></li>
+</ol></section><section id="collegamento-con-la-prospettiva-bayesiana" class="level2" data-number="5.10"><h2 data-number="5.10" class="anchored" data-anchor-id="collegamento-con-la-prospettiva-bayesiana">
+<span class="header-section-number">5.10</span> Collegamento con la prospettiva bayesiana</h2>
+<p>In un approccio bayesiano, la pianificazione può essere formulata in modo diverso. Invece di domandarci soltanto quale numerosità sia necessaria per ottenere <span class="math inline">\(p &lt; \alpha\)</span> con una certa probabilità, possiamo chiederci:</p>
+<ul>
+<li>quanta incertezza posteriore siamo disposti ad accettare?</li>
+<li>quale probabilità vogliamo avere di raggiungere una conclusione sufficientemente precisa?</li>
+<li>come possiamo incorporare le conoscenze precedenti nella pianificazione?</li>
+<li>in quali condizioni è ragionevole aggiornare sequenzialmente le credenze man mano che arrivano nuovi dati?</li>
+</ul>
+<p>Tutto ciò non rende inutile l’analisi frequentista della potenza. La rende piuttosto uno strumento da comprendere nel suo ambito: serve a progettare procedure che abbiano determinate proprietà di errore nel lungo periodo. La prospettiva bayesiana, invece, sposta l’attenzione sull’incertezza relativa ai parametri e sulle decisioni da prendere alla luce della distribuzione a posteriori.</p>
+</section><section id="riepilogo" class="level2" data-number="5.11"><h2 data-number="5.11" class="anchored" data-anchor-id="riepilogo">
+<span class="header-section-number">5.11</span> Riepilogo</h2>
+<p>In questo capitolo abbiamo visto che:</p>
+<ul>
+<li>la numerosità campionaria può essere pianificata per ottenere una certa precisione o una certa potenza;</li>
+<li>la precisione di una stima dipende dalla variabilità, dal margine di errore desiderato e dal livello di confidenza;</li>
+<li>la potenza è <span class="math inline">\(1 - \beta\)</span>, ovvero la probabilità di rifiutare <span class="math inline">\(H_0\)</span> quando l’effetto specificato è reale;</li>
+<li>la potenza dipende dalla dimensione dell’effetto, dalla variabilità, dalla numerosità, da <span class="math inline">\(\alpha\)</span> e dal tipo di test;</li>
+<li>l’effetto minimo di interesse deve essere giustificato sia dal punto di vista teorico che pratico, e non deve essere scelto solo per ottenere un campione gestibile;</li>
+<li>l’analisi di potenza post-hoc, basata sull’effetto osservato, ha un’utilità limitata;</li>
+<li>la pianificazione frequentista è utile, ma resta centrata sul comportamento delle procedure decisionali nel lungo periodo.</li>
+</ul>
+<p>Nel prossimo capitolo useremo questi concetti in un’applicazione concreta: il confronto tra due gruppi indipendenti.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Informazioni sull'ambiente di sviluppo">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -891,10 +976,10 @@ Importante
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.6.1 (2026-06-24)</span></span>
 <span><span class="co">#&gt; Platform: aarch64-apple-darwin23</span></span>
 <span><span class="co">#&gt; Running under: macOS Tahoe 26.5.2</span></span>
@@ -951,8 +1036,14 @@ Importante
 </div>
 </div>
 </div>
+</section><section id="bibliografia" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="bibliografia">Bibliografia</h2>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-giner2024power" class="csl-entry" role="listitem">
+<span class="nocase">Giner-Sorolla, R., Montoya, A. K., Reifman, A., Carpenter, T., Lewis Jr, N. A., Aberson, C. L., Bostyn, D. H., Conrique, B. G., Ng, B. W., Schoemann, A. M., et al.</span> (2024). Power to detect what? Considerations for planning and evaluating sample size. <em>Personality and Social Psychology Review</em>, <em>28</em>(3), 276–301.
+</div>
+</div>
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -1373,13 +1464,13 @@ Importante
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../../chapters/frequentist_inference/01_galton.html" class="pagination-link" aria-label="Origini storiche dell'approccio frequentista">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Origini storiche dell’approccio frequentista</span></span>
+      <a href="../../chapters/frequentist_inference/04_test_ipotesi.html" class="pagination-link" aria-label="Test di ipotesi e valore-*p*">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Test di ipotesi e valore-<em>p</em></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../chapters/frequentist_inference/03_conf_interv.html" class="pagination-link" aria-label="Intervalli di confidenza">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intervalli di confidenza</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../chapters/frequentist_inference/06_two_ind_samples.html" class="pagination-link" aria-label="Confrontare due gruppi indipendenti">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Confrontare due gruppi indipendenti</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1390,7 +1481,7 @@ Importante
 </div>   
     <div class="nav-footer-center">
 
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/02_stime_parametri.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Preferenze cookie</a></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/05_sample_size.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Preferenze cookie</a></div></div>
     <div class="nav-footer-right">
 <p>Realizzato con <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

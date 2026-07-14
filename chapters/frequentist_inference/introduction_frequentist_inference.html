@@ -8,7 +8,7 @@
 
 <meta name="description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Metodi bayesiani in psicologia.">
 
-<title>Introduzione – Inferenza frequentista in psicologia</title>
+<title>Introduzione all’inferenza frequentista in un percorso bayesiano – Inferenza frequentista in psicologia</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -45,14 +45,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bd31b91f9ddb1a75e3744ba9797c8182.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-662b1d839dd28a08d17be9d78b753e45.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bd31b91f9ddb1a75e3744ba9797c8182.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-aa873432a3c62897e6c2091c0d30a948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-353ec92dc31bcb37568820202c74e1ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-ca56530e1a7dc3e4b2cbddadeb71310c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-353ec92dc31bcb37568820202c74e1ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": true,
@@ -110,7 +110,7 @@ cookieconsent.run({
 <style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -139,11 +139,10 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../style/custom.css">
-<meta property="og:title" content="Introduzione – Inferenza frequentista in psicologia">
+<meta property="og:title" content="Introduzione all’inferenza frequentista in un percorso bayesiano – Inferenza frequentista in psicologia">
 <meta property="og:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Metodi bayesiani in psicologia.">
 <meta property="og:site_name" content="Inferenza frequentista in psicologia">
-<meta name="twitter:title" content="Introduzione – Inferenza frequentista in psicologia">
+<meta name="twitter:title" content="Introduzione all’inferenza frequentista in un percorso bayesiano – Inferenza frequentista in psicologia">
 <meta name="twitter:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Metodi bayesiani in psicologia.">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/introduction_frequentist_inference.html">
@@ -329,7 +328,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Introduzione</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Introduzione all’inferenza frequentista in un percorso bayesiano</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Ricerca" onclick="window.quartoOpenSearch();">
@@ -377,7 +376,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Introduzione</span></a>
+ <span class="menu-text">Introduzione all’inferenza frequentista in un percorso bayesiano</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -395,19 +394,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/03_conf_interv.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intervalli di fiducia</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Intervalli di confidenza</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/frequentist_inference/05_test_ipotesi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Significatività statistica</span></span></a>
+  <a href="../../chapters/frequentist_inference/04_test_ipotesi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Test di ipotesi e valore-<em>p</em></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../chapters/frequentist_inference/05_sample_size.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/06_two_ind_samples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Test t di Student per campioni indipendenti</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Confrontare due gruppi indipendenti</span></span></a>
   </div>
 </li>
       </ul>
@@ -423,8 +428,8 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/epiloque/epiloque.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Considerazioni conclusive</span></span></a>
+  <a href="../../chapters/epilogo/epilogo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerazioni conclusive: dal controllo dell’errore all’aggiornamento delle credenze</span></span></a>
   </div>
 </li>
       </ul>
@@ -439,10 +444,16 @@ window.Quarto = {
     <h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
-  <li><a href="#differenze-fondamentali-tra-i-due-approcci" id="toc-differenze-fondamentali-tra-i-due-approcci" class="nav-link active" data-scroll-target="#differenze-fondamentali-tra-i-due-approcci">Differenze fondamentali tra i due approcci</a></li>
-  <li><a href="#il-problema-dellinduzione" id="toc-il-problema-dellinduzione" class="nav-link" data-scroll-target="#il-problema-dellinduzione">Il problema dell’induzione</a></li>
-  <li><a href="#un-esempio-pratico-il-lancio-di-una-moneta" id="toc-un-esempio-pratico-il-lancio-di-una-moneta" class="nav-link" data-scroll-target="#un-esempio-pratico-il-lancio-di-una-moneta">Un esempio pratico: il lancio di una moneta</a></li>
-  <li><a href="#obiettivo-di-questa-sezione" id="toc-obiettivo-di-questa-sezione" class="nav-link" data-scroll-target="#obiettivo-di-questa-sezione">Obiettivo di questa sezione</a></li>
+  <li><a href="#perché-studiare-il-frequentismo-in-un-companion-bayesiano" id="toc-perché-studiare-il-frequentismo-in-un-companion-bayesiano" class="nav-link active" data-scroll-target="#perché-studiare-il-frequentismo-in-un-companion-bayesiano">Perché studiare il frequentismo in un companion bayesiano?</a></li>
+  <li><a href="#due-modi-di-intendere-la-probabilità" id="toc-due-modi-di-intendere-la-probabilità" class="nav-link" data-scroll-target="#due-modi-di-intendere-la-probabilità">Due modi di intendere la probabilità</a></li>
+  <li><a href="#parametri-fissi-dati-variabili" id="toc-parametri-fissi-dati-variabili" class="nav-link" data-scroll-target="#parametri-fissi-dati-variabili">Parametri fissi, dati variabili</a></li>
+  <li><a href="#un-esempio-il-lancio-di-una-moneta" id="toc-un-esempio-il-lancio-di-una-moneta" class="nav-link" data-scroll-target="#un-esempio-il-lancio-di-una-moneta">Un esempio: il lancio di una moneta</a></li>
+  <li><a href="#interpretazioni-da-evitare" id="toc-interpretazioni-da-evitare" class="nav-link" data-scroll-target="#interpretazioni-da-evitare">Interpretazioni da evitare</a></li>
+  <li><a href="#il-ruolo-del-frequentismo-nella-ricerca-psicologica" id="toc-il-ruolo-del-frequentismo-nella-ricerca-psicologica" class="nav-link" data-scroll-target="#il-ruolo-del-frequentismo-nella-ricerca-psicologica">Il ruolo del frequentismo nella ricerca psicologica</a></li>
+  <li><a href="#che-cosa-impareremo-in-questo-modulo" id="toc-che-cosa-impareremo-in-questo-modulo" class="nav-link" data-scroll-target="#che-cosa-impareremo-in-questo-modulo">Che cosa impareremo in questo modulo</a></li>
+  <li><a href="#come-leggere-questo-modulo" id="toc-come-leggere-questo-modulo" class="nav-link" data-scroll-target="#come-leggere-questo-modulo">Come leggere questo modulo</a></li>
+  <li><a href="#dalla-procedura-allaggiornamento-delle-credenze" id="toc-dalla-procedura-allaggiornamento-delle-credenze" class="nav-link" data-scroll-target="#dalla-procedura-allaggiornamento-delle-credenze">Dalla procedura all’aggiornamento delle credenze</a></li>
+  <li><a href="#punti-chiave-da-ricordare" id="toc-punti-chiave-da-ricordare" class="nav-link" data-scroll-target="#punti-chiave-da-ricordare">Punti chiave da ricordare</a></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/introduction_frequentist_inference.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
@@ -450,9 +461,9 @@ window.Quarto = {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Introduzione</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Introduzione all’inferenza frequentista in un percorso bayesiano</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Introduzione</h1>
+<h1 class="title">Introduzione all’inferenza frequentista in un percorso bayesiano</h1>
 </div>
 
 
@@ -469,36 +480,177 @@ window.Quarto = {
 </header>
 
 
-<p>Il panorama dell’inferenza statistica è dominato da due grandi paradigmi metodologici: l’approccio frequentista e quello bayesiano. Entrambi forniscono strumenti per trarre conclusioni su popolazioni a partire da dati campionari, stimare parametri sconosciuti, formulare previsioni e valutare ipotesi teoriche. Ciò che li distingue non è l’obiettivo, ma l’interpretazione del concetto di probabilità e le modalità con cui integrano l’evidenza empirica con le conoscenze preesistenti.</p>
-<section id="differenze-fondamentali-tra-i-due-approcci" class="level2">
-<h2 class="anchored" data-anchor-id="differenze-fondamentali-tra-i-due-approcci">Differenze fondamentali tra i due approcci</h2>
-<section id="statistica-frequentista" class="level3">
-<h3 class="anchored" data-anchor-id="statistica-frequentista">Statistica frequentista</h3>
-<p>Nella prospettiva frequentista, la probabilità di un evento è definita come la frequenza relativa di tale evento in un numero molto elevato, idealmente infinito, di prove ripetute sotto identiche condizioni. In questo contesto, il parametro di interesse della popolazione è considerato fisso, anche se sconosciuto, e l’inferenza si basa esclusivamente sui dati osservati, senza incorporare conoscenze pregresse. Le conclusioni si basano su procedure quali la stima puntuale, che fornisce un valore singolo come migliore approssimazione del parametro; la costruzione di intervalli di confidenza, che individuano un intervallo di valori plausibili in seguito a ripetuti campionamenti; e i test di ipotesi, che valutano la compatibilità dei dati con un’ipotesi nulla prefissata mediante il valore-<span class="math inline">\(p\)</span> e le statistiche test. Questo approccio si basa sull’assunzione che i dati provengano da un processo stabile e ripetibile e che la validità delle conclusioni risieda nel loro comportamento a lungo termine.</p>
+<p>Questo modulo introduce l’inferenza frequentista all’interno di un percorso più ampio dedicato all’inferenza bayesiana. La scelta potrebbe sembrare paradossale: perché studiare metodi frequentisti in un manuale che adotta una prospettiva bayesiana?</p>
+<p>La risposta è semplice. Gran parte della letteratura psicologica utilizza ancora intervalli di confidenza, test di significatività, valori-<span class="math inline">\(p\)</span>, livelli di significatività e analisi di potenza. Per leggere criticamente un articolo, progettare uno studio, comprendere una tabella di risultati o dialogare con colleghi formati nella tradizione statistica dominante, è necessario conoscere bene questi strumenti.</p>
+<p>Tuttavia, li studieremo con un obiettivo preciso: non come l’unico modo possibile di fare inferenza, ma come un sistema coerente di procedure che risponde a domande specifiche. Il confronto con l’approccio bayesiano ci aiuterà a distinguere tra due compiti spesso confusi:</p>
+<ul>
+<li>controllare il comportamento di una procedura statistica nel lungo periodo;</li>
+<li>quantificare l’incertezza su un’ipotesi o su un parametro dopo aver osservato i dati.</li>
+</ul>
+<p>La prima domanda è al centro dell’inferenza frequentista. La seconda è al centro dell’inferenza bayesiana.</p>
+<section id="perché-studiare-il-frequentismo-in-un-companion-bayesiano" class="level2">
+<h2 class="anchored" data-anchor-id="perché-studiare-il-frequentismo-in-un-companion-bayesiano">Perché studiare il frequentismo in un companion bayesiano?</h2>
+<p>L’inferenza frequentista è stata, e in molti ambiti continua a essere, il linguaggio standard della ricerca empirica. Concetti come <em>statisticamente significativo</em>, <em>intervallo di confidenza al 95%</em>, <em>errore di primo tipo</em>, <em>potenza statistica</em> e <em>test t</em> compaiono regolarmente negli articoli di psicologia, neuroscienze, medicina e scienze sociali.</p>
+<p>Ignorare questo linguaggio renderebbe difficile comprendere la letteratura esistente. Accettarlo in modo acritico, però, potrebbe portare a fraintendimenti diffusi. Questo modulo ha quindi una funzione duplice:</p>
+<ol type="1">
+<li><strong>fornire competenze operative</strong>, ovvero spiegare il funzionamento delle procedure frequentiste più comuni;</li>
+<li><strong>sviluppare una consapevolezza interpretativa</strong>, cioè chiarire a quali domande tali procedure possono rispondere e a quali invece non possono rispondere direttamente.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="Una prospettiva didattica, non polemica">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Una prospettiva didattica, non polemica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Studiare il frequentismo non significa considerarlo un errore da correggere. Molte procedure frequentiste sono utili, robuste e storicamente rilevanti. Il punto è comprenderne la logica: esse valutano il comportamento di procedure ripetute nel lungo periodo e non assegnano direttamente probabilità alle ipotesi o ai parametri dopo aver osservato i dati.</p>
+</div>
+</div>
 </section>
-<section id="statistica-bayesiana" class="level3">
-<h3 class="anchored" data-anchor-id="statistica-bayesiana">Statistica bayesiana</h3>
-<p>La statistica bayesiana, al contrario, interpreta la probabilità come una misura della credenza soggettiva o della plausibilità razionale, suscettibile di essere aggiornata quando nuove informazioni diventano disponibili. Il suo fondamento logico è il teorema di Bayes, che permette di combinare sistematicamente le conoscenze iniziali, espresse sotto forma di una distribuzione a priori, con l’evidenza fornita dai dati, rappresentata dalla funzione di verosimiglianza, per ottenere una distribuzione a posteriori. Tale distribuzione sintetizza tutto ciò che si sa sul parametro dopo l’osservazione dei dati, trattandolo non come una quantità fissa, ma come una variabile aleatoria la cui incertezza può essere quantificata in termini probabilistici. Rispetto all’approccio frequentista, il metodo bayesiano si distingue per la capacità di integrare in modo coerente le informazioni pregresse, rivelandosi particolarmente vantaggioso in contesti caratterizzati da dati scarsi o quando si dispone di conoscenze pregresse solide e ben fondate.</p>
+<section id="due-modi-di-intendere-la-probabilità" class="level2">
+<h2 class="anchored" data-anchor-id="due-modi-di-intendere-la-probabilità">Due modi di intendere la probabilità</h2>
+<p>La differenza tra frequentismo e bayesianesimo nasce da una diversa interpretazione della probabilità.</p>
+<p>Secondo la prospettiva frequentista, la probabilità è collegata alla frequenza relativa di un evento in una lunga sequenza di ripetizioni idealmente identiche. Se, per esempio, diciamo che la probabilità di ottenere “testa” nel lancio di una moneta è 0.5, intendiamo che, in un numero molto grande di lanci condotti nelle stesse condizioni, circa la metà degli esiti sarà “testa”.</p>
+<p>In questa prospettiva, i parametri della popolazione sono considerati quantità fisse, ma sconosciute. Per esempio, la media della popolazione, la differenza tra due gruppi o la proporzione di persone con un certo sintomo non sono variabili casuali, ma hanno un valore definito, anche se noi non lo conosciamo. La variabilità deriva dal campione: campioni diversi produrrebbero stime diverse.</p>
+<p>Nella prospettiva bayesiana, la probabilità esprime un grado di plausibilità o di incertezza razionale. Il parametro sconosciuto viene trattato come una quantità incerta descritta da una distribuzione di probabilità. I dati osservati modificano tale distribuzione attraverso il teorema di Bayes:</p>
+<p><span class="math display">\[
+p(\theta \mid y) \propto p(y \mid \theta) p(\theta).
+\]</span></p>
+<p>In questa formula, <span class="math inline">\(p(\theta)\)</span> rappresenta ciò che si sa prima di osservare i dati, <span class="math inline">\(p(y \mid \theta)\)</span> rappresenta la verosimiglianza dei dati sotto diversi valori del parametro, e <span class="math inline">\(p(\theta \mid y)\)</span> rappresenta ciò che si sa dopo aver osservato i dati.</p>
 </section>
+<section id="parametri-fissi-dati-variabili" class="level2">
+<h2 class="anchored" data-anchor-id="parametri-fissi-dati-variabili">Parametri fissi, dati variabili</h2>
+<p>Il modo più semplice per comprendere la logica frequentista è ricordare questa distinzione:</p>
+<ul>
+<li>il <strong>parametro</strong> è fisso ma ignoto;</li>
+<li>il <strong>campione</strong> è variabile;</li>
+<li>la <strong>procedura inferenziale</strong> viene valutata chiedendosi come si comporterebbe se fosse applicata molte volte a campioni diversi generati dallo stesso processo.</li>
+</ul>
+<p>Supponiamo, per esempio, di voler stimare la media del benessere psicologico di una popolazione di studenti. Il valore vero della media esiste, ma non lo conosciamo. Se estraessimo molti campioni diversi, otterremmo molte medie campionarie diverse. L’inferenza frequentista studia proprio questa variabilità da campione a campione.</p>
+<p>Da qui nascono concetti fondamentali come:</p>
+<ul>
+<li>la <strong>distribuzione campionaria</strong>, ovvero la distribuzione che una statistica assumerebbe in ripetuti campionamenti;</li>
+<li>l’<strong>errore standard</strong>, ovvero la variabilità attesa di una stima da un campione all’altro;</li>
+<li>l’<strong>intervallo di confidenza</strong>, cioè una procedura che, se ripetuta molte volte, produce intervalli che contengono il parametro vero con una frequenza prestabilita;</li>
+<li>il <strong>test di ipotesi</strong>, cioè una procedura che valuta quanto i dati osservati siano insoliti rispetto a un’ipotesi nulla.</li>
+</ul>
+<p>Questi strumenti non sono arbitrari, ma formano un sistema coerente. Tuttavia, la loro interpretazione è spesso meno intuitiva di quanto sembri.</p>
 </section>
-<section id="il-problema-dellinduzione" class="level2">
-<h2 class="anchored" data-anchor-id="il-problema-dellinduzione">Il problema dell’induzione</h2>
-<p>Una prospettiva filosofica particolarmente illuminante per cogliere la distinzione tra i due paradigmi è offerta dal problema dell’induzione, sollevato da David Hume nel <em>Trattato sulla natura umana</em> (1739). Hume mise in discussione la validità logica del passaggio dall’osservazione di casi particolari all’enunciazione di leggi generali: nessun numero di osservazioni passate, per quanto elevato, può garantire che le regolarità osservate si ripeteranno in futuro.</p>
-<p>Mentre l’approccio frequentista, basandosi sull’idea di ripetibilità e regolarità statistica, presuppone implicitamente un mondo governato da leggi stabili (un’assunzione pragmatica, ma priva di un solido fondamento epistemologico e dunque esposta alle critiche humiane), l’approccio bayesiano adotta una posizione radicalmente diversa. Esso, infatti, non presuppone l’immutabilità delle regolarità statistiche, ma le considera esplicitamente come oggetto di credenza soggetta a revisione continua. Piuttosto che cercare di superare l’incertezza induttiva, il metodo bayesiano la incorpora nel processo inferenziale stesso, consentendo un aggiornamento razionale e graduale delle aspettative man mano che emergono nuove evidenze.</p>
+<section id="un-esempio-il-lancio-di-una-moneta" class="level2">
+<h2 class="anchored" data-anchor-id="un-esempio-il-lancio-di-una-moneta">Un esempio: il lancio di una moneta</h2>
+<p>Consideriamo una moneta lanciata 20 volte. Osserviamo 14 teste e 6 croci. Che cosa possiamo concludere?</p>
+<p>Un’analisi frequentista parte da un’ipotesi, ad esempio che la moneta sia equilibrata. Se la moneta fosse davvero equilibrata, il numero di teste in 20 lanci seguirebbe una distribuzione binomiale con parametro <span class="math inline">\(\theta = 0.5\)</span>. La domanda diventa:</p>
+<blockquote class="blockquote">
+<p>Quanto sarebbe insolito osservare 14 o più teste, o un risultato almeno altrettanto estremo, se la moneta fosse equilibrata?</p>
+</blockquote>
+<p>Questa domanda conduce al valore-<span class="math inline">\(p\)</span>. Il valore-<span class="math inline">\(p\)</span> non è la probabilità che la moneta sia equilibrata. È una probabilità calcolata assumendo che l’ipotesi nulla sia vera.</p>
+<p>Un’analisi bayesiana formula la domanda in modo diverso. Si parte da una distribuzione a priori del grado di sbilanciamento della moneta, si osservano i dati e si ottiene una distribuzione a posteriori. La domanda diventa:</p>
+<blockquote class="blockquote">
+<p>Dopo aver osservato 14 teste su 20 lanci, quali valori di <span class="math inline">\(\theta\)</span> sono più plausibili?</p>
+</blockquote>
+<p>Le due analisi possono usare lo stesso modello probabilistico per i dati, ma rispondono a domande diverse.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Domande diverse, risposte diverse">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Domande diverse, risposte diverse
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nel frequentismo ci si chiede: <em>Quanto sarebbe raro questo risultato se una certa ipotesi fosse vera?</em></p>
+<p>Nel bayesianesimo, invece, ci si chiede: <em>Quanto è plausibile ciascuna ipotesi, o ciascun valore del parametro, dopo aver osservato questi dati?</em></p>
+</div>
+</div>
 </section>
-<section id="un-esempio-pratico-il-lancio-di-una-moneta" class="level2">
-<h2 class="anchored" data-anchor-id="un-esempio-pratico-il-lancio-di-una-moneta">Un esempio pratico: il lancio di una moneta</h2>
-<p>Un esempio classico, come il lancio di una moneta, permette di illustrare concretamente la differenza tra i due approcci.</p>
-<p>L’ottica frequentista interpreta la probabilità di ottenere “testa” come una proprietà fisica e intrinseca della moneta, corrispondente alla sua propensione a mostrare quel lato. Questa probabilità viene stimata come la frequenza relativa di teste in un numero idealmente infinito di lanci. L’inferenza è dunque rigidamente ancorata al processo fisico generatore dei dati, e non ammette l’integrazione di convinzioni soggettive esterne ai dati osservati.</p>
-<p>Al contrario, l’approccio bayesiano definisce la probabilità come un grado di fiducia razionale in un esito. L’analisi inizia specificando una distribuzione a priori, che formalizza le aspettative iniziali sul bilanciamento della moneta. Ogni nuovo lancio fornisce un’osservazione che, attraverso il teorema di Bayes, aggiorna tale stato di conoscenza, producendo una distribuzione a posteriori. Il risultato non è una singola stima puntuale, ma una distribuzione di probabilità che rappresenta in modo esaustivo l’incertezza residua sul parametro, in continua evoluzione con l’accumularsi dell’evidenza empirica.</p>
+<section id="interpretazioni-da-evitare" class="level2">
+<h2 class="anchored" data-anchor-id="interpretazioni-da-evitare">Interpretazioni da evitare</h2>
+<p>Molti errori nella lettura della letteratura scientifica derivano dal fatto che termini familiari vengono interpretati in modo intuitivo ma non corretto.</p>
+<p>Un <strong>intervallo di confidenza al 95%</strong> non significa che vi sia il 95% di probabilità che il parametro vero cada nell’intervallo calcolato. Nella logica frequentista, il parametro non è casuale, ma fisso. Il 95% si riferisce al comportamento della procedura in ripetuti campionamenti.</p>
+<p>Un <strong>valore-<span class="math inline">\(p\)</span></strong> non è la probabilità che l’ipotesi nulla sia vera. È la probabilità, calcolata assumendo vera l’ipotesi nulla, di ottenere dati uguali o più estremi di quelli osservati, secondo una regola specifica.</p>
+<p>La <strong>significatività statistica</strong> non implica necessariamente importanza teorica, rilevanza clinica o replicabilità. Un effetto può essere statisticamente significativo ma piccolo, instabile o poco informativo dal punto di vista sostanziale.</p>
+<p>La <strong>non significatività statistica</strong> non dimostra l’assenza dell’effetto. Può essere causata da dati insufficienti, misure rumorose, campioni piccoli o da un disegno poco sensibile.</p>
+<p>Questi chiarimenti non intendono screditare gli strumenti frequentisti, ma insegnare a usarli correttamente.</p>
 </section>
-<section id="obiettivo-di-questa-sezione" class="level2">
-<h2 class="anchored" data-anchor-id="obiettivo-di-questa-sezione">Obiettivo di questa sezione</h2>
-<p>Questa sezione fornisce un’analisi approfondita dei metodi dell’inferenza frequentista, esaminandone i principi fondativi, la logica operativa e le applicazioni più comuni. Verranno trattati in dettaglio i tre pilastri metodologici del paradigma: la stima puntuale, la costruzione e l’interpretazione degli intervalli di confidenza e la teoria dei test di ipotesi.</p>
-<p>L’importanza di tale studio è duplice. Da un lato, l’approccio frequentista è ancora il paradigma di riferimento in ampie aree della ricerca psicologica e rappresenta un bagaglio tecnico essenziale per la lettura critica della letteratura scientifica. D’altro canto, la sua centralità persistente rende la sua comprensione una competenza pratica indispensabile per orientarsi nel panorama della ricerca empirica contemporanea.</p>
-<p>È tuttavia cruciale affrontare questi contenuti con consapevolezza critica. I limiti concettuali ed epistemologici del paradigma, dalla sua vulnerabilità al problema induttivo di Hume ai noti deficit di riproducibilità emersi nelle scienze psicologiche, sono ormai ben documentati. La sua rigidità interpretativa, la sua incapacità strutturale di integrare conoscenze pregresse e la comunicazione dei risultati, spesso eccessivamente dichiarativa e spoglia dell’incertezza che invece le è propria, hanno contribuito in non piccola parte all’accumulo di evidenze fragili e poco replicabili.</p>
-<p>Alla luce di queste considerazioni, lo studio dei metodi frequentisti qui proposto non nasce da un’adesione acritica, ma dalla necessità di fornire una comprensione realistica e sfumata. Pur riconoscendo la superiorità concettuale e l’utilità pratica dell’approccio bayesiano in molti contesti di ricerca, riteniamo che una formazione statistica completa non può prescindere da una conoscenza solida e critica della statistica frequentista, data la sua pervasività storica e il suo ruolo nel dibattito metodologico attuale.</p>
-<p>L’obiettivo finale è dunque duplice: da un lato, fornire le competenze tecniche per utilizzare questi strumenti e, dall’altro, sviluppare la capacità critica per valutarne i risultati, impiegarli con giudizio e coglierne i limiti all’interno di un panorama statistico in continua evoluzione.</p>
+<section id="il-ruolo-del-frequentismo-nella-ricerca-psicologica" class="level2">
+<h2 class="anchored" data-anchor-id="il-ruolo-del-frequentismo-nella-ricerca-psicologica">Il ruolo del frequentismo nella ricerca psicologica</h2>
+<p>Il frequentismo ha avuto un ruolo enorme nella ricerca psicologica. Ha fornito un linguaggio condiviso per valutare i risultati empirici, confrontare i gruppi, stimare gli effetti, pianificare gli studi e controllare il rischio di conclusioni affrettate.</p>
+<p>Tuttavia, l’uso meccanico di soglie decisionali, in particolare la soglia convenzionale <span class="math inline">\(\alpha = .05\)</span>, ha contribuito a una comunicazione troppo dicotomica dei risultati: “significativo/non significativo”, “effetto presente/effetto assente”, “ipotesi confermata/ipotesi non confermata”.</p>
+<p>Una prospettiva bayesiana invita a spostare l’attenzione dalla semplice decisione alla quantificazione dell’incertezza. Tuttavia, per capire perché questo spostamento è utile, è necessario comprendere bene la logica che lo precede.</p>
+</section>
+<section id="che-cosa-impareremo-in-questo-modulo" class="level2">
+<h2 class="anchored" data-anchor-id="che-cosa-impareremo-in-questo-modulo">Che cosa impareremo in questo modulo</h2>
+<p>Il modulo è organizzato come un percorso graduale.</p>
+<ol type="1">
+<li><p><strong>Origini storiche dell’approccio frequentista</strong><br>
+Introdurremo il contesto storico ed epistemologico in cui si è sviluppata la statistica frequentista, con attenzione sia al suo contributo scientifico sia alle sue ambivalenze storiche.</p></li>
+<li><p><strong>Stime, stimatori e distribuzioni campionarie</strong><br>
+Studieremo come il frequentismo rappresenta la variabilità delle stime da un campione all’altro. Questo capitolo introduce media campionaria, correttezza, errore standard e Teorema del Limite Centrale.</p></li>
+<li><p><strong>Intervalli di confidenza</strong><br>
+Vedremo come costruire e interpretare gli intervalli di confidenza, distinguendoli dagli intervalli di credibilità bayesiani.</p></li>
+<li><p><strong>Test di ipotesi e valore-<span class="math inline">\(p\)</span></strong><br>
+Analizzeremo la logica del test di significatività: ipotesi nulla, statistica test, distribuzione di riferimento, regione critica, valore-<span class="math inline">\(p\)</span> ed errori decisionali.</p></li>
+<li><p><strong>Dimensione campionaria e potenza statistica</strong><br>
+Una volta compresa la logica dei test, discuteremo il ruolo della dimensione campionaria, dell’errore di secondo tipo e della potenza statistica.</p></li>
+<li><p><strong>Confronto tra due gruppi indipendenti</strong><br>
+Applicheremo gli strumenti introdotti al caso del test <span class="math inline">\(t\)</span> per due campioni indipendenti, uno degli esempi più comuni nella ricerca psicologica.</p></li>
+<li><p><strong>Considerazioni conclusive</strong><br>
+Chiuderemo il modulo collegando i limiti interpretativi del frequentismo alla motivazione dell’approccio bayesiano.</p></li>
+</ol>
+</section>
+<section id="come-leggere-questo-modulo" class="level2">
+<h2 class="anchored" data-anchor-id="come-leggere-questo-modulo">Come leggere questo modulo</h2>
+<p>Il modo migliore per affrontare questi capitoli è tenere sempre separate tre domande:</p>
+<ol type="1">
+<li><p><strong>Qual è il modello dei dati?</strong><br>
+Quale processo probabilistico assumiamo abbia generato le osservazioni?</p></li>
+<li><p><strong>Qual è la procedura?</strong><br>
+Stiamo calcolando una stima, un intervallo di confidenza, una statistica test, un valore-<span class="math inline">\(p\)</span> o una misura di potenza?</p></li>
+<li><p><strong>Qual è l’interpretazione corretta?</strong><br>
+Il risultato parla del parametro, dei dati osservati, dell’ipotesi nulla o del comportamento della procedura nel lungo periodo?</p></li>
+</ol>
+<p>Questa attenzione interpretativa è essenziale. Le formule sono importanti, ma in statistica l’errore più frequente non è sbagliare un calcolo, bensì attribuire al risultato di un calcolo un significato che non possiede.</p>
+</section>
+<section id="dalla-procedura-allaggiornamento-delle-credenze" class="level2">
+<h2 class="anchored" data-anchor-id="dalla-procedura-allaggiornamento-delle-credenze">Dalla procedura all’aggiornamento delle credenze</h2>
+<p>L’inferenza frequentista fornisce strumenti potenti per il controllo degli errori e la valutazione delle procedure. Il suo punto di forza è la disciplina del lungo periodo: una procedura viene giudicata in base a ciò che farebbe se fosse ripetuta molte volte.</p>
+<p>L’inferenza bayesiana, invece, parte da una domanda diversa: dati il modello, le conoscenze iniziali e i risultati osservati, come devono cambiare le nostre credenze? Questa domanda richiede di trattare l’incertezza sui parametri in modo esplicito, attraverso distribuzioni di probabilità.</p>
+<p>Per questo motivo, il confronto tra frequentismo e bayesianesimo non deve essere ridotto a una contrapposizione tra un metodo giusto e uno sbagliato. È più utile considerarlo come un confronto tra due grammatiche dell’inferenza:</p>
+<ul>
+<li>il frequentismo parla il linguaggio delle procedure, degli errori e delle frequenze nel lungo periodo;</li>
+<li>il bayesianesimo parla il linguaggio dell’incertezza, dell’evidenza e dell’aggiornamento delle credenze.</li>
+</ul>
+<p>Comprendere entrambe le grammatiche rende la lettura della ricerca empirica più solida e prepara a utilizzare l’inferenza bayesiana in modo più consapevole.</p>
+</section>
+<section id="punti-chiave-da-ricordare" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="punti-chiave-da-ricordare">Punti chiave da ricordare</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Importante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Il frequentismo valuta le procedure statistiche in termini di comportamento nel lungo periodo.</li>
+<li>Nel frequentismo i parametri sono considerati fissi ma ignoti; la variabilità deriva dal campione.</li>
+<li>Un intervallo di confidenza non è, in senso stretto, una probabilità sul parametro dopo aver osservato i dati.</li>
+<li>Un valore-<span class="math inline">\(p\)</span> non è la probabilità che l’ipotesi nulla sia vera.</li>
+<li>Il bayesianesimo rappresenta esplicitamente l’incertezza sui parametri mediante distribuzioni di probabilità.</li>
+<li>Studiare il frequentismo è essenziale per leggere la letteratura psicologica e per comprendere meglio il passaggio all’inferenza bayesiana.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="bibliografia" class="level2 unnumbered unlisted">
+<h2 class="unnumbered unlisted anchored" data-anchor-id="bibliografia">Bibliografia</h2>
 
 
 </section>
@@ -590,7 +742,7 @@ window.Quarto = {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("^(?:https?:)?//ccaudek\.github\.io/utet-frequentista/");
+        var filterRegex = new RegExp("^(?:https?:)?//ccaudek\.github\.io/utet-prob/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
