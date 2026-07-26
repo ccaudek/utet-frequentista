@@ -5,7 +5,7 @@
 <meta name="generator" content="quarto-1.9.38">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Inferenza bayesiana in psicologia: Ragionare con l’incertezza.">
-<title>5&nbsp; Dimensione campionaria, errore e potenza – Inferenza frequentista in psicologia</title>
+<title>5&nbsp; Dimensione campionaria, precisione e potenza – Inferenza frequentista in psicologia</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -102,7 +102,10 @@ div.csl-indent {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-353ec92dc31bcb37568820202c74e1ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-dde258841ab64df460dbb5600124b771.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-353ec92dc31bcb37568820202c74e1ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-353ec92dc31bcb37568820202c74e1ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": true,
   "collapse-after": 3,
@@ -177,12 +180,20 @@ window.Quarto = {
   typesetMath
 };
 </script>
-<meta property="og:title" content="5&nbsp; Dimensione campionaria, errore e potenza – Inferenza frequentista in psicologia">
+<meta property="og:title" content="5&nbsp; Dimensione campionaria, precisione e potenza – Inferenza frequentista in psicologia">
 <meta property="og:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Inferenza bayesiana in psicologia: Ragionare con l’incertezza.">
+<meta property="og:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/05_sample_size_files/figure-html/fig-power-curves-1.png">
 <meta property="og:site_name" content="Inferenza frequentista in psicologia">
-<meta name="twitter:title" content="5&nbsp; Dimensione campionaria, errore e potenza – Inferenza frequentista in psicologia">
+<meta property="og:image:alt" content="Tre curve crescenti mostrano che la potenza aumenta con la numerosità e con la differenza tra le medie.">
+<meta property="og:image:height" content="1297">
+<meta property="og:image:width" content="2100">
+<meta name="twitter:title" content="5&nbsp; Dimensione campionaria, precisione e potenza – Inferenza frequentista in psicologia">
 <meta name="twitter:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Inferenza bayesiana in psicologia: Ragionare con l’incertezza.">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/05_sample_size_files/figure-html/fig-power-curves-1.png">
+<meta name="twitter:image:alt" content="Tre curve crescenti mostrano che la potenza aumenta con la numerosità e con la differenza tra le medie.">
+<meta name="twitter:image-height" content="1297">
+<meta name="twitter:image-width" content="2100">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/05_sample_size.html">
 </head>
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -363,7 +374,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/05_sample_size.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/05_sample_size.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, precisione e potenza</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Ricerca" onclick="window.quartoOpenSearch();">
@@ -437,7 +448,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/05_sample_size.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, precisione e potenza</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -460,7 +471,7 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/epilogo/epilogo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerazioni conclusive: dal controllo dell’errore all’aggiornamento delle credenze</span></span></a>
+ <span class="menu-text">Conclusioni</span></a>
   </div>
 </li>
       </ul>
@@ -473,22 +484,22 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2"><h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
-<li><a href="#perch%C3%A9-pianificare-la-numerosit%C3%A0-campionaria" id="toc-perché-pianificare-la-numerosità-campionaria" class="nav-link active" data-scroll-target="#perch%C3%A9-pianificare-la-numerosit%C3%A0-campionaria"><span class="header-section-number">5.1</span> Perché pianificare la numerosità campionaria</a></li>
-  <li><a href="#numerosit%C3%A0-campionaria-per-la-precisione-di-una-stima" id="toc-numerosità-campionaria-per-la-precisione-di-una-stima" class="nav-link" data-scroll-target="#numerosit%C3%A0-campionaria-per-la-precisione-di-una-stima"><span class="header-section-number">5.2</span> Numerosità campionaria per la precisione di una stima</a></li>
-  <li><a href="#numerosit%C3%A0-campionaria-per-un-test-di-ipotesi" id="toc-numerosità-campionaria-per-un-test-di-ipotesi" class="nav-link" data-scroll-target="#numerosit%C3%A0-campionaria-per-un-test-di-ipotesi"><span class="header-section-number">5.3</span> Numerosità campionaria per un test di ipotesi</a></li>
-  <li><a href="#effetto-minimo-di-interesse" id="toc-effetto-minimo-di-interesse" class="nav-link" data-scroll-target="#effetto-minimo-di-interesse"><span class="header-section-number">5.4</span> Effetto minimo di interesse</a></li>
-  <li><a href="#esempio-test-t-per-un-campione" id="toc-esempio-test-t-per-un-campione" class="nav-link" data-scroll-target="#esempio-test-t-per-un-campione"><span class="header-section-number">5.5</span> Esempio: test t per un campione</a></li>
-  <li><a href="#esempio-confronto-tra-due-gruppi-indipendenti" id="toc-esempio-confronto-tra-due-gruppi-indipendenti" class="nav-link" data-scroll-target="#esempio-confronto-tra-due-gruppi-indipendenti"><span class="header-section-number">5.6</span> Esempio: confronto tra due gruppi indipendenti</a></li>
-  <li><a href="#potenza-numerosit%C3%A0-e-interpretazione-dei-risultati" id="toc-potenza-numerosità-e-interpretazione-dei-risultati" class="nav-link" data-scroll-target="#potenza-numerosit%C3%A0-e-interpretazione-dei-risultati"><span class="header-section-number">5.7</span> Potenza, numerosità e interpretazione dei risultati</a></li>
-  <li><a href="#analisi-di-potenza-post-hoc" id="toc-analisi-di-potenza-post-hoc" class="nav-link" data-scroll-target="#analisi-di-potenza-post-hoc"><span class="header-section-number">5.8</span> Analisi di potenza post-hoc</a></li>
-  <li><a href="#limiti-della-pianificazione-frequentista" id="toc-limiti-della-pianificazione-frequentista" class="nav-link" data-scroll-target="#limiti-della-pianificazione-frequentista"><span class="header-section-number">5.9</span> Limiti della pianificazione frequentista</a></li>
-  <li><a href="#collegamento-con-la-prospettiva-bayesiana" id="toc-collegamento-con-la-prospettiva-bayesiana" class="nav-link" data-scroll-target="#collegamento-con-la-prospettiva-bayesiana"><span class="header-section-number">5.10</span> Collegamento con la prospettiva bayesiana</a></li>
-  <li><a href="#riepilogo" id="toc-riepilogo" class="nav-link" data-scroll-target="#riepilogo"><span class="header-section-number">5.11</span> Riepilogo</a></li>
+<li><a href="#perch%C3%A9-pianificare-prima-di-raccogliere-i-dati" id="toc-perché-pianificare-prima-di-raccogliere-i-dati" class="nav-link active" data-scroll-target="#perch%C3%A9-pianificare-prima-di-raccogliere-i-dati"><span class="header-section-number">5.1</span> Perché pianificare prima di raccogliere i dati?</a></li>
+  <li><a href="#sec-freq-two-planning-goals" id="toc-sec-freq-two-planning-goals" class="nav-link" data-scroll-target="#sec-freq-two-planning-goals"><span class="header-section-number">5.2</span> Due obiettivi distinti</a></li>
+  <li><a href="#sec-freq-sample-size-precision" id="toc-sec-freq-sample-size-precision" class="nav-link" data-scroll-target="#sec-freq-sample-size-precision"><span class="header-section-number">5.3</span> Pianificare la precisione di una media</a></li>
+  <li><a href="#sec-freq-sample-size-power" id="toc-sec-freq-sample-size-power" class="nav-link" data-scroll-target="#sec-freq-sample-size-power"><span class="header-section-number">5.4</span> Pianificare la potenza di un test</a></li>
+  <li><a href="#sec-freq-sesoi" id="toc-sec-freq-sesoi" class="nav-link" data-scroll-target="#sec-freq-sesoi"><span class="header-section-number">5.5</span> Scegliere l’effetto bersaglio</a></li>
+  <li><a href="#sec-freq-power-one-sample" id="toc-sec-freq-power-one-sample" class="nav-link" data-scroll-target="#sec-freq-power-one-sample"><span class="header-section-number">5.6</span> Esempio: test <em>t</em> per una media</a></li>
+  <li><a href="#sec-freq-power-two-sample" id="toc-sec-freq-power-two-sample" class="nav-link" data-scroll-target="#sec-freq-power-two-sample"><span class="header-section-number">5.7</span> Esempio: due gruppi indipendenti</a></li>
+  <li><a href="#sec-freq-recruitment-target" id="toc-sec-freq-recruitment-target" class="nav-link" data-scroll-target="#sec-freq-recruitment-target"><span class="header-section-number">5.8</span> Dalla numerosità analitica al reclutamento</a></li>
+  <li><a href="#sec-freq-planning-sensitivity" id="toc-sec-freq-planning-sensitivity" class="nav-link" data-scroll-target="#sec-freq-planning-sensitivity"><span class="header-section-number">5.9</span> Analisi di sensibilità della pianificazione</a></li>
+  <li><a href="#sec-freq-observed-power" id="toc-sec-freq-observed-power" class="nav-link" data-scroll-target="#sec-freq-observed-power"><span class="header-section-number">5.10</span> Perché la potenza post hoc è poco informativa?</a></li>
+  <li><a href="#sec-freq-sample-size-bayes" id="toc-sec-freq-sample-size-bayes" class="nav-link" data-scroll-target="#sec-freq-sample-size-bayes"><span class="header-section-number">5.11</span> Pianificazione frequentista e bayesiana</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/05_sample_size.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/05_sample_size.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></a></li></ol></nav><div class="quarto-title">
-<h1 class="title"><span id="sec-frequentist-sample-size" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/05_sample_size.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, precisione e potenza</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-frequentist-sample-size" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, precisione e potenza</span></span></h1>
 </div>
 
 
@@ -502,26 +513,58 @@ window.Quarto = {
   
 
 
-</header><div class="callout callout-style-default callout-important callout-titled">
+</header><div class="callout callout-style-default callout-note callout-titled" title="In sintesi">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>In questo capitolo imparerai a
+<span class="screen-reader-only">Nota</span>In sintesi
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p><strong>Da sapere</strong> La numerosità campionaria può essere pianificata per ottenere una precisione prefissata oppure per raggiungere una determinata potenza rispetto a un effetto specifico. Entrambi i calcoli dipendono da assunzioni su variabilità, modello, disegno e quantità scientificamente rilevanti.</p>
+<p><strong>Da saper fare</strong> Distinguere pianificazione per precisione e per potenza; interpretare correttamente <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> e potenza; motivare un effetto minimo di interesse; leggere l’output di <code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code>; riconoscere perché la potenza post hoc basata sull’effetto osservato è poco informativa.</p>
+</div>
+</div>
+<section id="introduzione" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="introduzione">Introduzione</h2>
+<p>Nel capitolo precedente abbiamo introdotto errori di tipo I, errori di tipo II e potenza. Questi concetti non servono soltanto a interpretare un test già eseguito: permettono anche di progettare lo studio prima della raccolta dei dati.</p>
+<p>La numerosità campionaria condiziona ciò che uno studio può apprendere. Un campione piccolo produce generalmente stime poco precise e test poco sensibili agli effetti di interesse. Un campione molto grande può invece richiedere risorse non giustificate e rendere statisticamente rilevabili differenze troppo piccole per avere significato teorico o pratico.</p>
+<p>Non esiste quindi una numerosità «giusta» in astratto. Il numero di partecipanti dipende dalla domanda, dalla procedura inferenziale, dalla variabilità attesa, dal disegno e dal livello di informazione che si desidera ottenere.</p>
+</section><section id="perché-pianificare-prima-di-raccogliere-i-dati" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="perché-pianificare-prima-di-raccogliere-i-dati">
+<span class="header-section-number">5.1</span> Perché pianificare prima di raccogliere i dati?</h2>
+<p>La pianificazione costringe a trasformare una domanda generica in un obiettivo quantitativo.</p>
+<p>Per la <strong>stima</strong>, dobbiamo specificare quanta imprecisione siamo disposti ad accettare:</p>
+<blockquote class="blockquote">
+<p>Quanto stretto dovrebbe essere l’intervallo di confidenza?</p>
+</blockquote>
+<p>Per il <strong>test</strong>, dobbiamo specificare quale effetto vogliamo essere in grado di rilevare:</p>
+<blockquote class="blockquote">
+<p>Con quale probabilità il test dovrebbe rifiutare l’ipotesi nulla se fosse presente un effetto scientificamente rilevante?</p>
+</blockquote>
+<p>Queste domande sono collegate, perché entrambe dipendono dall’errore standard, ma non sono equivalenti. La prima riguarda la precisione di una stima. La seconda riguarda il comportamento di una regola decisionale sotto una specifica alternativa.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Il calcolo non sceglie gli obiettivi scientifici">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Il calcolo non sceglie gli obiettivi scientifici
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una funzione software può calcolare <span class="math inline">\(n\)</span> dopo che sono stati forniti margine di errore, variabilità, effetto bersaglio, <span class="math inline">\(\alpha\)</span> e potenza.</p>
+<p>Non può stabilire:</p>
 <ul>
-<li>Distinguere due obiettivi di pianificazione: <strong>stimare con precisione</strong> e <strong>testare un’ipotesi con potenza adeguata</strong>.</li>
-<li>Comprendere il ruolo di errore di I tipo, errore di II tipo, potenza e dimensione dell’effetto.</li>
-<li>Calcolare una numerosità campionaria per una stima di media con margine di errore prefissato.</li>
-<li>Usare <code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code> per pianificare test su una media e confronti tra due gruppi.</li>
-<li>Riconoscere i limiti dell’analisi di potenza, in particolare dell’uso post-hoc.</li>
+<li>quale popolazione sia rilevante;</li>
+<li>quale effetto meriti attenzione;</li>
+<li>quale precisione sia sufficiente;</li>
+<li>quale perdita di partecipanti sia plausibile;</li>
+<li>se il disegno e la misura rispondano alla domanda scientifica.</li>
 </ul>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Prerequisiti">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -531,130 +574,165 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Per seguire questo capitolo è utile aver letto:</p>
+<p>È utile avere letto:</p>
 <ul>
-<li>il capitolo su stime, stimatori e stima puntuale;</li>
-<li>il capitolo sugli intervalli di confidenza;</li>
-<li>il capitolo sui test di ipotesi, in particolare il valore-<span class="math inline">\(p\)</span>, il livello di significatività <span class="math inline">\(\alpha\)</span> e la distinzione tra errore di I tipo ed errore di II tipo.</li>
+<li>
+<a href="02_stime_parametri.html" class="quarto-xref"><span>Capitolo 2</span></a>, per errore standard e precisione;</li>
+<li>
+<a href="03_conf_interv.html" class="quarto-xref"><span>Capitolo 3</span></a>, per margine di errore e livello di confidenza;</li>
+<li>
+<a href="04_test_ipotesi.html" class="quarto-xref"><span>Capitolo 4</span></a>, per <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\beta\)</span> e potenza.</li>
 </ul>
-<p>Come lettura complementare, si veda <em>Power to detect what? Considerations for planning and evaluating sample size</em> <span class="citation" data-cites="giner2024power">(<a href="#ref-giner2024power" role="doc-biblioref"><span class="nocase">Giner-Sorolla et al.</span>, 2024</a>)</span>.</p>
+<p>Come approfondimento sul rapporto tra obiettivo scientifico e pianificazione, si veda <span class="citation" data-cites="giner2024power"><span class="nocase">Giner-Sorolla et al.</span> (<a href="#ref-giner2024power" role="doc-biblioref">2024</a>)</span>.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-caution callout-titled">
+</section><section id="panoramica-del-capitolo" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="panoramica-del-capitolo">Panoramica del capitolo</h2>
+<p>Il capitolo procede in otto passaggi:</p>
+<ol type="1">
+<li>distingue pianificazione per precisione e pianificazione per potenza;</li>
+<li>ricava una formula introduttiva per la precisione di una media;</li>
+<li>mostra come margine di errore e variabilità influenzino <span class="math inline">\(n\)</span>;</li>
+<li>interpreta la potenza come funzione di un’alternativa specifica;</li>
+<li>introduce l’effetto minimo di interesse;</li>
+<li>applica <code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code> a uno e due gruppi;</li>
+<li>trasforma la numerosità analitica in un obiettivo realistico di reclutamento;</li>
+<li>discute sensibilità delle assunzioni, potenza post hoc e confronto con la pianificazione bayesiana.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="Preparazione del notebook">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Attenzione</span>Preparazione del Notebook
+<span class="screen-reader-only">Nota</span>Preparazione del notebook
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>Per eseguire gli esempi, prepara l’ambiente comune del progetto:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
-<section id="perché-pianificare-la-numerosità-campionaria" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="perché-pianificare-la-numerosità-campionaria">
-<span class="header-section-number">5.1</span> Perché pianificare la numerosità campionaria</h2>
-<p>La scelta della numerosità campionaria non è un dettaglio tecnico da rimandare alla fine del progetto. Si tratta di una decisione metodologica che dovrebbe essere presa <strong>prima</strong> di raccogliere i dati, in quanto condiziona ciò che lo studio potrà dire.</p>
-<p>Un campione troppo piccolo può produrre risultati molto incerti: le stime saranno imprecise e i test avranno bassa probabilità di rilevare effetti anche quando questi sono reali. Un campione troppo grande, invece, può richiedere risorse eccessive e può rendere statisticamente significative differenze molto piccole, che potrebbero essere prive di rilevanza teorica o clinica.</p>
-<p>Nel quadro frequentista, la numerosità campionaria viene solitamente pianificata in relazione a due obiettivi distinti:</p>
-<ol type="1">
-<li>
-<strong>Precisione della stima</strong>: quanto stretto vogliamo che sia l’intervallo di confidenza?</li>
-<li>
-<strong>Potenza del test</strong>: con quale probabilità vogliamo rilevare un effetto di una certa dimensione, se quell’effetto esiste?</li>
-</ol>
-<p>Questi due obiettivi sono correlati, ma non coincidono. Nel primo caso, ci interessa la precisione con cui stimiamo un parametro. Nel secondo caso, invece, ci interessa il comportamento di una procedura decisionale: se rifiutare o meno l’ipotesi nulla.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+</section><section id="sec-freq-two-planning-goals" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="sec-freq-two-planning-goals">
+<span class="header-section-number">5.2</span> Due obiettivi distinti</h2>
+<section id="pianificare-per-la-precisione" class="level3" data-number="5.2.1"><h3 data-number="5.2.1" class="anchored" data-anchor-id="pianificare-per-la-precisione">
+<span class="header-section-number">5.2.1</span> Pianificare per la precisione</h3>
+<p>L’obiettivo è ottenere una stima con un intervallo sufficientemente stretto. La domanda centrale è:</p>
+<blockquote class="blockquote">
+<p>Quale ampiezza dell’intervallo renderebbe la stima utile?</p>
+</blockquote>
+<p>Questa strategia è naturale quando l’interesse principale riguarda la grandezza di una media, una proporzione o una differenza.</p>
+</section><section id="pianificare-per-la-potenza" class="level3" data-number="5.2.2"><h3 data-number="5.2.2" class="anchored" data-anchor-id="pianificare-per-la-potenza">
+<span class="header-section-number">5.2.2</span> Pianificare per la potenza</h3>
+<p>L’obiettivo è costruire un test che abbia una probabilità prefissata di rifiutare <span class="math inline">\(H_0\)</span> sotto una specifica alternativa. La domanda centrale è:</p>
+<blockquote class="blockquote">
+<p>Qual è il più piccolo effetto che lo studio dovrebbe riuscire a rilevare con adeguata probabilità?</p>
+</blockquote>
+<p>Questa strategia è legata a una procedura decisionale. Richiede di specificare sia l’effetto bersaglio sia il livello <span class="math inline">\(\alpha\)</span>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead><tr class="header">
+<th>Obiettivo</th>
+<th>Quantità da specificare</th>
+<th>Risultato della pianificazione</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Precisione</td>
+<td>Margine di errore, variabilità e livello di confidenza</td>
+<td>
+<span class="math inline">\(n\)</span> necessario per un’ampiezza desiderata</td>
+</tr>
+<tr class="even">
+<td>Potenza</td>
+<td>Effetto bersaglio, variabilità, <span class="math inline">\(\alpha\)</span> e potenza</td>
+<td>
+<span class="math inline">\(n\)</span> necessario per una probabilità di rifiuto desiderata</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled" title="Lo stesso studio può avere più obiettivi">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Due domande diverse
+<span class="screen-reader-only">Nota</span>Lo stesso studio può avere più obiettivi
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Domanda di stima</strong><br>
-&gt; Quanti partecipanti servono per stimare una media con un margine di errore accettabile?</p>
-<p><strong>Domanda di test</strong><br>
-&gt; Quanti partecipanti servono perché un test abbia una probabilità adeguata di rilevare un effetto considerato rilevante?</p>
-<p>Tenere separate queste due domande aiuta a evitare confusione tra precisione, significatività statistica e rilevanza sostantiva.</p>
+<p>Uno studio può essere pianificato sia per stimare con sufficiente precisione sia per raggiungere una determinata potenza. In tal caso, una scelta prudente consiste nel calcolare i requisiti per entrambi gli obiettivi e adottare quello più esigente, purché le ipotesi siano coerenti con il disegno.</p>
 </div>
 </div>
-</section><section id="numerosità-campionaria-per-la-precisione-di-una-stima" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="numerosità-campionaria-per-la-precisione-di-una-stima">
-<span class="header-section-number">5.2</span> Numerosità campionaria per la precisione di una stima</h2>
-<p>Supponiamo di voler stimare la media <span class="math inline">\(\mu\)</span> di una variabile psicologica, ad esempio un punteggio di autostima. Nel capitolo sugli intervalli di confidenza abbiamo visto che, in condizioni standard, un intervallo di confidenza per la media può essere approssimativamente espresso come:</p>
+</section></section><section id="sec-freq-sample-size-precision" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="sec-freq-sample-size-precision">
+<span class="header-section-number">5.3</span> Pianificare la precisione di una media</h2>
+<p>Nel caso ideale di osservazioni indipendenti, deviazione standard della popolazione nota e intervallo normale, il margine di errore per una media è:</p>
 <p><span class="math display">\[
-\bar{x} \pm z_{1-\alpha/2} \frac{\sigma}{\sqrt{n}}.
+E
+=
+z_{1-\alpha/2}
+\frac{\sigma}{\sqrt n}.
 \]</span></p>
-<p>La quantità</p>
+<p>Risolvendo rispetto a <span class="math inline">\(n\)</span>:</p>
 <p><span class="math display">\[
-E = z_{1-\alpha/2} \frac{\sigma}{\sqrt{n}}
+n
+=
+\left(
+\frac{z_{1-\alpha/2}\sigma}{E}
+\right)^2.
 \]</span></p>
-<p>è il <strong>margine di errore</strong>: indica di quanto l’intervallo si estende a sinistra e a destra della stima puntuale.</p>
-<p>Se vogliamo progettare uno studio in modo che il margine di errore non superi un valore prefissato <span class="math inline">\(E\)</span>, possiamo risolvere l’equazione rispetto a <span class="math inline">\(n\)</span>:</p>
-<p><span class="math display">\[
-n = \left(\frac{z_{1-\alpha/2} \sigma}{E}\right)^2.
-\]</span></p>
-<p>Questa formula illustra tre concetti importanti:</p>
+<p>La formula mostra che:</p>
 <ul>
-<li>richiedere un intervallo più stretto aumenta il numero di dati necessario;</li>
-<li>una maggiore variabilità dei dati richiede campioni più grandi;</li>
-<li>passare, per esempio, da un margine di errore di 2 punti a 1 punto non raddoppia il campione, ma lo quadruplica.</li>
+<li>una maggiore variabilità <span class="math inline">\(\sigma\)</span> richiede più osservazioni;</li>
+<li>un margine di errore più piccolo richiede più osservazioni;</li>
+<li>un livello di confidenza maggiore richiede un valore critico più grande;</li>
+<li>dimezzare <span class="math inline">\(E\)</span> moltiplica approssimativamente <span class="math inline">\(n\)</span> per quattro.</li>
 </ul>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avviso</span>Attenzione alla notazione
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Per un intervallo di confidenza al 95%, si usa di solito <span class="math inline">\(z_{1-\alpha/2} = z_{0.975} \approx 1.96\)</span>, non <span class="math inline">\(z_{0.025}\)</span>. I due quantili sono simmetrici nella normale standard, ma il valore positivo usato nella formula del margine di errore è <span class="math inline">\(z_{0.975}\)</span>.</p>
-</div>
-</div>
-<section id="esempio-stimare-un-punteggio-medio-di-autostima" class="level3" data-number="5.2.1"><h3 data-number="5.2.1" class="anchored" data-anchor-id="esempio-stimare-un-punteggio-medio-di-autostima">
-<span class="header-section-number">5.2.1</span> Esempio: stimare un punteggio medio di autostima</h3>
-<p>Immaginiamo di voler stimare il punteggio medio di autostima di una popolazione di studenti. La scala varia da 0 a 30. Da studi precedenti sappiamo che la deviazione standard è approssimativamente pari a <span class="math inline">\(\sigma = 6\)</span>. Vogliamo un intervallo di confidenza al 95% con un margine di errore massimo di 2 punti.</p>
+<section id="un-esempio-introduttivo" class="level3" data-number="5.3.1"><h3 data-number="5.3.1" class="anchored" data-anchor-id="un-esempio-introduttivo">
+<span class="header-section-number">5.3.1</span> Un esempio introduttivo</h3>
+<p>Vogliamo stimare il punteggio medio di autostima in una popolazione di studenti. Studi precedenti suggeriscono una deviazione standard di circa 6 punti. Desideriamo un intervallo al 95% con margine di errore non superiore a 2 punti.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Parametri della pianificazione</span></span>
-<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fl">6</span>              <span class="co"># Deviazione standard attesa</span></span>
-<span><span class="va">E</span> <span class="op">&lt;-</span> <span class="fl">2</span>                  <span class="co"># Margine di errore desiderato</span></span>
-<span><span class="va">z_alpha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.975</span><span class="op">)</span> <span class="co"># Quantile per IC al 95%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sigma_attesa</span> <span class="op">&lt;-</span> <span class="fl">6</span></span>
+<span><span class="va">margine_desiderato</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
+<span><span class="va">z_critico</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.975</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Numerosità richiesta</span></span>
-<span><span class="va">n_stima</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">z_alpha</span> <span class="op">*</span> <span class="va">sigma</span> <span class="op">/</span> <span class="va">E</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">n_stima</span><span class="op">)</span></span>
+<span><span class="va">n_precisione</span> <span class="op">&lt;-</span> <span class="op">(</span></span>
+<span>  <span class="va">z_critico</span> <span class="op">*</span> <span class="va">sigma_attesa</span> <span class="op">/</span> <span class="va">margine_desiderato</span></span>
+<span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">n_precisione</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 35</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Il risultato va sempre arrotondato all’intero superiore, perché non è possibile reclutare una frazione di partecipante.</p>
-</section><section id="sensibilità-al-margine-di-errore" class="level3" data-number="5.2.2"><h3 data-number="5.2.2" class="anchored" data-anchor-id="sensibilità-al-margine-di-errore">
-<span class="header-section-number">5.2.2</span> Sensibilità al margine di errore</h3>
-<p>La scelta del margine di errore è una decisione sostantiva. Un errore massimo di 1 punto può essere necessario in alcuni contesti, ma eccessivo in altri. La tabella seguente mostra come varia la numerosità al variare di <span class="math inline">\(E\)</span>, mantenendo <span class="math inline">\(\sigma = 6\)</span> e una confidenza al 95%.</p>
+<p>Il calcolo restituisce 35 partecipanti.</p>
+<p>L’arrotondamento va sempre effettuato verso l’alto. Il valore rappresenta la numerosità <strong>analizzabile</strong> richiesta sotto le assunzioni del calcolo, non necessariamente il numero iniziale da reclutare.</p>
+</section><section id="sensibilità-al-margine-di-errore" class="level3" data-number="5.3.2"><h3 data-number="5.3.2" class="anchored" data-anchor-id="sensibilità-al-margine-di-errore">
+<span class="header-section-number">5.3.2</span> Sensibilità al margine di errore</h3>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">margini</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1.5</span>, <span class="fl">2</span>, <span class="fl">2.5</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">risultati_precisione</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
-<span>  `Margine di errore desiderato` <span class="op">=</span> <span class="va">margini</span>,</span>
-<span>  `n minimo` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="op">(</span><span class="va">z_alpha</span> <span class="op">*</span> <span class="va">sigma</span> <span class="op">/</span> <span class="va">margini</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span>  margine_errore <span class="op">=</span> <span class="va">margini</span>,</span>
+<span>  n_minimo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span></span>
+<span>    <span class="op">(</span><span class="va">z_critico</span> <span class="op">*</span> <span class="va">sigma_attesa</span> <span class="op">/</span> <span class="va">margini</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span></span>
-<span>  <span class="va">risultati_precisione</span>,</span>
-<span>  caption <span class="op">=</span> <span class="st">"Numerosità campionaria richiesta al variare del margine di errore."</span></span>
-<span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">risultati_precisione</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="tbl-precision-sensitivity" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-precision-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;5.1: Numerosità richiesta al variare del margine di errore, assumendo deviazione standard pari a 6 e livello di confidenza del 95%.
+</figcaption><div aria-describedby="tbl-precision-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Numerosità campionaria richiesta al variare del margine di errore.</caption>
+<table class="cell caption-top table table-sm table-striped small">
 <thead><tr class="header">
-<th style="text-align: right;">Margine.di.errore.desiderato</th>
-<th style="text-align: right;">n.minimo</th>
+<th style="text-align: right;">margine_errore</th>
+<th style="text-align: right;">n_minimo</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -681,89 +759,125 @@ n = \left(\frac{z_{1-\alpha/2} \sigma}{E}\right)^2.
 </table>
 </div>
 </div>
-<p>La relazione quadratica è il punto da ricordare: <strong>dimezzare il margine di errore richiede circa quattro volte più partecipanti</strong>.</p>
-</section></section><section id="numerosità-campionaria-per-un-test-di-ipotesi" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="numerosità-campionaria-per-un-test-di-ipotesi">
-<span class="header-section-number">5.3</span> Numerosità campionaria per un test di ipotesi</h2>
-<p>Nel capitolo precedente abbiamo introdotto la logica dei test di ipotesi. Un test frequentista parte da un’ipotesi nulla <span class="math inline">\(H_0\)</span>, calcola quanto i dati siano sorprendenti se <span class="math inline">\(H_0\)</span> fosse vera e produce una decisione rispetto a una soglia <span class="math inline">\(\alpha\)</span>.</p>
-<p>Quando pianifichiamo uno studio, però, non basta controllare l’errore di I tipo. Dobbiamo anche chiederci se lo studio avrà una probabilità ragionevole di rilevare un effetto quando questo è effettivamente presente.</p>
-<section id="errori-e-potenza" class="level3" data-number="5.3.1"><h3 data-number="5.3.1" class="anchored" data-anchor-id="errori-e-potenza">
-<span class="header-section-number">5.3.1</span> Errori e potenza</h3>
-<p>Nella logica frequentista dei test, esistono due tipi di errore:</p>
+</figure>
+</div>
+</div>
+<p><a href="#tbl-precision-sensitivity" class="quarto-xref">Tabella&nbsp;<span>5.1</span></a> rende visibile la relazione quadratica: una richiesta apparentemente modesta di maggiore precisione può aumentare molto il campione necessario.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Una formula introduttiva, non universale">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Una formula introduttiva, non universale
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La formula usa <span class="math inline">\(\sigma\)</span> come se fosse nota e assume un modello elementare con osservazioni indipendenti.</p>
+<p>Nella pratica:</p>
 <ul>
 <li>
-<strong>Errore di I tipo</strong>: rifiutare <span class="math inline">\(H_0\)</span> quando <span class="math inline">\(H_0\)</span> è vera. La probabilità massima accettata di questo errore è indicata con <span class="math inline">\(\alpha\)</span>.</li>
-<li>
-<strong>Errore di II tipo</strong>: non rifiutare <span class="math inline">\(H_0\)</span> quando esiste un effetto reale. La probabilità di questo errore è indicata con <span class="math inline">\(\beta\)</span>.</li>
+<span class="math inline">\(\sigma\)</span> deve essere stimata o ipotizzata;</li>
+<li>l’ampiezza effettiva dell’intervallo può essere casuale;</li>
+<li>l’uso della distribuzione <em>t</em> può richiedere un calcolo iterativo;</li>
+<li>clustering, misure ripetute, pesi campionari o dati mancanti modificano la precisione;</li>
+<li>altri parametri richiedono formule o simulazioni differenti.</li>
 </ul>
-<p>La <strong>potenza statistica</strong> è:</p>
+</div>
+</div>
+</section></section><section id="sec-freq-sample-size-power" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="sec-freq-sample-size-power">
+<span class="header-section-number">5.4</span> Pianificare la potenza di un test</h2>
+<p>Per una specifica alternativa, la potenza è:</p>
 <p><span class="math display">\[
-1 - \beta.
+1-\beta
+=
+P(\text{rifiutare }H_0\mid\theta=\theta_1),
 \]</span></p>
-<p>Essa rappresenta la probabilità di ottenere un risultato statisticamente significativo quando l’effetto specificato nella pianificazione è reale.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>Che cosa significa potenza 80%?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Una potenza dell’80% non significa che l’ipotesi alternativa abbia una probabilità 0.80 di essere vera. Significa che, se l’effetto specificato esistesse davvero e se ripetessimo molte volte lo stesso studio, il test rifiuterebbe <span class="math inline">\(H_0\)</span> in circa l’80% degli studi.</p>
-<p>Anche in questo caso l’interpretazione è frequentista e riguarda il comportamento della procedura nel lungo periodo.</p>
-</div>
-</div>
-</section><section id="da-cosa-dipende-la-potenza" class="level3" data-number="5.3.2"><h3 data-number="5.3.2" class="anchored" data-anchor-id="da-cosa-dipende-la-potenza">
-<span class="header-section-number">5.3.2</span> Da cosa dipende la potenza</h3>
-<p>La potenza dipende da diversi elementi:</p>
-<ol type="1">
-<li>
-<strong>Dimensione dell’effetto</strong>: gli effetti più grandi sono più facili da rilevare;</li>
-<li>
-<strong>Variabilità dei dati</strong>: maggiore è la variabilità, più difficile è distinguere il segnale dal rumore.</li>
-<li>
-<strong>Numerosità campionaria</strong>: campioni più grandi aumentano la potenza.</li>
-<li>
-<strong>Livello di significatività <span class="math inline">\(\alpha\)</span></strong>: soglie più stringenti riducono la probabilità di rifiutare <span class="math inline">\(H_0\)</span>.</li>
-<li>
-<strong>Tipo di test</strong>: i test a una coda, i test a due code, i gruppi indipendenti e le misure appaiate hanno requisiti diversi.</li>
-</ol>
-<p>In pratica, la pianificazione richiede di specificare quale effetto sarebbe abbastanza rilevante da meritare attenzione. Questo valore è spesso chiamato <strong>effetto minimo di interesse</strong> (<em>smallest effect size of interest</em>, SESOI).</p>
-</section></section><section id="effetto-minimo-di-interesse" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="effetto-minimo-di-interesse">
-<span class="header-section-number">5.4</span> Effetto minimo di interesse</h2>
-<p>Un errore comune è quello di pianificare lo studio sulla base di un effetto atteso ottimistico, magari tratto da studi precedenti con campioni piccoli. Ciò può produrre stime di numerosità troppo basse.</p>
-<p>Una strategia più trasparente è chiedersi:</p>
+<p>dove <span class="math inline">\(\theta_1\)</span> indica il valore del parametro assunto nella pianificazione.</p>
+<p>Una potenza pari a 0.80 significa:</p>
 <blockquote class="blockquote">
-<p>Qual è il più piccolo effetto che sarebbe teoricamente, clinicamente o praticamente rilevante?</p>
+<p>Se l’effetto specificato, il modello e il disegno fossero quelli assunti, circa l’80% delle ripetizioni produrrebbe un risultato che rifiuta <span class="math inline">\(H_0\)</span> al livello scelto.</p>
 </blockquote>
-<p>Nel caso di una scala psicologica, una differenza di 0.2 punti potrebbe essere rilevabile statisticamente con campioni molto grandi, ma priva di significato pratico. Una differenza di 3 punti, invece, potrebbe essere abbastanza grande da modificare una decisione di tipo clinico o educativo.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<p>Non significa:</p>
+<ul>
+<li>che <span class="math inline">\(H_1\)</span> abbia probabilità 0.80;</li>
+<li>che lo studio abbia l’80% di probabilità di essere «corretto»;</li>
+<li>che, dopo un risultato significativo, vi sia l’80% di probabilità che l’effetto sia reale.</li>
+</ul>
+<section id="la-potenza-è-una-funzione" class="level3" data-number="5.4.1"><h3 data-number="5.4.1" class="anchored" data-anchor-id="la-potenza-è-una-funzione">
+<span class="header-section-number">5.4.1</span> La potenza è una funzione</h3>
+<p>La potenza cambia al cambiare del valore vero dell’effetto. Uno studio non è semplicemente «potente» o «non potente» senza specificare rispetto a quale alternativa.</p>
+<p>Dipende inoltre da:</p>
+<ol type="1">
+<li>dimensione dell’effetto;</li>
+<li>variabilità;</li>
+<li>numerosità;</li>
+<li>livello <span class="math inline">\(\alpha\)</span>;</li>
+<li>test unilaterale o bilaterale;</li>
+<li>allocazione tra gruppi;</li>
+<li>struttura di dipendenza e affidabilità della misura.</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled" title="Potenza per rilevare che cosa?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>La numerosità dipende dalla domanda sostantiva
+<span class="screen-reader-only">Importante</span>Potenza per rilevare che cosa?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La potenza non è solo un problema tecnico. Dipende da una decisione di natura teorica: che tipo di effetto vogliamo essere in grado di rilevare?</p>
-<p>Per questo motivo, il calcolo di <span class="math inline">\(n\)</span> dovrebbe essere accompagnato da una giustificazione della dimensione dell’effetto scelta.</p>
+<p>Dire «lo studio ha potenza 0.80» è incompleto.</p>
+<p>Una formulazione interpretabile è:</p>
+<blockquote class="blockquote">
+<p>Il test bilaterale di livello 0.05 ha potenza 0.80 per una differenza di 3 punti, assumendo deviazione standard pari a 6 e il modello specificato.</p>
+</blockquote>
 </div>
 </div>
-</section><section id="esempio-test-t-per-un-campione" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="esempio-test-t-per-un-campione">
-<span class="header-section-number">5.5</span> Esempio: test t per un campione</h2>
-<p>Supponiamo di voler confrontare il punteggio medio di autostima di un gruppo di studenti con un valore di riferimento pari a 24. Consideriamo rilevante una differenza di almeno 3 punti. Supponiamo che <span class="math inline">\(\sigma = 6\)</span>, <span class="math inline">\(\alpha = 0.05\)</span> e che desideriamo una potenza pari a 0.80.</p>
+</section></section><section id="sec-freq-sesoi" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="sec-freq-sesoi">
+<span class="header-section-number">5.5</span> Scegliere l’effetto bersaglio</h2>
+<p>La numerosità non dovrebbe essere pianificata automaticamente sull’effetto osservato in un singolo studio precedente. Gli effetti pubblicati, soprattutto se ottenuti con campioni piccoli o selezionati perché significativi, possono essere sovrastimati.</p>
+<p>Una strategia più trasparente è definire il <strong>più piccolo effetto di interesse</strong> (<em>smallest effect size of interest</em>, SESOI):</p>
+<blockquote class="blockquote">
+<p>Qual è il più piccolo effetto che cambierebbe una conclusione teorica, clinica, educativa o decisionale?</p>
+</blockquote>
+<p>La risposta può derivare da:</p>
+<ul>
+<li>una soglia di rilevanza clinica o pratica;</li>
+<li>costi e benefici di una decisione;</li>
+<li>precisione dello strumento;</li>
+<li>confronto con effetti già noti;</li>
+<li>vincoli derivati da una teoria;</li>
+<li>consenso tra esperti e portatori di interesse.</li>
+</ul>
+<p>Quando possibile, è preferibile motivare l’effetto nella scala originale. Un effetto standardizzato dipende anche dalla deviazione standard prevista: lo stesso cambiamento grezzo può corrispondere a valori standardizzati diversi in popolazioni differenti.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Convenzioni non equivalgono a rilevanza">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Convenzioni non equivalgono a rilevanza
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Etichette come effetto «piccolo», «medio» o «grande» possono fornire un riferimento descrittivo, ma non stabiliscono quale effetto sia importante per la specifica domanda di ricerca.</p>
+</div>
+</div>
+</section><section id="sec-freq-power-one-sample" class="level2" data-number="5.6"><h2 data-number="5.6" class="anchored" data-anchor-id="sec-freq-power-one-sample">
+<span class="header-section-number">5.6</span> Esempio: test <em>t</em> per una media</h2>
+<p>Vogliamo confrontare una media con un valore di riferimento. Consideriamo rilevante una differenza di 3 punti e prevediamo una deviazione standard pari a 6. Pianifichiamo un test bilaterale con <span class="math inline">\(\alpha=0.05\)</span> e potenza 0.80.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
-<span>  delta <span class="op">=</span> <span class="fl">3</span>,            <span class="co"># Differenza minima da rilevare</span></span>
-<span>  sd <span class="op">=</span> <span class="fl">6</span>,               <span class="co"># Deviazione standard attesa</span></span>
-<span>  sig.level <span class="op">=</span> <span class="fl">0.05</span>,     <span class="co"># Errore di I tipo</span></span>
-<span>  power <span class="op">=</span> <span class="fl">0.80</span>,         <span class="co"># Potenza desiderata</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">piano_un_campione</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
+<span>  delta <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  sd <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>  sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>  power <span class="op">=</span> <span class="fl">0.80</span>,</span>
 <span>  type <span class="op">=</span> <span class="st">"one.sample"</span>,</span>
 <span>  alternative <span class="op">=</span> <span class="st">"two.sided"</span></span>
 <span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">piano_un_campione</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;      One-sample t test power calculation </span></span>
 <span><span class="co">#&gt; </span></span>
@@ -772,21 +886,26 @@ n = \left(\frac{z_{1-\alpha/2} \sigma}{E}\right)^2.
 <span><span class="co">#&gt;              sd = 6</span></span>
 <span><span class="co">#&gt;       sig.level = 0.05</span></span>
 <span><span class="co">#&gt;           power = 0.8</span></span>
-<span><span class="co">#&gt;     alternative = two.sided</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt;     alternative = two.sided</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">piano_un_campione</span><span class="op">$</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 34</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Il risultato fornisce il numero di elementi richiesto per il test su un campione. L’interpretazione corretta è la seguente: se la differenza reale fosse pari a 3 punti, il test avrebbe circa l’80% di probabilità di risultare significativo al livello <span class="math inline">\(\alpha = 0.05\)</span>.</p>
-</section><section id="esempio-confronto-tra-due-gruppi-indipendenti" class="level2" data-number="5.6"><h2 data-number="5.6" class="anchored" data-anchor-id="esempio-confronto-tra-due-gruppi-indipendenti">
-<span class="header-section-number">5.6</span> Esempio: confronto tra due gruppi indipendenti</h2>
-<p>Consideriamo ora uno studio che confronta due gruppi indipendenti, ad esempio un gruppo che riceve un intervento e un gruppo di controllo. Supponiamo di considerare rilevante una differenza di almeno 5 punti e di aspettarci una deviazione standard comune pari a 6.</p>
+<p>Il risultato richiede 34 osservazioni analizzabili.</p>
+<p>L’interpretazione è condizionale: se la differenza vera fosse 3, la deviazione standard 6 e le assunzioni del test fossero appropriate, il test rifiuterebbe <span class="math inline">\(H_0\)</span> in circa l’80% delle ripetizioni.</p>
+</section><section id="sec-freq-power-two-sample" class="level2" data-number="5.7"><h2 data-number="5.7" class="anchored" data-anchor-id="sec-freq-power-two-sample">
+<span class="header-section-number">5.7</span> Esempio: due gruppi indipendenti</h2>
+<p>Consideriamo ora un confronto tra due gruppi di uguale numerosità. L’effetto minimo di interesse è una differenza di 5 punti e la deviazione standard comune prevista è 6.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
-<span>  delta <span class="op">=</span> <span class="fl">5</span>,            <span class="co"># Differenza tra le medie dei due gruppi</span></span>
-<span>  sd <span class="op">=</span> <span class="fl">6</span>,               <span class="co"># Deviazione standard comune attesa</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">piano_due_gruppi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
+<span>  delta <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  sd <span class="op">=</span> <span class="fl">6</span>,</span>
 <span>  sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
 <span>  power <span class="op">=</span> <span class="fl">0.80</span>,</span>
 <span>  type <span class="op">=</span> <span class="st">"two.sample"</span>,</span>
 <span>  alternative <span class="op">=</span> <span class="st">"two.sided"</span></span>
 <span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">piano_due_gruppi</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;      Two-sample t test power calculation </span></span>
 <span><span class="co">#&gt; </span></span>
@@ -797,44 +916,50 @@ n = \left(\frac{z_{1-\alpha/2} \sigma}{E}\right)^2.
 <span><span class="co">#&gt;           power = 0.8</span></span>
 <span><span class="co">#&gt;     alternative = two.sided</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; NOTE: n is number in *each* group</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; NOTE: n is number in *each* group</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">piano_due_gruppi</span><span class="op">$</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 24</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Nel caso <code>type = "two.sample"</code>, il valore di <code>n</code> restituito da <code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code> indica la numerosità <strong>per ciascun gruppo</strong>, non il totale complessivo.</p>
-<section id="sensibilità-alla-dimensione-delleffetto" class="level3" data-number="5.6.1"><h3 data-number="5.6.1" class="anchored" data-anchor-id="sensibilità-alla-dimensione-delleffetto">
-<span class="header-section-number">5.6.1</span> Sensibilità alla dimensione dell’effetto</h3>
-<p>La numerosità richiesta cambia molto in base all’effetto minimo che si vuole rilevare. Riprendiamo l’esempio precedente, mantenendo <span class="math inline">\(\sigma = 6\)</span>, <span class="math inline">\(\alpha = 0.05\)</span> e potenza 0.80.</p>
+<p>Il risultato richiede 24 partecipanti analizzabili <strong>per gruppo</strong>, quindi 48 complessivi.</p>
+<p>Questo esempio prepara il capitolo successivo, nel quale applicheremo il test <em>t</em> al confronto tra gruppi indipendenti. Qui l’obiettivo non è ancora eseguire il test, ma capire quali assunzioni rendono interpretabile il numero di partecipanti.</p>
+<section id="sensibilità-alleffetto-bersaglio" class="level3" data-number="5.7.1"><h3 data-number="5.7.1" class="anchored" data-anchor-id="sensibilità-alleffetto-bersaglio">
+<span class="header-section-number">5.7.1</span> Sensibilità all’effetto bersaglio</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">delta_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">differenze</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">n_per_group</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">delta_values</span>, <span class="kw">function</span><span class="op">(</span><span class="va">d</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
-<span>    delta <span class="op">=</span> <span class="va">d</span>,</span>
-<span>    sd <span class="op">=</span> <span class="fl">6</span>,</span>
-<span>    sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
-<span>    power <span class="op">=</span> <span class="fl">0.80</span>,</span>
-<span>    type <span class="op">=</span> <span class="st">"two.sample"</span>,</span>
-<span>    alternative <span class="op">=</span> <span class="st">"two.sided"</span></span>
-<span>  <span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">n</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">risultati_potenza</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
-<span>  `Differenza minima da rilevare` <span class="op">=</span> <span class="va">delta_values</span>,</span>
-<span>  `n per gruppo` <span class="op">=</span> <span class="va">n_per_group</span>,</span>
-<span>  `n totale` <span class="op">=</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">n_per_group</span></span>
+<span><span class="va">n_per_gruppo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">vapply</a></span><span class="op">(</span></span>
+<span>  <span class="va">differenze</span>,</span>
+<span>  <span class="kw">function</span><span class="op">(</span><span class="va">differenza</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">risultato</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
+<span>      delta <span class="op">=</span> <span class="va">differenza</span>,</span>
+<span>      sd <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>      sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>      power <span class="op">=</span> <span class="fl">0.80</span>,</span>
+<span>      type <span class="op">=</span> <span class="st">"two.sample"</span>,</span>
+<span>      alternative <span class="op">=</span> <span class="st">"two.sided"</span></span>
+<span>    <span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">risultato</span><span class="op">$</span><span class="va">n</span><span class="op">)</span></span>
+<span>  <span class="op">}</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span></span>
-<span>  <span class="va">risultati_potenza</span>,</span>
-<span>  caption <span class="op">=</span> <span class="st">"Numerosità richiesta per un test t a due campioni al variare della differenza minima rilevante."</span></span>
-<span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="va">risultati_potenza</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  differenza_bersaglio <span class="op">=</span> <span class="va">differenze</span>,</span>
+<span>  n_per_gruppo <span class="op">=</span> <span class="va">n_per_gruppo</span>,</span>
+<span>  n_totale <span class="op">=</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">n_per_gruppo</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">risultati_potenza</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="tbl-power-sensitivity" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-power-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;5.2: Numerosità per gruppo richiesta al variare della differenza bersaglio, assumendo deviazione standard pari a 6, test bilaterale, livello 0.05 e potenza 0.80.
+</figcaption><div aria-describedby="tbl-power-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Numerosità richiesta per un test t a due campioni al variare della differenza minima rilevante.</caption>
+<table class="cell caption-top table table-sm table-striped small">
 <thead><tr class="header">
-<th style="text-align: right;">Differenza.minima.da.rilevare</th>
-<th style="text-align: right;">n.per.gruppo</th>
-<th style="text-align: right;">n.totale</th>
+<th style="text-align: right;">differenza_bersaglio</th>
+<th style="text-align: right;">n_per_gruppo</th>
+<th style="text-align: right;">n_totale</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -866,119 +991,264 @@ n = \left(\frac{z_{1-\alpha/2} \sigma}{E}\right)^2.
 </table>
 </div>
 </div>
-<p>Questa tabella mostra perché è fondamentale dichiarare in anticipo l’effetto che si intende rilevare. Gli effetti piccoli richiedono campioni molto più grandi.</p>
-</section></section><section id="potenza-numerosità-e-interpretazione-dei-risultati" class="level2" data-number="5.7"><h2 data-number="5.7" class="anchored" data-anchor-id="potenza-numerosità-e-interpretazione-dei-risultati">
-<span class="header-section-number">5.7</span> Potenza, numerosità e interpretazione dei risultati</h2>
-<p>Uno studio con bassa potenza presenta problemi per almeno due ragioni.</p>
-<p>In primo luogo, ha una probabilità elevata di non rilevare effetti che sarebbero invece rilevanti. In questo caso, un risultato non significativo è difficile da interpretare: potrebbe indicare l’assenza di un effetto oppure semplicemente la mancanza di informazioni.</p>
-<p>In secondo luogo, nei contesti in cui vengono pubblicati o enfatizzati solo i risultati significativi, gli studi con bassa potenza tendono a produrre stime instabili e spesso sovrastimate. Questo problema è particolarmente rilevante nella ricerca psicologica, dove i campioni sono piccoli e i gradi di libertà analitici sono molteplici, il che può rendere fragile l’evidenza empirica.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avviso</span>Non significativo non significa assenza di effetto
+</figure>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>Un test non significativo non dimostra che l’effetto sia nullo. Indica soltanto che, dati il modello, la soglia <span class="math inline">\(\alpha\)</span>, la numerosità e la variabilità osservate, non abbiamo ottenuto un risultato abbastanza estremo da poter rifiutare l’ipotesi <span class="math inline">\(H_0\)</span>.</p>
-<p>Per valutare se i dati siano compatibili con effetti piccoli, medi o nulli, sono necessarie anche stime, intervalli di confidenza e, in un quadro bayesiano, distribuzioni posteriori o fattori di Bayes.</p>
-</div>
-</div>
-</section><section id="analisi-di-potenza-post-hoc" class="level2" data-number="5.8"><h2 data-number="5.8" class="anchored" data-anchor-id="analisi-di-potenza-post-hoc">
-<span class="header-section-number">5.8</span> Analisi di potenza post-hoc</h2>
-<p>Dopo aver completato uno studio, può essere naturale chiedersi: “Qual era la potenza osservata?”. Tuttavia, questa pratica è di utilità limitata quando la potenza viene calcolata utilizzando l’effetto osservato nello stesso studio.</p>
-<p>Il problema è che la potenza post hoc così definita è quasi interamente determinata dal valore-<em>p</em>: se il risultato è significativo, la potenza osservata tenderà a risultare alta; se il risultato non è significativo, tenderà a risultare bassa. In questo senso, non fornisce informazioni aggiuntive rispetto al risultato già ottenuto.</p>
+<p><a href="#tbl-power-sensitivity" class="quarto-xref">Tabella&nbsp;<span>5.2</span></a> mostra che la numerosità dipende fortemente dall’effetto scelto. Questa sensibilità non è un difetto del software: riflette il fatto che effetti più piccoli sono più difficili da distinguere dalla variabilità campionaria.</p>
+</section><section id="curve-di-potenza" class="level3" data-number="5.7.2"><h3 data-number="5.7.2" class="anchored" data-anchor-id="curve-di-potenza">
+<span class="header-section-number">5.7.2</span> Curve di potenza</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Esempio illustrativo: studio con n = 30 per gruppo,</span></span>
-<span><span class="co"># differenza osservata = 4 e sd = 6.</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
-<span>  n <span class="op">=</span> <span class="fl">30</span>,</span>
-<span>  delta <span class="op">=</span> <span class="fl">4</span>,</span>
-<span>  sd <span class="op">=</span> <span class="fl">6</span>,</span>
-<span>  sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
-<span>  type <span class="op">=</span> <span class="st">"two.sample"</span>,</span>
-<span>  alternative <span class="op">=</span> <span class="st">"two.sided"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">griglia_potenza</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span></span>
+<span>  n_per_gruppo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">100</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  differenza <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;      Two-sample t test power calculation </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;               n = 30</span></span>
-<span><span class="co">#&gt;           delta = 4</span></span>
-<span><span class="co">#&gt;              sd = 6</span></span>
-<span><span class="co">#&gt;       sig.level = 0.05</span></span>
-<span><span class="co">#&gt;           power = 0.719</span></span>
-<span><span class="co">#&gt;     alternative = two.sided</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; NOTE: n is number in *each* group</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span></span>
+<span><span class="va">griglia_potenza</span><span class="op">$</span><span class="va">potenza</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mapply.html">mapply</a></span><span class="op">(</span></span>
+<span>  <span class="kw">function</span><span class="op">(</span><span class="va">n</span>, <span class="va">differenza</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
+<span>      n <span class="op">=</span> <span class="va">n</span>,</span>
+<span>      delta <span class="op">=</span> <span class="va">differenza</span>,</span>
+<span>      sd <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>      sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>      type <span class="op">=</span> <span class="st">"two.sample"</span>,</span>
+<span>      alternative <span class="op">=</span> <span class="st">"two.sided"</span></span>
+<span>    <span class="op">)</span><span class="op">$</span><span class="va">power</span></span>
+<span>  <span class="op">}</span>,</span>
+<span>  n <span class="op">=</span> <span class="va">griglia_potenza</span><span class="op">$</span><span class="va">n_per_gruppo</span>,</span>
+<span>  differenza <span class="op">=</span> <span class="va">griglia_potenza</span><span class="op">$</span><span class="va">differenza</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">griglia_potenza</span><span class="op">$</span><span class="va">differenza</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span></span>
+<span>  <span class="va">griglia_potenza</span><span class="op">$</span><span class="va">differenza</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span></span>
+<span>  <span class="va">griglia_potenza</span>,</span>
+<span>  <span class="fu">aes</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">n_per_gruppo</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">potenza</span>,</span>
+<span>    linetype <span class="op">=</span> <span class="va">differenza</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0.80</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Partecipanti analizzabili per gruppo"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Potenza"</span>,</span>
+<span>    linetype <span class="op">=</span> <span class="st">"Differenza vera"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-power-curves" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Tre curve crescenti mostrano che la potenza aumenta con la numerosità e con la differenza tra le medie." data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-power-curves-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="05_sample_size_files/figure-html/fig-power-curves-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figura&nbsp;5.1: Potenza di un test t bilaterale per due gruppi di uguale numerosità, per tre differenze vere e deviazione standard pari a 6."><img src="05_sample_size_files/figure-html/fig-power-curves-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%" alt="Tre curve crescenti mostrano che la potenza aumenta con la numerosità e con la differenza tra le medie."></a>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-power-curves-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5.1: Potenza di un test t bilaterale per due gruppi di uguale numerosità, per tre differenze vere e deviazione standard pari a 6.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-power-curves" class="quarto-xref">Figura&nbsp;<span>5.1</span></a> rende evidente che la potenza non è una caratteristica fissa del disegno: ogni possibile effetto genera una curva differente.</p>
+</section></section><section id="sec-freq-recruitment-target" class="level2" data-number="5.8"><h2 data-number="5.8" class="anchored" data-anchor-id="sec-freq-recruitment-target">
+<span class="header-section-number">5.8</span> Dalla numerosità analitica al reclutamento</h2>
+<p>Il valore restituito dal calcolo indica generalmente quante osservazioni <strong>utilizzabili nell’analisi</strong> sono necessarie. Il numero da reclutare può essere maggiore.</p>
+<p>Se prevediamo una quota di perdita <span class="math inline">\(r\)</span>, un calcolo elementare è:</p>
+<p><span class="math display">\[
+n_{\text{reclutare}}
+=
+\left\lceil
+\frac{n_{\text{analizzabile}}}{1-r}
+\right\rceil.
+\]</span></p>
+<p>Per esempio, se servono 48 partecipanti analizzabili e prevediamo il 15% di abbandoni o dati inutilizzabili:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n_analizzabile</span> <span class="op">&lt;-</span> <span class="fl">48</span></span>
+<span><span class="va">perdita_attesa</span> <span class="op">&lt;-</span> <span class="fl">0.15</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span></span>
+<span>  <span class="va">n_analizzabile</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">perdita_attesa</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 57</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Occorre reclutare almeno 57 partecipanti, assumendo che la perdita sia plausibilmente vicina al 15%.</p>
+<p>Questo aggiustamento non risolve automaticamente i problemi dei dati mancanti. Se l’abbandono è collegato all’esito o al trattamento, può introdurre bias oltre a ridurre la numerosità.</p>
+<section id="disegni-complessi" class="level3" data-number="5.8.1"><h3 data-number="5.8.1" class="anchored" data-anchor-id="disegni-complessi">
+<span class="header-section-number">5.8.1</span> Disegni complessi</h3>
+<p>La numerosità richiesta può aumentare quando le osservazioni non forniscono informazione indipendente. Esempi:</p>
+<ul>
+<li>studenti raggruppati in classi;</li>
+<li>pazienti trattati dagli stessi terapeuti;</li>
+<li>misure ripetute sulla stessa persona;</li>
+<li>coppie o famiglie;</li>
+<li>più esiti o confronti primari.</li>
+</ul>
+<p>In questi casi occorre pianificare usando un modello coerente con il disegno, spesso mediante formule specifiche o simulazioni. Applicare la formula per osservazioni indipendenti e aumentare arbitrariamente <span class="math inline">\(n\)</span> non garantisce il controllo desiderato.</p>
+</section></section><section id="sec-freq-planning-sensitivity" class="level2" data-number="5.9"><h2 data-number="5.9" class="anchored" data-anchor-id="sec-freq-planning-sensitivity">
+<span class="header-section-number">5.9</span> Analisi di sensibilità della pianificazione</h2>
+<p>Deviazione standard, tasso di abbandono ed effetto bersaglio sono spesso incerti prima dello studio. Presentare un unico valore di <span class="math inline">\(n\)</span> può nascondere questa incertezza.</p>
+<p>È più informativo valutare scenari:</p>
+<ul>
+<li>ottimistico;</li>
+<li>centrale;</li>
+<li>prudente.</li>
+</ul>
+<p>Per esempio, possiamo calcolare la numerosità per più valori plausibili della deviazione standard o dell’effetto. La scelta finale dovrebbe essere accompagnata dalle assunzioni che la sostengono.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Il calcolo è una conseguenza delle assunzioni">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avviso</span>Quando usare l’analisi di potenza
+<span class="screen-reader-only">Nota</span>Il calcolo è una conseguenza delle assunzioni
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>L’analisi di potenza è utile soprattutto <strong>prima</strong> di raccogliere i dati, quando serve a pianificare lo studio.</p>
-<p>Dopo l’osservazione dei dati, è generalmente più informativo riportare la stima dell’effetto, il suo intervallo di confidenza e una discussione sulla rilevanza sostanziale dell’effetto osservato.</p>
+<p>Un risultato come «servono 48 partecipanti» dovrebbe essere letto come abbreviazione di una frase più completa:</p>
+<blockquote class="blockquote">
+<p>Servono 48 partecipanti analizzabili per il test, l’effetto, la variabilità, l’allocazione, <span class="math inline">\(\alpha\)</span> e la potenza specificati.</p>
+</blockquote>
+<p>Cambiare una di queste quantità può cambiare sostanzialmente il risultato.</p>
 </div>
 </div>
-</section><section id="limiti-della-pianificazione-frequentista" class="level2" data-number="5.9"><h2 data-number="5.9" class="anchored" data-anchor-id="limiti-della-pianificazione-frequentista">
-<span class="header-section-number">5.9</span> Limiti della pianificazione frequentista</h2>
-<p>La pianificazione frequentista è utile perché costringe il ricercatore a rendere espliciti alcuni elementi del disegno:</p>
+</section><section id="sec-freq-observed-power" class="level2" data-number="5.10"><h2 data-number="5.10" class="anchored" data-anchor-id="sec-freq-observed-power">
+<span class="header-section-number">5.10</span> Perché la potenza post hoc è poco informativa?</h2>
+<p>Dopo uno studio, talvolta si sostituisce nella formula di potenza l’effetto osservato e si calcola la cosiddetta <em>potenza osservata</em>.</p>
+<p>Questa quantità è quasi interamente determinata dalla statistica test o dal valore-<em>p</em>:</p>
 <ul>
-<li>quale errore di I tipo è disposto ad accettare;</li>
-<li>quale potenza desidera ottenere;</li>
-<li>quale effetto considera sufficientemente importante;</li>
-<li>quale variabilità si aspetta nei dati.</li>
+<li>un risultato significativo tende a produrre alta potenza osservata;</li>
+<li>un risultato non significativo tende a produrre bassa potenza osservata.</li>
 </ul>
-<p>Tuttavia, questa impostazione presenta anche limiti importanti.</p>
-<ol type="1">
-<li><p><strong>Richiede valori ipotetici prima dello studio</strong>. La deviazione standard e l’effetto minimo devono essere specificati in anticipo, spesso sulla base di evidenze incerte.</p></li>
-<li><p><strong>Dipende da una soglia decisionale</strong>. La pianificazione è spesso costruita attorno alla probabilità di ottenere <span class="math inline">\(p &lt; \alpha\)</span>, non direttamente attorno alla precisione della conoscenza acquisita.</p></li>
-<li><p><strong>Può incoraggiare una lettura dicotomica</strong>. Uno studio viene talvolta interpretato come “riuscito” o “fallito” in base alla significatività, anche se l’informazione contenuta nei dati è più sfumata.</p></li>
-<li><p><strong>Richiede attenzione allo stopping rule</strong>. Se si decide di aggiungere partecipanti dopo aver guardato i risultati, il controllo frequentista dell’errore di I tipo può non essere più valido, a meno che il disegno sequenziale sia stato pianificato esplicitamente.</p></li>
-</ol></section><section id="collegamento-con-la-prospettiva-bayesiana" class="level2" data-number="5.10"><h2 data-number="5.10" class="anchored" data-anchor-id="collegamento-con-la-prospettiva-bayesiana">
-<span class="header-section-number">5.10</span> Collegamento con la prospettiva bayesiana</h2>
-<p>In un approccio bayesiano, la pianificazione può essere formulata in modo diverso. Invece di domandarci soltanto quale numerosità sia necessaria per ottenere <span class="math inline">\(p &lt; \alpha\)</span> con una certa probabilità, possiamo chiederci:</p>
+<p>Non aggiunge quindi una valutazione indipendente dell’informazione contenuta nei dati.</p>
+<p>Dopo la raccolta, è generalmente più utile esaminare:</p>
 <ul>
-<li>quanta incertezza posteriore siamo disposti ad accettare?</li>
-<li>quale probabilità vogliamo avere di raggiungere una conclusione sufficientemente precisa?</li>
-<li>come possiamo incorporare le conoscenze precedenti nella pianificazione?</li>
-<li>in quali condizioni è ragionevole aggiornare sequenzialmente le credenze man mano che arrivano nuovi dati?</li>
+<li>la stima dell’effetto;</li>
+<li>l’intervallo di confidenza;</li>
+<li>la compatibilità con effetti scientificamente rilevanti;</li>
+<li>le assunzioni e la qualità del disegno.</li>
 </ul>
-<p>Tutto ciò non rende inutile l’analisi frequentista della potenza. La rende piuttosto uno strumento da comprendere nel suo ambito: serve a progettare procedure che abbiano determinate proprietà di errore nel lungo periodo. La prospettiva bayesiana, invece, sposta l’attenzione sull’incertezza relativa ai parametri e sulle decisioni da prendere alla luce della distribuzione a posteriori.</p>
-</section><section id="riepilogo" class="level2" data-number="5.11"><h2 data-number="5.11" class="anchored" data-anchor-id="riepilogo">
-<span class="header-section-number">5.11</span> Riepilogo</h2>
-<p>In questo capitolo abbiamo visto che:</p>
+<p>Una nuova analisi di potenza può essere utile per pianificare <strong>uno studio futuro</strong>, purché non utilizzi meccanicamente l’effetto instabile del primo studio come verità nota.</p>
+</section><section id="sec-freq-sample-size-bayes" class="level2" data-number="5.11"><h2 data-number="5.11" class="anchored" data-anchor-id="sec-freq-sample-size-bayes">
+<span class="header-section-number">5.11</span> Pianificazione frequentista e bayesiana</h2>
+<p>La pianificazione frequentista formula obiettivi come:</p>
 <ul>
-<li>la numerosità campionaria può essere pianificata per ottenere una certa precisione o una certa potenza;</li>
-<li>la precisione di una stima dipende dalla variabilità, dal margine di errore desiderato e dal livello di confidenza;</li>
-<li>la potenza è <span class="math inline">\(1 - \beta\)</span>, ovvero la probabilità di rifiutare <span class="math inline">\(H_0\)</span> quando l’effetto specificato è reale;</li>
-<li>la potenza dipende dalla dimensione dell’effetto, dalla variabilità, dalla numerosità, da <span class="math inline">\(\alpha\)</span> e dal tipo di test;</li>
-<li>l’effetto minimo di interesse deve essere giustificato sia dal punto di vista teorico che pratico, e non deve essere scelto solo per ottenere un campione gestibile;</li>
-<li>l’analisi di potenza post-hoc, basata sull’effetto osservato, ha un’utilità limitata;</li>
-<li>la pianificazione frequentista è utile, ma resta centrata sul comportamento delle procedure decisionali nel lungo periodo.</li>
+<li>raggiungere una determinata copertura o ampiezza attesa;</li>
+<li>controllare <span class="math inline">\(\alpha\)</span>;</li>
+<li>ottenere una certa potenza rispetto a un effetto bersaglio.</li>
 </ul>
-<p>Nel prossimo capitolo useremo questi concetti in un’applicazione concreta: il confronto tra due gruppi indipendenti.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Informazioni sull'ambiente di sviluppo">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<p>Una pianificazione bayesiana può invece definire criteri relativi a:</p>
+<ul>
+<li>ampiezza della distribuzione a posteriori;</li>
+<li>probabilità di superare una soglia pratica;</li>
+<li>probabilità predittiva di raggiungere una decisione;</li>
+<li>utilità attesa delle possibili decisioni.</li>
+</ul>
+<p>Le due prospettive possono anche essere valutate con simulazioni comuni. Una procedura bayesiana può essere studiata per le sue proprietà frequentiste, e una pianificazione frequentista può incorporare informazioni precedenti nella scelta degli scenari.</p>
+<p>La differenza centrale non è che una prospettiva pianifichi e l’altra no. È quale criterio definisce uno studio sufficientemente informativo.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Un confronto senza scorciatoie">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Informazioni sull’ambiente di sviluppo
+<span class="screen-reader-only">Importante</span>Un confronto senza scorciatoie
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La potenza non risponde direttamente alla domanda «quanta incertezza resterà sul parametro?».</p>
+<p>Una distribuzione a posteriori stretta, d’altra parte, non garantisce automaticamente adeguata copertura frequentista o protezione da un modello mal specificato.</p>
+<p>Entrambe le pianificazioni richiedono obiettivi sostantivi, un modello plausibile e assunzioni esplicite.</p>
+</div>
+</div>
+</section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
+<p>La numerosità campionaria non è una proprietà generale di un argomento di ricerca. È il risultato di una pianificazione riferita a una specifica domanda, procedura e serie di assunzioni.</p>
+<p>Abbiamo distinto due obiettivi:</p>
+<ol type="1">
+<li>ottenere una precisione prefissata;</li>
+<li>raggiungere una potenza desiderata per un effetto bersaglio.</li>
+</ol>
+<p>La pianificazione per precisione rende esplicito quanto stretto debba essere un intervallo. La pianificazione per potenza rende esplicito quale effetto lo studio debba riuscire a rilevare e con quale probabilità.</p>
+<p>In entrambi i casi, il numero calcolato è condizionale. Variabilità, abbandoni, dipendenza, affidabilità delle misure e differenze tra disegno ideale e realizzazione concreta possono modificare il fabbisogno effettivo.</p>
+<p>Nel prossimo capitolo applicheremo questi concetti al confronto tra due gruppi indipendenti. La numerosità non sarà trattata come un’aggiunta finale, ma come parte del modello inferenziale e del disegno dello studio.</p>
+</section><section id="esercizi" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="esercizi">Esercizi</h2>
+<ol type="1">
+<li><p>Qual è la differenza tra pianificare uno studio per precisione e pianificarlo per potenza?</p></li>
+<li><p>Perché dimezzare il margine di errore richiede approssimativamente quattro volte le osservazioni, nel caso elementare della media?</p></li>
+<li><p>Che cosa significa affermare che un test ha potenza 0.80 per una differenza di 3 punti?</p></li>
+<li><p>Perché la frase «lo studio ha potenza 0.80» è incompleta?</p></li>
+<li><p>Perché è preferibile motivare un effetto minimo di interesse nella scala originale, quando possibile?</p></li>
+<li><p>Un calcolo richiede 48 partecipanti analizzabili e si prevede il 15% di perdite. Perché il numero da reclutare deve essere maggiore di 48?</p></li>
+<li><p>Perché la potenza osservata, calcolata usando l’effetto ottenuto nello stesso studio, aggiunge poca informazione al valore-<em>p</em>?</p></li>
+<li><p>In che modo differiscono gli obiettivi tipici di una pianificazione frequentista e di una pianificazione bayesiana?</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Soluzioni">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Soluzioni
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>La pianificazione per precisione sceglie <span class="math inline">\(n\)</span> per ottenere un intervallo sufficientemente stretto. La pianificazione per potenza sceglie <span class="math inline">\(n\)</span> per ottenere una probabilità prefissata di rifiutare <span class="math inline">\(H_0\)</span> sotto una specifica alternativa.</p></li>
+<li><p>Il margine di errore è proporzionale a <span class="math inline">\(1/\sqrt n\)</span>. Per ridurlo della metà occorre raddoppiare <span class="math inline">\(\sqrt n\)</span>, quindi quadruplicare <span class="math inline">\(n\)</span>.</p></li>
+<li><p>Se la differenza vera fosse 3 punti e tutte le altre assunzioni fossero quelle della pianificazione, il test rifiuterebbe <span class="math inline">\(H_0\)</span> in circa l’80% delle ripetizioni.</p></li>
+<li><p>La potenza dipende dall’effetto vero, dalla variabilità, da <span class="math inline">\(\alpha\)</span>, dalla numerosità, dal tipo di test e dal disegno. Senza specificare almeno l’alternativa, il numero non è interpretabile.</p></li>
+<li><p>La rilevanza scientifica riguarda spesso una differenza concreta nel costrutto misurato. L’effetto standardizzato dipende anche dalla deviazione standard della popolazione e può cambiare significato tra contesti.</p></li>
+<li><p>Il calcolo riguarda le osservazioni che entreranno nell’analisi. Se alcune persone abbandonano o producono dati inutilizzabili, occorre reclutarne di più per conservare la numerosità finale desiderata.</p></li>
+<li><p>Usando l’effetto osservato, la potenza diventa quasi una trasformazione della statistica test: risultati significativi producono valori alti e risultati non significativi valori bassi. Non offre una nuova misura indipendente della precisione.</p></li>
+<li><p>La pianificazione frequentista usa spesso copertura, ampiezza, errore di tipo I e potenza. Quella bayesiana può usare precisione a posteriori, probabilità di superare soglie decisionali o utilità attesa. Entrambe dipendono da modelli e obiettivi espliciti.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Punti chiave">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Punti chiave
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Non esiste una numerosità adeguata indipendente dalla domanda e dal disegno.</li>
+<li>Precisione e potenza sono obiettivi collegati ma distinti.</li>
+<li>Il calcolo per la precisione dipende da variabilità, margine di errore e livello di confidenza.</li>
+<li>La potenza è definita rispetto a una specifica alternativa.</li>
+<li>L’effetto minimo di interesse deve essere motivato scientificamente.</li>
+<li>Gli effetti standardizzati dipendono dalla variabilità prevista.</li>
+<li>
+<code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code> restituisce, nel caso a due gruppi, la numerosità per gruppo.</li>
+<li>La numerosità analitica deve essere distinta dall’obiettivo di reclutamento.</li>
+<li>Dipendenza, abbandoni e dati mancanti possono modificare il fabbisogno.</li>
+<li>La potenza post hoc basata sull’effetto osservato è generalmente ridondante.</li>
+<li>Pianificazione frequentista e bayesiana definiscono in modo diverso quando uno studio è sufficientemente informativo.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Ambiente di sviluppo">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Ambiente di sviluppo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Le informazioni sull’ambiente R possono essere ottenute con:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.6.1 (2026-06-24)</span></span>
 <span><span class="co">#&gt; Platform: aarch64-apple-darwin23</span></span>
 <span><span class="co">#&gt; Running under: macOS Tahoe 26.5.2</span></span>
@@ -990,7 +1260,7 @@ n = \left(\frac{z_{1-\alpha/2} \sigma}{E}\right)^2.
 <span><span class="co">#&gt; locale:</span></span>
 <span><span class="co">#&gt; [1] C.UTF-8/UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; time zone: Europe/Rome</span></span>
+<span><span class="co">#&gt; time zone: Europe/Zagreb</span></span>
 <span><span class="co">#&gt; tzcode source: internal</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; attached base packages:</span></span>
@@ -1001,7 +1271,7 @@ n = \left(\frac{z_{1-\alpha/2} \sigma}{E}\right)^2.
 <span><span class="co">#&gt;  [4] systemfonts_1.3.2     patchwork_1.3.2       ggdist_3.3.3         </span></span>
 <span><span class="co">#&gt;  [7] tidybayes_3.0.7       bayesplot_1.15.0      ggplot2_4.0.3        </span></span>
 <span><span class="co">#&gt; [10] reliabilitydiag_0.2.1 priorsense_1.2.0      posterior_1.7.0      </span></span>
-<span><span class="co">#&gt; [13] loo_2.10.0            rstan_2.32.7          StanHeaders_2.32.10  </span></span>
+<span><span class="co">#&gt; [13] loo_2.10.1            rstan_2.32.7          StanHeaders_2.32.10  </span></span>
 <span><span class="co">#&gt; [16] brms_2.23.0           Rcpp_1.1.2            sessioninfo_1.2.4    </span></span>
 <span><span class="co">#&gt; [19] conflicted_1.2.0      janitor_2.2.1         matrixStats_1.5.0    </span></span>
 <span><span class="co">#&gt; [22] modelr_0.1.11         tibble_3.3.1          dplyr_1.2.1          </span></span>
@@ -1012,25 +1282,26 @@ n = \left(\frac{z_{1-\alpha/2} \sigma}{E}\right)^2.
 <span><span class="co">#&gt;  [4] S7_0.2.2              fastmap_1.2.0         tensorA_0.36.2.1     </span></span>
 <span><span class="co">#&gt;  [7] digest_0.6.39         timechange_0.4.0      estimability_2.0.0   </span></span>
 <span><span class="co">#&gt; [10] lifecycle_1.0.5       magrittr_2.0.5        compiler_4.6.1       </span></span>
-<span><span class="co">#&gt; [13] rlang_1.3.0           tools_4.6.1           knitr_1.51           </span></span>
-<span><span class="co">#&gt; [16] bridgesampling_1.2-1  htmlwidgets_1.6.4     pkgbuild_1.4.8       </span></span>
-<span><span class="co">#&gt; [19] curl_7.1.0            RColorBrewer_1.1-3    abind_1.4-8          </span></span>
-<span><span class="co">#&gt; [22] purrr_1.2.2           grid_4.6.1            stats4_4.6.1         </span></span>
-<span><span class="co">#&gt; [25] xtable_1.8-8          inline_0.3.21         emmeans_2.0.3        </span></span>
-<span><span class="co">#&gt; [28] scales_1.4.0          cli_3.6.6             mvtnorm_1.4-1        </span></span>
-<span><span class="co">#&gt; [31] rmarkdown_2.31        generics_0.1.4        otel_0.2.0           </span></span>
-<span><span class="co">#&gt; [34] RcppParallel_5.1.11-2 cachem_1.1.0          stringr_1.6.0        </span></span>
-<span><span class="co">#&gt; [37] parallel_4.6.1        vctrs_0.7.3           V8_8.2.0             </span></span>
-<span><span class="co">#&gt; [40] Matrix_1.7-5          jsonlite_2.0.0        arrayhelpers_1.1-1   </span></span>
-<span><span class="co">#&gt; [43] glue_1.8.1            codetools_0.2-20      distributional_0.8.1 </span></span>
-<span><span class="co">#&gt; [46] lubridate_1.9.5       stringi_1.8.7         gtable_0.3.6         </span></span>
-<span><span class="co">#&gt; [49] QuickJSR_1.10.0       pillar_1.11.1         htmltools_0.5.9      </span></span>
-<span><span class="co">#&gt; [52] Brobdingnag_1.2-9     R6_2.6.1              textshaping_1.0.5    </span></span>
-<span><span class="co">#&gt; [55] rprojroot_2.1.1       evaluate_1.0.5        lattice_0.22-9       </span></span>
-<span><span class="co">#&gt; [58] backports_1.5.1       memoise_2.0.1         broom_1.0.13         </span></span>
-<span><span class="co">#&gt; [61] snakecase_0.11.1      rstantools_2.6.0      coda_0.19-4.1        </span></span>
-<span><span class="co">#&gt; [64] gridExtra_2.3.1       nlme_3.1-169          checkmate_2.3.4      </span></span>
-<span><span class="co">#&gt; [67] xfun_0.60             pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; [13] rlang_1.3.0           tools_4.6.1           yaml_2.3.12          </span></span>
+<span><span class="co">#&gt; [16] knitr_1.51            labeling_0.4.3        bridgesampling_1.2-1 </span></span>
+<span><span class="co">#&gt; [19] htmlwidgets_1.6.4     pkgbuild_1.4.8        curl_7.1.0           </span></span>
+<span><span class="co">#&gt; [22] RColorBrewer_1.1-3    abind_1.4-8           purrr_1.2.2          </span></span>
+<span><span class="co">#&gt; [25] grid_4.6.1            stats4_4.6.1          xtable_1.8-8         </span></span>
+<span><span class="co">#&gt; [28] inline_0.3.21         emmeans_2.0.4         scales_1.4.0         </span></span>
+<span><span class="co">#&gt; [31] cli_3.6.6             mvtnorm_1.4-2         rmarkdown_2.31       </span></span>
+<span><span class="co">#&gt; [34] generics_0.1.4        otel_0.2.0            RcppParallel_5.1.11-2</span></span>
+<span><span class="co">#&gt; [37] cachem_1.1.0          stringr_1.6.0         parallel_4.6.1       </span></span>
+<span><span class="co">#&gt; [40] vctrs_0.7.3           V8_8.2.0              Matrix_1.7-6         </span></span>
+<span><span class="co">#&gt; [43] jsonlite_2.0.0        arrayhelpers_1.1-2    glue_1.8.1           </span></span>
+<span><span class="co">#&gt; [46] codetools_0.2-20      distributional_0.8.1  lubridate_1.9.5      </span></span>
+<span><span class="co">#&gt; [49] stringi_1.8.7         gtable_0.3.6          QuickJSR_1.10.0      </span></span>
+<span><span class="co">#&gt; [52] pillar_1.11.1         htmltools_0.5.9       Brobdingnag_1.2-9    </span></span>
+<span><span class="co">#&gt; [55] R6_2.6.1              textshaping_1.0.5     rprojroot_2.1.1      </span></span>
+<span><span class="co">#&gt; [58] evaluate_1.0.5        lattice_0.22-9        backports_1.5.1      </span></span>
+<span><span class="co">#&gt; [61] memoise_2.0.1         broom_1.0.13          snakecase_0.11.1     </span></span>
+<span><span class="co">#&gt; [64] rstantools_2.6.0      coda_0.19-4.1         gridExtra_2.3.1      </span></span>
+<span><span class="co">#&gt; [67] nlme_3.1-170          checkmate_2.3.4       xfun_0.60            </span></span>
+<span><span class="co">#&gt; [70] pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1485,7 +1756,38 @@ n = \left(\frac{z_{1-\alpha/2} \sigma}{E}\right)^2.
 <p>Realizzato con <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
-</footer>
+</footer><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 <script src="../../site_libs/quarto-html/zenscroll-min.js"></script>

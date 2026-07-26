@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="it" xml:lang="it"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Inferenza bayesiana in psicologia: Ragionare con l’incertezza.">
-
 <title>1&nbsp; Origini storiche dell’approccio frequentista – Inferenza frequentista in psicologia</title>
 <style>
 /* Default styles provided by pandoc.
@@ -23,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -45,7 +77,6 @@ div.csl-right-inline {
 div.csl-indent {
   margin-left: 2em;
 }</style>
-
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -71,8 +102,7 @@ div.csl-indent {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-353ec92dc31bcb37568820202c74e1ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-dde258841ab64df460dbb5600124b771.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-353ec92dc31bcb37568820202c74e1ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-353ec92dc31bcb37568820202c74e1ec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": true,
   "collapse-after": 3,
@@ -98,18 +128,13 @@ div.csl-indent {
     "search-submit-button-title": "Inviare",
     "search-label": "Ricerca"
   }
-}</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-QT5S3P9D31"></script>
-
-<script type="text/plain" cookie-consent="tracking">
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-QT5S3P9D31"></script><script type="text/plain" cookie-consent="tracking">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-QT5S3P9D31', { 'anonymize_ip': true});
-</script>
-
-<script type="text/javascript" charset="UTF-8">
+</script><script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
   "notice_banner_type":"headline",
@@ -124,14 +149,9 @@ cookieconsent.run({
 "language":"it"
   });
 });
-</script> 
-  
-<style>html{ scroll-behavior: smooth; }</style>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
+</script><style>html{ scroll-behavior: smooth; }</style>
+<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -157,7 +177,6 @@ window.Quarto = {
   typesetMath
 };
 </script>
-
 <meta property="og:title" content="1&nbsp; Origini storiche dell’approccio frequentista – Inferenza frequentista in psicologia">
 <meta property="og:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Inferenza bayesiana in psicologia: Ragionare con l’incertezza.">
 <meta property="og:site_name" content="Inferenza frequentista in psicologia">
@@ -166,7 +185,6 @@ window.Quarto = {
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/01_galton.html">
 </head>
-
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -341,9 +359,7 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Attiva/disattiva la barra laterale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -354,13 +370,9 @@ window.Quarto = {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Inferenza frequentista in psicologia</a> 
         <div class="sidebar-tools-main tools-wide">
@@ -377,7 +389,7 @@ window.Quarto = {
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Percorso e obiettivi</span></a>
@@ -391,8 +403,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduzione all’inferenza frequentista in un percorso bayesiano</span></a>
@@ -425,7 +437,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/05_sample_size.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, precisione e potenza</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -435,7 +447,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
@@ -444,43 +456,36 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/epilogo/epilogo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerazioni conclusive: dal controllo dell’errore all’aggiornamento delle credenze</span></span></a>
+ <span class="menu-text">Conclusioni</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
-    <h2 id="toc-title">Sommario</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2"><h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
-  <li><a href="#perché-partire-dalla-storia" id="toc-perché-partire-dalla-storia" class="nav-link active" data-scroll-target="#perché-partire-dalla-storia"><span class="header-section-number">1.1</span> Perché partire dalla storia?</a></li>
-  <li><a href="#la-quantificazione-della-variabilità-umana" id="toc-la-quantificazione-della-variabilità-umana" class="nav-link" data-scroll-target="#la-quantificazione-della-variabilità-umana"><span class="header-section-number">1.2</span> La quantificazione della variabilità umana</a></li>
+<li><a href="#perch%C3%A9-partire-dalla-storia" id="toc-perché-partire-dalla-storia" class="nav-link active" data-scroll-target="#perch%C3%A9-partire-dalla-storia"><span class="header-section-number">1.1</span> Perché partire dalla storia?</a></li>
+  <li><a href="#la-quantificazione-della-variabilit%C3%A0-umana" id="toc-la-quantificazione-della-variabilità-umana" class="nav-link" data-scroll-target="#la-quantificazione-della-variabilit%C3%A0-umana"><span class="header-section-number">1.2</span> La quantificazione della variabilità umana</a></li>
   <li><a href="#statistica-ed-eugenetica-una-genealogia-ambivalente" id="toc-statistica-ed-eugenetica-una-genealogia-ambivalente" class="nav-link" data-scroll-target="#statistica-ed-eugenetica-una-genealogia-ambivalente"><span class="header-section-number">1.3</span> Statistica ed eugenetica: una genealogia ambivalente</a></li>
-  <li><a href="#pearson-e-fisher-la-formalizzazione-dellapproccio-frequentista" id="toc-pearson-e-fisher-la-formalizzazione-dellapproccio-frequentista" class="nav-link" data-scroll-target="#pearson-e-fisher-la-formalizzazione-dellapproccio-frequentista"><span class="header-section-number">1.4</span> Pearson e Fisher: la formalizzazione dell’approccio frequentista</a></li>
-  <li><a href="#il-paradigma-frequentista-in-sintesi" id="toc-il-paradigma-frequentista-in-sintesi" class="nav-link" data-scroll-target="#il-paradigma-frequentista-in-sintesi"><span class="header-section-number">1.5</span> Il paradigma frequentista in sintesi</a></li>
-  <li><a href="#una-mappa-dei-capitoli-successivi" id="toc-una-mappa-dei-capitoli-successivi" class="nav-link" data-scroll-target="#una-mappa-dei-capitoli-successivi"><span class="header-section-number">1.6</span> Una mappa dei capitoli successivi</a></li>
-  <li><a href="#frequentismo-e-bayesianesimo-non-una-guerra-ma-due-domande-diverse" id="toc-frequentismo-e-bayesianesimo-non-una-guerra-ma-due-domande-diverse" class="nav-link" data-scroll-target="#frequentismo-e-bayesianesimo-non-una-guerra-ma-due-domande-diverse"><span class="header-section-number">1.7</span> Frequentismo e bayesianesimo: non una guerra, ma due domande diverse</a></li>
+  <li><a href="#karl-pearson-e-la-formalizzazione-della-variazione" id="toc-karl-pearson-e-la-formalizzazione-della-variazione" class="nav-link" data-scroll-target="#karl-pearson-e-la-formalizzazione-della-variazione"><span class="header-section-number">1.4</span> Karl Pearson e la formalizzazione della variazione</a></li>
+  <li><a href="#fisher-verosimiglianza-disegno-e-significativit%C3%A0" id="toc-fisher-verosimiglianza-disegno-e-significatività" class="nav-link" data-scroll-target="#fisher-verosimiglianza-disegno-e-significativit%C3%A0"><span class="header-section-number">1.5</span> Fisher: verosimiglianza, disegno e significatività</a></li>
+  <li><a href="#neymanpearson-decisioni-ed-errori-controllati" id="toc-neymanpearson-decisioni-ed-errori-controllati" class="nav-link" data-scroll-target="#neymanpearson-decisioni-ed-errori-controllati"><span class="header-section-number">1.6</span> Neyman–Pearson: decisioni ed errori controllati</a></li>
+  <li><a href="#il-nucleo-operativo-del-frequentismo" id="toc-il-nucleo-operativo-del-frequentismo" class="nav-link" data-scroll-target="#il-nucleo-operativo-del-frequentismo"><span class="header-section-number">1.7</span> Il nucleo operativo del frequentismo</a></li>
   <li><a href="#una-riflessione-per-la-ricerca-psicologica" id="toc-una-riflessione-per-la-ricerca-psicologica" class="nav-link" data-scroll-target="#una-riflessione-per-la-ricerca-psicologica"><span class="header-section-number">1.8</span> Una riflessione per la ricerca psicologica</a></li>
-  <li><a href="#punti-chiave-da-ricordare" id="toc-punti-chiave-da-ricordare" class="nav-link" data-scroll-target="#punti-chiave-da-ricordare">Punti chiave da ricordare</a></li>
-  </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/01_galton.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+  <li><a href="#frequentismo-e-bayesianesimo-domande-differenti" id="toc-frequentismo-e-bayesianesimo-domande-differenti" class="nav-link" data-scroll-target="#frequentismo-e-bayesianesimo-domande-differenti"><span class="header-section-number">1.9</span> Frequentismo e bayesianesimo: domande differenti</a></li>
+  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/01_galton.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/01_galton.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Origini storiche dell’approccio frequentista</span></a></li></ol></nav>
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/01_galton.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Origini storiche dell’approccio frequentista</span></a></li></ol></nav><div class="quarto-title">
 <h1 class="title"><span id="sec-freq-origini" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Origini storiche dell’approccio frequentista</span></span></h1>
 </div>
 
@@ -495,63 +500,38 @@ window.Quarto = {
   
 
 
-</header>
-
-
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Questo capitolo introduce le origini storiche e concettuali dell’approccio frequentista. Non lo faremo per trasformare la storia della statistica in una semplice sequenza di nomi e date, ma per capire da quali problemi scientifici, istituzionali ed epistemologici siano nati molti strumenti ancora oggi centrali nella ricerca psicologica: correlazione, regressione, distribuzione normale, test di ipotesi, intervalli di confidenza e valore-<span class="math inline">\(p\)</span>.</p>
-<p>Il capitolo mantiene la prospettiva del manuale: studiamo il frequentismo perché è indispensabile per leggere gran parte della letteratura empirica, ma lo collochiamo dentro un percorso più ampio che condurrà all’inferenza bayesiana.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
+</header><div class="callout callout-style-default callout-note callout-titled" title="In sintesi">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>In questo capitolo imparerai a
+<span class="screen-reader-only">Nota</span>In sintesi
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p><strong>Da sapere</strong> La statistica frequentista si è sviluppata attraverso contributi diversi, legati allo studio della variabilità, alla stima, alla significatività e al controllo degli errori. Questa storia è scientificamente feconda ma anche intrecciata con il movimento eugenetico.</p>
+<p><strong>Da saper fare</strong> Collegare Galton, Pearson, Fisher e Neyman–Pearson ai problemi statistici che hanno affrontato; distinguere i contributi tecnici dal loro contesto storico; riconoscere i principi operativi del ragionamento frequentista.</p>
+</div>
+</div>
+<section id="introduzione" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="introduzione">Introduzione</h2>
+<p>La statistica non è soltanto un insieme di formule. È anche un modo di organizzare l’incertezza, definire che cosa conta come evidenza e stabilire quali conclusioni siano giustificate dai dati.</p>
+<p>Questo capitolo ricostruisce alcuni passaggi che hanno condotto alla pratica frequentista contemporanea. Non presenta una sequenza completa di nomi e date. Seleziona invece quattro problemi che restano centrali nella ricerca psicologica:</p>
+<ol type="1">
+<li>descrivere la variabilità tra individui;</li>
+<li>quantificare le associazioni tra misure;</li>
+<li>valutare quanto i dati siano incompatibili con un modello di riferimento;</li>
+<li>progettare procedure che controllino gli errori nelle ripetizioni.</li>
+</ol>
+<p>La storia di questi strumenti è ambivalente. Correlazione, regressione, distribuzioni campionarie, test e intervalli hanno contribuito in modo decisivo allo sviluppo della scienza empirica. Una parte della loro genealogia, tuttavia, è intrecciata con l’eugenetica e con progetti di classificazione gerarchica delle persone. Comprendere questa storia non significa rifiutare gli strumenti, ma usarli con maggiore consapevolezza scientifica ed etica.</p>
+</section><section id="perché-partire-dalla-storia" class="level2" data-number="1.1"><h2 data-number="1.1" class="anchored" data-anchor-id="perché-partire-dalla-storia">
+<span class="header-section-number">1.1</span> Perché partire dalla storia?</h2>
+<p>Le procedure statistiche non sono nate tutte insieme come parti di un sistema unitario. Sono state elaborate per rispondere a problemi differenti e, in seguito, combinate nella pratica scientifica.</p>
+<p>Conoscere questa origine aiuta a evitare due errori:</p>
 <ul>
-<li>Riconoscere il contesto storico in cui si è sviluppata la statistica frequentista.</li>
-<li>Comprendere perché la variabilità individuale è diventata un oggetto centrale della misurazione scientifica.</li>
-<li>Distinguere il contributo tecnico di Galton, Pearson e Fisher dal contesto ideologico in cui alcuni di questi strumenti sono nati.</li>
-<li>Riassumere i principi di base del paradigma frequentista: probabilità come frequenza, parametri fissi e dati variabili, valutazione delle procedure nel lungo periodo.</li>
-<li>Preparare il terreno per i capitoli successivi su stime, intervalli di confidenza, test di ipotesi e potenza statistica.</li>
+<li>trattare il frequentismo come un insieme perfettamente omogeneo;</li>
+<li>applicare una procedura senza chiedersi quale domanda fosse stata progettata per affrontare.</li>
 </ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Consiglio</span>Prerequisiti
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Per seguire questo capitolo è utile aver letto l’introduzione al modulo sull’inferenza frequentista. Non sono richieste conoscenze tecniche avanzate: l’obiettivo è costruire una mappa concettuale prima di entrare nei dettagli matematici.</p>
-<p>Lettura complementare consigliata:</p>
-<ul>
-<li>il capitolo <em>Sampling</em> di <a href="https://moderndive.com/v2/">Statistical Inference via Data Science: A ModernDive into R and the Tidyverse</a>.</li>
-</ul>
-</div>
-</div>
-</div>
-<section id="perché-partire-dalla-storia" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="perché-partire-dalla-storia"><span class="header-section-number">1.1</span> Perché partire dalla storia?</h2>
-<p>La statistica non è soltanto un insieme di formule. È anche un modo di organizzare l’incertezza, di definire cosa conta come evidenza e di stabilire quali conclusioni sono considerate giustificate. Per questo motivo, quando studiamo un paradigma inferenziale, è utile chiederci non solo <em>come</em> funziona, ma anche <em>quali domande</em> è stato progettato per rispondere.</p>
-<p>L’approccio frequentista nasce dall’esigenza di costruire procedure di analisi che siano ripetibili, standardizzate e il meno possibile dipendenti dal giudizio individuale del ricercatore. Questa aspirazione all’oggettività ha avuto un’enorme importanza nella scienza moderna. Allo stesso tempo, ha prodotto un modo specifico di interpretare l’incertezza: non come grado di credenza in un’ipotesi, ma come variabilità che emerge ripetendo idealmente lo stesso procedimento di raccolta dei dati.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Una chiave di lettura">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -562,217 +542,318 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Nel frequentismo, la domanda tipica non è: “Quanto è plausibile questa ipotesi alla luce dei dati?”. La domanda è piuttosto: “Come si comporterebbe questa procedura se la ripetessimo molte volte in condizioni analoghe?”.</p>
-<p>Questa distinzione sarà centrale nei capitoli successivi, soprattutto quando confronteremo gli intervalli di confidenza e gli intervalli di credibilità bayesiani.</p>
+<p>Nel ragionamento frequentista, una domanda fondamentale è:</p>
+<blockquote class="blockquote">
+<p>Come si comporterebbe questa procedura se il campionamento o l’esperimento fossero ripetuti molte volte in condizioni analoghe?</p>
+</blockquote>
+<p>Stime, errori standard, intervalli di confidenza, livelli di significatività e potenza ricevono il loro significato da questa prospettiva sulle ripetizioni.</p>
 </div>
 </div>
-</section>
-<section id="la-quantificazione-della-variabilità-umana" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="la-quantificazione-della-variabilità-umana"><span class="header-section-number">1.2</span> La quantificazione della variabilità umana</h2>
-<section id="dal-singolo-individuo-alla-distribuzione" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="dal-singolo-individuo-alla-distribuzione"><span class="header-section-number">1.2.1</span> Dal singolo individuo alla distribuzione</h3>
-<p>Nel corso dell’Ottocento, si afferma l’idea che molti fenomeni biologici, psicologici e sociali possano essere studiati in modo quantitativo. L’attenzione si sposta progressivamente dal singolo individuo alla distribuzione dei tratti all’interno di una popolazione. Altezza, peso, tempi di reazione, prestazioni cognitive, risposte a questionari e differenze individuali vengono considerati come grandezze che variano da persona a persona, ma non in modo completamente casuale.</p>
-<p>Questa intuizione è fondamentale per la psicologia scientifica. Se un tratto psicologico varia da individuo a individuo, allora è possibile descriverne la distribuzione, calcolare la media, misurarne la dispersione e studiare le relazioni con altri tratti. La variabilità non è più soltanto rumore, ma diventa informazione.</p>
-<p>In questo contesto si inserisce l’opera di <strong>Francis Galton</strong> (1822-1911), figura centrale nella trasformazione della statistica da strumento prevalentemente descrittivo-amministrativo a linguaggio matematico della variazione individuale.</p>
-</section>
-<section id="galton-misurare-confrontare-ordinare" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="galton-misurare-confrontare-ordinare"><span class="header-section-number">1.2.2</span> Galton: misurare, confrontare, ordinare</h3>
-<p>Galton si interessò alla misurazione sistematica delle differenze individuali. Raccolse dati su caratteristiche fisiche e psicologiche, studiò la trasmissione dei tratti tra le generazioni e contribuì a diffondere l’idea che le popolazioni possano essere rappresentate mediante distribuzioni.</p>
-<p>Due concetti associati al suo lavoro sono particolarmente importanti per la statistica e per la psicologia:</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Prerequisiti">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Prerequisiti
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>È utile avere letto l’introduzione al modulo sull’inferenza frequentista. Non sono richieste conoscenze tecniche avanzate: il capitolo costruisce una mappa storica e concettuale prima di affrontare le singole procedure.</p>
+</div>
+</div>
+</section><section id="panoramica-del-capitolo" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="panoramica-del-capitolo">Panoramica del capitolo</h2>
+<p>Il capitolo procede in sei passaggi:</p>
 <ol type="1">
-<li><p><strong>Regressione verso la media.</strong> Galton osservò che, quando un tratto viene misurato nei genitori e nei figli, i valori estremi dei genitori tendono a essere seguiti da valori meno estremi nei figli. Questo fenomeno, oggi noto come “regressione verso la media”, dimostra che le relazioni tra le misure non devono essere interpretate in modo deterministico: anche quando esiste una relazione, rimane una componente di variabilità.</p></li>
-<li><p><strong>Correlazione.</strong> Lo studio della relazione tra due variabili ha portato allo sviluppo di strumenti per quantificare quanto due misure variano insieme. La correlazione è uno dei concetti più utilizzati nella ricerca psicologica, dalla validazione dei test alla psicometria fino allo studio delle differenze individuali.</p></li>
+<li>descrive il passaggio dallo studio del singolo individuo allo studio delle distribuzioni;</li>
+<li>presenta i contributi di Francis Galton alla regressione verso la media e alla correlazione;</li>
+<li>colloca questi sviluppi nel contesto dell’eugenetica;</li>
+<li>introduce la formalizzazione statistica associata a Karl Pearson;</li>
+<li>distingue la significatività fisheriana dal quadro decisionale di Neyman–Pearson;</li>
+<li>ricava da questa storia i principi operativi del paradigma frequentista.</li>
 </ol>
-<p>L’importanza didattica di Galton in questo modulo non sta nel presentarlo come modello di buona pratica scientifica. Piuttosto, sta nel mostrare un passaggio concettuale fondamentale: molti problemi psicologici possono essere formulati come problemi di variabilità, associazione e previsione.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Collegamento con la psicologia">
+<div class="callout callout-style-default callout-note callout-titled" title="Preparazione del notebook">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Consiglio</span>Collegamento con la psicologia
+<span class="screen-reader-only">Nota</span>Preparazione del notebook
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Quando ci chiediamo se due scale psicologiche misurano costrutti correlati, se un punteggio predice un esito clinico o se un trattamento modifica una variabile psicologica, stiamo lavorando all’interno di una tradizione che ha imparato a descrivere gli individui come osservazioni all’interno di distribuzioni.</p>
+<p>Il capitolo è interamente concettuale e non richiede l’esecuzione di codice R. Nei capitoli successivi useremo simulazioni per rendere visibili distribuzioni campionarie, copertura, errori decisionali e potenza.</p>
 </div>
 </div>
-</section>
-</section>
-<section id="statistica-ed-eugenetica-una-genealogia-ambivalente" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="statistica-ed-eugenetica-una-genealogia-ambivalente"><span class="header-section-number">1.3</span> Statistica ed eugenetica: una genealogia ambivalente</h2>
-<p>La storia della statistica moderna presenta anche aspetti problematici. Galton è stato il fondatore dell’eugenetica, un programma che mirava a misurare e selezionare i tratti umani al fine di migliorare la popolazione. In questo contesto, strumenti nati per descrivere la variabilità sono stati spesso associati a classificazioni gerarchiche e a giudizi normativi sulle persone.</p>
-<p>Questa eredità va affrontata con chiarezza. Da un lato, concetti come regressione, correlazione e distribuzione normale sono oggi strumenti matematici generali utilizzabili in contesti scientifici molto diversi. D’altro canto, la loro storia ci ricorda che la misurazione non è mai completamente neutra: scegliere cosa misurare, come misurarlo e come interpretare le differenze osservate comporta sempre delle responsabilità, sia scientifiche che etiche <span class="citation" data-cites="chivers2024everything">(<a href="#ref-chivers2024everything" role="doc-biblioref">Chivers, 2024</a>)</span>.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="Un punto etico importante">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avviso</span>Un punto etico importante
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Riconoscere il contesto eugenetico in cui una parte della statistica moderna si è sviluppata non significa rifiutare in blocco gli strumenti statistici. Significa usarli con maggiore consapevolezza: le differenze osservate tra persone o gruppi non devono essere trasformate automaticamente in gerarchie di valore né interpretate senza considerare il contesto, la misurazione, il campionamento e le assunzioni del modello.</p>
-</div>
-</div>
-<p>Questa riflessione è particolarmente rilevante per gli studenti di psicologia. Molte misure psicologiche riguardano persone, gruppi, diagnosi, abilità, vulnerabilità e differenze socialmente sensibili. Una statistica responsabile richiede quindi sia competenza tecnica sia attenzione al significato delle misure.</p>
-</section>
-<section id="pearson-e-fisher-la-formalizzazione-dellapproccio-frequentista" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="pearson-e-fisher-la-formalizzazione-dellapproccio-frequentista"><span class="header-section-number">1.4</span> Pearson e Fisher: la formalizzazione dell’approccio frequentista</h2>
-<section id="karl-pearson-e-la-statistica-come-tecnologia-della-regolarità" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1" class="anchored" data-anchor-id="karl-pearson-e-la-statistica-come-tecnologia-della-regolarità"><span class="header-section-number">1.4.1</span> Karl Pearson e la statistica come tecnologia della regolarità</h3>
-<p><strong>Karl Pearson</strong> (1857-1936) contribuì in modo decisivo alla matematizzazione della statistica. Il suo lavoro rese più rigorosi concetti quali la correlazione, la deviazione standard e il confronto tra dati osservati e modelli teorici. Tra gli strumenti associati alla sua tradizione vi è anche il test del chi-quadrato che permette di valutare quanto le frequenze osservate si discostino da quelle attese in base a un modello.</p>
-<p>Il suo contributo è importante perché rafforza un’idea centrale del frequentismo: una procedura statistica deve essere definita in modo esplicito, replicabile e applicabile a nuovi dati. L’obiettivo è ridurre l’arbitrarietà del giudizio individuale attraverso regole comuni di calcolo e valutazione.</p>
-<p>Questa impostazione ha avuto un impatto enorme sulla ricerca empirica. In psicologia, per esempio, ha contribuito a rendere ordinario il ragionamento in termini di campioni, distribuzioni, associazioni tra variabili e confronto tra dati osservati e valori attesi.</p>
-</section>
-<section id="ronald-fisher-e-la-logica-della-significatività" class="level3" data-number="1.4.2">
-<h3 data-number="1.4.2" class="anchored" data-anchor-id="ronald-fisher-e-la-logica-della-significatività"><span class="header-section-number">1.4.2</span> Ronald Fisher e la logica della significatività</h3>
-<p><strong>Ronald A. Fisher</strong> (1890-1962) sviluppò strumenti che sono diventati centrali nella pratica statistica del Novecento: il disegno sperimentale, l’analisi della varianza, la massima verosimiglianza, la significatività statistica e il valore-<span class="math inline">\(p\)</span>.</p>
-<p>Nel quadro fisheriano, l’inferenza parte spesso da un modello nullo. Ci si chiede se i dati osservati sarebbero insoliti se quel modello fosse vero. Il valore-<span class="math inline">\(p\)</span> nasce in questo contesto: misura quanto sarebbe sorprendente osservare dati almeno così estremi, assumendo vera l’ipotesi nulla.</p>
-<p>È importante sottolineare subito ciò che il valore-<span class="math inline">\(p\)</span> non dice. Non è la probabilità che l’ipotesi nulla sia vera. Non è la probabilità che il risultato sia dovuto al caso. Non misura direttamente la grandezza dell’effetto. Si tratta di una quantità definita all’interno di una procedura che immagina la ripetizione ipotetica dell’esperimento.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Da ricordare fin da ora">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Da ricordare fin da ora
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Un valore-<span class="math inline">\(p\)</span> risponde a una domanda frequentista:</p>
-<blockquote class="blockquote">
-<p>se l’ipotesi nulla fosse vera, quanto sarebbero insoliti dati come quelli osservati, o più estremi?</p>
-</blockquote>
-<p>Non risponde direttamente alla domanda bayesiana:</p>
-<blockquote class="blockquote">
-<p>quanto è plausibile l’ipotesi dopo aver osservato questi dati?</p>
-</blockquote>
-</div>
-</div>
-<p>Fisher contribuì anche allo sviluppo del principio della <strong>massima verosimiglianza</strong>. Questo concetto sarà importante più avanti, perché la verosimiglianza rappresenta un ponte naturale tra il frequentismo e il bayesianesimo. Nel frequentismo può essere utilizzata per ottenere stime dei parametri, mentre nell’inferenza bayesiana entra a far parte della regola di aggiornamento insieme alla distribuzione a priori.</p>
-</section>
-</section>
-<section id="il-paradigma-frequentista-in-sintesi" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="il-paradigma-frequentista-in-sintesi"><span class="header-section-number">1.5</span> Il paradigma frequentista in sintesi</h2>
-<p>Dopo questa breve ricostruzione storica, possiamo riassumere il nucleo concettuale dell’approccio frequentista.</p>
-<section id="probabilità-come-frequenza-a-lungo-termine" class="level3" data-number="1.5.1">
-<h3 data-number="1.5.1" class="anchored" data-anchor-id="probabilità-come-frequenza-a-lungo-termine"><span class="header-section-number">1.5.1</span> Probabilità come frequenza a lungo termine</h3>
-<p>Nel frequentismo, la probabilità è interpretata come frequenza relativa nel lungo periodo. Affermare che un evento ha una probabilità dello 0.30 significa immaginare che, ripetendo molte volte lo stesso processo nelle stesse condizioni, tale evento si verificherebbe circa il 30% delle volte.</p>
-<p>Questa interpretazione è molto naturale per i fenomeni ripetibili, come i lanci di moneta, le estrazioni casuali, i campionamenti da una popolazione o gli esperimenti randomizzati. È meno diretta quando si vuole esprimere l’incertezza su un’ipotesi unica, su un parametro sconosciuto o su un evento irripetibile. In questi casi, la prospettiva bayesiana offre un linguaggio diverso.</p>
-</section>
-<section id="parametri-fissi-dati-variabili" class="level3" data-number="1.5.2">
-<h3 data-number="1.5.2" class="anchored" data-anchor-id="parametri-fissi-dati-variabili"><span class="header-section-number">1.5.2</span> Parametri fissi, dati variabili</h3>
-<p>Nel modello frequentista classico:</p>
+</section><section id="la-quantificazione-della-variabilità-umana" class="level2" data-number="1.2"><h2 data-number="1.2" class="anchored" data-anchor-id="la-quantificazione-della-variabilità-umana">
+<span class="header-section-number">1.2</span> La quantificazione della variabilità umana</h2>
+<section id="dal-singolo-individuo-alla-distribuzione" class="level3" data-number="1.2.1"><h3 data-number="1.2.1" class="anchored" data-anchor-id="dal-singolo-individuo-alla-distribuzione">
+<span class="header-section-number">1.2.1</span> Dal singolo individuo alla distribuzione</h3>
+<p>Nel corso dell’Ottocento si afferma l’idea che molti fenomeni biologici, psicologici e sociali possano essere studiati quantitativamente. L’attenzione si sposta progressivamente dal singolo individuo alla distribuzione dei tratti in una popolazione.</p>
+<p>Altezza, tempi di reazione, prestazioni cognitive e risposte a questionari vengono considerate grandezze che variano tra persone. Diventa quindi possibile:</p>
 <ul>
-<li>il parametro di interesse, come una media <span class="math inline">\(\mu\)</span> o una proporzione <span class="math inline">\(\theta\)</span>, è considerato <strong>fisso ma sconosciuto</strong>;</li>
-<li>i dati osservati sono una delle molte realizzazioni possibili del processo di campionamento;</li>
-<li>l’incertezza nasce dal fatto che campioni diversi avrebbero prodotto risultati diversi;</li>
-<li>la bontà di una procedura è valutata considerando come si comporterebbe in molte ripetizioni ideali dello stesso studio.</li>
+<li>descrivere la posizione e la dispersione di una distribuzione;</li>
+<li>confrontare individui e gruppi;</li>
+<li>studiare come due caratteristiche variano insieme;</li>
+<li>costruire previsioni a partire da misure osservate.</li>
 </ul>
-<p>Questa è una differenza fondamentale rispetto all’approccio bayesiano, in cui il parametro sconosciuto può essere rappresentato tramite una distribuzione di probabilità che esprime l’incertezza epistemica del ricercatore.</p>
-</section>
-<section id="procedure-valutate-nel-lungo-periodo" class="level3" data-number="1.5.3">
-<h3 data-number="1.5.3" class="anchored" data-anchor-id="procedure-valutate-nel-lungo-periodo"><span class="header-section-number">1.5.3</span> Procedure valutate nel lungo periodo</h3>
-<p>Il frequentismo giudica le procedure statistiche in base alle loro proprietà a lungo termine. Per esempio:</p>
+<p>Per la psicologia scientifica questo passaggio è decisivo: la variabilità non viene trattata soltanto come rumore, ma come un fenomeno da descrivere e spiegare.</p>
+</section><section id="galton-regressione-e-associazione" class="level3" data-number="1.2.2"><h3 data-number="1.2.2" class="anchored" data-anchor-id="galton-regressione-e-associazione">
+<span class="header-section-number">1.2.2</span> Galton: regressione e associazione</h3>
+<p><strong>Francis Galton</strong> (1822–1911) contribuì alla misurazione sistematica delle differenze individuali. Raccolse dati su caratteristiche fisiche e prestazioni, studiò somiglianze familiari e promosse l’uso delle distribuzioni per rappresentare la variazione tra persone.</p>
+<p>Due concetti associati al suo lavoro sono particolarmente importanti.</p>
+<ol type="1">
+<li><p><strong>Regressione verso la media.</strong><br>
+Quando due misure sono correlate ma non perfettamente, valori estremi della prima variabile tendono a essere associati, in media, a valori meno estremi della seconda. Galton osservò questo schema studiando caratteristiche di genitori e figli. Il fenomeno non implica che gli individui estremi debbano necessariamente cambiare, né costituisce una legge causale: è una proprietà statistica dell’associazione imperfetta.</p></li>
+<li><p><strong>Correlazione.</strong><br>
+Lo studio delle somiglianze e delle relazioni tra misure contribuì allo sviluppo di strumenti per quantificare quanto due variabili varino insieme. In psicologia, la correlazione è centrale nella psicometria, nella validazione dei test e nello studio delle differenze individuali.</p></li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled" title="Regressione verso la media non significa miglioramento">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Regressione verso la media non significa miglioramento
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se si selezionano persone con valori estremi in una prima misurazione, una seconda misurazione tende spesso a risultare meno estrema anche in assenza di un intervento efficace. Per valutare un cambiamento causale non basta quindi confrontare meccanicamente il prima e il dopo.</p>
+</div>
+</div>
+</section></section><section id="statistica-ed-eugenetica-una-genealogia-ambivalente" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="statistica-ed-eugenetica-una-genealogia-ambivalente">
+<span class="header-section-number">1.3</span> Statistica ed eugenetica: una genealogia ambivalente</h2>
+<p>Galton coniò il termine <em>eugenetica</em> e sostenne un programma volto a classificare e selezionare i tratti umani. Anche altri protagonisti della statistica britannica, tra cui Karl Pearson e Ronald Fisher, furono coinvolti in idee, istituzioni o dibattiti eugenetici <span class="citation" data-cites="chivers2024everything">(<a href="#ref-chivers2024everything" role="doc-biblioref">Chivers, 2024</a>)</span>.</p>
+<p>Questa storia non trasforma correlazione, regressione o analisi della varianza in strumenti intrinsecamente eugenetici. Le proprietà matematiche di una procedura non dipendono dagli obiettivi morali di chi contribuì a svilupparla. Tuttavia, la storia mostra che misurare non è un’attività completamente neutrale.</p>
+<p>Prima di interpretare una differenza tra persone o gruppi occorre chiedersi:</p>
 <ul>
-<li>uno stimatore è apprezzato se, ripetendo il campionamento, tende in media al valore vero o si avvicina ad esso al crescere del campione;</li>
-<li>un intervallo di confidenza al 95% è una procedura che, in condizioni ideali, produce intervalli contenenti il parametro vero nel 95% dei casi;</li>
-<li>un test con livello di significatività <span class="math inline">\(\alpha = 0.05\)</span> controlla, nel lungo periodo, la probabilità di rigettare erroneamente un’ipotesi nulla vera.</li>
+<li>quale costrutto è stato definito;</li>
+<li>come è stato misurato;</li>
+<li>chi è stato incluso o escluso dal campione;</li>
+<li>quali assunzioni collegano la misura al fenomeno;</li>
+<li>quali conseguenze può avere la classificazione prodotta.</li>
 </ul>
-<p>Queste garanzie sono importanti e hanno reso il frequentismo uno strumento potente per la ricerca empirica. Tuttavia, richiedono un’interpretazione attenta: non sempre una garanzia a lungo termine corrisponde a ciò che vorremmo sapere riguardo allo studio concreto che abbiamo appena condotto.</p>
-</section>
-</section>
-<section id="una-mappa-dei-capitoli-successivi" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="una-mappa-dei-capitoli-successivi"><span class="header-section-number">1.6</span> Una mappa dei capitoli successivi</h2>
-<p>Nei capitoli successivi, entreremo nei principali strumenti frequentisti, mantenendo una distinzione costante tra la procedura matematica e la sua corretta interpretazione.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Responsabilità scientifica ed etica">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Responsabilità scientifica ed etica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Riconoscere la genealogia eugenetica di una parte della statistica moderna non significa rifiutare gli strumenti. Significa evitare che differenze osservate vengano trasformate automaticamente in gerarchie di valore o in spiegazioni biologiche, senza considerare misurazione, contesto, campionamento e alternative causali.</p>
+</div>
+</div>
+</section><section id="karl-pearson-e-la-formalizzazione-della-variazione" class="level2" data-number="1.4"><h2 data-number="1.4" class="anchored" data-anchor-id="karl-pearson-e-la-formalizzazione-della-variazione">
+<span class="header-section-number">1.4</span> Karl Pearson e la formalizzazione della variazione</h2>
+<p><strong>Karl Pearson</strong> (1857–1936) contribuì in modo decisivo alla matematizzazione della statistica. Sviluppò e sistematizzò strumenti per descrivere distribuzioni, quantificare associazioni e confrontare frequenze osservate con frequenze previste da un modello.</p>
+<p>Tra i concetti associati alla sua tradizione troviamo:</p>
+<ul>
+<li>il coefficiente di correlazione prodotto-momento;</li>
+<li>la deviazione standard;</li>
+<li>famiglie di distribuzioni;</li>
+<li>il test del chi-quadrato.</li>
+</ul>
+<p>Il test del chi-quadrato illustra un’idea che resterà centrale: si specifica un modello che produce frequenze attese e si misura quanto i dati osservati se ne discostino. Il risultato non dice, da solo, perché esista lo scarto né quale modello alternativo sia corretto. Fornisce una misura della compatibilità tra dati e modello secondo una procedura definita.</p>
+<p>L’influenza di Pearson sulla psicologia è stata profonda. Correlazioni, standardizzazione dei punteggi e analisi delle differenze individuali sono diventate componenti ordinarie della psicometria e della ricerca quantitativa.</p>
+</section><section id="fisher-verosimiglianza-disegno-e-significatività" class="level2" data-number="1.5"><h2 data-number="1.5" class="anchored" data-anchor-id="fisher-verosimiglianza-disegno-e-significatività">
+<span class="header-section-number">1.5</span> Fisher: verosimiglianza, disegno e significatività</h2>
+<p><strong>Ronald A. Fisher</strong> (1890–1962) contribuì allo sviluppo del disegno sperimentale, dell’analisi della varianza, della massima verosimiglianza e dei test di significatività.</p>
+<p>Nel quadro fisheriano, si considera spesso un’ipotesi nulla e si valuta quanto i dati osservati siano insoliti se tale ipotesi e il modello probabilistico fossero appropriati. Il valore-<span class="math inline">\(p\)</span> può essere espresso come la probabilità, calcolata sotto l’ipotesi nulla, di ottenere un valore della statistica test almeno altrettanto incompatibile con l’ipotesi quanto quello osservato.</p>
+<p>La definizione richiede quindi tre elementi:</p>
 <ol type="1">
-<li><p><strong>Stime dei parametri.</strong> Studieremo come un campione viene utilizzato per stimare una quantità sconosciuta della popolazione, e perché la distribuzione campionaria è centrale nel frequentismo.</p></li>
-<li><p><strong>Intervalli di confidenza.</strong> Vedremo come costruire intervalli che quantificano l’incertezza procedurale e chiariremo perché non vanno interpretati come probabilità dirette sul parametro.</p></li>
-<li><p><strong>Test di ipotesi.</strong> Analizzeremo la logica dell’ipotesi nulla, della statistica test, del valore-<span class="math inline">\(p\)</span> e della decisione statistica.</p></li>
-<li><p><strong>Dimensione campionaria e potenza.</strong> Dopo aver introdotto i test, discuteremo perché la numerosità campionaria influenza la probabilità di individuare effetti reali.</p></li>
-<li><p><strong>Confronto tra due gruppi.</strong> Useremo il test <span class="math inline">\(t\)</span> per campioni indipendenti come esempio applicativo di una procedura frequentista molto diffusa nella ricerca psicologica.</p></li>
+<li>un’ipotesi nulla;</li>
+<li>una statistica test;</li>
+<li>una regola che stabilisca quali risultati siano almeno altrettanto estremi.</li>
 </ol>
-<p>Questa sequenza non ha lo scopo di presentare il frequentismo come un ostacolo da superare, ma come un linguaggio da comprendere. Solo dopo aver compreso a fondo le domande poste dal frequentismo, sarà possibile apprezzare con precisione le domande diverse poste dall’inferenza bayesiana.</p>
-</section>
-<section id="frequentismo-e-bayesianesimo-non-una-guerra-ma-due-domande-diverse" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="frequentismo-e-bayesianesimo-non-una-guerra-ma-due-domande-diverse"><span class="header-section-number">1.7</span> Frequentismo e bayesianesimo: non una guerra, ma due domande diverse</h2>
-<p>È facile presentare il frequentismo e il bayesianesimo come due scuole contrapposte. In parte lo sono, in quanto adottano interpretazioni diverse della probabilità e dell’inferenza. Tuttavia, dal punto di vista didattico, è più utile partire da una distinzione di domande.</p>
-<p>Il frequentismo si chiede:</p>
-<blockquote class="blockquote">
-<p>Se ripetessimo molte volte questa procedura, con quale frequenza produrrebbe risultati corretti o errori controllati?</p>
-</blockquote>
-<p>Il bayesianesimo, invece, si chiede:</p>
-<blockquote class="blockquote">
-<p>Alla luce dei dati osservati e delle informazioni disponibili, come dovremmo aggiornare la nostra incertezza sui parametri o sulle ipotesi?</p>
-</blockquote>
-<p>Entrambe le domande sono legittime, ma non sono equivalenti. Molti fraintendimenti nascono quando si usa uno strumento frequentista per rispondere implicitamente a una domanda bayesiana. Per esempio, interpretare un valore-<span class="math inline">\(p\)</span> come probabilità che l’ipotesi nulla sia vera significa attribuire a una quantità frequentista un significato che non le appartiene.</p>
-<div class="callout callout-style-default callout-important callout-titled" title="Messaggio centrale">
+<div class="callout callout-style-default callout-warning callout-titled" title="Che cosa non dice il valore-p">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>Messaggio centrale
+<span class="screen-reader-only">Avviso</span>Che cosa non dice il valore-p
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Il frequentismo fornisce regole per costruire procedure che abbiano buone proprietà nel lungo periodo. L’inferenza bayesiana fornisce invece regole per aggiornare l’incertezza alla luce dei dati osservati.</p>
-<p>Nel resto del modulo useremo questa distinzione come bussola interpretativa.</p>
+<p>Un valore-<span class="math inline">\(p\)</span> non è:</p>
+<ul>
+<li>la probabilità che l’ipotesi nulla sia vera;</li>
+<li>la probabilità che il risultato sia dovuto al caso;</li>
+<li>la probabilità che una replica produca lo stesso risultato;</li>
+<li>una misura diretta della grandezza o dell’importanza dell’effetto.</li>
+</ul>
 </div>
 </div>
-</section>
-<section id="una-riflessione-per-la-ricerca-psicologica" class="level2" data-number="1.8">
-<h2 data-number="1.8" class="anchored" data-anchor-id="una-riflessione-per-la-ricerca-psicologica"><span class="header-section-number">1.8</span> Una riflessione per la ricerca psicologica</h2>
-<p>La psicologia ha fatto ampio uso di strumenti frequentisti: test <span class="math inline">\(t\)</span>, ANOVA, regressioni, intervalli di confidenza, valori-<span class="math inline">\(p\)</span> e analisi di potenza sono parte del linguaggio comune della disciplina. Conoscerli è quindi indispensabile per leggere gli articoli, progettare gli studi e interpretare i risultati.</p>
-<p>Tuttavia, la crisi della replicabilità ha dimostrato che l’applicazione meccanica di procedure standardizzate non garantisce automaticamente la produzione di conoscenze affidabili. Campioni piccoli, bassa potenza, selezione dei risultati, interpretazioni improprie del valore-<span class="math inline">\(p\)</span> e attenzione eccessiva alla soglia 0,05 possono produrre evidenze fragili.</p>
-<p>Questo non significa che il frequentismo sia inutile. La lezione è che nessuna procedura statistica può sostituire il ragionamento scientifico. Ogni analisi richiede un disegno di ricerca solido, misure valide, trasparenza, attenzione alla dimensione degli effetti e interpretazioni coerenti con le assunzioni del metodo.</p>
-</section>
-<section id="riflessioni-conclusive" class="level2 unnumbered unlisted">
-<h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
-<p>In questo capitolo abbiamo collocato l’approccio frequentista nel suo contesto storico e concettuale. Abbiamo visto che la statistica moderna nasce anche dal tentativo di misurare e ordinare la variabilità umana, un progetto che ha prodotto strumenti fondamentali per la scienza, ma che ha anche dato luogo a usi eticamente problematici. Questa doppia eredità invita a una posizione equilibrata: competenza tecnica, consapevolezza storica e responsabilità interpretativa.</p>
-<p>Abbiamo inoltre introdotto i principi del frequentismo: la probabilità come frequenza a lungo termine, i parametri come valori fissi ma sconosciuti, i dati come variabili e le procedure come oggetti da valutare in base al comportamento che avrebbero in ripetizioni ideali. Questi principi saranno alla base dei prossimi capitoli dedicati a stima, intervalli di confidenza, test di ipotesi, dimensione campionaria e confronto tra gruppi.</p>
-<p>Il filo conduttore sarà sempre lo stesso: imparare a usare e interpretare gli strumenti frequentisti senza attribuirgli significati che non hanno. Questo lavoro preparerà il passaggio all’inferenza bayesiana, in cui l’incertezza sui parametri e sulle ipotesi viene rappresentata direttamente tramite distribuzioni di probabilità.</p>
-</section>
-<section id="punti-chiave-da-ricordare" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="punti-chiave-da-ricordare">Punti chiave da ricordare</h2>
-<div class="callout callout-style-default callout-important callout-titled">
+<p>Fisher attribuiva al valore-<span class="math inline">\(p\)</span> soprattutto un ruolo di misura graduata dell’incompatibilità tra dati e ipotesi nulla. Non lo concepiva semplicemente come un interruttore automatico che divide ogni risultato in <em>significativo</em> e <em>non significativo</em>.</p>
+</section><section id="neymanpearson-decisioni-ed-errori-controllati" class="level2" data-number="1.6"><h2 data-number="1.6" class="anchored" data-anchor-id="neymanpearson-decisioni-ed-errori-controllati">
+<span class="header-section-number">1.6</span> Neyman–Pearson: decisioni ed errori controllati</h2>
+<p><strong>Jerzy Neyman</strong> e <strong>Egon Pearson</strong> svilupparono un quadro differente. Invece di concentrarsi soltanto sull’evidenza contro una singola ipotesi nulla, formularono procedure decisionali che confrontano ipotesi e controllano le conseguenze degli errori nelle ripetizioni.</p>
+<p>In questo quadro diventano centrali:</p>
+<ul>
+<li>l’<strong>errore di tipo I</strong>, cioè rifiutare l’ipotesi nulla quando è vera;</li>
+<li>l’<strong>errore di tipo II</strong>, cioè non rifiutare l’ipotesi nulla quando un’alternativa specificata è vera;</li>
+<li>il livello <span class="math inline">\(\alpha\)</span>, scelto prima dell’analisi;</li>
+<li>la <strong>potenza</strong>, cioè la probabilità di rifiutare l’ipotesi nulla sotto una specifica alternativa.</li>
+</ul>
+<p>La distinzione è importante perché la pratica contemporanea combina spesso elementi provenienti da Fisher e da Neyman–Pearson. Per esempio, si riporta un valore-<span class="math inline">\(p\)</span> graduato ma lo si confronta anche con una soglia <span class="math inline">\(\alpha=0.05\)</span> per prendere una decisione.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Una pratica ibrida">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Importante
+<span class="screen-reader-only">Nota</span>Una pratica ibrida
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>Espressioni come «<span class="math inline">\(p&lt;0.05\)</span>, quindi il risultato è significativo» uniscono due tradizioni:</p>
+<ul>
+<li>il valore-<span class="math inline">\(p\)</span> come misura fisheriana di incompatibilità;</li>
+<li>la soglia prefissata e la decisione come elementi del quadro Neyman–Pearson.</li>
+</ul>
+<p>Questa combinazione è comune, ma è utile sapere che i concetti non sono nati come parti di un unico sistema.</p>
+</div>
+</div>
+</section><section id="il-nucleo-operativo-del-frequentismo" class="level2" data-number="1.7"><h2 data-number="1.7" class="anchored" data-anchor-id="il-nucleo-operativo-del-frequentismo">
+<span class="header-section-number">1.7</span> Il nucleo operativo del frequentismo</h2>
+<p>Dalla storia precedente emergono alcuni principi comuni alla maggior parte delle procedure frequentiste moderne.</p>
+<section id="parametri-fissi-dati-variabili" class="level3" data-number="1.7.1"><h3 data-number="1.7.1" class="anchored" data-anchor-id="parametri-fissi-dati-variabili">
+<span class="header-section-number">1.7.1</span> Parametri fissi, dati variabili</h3>
+<p>Il parametro del modello viene trattato come fisso ma ignoto. Prima dell’osservazione, il campione è casuale; di conseguenza variano anche le statistiche calcolate sul campione.</p>
+<p>Se campionassimo ripetutamente dalla stessa popolazione, otterremmo stime differenti. La <strong>distribuzione campionaria</strong> descrive questa variabilità.</p>
+</section><section id="procedure-valutate-nelle-ripetizioni" class="level3" data-number="1.7.2"><h3 data-number="1.7.2" class="anchored" data-anchor-id="procedure-valutate-nelle-ripetizioni">
+<span class="header-section-number">1.7.2</span> Procedure valutate nelle ripetizioni</h3>
+<p>Uno stimatore, un intervallo o un test vengono giudicati attraverso il loro comportamento in campioni ripetuti. Per esempio:</p>
+<ul>
+<li>uno stimatore può essere valutato per distorsione, variabilità e consistenza;</li>
+<li>una procedura di confidenza al 95% mira a contenere il parametro vero nel 95% delle ripetizioni, sotto il modello e le assunzioni adottate;</li>
+<li>un test di livello <span class="math inline">\(\alpha=0.05\)</span> mira a limitare al 5% la probabilità di errore di tipo I nelle condizioni specificate.</li>
+</ul>
+<p>Queste sono proprietà della <strong>procedura</strong>, non garanzie assolute sul singolo risultato osservato.</p>
+</section><section id="probabilità-e-modello-di-campionamento" class="level3" data-number="1.7.3"><h3 data-number="1.7.3" class="anchored" data-anchor-id="probabilità-e-modello-di-campionamento">
+<span class="header-section-number">1.7.3</span> Probabilità e modello di campionamento</h3>
+<p>Nelle applicazioni frequentiste, la probabilità descrive il comportamento di dati e statistiche generati da un modello. Le ripetizioni possono essere reali oppure ipotetiche, ma devono essere definite con sufficiente precisione: che cosa viene mantenuto fisso, che cosa viene ripetuto e quali dati possibili vengono considerati?</p>
+<div class="callout callout-style-default callout-important callout-titled" title="La domanda guida">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>La domanda guida
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Prima di interpretare un risultato frequentista, chiediti:</p>
+<blockquote class="blockquote">
+<p>Quale insieme di ripetizioni definisce questa probabilità e quali assunzioni rendono valido il calcolo?</p>
+</blockquote>
+<p>Senza una risposta, valori-<span class="math inline">\(p\)</span>, intervalli e livelli di errore rischiano di essere letti come numeri privi del loro significato procedurale.</p>
+</div>
+</div>
+</section></section><section id="una-riflessione-per-la-ricerca-psicologica" class="level2" data-number="1.8"><h2 data-number="1.8" class="anchored" data-anchor-id="una-riflessione-per-la-ricerca-psicologica">
+<span class="header-section-number">1.8</span> Una riflessione per la ricerca psicologica</h2>
+<p>La psicologia ha fatto ampio uso di test <span class="math inline">\(t\)</span>, ANOVA, regressioni, intervalli di confidenza, valori-<span class="math inline">\(p\)</span> e analisi di potenza. Conoscerli è indispensabile per leggere la letteratura e progettare studi.</p>
+<p>La crisi della replicabilità ha però mostrato che l’applicazione meccanica di procedure standardizzate non garantisce conoscenze affidabili. Campioni piccoli, misure poco valide, analisi flessibili, selezione dei risultati e attenzione esclusiva alla soglia 0.05 possono produrre evidenze fragili.</p>
+<p>La conclusione non è che ogni procedura frequentista sia inadeguata. È che nessuna procedura statistica può sostituire:</p>
+<ul>
+<li>un disegno di ricerca informativo;</li>
+<li>misure valide;</li>
+<li>assunzioni plausibili;</li>
+<li>trasparenza nelle decisioni analitiche;</li>
+<li>attenzione alla dimensione e all’incertezza degli effetti.</li>
+</ul></section><section id="frequentismo-e-bayesianesimo-domande-differenti" class="level2" data-number="1.9"><h2 data-number="1.9" class="anchored" data-anchor-id="frequentismo-e-bayesianesimo-domande-differenti">
+<span class="header-section-number">1.9</span> Frequentismo e bayesianesimo: domande differenti</h2>
+<p>Il frequentismo valuta soprattutto il comportamento delle procedure sotto campionamenti ripetuti. Il bayesianesimo rappresenta e aggiorna esplicitamente l’incertezza su parametri o ipotesi, condizionatamente al modello, alla prior e ai dati.</p>
+<p>Le due prospettive possono condividere lo stesso modello probabilistico delle osservazioni e la stessa funzione di verosimiglianza. Differiscono nel modo in cui costruiscono e interpretano l’inferenza.</p>
+<p>Un valore-<span class="math inline">\(p\)</span>, per esempio, esprime una probabilità dei dati o di risultati più estremi sotto un’ipotesi. Una probabilità a posteriori esprime invece l’incertezza su un parametro o un’ipotesi dopo avere combinato prior e dati. Le due quantità non sono intercambiabili.</p>
+</section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
+<p>La statistica frequentista non deriva da un’unica teoria elaborata in un solo momento. La pratica contemporanea combina strumenti nati dallo studio della variabilità, dalla modellizzazione delle associazioni, dalla significatività fisheriana e dal controllo decisionale degli errori di Neyman–Pearson.</p>
+<p>Questa storia ha prodotto strumenti fondamentali, ma è anche legata a progetti eugenetici e a usi gerarchici della misurazione. La risposta non è separare artificialmente tecnica e storia, né rifiutare ogni strumento: è usare i metodi con competenza, consapevolezza e responsabilità.</p>
+<p>Nel prossimo capitolo passeremo dalla cornice storica alla stima. Vedremo come una statistica campionaria viene usata per stimare un parametro e perché la distribuzione campionaria è il fondamento della valutazione frequentista della precisione.</p>
+</section><section id="esercizi" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="esercizi">Esercizi</h2>
+<ol type="1">
+<li><p>Perché lo studio delle distribuzioni ha rappresentato un passaggio importante per la psicologia scientifica?</p></li>
+<li><p>Che cosa significa regressione verso la media? Perché non dimostra, da sola, che un intervento abbia prodotto un cambiamento?</p></li>
+<li><p>Perché riconoscere il contesto eugenetico della statistica non implica che correlazione e regressione debbano essere abbandonate?</p></li>
+<li><p>Quale domanda generale esprime un test del chi-quadrato quando confronta frequenze osservate e attese?</p></li>
+<li><p>Che cosa misura un valore-<span class="math inline">\(p\)</span> e quale informazione non fornisce sull’ipotesi nulla?</p></li>
+<li><p>Qual è la differenza principale tra la logica fisheriana della significatività e il quadro Neyman–Pearson?</p></li>
+<li><p>Perché la frase «<span class="math inline">\(p&lt;0.05\)</span>, quindi rifiuto l’ipotesi nulla» può essere considerata una formulazione ibrida?</p></li>
+<li><p>Perché il controllo nominale degli errori non basta a garantire una conclusione scientificamente valida?</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Soluzioni">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Consiglio</span>Soluzioni
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><p><strong>La statistica moderna nasce dallo studio della variabilità.</strong> Galton, Pearson e Fisher contribuirono a trasformare la variabilità individuale in un oggetto di misurazione e modellizzazione.</p></li>
-<li><p><strong>La genealogia della statistica è ambivalente.</strong> Alcuni strumenti fondamentali sono nati in contesti legati all’eugenetica. Questo non li rende inutilizzabili, ma richiede consapevolezza storica ed etica.</p></li>
-<li><p><strong>Nel frequentismo la probabilità è frequenza a lungo termine.</strong> La probabilità riguarda ciò che accadrebbe in molte ripetizioni dello stesso processo, non direttamente il grado di credenza su un’ipotesi.</p></li>
-<li><p><strong>I parametri sono fissi, i dati sono variabili.</strong> L’incertezza frequentista deriva dal campionamento: campioni diversi produrrebbero stime diverse.</p></li>
-<li><p><strong>Le procedure sono valutate nel lungo periodo.</strong> Stimatori, intervalli di confidenza e test sono giudicati in base alle loro proprietà sotto ripetizione dell’esperimento.</p></li>
-<li><p><strong>Il confronto con il bayesianesimo riguarda le domande inferenziali.</strong> Il frequentismo controlla le proprietà delle procedure; il bayesianesimo aggiorna esplicitamente l’incertezza sui parametri o sulle ipotesi.</p></li>
+<li><p>Ha permesso di trattare la variabilità tra individui come un fenomeno descrivibile e modellizzabile, invece che come semplice rumore. Da qui derivano strumenti per confrontare misure, studiare associazioni e costruire previsioni.</p></li>
+<li><p>Quando due misure sono correlate ma non perfettamente, valori estremi della prima tendono a essere associati, in media, a valori meno estremi della seconda. Un cambiamento verso valori meno estremi può quindi comparire anche senza un effetto causale dell’intervento.</p></li>
+<li><p>Gli strumenti matematici possono essere utilizzati per scopi diversi da quelli storici. La consapevolezza della loro genealogia serve però a controllare come vengono definiti i costrutti, interpretate le differenze e utilizzate le classificazioni.</p></li>
+<li><p>Chiede quanto le frequenze osservate si discostino da quelle previste dal modello di riferimento, secondo la statistica e la distribuzione di campionamento adottate.</p></li>
+<li><p>Misura, sotto l’ipotesi nulla, la probabilità di un valore della statistica test almeno altrettanto incompatibile con l’ipotesi quanto quello osservato. Non fornisce la probabilità che l’ipotesi nulla sia vera.</p></li>
+<li><p>Fisher usava il valore-<span class="math inline">\(p\)</span> soprattutto come misura graduata dell’incompatibilità con l’ipotesi nulla. Neyman–Pearson formulavano regole decisionali prefissate e valutate attraverso errori di tipo I, errori di tipo II e potenza.</p></li>
+<li><p>Il valore-<span class="math inline">\(p\)</span> appartiene alla tradizione fisheriana, mentre la soglia prefissata e la decisione di rifiuto richiamano il quadro Neyman–Pearson. La pratica comune combina i due elementi.</p></li>
+<li><p>I tassi di errore sono garantiti soltanto sotto il modello, il disegno e le assunzioni specificate. Campionamento distorto, misure non valide, analisi flessibili o modelli inadeguati possono rendere fuorviante il risultato.</p></li>
 </ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Per il prossimo capitolo">
-<div class="callout-header d-flex align-content-center">
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Punti chiave">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Per il prossimo capitolo
+<span class="screen-reader-only">Nota</span>Punti chiave
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Nel prossimo capitolo passeremo dalla cornice storica alla prima procedura inferenziale: la <strong>stima dei parametri</strong>. Vedremo come una statistica calcolata su un campione può essere utilizzata per stimare una quantità sconosciuta della popolazione e perché la distribuzione campionaria è al centro del ragionamento frequentista.</p>
+<ul>
+<li>Lo sviluppo della statistica frequentista deriva da contributi storici differenti.</li>
+<li>Galton contribuì allo studio della regressione verso la media e dell’associazione tra variabili.</li>
+<li>Una parte della statistica moderna è storicamente intrecciata con il movimento eugenetico.</li>
+<li>Pearson formalizzò strumenti per descrivere distribuzioni e confrontare dati osservati e attesi.</li>
+<li>Fisher sviluppò la logica della significatività, la massima verosimiglianza e il disegno sperimentale.</li>
+<li>Neyman–Pearson introdussero un quadro decisionale fondato sul controllo degli errori e sulla potenza.</li>
+<li>La pratica contemporanea combina spesso concetti fisheriani e Neyman–Pearson.</li>
+<li>Le proprietà frequentiste riguardano procedure valutate sotto campionamenti ripetuti.</li>
+</ul>
 </div>
 </div>
-</section>
-<section id="bibliografia" class="level2 unnumbered unlisted">
-<h2 class="unnumbered unlisted anchored" data-anchor-id="bibliografia">Bibliografia</h2>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Ambiente di sviluppo">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Ambiente di sviluppo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Il capitolo non richiede pacchetti aggiuntivi. Le informazioni sull’ambiente R possono essere ottenute con:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="bibliografia" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="bibliografia">Bibliografia</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
@@ -780,10 +861,7 @@ Importante
 Chivers, T. (2024). <em>Everything is Predictable: How Bayesian Statistics Explain Our World</em>. Simon; Schuster.
 </div>
 </div>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1202,9 +1280,7 @@ Chivers, T. (2024). <em>Everything is Predictable: How Bayesian Statistics Expla
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html" class="pagination-link" aria-label="Introduzione all'inferenza frequentista in un percorso bayesiano">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduzione all’inferenza frequentista in un percorso bayesiano</span>
       </a>          
@@ -1216,8 +1292,7 @@ Chivers, T. (2024). <em>Everything is Predictable: How Bayesian Statistics Expla
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p><strong>Inferenza frequentista in psicologia</strong> — Modulo del progetto UTET a supporto del manuale <em>Inferenza bayesiana in psicologia: Ragionare con l’incertezza</em>.</p>
 </div>   
@@ -1229,8 +1304,6 @@ Chivers, T. (2024). <em>Everything is Predictable: How Bayesian Statistics Expla
 </div>
   </div>
 </footer>
-
-
 
 
 <script src="../../site_libs/quarto-html/zenscroll-min.js"></script>

@@ -56,27 +56,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -182,13 +162,15 @@ window.Quarto = {
 </script>
 <meta property="og:title" content="6&nbsp; Confrontare due gruppi indipendenti – Inferenza frequentista in psicologia">
 <meta property="og:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Inferenza bayesiana in psicologia: Ragionare con l’incertezza.">
-<meta property="og:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/06_two_ind_samples_files/figure-html/unnamed-chunk-3-1.png">
+<meta property="og:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/06_two_ind_samples_files/figure-html/fig-two-groups-data-1.png">
 <meta property="og:site_name" content="Inferenza frequentista in psicologia">
+<meta property="og:image:alt" content="Due gruppi di punti sovrapposti a boxplot; il gruppo intervento mostra punteggi medi più alti.">
 <meta property="og:image:height" content="1483">
 <meta property="og:image:width" content="2400">
 <meta name="twitter:title" content="6&nbsp; Confrontare due gruppi indipendenti – Inferenza frequentista in psicologia">
 <meta name="twitter:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Inferenza bayesiana in psicologia: Ragionare con l’incertezza.">
-<meta name="twitter:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/06_two_ind_samples_files/figure-html/unnamed-chunk-3-1.png">
+<meta name="twitter:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/06_two_ind_samples_files/figure-html/fig-two-groups-data-1.png">
+<meta name="twitter:image:alt" content="Due gruppi di punti sovrapposti a boxplot; il gruppo intervento mostra punteggi medi più alti.">
 <meta name="twitter:image-height" content="1483">
 <meta name="twitter:image-width" content="2400">
 <meta name="twitter:card" content="summary_large_image">
@@ -446,7 +428,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/05_sample_size.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, precisione e potenza</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -469,7 +451,7 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/epilogo/epilogo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerazioni conclusive: dal controllo dell’errore all’aggiornamento delle credenze</span></span></a>
+ <span class="menu-text">Conclusioni</span></a>
   </div>
 </li>
       </ul>
@@ -482,17 +464,20 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2"><h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
-<li><a href="#perch%C3%A9-confrontare-due-gruppi" id="toc-perché-confrontare-due-gruppi" class="nav-link active" data-scroll-target="#perch%C3%A9-confrontare-due-gruppi"><span class="header-section-number">6.1</span> Perché confrontare due gruppi</a></li>
-  <li><a href="#il-modello-inferenziale-del-test-t" id="toc-il-modello-inferenziale-del-test-t" class="nav-link" data-scroll-target="#il-modello-inferenziale-del-test-t"><span class="header-section-number">6.2</span> Il modello inferenziale del test <em>t</em></a></li>
-  <li><a href="#assunzioni-del-confronto-tra-due-gruppi" id="toc-assunzioni-del-confronto-tra-due-gruppi" class="nav-link" data-scroll-target="#assunzioni-del-confronto-tra-due-gruppi"><span class="header-section-number">6.3</span> Assunzioni del confronto tra due gruppi</a></li>
-  <li><a href="#un-esempio-guidato" id="toc-un-esempio-guidato" class="nav-link" data-scroll-target="#un-esempio-guidato"><span class="header-section-number">6.4</span> Un esempio guidato</a></li>
-  <li><a href="#il-test-t-classico" id="toc-il-test-t-classico" class="nav-link" data-scroll-target="#il-test-t-classico"><span class="header-section-number">6.5</span> Il test <em>t</em> classico</a></li>
-  <li><a href="#il-test-t-di-welch" id="toc-il-test-t-di-welch" class="nav-link" data-scroll-target="#il-test-t-di-welch"><span class="header-section-number">6.6</span> Il test <em>t</em> di Welch</a></li>
-  <li><a href="#interpretare-i-risultati-oltre-il-valore-p" id="toc-interpretare-i-risultati-oltre-il-valore-p" class="nav-link" data-scroll-target="#interpretare-i-risultati-oltre-il-valore-p"><span class="header-section-number">6.7</span> Interpretare i risultati oltre il valore-<em>p</em></a></li>
-  <li><a href="#come-riportare-il-risultato" id="toc-come-riportare-il-risultato" class="nav-link" data-scroll-target="#come-riportare-il-risultato"><span class="header-section-number">6.8</span> Come riportare il risultato</a></li>
-  <li><a href="#cosa-il-test-non-dice" id="toc-cosa-il-test-non-dice" class="nav-link" data-scroll-target="#cosa-il-test-non-dice"><span class="header-section-number">6.9</span> Cosa il test non dice</a></li>
-  <li><a href="#collegamento-con-la-prospettiva-bayesiana" id="toc-collegamento-con-la-prospettiva-bayesiana" class="nav-link" data-scroll-target="#collegamento-con-la-prospettiva-bayesiana"><span class="header-section-number">6.10</span> Collegamento con la prospettiva bayesiana</a></li>
-  <li><a href="#punti-chiave-da-ricordare" id="toc-punti-chiave-da-ricordare" class="nav-link" data-scroll-target="#punti-chiave-da-ricordare">Punti chiave da ricordare</a></li>
+<li><a href="#sec-freq-two-samples-estimand" id="toc-sec-freq-two-samples-estimand" class="nav-link active" data-scroll-target="#sec-freq-two-samples-estimand"><span class="header-section-number">6.1</span> Prima del test: definire il confronto</a></li>
+  <li><a href="#sec-freq-independent-paired" id="toc-sec-freq-independent-paired" class="nav-link" data-scroll-target="#sec-freq-independent-paired"><span class="header-section-number">6.2</span> Gruppi indipendenti, dati appaiati e misure ripetute</a></li>
+  <li><a href="#sec-freq-two-samples-model" id="toc-sec-freq-two-samples-model" class="nav-link" data-scroll-target="#sec-freq-two-samples-model"><span class="header-section-number">6.3</span> Il modello inferenziale</a></li>
+  <li><a href="#sec-freq-student-welch" id="toc-sec-freq-student-welch" class="nav-link" data-scroll-target="#sec-freq-student-welch"><span class="header-section-number">6.4</span> Test <em>t</em> classico e test di Welch</a></li>
+  <li><a href="#sec-freq-two-samples-assumptions" id="toc-sec-freq-two-samples-assumptions" class="nav-link" data-scroll-target="#sec-freq-two-samples-assumptions"><span class="header-section-number">6.5</span> Assunzioni e adeguatezza</a></li>
+  <li><a href="#sec-freq-two-samples-example" id="toc-sec-freq-two-samples-example" class="nav-link" data-scroll-target="#sec-freq-two-samples-example"><span class="header-section-number">6.6</span> Un esempio guidato</a></li>
+  <li><a href="#sec-freq-two-samples-welch-example" id="toc-sec-freq-two-samples-welch-example" class="nav-link" data-scroll-target="#sec-freq-two-samples-welch-example"><span class="header-section-number">6.7</span> Eseguire il test di Welch</a></li>
+  <li><a href="#sec-freq-two-samples-pooled-example" id="toc-sec-freq-two-samples-pooled-example" class="nav-link" data-scroll-target="#sec-freq-two-samples-pooled-example"><span class="header-section-number">6.8</span> Il caso con varianza comune</a></li>
+  <li><a href="#sec-freq-two-samples-integrated" id="toc-sec-freq-two-samples-integrated" class="nav-link" data-scroll-target="#sec-freq-two-samples-integrated"><span class="header-section-number">6.9</span> Interpretare insieme le quantità</a></li>
+  <li><a href="#sec-freq-two-samples-relevance" id="toc-sec-freq-two-samples-relevance" class="nav-link" data-scroll-target="#sec-freq-two-samples-relevance"><span class="header-section-number">6.10</span> Significatività, equivalenza e rilevanza pratica</a></li>
+  <li><a href="#sec-freq-two-samples-causality" id="toc-sec-freq-two-samples-causality" class="nav-link" data-scroll-target="#sec-freq-two-samples-causality"><span class="header-section-number">6.11</span> Dalla differenza osservata all’effetto causale</a></li>
+  <li><a href="#sec-freq-two-samples-regression" id="toc-sec-freq-two-samples-regression" class="nav-link" data-scroll-target="#sec-freq-two-samples-regression"><span class="header-section-number">6.12</span> Il test <em>t</em> come modello lineare</a></li>
+  <li><a href="#sec-freq-two-samples-bayes" id="toc-sec-freq-two-samples-bayes" class="nav-link" data-scroll-target="#sec-freq-two-samples-bayes"><span class="header-section-number">6.13</span> Che cosa cambia nel modello bayesiano?</a></li>
+  <li><a href="#sec-freq-two-samples-report" id="toc-sec-freq-two-samples-report" class="nav-link" data-scroll-target="#sec-freq-two-samples-report"><span class="header-section-number">6.14</span> Come riportare il risultato</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/06_two_ind_samples.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -511,42 +496,41 @@ window.Quarto = {
   
 
 
-</header><div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Il confronto tra due gruppi indipendenti è una delle situazioni più comuni nella ricerca psicologica: un gruppo sperimentale viene messo a confronto con un gruppo di controllo, due condizioni di trattamento vengono messe a confronto o si confrontano sottogruppi definiti da una caratteristica osservata.</p>
-<p>Nel quadro frequentista, il test <em>t</em> per campioni indipendenti risponde a una domanda specifica:</p>
-<blockquote class="blockquote">
-<p>Se, nella popolazione, le due medie fossero uguali, quanto sarebbe sorprendente osservare una differenza almeno grande quanto quella trovata nel campione?</p>
-</blockquote>
-<p>Tale domanda non coincide con la probabilità che le due medie siano uguali né con la probabilità che un trattamento funzioni. Il test <em>t</em> è una procedura che permette di valutare la compatibilità dei dati con un modello nullo e di controllare gli errori decisionali nel lungo periodo.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
+</header><div class="callout callout-style-default callout-note callout-titled" title="In sintesi">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>In questo capitolo imparerai a
+<span class="screen-reader-only">Nota</span>In sintesi
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li>riconoscere quando è appropriato un confronto tra due gruppi indipendenti;</li>
-<li>formulare ipotesi nulla e ipotesi alternativa per il test <em>t</em>;</li>
-<li>distinguere il test <em>t</em> classico dal test <em>t</em> di Welch;</li>
-<li>interpretare insieme differenza tra medie, intervallo di confidenza, valore-<em>p</em> e dimensione dell’effetto;</li>
-<li>riportare i risultati in modo completo, evitando una lettura basata solo sulla significatività statistica;</li>
-<li>comprendere quali domande restano aperte e saranno affrontate in modo più diretto dall’inferenza bayesiana.</li>
-</ul>
+<p><strong>Da sapere</strong> Il confronto tra due gruppi indipendenti stima una differenza tra medie e ne valuta la precisione e la compatibilità con un valore nullo. Il test <em>t</em> di Welch è spesso una scelta predefinita appropriata perché non richiede l’uguaglianza delle varianze.</p>
+<p><strong>Da saper fare</strong> Definire la differenza di interesse; riconoscere quando i gruppi sono indipendenti; leggere stime descrittive, intervallo di confidenza, valore-<em>p</em> e dimensione dell’effetto; distinguere associazione e causalità; collegare il test <em>t</em> a un modello di regressione con predittore dicotomico.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<section id="introduzione" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="introduzione">Introduzione</h2>
+<p>Il confronto tra due gruppi indipendenti è una delle situazioni più comuni nella ricerca psicologica. Possiamo confrontare un gruppo sottoposto a un intervento con un gruppo di controllo, due condizioni sperimentali oppure due gruppi definiti da una caratteristica osservata.</p>
+<p>Questo capitolo riunisce i concetti introdotti nel modulo:</p>
+<p><span class="math display">\[
+\text{stima}
+\longrightarrow
+\text{errore standard}
+\longrightarrow
+\text{intervallo di confidenza}
+\longrightarrow
+\text{test}
+\longrightarrow
+\text{dimensione dell'effetto}.
+\]</span></p>
+<p>L’obiettivo non è imparare una procedura isolata. È comprendere come questi elementi descrivano aspetti differenti dello stesso confronto.</p>
+<p>Nel quadro frequentista, il test <em>t</em> risponde a una domanda condizionale:</p>
+<blockquote class="blockquote">
+<p>Se la differenza tra le medie delle popolazioni fosse nulla e il modello fosse adeguato, quanto sarebbe estremo il risultato osservato?</p>
+</blockquote>
+<p>Questa domanda non coincide con la probabilità che le medie siano uguali, con la probabilità che l’intervento funzioni o con la probabilità che la differenza superi una soglia clinicamente importante.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Prerequisiti">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -556,238 +540,531 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Per seguire questo capitolo è utile aver letto:</p>
+<p>È utile avere letto:</p>
 <ul>
-<li>il capitolo su stime, stimatori e stima puntuale;</li>
-<li>il capitolo sugli intervalli di confidenza;</li>
-<li>il capitolo sui test di ipotesi e valore-<em>p</em>;</li>
-<li>il capitolo sulla numerosità campionaria, errore e potenza.</li>
+<li>
+<a href="02_stime_parametri.html" class="quarto-xref"><span>Capitolo 2</span></a>, per stimatore, stima ed errore standard;</li>
+<li>
+<a href="03_conf_interv.html" class="quarto-xref"><span>Capitolo 3</span></a>, per copertura e interpretazione degli intervalli;</li>
+<li>
+<a href="04_test_ipotesi.html" class="quarto-xref"><span>Capitolo 4</span></a>, per valore-<em>p</em>, <span class="math inline">\(\alpha\)</span> ed errori decisionali;</li>
+<li>
+<a href="05_sample_size.html" class="quarto-xref"><span>Capitolo 5</span></a>, per effetto bersaglio, potenza e numerosità.</li>
 </ul>
-<p>Il capitolo applica questi concetti a un caso concreto. Non introduce una nuova filosofia dell’inferenza, ma mostra come i diversi elementi del ragionamento frequentista si combinino in una procedura ampiamente utilizzata nella letteratura psicologica.</p>
+<p>Questo capitolo applica tali concetti a un unico caso e conclude la parte operativa del modulo.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-caution callout-titled" title="Preparazione del Notebook">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+</section><section id="panoramica-del-capitolo" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="panoramica-del-capitolo">Panoramica del capitolo</h2>
+<p>Il capitolo procede in nove passaggi:</p>
+<ol type="1">
+<li>definisce la quantità che si vuole confrontare;</li>
+<li>distingue gruppi indipendenti, dati appaiati e misure ripetute;</li>
+<li>presenta il modello del test <em>t</em> classico e quello di Welch;</li>
+<li>esamina disegno, distribuzioni e valori anomali;</li>
+<li>svolge un esempio completo in R;</li>
+<li>integra differenza grezza, intervallo, valore-<em>p</em> ed effetto standardizzato;</li>
+<li>chiarisce quando una differenza può essere interpretata causalmente;</li>
+<li>mostra l’equivalenza con la regressione lineare;</li>
+<li>collega il confronto frequentista ai modelli bayesiani del Companion.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="Preparazione del notebook">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Attenzione</span>Preparazione del Notebook
+<span class="screen-reader-only">Nota</span>Preparazione del notebook
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>Per eseguire gli esempi, prepara l’ambiente comune del progetto:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
-</div>
-<section id="perché-confrontare-due-gruppi" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="perché-confrontare-due-gruppi">
-<span class="header-section-number">6.1</span> Perché confrontare due gruppi</h2>
-<p>Immaginiamo uno studio in cui si valuta l’efficacia di un breve intervento di regolazione emotiva. Un gruppo di studenti riceve l’intervento, mentre un secondo gruppo segue una condizione di controllo. Al termine dello studio, tutti i partecipanti compilano una scala di benessere psicologico.</p>
-<p>Il ricercatore osserva due medie campionarie:</p>
+</section><section id="sec-freq-two-samples-estimand" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="sec-freq-two-samples-estimand">
+<span class="header-section-number">6.1</span> Prima del test: definire il confronto</h2>
+<p>Immaginiamo uno studio su un intervento di regolazione emotiva. Un gruppo riceve l’intervento e un gruppo di controllo non lo riceve. Al termine dello studio viene misurato il benessere psicologico.</p>
+<p>Indichiamo con:</p>
 <p><span class="math display">\[
-\bar{x}_1 \quad \text{e} \quad \bar{x}_2.
+\mu_1
+=
+\text{media della popolazione del gruppo intervento},
+\]</span></p>
+<p><span class="math display">\[
+\mu_0
+=
+\text{media della popolazione del gruppo controllo}.
+\]</span></p>
+<p>La quantità bersaglio è:</p>
+<p><span class="math display">\[
+\Delta
+=
+\mu_1-\mu_0.
+\]</span></p>
+<p>La sua stima campionaria è:</p>
+<p><span class="math display">\[
+\widehat{\Delta}
+=
+\bar X_1-\bar X_0.
+\]</span></p>
+<p>Il segno dipende dall’ordine della sottrazione. Con la definizione adottata:</p>
+<ul>
+<li>
+<span class="math inline">\(\widehat{\Delta}&gt;0\)</span> indica una media maggiore nel gruppo intervento;</li>
+<li>
+<span class="math inline">\(\widehat{\Delta}&lt;0\)</span> indica una media maggiore nel gruppo controllo.</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled" title="Definire l'ordine prima di interpretare il segno">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Definire l’ordine prima di interpretare il segno
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La stessa differenza può essere scritta come intervento meno controllo oppure controllo meno intervento. Il valore assoluto non cambia, ma il segno sì.</p>
+<p>L’ordine deve essere dichiarato e mantenuto coerente in stima, intervallo, dimensione dell’effetto e resoconto.</p>
+</div>
+</div>
+<section id="quale-popolazione-rappresentano-le-medie" class="level3" data-number="6.1.1"><h3 data-number="6.1.1" class="anchored" data-anchor-id="quale-popolazione-rappresentano-le-medie">
+<span class="header-section-number">6.1.1</span> Quale popolazione rappresentano le medie?</h3>
+<p>Le medie <span class="math inline">\(\mu_1\)</span> e <span class="math inline">\(\mu_0\)</span> dipendono da:</p>
+<ul>
+<li>popolazione a cui si vuole generalizzare;</li>
+<li>criteri di inclusione;</li>
+<li>modalità di assegnazione ai gruppi;</li>
+<li>momento e strumento di misurazione;</li>
+<li>trattamento dei dati mancanti;</li>
+<li>modello statistico.</li>
+</ul>
+<p>Una differenza tra medie non è un oggetto separato dal disegno. Prima di calcolare il test occorre chiarire che cosa rappresentano i due gruppi e quale confronto sia scientificamente rilevante.</p>
+</section></section><section id="sec-freq-independent-paired" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="sec-freq-independent-paired">
+<span class="header-section-number">6.2</span> Gruppi indipendenti, dati appaiati e misure ripetute</h2>
+<p>Due gruppi sono <strong>indipendenti</strong> quando l’osservazione di una persona nel primo gruppo non è naturalmente collegata a una specifica osservazione del secondo gruppo.</p>
+<p>Esempi:</p>
+<ul>
+<li>persone differenti assegnate a intervento e controllo;</li>
+<li>partecipanti provenienti da due popolazioni distinte;</li>
+<li>due gruppi osservazionali senza abbinamento individuale.</li>
+</ul>
+<p>Non sono invece indipendenti:</p>
+<ul>
+<li>misure prima e dopo sulle stesse persone;</li>
+<li>coppie abbinate;</li>
+<li>gemelli o membri della stessa famiglia;</li>
+<li>studenti nella stessa classe, quando la dipendenza del gruppo non è modellata;</li>
+<li>più osservazioni prodotte dallo stesso partecipante.</li>
+</ul>
+<p>Nel caso di coppie o misure ripetute, la quantità rilevante è spesso la media delle differenze entro coppia. Usare il test per gruppi indipendenti ignora la struttura dei dati e può produrre errori standard inadeguati.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="L'indipendenza non si verifica con un test automatico">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>L’indipendenza non si verifica con un test automatico
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>È soprattutto una proprietà del disegno e del processo di raccolta. Un grafico o un test di normalità non possono dimostrare che osservazioni provenienti dalla stessa classe, famiglia o persona siano indipendenti.</p>
+</div>
+</div>
+</section><section id="sec-freq-two-samples-model" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="sec-freq-two-samples-model">
+<span class="header-section-number">6.3</span> Il modello inferenziale</h2>
+<section id="ipotesi-nulla-e-alternativa" class="level3" data-number="6.3.1"><h3 data-number="6.3.1" class="anchored" data-anchor-id="ipotesi-nulla-e-alternativa">
+<span class="header-section-number">6.3.1</span> Ipotesi nulla e alternativa</h3>
+<p>Nel test bilaterale:</p>
+<p><span class="math display">\[
+H_0:\Delta=0,
+\]</span></p>
+<p><span class="math display">\[
+H_1:\Delta\neq0.
+\]</span></p>
+<p>Un’alternativa direzionale può essere:</p>
+<p><span class="math display">\[
+H_1:\Delta&gt;0.
+\]</span></p>
+<p>La direzione deve essere scelta prima di osservare i dati e deve avere una motivazione sostantiva. Il test bilaterale è una scelta introduttiva prudente quando deviazioni in entrambe le direzioni sarebbero scientificamente rilevanti.</p>
+</section><section id="struttura-generale-della-statistica" class="level3" data-number="6.3.2"><h3 data-number="6.3.2" class="anchored" data-anchor-id="struttura-generale-della-statistica">
+<span class="header-section-number">6.3.2</span> Struttura generale della statistica</h3>
+<p>La statistica test ha la forma:</p>
+<p><span class="math display">\[
+t
+=
+\frac{\widehat{\Delta}-0}
+{\widehat{\operatorname{SE}}(\widehat{\Delta})}.
+\]</span></p>
+<p>Il numeratore è la differenza osservata rispetto al valore nullo. Il denominatore misura quanto la differenza tra medie varierebbe sotto campionamenti ripetuti, secondo il modello adottato.</p>
+</section></section><section id="sec-freq-student-welch" class="level2" data-number="6.4"><h2 data-number="6.4" class="anchored" data-anchor-id="sec-freq-student-welch">
+<span class="header-section-number">6.4</span> Test <em>t</em> classico e test di Welch</h2>
+<section id="test-classico-con-varianze-uguali" class="level3" data-number="6.4.1"><h3 data-number="6.4.1" class="anchored" data-anchor-id="test-classico-con-varianze-uguali">
+<span class="header-section-number">6.4.1</span> Test classico con varianze uguali</h3>
+<p>Il test classico assume una varianza comune nelle due popolazioni. La deviazione standard pooled è:</p>
+<p><span class="math display">\[
+s_p
+=
+\sqrt{
+\frac{
+(n_1-1)s_1^2+(n_0-1)s_0^2
+}{
+n_1+n_0-2
+}
+}.
+\]</span></p>
+<p>L’errore standard è:</p>
+<p><span class="math display">\[
+\widehat{\operatorname{SE}}_{\text{pooled}}
+=
+s_p
+\sqrt{
+\frac{1}{n_1}+\frac{1}{n_0}
+}.
+\]</span></p>
+<p>La statistica segue una distribuzione <em>t</em> con:</p>
+<p><span class="math display">\[
+df=n_1+n_0-2
+\]</span></p>
+<p>quando le assunzioni del modello sono soddisfatte.</p>
+</section><section id="test-di-welch" class="level3" data-number="6.4.2"><h3 data-number="6.4.2" class="anchored" data-anchor-id="test-di-welch">
+<span class="header-section-number">6.4.2</span> Test di Welch</h3>
+<p>Il test di Welch non impone una varianza comune. Usa:</p>
+<p><span class="math display">\[
+\widehat{\operatorname{SE}}_{\text{Welch}}
+=
+\sqrt{
+\frac{s_1^2}{n_1}
++
+\frac{s_0^2}{n_0}
+}.
+\]</span></p>
+<p>I gradi di libertà vengono approssimati mediante la formula di Welch–Satterthwaite:</p>
+<p><span class="math display">\[
+\nu
+=
+\frac{
+\left(
+s_1^2/n_1+s_0^2/n_0
+\right)^2
+}{
+\frac{(s_1^2/n_1)^2}{n_1-1}
++
+\frac{(s_0^2/n_0)^2}{n_0-1}
+}.
+\]</span></p>
+<p>In R, <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> usa Welch per impostazione predefinita.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Perché Welch è una buona scelta predefinita">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Perché Welch è una buona scelta predefinita
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quando varianze e numerosità sono simili, Welch e il test classico producono spesso risultati quasi identici.</p>
+<p>Quando differiscono, Welch protegge meglio dall’assunzione non giustificata di una varianza comune. Non è corretto descriverlo semplicemente come «più prudente»: è una procedura costruita per un modello che consente dispersioni differenti.</p>
+</div>
+</div>
+<p>L’uso del test classico dovrebbe derivare da una ragione per assumere una varianza comune, non dal mancato rifiuto di un test preliminare sulle varianze. Testare prima l’uguaglianza delle varianze e scegliere poi il test sulla base dello stesso campione crea una procedura in due stadi con proprietà meno trasparenti.</p>
+</section></section><section id="sec-freq-two-samples-assumptions" class="level2" data-number="6.5"><h2 data-number="6.5" class="anchored" data-anchor-id="sec-freq-two-samples-assumptions">
+<span class="header-section-number">6.5</span> Assunzioni e adeguatezza</h2>
+<section id="indipendenza-e-disegno" class="level3" data-number="6.5.1"><h3 data-number="6.5.1" class="anchored" data-anchor-id="indipendenza-e-disegno">
+<span class="header-section-number">6.5.1</span> Indipendenza e disegno</h3>
+<p>L’indipendenza è essenziale per le formule standard. Clustering, abbinamento o misure ripetute richiedono procedure differenti.</p>
+</section><section id="esito-quantitativo" class="level3" data-number="6.5.2"><h3 data-number="6.5.2" class="anchored" data-anchor-id="esito-quantitativo">
+<span class="header-section-number">6.5.2</span> Esito quantitativo</h3>
+<p>Il test confronta medie. L’esito deve quindi essere quantitativo o trattato come una misura approssimativamente quantitativa. Questa scelta deve essere sostantivamente difendibile, soprattutto per punteggi con pochi livelli o forti effetti di pavimento e soffitto.</p>
+</section><section id="distribuzione-entro-i-gruppi" class="level3" data-number="6.5.3"><h3 data-number="6.5.3" class="anchored" data-anchor-id="distribuzione-entro-i-gruppi">
+<span class="header-section-number">6.5.3</span> Distribuzione entro i gruppi</h3>
+<p>L’esattezza del test classico e di Welch deriva da popolazioni normali. Le procedure sono spesso robuste a deviazioni moderate quando:</p>
+<ul>
+<li>i campioni non sono molto piccoli;</li>
+<li>le distribuzioni non sono fortemente asimmetriche;</li>
+<li>non sono presenti valori estremi influenti;</li>
+<li>il disegno non combina forte squilibrio e forte eteroschedasticità.</li>
+</ul>
+<p>La robustezza non significa che la forma dei dati sia irrilevante. Con campioni piccoli, code pesanti o valori anomali, media, deviazione standard e test possono essere instabili.</p>
+</section><section id="valori-anomali" class="level3" data-number="6.5.4"><h3 data-number="6.5.4" class="anchored" data-anchor-id="valori-anomali">
+<span class="header-section-number">6.5.4</span> Valori anomali</h3>
+<p>Un valore anomalo può:</p>
+<ul>
+<li>spostare una media;</li>
+<li>aumentare una deviazione standard;</li>
+<li>modificare l’errore standard;</li>
+<li>alterare il valore-<em>p</em> e la dimensione dell’effetto.</li>
+</ul>
+<p>Non va eliminato automaticamente. Occorre verificare se derivi da errore, se sia plausibile per la popolazione e quanto le conclusioni dipendano dalla sua presenza.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Il controllo delle assunzioni è parte dell'analisi">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Il controllo delle assunzioni è parte dell’analisi
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Non consiste nel cercare un test che autorizzi meccanicamente l’uso del test <em>t</em>. Richiede di collegare grafici, disegno, qualità delle misure e conseguenze delle deviazioni al modello.</p>
+</div>
+</div>
+</section></section><section id="sec-freq-two-samples-example" class="level2" data-number="6.6"><h2 data-number="6.6" class="anchored" data-anchor-id="sec-freq-two-samples-example">
+<span class="header-section-number">6.6</span> Un esempio guidato</h2>
+<p>Consideriamo dati didattici sul benessere psicologico.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">benessere_intervento</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  <span class="fl">27</span>, <span class="fl">31</span>, <span class="fl">29</span>, <span class="fl">33</span>, <span class="fl">35</span>, <span class="fl">30</span>,</span>
+<span>  <span class="fl">32</span>, <span class="fl">28</span>, <span class="fl">34</span>, <span class="fl">31</span>, <span class="fl">36</span>, <span class="fl">29</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">benessere_controllo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  <span class="fl">24</span>, <span class="fl">26</span>, <span class="fl">28</span>, <span class="fl">25</span>, <span class="fl">29</span>, <span class="fl">27</span>,</span>
+<span>  <span class="fl">23</span>, <span class="fl">30</span>, <span class="fl">26</span>, <span class="fl">25</span>, <span class="fl">28</span>, <span class="fl">24</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dati_benessere</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  gruppo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Controllo"</span>, <span class="st">"Intervento"</span><span class="op">)</span>,</span>
+<span>      each <span class="op">=</span> <span class="fl">12</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Controllo"</span>, <span class="st">"Intervento"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  benessere <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="va">benessere_controllo</span>,</span>
+<span>    <span class="va">benessere_intervento</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>La codifica fissa l’ordine del confronto come:</p>
+<p><span class="math display">\[
+\Delta
+=
+\mu_{\text{intervento}}
+-
+\mu_{\text{controllo}}.
+\]</span></p>
+<section id="descrizione-prima-dellinferenza" class="level3" data-number="6.6.1"><h3 data-number="6.6.1" class="anchored" data-anchor-id="descrizione-prima-dellinferenza">
+<span class="header-section-number">6.6.1</span> Descrizione prima dell’inferenza</h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gruppi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html">split</a></span><span class="op">(</span></span>
+<span>  <span class="va">dati_benessere</span><span class="op">$</span><span class="va">benessere</span>,</span>
+<span>  <span class="va">dati_benessere</span><span class="op">$</span><span class="va">gruppo</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">descrittive</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  gruppo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">gruppi</span><span class="op">)</span>,</span>
+<span>  n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">vapply</a></span><span class="op">(</span><span class="va">gruppi</span>, <span class="va">length</span>, <span class="fu"><a href="https://rdrr.io/r/base/integer.html">integer</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  media <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">vapply</a></span><span class="op">(</span><span class="va">gruppi</span>, <span class="va">mean</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  deviazione_standard <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">vapply</a></span><span class="op">(</span><span class="va">gruppi</span>, <span class="va">sd</span>, <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  row.names <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">descrittive</span><span class="op">$</span><span class="va">media</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">descrittive</span><span class="op">$</span><span class="va">media</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">descrittive</span><span class="op">$</span><span class="va">deviazione_standard</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">descrittive</span><span class="op">$</span><span class="va">deviazione_standard</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">descrittive</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="tbl-two-groups-descriptives" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-two-groups-descriptives-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;6.1: Statistiche descrittive dei punteggi di benessere nei due gruppi.
+</figcaption><div aria-describedby="tbl-two-groups-descriptives-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="cell caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">gruppo</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">media</th>
+<th style="text-align: right;">deviazione_standard</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Controllo</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">26.2</td>
+<td style="text-align: right;">2.18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Intervento</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">31.2</td>
+<td style="text-align: right;">2.83</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Le medie campionarie sono:</p>
+<p><span class="math display">\[
+\bar x_{\text{intervento}}=31.25,
+\]</span></p>
+<p><span class="math display">\[
+\bar x_{\text{controllo}}=26.25.
 \]</span></p>
 <p>La differenza osservata è:</p>
 <p><span class="math display">\[
-\bar{x}_1 - \bar{x}_2.
+\widehat{\Delta}=5.00.
 \]</span></p>
-<p>Questa differenza è una <strong>stima puntuale</strong> della differenza tra le medie delle popolazioni:</p>
-<p><span class="math display">\[
-\mu_1 - \mu_2.
-\]</span></p>
-<p>Tuttavia, come abbiamo visto nei capitoli precedenti, una stima puntuale non è sufficiente. Due campioni estratti dalla stessa popolazione possono produrre medie diverse, anche quando non esiste alcuna differenza reale tra i gruppi. Per questo motivo, il confronto tra due gruppi richiede sempre tre componenti:</p>
-<ol type="1">
-<li>una <strong>stima</strong> della differenza osservata;</li>
-<li>una misura dell’<strong>incertezza</strong> associata a quella stima;</li>
-<li>una procedura per valutare la <strong>compatibilità</strong> dei dati con l’ipotesi nulla.</li>
-</ol>
-<p>Il test <em>t</em> per campioni indipendenti combina questi elementi in una procedura frequentista standard.</p>
-</section><section id="il-modello-inferenziale-del-test-t" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="il-modello-inferenziale-del-test-t">
-<span class="header-section-number">6.2</span> Il modello inferenziale del test <em>t</em>
-</h2>
-<section id="ipotesi-nulla-e-ipotesi-alternativa" class="level3" data-number="6.2.1"><h3 data-number="6.2.1" class="anchored" data-anchor-id="ipotesi-nulla-e-ipotesi-alternativa">
-<span class="header-section-number">6.2.1</span> Ipotesi nulla e ipotesi alternativa</h3>
-<p>Nel confronto tra due gruppi, l’ipotesi nulla afferma di solito che le due popolazioni abbiano la stessa media:</p>
-<p><span class="math display">\[
-H_0: \mu_1 = \mu_2.
-\]</span></p>
-<p>In modo equivalente:</p>
-<p><span class="math display">\[
-H_0: \mu_1 - \mu_2 = 0.
-\]</span></p>
-<p>L’ipotesi alternativa può essere bidirezionale:</p>
-<p><span class="math display">\[
-H_1: \mu_1 - \mu_2 \neq 0,
-\]</span> oppure direzionale:</p>
-<p><span class="math display">\[
-H_1: \mu_1 - \mu_2 &gt; 0
-\]</span> oppure</p>
-<p><span class="math display">\[
-H_1: \mu_1 - \mu_2 &lt; 0.
-\]</span></p>
-<p>In un contesto introduttivo, è preferibile partire dal test bidirezionale, in quanto evita di introdurre una direzione dell’effetto dopo aver osservato i dati.</p>
-</section><section id="la-statistica-test" class="level3" data-number="6.2.2"><h3 data-number="6.2.2" class="anchored" data-anchor-id="la-statistica-test">
-<span class="header-section-number">6.2.2</span> La statistica test</h3>
-<p>La logica del test <em>t</em> è semplice: la differenza osservata tra le medie viene confrontata con la variabilità che ci aspetteremmo se l’ipotesi nulla fosse vera.</p>
-<p>In forma generale:</p>
-<p><span class="math display">\[
-t = \frac{\text{differenza osservata}}{\text{errore standard della differenza}}.
-\]</span></p>
-<p>Nel caso del test <em>t</em> classico con varianze uguali, la statistica è:</p>
-<p><span class="math display">\[
-t = \frac{\bar{X}_1 - \bar{X}_2}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}},
-\]</span> dove <span class="math inline">\(s_p\)</span> è la deviazione standard pooled:</p>
-<p><span class="math display">\[
-s_p = \sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}}.
-\]</span></p>
-<p>Sotto <span class="math inline">\(H_0\)</span>, e se le assunzioni del modello sono ragionevoli, questa statistica segue una distribuzione <em>t</em> di Student con:</p>
-<p><span class="math display">\[
-df = n_1 + n_2 - 2
-\]</span> gradi di libertà.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Una formula già familiare
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>La struttura del test <em>t</em> non è nuova. Si tratta della stessa logica vista nel test per una media:</p>
-<p><span class="math display">\[
-\text{statistica test} = \frac{\text{stima} - \text{valore atteso sotto } H_0}{\text{errore standard}}.
-\]</span></p>
-<p>Nel confronto tra due gruppi, la stima è la differenza tra le due medie. Il denominatore misura quanto tale differenza può variare da un campione all’altro quando <span class="math inline">\(H_0\)</span> è vera.</p>
-</div>
-</div>
-</section></section><section id="assunzioni-del-confronto-tra-due-gruppi" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="assunzioni-del-confronto-tra-due-gruppi">
-<span class="header-section-number">6.3</span> Assunzioni del confronto tra due gruppi</h2>
-<p>Per interpretare correttamente il test, è necessario chiedersi se il modello sia plausibile per i dati osservati e per il disegno dello studio.</p>
-<section id="indipendenza-delle-osservazioni" class="level3" data-number="6.3.1"><h3 data-number="6.3.1" class="anchored" data-anchor-id="indipendenza-delle-osservazioni">
-<span class="header-section-number">6.3.1</span> Indipendenza delle osservazioni</h3>
-<p>Le osservazioni devono essere indipendenti sia all’interno di ciascun gruppo sia tra i gruppi. Questa è soprattutto un’assunzione di <strong>disegno</strong>: dipende da come sono stati reclutati i partecipanti e da come è stato condotto lo studio.</p>
-<p>Ad esempio, se più osservazioni provengono dagli stessi partecipanti, da coppie, da classi scolastiche o da terapeuti comuni, l’indipendenza può essere violata. In questi casi, un semplice test <em>t</em> per campioni indipendenti potrebbe non essere adeguato.</p>
-</section><section id="variabile-quantitativa" class="level3" data-number="6.3.2"><h3 data-number="6.3.2" class="anchored" data-anchor-id="variabile-quantitativa">
-<span class="header-section-number">6.3.2</span> Variabile quantitativa</h3>
-<p>Il test <em>t</em> confronta le medie. La variabile dipendente dovrebbe quindi essere quantitativa o trattata come approssimativamente quantitativa. In psicologia, questo accade spesso con i punteggi delle scale, i tempi di risposta, i punteggi clinici o gli indici compositi.</p>
-</section><section id="forma-della-distribuzione" class="level3" data-number="6.3.3"><h3 data-number="6.3.3" class="anchored" data-anchor-id="forma-della-distribuzione">
-<span class="header-section-number">6.3.3</span> Forma della distribuzione</h3>
-<p>Il test <em>t</em> assume che, in ciascun gruppo, la variabile sia approssimativamente normale nella popolazione. In pratica, il test è spesso abbastanza robusto di fronte a deviazioni moderate dalla normalità, soprattutto quando i campioni non sono molto piccoli e non ci sono outlier estremi.</p>
-</section><section id="uguaglianza-delle-varianze" class="level3" data-number="6.3.4"><h3 data-number="6.3.4" class="anchored" data-anchor-id="uguaglianza-delle-varianze">
-<span class="header-section-number">6.3.4</span> Uguaglianza delle varianze</h3>
-<p>Il test <em>t</em> classico presuppone che le due popolazioni abbiano la stessa varianza. Quando questa assunzione non è plausibile, è preferibile utilizzare il <strong>test <em>t</em> di Welch</strong>, che non richiede varianze uguali e modifica i gradi di libertà.</p>
-<p>In R, la funzione <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> usa per impostazione predefinita il test di Welch. Questa scelta è spesso consigliabile nella pratica applicata.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Consiglio</span>Regola pratica
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Nel lavoro applicato, il test di Welch è spesso una buona scelta predefinita per il confronto tra due gruppi indipendenti. Il test classico con varianze uguali richiede un’ulteriore assunzione che non sempre è giustificata.</p>
-</div>
-</div>
-</section></section><section id="un-esempio-guidato" class="level2" data-number="6.4"><h2 data-number="6.4" class="anchored" data-anchor-id="un-esempio-guidato">
-<span class="header-section-number">6.4</span> Un esempio guidato</h2>
-<p>Consideriamo uno studio simulato sul benessere psicologico. Un gruppo di studenti segue un breve intervento di regolazione emotiva, mentre un secondo gruppo segue una condizione di controllo. Il punteggio finale viene misurato su una scala in cui i valori più alti indicano un maggiore benessere.</p>
+</section><section id="visualizzare-distribuzioni-e-osservazioni" class="level3" data-number="6.6.2"><h3 data-number="6.6.2" class="anchored" data-anchor-id="visualizzare-distribuzioni-e-osservazioni">
+<span class="header-section-number">6.6.2</span> Visualizzare distribuzioni e osservazioni</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">benessere_intervento</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">27</span>, <span class="fl">31</span>, <span class="fl">29</span>, <span class="fl">33</span>, <span class="fl">35</span>, <span class="fl">30</span>, <span class="fl">32</span>, <span class="fl">28</span>, <span class="fl">34</span>, <span class="fl">31</span>, <span class="fl">36</span>, <span class="fl">29</span><span class="op">)</span></span>
-<span><span class="va">benessere_controllo</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">24</span>, <span class="fl">26</span>, <span class="fl">28</span>, <span class="fl">25</span>, <span class="fl">29</span>, <span class="fl">27</span>, <span class="fl">23</span>, <span class="fl">30</span>, <span class="fl">26</span>, <span class="fl">25</span>, <span class="fl">28</span>, <span class="fl">24</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Gruppo intervento:\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Gruppo intervento:</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  Media:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">benessere_intervento</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Media: 31.2</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  Deviazione standard:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">benessere_intervento</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Deviazione standard: 2.83</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  n:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">benessere_intervento</span><span class="op">)</span>, <span class="st">"\n\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   n: 12</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Gruppo controllo:\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Gruppo controllo:</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  Media:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">benessere_controllo</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Media: 26.2</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  Deviazione standard:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">benessere_controllo</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   Deviazione standard: 2.18</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"  n:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">benessere_controllo</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   n: 12</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>La prima cosa da fare non è calcolare il valore-<em>p</em>, ma osservare le stime descrittive. Il gruppo di intervento presenta una media più alta rispetto al gruppo di controllo. La domanda inferenziale è se questa differenza sia abbastanza grande rispetto alla variabilità attesa da risultare poco compatibile con <span class="math inline">\(H_0\)</span>.</p>
-<section id="visualizzazione-descrittiva" class="level3" data-number="6.4.1"><h3 data-number="6.4.1" class="anchored" data-anchor-id="visualizzazione-descrittiva">
-<span class="header-section-number">6.4.1</span> Visualizzazione descrittiva</h3>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">dati_benessere</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
-<span>  gruppo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Intervento"</span>, <span class="st">"Controllo"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>,</span>
-<span>  benessere <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">benessere_intervento</span>, <span class="va">benessere_controllo</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dati_benessere</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">gruppo</span>, y <span class="op">=</span> <span class="va">benessere</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.45</span>, alpha <span class="op">=</span> <span class="fl">0.6</span>, outlier.shape <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.08</span>, alpha <span class="op">=</span> <span class="fl">0.8</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">mean</span>, geom <span class="op">=</span> <span class="st">"point"</span>, shape <span class="op">=</span> <span class="fl">18</span>, size <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Punteggi di benessere nei due gruppi"</span>,</span>
-<span>    subtitle <span class="op">=</span> <span class="st">"Il rombo indica la media campionaria"</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span></span>
+<span>  <span class="va">dati_benessere</span>,</span>
+<span>  <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gruppo</span>, y <span class="op">=</span> <span class="va">benessere</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_boxplot</span><span class="op">(</span></span>
+<span>    width <span class="op">=</span> <span class="fl">0.45</span>,</span>
+<span>    alpha <span class="op">=</span> <span class="fl">0.35</span>,</span>
+<span>    outlier.shape <span class="op">=</span> <span class="cn">NA</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_jitter</span><span class="op">(</span></span>
+<span>    width <span class="op">=</span> <span class="fl">0.08</span>,</span>
+<span>    alpha <span class="op">=</span> <span class="fl">0.8</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">2</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">stat_summary</span><span class="op">(</span></span>
+<span>    fun <span class="op">=</span> <span class="va">mean</span>,</span>
+<span>    geom <span class="op">=</span> <span class="st">"point"</span>,</span>
+<span>    shape <span class="op">=</span> <span class="fl">18</span>,</span>
+<span>    size <span class="op">=</span> <span class="fl">4</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
 <span>    x <span class="op">=</span> <span class="st">"Gruppo"</span>,</span>
 <span>    y <span class="op">=</span> <span class="st">"Punteggio di benessere"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="06_two_ind_samples_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="06_two_ind_samples_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
-</figure>
+<div id="fig-two-groups-data" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Due gruppi di punti sovrapposti a boxplot; il gruppo intervento mostra punteggi medi più alti." data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-two-groups-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="06_two_ind_samples_files/figure-html/fig-two-groups-data-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figura&nbsp;6.1: Punteggi individuali e distribuzioni nei gruppi controllo e intervento. Il simbolo a rombo indica la media."><img src="06_two_ind_samples_files/figure-html/fig-two-groups-data-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%" alt="Due gruppi di punti sovrapposti a boxplot; il gruppo intervento mostra punteggi medi più alti."></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-two-groups-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.1: Punteggi individuali e distribuzioni nei gruppi controllo e intervento. Il simbolo a rombo indica la media.
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>La visualizzazione aiuta a vedere insieme posizione, variabilità e possibili valori anomali. Tale ispezione non sostituisce il test, ma rende l’interpretazione più trasparente.</p>
-</section></section><section id="il-test-t-classico" class="level2" data-number="6.5"><h2 data-number="6.5" class="anchored" data-anchor-id="il-test-t-classico">
-<span class="header-section-number">6.5</span> Il test <em>t</em> classico</h2>
-<p>Calcoliamo prima il test <em>t</em> nella versione classica con varianze uguali.</p>
+<p><a href="#fig-two-groups-data" class="quarto-xref">Figura&nbsp;<span>6.1</span></a> mostra posizione, dispersione, sovrapposizione e singole osservazioni. Il grafico non sostituisce l’inferenza, ma impedisce che il risultato venga ridotto a un unico numero.</p>
+</section></section><section id="sec-freq-two-samples-welch-example" class="level2" data-number="6.7"><h2 data-number="6.7" class="anchored" data-anchor-id="sec-freq-two-samples-welch-example">
+<span class="header-section-number">6.7</span> Eseguire il test di Welch</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">benessere_intervento</span><span class="op">)</span></span>
-<span><span class="va">n2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">benessere_controllo</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">test_welch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span></span>
+<span>  <span class="va">benessere</span> <span class="op">~</span> <span class="va">gruppo</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">dati_benessere</span>,</span>
+<span>  alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
+<span>  var.equal <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  conf.level <span class="op">=</span> <span class="fl">0.95</span></span>
+<span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">benessere_intervento</span><span class="op">)</span></span>
-<span><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">benessere_controllo</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">s1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">benessere_intervento</span><span class="op">)</span></span>
-<span><span class="va">s2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">benessere_controllo</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">s_pool</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="op">(</span><span class="va">n1</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="va">s1</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="op">(</span><span class="va">n2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="va">s2</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">n1</span> <span class="op">+</span> <span class="va">n2</span> <span class="op">-</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">se_diff</span> <span class="op">&lt;-</span> <span class="va">s_pool</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fl">1</span><span class="op">/</span><span class="va">n2</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">t_stat</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">m1</span> <span class="op">-</span> <span class="va">m2</span><span class="op">)</span> <span class="op">/</span> <span class="va">se_diff</span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">n1</span> <span class="op">+</span> <span class="va">n2</span> <span class="op">-</span> <span class="fl">2</span></span>
-<span><span class="va">p_value</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">t_stat</span><span class="op">)</span>, df <span class="op">=</span> <span class="va">df</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Differenza tra medie:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">m1</span> <span class="op">-</span> <span class="va">m2</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Differenza tra medie: 5</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Errore standard della differenza:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">se_diff</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Errore standard della differenza: 1.03</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Statistica t:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">t_stat</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Statistica t: 4.85</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Gradi di libertà:"</span>, <span class="va">df</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Gradi di libertà: 22</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valore-p:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">p_value</span>, <span class="fl">4</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Valore-p: 0.0001</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="va">test_welch</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Welch Two Sample t-test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  benessere by gruppo</span></span>
+<span><span class="co">#&gt; t = -5, df = 21, p-value = 0.00009</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true difference in means between group Controllo and group Intervento is not equal to 0</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;  -7.15 -2.85</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt;  mean in group Controllo mean in group Intervento </span></span>
+<span><span class="co">#&gt;                     26.2                     31.2</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Il valore-<em>p</em> va letto in modo condizionale: indica quanto sarebbero rari risultati almeno così estremi se, nella popolazione, le due medie fossero uguali e se il modello del test fosse appropriato.</p>
-<section id="uso-di-t.test" class="level3" data-number="6.5.1"><h3 data-number="6.5.1" class="anchored" data-anchor-id="uso-di-t.test">
-<span class="header-section-number">6.5.1</span> Uso di <code>t.test()</code>
-</h3>
+<p>Poiché il primo livello del fattore è <code>Controllo</code>, la formula di R riporta inizialmente la differenza:</p>
+<p><span class="math display">\[
+\mu_{\text{controllo}}
+-
+\mu_{\text{intervento}}.
+\]</span></p>
+<p>Per mantenere l’ordine scelto nel capitolo, calcoliamo esplicitamente intervento meno controllo:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">t_classico</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">benessere_intervento</span>, <span class="va">benessere_controllo</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">t_classico</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n_intervento</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">benessere_intervento</span><span class="op">)</span></span>
+<span><span class="va">n_controllo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">benessere_controllo</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">m_intervento</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">benessere_intervento</span><span class="op">)</span></span>
+<span><span class="va">m_controllo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">benessere_controllo</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">s_intervento</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">benessere_intervento</span><span class="op">)</span></span>
+<span><span class="va">s_controllo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">benessere_controllo</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">differenza</span> <span class="op">&lt;-</span> <span class="va">m_intervento</span> <span class="op">-</span> <span class="va">m_controllo</span></span>
+<span></span>
+<span><span class="va">se_welch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span></span>
+<span>  <span class="va">s_intervento</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">n_intervento</span> <span class="op">+</span></span>
+<span>    <span class="va">s_controllo</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">n_controllo</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df_welch</span> <span class="op">&lt;-</span> <span class="op">(</span></span>
+<span>  <span class="va">s_intervento</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">n_intervento</span> <span class="op">+</span></span>
+<span>    <span class="va">s_controllo</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">n_controllo</span></span>
+<span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="op">(</span></span>
+<span>  <span class="op">(</span><span class="va">s_intervento</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">n_intervento</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span></span>
+<span>    <span class="op">(</span><span class="va">n_intervento</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="op">(</span><span class="va">s_controllo</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">n_controllo</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span></span>
+<span>    <span class="op">(</span><span class="va">n_controllo</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">t_welch</span> <span class="op">&lt;-</span> <span class="va">differenza</span> <span class="op">/</span> <span class="va">se_welch</span></span>
+<span><span class="va">p_welch</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">t_welch</span><span class="op">)</span>,</span>
+<span>  df <span class="op">=</span> <span class="va">df_welch</span>,</span>
+<span>  lower.tail <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">t_critico</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="va">df_welch</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ic_welch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  <span class="va">differenza</span> <span class="op">-</span> <span class="va">t_critico</span> <span class="op">*</span> <span class="va">se_welch</span>,</span>
+<span>  <span class="va">differenza</span> <span class="op">+</span> <span class="va">t_critico</span> <span class="op">*</span> <span class="va">se_welch</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  differenza <span class="op">=</span> <span class="va">differenza</span>,</span>
+<span>  errore_standard <span class="op">=</span> <span class="va">se_welch</span>,</span>
+<span>  t <span class="op">=</span> <span class="va">t_welch</span>,</span>
+<span>  gradi_liberta <span class="op">=</span> <span class="va">df_welch</span>,</span>
+<span>  valore_p <span class="op">=</span> <span class="va">p_welch</span>,</span>
+<span>  limite_inferiore <span class="op">=</span> <span class="va">ic_welch</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  limite_superiore <span class="op">=</span> <span class="va">ic_welch</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt;       differenza  errore_standard                t    gradi_liberta </span></span>
+<span><span class="co">#&gt;        5.0000000        1.0316947        4.8463950       20.6446253 </span></span>
+<span><span class="co">#&gt;         valore_p limite_inferiore limite_superiore </span></span>
+<span><span class="co">#&gt;        0.0000901        2.8522224        7.1477776</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Otteniamo approssimativamente:</p>
+<p><span class="math display">\[
+\widehat{\Delta}=5.00,
+\]</span></p>
+<p><span class="math display">\[
+IC_{95\%}=[2.85,\;7.15],
+\]</span></p>
+<p><span class="math display">\[
+t(20.64)=4.85,
+\qquad
+p&lt;0.001.
+\]</span></p>
+<p>Il valore-<em>p</em> indica che, sotto l’ipotesi di differenza nulla e le altre assunzioni del test, una statistica almeno altrettanto estrema sarebbe rara.</p>
+<p>Non è la probabilità che <span class="math inline">\(\Delta=0\)</span>.</p>
+</section><section id="sec-freq-two-samples-pooled-example" class="level2" data-number="6.8"><h2 data-number="6.8" class="anchored" data-anchor-id="sec-freq-two-samples-pooled-example">
+<span class="header-section-number">6.8</span> Il caso con varianza comune</h2>
+<p>Per confronto, eseguiamo il test classico:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">test_pooled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span></span>
+<span>  <span class="va">benessere_intervento</span>,</span>
+<span>  <span class="va">benessere_controllo</span>,</span>
+<span>  alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
+<span>  var.equal <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  conf.level <span class="op">=</span> <span class="fl">0.95</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">test_pooled</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Two Sample t-test</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -800,196 +1077,422 @@ df = n_1 + n_2 - 2
 <span><span class="co">#&gt; mean of x mean of y </span></span>
 <span><span class="co">#&gt;      31.2      26.2</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Il risultato riporta la statistica test, i gradi di libertà, il valore-<em>p</em>, la differenza tra le medie e un intervallo di confidenza per tale differenza.</p>
-</section></section><section id="il-test-t-di-welch" class="level2" data-number="6.6"><h2 data-number="6.6" class="anchored" data-anchor-id="il-test-t-di-welch">
-<span class="header-section-number">6.6</span> Il test <em>t</em> di Welch</h2>
-<p>Nella pratica, spesso è preferibile utilizzare il test di Welch, che non richiede l’uguaglianza delle varianze. In R, questa è l’impostazione predefinita di <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">t_welch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">benessere_intervento</span>, <span class="va">benessere_controllo</span><span class="op">)</span></span>
-<span><span class="va">t_welch</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Welch Two Sample t-test</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; data:  benessere_intervento and benessere_controllo</span></span>
-<span><span class="co">#&gt; t = 5, df = 21, p-value = 0.00009</span></span>
-<span><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
-<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
-<span><span class="co">#&gt;  2.85 7.15</span></span>
-<span><span class="co">#&gt; sample estimates:</span></span>
-<span><span class="co">#&gt; mean of x mean of y </span></span>
-<span><span class="co">#&gt;      31.2      26.2</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Se le varianze dei gruppi sono simili, i risultati del test classico e del test di Welch sono molto simili. Se invece le varianze o le numerosità dei gruppi sono molto diverse, il test di Welch è più prudente.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Quale test riportare?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Per molti studi applicati, è ragionevole riportare il test di Welch, specificando che l’uguaglianza delle varianze non è stata assunta. Il test classico con varianze uguali può essere utilizzato quando tale assunzione è giustificata dal disegno dello studio o da ragioni sostanziali.</p>
-</div>
-</div>
-</section><section id="interpretare-i-risultati-oltre-il-valore-p" class="level2" data-number="6.7"><h2 data-number="6.7" class="anchored" data-anchor-id="interpretare-i-risultati-oltre-il-valore-p">
-<span class="header-section-number">6.7</span> Interpretare i risultati oltre il valore-<em>p</em>
-</h2>
-<p>Un confronto tra due gruppi non dovrebbe essere riassunto solo dicendo se il risultato è “significativo” o “non significativo”. Una lettura più informativa dovrebbe integrare quattro elementi:</p>
-<ol type="1">
-<li>la <strong>differenza osservata</strong> tra le medie;</li>
-<li>l’<strong>intervallo di confidenza</strong> per la differenza;</li>
-<li>il <strong>valore-<em>p</em></strong>;</li>
-<li>la <strong>dimensione dell’effetto</strong>.</li>
-</ol>
-<section id="differenza-tra-medie-e-intervallo-di-confidenza" class="level3" data-number="6.7.1"><h3 data-number="6.7.1" class="anchored" data-anchor-id="differenza-tra-medie-e-intervallo-di-confidenza">
-<span class="header-section-number">6.7.1</span> Differenza tra medie e intervallo di confidenza</h3>
-<p>L’intervallo di confidenza descrive la precisione della stima della differenza tra le medie.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diff_medie</span> <span class="op">&lt;-</span> <span class="va">m1</span> <span class="op">-</span> <span class="va">m2</span></span>
-<span><span class="va">ic_diff</span> <span class="op">&lt;-</span> <span class="va">t_welch</span><span class="op">$</span><span class="va">conf.int</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Differenza tra medie:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">diff_medie</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Differenza tra medie: 5</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"IC 95%:"</span>, <span class="st">"["</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">ic_diff</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">","</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">ic_diff</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"]\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; IC 95%: [ 2.85 , 7.15 ]</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>In termini frequentisti, un intervallo di confidenza al 95% è costruito con una procedura che, nel lungo periodo, contiene il valore vero nel 95% dei campioni ripetuti. Ciò non significa che vi sia il 95% di probabilità che il valore vero cada nell’intervallo osservato.</p>
-</section><section id="dimensione-delleffetto" class="level3" data-number="6.7.2"><h3 data-number="6.7.2" class="anchored" data-anchor-id="dimensione-delleffetto">
-<span class="header-section-number">6.7.2</span> Dimensione dell’effetto</h3>
-<p>La dimensione dell’effetto aiuta a distinguere la significatività statistica dalla rilevanza sostantiva. Nel confronto tra due medie, una misura comune è il <span class="math inline">\(d\)</span> di Cohen:</p>
+<p>In questi dati, numerosità e deviazioni standard sono simili, quindi i due test producono risultati quasi identici.</p>
+<p>Questa somiglianza non dimostra che le varianze delle popolazioni siano uguali. Mostra soltanto che, per questo campione, l’assunzione aggiuntiva ha conseguenze numeriche limitate.</p>
+</section><section id="sec-freq-two-samples-integrated" class="level2" data-number="6.9"><h2 data-number="6.9" class="anchored" data-anchor-id="sec-freq-two-samples-integrated">
+<span class="header-section-number">6.9</span> Interpretare insieme le quantità</h2>
+<section id="differenza-nella-scala-originale" class="level3" data-number="6.9.1"><h3 data-number="6.9.1" class="anchored" data-anchor-id="differenza-nella-scala-originale">
+<span class="header-section-number">6.9.1</span> Differenza nella scala originale</h3>
+<p>La differenza di 5 punti è la quantità più direttamente interpretabile:</p>
+<blockquote class="blockquote">
+<p>Nel campione, la media del gruppo intervento supera quella del gruppo controllo di 5 punti.</p>
+</blockquote>
+<p>La sua importanza dipende dalla scala, dall’affidabilità dello strumento e dal contesto.</p>
+</section><section id="intervallo-di-confidenza" class="level3" data-number="6.9.2"><h3 data-number="6.9.2" class="anchored" data-anchor-id="intervallo-di-confidenza">
+<span class="header-section-number">6.9.2</span> Intervallo di confidenza</h3>
+<p>L’intervallo al 95% è:</p>
 <p><span class="math display">\[
-d = \frac{\bar{x}_1 - \bar{x}_2}{s_p}.
+[2.85,\;7.15].
+\]</span></p>
+<p>Descrive la precisione della procedura frequentista. Non assegna il 95% di probabilità alla differenza vera entro questi estremi.</p>
+<p>L’intervallo è utile anche per confrontare i dati con una soglia sostantiva. Se, per esempio, fossero necessari almeno 6 punti per una rilevanza pratica, l’intervallo mostrerebbe che i dati sono compatibili sia con differenze inferiori sia con differenze superiori a tale soglia.</p>
+</section><section id="valore-p" class="level3" data-number="6.9.3"><h3 data-number="6.9.3" class="anchored" data-anchor-id="valore-p">
+<span class="header-section-number">6.9.3</span> Valore-<em>p</em>
+</h3>
+<p>Il valore-<em>p</em> sintetizza l’incompatibilità con <span class="math inline">\(\Delta=0\)</span>. Non descrive la grandezza della differenza né la sua importanza.</p>
+</section><section id="dimensione-delleffetto-standardizzata" class="level3" data-number="6.9.4"><h3 data-number="6.9.4" class="anchored" data-anchor-id="dimensione-delleffetto-standardizzata">
+<span class="header-section-number">6.9.4</span> Dimensione dell’effetto standardizzata</h3>
+<p>Una misura comune è il <span class="math inline">\(d\)</span> di Cohen:</p>
+<p><span class="math display">\[
+d
+=
+\frac{
+\bar x_{\text{intervento}}
+-
+\bar x_{\text{controllo}}
+}{
+s_p
+}.
 \]</span></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cohens_d</span> <span class="op">&lt;-</span> <span class="va">diff_medie</span> <span class="op">/</span> <span class="va">s_pool</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Cohen's d:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">cohens_d</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Cohen's d: 1.98</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Questa quantità esprime la differenza tra i gruppi in unità di deviazione standard pooled. È una misura descrittiva standardizzata utile, ma non deve essere interpretata in modo meccanico. Un effetto piccolo può essere importante in alcuni contesti clinici o educativi, mentre un effetto grande può essere poco rilevante se riguarda una misura secondaria o un campione non rappresentativo.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avviso</span>Significativo non significa importante
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Un test può risultare statisticamente significativo anche quando la differenza è trascurabile sul piano teorico o pratico, se il campione è molto grande. Al contrario, un risultato non significativo può dipendere da una bassa potenza e non dimostra che le due popolazioni siano uguali.</p>
-</div>
-</div>
-</section></section><section id="come-riportare-il-risultato" class="level2" data-number="6.8"><h2 data-number="6.8" class="anchored" data-anchor-id="come-riportare-il-risultato">
-<span class="header-section-number">6.8</span> Come riportare il risultato</h2>
-<p>Una comunicazione trasparente dovrebbe evitare sia l’eccesso di formule sia la riduzione del risultato al solo valore-<em>p</em>.</p>
-<section id="formulazione-incompleta" class="level3" data-number="6.8.1"><h3 data-number="6.8.1" class="anchored" data-anchor-id="formulazione-incompleta">
-<span class="header-section-number">6.8.1</span> Formulazione incompleta</h3>
-<blockquote class="blockquote">
-<p>Il gruppo di intervento ha ottenuto punteggi significativamente più alti rispetto al gruppo di controllo, <span class="math inline">\(p &lt; .05\)</span>.</p>
-</blockquote>
-<p>Questa frase è incompleta: non specifica l’entità della differenza, la precisione della stima e il metodo utilizzato.</p>
-</section><section id="formulazione-consigliata" class="level3" data-number="6.8.2"><h3 data-number="6.8.2" class="anchored" data-anchor-id="formulazione-consigliata">
-<span class="header-section-number">6.8.2</span> Formulazione consigliata</h3>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span></span>
-<span>  <span class="st">"Il gruppo sottoposto all'intervento ha riportato un punteggio medio di "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">m1</span>, <span class="fl">2</span><span class="op">)</span>,</span>
-<span>  <span class="st">" (DS = "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">s1</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"), mentre il gruppo controllo ha riportato un punteggio medio di "</span>,</span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">m2</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">" (DS = "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">s2</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"). "</span>,</span>
-<span>  <span class="st">"La differenza media è pari a "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">diff_medie</span>, <span class="fl">2</span><span class="op">)</span>,</span>
-<span>  <span class="st">" punti, IC 95% ["</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">ic_diff</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">", "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">ic_diff</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span>,</span>
-<span>  <span class="st">"], t("</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">t_welch</span><span class="op">$</span><span class="va">parameter</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">") = "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">t_welch</span><span class="op">$</span><span class="va">statistic</span>, <span class="fl">2</span><span class="op">)</span>,</span>
-<span>  <span class="st">", p = "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">signif</a></span><span class="op">(</span><span class="va">t_welch</span><span class="op">$</span><span class="va">p.value</span>, <span class="fl">3</span><span class="op">)</span>,</span>
-<span>  <span class="st">", d = "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">cohens_d</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">".\n"</span>,</span>
-<span>  sep <span class="op">=</span> <span class="st">""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s_pooled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span></span>
+<span>  <span class="op">(</span></span>
+<span>    <span class="op">(</span><span class="va">n_intervento</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="va">s_intervento</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span></span>
+<span>      <span class="op">(</span><span class="va">n_controllo</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="va">s_controllo</span><span class="op">^</span><span class="fl">2</span></span>
+<span>  <span class="op">)</span> <span class="op">/</span></span>
+<span>    <span class="op">(</span></span>
+<span>      <span class="va">n_intervento</span> <span class="op">+</span></span>
+<span>        <span class="va">n_controllo</span> <span class="op">-</span></span>
+<span>        <span class="fl">2</span></span>
+<span>    <span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Il gruppo sottoposto all'intervento ha riportato un punteggio medio di 31.2 (DS = 2.83), mentre il gruppo controllo ha riportato un punteggio medio di 26.2 (DS = 2.18). La differenza media è pari a 5 punti, IC 95% [2.85, 7.15], t(20.6) = 4.85, p = 0.0000901, d = 1.98.</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span></span>
+<span><span class="va">cohen_d</span> <span class="op">&lt;-</span> <span class="va">differenza</span> <span class="op">/</span> <span class="va">s_pooled</span></span>
+<span></span>
+<span><span class="va">correzione_hedges</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span></span>
+<span>  <span class="fl">3</span> <span class="op">/</span></span>
+<span>    <span class="op">(</span></span>
+<span>      <span class="fl">4</span> <span class="op">*</span></span>
+<span>        <span class="op">(</span></span>
+<span>          <span class="va">n_intervento</span> <span class="op">+</span></span>
+<span>            <span class="va">n_controllo</span></span>
+<span>        <span class="op">)</span> <span class="op">-</span></span>
+<span>        <span class="fl">9</span></span>
+<span>    <span class="op">)</span></span>
+<span></span>
+<span><span class="va">hedges_g</span> <span class="op">&lt;-</span> <span class="va">correzione_hedges</span> <span class="op">*</span> <span class="va">cohen_d</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  cohen_d <span class="op">=</span> <span class="va">cohen_d</span>,</span>
+<span>  hedges_g <span class="op">=</span> <span class="va">hedges_g</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt;  cohen_d hedges_g </span></span>
+<span><span class="co">#&gt;     1.98     1.91</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>In un testo scientifico, il risultato potrebbe essere riportato così:</p>
-<blockquote class="blockquote">
-<p>Il gruppo sottoposto all’intervento ha riportato un punteggio medio più alto (<span class="math inline">\(M\)</span> = 31.25, <span class="math inline">\(DS\)</span> = 2.83) rispetto al gruppo di controllo (<span class="math inline">\(M\)</span> = 26.25, <span class="math inline">\(DS\)</span> = 2.18). La differenza media è pari a 5.00 punti, <span class="math inline">\(IC\)</span> 95% [2.85, 7.15], <span class="math inline">\(t\)</span>(20.64) = 4.85, <span class="math inline">\(p &lt; .001\)</span>, <span class="math inline">\(d\)</span> = 1.98.</p>
-</blockquote>
-<p>I valori numerici dipendono dai dati utilizzati nell’esempio. Il punto didattico è la struttura del resoconto: stima, incertezza, test e dimensione dell’effetto.</p>
-</section></section><section id="cosa-il-test-non-dice" class="level2" data-number="6.9"><h2 data-number="6.9" class="anchored" data-anchor-id="cosa-il-test-non-dice">
-<span class="header-section-number">6.9</span> Cosa il test non dice</h2>
-<p>Il test <em>t</em> per campioni indipendenti è utile, ma risponde a una domanda circoscritta. In particolare, il test non risponde alla domanda:</p>
-<ul>
-<li>qual è la probabilità che <span class="math inline">\(H_0\)</span> sia vera;</li>
-<li>qual è la probabilità che <span class="math inline">\(H_1\)</span> sia vera;</li>
-<li>qual è la probabilità che la differenza vera sia positiva;</li>
-<li>quanto sia probabile che l’effetto superi una soglia di rilevanza clinica;</li>
-<li>se il disegno dello studio sia valido;</li>
-<li>se la differenza osservata sia priva di bias sistematici.</li>
-</ul>
-<p>Questi limiti non rendono il test inutile. Tuttavia, indicano che il valore-<em>p</em> deve essere interpretato insieme al disegno dello studio, alle stime, agli intervalli di confidenza, alla potenza e alla plausibilità teorica dell’effetto.</p>
-</section><section id="collegamento-con-la-prospettiva-bayesiana" class="level2" data-number="6.10"><h2 data-number="6.10" class="anchored" data-anchor-id="collegamento-con-la-prospettiva-bayesiana">
-<span class="header-section-number">6.10</span> Collegamento con la prospettiva bayesiana</h2>
-<p>In una prospettiva bayesiana, il confronto tra due gruppi viene formulato in modo diverso. Invece di chiedersi quanto i dati siano sorprendenti sotto <span class="math inline">\(H_0\)</span>, si costruisce un modello probabilistico per i dati e si ottiene una distribuzione a posteriori per la differenza tra le medie:</p>
+<p>Per questi dati:</p>
 <p><span class="math display">\[
-\Delta = \mu_1 - \mu_2.
+d\approx1.98,
+\qquad
+g\approx1.91.
 \]</span></p>
-<p>Questa distribuzione permette di rispondere direttamente a domande come:</p>
-<ul>
-<li>qual è la probabilità che <span class="math inline">\(\Delta &gt; 0\)</span>?</li>
-<li>qual è un intervallo di credibilità per <span class="math inline">\(\Delta\)</span>?</li>
-<li>qual è la probabilità che <span class="math inline">\(\Delta\)</span> superi una soglia clinicamente rilevante?</li>
-<li>quanto sono sensibili le conclusioni alle assunzioni del modello e alla scelta del prior?</li>
-</ul>
-<p>Il test <em>t</em> frequentista rimane quindi importante da conoscere perché è molto diffuso nella letteratura psicologica. Tuttavia, nel percorso bayesiano, il test <em>t</em> frequentista funziona soprattutto come termine di confronto, mostrando chiaramente la differenza tra una procedura basata sul controllo dell’errore nel lungo periodo e una procedura basata sull’aggiornamento delle credenze sui parametri.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<p><span class="math inline">\(g\)</span> di Hedges applica una correzione alla tendenza di <span class="math inline">\(d\)</span> a sovrastimare l’effetto standardizzato nei piccoli campioni.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="L'effetto standardizzato non sostituisce la differenza grezza">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Consiglio</span>Lettura complementare
+<span class="screen-reader-only">Avviso</span>L’effetto standardizzato non sostituisce la differenza grezza
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Un confronto esplicito tra il test <em>t</em> tradizionale e una formulazione bayesiana del confronto tra due gruppi è discusso da <span class="citation" data-cites="kruschke2013bayesian">Kruschke (<a href="#ref-kruschke2013bayesian" role="doc-biblioref">2013</a>)</span>.</p>
+<p><span class="math inline">\(d\)</span> e <span class="math inline">\(g\)</span> dipendono anche dalla dispersione dei punteggi. Lo stesso cambiamento di 5 punti può produrre valori standardizzati differenti in popolazioni con variabilità diversa.</p>
+<p>Quando la scala originale è interpretabile, è opportuno riportare sia la differenza grezza sia una misura standardizzata.</p>
+</div>
+</div>
+</section></section><section id="sec-freq-two-samples-relevance" class="level2" data-number="6.10"><h2 data-number="6.10" class="anchored" data-anchor-id="sec-freq-two-samples-relevance">
+<span class="header-section-number">6.10</span> Significatività, equivalenza e rilevanza pratica</h2>
+<p>Un risultato significativo rispetto a zero non dimostra che l’effetto sia abbastanza grande da essere utile.</p>
+<p>Un risultato non significativo, d’altra parte, non dimostra che i gruppi siano equivalenti. Per sostenere equivalenza occorrono:</p>
+<ol type="1">
+<li>una regione di differenze considerate praticamente trascurabili;</li>
+<li>una procedura progettata per valutare quella regione;</li>
+<li>dati sufficientemente precisi.</li>
+</ol>
+<p>La soglia di rilevanza dovrebbe essere motivata prima dell’analisi e collegata alla scala del fenomeno.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Tre domande differenti">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Tre domande differenti
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>
+<strong>Esclusione dello zero:</strong> i dati sono incompatibili con <span class="math inline">\(\Delta=0\)</span> secondo il test?</li>
+<li>
+<strong>Precisione:</strong> quali differenze non vengono escluse dall’intervallo?</li>
+<li>
+<strong>Rilevanza:</strong> quali differenze cambierebbero una conclusione teorica o pratica?</li>
+</ol>
+<p>Rispondere alla prima non risponde automaticamente alle altre due.</p>
+</div>
+</div>
+</section><section id="sec-freq-two-samples-causality" class="level2" data-number="6.11"><h2 data-number="6.11" class="anchored" data-anchor-id="sec-freq-two-samples-causality">
+<span class="header-section-number">6.11</span> Dalla differenza osservata all’effetto causale</h2>
+<p>Una differenza tra medie è sempre descrittiva del confronto definito. Diventa interpretabile come effetto causale soltanto sotto condizioni aggiuntive.</p>
+<section id="studio-randomizzato" class="level3" data-number="6.11.1"><h3 data-number="6.11.1" class="anchored" data-anchor-id="studio-randomizzato">
+<span class="header-section-number">6.11.1</span> Studio randomizzato</h3>
+<p>Se i partecipanti sono assegnati casualmente ai gruppi, l’assegnazione è rispettata e non vi sono problemi sostanziali di attrito, aderenza o contaminazione, la differenza può sostenere un’interpretazione causale riferita alla popolazione e al trattamento definiti.</p>
+</section><section id="gruppi-osservazionali" class="level3" data-number="6.11.2"><h3 data-number="6.11.2" class="anchored" data-anchor-id="gruppi-osservazionali">
+<span class="header-section-number">6.11.2</span> Gruppi osservazionali</h3>
+<p>Se i gruppi sono definiti da una caratteristica osservata, una differenza può dipendere da variabili confondenti.</p>
+<p>Per esempio, una differenza tra persone che scelgono o non scelgono un trattamento non dimostra che il trattamento abbia prodotto la differenza. I gruppi possono differire già prima dell’intervento.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Il test t non crea causalità">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Il test t non crea causalità
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Randomizzazione, identificazione e qualità del disegno giustificano una conclusione causale. Il valore-<em>p</em> non può compensare l’assenza di queste condizioni.</p>
+</div>
+</div>
+</section></section><section id="sec-freq-two-samples-regression" class="level2" data-number="6.12"><h2 data-number="6.12" class="anchored" data-anchor-id="sec-freq-two-samples-regression">
+<span class="header-section-number">6.12</span> Il test <em>t</em> come modello lineare</h2>
+<p>Il confronto tra due gruppi può essere scritto come una regressione con un predittore dicotomico:</p>
+<p><span class="math display">\[
+Y_i
+=
+\alpha
++
+\beta X_i
++
+\varepsilon_i,
+\]</span></p>
+<p>dove:</p>
+<ul>
+<li>
+<span class="math inline">\(X_i=0\)</span> indica il controllo;</li>
+<li>
+<span class="math inline">\(X_i=1\)</span> indica l’intervento.</li>
+</ul>
+<p>Allora:</p>
+<p><span class="math display">\[
+E(Y\mid X=0)=\alpha,
+\]</span></p>
+<p><span class="math display">\[
+E(Y\mid X=1)=\alpha+\beta.
+\]</span></p>
+<p>La differenza è:</p>
+<p><span class="math display">\[
+E(Y\mid X=1)-E(Y\mid X=0)=\beta.
+\]</span></p>
+<p>Il coefficiente <span class="math inline">\(\beta\)</span> rappresenta quindi la stessa quantità:</p>
+<p><span class="math display">\[
+\beta
+=
+\mu_{\text{intervento}}
+-
+\mu_{\text{controllo}}.
+\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">modello_lineare</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span></span>
+<span>  <span class="va">benessere</span> <span class="op">~</span> <span class="va">gruppo</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">dati_benessere</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">modello_lineare</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = benessere ~ gruppo, data = dati_benessere)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residuals:</span></span>
+<span><span class="co">#&gt;    Min     1Q Median     3Q    Max </span></span>
+<span><span class="co">#&gt;  -4.25  -2.25  -0.25   1.75   4.75 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;                  Estimate Std. Error t value Pr(&gt;|t|)</span></span>
+<span><span class="co">#&gt; (Intercept)         26.25       0.73   35.98  &lt; 2e-16</span></span>
+<span><span class="co">#&gt; gruppoIntervento     5.00       1.03    4.85 0.000076</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residual standard error: 2.53 on 22 degrees of freedom</span></span>
+<span><span class="co">#&gt; Multiple R-squared:  0.516,  Adjusted R-squared:  0.494 </span></span>
+<span><span class="co">#&gt; F-statistic: 23.5 on 1 and 22 DF,  p-value: 0.0000765</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">modello_lineare</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                  2.5 % 97.5 %</span></span>
+<span><span class="co">#&gt; (Intercept)      24.74  27.76</span></span>
+<span><span class="co">#&gt; gruppoIntervento  2.86   7.14</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Con varianza comune, il test del coefficiente del predittore è equivalente al test <em>t</em> classico per due gruppi.</p>
+<p>Questa equivalenza è importante perché mostra che il test <em>t</em> non è un procedimento isolato. È il caso più semplice di una famiglia di modelli che può includere:</p>
+<ul>
+<li>più gruppi;</li>
+<li>covariate;</li>
+<li>interazioni;</li>
+<li>strutture gerarchiche;</li>
+<li>esiti non gaussiani.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Un ponte verso il progetto bayesiano">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Un ponte verso il progetto bayesiano
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il Companion usa la stessa rappresentazione con un predittore 0–1:</p>
+<ul>
+<li>
+<a href="https://ccaudek.github.io/utet-companion/chapters/calcolo/05_stan_two_means.html">Confrontare due medie con Stan</a>;</li>
+<li>il capitolo 26, <em>Due gruppi: codifiche, differenze e rilevanza pratica</em>.</li>
+</ul>
+<p>Nel modello bayesiano, la distribuzione a posteriori di <span class="math inline">\(\beta\)</span> rappresenta direttamente l’incertezza sulla differenza tra le medie.</p>
+</div>
+</div>
+</section><section id="sec-freq-two-samples-bayes" class="level2" data-number="6.13"><h2 data-number="6.13" class="anchored" data-anchor-id="sec-freq-two-samples-bayes">
+<span class="header-section-number">6.13</span> Che cosa cambia nel modello bayesiano?</h2>
+<p>Il confronto frequentista e quello bayesiano possono condividere:</p>
+<ul>
+<li>gli stessi dati;</li>
+<li>lo stesso predittore dicotomico;</li>
+<li>una verosimiglianza normale;</li>
+<li>la stessa quantità bersaglio <span class="math inline">\(\Delta\)</span>;</li>
+<li>modelli con dispersione comune o differente.</li>
+</ul>
+<p>Cambiano l’oggetto inferenziale immediato e il significato delle probabilità.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead><tr class="header">
+<th>Domanda</th>
+<th>Procedura frequentista</th>
+<th>Modello bayesiano</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Quanto differiscono i gruppi?</td>
+<td>Stima puntuale e intervallo di confidenza</td>
+<td>Distribuzione a posteriori di <span class="math inline">\(\Delta\)</span>
+</td>
+</tr>
+<tr class="even">
+<td>Quanto è incompatibile lo zero?</td>
+<td>Valore-<em>p</em> sotto <span class="math inline">\(H_0\)</span>
+</td>
+<td>Massa a posteriori rispetto a zero o confronto tra modelli</td>
+</tr>
+<tr class="odd">
+<td>L’effetto supera una soglia pratica?</td>
+<td>Intervallo, equivalenza o test dedicato</td>
+<td>Probabilità a posteriori che <span class="math inline">\(\Delta\)</span> superi la soglia</td>
+</tr>
+<tr class="even">
+<td>Il modello descrive adeguatamente i dati?</td>
+<td>Diagnostica e controlli frequentisti</td>
+<td>Controlli predittivi e confronto predittivo</td>
+</tr>
+</tbody>
+</table>
+<p>Nel modello bayesiano si possono calcolare quantità come:</p>
+<p><span class="math display">\[
+P(\Delta&gt;0\mid y)
+\]</span></p>
+<p>oppure:</p>
+<p><span class="math display">\[
+P(\Delta&gt;\delta_{\min}\mid y),
+\]</span></p>
+<p>dove <span class="math inline">\(\delta_{\min}\)</span> è una soglia sostantiva. Queste probabilità non sono valori-<em>p</em> e dipendono da prior, verosimiglianza e dati.</p>
+<p>Il vantaggio di un’interpretazione diretta non elimina la necessità di controllare modello, misura, disegno e identificazione causale.</p>
+</section><section id="sec-freq-two-samples-report" class="level2" data-number="6.14"><h2 data-number="6.14" class="anchored" data-anchor-id="sec-freq-two-samples-report">
+<span class="header-section-number">6.14</span> Come riportare il risultato</h2>
+<p>Un resoconto informativo dovrebbe includere:</p>
+<ul>
+<li>numerosità, media e deviazione standard dei gruppi;</li>
+<li>ordine della differenza;</li>
+<li>differenza grezza e intervallo;</li>
+<li>test utilizzato;</li>
+<li>statistica, gradi di libertà e valore-<em>p</em>;</li>
+<li>dimensione dell’effetto;</li>
+<li>interpretazione sostantiva e limiti del disegno.</li>
+</ul>
+<p>Per l’esempio:</p>
+<blockquote class="blockquote">
+<p>Il gruppo sottoposto all’intervento ha riportato un punteggio medio di benessere maggiore (<span class="math inline">\(M=31.25\)</span>, <span class="math inline">\(DS=2.83\)</span>, <span class="math inline">\(n=12\)</span>) rispetto al gruppo di controllo (<span class="math inline">\(M=26.25\)</span>, <span class="math inline">\(DS=2.18\)</span>, <span class="math inline">\(n=12\)</span>). La differenza intervento meno controllo è stata di 5.00 punti, <span class="math inline">\(IC\)</span> 95% [2.85, 7.15]. Il test <em>t</em> di Welch ha indicato incompatibilità con una differenza nulla, <span class="math inline">\(t(20.64)=4.85\)</span>, <span class="math inline">\(p&lt;.001\)</span>. La differenza standardizzata è risultata elevata nel campione, <span class="math inline">\(g=1.91\)</span>. L’interpretazione causale dipende dall’assegnazione e dalle altre caratteristiche del disegno.</p>
+</blockquote>
+<div class="callout callout-style-default callout-note callout-titled" title="Perché nominare Welch">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Perché nominare Welch
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Scrivere soltanto «test <em>t</em>» lascia implicita un’assunzione importante. Specificare «test <em>t</em> di Welch» comunica che non è stata imposta l’uguaglianza delle varianze.</p>
 </div>
 </div>
 </section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
-<p>Il test <em>t</em> per campioni indipendenti è uno strumento fondamentale dell’inferenza frequentista. Consente di confrontare due gruppi quando l’esito è di tipo quantitativo e quando il disegno dello studio rende plausibile l’indipendenza delle osservazioni.</p>
-<p>In questo capitolo lo abbiamo interpretato come applicazione finale della logica introdotta nei capitoli precedenti: a una stima puntuale sono associati un intervallo di confidenza, una statistica di test, un valore p e una dimensione dell’effetto. Nessuno di questi elementi, preso singolarmente, esaurisce il significato del risultato.</p>
-<p>Il messaggio principale è che un buon resoconto non dovrebbe limitarsi a dichiarare se un risultato è significativo. Dovrebbe invece comunicare <strong>quanto</strong> differiscono i gruppi, <strong>con quale incertezza</strong>, <strong>rispetto a quale procedura di test</strong> e <strong>con quale rilevanza sostantiva</strong>.</p>
-<p>Da qui, il passaggio alla prospettiva bayesiana è naturale: anziché domandarsi se una differenza sia abbastanza sorprendente sotto un’ipotesi nulla, è possibile modellare direttamente l’incertezza sulla differenza tra i gruppi e aggiornare le proprie credenze alla luce dei dati osservati.</p>
-</section><section id="punti-chiave-da-ricordare" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="punti-chiave-da-ricordare">Punti chiave da ricordare</h2>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Importante
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p>Il confronto tra due gruppi indipendenti conclude il percorso applicativo del modulo frequentista perché riunisce tutti gli elementi introdotti nei capitoli precedenti.</p>
+<p>Abbiamo definito la differenza tra le medie come quantità bersaglio, distinto gruppi indipendenti e dati appaiati, confrontato il test classico con quello di Welch e interpretato congiuntamente:</p>
 <ul>
-<li>Il test <em>t</em> per campioni indipendenti confronta le medie di due gruppi distinti.</li>
-<li>La domanda frequentista è condizionale a <span class="math inline">\(H_0\)</span>: quanto sarebbero sorprendenti dati come quelli osservati se le due medie fossero uguali?</li>
-<li>Il test di Welch è spesso preferibile perché non richiede l’assunzione di varianze uguali.</li>
-<li>Il valore-<em>p</em> non è la probabilità che l’ipotesi nulla sia vera.</li>
-<li>L’intervallo di confidenza descrive la precisione della stima secondo una procedura con copertura nel lungo periodo.</li>
-<li>La dimensione dell’effetto aiuta a valutare la rilevanza sostantiva della differenza.</li>
-<li>Un risultato completo integra stima, incertezza, test, valore-<em>p</em> e dimensione dell’effetto.</li>
-<li>La prospettiva bayesiana permette di formulare direttamente domande sulla differenza tra le medie e sulla probabilità di effetti rilevanti.</li>
+<li>differenza grezza;</li>
+<li>errore standard;</li>
+<li>intervallo di confidenza;</li>
+<li>valore-<em>p</em>;</li>
+<li>dimensione dell’effetto.</li>
 </ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Informazioni sull'ambiente di sviluppo">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<p>Il risultato di un test non esaurisce l’analisi. Occorre chiedersi quale differenza sia rilevante, quanto precisamente sia stimata, se il modello sia adeguato e se il disegno autorizzi un’interpretazione causale.</p>
+<p>L’equivalenza tra test <em>t</em> e regressione con predittore dicotomico crea il ponte più naturale verso il progetto bayesiano. La domanda sostantiva rimane la stessa — quanto differiscono i gruppi? — ma l’incertezza viene rappresentata mediante la distribuzione a posteriori del coefficiente che codifica la differenza.</p>
+<p>L’epilogo userà questo punto di arrivo per confrontare in modo complessivo controllo dell’errore, interpretazione dell’incertezza e workflow scientifico.</p>
+</section><section id="esercizi" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="esercizi">Esercizi</h2>
+<ol type="1">
+<li><p>Qual è la differenza tra la quantità <span class="math inline">\(\Delta=\mu_1-\mu_0\)</span> e la stima <span class="math inline">\(\widehat{\Delta}=\bar X_1-\bar X_0\)</span>?</p></li>
+<li><p>Perché un disegno prima-dopo sulle stesse persone non dovrebbe essere analizzato come confronto tra gruppi indipendenti?</p></li>
+<li><p>Quale assunzione aggiuntiva distingue il test <em>t</em> classico dal test di Welch?</p></li>
+<li><p>Perché non è consigliabile scegliere tra test classico e Welch sulla base di un test preliminare delle varianze?</p></li>
+<li><p>Un intervallo per la differenza è [1.2, 6.8], mentre la soglia di rilevanza pratica è 5. Che cosa suggerisce l’intervallo?</p></li>
+<li><p>Perché una differenza statisticamente significativa tra due gruppi osservazionali non dimostra un effetto causale?</p></li>
+<li><p>Nel modello <span class="math inline">\(Y_i=\alpha+\beta X_i+\varepsilon_i\)</span>, con controllo codificato 0 e intervento codificato 1, che cosa rappresentano <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span>?</p></li>
+<li><p>Qual è la differenza tra un valore-<em>p</em> piccolo per <span class="math inline">\(H_0:\Delta=0\)</span> e una probabilità a posteriori elevata per <span class="math inline">\(\Delta&gt;0\)</span>?</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Soluzioni">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Informazioni sull’ambiente di sviluppo
+<span class="screen-reader-only">Consiglio</span>Soluzioni
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><span class="math inline">\(\Delta\)</span> è la differenza tra le medie delle popolazioni o del modello. <span class="math inline">\(\widehat{\Delta}\)</span> è la differenza osservata tra le medie campionarie e varia da campione a campione.</p></li>
+<li><p>Le due osservazioni della stessa persona sono dipendenti. Un test indipendente ignora l’abbinamento e usa un errore standard non coerente con il disegno.</p></li>
+<li><p>Il test classico assume una varianza comune nelle due popolazioni. Welch permette varianze differenti e modifica errore standard e gradi di libertà.</p></li>
+<li><p>La procedura risultante dipende da una decisione presa sugli stessi dati e ha proprietà inferenziali meno trasparenti. Welch può essere adottato direttamente senza imporre l’uguaglianza delle varianze.</p></li>
+<li><p>I dati sono compatibili, secondo la procedura, sia con differenze inferiori sia con differenze superiori a 5. L’esclusione dello zero non consente di stabilire con precisione che la soglia pratica sia superata.</p></li>
+<li><p>I gruppi possono differire per confondenti, selezione o condizioni precedenti all’esposizione. Il test quantifica una differenza, ma non identifica da solo il meccanismo che l’ha prodotta.</p></li>
+<li><p><span class="math inline">\(\alpha\)</span> è la media del gruppo controllo. <span class="math inline">\(\beta\)</span> è la differenza intervento meno controllo.</p></li>
+<li><p>Il valore-<em>p</em> riguarda risultati estremi sotto <span class="math inline">\(\Delta=0\)</span>. La probabilità a posteriori riguarda l’incertezza su <span class="math inline">\(\Delta\)</span> dopo avere combinato prior, modello e dati.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Punti chiave">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Punti chiave
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Il confronto deve iniziare dalla definizione della differenza e del suo ordine.</li>
+<li>Gruppi indipendenti, dati appaiati e misure ripetute richiedono strutture inferenziali diverse.</li>
+<li>Il test di Welch non richiede una varianza comune ed è spesso una scelta predefinita adeguata.</li>
+<li>L’indipendenza è soprattutto un’assunzione del disegno.</li>
+<li>Differenza grezza, intervallo, valore-<em>p</em> e dimensione standardizzata comunicano informazioni diverse.</li>
+<li>Un risultato significativo rispetto a zero non dimostra rilevanza pratica.</li>
+<li>Un risultato non significativo non dimostra equivalenza.</li>
+<li>Il test <em>t</em> non trasforma un confronto osservazionale in un effetto causale.</li>
+<li>Il confronto tra due gruppi è equivalente a una regressione con predittore dicotomico.</li>
+<li>Nel modello bayesiano, la posterior del coefficiente dicotomico rappresenta l’incertezza sulla differenza tra le medie.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Ambiente di sviluppo">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Ambiente di sviluppo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Le informazioni sull’ambiente R possono essere ottenute con:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.6.1 (2026-06-24)</span></span>
@@ -1003,7 +1506,7 @@ Importante
 <span><span class="co">#&gt; locale:</span></span>
 <span><span class="co">#&gt; [1] C.UTF-8/UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; time zone: Europe/Rome</span></span>
+<span><span class="co">#&gt; time zone: Europe/Zagreb</span></span>
 <span><span class="co">#&gt; tzcode source: internal</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; attached base packages:</span></span>
@@ -1014,7 +1517,7 @@ Importante
 <span><span class="co">#&gt;  [4] systemfonts_1.3.2     patchwork_1.3.2       ggdist_3.3.3         </span></span>
 <span><span class="co">#&gt;  [7] tidybayes_3.0.7       bayesplot_1.15.0      ggplot2_4.0.3        </span></span>
 <span><span class="co">#&gt; [10] reliabilitydiag_0.2.1 priorsense_1.2.0      posterior_1.7.0      </span></span>
-<span><span class="co">#&gt; [13] loo_2.10.0            rstan_2.32.7          StanHeaders_2.32.10  </span></span>
+<span><span class="co">#&gt; [13] loo_2.10.1            rstan_2.32.7          StanHeaders_2.32.10  </span></span>
 <span><span class="co">#&gt; [16] brms_2.23.0           Rcpp_1.1.2            sessioninfo_1.2.4    </span></span>
 <span><span class="co">#&gt; [19] conflicted_1.2.0      janitor_2.2.1         matrixStats_1.5.0    </span></span>
 <span><span class="co">#&gt; [22] modelr_0.1.11         tibble_3.3.1          dplyr_1.2.1          </span></span>
@@ -1030,12 +1533,12 @@ Importante
 <span><span class="co">#&gt; [19] htmlwidgets_1.6.4     pkgbuild_1.4.8        curl_7.1.0           </span></span>
 <span><span class="co">#&gt; [22] RColorBrewer_1.1-3    abind_1.4-8           purrr_1.2.2          </span></span>
 <span><span class="co">#&gt; [25] grid_4.6.1            stats4_4.6.1          xtable_1.8-8         </span></span>
-<span><span class="co">#&gt; [28] inline_0.3.21         emmeans_2.0.3         scales_1.4.0         </span></span>
-<span><span class="co">#&gt; [31] cli_3.6.6             mvtnorm_1.4-1         rmarkdown_2.31       </span></span>
+<span><span class="co">#&gt; [28] inline_0.3.21         emmeans_2.0.4         scales_1.4.0         </span></span>
+<span><span class="co">#&gt; [31] cli_3.6.6             mvtnorm_1.4-2         rmarkdown_2.31       </span></span>
 <span><span class="co">#&gt; [34] generics_0.1.4        otel_0.2.0            RcppParallel_5.1.11-2</span></span>
 <span><span class="co">#&gt; [37] cachem_1.1.0          stringr_1.6.0         parallel_4.6.1       </span></span>
-<span><span class="co">#&gt; [40] vctrs_0.7.3           V8_8.2.0              Matrix_1.7-5         </span></span>
-<span><span class="co">#&gt; [43] jsonlite_2.0.0        arrayhelpers_1.1-1    glue_1.8.1           </span></span>
+<span><span class="co">#&gt; [40] vctrs_0.7.3           V8_8.2.0              Matrix_1.7-6         </span></span>
+<span><span class="co">#&gt; [43] jsonlite_2.0.0        arrayhelpers_1.1-2    glue_1.8.1           </span></span>
 <span><span class="co">#&gt; [46] codetools_0.2-20      distributional_0.8.1  lubridate_1.9.5      </span></span>
 <span><span class="co">#&gt; [49] stringi_1.8.7         gtable_0.3.6          QuickJSR_1.10.0      </span></span>
 <span><span class="co">#&gt; [52] pillar_1.11.1         htmltools_0.5.9       Brobdingnag_1.2-9    </span></span>
@@ -1043,20 +1546,14 @@ Importante
 <span><span class="co">#&gt; [58] evaluate_1.0.5        lattice_0.22-9        backports_1.5.1      </span></span>
 <span><span class="co">#&gt; [61] memoise_2.0.1         broom_1.0.13          snakecase_0.11.1     </span></span>
 <span><span class="co">#&gt; [64] rstantools_2.6.0      coda_0.19-4.1         gridExtra_2.3.1      </span></span>
-<span><span class="co">#&gt; [67] nlme_3.1-169          checkmate_2.3.4       xfun_0.60            </span></span>
+<span><span class="co">#&gt; [67] nlme_3.1-170          checkmate_2.3.4       xfun_0.60            </span></span>
 <span><span class="co">#&gt; [70] pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
-</section><section id="bibliografia" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="bibliografia">Bibliografia</h2>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
-<div id="ref-kruschke2013bayesian" class="csl-entry" role="listitem">
-Kruschke, J. K. (2013). Bayesian estimation supersedes the t test. <em>Journal of Experimental Psychology: General</em>, <em>142</em>(2), 573–603.
-</div>
-</div>
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -1477,13 +1974,13 @@ Kruschke, J. K. (2013). Bayesian estimation supersedes the t test. <em>Journal o
     }
   });
   </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../../chapters/frequentist_inference/05_sample_size.html" class="pagination-link" aria-label="Dimensione campionaria, errore e potenza">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></span>
+      <a href="../../chapters/frequentist_inference/05_sample_size.html" class="pagination-link" aria-label="Dimensione campionaria, precisione e potenza">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, precisione e potenza</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../chapters/epilogo/epilogo.html" class="pagination-link" aria-label="Considerazioni conclusive: dal controllo dell'errore all'aggiornamento delle credenze">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerazioni conclusive: dal controllo dell’errore all’aggiornamento delle credenze</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../chapters/epilogo/epilogo.html" class="pagination-link" aria-label="Conclusioni">
+        <span class="nav-page-text">Conclusioni</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

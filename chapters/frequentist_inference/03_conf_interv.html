@@ -162,13 +162,15 @@ window.Quarto = {
 </script>
 <meta property="og:title" content="3&nbsp; Intervalli di confidenza – Inferenza frequentista in psicologia">
 <meta property="og:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Inferenza bayesiana in psicologia: Ragionare con l’incertezza.">
-<meta property="og:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/03_conf_interv_files/figure-html/unnamed-chunk-6-1.png">
+<meta property="og:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/03_conf_interv_files/figure-html/fig-ci-coverage-1.png">
 <meta property="og:site_name" content="Inferenza frequentista in psicologia">
+<meta property="og:image:alt" content="Cinquanta segmenti orizzontali rappresentano intervalli di confidenza; alcuni non attraversano la linea della media vera.">
 <meta property="og:image:height" content="1297">
 <meta property="og:image:width" content="2100">
 <meta name="twitter:title" content="3&nbsp; Intervalli di confidenza – Inferenza frequentista in psicologia">
 <meta name="twitter:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Inferenza bayesiana in psicologia: Ragionare con l’incertezza.">
-<meta name="twitter:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/03_conf_interv_files/figure-html/unnamed-chunk-6-1.png">
+<meta name="twitter:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/03_conf_interv_files/figure-html/fig-ci-coverage-1.png">
+<meta name="twitter:image:alt" content="Cinquanta segmenti orizzontali rappresentano intervalli di confidenza; alcuni non attraversano la linea della media vera.">
 <meta name="twitter:image-height" content="1297">
 <meta name="twitter:image-width" content="2100">
 <meta name="twitter:card" content="summary_large_image">
@@ -426,7 +428,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/05_sample_size.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, precisione e potenza</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -449,7 +451,7 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/epilogo/epilogo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerazioni conclusive: dal controllo dell’errore all’aggiornamento delle credenze</span></span></a>
+ <span class="menu-text">Conclusioni</span></a>
   </div>
 </li>
       </ul>
@@ -462,16 +464,17 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2"><h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
-<li><a href="#sec-freq-from-point-to-interval" id="toc-sec-freq-from-point-to-interval" class="nav-link active" data-scroll-target="#sec-freq-from-point-to-interval"><span class="header-section-number">3.1</span> Dalla stima puntuale all’intervallo</a></li>
-  <li><a href="#sec-freq-coverage-logic" id="toc-sec-freq-coverage-logic" class="nav-link" data-scroll-target="#sec-freq-coverage-logic"><span class="header-section-number">3.2</span> La logica della copertura</a></li>
-  <li><a href="#sec-freq-ci-mean" id="toc-sec-freq-ci-mean" class="nav-link" data-scroll-target="#sec-freq-ci-mean"><span class="header-section-number">3.3</span> Costruzione dell’intervallo per una media</a></li>
-  <li><a href="#sec-freq-ci-example-r" id="toc-sec-freq-ci-example-r" class="nav-link" data-scroll-target="#sec-freq-ci-example-r"><span class="header-section-number">3.4</span> Esempio pratico in R</a></li>
-  <li><a href="#sec-freq-ci-coverage-simulation" id="toc-sec-freq-ci-coverage-simulation" class="nav-link" data-scroll-target="#sec-freq-ci-coverage-simulation"><span class="header-section-number">3.5</span> Simulare la copertura</a></li>
-  <li><a href="#sec-freq-ci-misinterpretations" id="toc-sec-freq-ci-misinterpretations" class="nav-link" data-scroll-target="#sec-freq-ci-misinterpretations"><span class="header-section-number">3.6</span> Interpretazioni corrette e fraintendimenti comuni</a></li>
-  <li><a href="#sec-freq-ci-width" id="toc-sec-freq-ci-width" class="nav-link" data-scroll-target="#sec-freq-ci-width"><span class="header-section-number">3.7</span> Che cosa determina l’ampiezza dell’intervallo?</a></li>
-  <li><a href="#sec-freq-ci-vs-credible" id="toc-sec-freq-ci-vs-credible" class="nav-link" data-scroll-target="#sec-freq-ci-vs-credible"><span class="header-section-number">3.8</span> Intervalli di confidenza e intervalli di credibilità</a></li>
-  <li><a href="#sec-freq-ci-limits" id="toc-sec-freq-ci-limits" class="nav-link" data-scroll-target="#sec-freq-ci-limits"><span class="header-section-number">3.9</span> Limiti e ruolo degli intervalli di confidenza</a></li>
-  <li><a href="#sec-freq-ci-to-hypothesis-testing" id="toc-sec-freq-ci-to-hypothesis-testing" class="nav-link" data-scroll-target="#sec-freq-ci-to-hypothesis-testing"><span class="header-section-number">3.10</span> Verso i test di ipotesi</a></li>
+<li><a href="#perch%C3%A9-una-stima-puntuale-non-basta" id="toc-perché-una-stima-puntuale-non-basta" class="nav-link active" data-scroll-target="#perch%C3%A9-una-stima-puntuale-non-basta"><span class="header-section-number">3.1</span> Perché una stima puntuale non basta?</a></li>
+  <li><a href="#sec-freq-from-point-to-interval" id="toc-sec-freq-from-point-to-interval" class="nav-link" data-scroll-target="#sec-freq-from-point-to-interval"><span class="header-section-number">3.2</span> Dalla stima all’intervallo</a></li>
+  <li><a href="#sec-freq-ci-known-variance" id="toc-sec-freq-ci-known-variance" class="nav-link" data-scroll-target="#sec-freq-ci-known-variance"><span class="header-section-number">3.3</span> Caso ideale: media con varianza nota</a></li>
+  <li><a href="#sec-freq-ci-unknown-variance" id="toc-sec-freq-ci-unknown-variance" class="nav-link" data-scroll-target="#sec-freq-ci-unknown-variance"><span class="header-section-number">3.4</span> Caso usuale: media con varianza ignota</a></li>
+  <li><a href="#sec-freq-ci-example-r" id="toc-sec-freq-ci-example-r" class="nav-link" data-scroll-target="#sec-freq-ci-example-r"><span class="header-section-number">3.5</span> Un esempio numerico</a></li>
+  <li><a href="#sec-freq-coverage-logic" id="toc-sec-freq-coverage-logic" class="nav-link" data-scroll-target="#sec-freq-coverage-logic"><span class="header-section-number">3.6</span> La logica della copertura</a></li>
+  <li><a href="#sec-freq-ci-misinterpretations" id="toc-sec-freq-ci-misinterpretations" class="nav-link" data-scroll-target="#sec-freq-ci-misinterpretations"><span class="header-section-number">3.7</span> Interpretazioni corrette e fraintendimenti</a></li>
+  <li><a href="#sec-freq-ci-width" id="toc-sec-freq-ci-width" class="nav-link" data-scroll-target="#sec-freq-ci-width"><span class="header-section-number">3.8</span> Che cosa determina l’ampiezza?</a></li>
+  <li><a href="#sec-freq-ci-assumptions" id="toc-sec-freq-ci-assumptions" class="nav-link" data-scroll-target="#sec-freq-ci-assumptions"><span class="header-section-number">3.9</span> Intervalli e validità del modello</a></li>
+  <li><a href="#sec-freq-ci-vs-credible" id="toc-sec-freq-ci-vs-credible" class="nav-link" data-scroll-target="#sec-freq-ci-vs-credible"><span class="header-section-number">3.10</span> Intervalli di confidenza e intervalli di credibilità</a></li>
+  <li><a href="#sec-freq-ci-to-hypothesis-testing" id="toc-sec-freq-ci-to-hypothesis-testing" class="nav-link" data-scroll-target="#sec-freq-ci-to-hypothesis-testing"><span class="header-section-number">3.11</span> Dall’intervallo al test di ipotesi</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/03_conf_interv.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -490,183 +493,204 @@ window.Quarto = {
   
 
 
-</header><div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Nel capitolo precedente abbiamo distinto il <strong>parametro</strong>, lo <strong>stimatore</strong> e la <strong>stima</strong>. Una stima puntuale, come ad esempio una media campionaria, è un riassunto utile dei dati osservati, ma non comunica da sola l’incertezza associata al risultato.</p>
-<p>Gli <strong>intervalli di confidenza</strong> sono lo strumento con cui l’inferenza frequentista accompagna una stima puntuale con una misura della sua incertezza. La loro interpretazione richiede tuttavia attenzione: un intervallo di confidenza non assegna una probabilità al parametro. Esprime, piuttosto, una garanzia sulla <strong>procedura</strong> che ha prodotto l’intervallo, valutata nel lungo periodo e ipotizzando la ripetizione del campionamento.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
+</header><div class="callout callout-style-default callout-note callout-titled" title="In sintesi">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>In questo capitolo imparerai a
+<span class="screen-reader-only">Nota</span>In sintesi
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li>costruire un intervallo di confidenza per la media di una popolazione;</li>
-<li>interpretare il livello di confidenza come <strong>copertura nel lungo periodo</strong>;</li>
-<li>distinguere tra intervallo di confidenza e intervallo di credibilità;</li>
-<li>riconoscere i fraintendimenti più comuni;</li>
-<li>comprendere come livello di confidenza, variabilità e dimensione campionaria influenzano l’ampiezza dell’intervallo.</li>
-</ul>
+<p><strong>Da sapere</strong> Un intervallo di confidenza combina una stima puntuale e una misura della sua variabilità campionaria. Il livello di confidenza descrive la copertura della procedura sotto ripetizioni del campionamento e non assegna una probabilità al parametro nell’intervallo osservato.</p>
+<p><strong>Da saper fare</strong> Interpretare correttamente un intervallo di confidenza; distinguere copertura, precisione e validità; spiegare il ruolo di errore standard, valore critico e dimensione campionaria; confrontare intervalli di confidenza e intervalli di credibilità senza confonderli.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<section id="introduzione" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="introduzione">Introduzione</h2>
+<p>Nel capitolo precedente abbiamo distinto <strong>parametro</strong>, <strong>stimatore</strong> e <strong>stima</strong>. Abbiamo inoltre visto che una stima puntuale, come una media campionaria, è incompleta se non viene accompagnata da una misura della sua precisione.</p>
+<p>L’intervallo di confidenza sviluppa questa idea. Parte dalla distribuzione campionaria dello stimatore e costruisce, intorno alla stima osservata, un intervallo mediante una procedura progettata per raggiungere una determinata frequenza di copertura.</p>
+<p>Il punto più delicato è interpretativo. Un intervallo di confidenza al 95% non significa che il parametro abbia il 95% di probabilità di trovarsi tra i due estremi osservati. Il 95% qualifica la procedura prima dell’osservazione dei dati: sotto il modello e il piano di campionamento assunti, il 95% degli intervalli prodotti in ripetizioni analoghe contiene il parametro vero.</p>
+</section><section id="perché-una-stima-puntuale-non-basta" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="perché-una-stima-puntuale-non-basta">
+<span class="header-section-number">3.1</span> Perché una stima puntuale non basta?</h2>
+<p>Supponiamo di osservare una media campionaria pari a 24.8. Questo numero risponde alla domanda:</p>
+<blockquote class="blockquote">
+<p>Quale valore ha assunto lo stimatore nel campione osservato?</p>
+</blockquote>
+<p>Non risponde però a una seconda domanda:</p>
+<blockquote class="blockquote">
+<p>Quanto cambierebbe la stima se osservassimo un altro campione generato nelle stesse condizioni?</p>
+</blockquote>
+<p>Due studi possono ottenere la stessa media e avere precisioni molto diverse. L’intervallo di confidenza rende visibile questa seconda informazione, combinando:</p>
+<ol type="1">
+<li>la stima puntuale;</li>
+<li>l’errore standard;</li>
+<li>un valore critico associato al livello di confidenza.</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled" title="Precisione, non garanzia di verità">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Precisione, non garanzia di verità
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un intervallo stretto indica una bassa variabilità campionaria della procedura nelle condizioni assunte. Non garantisce che il campione sia rappresentativo, che la misura sia valida o che il modello sia corretto.</p>
+<p>Una stima può essere molto precisa e tuttavia sistematicamente fuorviante.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Prerequisiti">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Consiglio</span>Prerequisiti
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Per seguire questo capitolo è utile aver letto:</p>
+<p>È utile avere letto:</p>
 <ul>
 <li>
-<a href="02_stime_parametri.html" class="quarto-xref"><span>Capitolo 2</span></a>, per la distinzione tra parametro, stimatore e stima;</li>
-<li>il capitolo del companion sulla probabilità dedicato al passaggio dal campione all’evidenza, in particolare per errore standard e distribuzione campionaria;</li>
-<li>l’introduzione a questo modulo, dove abbiamo distinto le domande frequentiste dalle domande bayesiane.</li>
+<a href="02_stime_parametri.html" class="quarto-xref"><span>Capitolo 2</span></a>, per la distinzione tra parametro, stimatore, stima ed errore standard;</li>
+<li>il capitolo <a href="https://ccaudek.github.io/utet-prob/chapters/probability/13_from_sample_to_evidence.html">Dal campione all’evidenza</a>, per il significato della distribuzione campionaria;</li>
+<li>l’introduzione al modulo frequentista, per la distinzione tra probabilità della procedura e incertezza sul parametro.</li>
 </ul>
-<p>Qui non ripeteremo in dettaglio la teoria della distribuzione campionaria. Useremo quel risultato per capire come il frequentismo costruisce intervalli con una proprietà di copertura controllata.</p>
+<p>Qui useremo questi concetti senza ripeterne la teoria probabilistica.</p>
 </div>
 </div>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled" title="Preparazione del Notebook">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+</section><section id="panoramica-del-capitolo" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="panoramica-del-capitolo">Panoramica del capitolo</h2>
+<p>Il capitolo procede in otto passaggi:</p>
+<ol type="1">
+<li>introduce la forma generale di un intervallo di confidenza;</li>
+<li>deriva l’intervallo per una media con varianza nota;</li>
+<li>presenta l’intervallo <em>t</em> per una media con varianza ignota;</li>
+<li>calcola un esempio numerico in R;</li>
+<li>rende intuitiva la copertura mediante simulazione;</li>
+<li>discute i principali fraintendimenti;</li>
+<li>mostra che ampiezza e copertura dipendono da procedura e assunzioni;</li>
+<li>distingue l’intervallo di confidenza dall’intervallo di credibilità e prepara il passaggio ai test di ipotesi.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="Preparazione del notebook">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Attenzione</span>Preparazione del Notebook
+<span class="screen-reader-only">Nota</span>Preparazione del notebook
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>Per eseguire gli esempi, prepara l’ambiente comune del progetto:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
-</div>
-<section id="sec-freq-from-point-to-interval" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="sec-freq-from-point-to-interval">
-<span class="header-section-number">3.1</span> Dalla stima puntuale all’intervallo</h2>
-<p>Supponiamo di voler stimare il punteggio medio di benessere psicologico in una popolazione di studenti. Raccogliamo un campione e otteniamo una media pari a 24.8. Questo valore è la nostra <strong>stima puntuale</strong> della media della popolazione, indicata con <span class="math inline">\(\mu\)</span>.</p>
-<p>Il problema è che un altro campione avrebbe probabilmente prodotto una media diversa. La variabilità campionaria rende quindi incompleta una comunicazione basata solo sulla stima puntuale.</p>
-<p>Un intervallo di confidenza fornisce una seconda informazione: non solo “qual è la stima?”, ma anche “quanto è variabile la procedura che ha prodotto questa stima?”.</p>
-<p>Nel caso più comune, un intervallo di confidenza ha la forma:</p>
+</section><section id="sec-freq-from-point-to-interval" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="sec-freq-from-point-to-interval">
+<span class="header-section-number">3.2</span> Dalla stima all’intervallo</h2>
+<p>Molti intervalli di confidenza hanno la forma:</p>
 <p><span class="math display">\[
-\text{stima} \; \pm \; \text{margine di errore}.
+\text{stima}
+\;\pm\;
+\text{valore critico}
+\times
+\text{errore standard}.
 \]</span></p>
-<p>Il margine di errore combina due elementi:</p>
-<ol type="1">
-<li>una misura della variabilità della stima, cioè l’<strong>errore standard</strong>;</li>
-<li>un valore critico, scelto in base al livello di confidenza desiderato.</li>
-</ol>
-<p>Per la media di una popolazione, quando la varianza viene stimata dal campione, la forma generale è:</p>
+<p>Il prodotto tra valore critico ed errore standard è il <strong>margine di errore</strong>.</p>
+<p>La stima determina il centro dell’intervallo. L’errore standard descrive la variabilità campionaria dello stimatore. Il valore critico stabilisce quanto dobbiamo allontanarci dal centro per ottenere il livello di copertura desiderato.</p>
+<p>Questa forma non è universale. Esistono intervalli asimmetrici, intervalli basati sulla verosimiglianza, intervalli bootstrap e procedure specifiche per proporzioni, varianze e coefficienti di regressione. Tuttavia, il caso della media rende visibile la logica fondamentale.</p>
+</section><section id="sec-freq-ci-known-variance" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="sec-freq-ci-known-variance">
+<span class="header-section-number">3.3</span> Caso ideale: media con varianza nota</h2>
+<p>Consideriamo osservazioni indipendenti da una popolazione normale con media ignota <span class="math inline">\(\mu\)</span> e deviazione standard nota <span class="math inline">\(\sigma\)</span>. La media campionaria ha distribuzione:</p>
 <p><span class="math display">\[
-\bar X \pm t^*_{n-1}\frac{s}{\sqrt n},
-\]</span> dove <span class="math inline">\(\bar X\)</span> è la media campionaria, <span class="math inline">\(s\)</span> è la deviazione standard campionaria, <span class="math inline">\(n\)</span> è la dimensione del campione e <span class="math inline">\(t^*_{n-1}\)</span> è il valore critico della distribuzione <em>t</em> di Student con <span class="math inline">\(n-1\)</span> gradi di libertà.</p>
-</section><section id="sec-freq-coverage-logic" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="sec-freq-coverage-logic">
-<span class="header-section-number">3.2</span> La logica della copertura</h2>
-<p>La nozione centrale per interpretare un intervallo di confidenza è la <strong>copertura</strong>.</p>
-<p>Un intervallo di confidenza al 95% viene costruito con una procedura che, se applicata molte volte a campioni estratti nelle stesse condizioni, produrrebbe intervalli contenenti il vero valore del parametro nel 95% dei casi.</p>
-<div class="callout callout-style-default callout-important callout-titled" title="Interpretazione corretta">
+\bar X
+\sim
+\mathcal{N}\!\left(
+\mu,
+\frac{\sigma^2}{n}
+\right).
+\]</span></p>
+<p>Di conseguenza,</p>
+<p><span class="math display">\[
+Z
+=
+\frac{\bar X-\mu}{\sigma/\sqrt n}
+\sim
+\mathcal{N}(0,1).
+\]</span></p>
+<p>Per un livello di confidenza del 95%:</p>
+<p><span class="math display">\[
+P(-1.96 \le Z \le 1.96)=0.95.
+\]</span></p>
+<p>Sostituendo la definizione di <span class="math inline">\(Z\)</span> e riordinando la disuguaglianza:</p>
+<p><span class="math display">\[
+P\!\left(
+\bar X-1.96\frac{\sigma}{\sqrt n}
+\le
+\mu
+\le
+\bar X+1.96\frac{\sigma}{\sqrt n}
+\right)
+=
+0.95.
+\]</span></p>
+<p>Prima di osservare il campione, gli estremi sono variabili casuali perché dipendono da <span class="math inline">\(\bar X\)</span>. La procedura produce quindi un intervallo casuale con copertura 0.95.</p>
+<p>Dopo aver osservato i dati, otteniamo due estremi numerici. Il parametro, nel modello frequentista, è fisso: l’intervallo osservato lo contiene oppure non lo contiene.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Dove si trova la probabilità?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>Interpretazione corretta
+<span class="screen-reader-only">Nota</span>Dove si trova la probabilità?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Un intervallo di confidenza al 95% non significa che, per l’intervallo osservato, vi sia il 95% di probabilità che il parametro sia al suo interno.</p>
-<p>Significa invece che la <strong>procedura</strong> usata per costruire l’intervallo ha una copertura del 95% nel lungo periodo.</p>
+<p>Nell’espressione precedente, la probabilità riguarda gli estremi casuali dell’intervallo prima dell’osservazione dei dati. Non riguarda una distribuzione di probabilità assegnata a <span class="math inline">\(\mu\)</span>.</p>
 </div>
 </div>
-<p>Questa distinzione è il cuore dell’interpretazione frequentista. Prima di osservare i dati, l’intervallo è casuale, perché dipende dal campione che verrà osservato. Dopo aver osservato i dati, l’intervallo è fissato: contiene oppure non contiene il parametro vero. Nella prospettiva frequentista, non assegniamo una probabilità a questo evento per il singolo intervallo osservato, in quanto il parametro non è considerato una variabile casuale.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="La domanda frequentista">
+</section><section id="sec-freq-ci-unknown-variance" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="sec-freq-ci-unknown-variance">
+<span class="header-section-number">3.4</span> Caso usuale: media con varianza ignota</h2>
+<p>Nella ricerca psicologica, <span class="math inline">\(\sigma\)</span> è quasi sempre ignota. La sostituiamo quindi con la deviazione standard campionaria <span class="math inline">\(s\)</span>.</p>
+<p>Se le osservazioni sono indipendenti e provengono da una popolazione normale, la statistica</p>
+<p><span class="math display">\[
+T
+=
+\frac{\bar X-\mu}{s/\sqrt n}
+\]</span></p>
+<p>segue esattamente una distribuzione <em>t</em> di Student con <span class="math inline">\(n-1\)</span> gradi di libertà:</p>
+<p><span class="math display">\[
+T\sim t_{n-1}.
+\]</span></p>
+<p>L’intervallo bilaterale al livello <span class="math inline">\(1-\alpha\)</span> è:</p>
+<p><span class="math display">\[
+\bar X
+\pm
+t_{1-\alpha/2,\;n-1}
+\frac{s}{\sqrt n}.
+\]</span></p>
+<p>La distribuzione <em>t</em> ha code più pesanti della normale standard. Nei campioni piccoli, il valore critico è quindi più grande e l’intervallo più ampio. Al crescere dei gradi di libertà, la distribuzione <em>t</em> si avvicina alla normale standard.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Esatto e approssimato">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>La domanda frequentista
+<span class="screen-reader-only">Avviso</span>Esatto e approssimato
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La domanda non è:</p>
-<blockquote class="blockquote">
-<p>Qual è la probabilità che <span class="math inline">\(\mu\)</span> sia in questo intervallo?</p>
-</blockquote>
-<p>ma:</p>
-<blockquote class="blockquote">
-<p>Che percentuale di intervalli costruiti con questa procedura conterrebbe <span class="math inline">\(\mu\)</span> se ripetessimo lo studio molte volte?</p>
-</blockquote>
+<p>L’intervallo <em>t</em> classico ha copertura esatta sotto indipendenza e normalità della popolazione.</p>
+<p>Con campioni grandi può essere usato come approssimazione anche in situazioni non perfettamente normali, ma la qualità dell’approssimazione dipende dalla forma della distribuzione, dalla presenza di valori estremi e dalla struttura di dipendenza. Un campione grande non rende irrilevante qualunque violazione.</p>
 </div>
 </div>
-</section><section id="sec-freq-ci-mean" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="sec-freq-ci-mean">
-<span class="header-section-number">3.3</span> Costruzione dell’intervallo per una media</h2>
-<section id="caso-ideale-varianza-nota" class="level3" data-number="3.3.1"><h3 data-number="3.3.1" class="anchored" data-anchor-id="caso-ideale-varianza-nota">
-<span class="header-section-number">3.3.1</span> Caso ideale: varianza nota</h3>
-<p>Il caso più semplice, anche se raramente realistico, è quello in cui la popolazione è normale, la media <span class="math inline">\(\mu\)</span> è ignota e la deviazione standard della popolazione <span class="math inline">\(\sigma\)</span> è nota. In questo caso:</p>
-<p><span class="math display">\[
-\bar X \sim \mathcal{N}\!\left(\mu, \frac{\sigma^2}{n}\right).
-\]</span></p>
-<p>Standardizzando:</p>
-<p><span class="math display">\[
-Z = \frac{\bar X - \mu}{\sigma/\sqrt n} \sim \mathcal{N}(0,1).
-\]</span></p>
-<p>Per un livello di confidenza del 95%, il valore critico della normale standard è circa 1.96. L’intervallo diventa:</p>
-<p><span class="math display">\[
-\bar X \pm 1.96\frac{\sigma}{\sqrt n}.
-\]</span></p>
-<p>Questo caso è utile perché mostra la struttura logica dell’intervallo: stima puntuale, errore standard e valore critico. Nella ricerca psicologica, però, <span class="math inline">\(\sigma\)</span> non è quasi mai nota.</p>
-</section><section id="caso-usuale-varianza-ignota" class="level3" data-number="3.3.2"><h3 data-number="3.3.2" class="anchored" data-anchor-id="caso-usuale-varianza-ignota">
-<span class="header-section-number">3.3.2</span> Caso usuale: varianza ignota</h3>
-<p>Quando la deviazione standard della popolazione non è nota, la stimiamo con la deviazione standard campionaria <span class="math inline">\(s\)</span>. Questa sostituzione introduce ulteriore incertezza. Per tenere conto di ciò, utilizziamo la distribuzione <em>t</em> di Student:</p>
-<p><span class="math display">\[
-T = \frac{\bar X - \mu}{s/\sqrt n} \sim t_{n-1}.
-\]</span></p>
-<p>L’intervallo di confidenza al livello <span class="math inline">\(1-\alpha\)</span> è:</p>
-<p><span class="math display">\[
-\left(
-\bar X - t^*_{n-1}\frac{s}{\sqrt n},
-\;
-\bar X + t^*_{n-1}\frac{s}{\sqrt n}
-\right),
-\]</span> dove <span class="math inline">\(t^*_{n-1}\)</span> è il quantile della distribuzione <em>t</em> di Student corrispondente al livello di confidenza scelto.</p>
-<p>Per campioni piccoli, la distribuzione <em>t</em> di Student presenta code più pesanti rispetto alla distribuzione normale standard e produce intervalli più ampi. Per campioni grandi, la distribuzione <em>t</em> di Student diventa molto simile alla distribuzione normale.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Perché la distribuzione t?">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Perché la distribuzione t?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>La distribuzione <em>t</em> di Student tiene conto del fatto che stiamo utilizzando <span class="math inline">\(s\)</span> al posto di <span class="math inline">\(\sigma\)</span>. In altre parole, non stiamo solo stimando la media: stiamo anche stimando la variabilità della popolazione. Questa incertezza aggiuntiva rende l’intervallo più prudente, soprattutto con pochi dati.</p>
-</div>
-</div>
-</section></section><section id="sec-freq-ci-example-r" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="sec-freq-ci-example-r">
-<span class="header-section-number">3.4</span> Esempio pratico in R</h2>
-<p>Consideriamo un piccolo campione di punteggi di benessere psicologico. L’obiettivo è stimare la media della popolazione e costruire un intervallo di confidenza al 95%.</p>
+</section><section id="sec-freq-ci-example-r" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="sec-freq-ci-example-r">
+<span class="header-section-number">3.5</span> Un esempio numerico</h2>
+<p>Consideriamo dieci punteggi di benessere psicologico:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">punteggi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">28</span>, <span class="fl">22</span>, <span class="fl">26</span>, <span class="fl">18</span>, <span class="fl">30</span>, <span class="fl">24</span>, <span class="fl">27</span>, <span class="fl">17</span>, <span class="fl">21</span>, <span class="fl">25</span><span class="op">)</span></span>
 <span></span>
@@ -675,33 +699,43 @@ T = \frac{\bar X - \mu}{s/\sqrt n} \sim t_{n-1}.
 <span><span class="va">dev_std</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">punteggi</span><span class="op">)</span></span>
 <span><span class="va">errore_standard</span> <span class="op">&lt;-</span> <span class="va">dev_std</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Media campionaria:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">media</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Media campionaria: 23.8</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Deviazione standard campionaria:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">dev_std</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Deviazione standard campionaria: 4.26</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Errore standard:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">errore_standard</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Errore standard: 1.35</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Dimensione campionaria:"</span>, <span class="va">n</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Dimensione campionaria: 10</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  media <span class="op">=</span> <span class="va">media</span>,</span>
+<span>  deviazione_standard <span class="op">=</span> <span class="va">dev_std</span>,</span>
+<span>  errore_standard <span class="op">=</span> <span class="va">errore_standard</span>,</span>
+<span>  n <span class="op">=</span> <span class="va">n</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt;               media deviazione_standard     errore_standard                   n </span></span>
+<span><span class="co">#&gt;               23.80                4.26                1.35               10.00</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Calcoliamo ora manualmente l’intervallo di confidenza.</p>
+<p>La media osservata è 23.8, la deviazione standard campionaria è circa 4.26 e l’errore standard è circa 1.35.</p>
+<p>Calcoliamo manualmente l’intervallo di confidenza al 95%:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">0.05</span></span>
 <span><span class="va">t_star</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">alpha</span> <span class="op">/</span> <span class="fl">2</span>, df <span class="op">=</span> <span class="va">n</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">margine_errore</span> <span class="op">&lt;-</span> <span class="va">t_star</span> <span class="op">*</span> <span class="va">errore_standard</span></span>
 <span></span>
-<span><span class="va">limite_inf</span> <span class="op">&lt;-</span> <span class="va">media</span> <span class="op">-</span> <span class="va">margine_errore</span></span>
-<span><span class="va">limite_sup</span> <span class="op">&lt;-</span> <span class="va">media</span> <span class="op">+</span> <span class="va">margine_errore</span></span>
+<span><span class="va">limite_inferiore</span> <span class="op">&lt;-</span> <span class="va">media</span> <span class="op">-</span> <span class="va">margine_errore</span></span>
+<span><span class="va">limite_superiore</span> <span class="op">&lt;-</span> <span class="va">media</span> <span class="op">+</span> <span class="va">margine_errore</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valore critico t*:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">t_star</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Valore critico t*: 2.26</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Margine di errore:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">margine_errore</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Margine di errore: 3.05</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Intervallo di confidenza al 95%: ["</span>,</span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">limite_inf</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">", "</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">limite_sup</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"]\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Intervallo di confidenza al 95%: [ 20.8 ,  26.9 ]</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  t_critico <span class="op">=</span> <span class="va">t_star</span>,</span>
+<span>  margine_errore <span class="op">=</span> <span class="va">margine_errore</span>,</span>
+<span>  limite_inferiore <span class="op">=</span> <span class="va">limite_inferiore</span>,</span>
+<span>  limite_superiore <span class="op">=</span> <span class="va">limite_superiore</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt;        t_critico   margine_errore limite_inferiore limite_superiore </span></span>
+<span><span class="co">#&gt;             2.26             3.05            20.75            26.85</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>La stessa procedura può essere eseguita con <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>:</p>
+<p>Otteniamo approssimativamente:</p>
+<p><span class="math display">\[
+23.8
+\pm
+2.262\times1.348
+=
+[20.75,\;26.85].
+\]</span></p>
+<p>La stessa procedura è disponibile in R:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">punteggi</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -716,30 +750,32 @@ T = \frac{\bar X - \mu}{s/\sqrt n} \sim t_{n-1}.
 <span><span class="co">#&gt; mean of x </span></span>
 <span><span class="co">#&gt;      23.8</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>L’output di <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> include anche una statistica test e un valore-<span class="math inline">\(p\)</span>. In questo capitolo ci concentriamo sull’intervallo di confidenza; il valore-<span class="math inline">\(p\)</span> verrà discusso nel capitolo sui test di ipotesi.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Come scrivere il risultato">
+<p><code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> restituisce anche una statistica test e un valore-<span class="math inline">\(p\)</span>. In questo capitolo usiamo soltanto l’intervallo; i test di ipotesi saranno introdotti nel capitolo successivo.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Come comunicare il risultato">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Consiglio</span>Come scrivere il risultato
+<span class="screen-reader-only">Consiglio</span>Come comunicare il risultato
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Una formulazione corretta è:</p>
+<p>Una formulazione appropriata è:</p>
 <blockquote class="blockquote">
-<p>La media campionaria è 23.8 e l’intervallo di confidenza al 95% per la media della popolazione va da 20.75 a 26.85.</p>
+<p>Nel campione, il punteggio medio di benessere è 23.8. L’intervallo di confidenza al 95% per la media, costruito con la procedura <em>t</em>, è [20.75, 26.85].</p>
 </blockquote>
-<p>Una formulazione da evitare è:</p>
+<p>È utile riportare anche unità di misura, numerosità campionaria e condizioni dell’analisi.</p>
+<p>Da evitare:</p>
 <blockquote class="blockquote">
-<p>C’è il 95% di probabilità che la media vera sia tra 20.75 e 26.85.</p>
+<p>C’è il 95% di probabilità che la media vera sia compresa tra 20.75 e 26.85.</p>
 </blockquote>
 </div>
 </div>
-</section><section id="sec-freq-ci-coverage-simulation" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="sec-freq-ci-coverage-simulation">
-<span class="header-section-number">3.5</span> Simulare la copertura</h2>
-<p>La copertura è una proprietà della procedura. Per renderla più intuitiva, possiamo simulare molti campioni da una popolazione con media nota e verificare quante volte l’intervallo contiene il valore vero.</p>
+</section><section id="sec-freq-coverage-logic" class="level2" data-number="3.6"><h2 data-number="3.6" class="anchored" data-anchor-id="sec-freq-coverage-logic">
+<span class="header-section-number">3.6</span> La logica della copertura</h2>
+<p>La <strong>copertura</strong> è la proporzione di intervalli che contengono il parametro quando la procedura viene ripetuta secondo il modello e il piano di campionamento specificati.</p>
+<p>Per rendere visibile questa idea, simuliamo molti campioni da una popolazione normale con media nota e costruiamo un intervallo <em>t</em> per ciascun campione.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span>
 <span></span>
@@ -750,184 +786,196 @@ T = \frac{\bar X - \mu}{s/\sqrt n} \sim t_{n-1}.
 <span></span>
 <span><span class="va">intervalli</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">n_simulazioni</span>, <span class="op">{</span></span>
 <span>  <span class="va">campione</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="va">mu_vero</span>, sd <span class="op">=</span> <span class="va">sigma_vera</span><span class="op">)</span></span>
-<span>  <span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">campione</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>inferiore <span class="op">=</span> <span class="va">test</span><span class="op">$</span><span class="va">conf.int</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, superiore <span class="op">=</span> <span class="va">test</span><span class="op">$</span><span class="va">conf.int</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="va">ic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">campione</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span><span class="op">$</span><span class="va">conf.int</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>inferiore <span class="op">=</span> <span class="va">ic</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, superiore <span class="op">=</span> <span class="va">ic</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">contiene_mu</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">intervalli</span><span class="op">[</span><span class="st">"inferiore"</span>, <span class="op">]</span> <span class="op">&lt;=</span> <span class="va">mu_vero</span><span class="op">)</span> <span class="op">&amp;</span></span>
-<span>  <span class="op">(</span><span class="va">intervalli</span><span class="op">[</span><span class="st">"superiore"</span>, <span class="op">]</span> <span class="op">&gt;=</span> <span class="va">mu_vero</span><span class="op">)</span></span>
+<span><span class="va">contiene_mu</span> <span class="op">&lt;-</span> <span class="va">intervalli</span><span class="op">[</span><span class="st">"inferiore"</span>, <span class="op">]</span> <span class="op">&lt;=</span> <span class="va">mu_vero</span> <span class="op">&amp;</span></span>
+<span>  <span class="va">intervalli</span><span class="op">[</span><span class="st">"superiore"</span>, <span class="op">]</span> <span class="op">&gt;=</span> <span class="va">mu_vero</span></span>
 <span></span>
-<span><span class="va">copertura_empirica</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">contiene_mu</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">contiene_mu</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.948</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Copertura empirica:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">copertura_empirica</span> <span class="op">*</span> <span class="fl">100</span>, <span class="fl">1</span><span class="op">)</span>, <span class="st">"%\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Copertura empirica: 94.8 %</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Copertura nominale: 95%\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Copertura nominale: 95%</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>La copertura empirica non sarà esattamente 95%, perché abbiamo simulato un numero finito di campioni. Tuttavia, dovrebbe oscillare attorno al valore nominale.</p>
-<p>Visualizziamo i primi 50 intervalli simulati.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n_mostra</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
+<span><span class="va">n_mostra</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
 <span></span>
-<span><span class="va">df_ic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
-<span>  id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="va">n_mostra</span><span class="op">)</span>,</span>
+<span><span class="va">dati_grafico</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  campione <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="va">n_mostra</span><span class="op">)</span>,</span>
 <span>  inferiore <span class="op">=</span> <span class="va">intervalli</span><span class="op">[</span><span class="st">"inferiore"</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="va">n_mostra</span><span class="op">)</span><span class="op">]</span>,</span>
 <span>  superiore <span class="op">=</span> <span class="va">intervalli</span><span class="op">[</span><span class="st">"superiore"</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="va">n_mostra</span><span class="op">)</span><span class="op">]</span>,</span>
 <span>  contiene <span class="op">=</span> <span class="va">contiene_mu</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="va">n_mostra</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df_ic</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">id</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_segment</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>xend <span class="op">=</span> <span class="va">id</span>,</span>
-<span>                   y <span class="op">=</span> <span class="va">inferiore</span>,</span>
-<span>                   yend <span class="op">=</span> <span class="va">superiore</span>,</span>
-<span>                   linetype <span class="op">=</span> <span class="va">contiene</span><span class="op">)</span>,</span>
-<span>               linewidth <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span></span>
+<span>  <span class="va">dati_grafico</span>,</span>
+<span>  <span class="fu">aes</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="va">campione</span>,</span>
+<span>    y <span class="op">=</span> <span class="va">inferiore</span>,</span>
+<span>    yend <span class="op">=</span> <span class="va">superiore</span>,</span>
+<span>    linetype <span class="op">=</span> <span class="va">contiene</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_segment</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>xend <span class="op">=</span> <span class="va">campione</span><span class="op">)</span>, linewidth <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="va">mu_vero</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">coord_flip</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">labs</span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Intervalli di confidenza costruiti su campioni ripetuti"</span>,</span>
-<span>    subtitle <span class="op">=</span> <span class="st">"La linea tratteggiata indica il valore vero della media"</span>,</span>
 <span>    x <span class="op">=</span> <span class="st">"Campione simulato"</span>,</span>
 <span>    y <span class="op">=</span> <span class="st">"Intervallo di confidenza"</span>,</span>
 <span>    linetype <span class="op">=</span> <span class="st">"Contiene la media vera"</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">coord_flip</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><a href="03_conf_interv_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="03_conf_interv_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a></p>
-</figure>
+<div id="fig-ci-coverage" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Cinquanta segmenti orizzontali rappresentano intervalli di confidenza; alcuni non attraversano la linea della media vera." data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-ci-coverage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="03_conf_interv_files/figure-html/fig-ci-coverage-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figura&nbsp;3.1: Cinquanta intervalli di confidenza al 95% ottenuti da campioni ripetuti. La linea tratteggiata indica la media vera."><img src="03_conf_interv_files/figure-html/fig-ci-coverage-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%" alt="Cinquanta segmenti orizzontali rappresentano intervalli di confidenza; alcuni non attraversano la linea della media vera."></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ci-coverage-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3.1: Cinquanta intervalli di confidenza al 95% ottenuti da campioni ripetuti. La linea tratteggiata indica la media vera.
+</figcaption></figure>
 </div>
 </div>
 </div>
-<p>Il grafico mostra perché l’interpretazione frequentista riguarda la procedura e non il singolo intervallo. In molti campioni l’intervallo contiene il valore vero, in altri no. Dopo aver osservato un solo intervallo, non è possibile sapere a quale dei due casi appartenga.</p>
-</section><section id="sec-freq-ci-misinterpretations" class="level2" data-number="3.6"><h2 data-number="3.6" class="anchored" data-anchor-id="sec-freq-ci-misinterpretations">
-<span class="header-section-number">3.6</span> Interpretazioni corrette e fraintendimenti comuni</h2>
-<p>Gli intervalli di confidenza sono spesso interpretati in modo intuitivo ma scorretto. La tabella seguente riassume le distinzioni principali.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 30%">
-<col style="width: 40%">
-<col style="width: 30%">
-</colgroup>
-<thead><tr class="header">
-<th>Affermazione</th>
-<th style="text-align: right;">Corretta?</th>
-<th>Perché</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>“La procedura produce intervalli che contengono il parametro nel 95% dei campioni ripetuti.”</td>
-<td style="text-align: right;">Sì</td>
-<td>Questa è l’interpretazione frequentista della copertura.</td>
-</tr>
-<tr class="even">
-<td>“C’è il 95% di probabilità che il parametro sia dentro questo intervallo.”</td>
-<td style="text-align: right;">No</td>
-<td>Nel frequentismo il parametro è fisso, non casuale.</td>
-</tr>
-<tr class="odd">
-<td>“Il 95% dei valori individuali della popolazione cade nell’intervallo.”</td>
-<td style="text-align: right;">No</td>
-<td>L’intervallo riguarda il parametro, non i singoli valori osservabili.</td>
-</tr>
-<tr class="even">
-<td>“I valori centrali dell’intervallo sono più probabili dei valori vicini agli estremi.”</td>
-<td style="text-align: right;">No</td>
-<td>L’intervallo di confidenza non è una distribuzione di probabilità sul parametro.</td>
-</tr>
-<tr class="odd">
-<td>“Un intervallo più stretto indica maggiore precisione della stima, a parità di condizioni.”</td>
-<td style="text-align: right;">Sì</td>
-<td>L’ampiezza riflette errore standard e livello di confidenza.</td>
-</tr>
-</tbody>
-</table>
-<div class="callout callout-style-default callout-warning callout-titled" title="Il punto più importante">
+<p>Nella simulazione, la copertura empirica oscilla intorno al 95%. Non deve risultare esattamente 0.95 in un numero finito di ripetizioni.</p>
+<p><a href="#fig-ci-coverage" class="quarto-xref">Figura&nbsp;<span>3.1</span></a> mostra che alcuni intervalli non contengono il parametro. Il livello di confidenza non identifica quali siano. Dopo aver osservato un singolo intervallo, la proprietà di copertura non si trasforma in una probabilità riferita a quello specifico intervallo.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Copertura nominale e copertura effettiva">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avviso</span>Il punto più importante
+<span class="screen-reader-only">Importante</span>Copertura nominale e copertura effettiva
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Un intervallo di confidenza sembra parlare direttamente del parametro, ma la sua giustificazione formale riguarda la procedura che lo genera. Questa è la ragione per cui l’interpretazione corretta è spesso meno intuitiva di quella desiderata dai ricercatori.</p>
+<p>Il 95% è una proprietà nominale della procedura sotto determinate assunzioni.</p>
+<p>Se il modello, l’indipendenza, il piano di campionamento o il metodo di calcolo non sono appropriati, la copertura effettiva può essere diversa dal valore nominale.</p>
 </div>
 </div>
-</section><section id="sec-freq-ci-width" class="level2" data-number="3.7"><h2 data-number="3.7" class="anchored" data-anchor-id="sec-freq-ci-width">
-<span class="header-section-number">3.7</span> Che cosa determina l’ampiezza dell’intervallo?</h2>
-<p>L’ampiezza di un intervallo di confidenza dipende da tre elementi principali.</p>
-<section id="livello-di-confidenza" class="level3" data-number="3.7.1"><h3 data-number="3.7.1" class="anchored" data-anchor-id="livello-di-confidenza">
-<span class="header-section-number">3.7.1</span> Livello di confidenza</h3>
-<p>Aumentare il livello di confidenza aumenta l’ampiezza dell’intervallo. Per garantire una copertura più elevata nel lungo periodo, la procedura deve produrre intervalli più larghi.</p>
+</section><section id="sec-freq-ci-misinterpretations" class="level2" data-number="3.7"><h2 data-number="3.7" class="anchored" data-anchor-id="sec-freq-ci-misinterpretations">
+<span class="header-section-number">3.7</span> Interpretazioni corrette e fraintendimenti</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead><tr class="header">
+<th>Affermazione</th>
+<th>Valutazione</th>
+<th>Motivo</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>«La procedura produce intervalli che contengono il parametro nel 95% delle ripetizioni previste dal modello.»</td>
+<td>Corretta</td>
+<td>Descrive la copertura frequentista.</td>
+</tr>
+<tr class="even">
+<td>«Il parametro ha il 95% di probabilità di trovarsi in questo intervallo.»</td>
+<td>Scorretta</td>
+<td>Il parametro è fisso nel modello frequentista; la probabilità riguarda la procedura.</td>
+</tr>
+<tr class="odd">
+<td>«Il 95% dei valori individuali si trova nell’intervallo.»</td>
+<td>Scorretta</td>
+<td>L’intervallo riguarda un parametro, non la dispersione dei punteggi individuali.</td>
+</tr>
+<tr class="even">
+<td>«I valori centrali sono più probabili di quelli vicini agli estremi.»</td>
+<td>Non giustificata</td>
+<td>L’intervallo non è una distribuzione di probabilità sul parametro.</td>
+</tr>
+<tr class="odd">
+<td>«Un intervallo più stretto indica maggiore precisione campionaria, a parità di metodo e livello di confidenza.»</td>
+<td>Corretta</td>
+<td>L’ampiezza dipende dall’errore standard e dal valore critico.</td>
+</tr>
+<tr class="even">
+<td>«Tutti i valori interni sono ugualmente plausibili.»</td>
+<td>Non giustificata</td>
+<td>La procedura non assegna probabilità o plausibilità ai singoli valori del parametro.</td>
+</tr>
+</tbody>
+</table>
+<p>A volte un intervallo di confidenza viene descritto come insieme di valori <strong>compatibili con i dati</strong>. Questa espressione può essere utile, ma deve essere completata:</p>
+<blockquote class="blockquote">
+<p>valori non esclusi dalla procedura, dato il modello, le assunzioni e il livello scelto.</p>
+</blockquote>
+<p>Non significa che tutti i valori interni siano ugualmente credibili, né che quelli esterni siano impossibili.</p>
+</section><section id="sec-freq-ci-width" class="level2" data-number="3.8"><h2 data-number="3.8" class="anchored" data-anchor-id="sec-freq-ci-width">
+<span class="header-section-number">3.8</span> Che cosa determina l’ampiezza?</h2>
+<section id="errore-standard" class="level3" data-number="3.8.1"><h3 data-number="3.8.1" class="anchored" data-anchor-id="errore-standard">
+<span class="header-section-number">3.8.1</span> Errore standard</h3>
+<p>A parità di valore critico, un errore standard maggiore produce un intervallo più ampio. L’errore standard dipende dalla variabilità dei dati e dalla struttura dello stimatore.</p>
+</section><section id="livello-di-confidenza" class="level3" data-number="3.8.2"><h3 data-number="3.8.2" class="anchored" data-anchor-id="livello-di-confidenza">
+<span class="header-section-number">3.8.2</span> Livello di confidenza</h3>
+<p>Aumentare il livello di confidenza richiede un valore critico più grande. Sullo stesso campione, un intervallo al 99% è quindi più ampio di uno al 95%, che a sua volta è più ampio di uno al 90%.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">livelli</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.80</span>, <span class="fl">0.90</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">livelli</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.80</span>, <span class="fl">0.90</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span><span class="op">)</span></span>
 <span></span>
-<span><span class="kw">for</span> <span class="op">(</span><span class="va">livello</span> <span class="kw">in</span> <span class="va">livelli</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">punteggi</span>, conf.level <span class="op">=</span> <span class="va">livello</span><span class="op">)</span></span>
-<span>  <span class="va">ampiezza</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">conf.int</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span></span>
-<span>    <span class="st">"IC al %d%%: [%.2f, %.2f], ampiezza = %.2f\n"</span>,</span>
-<span>    <span class="va">livello</span> <span class="op">*</span> <span class="fl">100</span>,</span>
-<span>    <span class="va">test</span><span class="op">$</span><span class="va">conf.int</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
-<span>    <span class="va">test</span><span class="op">$</span><span class="va">conf.int</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>,</span>
-<span>    <span class="va">ampiezza</span></span>
-<span>  <span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span><span class="co">#&gt; IC al 80%: [21.94, 25.66], ampiezza = 3.73</span></span>
-<span><span class="co">#&gt; IC al 90%: [21.33, 26.27], ampiezza = 4.94</span></span>
-<span><span class="co">#&gt; IC al 95%: [20.75, 26.85], ampiezza = 6.10</span></span>
-<span><span class="co">#&gt; IC al 99%: [19.42, 28.18], ampiezza = 8.76</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section><section id="variabilità-dei-dati" class="level3" data-number="3.7.2"><h3 data-number="3.7.2" class="anchored" data-anchor-id="variabilità-dei-dati">
-<span class="header-section-number">3.7.2</span> Variabilità dei dati</h3>
-<p>A parità di dimensione campionaria, dati più variabili producono un errore standard maggiore e quindi intervalli più ampi. In psicologia questo punto è cruciale: misure rumorose o costrutti eterogenei rendono più difficile ottenere stime precise.</p>
-</section><section id="dimensione-campionaria" class="level3" data-number="3.7.3"><h3 data-number="3.7.3" class="anchored" data-anchor-id="dimensione-campionaria">
-<span class="header-section-number">3.7.3</span> Dimensione campionaria</h3>
-<p>Aumentare <span class="math inline">\(n\)</span> riduce l’errore standard e quindi restringe l’intervallo. Tuttavia, la relazione non è lineare: l’errore standard diminuisce come <span class="math inline">\(1/\sqrt n\)</span>. Per dimezzare l’errore standard, occorre circa quadruplicare la dimensione del campione.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">dimensioni</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">30</span>, <span class="fl">100</span>, <span class="fl">300</span><span class="op">)</span></span>
-<span><span class="va">popolazione</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">10000</span>, mean <span class="op">=</span> <span class="fl">50</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">risultati_n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">dimensioni</span>, <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">campione</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">popolazione</span>, size <span class="op">=</span> <span class="va">n</span><span class="op">)</span></span>
-<span>  <span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">campione</span>, conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
-<span>    n <span class="op">=</span> <span class="va">n</span>,</span>
-<span>    inferiore <span class="op">=</span> <span class="va">test</span><span class="op">$</span><span class="va">conf.int</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
-<span>    superiore <span class="op">=</span> <span class="va">test</span><span class="op">$</span><span class="va">conf.int</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>,</span>
-<span>    ampiezza <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">conf.int</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">risultati_n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">risultati_n</span><span class="op">)</span></span>
-<span><span class="va">risultati_n</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  livello <span class="op">=</span> <span class="va">livelli</span>,</span>
+<span>  t_critico <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">livelli</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span>, df <span class="op">=</span> <span class="va">n</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/transform.html">transform</a></span><span class="op">(</span></span>
+<span>    limite_inferiore <span class="op">=</span></span>
+<span>      <span class="va">media</span> <span class="op">-</span> <span class="va">t_critico</span> <span class="op">*</span> <span class="va">errore_standard</span>,</span>
+<span>    limite_superiore <span class="op">=</span></span>
+<span>      <span class="va">media</span> <span class="op">+</span> <span class="va">t_critico</span> <span class="op">*</span> <span class="va">errore_standard</span>,</span>
+<span>    ampiezza <span class="op">=</span></span>
+<span>      <span class="fl">2</span> <span class="op">*</span> <span class="va">t_critico</span> <span class="op">*</span> <span class="va">errore_standard</span></span>
+<span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["n"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["inferiore"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["superiore"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["ampiezza"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"10","2":"42.7","3":"54.8","4":"12.10"},{"1":"30","2":"47.4","3":"53.5","4":"6.09"},{"1":"100","2":"47.8","3":"52.1","4":"4.23"},{"1":"300","2":"48.2","3":"50.5","4":"2.37"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["livello"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["t_critico"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["limite_inferiore"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["limite_superiore"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["ampiezza"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.80","2":"1.32","3":"22.0","4":"25.6","5":"3.55"},{"1":"0.90","2":"1.71","3":"21.5","4":"26.1","5":"4.61"},{"1":"0.95","2":"2.06","3":"21.0","4":"26.6","5":"5.57"},{"1":"0.99","2":"2.80","3":"20.0","4":"27.6","5":"7.54"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Precisione e validità">
+<p>Una copertura nominale più elevata viene ottenuta al prezzo di un intervallo più largo.</p>
+</section><section id="dimensione-campionaria" class="level3" data-number="3.8.3"><h3 data-number="3.8.3" class="anchored" data-anchor-id="dimensione-campionaria">
+<span class="header-section-number">3.8.3</span> Dimensione campionaria</h3>
+<p>Nel caso elementare della media indipendente:</p>
+<p><span class="math display">\[
+\operatorname{SE}(\bar X)
+=
+\frac{\sigma}{\sqrt n}.
+\]</span></p>
+<p>A parità di variabilità e metodo, quadruplicare <span class="math inline">\(n\)</span> dimezza l’errore standard. Per questo motivo ottenere intervalli molto più stretti richiede aumenti sostanziali della numerosità.</p>
+<p>L’aumento di <span class="math inline">\(n\)</span> riduce la variabilità campionaria, ma non corregge automaticamente:</p>
+<ul>
+<li>campionamento distorto;</li>
+<li>misurazione inadeguata;</li>
+<li>dipendenza ignorata;</li>
+<li>modello mal specificato.</li>
+</ul></section></section><section id="sec-freq-ci-assumptions" class="level2" data-number="3.9"><h2 data-number="3.9" class="anchored" data-anchor-id="sec-freq-ci-assumptions">
+<span class="header-section-number">3.9</span> Intervalli e validità del modello</h2>
+<p>La copertura non è una proprietà magica dei due estremi numerici. Dipende dall’intero procedimento:</p>
+<ul>
+<li>definizione della popolazione;</li>
+<li>disegno di campionamento o assegnazione;</li>
+<li>stimatore usato;</li>
+<li>formula dell’errore standard;</li>
+<li>distribuzione di riferimento;</li>
+<li>trattamento di dipendenza, eterogeneità e valori estremi.</li>
+</ul>
+<p>Nel semplice intervallo <em>t</em> per una media, per esempio, l’indipendenza è essenziale. Se i dati provengono da studenti raggruppati in classi o da misure ripetute sulla stessa persona, la formula <span class="math inline">\(s/\sqrt n\)</span> può sottostimare la variabilità dello stimatore.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Un intervallo ben calcolato può rispondere alla domanda sbagliata">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Precisione e validità
+<span class="screen-reader-only">Avviso</span>Un intervallo ben calcolato può rispondere alla domanda sbagliata
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Un intervallo stretto indica una bassa incertezza campionaria, ma non necessariamente una alta qualità scientifica. Se il campione non è rappresentativo o la misura è distorta, l’intervallo può essere molto preciso, ma centrato sul valore sbagliato.</p>
+<p>La copertura riguarda il parametro definito dal modello e dal processo di campionamento. Non garantisce che quel parametro corrisponda al costrutto psicologico che interessa realmente.</p>
+<p>Precisione statistica e validità sostantiva devono essere valutate separatamente.</p>
 </div>
 </div>
-</section></section><section id="sec-freq-ci-vs-credible" class="level2" data-number="3.8"><h2 data-number="3.8" class="anchored" data-anchor-id="sec-freq-ci-vs-credible">
-<span class="header-section-number">3.8</span> Intervalli di confidenza e intervalli di credibilità</h2>
-<p>Per gli studenti che stanno studiando l’inferenza bayesiana, il confronto con gli intervalli di credibilità è inevitabile. I due strumenti possono apparire simili perché entrambi forniscono un intervallo numerico. Tuttavia, rispondono a domande diverse.</p>
+</section><section id="sec-freq-ci-vs-credible" class="level2" data-number="3.10"><h2 data-number="3.10" class="anchored" data-anchor-id="sec-freq-ci-vs-credible">
+<span class="header-section-number">3.10</span> Intervalli di confidenza e intervalli di credibilità</h2>
+<p>I due strumenti possono produrre estremi numericamente simili, ma derivano da costruzioni differenti.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -941,109 +989,150 @@ T = \frac{\bar X - \mu}{s/\sqrt n} \sim t_{n-1}.
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>Paradigma</td>
-<td>Frequentista</td>
-<td>Bayesiano</td>
+<td>Oggetto probabilistico immediato</td>
+<td>Intervallo casuale sotto campionamenti ripetuti</td>
+<td>Parametro sotto la distribuzione a posteriori</td>
 </tr>
 <tr class="even">
-<td>Oggetto probabilistico</td>
-<td>La procedura in campioni ripetuti</td>
-<td>Il parametro, condizionatamente ai dati e al modello</td>
+<td>Significato del 95%</td>
+<td>Copertura della procedura, sotto le assunzioni</td>
+<td>Massa a posteriori contenuta nell’intervallo</td>
 </tr>
 <tr class="odd">
-<td>Domanda</td>
-<td>Quale procedura ha copertura del 95% nel lungo periodo?</td>
-<td>Quale intervallo contiene il 95% della probabilità a posteriori?</td>
+<td>Dipendenza da una prior</td>
+<td>Non nella procedura standard</td>
+<td>Sì</td>
 </tr>
 <tr class="even">
-<td>Parametro</td>
-<td>Fisso ma ignoto</td>
-<td>Incerto, rappresentato da una distribuzione</td>
+<td>Dipendenza dal modello dei dati</td>
+<td>Sì</td>
+<td>Sì</td>
 </tr>
 <tr class="odd">
-<td>Dipende da una prior?</td>
-<td>No, nella forma standard</td>
-<td>Sì, attraverso la distribuzione a posteriori</td>
-</tr>
-<tr class="even">
-<td>Interpretazione intuitiva</td>
-<td>Procedurale</td>
-<td>Diretta sul parametro, dato il modello</td>
+<td>Interpretazione del singolo intervallo</td>
+<td>Non assegna probabilità al parametro</td>
+<td>Assegna probabilità a posteriori al parametro, condizionatamente a prior, modello e dati</td>
 </tr>
 </tbody>
 </table>
-<p>Un intervallo di credibilità bayesiano al 95% può essere interpretato come un intervallo che contiene il 95% della probabilità a posteriori del parametro, dato il modello, la prior e i dati. Questa è spesso l’interpretazione che i ricercatori vorrebbero dare agli intervalli di confidenza, ma formalmente appartiene al paradigma bayesiano.</p>
-<div class="callout callout-style-default callout-important callout-titled" title="Stessa forma, significato diverso">
+<p>Un intervallo di credibilità al 95% contiene il 95% della distribuzione a posteriori scelta. Questa interpretazione è diretta sul parametro, ma rimane condizionata alla prior, alla verosimiglianza e all’adeguatezza del modello.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Non basta cambiare il nome">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>Stessa forma, significato diverso
+<span class="screen-reader-only">Importante</span>Non basta cambiare il nome
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Due intervalli possono avere numeri simili e interpretazioni diverse. La differenza non è solo di natura computazionale, ma riguarda anche il significato che attribuiamo al termine “probabilità” e l’oggetto che consideriamo incerto.</p>
+<p>Un intervallo di confidenza non diventa un intervallo di credibilità perché viene interpretato in modo intuitivo. Allo stesso modo, un intervallo bayesiano non è automaticamente affidabile soltanto perché consente un’affermazione probabilistica sul parametro.</p>
+<p>Entrambi richiedono un modello adeguato e una comunicazione coerente con la procedura che li ha generati.</p>
 </div>
 </div>
-</section><section id="sec-freq-ci-limits" class="level2" data-number="3.9"><h2 data-number="3.9" class="anchored" data-anchor-id="sec-freq-ci-limits">
-<span class="header-section-number">3.9</span> Limiti e ruolo degli intervalli di confidenza</h2>
-<p>Gli intervalli di confidenza sono strumenti utili e ampiamente utilizzati. Permettono di evitare una comunicazione basata esclusivamente sulla stima puntuale e di rendere esplicita la precisione della procedura di stima.</p>
-<p>Tuttavia, hanno alcuni limiti importanti.</p>
+</section><section id="sec-freq-ci-to-hypothesis-testing" class="level2" data-number="3.11"><h2 data-number="3.11" class="anchored" data-anchor-id="sec-freq-ci-to-hypothesis-testing">
+<span class="header-section-number">3.11</span> Dall’intervallo al test di ipotesi</h2>
+<p>Per molte procedure standard, un intervallo bilaterale al livello <span class="math inline">\(1-\alpha\)</span> è collegato al corrispondente test bilaterale di livello <span class="math inline">\(\alpha\)</span>.</p>
+<p>Nel caso della media con test <em>t</em>:</p>
+<ul>
+<li>se il valore ipotizzato <span class="math inline">\(\mu_0\)</span> è fuori dall’intervallo al 95%, il test bilaterale di livello 0.05 rifiuta <span class="math inline">\(H_0:\mu=\mu_0\)</span>;</li>
+<li>se <span class="math inline">\(\mu_0\)</span> è dentro l’intervallo, il test non rifiuta <span class="math inline">\(H_0\)</span> allo stesso livello.</li>
+</ul>
+<p>Questa è una relazione tra procedure costruite in modo coerente. Non significa che i valori interni siano «veri» o che quelli esterni siano impossibili.</p>
+<p>Il capitolo successivo svilupperà la logica dei test, distinguendo:</p>
+<ul>
+<li>ipotesi nulla e alternativa;</li>
+<li>statistica test;</li>
+<li>livello <span class="math inline">\(\alpha\)</span>;</li>
+<li>valore-<span class="math inline">\(p\)</span>;</li>
+<li>errori di tipo I e II;</li>
+<li>potenza.</li>
+</ul></section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
+<p>Un intervallo di confidenza collega una stima puntuale alla distribuzione campionaria dello stimatore. Il suo livello descrive la copertura della procedura sotto ripetizioni definite dal modello e dal disegno.</p>
+<p>La distinzione più importante è tra:</p>
+<ul>
+<li>la probabilità che una <strong>procedura casuale</strong> produca un intervallo contenente il parametro;</li>
+<li>una probabilità assegnata al <strong>parametro</strong>, che non appartiene all’interpretazione frequentista standard.</li>
+</ul>
+<p>L’ampiezza dell’intervallo informa sulla precisione campionaria, ma non certifica rappresentatività, validità della misura o correttezza del modello. La copertura nominale è affidabile soltanto nella misura in cui la procedura e le sue assunzioni sono adeguate.</p>
+<p>Questo capitolo completa il passaggio dalla stima puntuale all’inferenza intervallare. Il prossimo userà le stesse distribuzioni di riferimento per introdurre i test di ipotesi.</p>
+</section><section id="esercizi" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="esercizi">Esercizi</h2>
 <ol type="1">
-<li>
-<strong>Interpretazione controintuitiva.</strong> Il livello di confidenza riguarda campioni ipotetici ripetuti, non il singolo intervallo osservato.</li>
-<li>
-<strong>Assenza di probabilità diretta sul parametro.</strong> Nel frequentismo non è possibile affermare che il parametro abbia il 95% di probabilità di appartenere all’intervallo.</li>
-<li>
-<strong>Dipendenza dalle assunzioni.</strong> La copertura nominale è valida solo se si rispettano le condizioni previste dal modello e dal piano di campionamento.</li>
-<li>
-<strong>Nessuna protezione automatica dal bias.</strong> Un intervallo può essere stretto ma fuorviante se i dati sono distorti.</li>
+<li><p>Che cosa aggiunge un intervallo di confidenza rispetto a una stima puntuale?</p></li>
+<li><p>Che cosa significa affermare che una procedura ha copertura del 95%?</p></li>
+<li><p>Perché non è corretto dire che il parametro ha il 95% di probabilità di trovarsi nell’intervallo osservato?</p></li>
+<li><p>Due studi riportano la stessa stima e lo stesso livello di confidenza. Il primo intervallo è molto più stretto. Che cosa puoi concludere e che cosa non puoi concludere?</p></li>
+<li><p>Perché quadruplicare la dimensione campionaria dimezza approssimativamente l’errore standard della media?</p></li>
+<li><p>Un intervallo al 99% è più ampio dell’intervallo al 95% costruito sugli stessi dati. Quale compromesso esprime questa differenza?</p></li>
+<li><p>Perché ignorare la dipendenza tra osservazioni può compromettere la copertura?</p></li>
+<li><p>Qual è la differenza fondamentale tra il 95% di un intervallo di confidenza e il 95% di un intervallo di credibilità?</p></li>
 </ol>
-<p>Questi limiti non rendono inutili gli intervalli di confidenza. Indicano piuttosto come interpretarli correttamente e perché, in un percorso bayesiano, sia utile confrontarli con gli intervalli di credibilità.</p>
-</section><section id="sec-freq-ci-to-hypothesis-testing" class="level2" data-number="3.10"><h2 data-number="3.10" class="anchored" data-anchor-id="sec-freq-ci-to-hypothesis-testing">
-<span class="header-section-number">3.10</span> Verso i test di ipotesi</h2>
-<p>Gli intervalli di confidenza introducono un principio fondamentale del frequentismo: valutare una procedura in base al suo comportamento nel lungo periodo. Nel prossimo capitolo incontreremo una seconda famiglia di procedure frequentiste: i <strong>test di ipotesi</strong>.</p>
-<p>Il passaggio è naturale. Gli intervalli di confidenza chiedono quali valori del parametro siano compatibili con i dati secondo una procedura con copertura controllata. I test di ipotesi, invece, chiedono quanto i dati osservati siano insoliti rispetto a un’ipotesi di riferimento, solitamente chiamata <strong>ipotesi nulla</strong>.</p>
-<p>In entrambi i casi, il punto chiave rimane lo stesso: l’inferenza frequentista non assegna direttamente probabilità al parametro o all’ipotesi dopo aver osservato i dati, ma valuta le procedure e le statistiche rispetto a distribuzioni di riferimento.</p>
-</section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
-<p>Gli intervalli di confidenza sono uno degli strumenti più importanti della statistica applicata. La loro forza risiede nel fatto che collegano una stima puntuale a una misura della sua precisione e forniscono una garanzia procedurale: in campioni ripetuti, la procedura produce intervalli che includono il parametro vero con una frequenza prestabilita.</p>
-<p>La loro difficoltà risiede proprio in questa caratteristica. L’intervallo osservato non è una distribuzione di probabilità sul parametro e il livello di confidenza non deve essere interpretato come una probabilità riferita al singolo risultato.</p>
-<p>Per questo motivo, gli intervalli di confidenza sono un eccellente punto di confronto tra il frequentismo e il bayesianesimo. Il frequentismo controlla il comportamento delle procedure nel lungo periodo, mentre il bayesianesimo rappresenta direttamente l’incertezza sul parametro, condizionatamente ai dati e alle assunzioni del modello.</p>
-<div class="callout callout-style-default callout-important callout-titled" title="Punti chiave da ricordare">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-default callout-tip callout-titled" title="Soluzioni">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>Punti chiave da ricordare
+<span class="screen-reader-only">Consiglio</span>Soluzioni
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Un intervallo di confidenza accompagna una stima puntuale con una misura della sua incertezza campionaria.</li>
-<li>Il livello di confidenza è una proprietà della procedura, non del singolo intervallo osservato.</li>
-<li>Un IC al 95% significa che, nel lungo periodo, circa il 95% degli intervalli costruiti con quella procedura contiene il parametro vero.</li>
-<li>Non è corretto dire che c’è il 95% di probabilità che il parametro sia dentro l’intervallo osservato.</li>
-<li>L’ampiezza dell’intervallo dipende da livello di confidenza, variabilità dei dati e dimensione campionaria.</li>
-<li>Un intervallo di credibilità bayesiano ha un’interpretazione diversa: riguarda la probabilità a posteriori del parametro, date prior, verosimiglianza e dati.</li>
+<li><p>Aggiunge informazione sulla precisione campionaria della procedura, combinando stima, errore standard e valore critico.</p></li>
+<li><p>Significa che, sotto il modello e il piano di campionamento assunti, il 95% degli intervalli costruiti in ripetizioni analoghe contiene il parametro vero.</p></li>
+<li><p>Dopo l’osservazione, gli estremi sono fissi e il parametro è trattato come fisso nel modello frequentista. Il 95% qualifica il comportamento della procedura prima dell’osservazione, non una distribuzione di probabilità sul parametro.</p></li>
+<li><p>Il primo studio ha maggiore precisione campionaria, a parità di metodo e assunzioni. Non puoi concludere, dai soli estremi, che la stima sia più accurata, che il campione sia più rappresentativo o che la misura sia più valida.</p></li>
+<li><p>L’errore standard della media è proporzionale a <span class="math inline">\(1/\sqrt n\)</span>. Sostituendo <span class="math inline">\(4n\)</span> a <span class="math inline">\(n\)</span>, otteniamo <span class="math inline">\(1/\sqrt{4n}=1/(2\sqrt n)\)</span>.</p></li>
+<li><p>Una copertura nominale più alta richiede un valore critico maggiore e quindi un intervallo più ampio. Si guadagna copertura procedurale e si perde precisione.</p></li>
+<li><p>La formula standard può trattare come informazione indipendente osservazioni che condividono fonti di variabilità. L’errore standard può risultare troppo piccolo e la copertura effettiva inferiore a quella nominale.</p></li>
+<li><p>Nel primo caso, il 95% descrive la frequenza di copertura della procedura. Nel secondo descrive la massa della distribuzione a posteriori contenuta nell’intervallo, condizionatamente a prior, modello e dati.</p></li>
 </ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Informazioni sull'ambiente di sviluppo">
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Punti chiave">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Informazioni sull’ambiente di sviluppo
+<span class="screen-reader-only">Nota</span>Punti chiave
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<ul>
+<li>Un intervallo di confidenza combina stima, errore standard e valore critico.</li>
+<li>Il livello di confidenza è una proprietà della procedura.</li>
+<li>Il singolo intervallo osservato non assegna probabilità al parametro.</li>
+<li>L’intervallo <em>t</em> classico è esatto sotto indipendenza e normalità.</li>
+<li>La copertura effettiva può differire da quella nominale quando le assunzioni non sono adeguate.</li>
+<li>Un intervallo stretto indica precisione campionaria, non necessariamente accuratezza o validità.</li>
+<li>L’ampiezza aumenta con il livello di confidenza e diminuisce, in genere, con la dimensione campionaria.</li>
+<li>Gli intervalli di confidenza e di credibilità possono essere numericamente simili ma hanno significati differenti.</li>
+<li>Per procedure standard, intervalli e test bilaterali possono essere duali.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Ambiente di sviluppo">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Ambiente di sviluppo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Le informazioni sull’ambiente R possono essere ottenute con:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.6.1 (2026-06-24)</span></span>
 <span><span class="co">#&gt; Platform: aarch64-apple-darwin23</span></span>
 <span><span class="co">#&gt; Running under: macOS Tahoe 26.5.2</span></span>
@@ -1055,7 +1144,7 @@ T = \frac{\bar X - \mu}{s/\sqrt n} \sim t_{n-1}.
 <span><span class="co">#&gt; locale:</span></span>
 <span><span class="co">#&gt; [1] C.UTF-8/UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; time zone: Europe/Rome</span></span>
+<span><span class="co">#&gt; time zone: Europe/Zagreb</span></span>
 <span><span class="co">#&gt; tzcode source: internal</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; attached base packages:</span></span>
@@ -1066,7 +1155,7 @@ T = \frac{\bar X - \mu}{s/\sqrt n} \sim t_{n-1}.
 <span><span class="co">#&gt;  [4] systemfonts_1.3.2     patchwork_1.3.2       ggdist_3.3.3         </span></span>
 <span><span class="co">#&gt;  [7] tidybayes_3.0.7       bayesplot_1.15.0      ggplot2_4.0.3        </span></span>
 <span><span class="co">#&gt; [10] reliabilitydiag_0.2.1 priorsense_1.2.0      posterior_1.7.0      </span></span>
-<span><span class="co">#&gt; [13] loo_2.10.0            rstan_2.32.7          StanHeaders_2.32.10  </span></span>
+<span><span class="co">#&gt; [13] loo_2.10.1            rstan_2.32.7          StanHeaders_2.32.10  </span></span>
 <span><span class="co">#&gt; [16] brms_2.23.0           Rcpp_1.1.2            sessioninfo_1.2.4    </span></span>
 <span><span class="co">#&gt; [19] conflicted_1.2.0      janitor_2.2.1         matrixStats_1.5.0    </span></span>
 <span><span class="co">#&gt; [22] modelr_0.1.11         tibble_3.3.1          dplyr_1.2.1          </span></span>
@@ -1077,25 +1166,26 @@ T = \frac{\bar X - \mu}{s/\sqrt n} \sim t_{n-1}.
 <span><span class="co">#&gt;  [4] S7_0.2.2              fastmap_1.2.0         tensorA_0.36.2.1     </span></span>
 <span><span class="co">#&gt;  [7] digest_0.6.39         timechange_0.4.0      estimability_2.0.0   </span></span>
 <span><span class="co">#&gt; [10] lifecycle_1.0.5       magrittr_2.0.5        compiler_4.6.1       </span></span>
-<span><span class="co">#&gt; [13] rlang_1.3.0           tools_4.6.1           knitr_1.51           </span></span>
-<span><span class="co">#&gt; [16] labeling_0.4.3        bridgesampling_1.2-1  htmlwidgets_1.6.4    </span></span>
-<span><span class="co">#&gt; [19] pkgbuild_1.4.8        curl_7.1.0            RColorBrewer_1.1-3   </span></span>
-<span><span class="co">#&gt; [22] abind_1.4-8           purrr_1.2.2           grid_4.6.1           </span></span>
-<span><span class="co">#&gt; [25] stats4_4.6.1          xtable_1.8-8          inline_0.3.21        </span></span>
-<span><span class="co">#&gt; [28] emmeans_2.0.3         scales_1.4.0          cli_3.6.6            </span></span>
-<span><span class="co">#&gt; [31] mvtnorm_1.4-1         rmarkdown_2.31        generics_0.1.4       </span></span>
-<span><span class="co">#&gt; [34] otel_0.2.0            RcppParallel_5.1.11-2 cachem_1.1.0         </span></span>
-<span><span class="co">#&gt; [37] stringr_1.6.0         parallel_4.6.1        vctrs_0.7.3          </span></span>
-<span><span class="co">#&gt; [40] V8_8.2.0              Matrix_1.7-5          jsonlite_2.0.0       </span></span>
-<span><span class="co">#&gt; [43] arrayhelpers_1.1-1    glue_1.8.1            codetools_0.2-20     </span></span>
-<span><span class="co">#&gt; [46] distributional_0.8.1  lubridate_1.9.5       stringi_1.8.7        </span></span>
-<span><span class="co">#&gt; [49] gtable_0.3.6          QuickJSR_1.10.0       pillar_1.11.1        </span></span>
-<span><span class="co">#&gt; [52] htmltools_0.5.9       Brobdingnag_1.2-9     R6_2.6.1             </span></span>
-<span><span class="co">#&gt; [55] textshaping_1.0.5     rprojroot_2.1.1       evaluate_1.0.5       </span></span>
-<span><span class="co">#&gt; [58] lattice_0.22-9        backports_1.5.1       memoise_2.0.1        </span></span>
-<span><span class="co">#&gt; [61] broom_1.0.13          snakecase_0.11.1      rstantools_2.6.0     </span></span>
-<span><span class="co">#&gt; [64] coda_0.19-4.1         gridExtra_2.3.1       nlme_3.1-169         </span></span>
-<span><span class="co">#&gt; [67] checkmate_2.3.4       xfun_0.60             pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; [13] rlang_1.3.0           tools_4.6.1           yaml_2.3.12          </span></span>
+<span><span class="co">#&gt; [16] knitr_1.51            labeling_0.4.3        bridgesampling_1.2-1 </span></span>
+<span><span class="co">#&gt; [19] htmlwidgets_1.6.4     pkgbuild_1.4.8        curl_7.1.0           </span></span>
+<span><span class="co">#&gt; [22] RColorBrewer_1.1-3    abind_1.4-8           purrr_1.2.2          </span></span>
+<span><span class="co">#&gt; [25] grid_4.6.1            stats4_4.6.1          xtable_1.8-8         </span></span>
+<span><span class="co">#&gt; [28] inline_0.3.21         emmeans_2.0.4         scales_1.4.0         </span></span>
+<span><span class="co">#&gt; [31] cli_3.6.6             mvtnorm_1.4-2         rmarkdown_2.31       </span></span>
+<span><span class="co">#&gt; [34] generics_0.1.4        otel_0.2.0            RcppParallel_5.1.11-2</span></span>
+<span><span class="co">#&gt; [37] cachem_1.1.0          stringr_1.6.0         parallel_4.6.1       </span></span>
+<span><span class="co">#&gt; [40] vctrs_0.7.3           V8_8.2.0              Matrix_1.7-6         </span></span>
+<span><span class="co">#&gt; [43] jsonlite_2.0.0        arrayhelpers_1.1-2    glue_1.8.1           </span></span>
+<span><span class="co">#&gt; [46] codetools_0.2-20      distributional_0.8.1  lubridate_1.9.5      </span></span>
+<span><span class="co">#&gt; [49] stringi_1.8.7         gtable_0.3.6          QuickJSR_1.10.0      </span></span>
+<span><span class="co">#&gt; [52] pillar_1.11.1         htmltools_0.5.9       Brobdingnag_1.2-9    </span></span>
+<span><span class="co">#&gt; [55] R6_2.6.1              textshaping_1.0.5     rprojroot_2.1.1      </span></span>
+<span><span class="co">#&gt; [58] evaluate_1.0.5        lattice_0.22-9        backports_1.5.1      </span></span>
+<span><span class="co">#&gt; [61] memoise_2.0.1         broom_1.0.13          snakecase_0.11.1     </span></span>
+<span><span class="co">#&gt; [64] rstantools_2.6.0      coda_0.19-4.1         gridExtra_2.3.1      </span></span>
+<span><span class="co">#&gt; [67] nlme_3.1-170          checkmate_2.3.4       xfun_0.60            </span></span>
+<span><span class="co">#&gt; [70] pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>

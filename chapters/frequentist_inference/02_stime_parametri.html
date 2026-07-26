@@ -417,7 +417,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/05_sample_size.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, precisione e potenza</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -440,7 +440,7 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/epilogo/epilogo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerazioni conclusive: dal controllo dell’errore all’aggiornamento delle credenze</span></span></a>
+ <span class="menu-text">Conclusioni</span></a>
   </div>
 </li>
       </ul>
@@ -453,15 +453,16 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2"><h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
-<li><a href="#sec-freq-estimation-problem" id="toc-sec-freq-estimation-problem" class="nav-link active" data-scroll-target="#sec-freq-estimation-problem"><span class="header-section-number">2.1</span> Il problema della stima</a></li>
-  <li><a href="#sec-freq-parameter-estimator-estimate" id="toc-sec-freq-parameter-estimator-estimate" class="nav-link" data-scroll-target="#sec-freq-parameter-estimator-estimate"><span class="header-section-number">2.2</span> Parametro, stimatore e stima</a></li>
-  <li><a href="#sec-freq-point-estimate" id="toc-sec-freq-point-estimate" class="nav-link" data-scroll-target="#sec-freq-point-estimate"><span class="header-section-number">2.3</span> La stima puntuale</a></li>
-  <li><a href="#sec-freq-good-estimators" id="toc-sec-freq-good-estimators" class="nav-link" data-scroll-target="#sec-freq-good-estimators"><span class="header-section-number">2.4</span> Che cosa rende buono uno stimatore?</a></li>
-  <li><a href="#sec-freq-role-sampling-distribution" id="toc-sec-freq-role-sampling-distribution" class="nav-link" data-scroll-target="#sec-freq-role-sampling-distribution"><span class="header-section-number">2.5</span> Il ruolo della distribuzione campionaria</a></li>
-  <li><a href="#sec-freq-standard-error-operational" id="toc-sec-freq-standard-error-operational" class="nav-link" data-scroll-target="#sec-freq-standard-error-operational"><span class="header-section-number">2.6</span> L’errore standard come misura operativa</a></li>
-  <li><a href="#sec-freq-from-estimate-to-procedure" id="toc-sec-freq-from-estimate-to-procedure" class="nav-link" data-scroll-target="#sec-freq-from-estimate-to-procedure"><span class="header-section-number">2.7</span> Dal numero osservato alla procedura</a></li>
-  <li><a href="#sec-freq-estimation-bayes-contrast" id="toc-sec-freq-estimation-bayes-contrast" class="nav-link" data-scroll-target="#sec-freq-estimation-bayes-contrast"><span class="header-section-number">2.8</span> Confronto con la prospettiva bayesiana</a></li>
-  <li><a href="#punti-chiave-da-ricordare" id="toc-punti-chiave-da-ricordare" class="nav-link" data-scroll-target="#punti-chiave-da-ricordare">Punti chiave da ricordare</a></li>
+<li><a href="#perch%C3%A9-la-stima-%C3%A8-il-primo-passo-dellinferenza" id="toc-perché-la-stima-è-il-primo-passo-dellinferenza" class="nav-link active" data-scroll-target="#perch%C3%A9-la-stima-%C3%A8-il-primo-passo-dellinferenza"><span class="header-section-number">2.1</span> Perché la stima è il primo passo dell’inferenza?</a></li>
+  <li><a href="#sec-freq-estimation-problem" id="toc-sec-freq-estimation-problem" class="nav-link" data-scroll-target="#sec-freq-estimation-problem"><span class="header-section-number">2.2</span> Il problema della stima</a></li>
+  <li><a href="#sec-freq-parameter-estimator-estimate" id="toc-sec-freq-parameter-estimator-estimate" class="nav-link" data-scroll-target="#sec-freq-parameter-estimator-estimate"><span class="header-section-number">2.3</span> Parametro, stimatore e stima</a></li>
+  <li><a href="#sec-freq-point-estimate" id="toc-sec-freq-point-estimate" class="nav-link" data-scroll-target="#sec-freq-point-estimate"><span class="header-section-number">2.4</span> La stima puntuale</a></li>
+  <li><a href="#come-si-sceglie-uno-stimatore" id="toc-come-si-sceglie-uno-stimatore" class="nav-link" data-scroll-target="#come-si-sceglie-uno-stimatore"><span class="header-section-number">2.5</span> Come si sceglie uno stimatore?</a></li>
+  <li><a href="#sec-freq-good-estimators" id="toc-sec-freq-good-estimators" class="nav-link" data-scroll-target="#sec-freq-good-estimators"><span class="header-section-number">2.6</span> Che cosa rende buono uno stimatore?</a></li>
+  <li><a href="#sec-freq-role-sampling-distribution" id="toc-sec-freq-role-sampling-distribution" class="nav-link" data-scroll-target="#sec-freq-role-sampling-distribution"><span class="header-section-number">2.7</span> La distribuzione campionaria</a></li>
+  <li><a href="#sec-freq-standard-error-operational" id="toc-sec-freq-standard-error-operational" class="nav-link" data-scroll-target="#sec-freq-standard-error-operational"><span class="header-section-number">2.8</span> L’errore standard</a></li>
+  <li><a href="#dalla-stima-puntuale-allintervallo" id="toc-dalla-stima-puntuale-allintervallo" class="nav-link" data-scroll-target="#dalla-stima-puntuale-allintervallo"><span class="header-section-number">2.9</span> Dalla stima puntuale all’intervallo</a></li>
+  <li><a href="#sec-freq-estimation-bayes-contrast" id="toc-sec-freq-estimation-bayes-contrast" class="nav-link" data-scroll-target="#sec-freq-estimation-bayes-contrast"><span class="header-section-number">2.10</span> Stima frequentista e stima bayesiana</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/02_stime_parametri.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -480,86 +481,113 @@ window.Quarto = {
   
 
 
-</header><div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Questo capitolo introduce il modo in cui l’inferenza frequentista affronta il problema della <strong>stima dei parametri</strong>. Nel companion sulla probabilità abbiamo già discusso distribuzioni campionarie, errore standard, Legge dei Grandi Numeri e Teorema del Limite Centrale. Qui non ripeteremo quei risultati: li useremo come strumenti per comprendere che cosa significa, nel paradigma frequentista, stimare una quantità sconosciuta a partire da un campione.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
+</header><div class="callout callout-style-default callout-note callout-titled" title="In sintesi">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>In questo capitolo imparerai a
+<span class="screen-reader-only">Nota</span>In sintesi
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p><strong>Da sapere</strong> Nell’inferenza frequentista, il parametro è una quantità fissa del modello, lo stimatore è una regola applicata ai dati e la stima è il valore numerico osservato. Le proprietà di uno stimatore vengono valutate immaginando di ripetere il campionamento nelle stesse condizioni.</p>
+<p><strong>Da saper fare</strong> Distinguere parametro, stimatore e stima; interpretare bias, consistenza, efficienza ed errore quadratico medio; distinguere deviazione standard ed errore standard; spiegare perché una stima puntuale deve essere accompagnata da una misura di precisione.</p>
+</div>
+</div>
+<section id="introduzione" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="introduzione">Introduzione</h2>
+<p>Il capitolo precedente ha mostrato come la statistica frequentista si sia formata attraverso contributi differenti: lo studio della variabilità, la regressione e la correlazione, la significatività fisheriana e il controllo degli errori di Neyman–Pearson. Passiamo ora dalla storia al primo problema operativo dell’inferenza:</p>
+<blockquote class="blockquote">
+<p>Come possiamo usare un campione per stimare una quantità sconosciuta della popolazione o del modello?</p>
+</blockquote>
+<p>La risposta frequentista non consiste soltanto nel calcolare un numero. Occorre anche valutare la procedura che produce quel numero: quanto varia da campione a campione, se tende sistematicamente a sbagliare e se diventa più precisa quando aumentano le informazioni disponibili.</p>
+<p>Questo capitolo introduce il lessico necessario per comprendere i capitoli successivi. Gli intervalli di confidenza e i test di ipotesi dipendono infatti dalla stessa idea fondamentale: una statistica osservata va interpretata attraverso il comportamento che avrebbe sotto campionamenti ripetuti.</p>
+</section><section id="perché-la-stima-è-il-primo-passo-dellinferenza" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="perché-la-stima-è-il-primo-passo-dellinferenza">
+<span class="header-section-number">2.1</span> Perché la stima è il primo passo dell’inferenza?</h2>
+<p>Immaginiamo di voler conoscere il livello medio di ansia degli studenti iscritti a un’università. Non possiamo osservare ogni studente, quindi selezioniamo un campione e calcoliamo la media dei punteggi.</p>
+<p>La media campionaria descrive il campione osservato. Per usarla come informazione sulla popolazione dobbiamo però affrontare due domande:</p>
+<ol type="1">
+<li><strong>Quale quantità vogliamo stimare?</strong></li>
+<li><strong>Quanto cambierebbe la nostra stima se osservassimo un altro campione?</strong></li>
+</ol>
+<p>La prima domanda riguarda il parametro o, più precisamente, la <strong>quantità bersaglio</strong> dell’analisi. La seconda riguarda la variabilità campionaria dello stimatore.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Prima della formula viene la domanda">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Prima della formula viene la domanda
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Una stima è interpretabile soltanto se sono definiti con chiarezza:</p>
 <ul>
-<li>distinguere tra <strong>parametro</strong>, <strong>stimatore</strong> e <strong>stima</strong>;</li>
-<li>capire perché, nel frequentismo, il parametro è considerato fisso ma ignoto;</li>
-<li>descrivere le proprietà desiderabili di uno stimatore: correttezza, consistenza, efficienza e compromesso bias-varianza;</li>
-<li>interpretare l’errore standard come misura operativa dell’incertezza campionaria;</li>
-<li>comprendere perché la stima puntuale conduce naturalmente agli intervalli di confidenza.</li>
+<li>la popolazione o il processo a cui si vuole generalizzare;</li>
+<li>il costrutto psicologico e il modo in cui viene misurato;</li>
+<li>la quantità da stimare;</li>
+<li>il meccanismo di campionamento o di assegnazione;</li>
+<li>il modello che collega i dati alla quantità bersaglio.</li>
 </ul>
+<p>Una procedura può essere matematicamente precisa e stimare con grande accuratezza la quantità sbagliata.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-tip callout-titled" title="Prerequisiti">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 <span class="screen-reader-only">Consiglio</span>Prerequisiti
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Per seguire questo capitolo è utile aver letto:</p>
+<p>È utile avere letto:</p>
 <ul>
-<li>il capitolo sul campione e l’evidenza del companion sulla probabilità, in particolare <span class="quarto-unresolved-ref">?sec-prob-inference-uncertainty</span>;</li>
-<li>il capitolo sulle proprietà delle variabili casuali, per valore atteso e varianza;</li>
-<li>il capitolo introduttivo di questo modulo, in cui sono state distinte le domande frequentiste dalle domande bayesiane.</li>
+<li>l’introduzione a questo modulo e il capitolo sulle origini storiche del frequentismo;</li>
+<li>il capitolo <a href="https://ccaudek.github.io/utet-prob/chapters/probability/13_from_sample_to_evidence.html">Dal campione all’evidenza</a> del sito dedicato alla probabilità;</li>
+<li>i richiami su valore atteso, varianza e distribuzioni campionarie.</li>
 </ul>
-<p>In questo capitolo useremo espressioni come “distribuzione campionaria” ed “errore standard” senza ridimostrarle. Il punto non è ripetere la teoria probabilistica, ma chiarire come essa viene impiegata nelle procedure frequentiste di stima.</p>
+<p>Qui non ridimostreremo la Legge dei Grandi Numeri o il Teorema del Limite Centrale. Useremo quei risultati per comprendere la logica frequentista della stima.</p>
 </div>
 </div>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled" title="Preparazione del Notebook">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+</section><section id="panoramica-del-capitolo" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="panoramica-del-capitolo">Panoramica del capitolo</h2>
+<p>Il capitolo procede in sette passaggi:</p>
+<ol type="1">
+<li>distingue parametro, stimatore e stima;</li>
+<li>chiarisce che cosa significa produrre una stima puntuale;</li>
+<li>introduce correttezza e bias;</li>
+<li>presenta consistenza, efficienza ed errore quadratico medio;</li>
+<li>collega lo stimatore alla sua distribuzione campionaria;</li>
+<li>distingue deviazione standard ed errore standard;</li>
+<li>confronta, senza sovrapporle, la stima frequentista e quella bayesiana.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="Preparazione del notebook">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Attenzione</span>Preparazione del Notebook
+<span class="screen-reader-only">Nota</span>Preparazione del notebook
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p>Per eseguire gli esempi, prepara l’ambiente comune del progetto:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
-</div>
-<section id="sec-freq-estimation-problem" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="sec-freq-estimation-problem">
-<span class="header-section-number">2.1</span> Il problema della stima</h2>
-<p>Una ricercatrice vuole stimare il livello medio di ansia in una popolazione di studenti universitari. Non può osservare tutti gli studenti, quindi raccoglie un campione e calcola la media osservata. Ottiene, per esempio, una media pari a 18.4 su una scala psicometrica.</p>
-<p>Questo numero è utile, ma da solo non risponde alla domanda inferenziale principale. La media osservata è solo il risultato di uno specifico campione. Se la ricercatrice avesse osservato un altro campione, avrebbe probabilmente ottenuto un valore diverso.</p>
-<p>Il problema della stima nasce da questa distanza tra due livelli:</p>
+</section><section id="sec-freq-estimation-problem" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="sec-freq-estimation-problem">
+<span class="header-section-number">2.2</span> Il problema della stima</h2>
+<p>Una ricercatrice raccoglie un campione di studenti e osserva un punteggio medio di ansia pari a 18.4. Questo numero è una descrizione esatta del campione, ma è soltanto una possibile stima della media della popolazione.</p>
+<p>Se venisse selezionato un altro campione, la media sarebbe probabilmente diversa. Il problema inferenziale nasce quindi dalla distanza tra:</p>
 <ul>
-<li>la <strong>popolazione</strong>, che contiene la quantità di interesse;</li>
-<li>il <strong>campione</strong>, che fornisce solo un’osservazione parziale e variabile.</li>
+<li>la quantità della popolazione o del modello che interessa alla ricerca;</li>
+<li>l’informazione parziale e variabile fornita dal campione.</li>
 </ul>
-<p>Nel paradigma frequentista, il parametro della popolazione è considerato una quantità fissa ma ignota. L’incertezza non riguarda il parametro in sé, ma la procedura usata per stimarlo a partire da campioni possibili.</p>
+<p>Nel frequentismo standard, il parametro viene trattato come <strong>fisso ma ignoto</strong> all’interno del modello. La nostra conoscenza del parametro è incompleta, ma la probabilità non viene normalmente usata per assegnare una distribuzione ai suoi valori possibili. Viene invece usata per descrivere dati, statistiche e procedure sotto ripetizioni reali o ipotetiche.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="La domanda frequentista">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -570,30 +598,16 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Una domanda frequentista tipica non è:</p>
+<p>Una domanda frequentista tipica è:</p>
 <blockquote class="blockquote">
-<p>Qual è la probabilità che il parametro abbia un certo valore, dati questi dati?</p>
+<p>Se applicassimo lo stesso stimatore a molti campioni generati nelle stesse condizioni, come si comporterebbero le stime?</p>
 </blockquote>
-<p>ma piuttosto:</p>
-<blockquote class="blockquote">
-<p>Se applicassimo questa procedura a molti campioni estratti nelle stesse condizioni, quali proprietà avrebbe la stima prodotta?</p>
-</blockquote>
+<p>Questa domanda consente di definire bias, errore standard, copertura ed errori decisionali.</p>
 </div>
 </div>
-<p>Questa distinzione è essenziale. In un approccio bayesiano, l’incertezza sul parametro viene rappresentata direttamente mediante una distribuzione di probabilità. In un approccio frequentista, invece, la probabilità descrive il comportamento dei dati e delle statistiche campionarie nel caso di ipotetiche ripetizioni del campionamento.</p>
-</section><section id="sec-freq-parameter-estimator-estimate" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="sec-freq-parameter-estimator-estimate">
-<span class="header-section-number">2.2</span> Parametro, stimatore e stima</h2>
-<p>Per evitare ambiguità, introduciamo tre termini fondamentali.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Tre livelli da distinguere">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Tre livelli da distinguere
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section><section id="sec-freq-parameter-estimator-estimate" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="sec-freq-parameter-estimator-estimate">
+<span class="header-section-number">2.3</span> Parametro, stimatore e stima</h2>
+<p>I tre termini descrivono livelli differenti dell’analisi.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -608,160 +622,222 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td><strong>Parametro</strong></td>
-<td>Quantità fissa ma ignota della popolazione</td>
-<td>La media vera dell’ansia, <span class="math inline">\(\mu\)</span>
+<td>Quantità fissa e ignota del modello o della popolazione</td>
+<td>La media della popolazione, <span class="math inline">\(\mu\)</span>
 </td>
 </tr>
 <tr class="even">
 <td><strong>Stimatore</strong></td>
-<td>Regola che usa i dati per stimare il parametro</td>
+<td>Regola o funzione dei dati usata per stimare il parametro</td>
 <td>La media campionaria, <span class="math inline">\(\bar X\)</span>
 </td>
 </tr>
 <tr class="odd">
 <td><strong>Stima</strong></td>
-<td>Valore numerico ottenuto nel campione osservato</td>
+<td>Valore numerico assunto dallo stimatore nel campione osservato</td>
 <td><span class="math inline">\(\bar x = 18.4\)</span></td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<p>Il <strong>parametro</strong> è l’obiettivo dell’inferenza. Può essere una media, una proporzione, una varianza, una differenza tra medie, una correlazione o un coefficiente di regressione. Nel frequentismo il parametro non è casuale: ha un valore vero, anche se sconosciuto.</p>
-<p>Lo <strong>stimatore</strong> è invece una funzione dei dati. Prima di osservare il campione, il suo valore è incerto perché dipende da quali osservazioni verranno effettivamente selezionate. Per questo motivo, lo stimatore ha una distribuzione campionaria.</p>
-<p>La <strong>stima</strong> è il valore che otteniamo dopo aver osservato i dati. È il numero che compare nel report, nell’articolo o nella tabella dei risultati.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="Errore comune">
+<p>Il <strong>parametro</strong> è l’obiettivo dell’inferenza. Può essere una media, una proporzione, una varianza, una differenza tra gruppi, una correlazione o un coefficiente di regressione.</p>
+<p>Lo <strong>stimatore</strong> è una funzione dei dati. Prima di osservare il campione, il suo valore non è noto perché dipende da quali dati verranno raccolti. Per questo motivo viene rappresentato con una variabile casuale, come <span class="math inline">\(\bar X\)</span> o <span class="math inline">\(\hat\theta\)</span>.</p>
+<p>La <strong>stima</strong> è la realizzazione osservata dello stimatore, indicata spesso con lettere minuscole, come <span class="math inline">\(\bar x\)</span> o <span class="math inline">\(\hat\theta_{\mathrm{obs}}\)</span>.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Stimatore e stima non sono sinonimi">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avviso</span>Errore comune
+<span class="screen-reader-only">Avviso</span>Stimatore e stima non sono sinonimi
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Non bisogna confondere lo stimatore con la stima. Le proprietà teoriche, come correttezza o efficienza, riguardano lo <strong>stimatore</strong> come procedura. La singola <strong>stima</strong> osservata può essere vicina o lontana dal parametro, ma da sola non permette di sapere quanto sia accurata.</p>
+<p>Correttezza, consistenza, varianza ed efficienza sono proprietà dello <strong>stimatore come procedura</strong>. La singola <strong>stima osservata</strong> può essere vicina o lontana dal parametro. Poiché il valore vero è ignoto, la sua accuratezza non può essere letta direttamente dal numero osservato.</p>
 </div>
 </div>
-</section><section id="sec-freq-point-estimate" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="sec-freq-point-estimate">
-<span class="header-section-number">2.3</span> La stima puntuale</h2>
-<p>La forma più semplice di inferenza è la <strong>stima puntuale</strong>: si usa un singolo numero per rappresentare il valore più plausibile o più naturale del parametro.</p>
-<p>Esempi comuni sono:</p>
+</section><section id="sec-freq-point-estimate" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="sec-freq-point-estimate">
+<span class="header-section-number">2.4</span> La stima puntuale</h2>
+<p>Una <strong>stima puntuale</strong> usa un singolo numero come sintesi del parametro di interesse. Esempi comuni sono:</p>
 <ul>
-<li>la media campionaria <span class="math inline">\(\bar x\)</span> come stima della media della popolazione <span class="math inline">\(\mu\)</span>;</li>
-<li>la proporzione campionaria <span class="math inline">\(\hat p\)</span> come stima della proporzione della popolazione <span class="math inline">\(p\)</span>;</li>
-<li>la differenza tra due medie campionarie come stima della differenza tra due medie di popolazione;</li>
-<li>il coefficiente di correlazione campionario <span class="math inline">\(r\)</span> come stima della correlazione nella popolazione <span class="math inline">\(\rho\)</span>.</li>
+<li>
+<span class="math inline">\(\bar x\)</span> per stimare la media <span class="math inline">\(\mu\)</span>;</li>
+<li>
+<span class="math inline">\(\hat p\)</span> per stimare una proporzione <span class="math inline">\(p\)</span>;</li>
+<li>
+<span class="math inline">\(\bar x_1-\bar x_2\)</span> per stimare una differenza tra medie;</li>
+<li>
+<span class="math inline">\(r\)</span> per stimare una correlazione <span class="math inline">\(\rho\)</span>.</li>
 </ul>
-<p>La stima puntuale è indispensabile perché fornisce una sintesi dei dati. Tuttavia, non basta. Una stima puntuale non comunica quanta incertezza sia associata al risultato.</p>
-<p>Supponiamo che due studi stimino la stessa media:</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stima_A</span> <span class="op">&lt;-</span> <span class="fl">18.4</span></span>
-<span><span class="va">se_A</span> <span class="op">&lt;-</span> <span class="fl">0.30</span></span>
-<span></span>
-<span><span class="va">stima_B</span> <span class="op">&lt;-</span> <span class="fl">18.4</span></span>
-<span><span class="va">se_B</span> <span class="op">&lt;-</span> <span class="fl">1.80</span></span>
-<span></span>
-<span><span class="va">risultati</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
-<span>  Studio <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>,</span>
-<span>  Stima <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">stima_A</span>, <span class="va">stima_B</span><span class="op">)</span>,</span>
-<span>  Errore_standard <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">se_A</span>, <span class="va">se_B</span><span class="op">)</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">risultati</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div data-pagedtable="false">
-  <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["Studio"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Stima"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Errore_standard"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"A","2":"18.4","3":"0.3"},{"1":"B","2":"18.4","3":"1.8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-</div>
-</div>
-<p>Le due stime puntuali sono identiche, ma non hanno lo stesso significato inferenziale. Nel primo caso la procedura produce stime più stabili; nel secondo, la stessa stima è associata a maggiore variabilità campionaria. Questo esempio anticipa il ruolo degli intervalli di confidenza: una stima va sempre accompagnata da una misura della sua incertezza.</p>
-</section><section id="sec-freq-good-estimators" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="sec-freq-good-estimators">
-<span class="header-section-number">2.4</span> Che cosa rende buono uno stimatore?</h2>
-<p>Nel frequentismo, uno stimatore viene valutato in base al suo comportamento nel lungo periodo, cioè sotto ripetizione ideale dello stesso procedimento di campionamento. Le proprietà più importanti sono correttezza, consistenza, efficienza e, più in generale, errore quadratico medio.</p>
-<section id="correttezza" class="level3" data-number="2.4.1"><h3 data-number="2.4.1" class="anchored" data-anchor-id="correttezza">
-<span class="header-section-number">2.4.1</span> Correttezza</h3>
-<p>Uno stimatore è <strong>corretto</strong> o <strong>non distorto</strong> se, nel lungo periodo, il suo valore medio coincide con il parametro che intende stimare:</p>
-<p><span class="math display">\[
-E(\hat\theta) = \theta.
-\]</span></p>
-<p>Intuitivamente, uno stimatore corretto non tende sistematicamente né a sovrastimare né a sottostimare il parametro. Questo non significa che ogni singola stima sia vicina al valore vero. Significa che gli errori positivi e negativi si compensano nel lungo periodo.</p>
-</section><section id="bias" class="level3" data-number="2.4.2"><h3 data-number="2.4.2" class="anchored" data-anchor-id="bias">
-<span class="header-section-number">2.4.2</span> Bias</h3>
-<p>Il <strong>bias</strong> di uno stimatore misura la distanza tra il valore atteso dello stimatore e il parametro:</p>
-<p><span class="math display">\[
-\mathrm{Bias}(\hat\theta) = E(\hat\theta) - \theta.
-\]</span></p>
-<p>Uno stimatore con bias positivo tende a sovrastimare il parametro; uno stimatore con bias negativo tende a sottostimarlo. Il bias può derivare dalla formula dello stimatore, ma anche da problemi più sostanziali: campionamento non rappresentativo, strumenti di misura distorti, dati mancanti non casuali.</p>
-<div class="callout callout-style-default callout-important callout-titled" title="Bias statistico e bias metodologico">
+<p>Il termine <em>puntuale</em> non significa che quel valore sia certamente corretto, né necessariamente che sia il valore «più probabile». Significa soltanto che la procedura restituisce un singolo valore.</p>
+<p>Due studi possono produrre la stessa stima ma livelli molto differenti di precisione:</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th>Studio</th>
+<th style="text-align: right;">Stima della media</th>
+<th style="text-align: right;">Errore standard</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td style="text-align: right;">18.4</td>
+<td style="text-align: right;">0.30</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td style="text-align: right;">18.4</td>
+<td style="text-align: right;">1.80</td>
+</tr>
+</tbody>
+</table>
+<p>La stima puntuale coincide, ma nello studio B lo stimatore varia molto di più da campione a campione. Il numero 18.4 non contiene, da solo, questa informazione.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Precisione non significa accuratezza">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>Bias statistico e bias metodologico
+<span class="screen-reader-only">Importante</span>Precisione non significa accuratezza
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Nel linguaggio tecnico, il bias può indicare una proprietà matematica dello stimatore. Nella pratica della ricerca psicologica, però, molte distorsioni nascono prima dell’analisi: dalla selezione dei partecipanti, dalla qualità della misura, dal disegno dello studio o dal modo in cui i dati sono raccolti. Un campione grande riduce l’incertezza campionaria, ma non elimina automaticamente le distorsioni sistematiche.</p>
+<p>Un errore standard piccolo indica che la procedura produce stime poco variabili nelle condizioni assunte. Non dimostra che la stima sia vicina alla quantità scientificamente rilevante.</p>
+<p>Un campione molto grande può produrre una stima estremamente precisa ma sistematicamente distorta a causa di selezione dei partecipanti, misurazione inadeguata o modello errato.</p>
 </div>
 </div>
-</section><section id="consistenza" class="level3" data-number="2.4.3"><h3 data-number="2.4.3" class="anchored" data-anchor-id="consistenza">
-<span class="header-section-number">2.4.3</span> Consistenza</h3>
-<p>Uno stimatore è <strong>consistente</strong> se, al crescere della dimensione del campione, tende ad avvicinarsi al valore vero del parametro. In forma intuitiva:</p>
-<p><span class="math display">\[
-\hat\theta_n \longrightarrow \theta \quad \text{quando} \quad n \longrightarrow \infty.
-\]</span></p>
-<p>La consistenza collega la stima al comportamento asintotico della procedura. Uno stimatore consistente può essere impreciso in campioni piccoli, ma diventa affidabile quando il campione cresce.</p>
-</section><section id="efficienza" class="level3" data-number="2.4.4"><h3 data-number="2.4.4" class="anchored" data-anchor-id="efficienza">
-<span class="header-section-number">2.4.4</span> Efficienza</h3>
-<p>Tra due stimatori corretti dello stesso parametro, si dice più <strong>efficiente</strong> quello con varianza minore. In termini pratici, uno stimatore efficiente produce stime meno disperse da campione a campione.</p>
-<p>Questo concetto è importante perché due stimatori possono essere entrambi centrati sul parametro, ma avere livelli molto diversi di precisione.</p>
-</section><section id="il-compromesso-bias-varianza" class="level3" data-number="2.4.5"><h3 data-number="2.4.5" class="anchored" data-anchor-id="il-compromesso-bias-varianza">
-<span class="header-section-number">2.4.5</span> Il compromesso bias-varianza</h3>
-<p>In molti problemi reali non esiste uno stimatore perfetto. A volte uno stimatore leggermente distorto può avere una varianza molto più piccola di uno stimatore non distorto. Per valutare complessivamente uno stimatore si considera spesso l’<strong>errore quadratico medio</strong>:</p>
-<p><span class="math display">\[
-\mathrm{MSE}(\hat\theta) = \mathrm{Var}(\hat\theta) + \mathrm{Bias}(\hat\theta)^2.
-\]</span></p>
-<p>Questa formula mostra che l’accuratezza di una procedura dipende sia dalla variabilità delle stime sia dalla loro eventuale distorsione sistematica.</p>
-</section></section><section id="sec-freq-role-sampling-distribution" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="sec-freq-role-sampling-distribution">
-<span class="header-section-number">2.5</span> Il ruolo della distribuzione campionaria</h2>
-<p>La distribuzione campionaria è il concetto che permette al frequentismo di valutare una procedura di stima. Essa descrive come cambierebbe lo stimatore se lo studio fosse ripetuto molte volte nelle stesse condizioni.</p>
-<p>Nel companion sulla probabilità abbiamo visto che la media campionaria ha alcune proprietà fondamentali: è centrata sulla media della popolazione, la sua variabilità diminuisce al crescere di <span class="math inline">\(n\)</span> e, sotto condizioni ampie, la sua distribuzione diventa approssimativamente normale per campioni grandi. Qui useremo questi risultati senza ridimostrarli.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Funzione della distribuzione campionaria in questo modulo">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Funzione della distribuzione campionaria in questo modulo
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>La distribuzione campionaria non viene introdotta qui come nuovo oggetto probabilistico, ma come fondamento delle procedure frequentiste:</p>
+</section><section id="come-si-sceglie-uno-stimatore" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="come-si-sceglie-uno-stimatore">
+<span class="header-section-number">2.5</span> Come si sceglie uno stimatore?</h2>
+<p>Uno stesso parametro può essere stimato in modi differenti. La scelta può derivare:</p>
 <ul>
-<li>consente di definire l’errore standard;</li>
-<li>permette di costruire intervalli di confidenza;</li>
-<li>permette di valutare test di ipotesi;</li>
-<li>giustifica affermazioni sul comportamento a lungo termine delle procedure.</li>
+<li>da una sintesi naturale dei dati, come la media campionaria;</li>
+<li>dal metodo dei minimi quadrati;</li>
+<li>dalla massimizzazione della verosimiglianza;</li>
+<li>da criteri di robustezza o regolarizzazione;</li>
+<li>da proprietà teoriche considerate desiderabili.</li>
 </ul>
+<p>La <strong>massima verosimiglianza</strong>, per esempio, sceglie il valore del parametro che rende massimi i dati osservati secondo il modello. Il sito dedicato alla probabilità introduce separatamente il concetto di <a href="https://ccaudek.github.io/utet-prob/chapters/probability/14_likelihood.html">verosimiglianza</a>.</p>
+<p>La scelta di uno stimatore non dipende soltanto dalla disponibilità di una formula. Dipende dal modello, dallo scopo dell’analisi e dal costo attribuito ai diversi tipi di errore.</p>
+</section><section id="sec-freq-good-estimators" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="sec-freq-good-estimators">
+<span class="header-section-number">2.6</span> Che cosa rende buono uno stimatore?</h2>
+<p>Le proprietà seguenti descrivono il comportamento dello stimatore sotto il modello e il meccanismo di campionamento specificati. Nessuna di esse garantisce, da sola, che il modello o la misura siano adeguati alla domanda psicologica.</p>
+<section id="correttezza-e-bias" class="level3" data-number="2.6.1"><h3 data-number="2.6.1" class="anchored" data-anchor-id="correttezza-e-bias">
+<span class="header-section-number">2.6.1</span> Correttezza e bias</h3>
+<p>Uno stimatore <span class="math inline">\(\hat\theta\)</span> è <strong>corretto</strong>, o <strong>non distorto</strong>, se il suo valore atteso coincide con il parametro:</p>
+<p><span class="math display">\[
+\operatorname{E}(\hat\theta)=\theta.
+\]</span></p>
+<p>Il <strong>bias statistico</strong> è definito come:</p>
+<p><span class="math display">\[
+\operatorname{Bias}(\hat\theta)
+=
+\operatorname{E}(\hat\theta)-\theta.
+\]</span></p>
+<p>Uno stimatore corretto è centrato sul parametro nel lungo periodo. Non segue che ogni singola stima sia vicina al valore vero: uno stimatore può essere non distorto ma molto variabile.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Due significati diversi di bias">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Due significati diversi di bias
 </div>
 </div>
-<p>La logica è questa: anche se osserviamo un solo campione, possiamo progettare procedure che, se applicate molte volte a campioni simili, abbiano proprietà controllate. Gli intervalli di confidenza e i test di ipotesi sono costruiti precisamente in questo modo.</p>
-</section><section id="sec-freq-standard-error-operational" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="sec-freq-standard-error-operational">
-<span class="header-section-number">2.6</span> L’errore standard come misura operativa</h2>
-<p>L’<strong>errore standard</strong> è la deviazione standard della distribuzione campionaria di uno stimatore. Esso misura quanto lo stimatore varierebbe da campione a campione.</p>
-<p>Per la media campionaria, quando la deviazione standard della popolazione è <span class="math inline">\(\sigma\)</span>, l’errore standard teorico è:</p>
+<div class="callout-body-container callout-body">
+<p>Il bias dello stimatore è una proprietà matematica definita rispetto a un modello e a ripetizioni del campionamento.</p>
+<p>Espressioni come <em>bias di selezione</em>, <em>bias di misurazione</em> o <em>bias di pubblicazione</em> indicano invece distorsioni del processo di ricerca. Non sono automaticamente rappresentate da <span class="math inline">\(\operatorname{Bias}(\hat\theta)\)</span> e non vengono eliminate scegliendo uno stimatore non distorto.</p>
+</div>
+</div>
+</section><section id="consistenza" class="level3" data-number="2.6.2"><h3 data-number="2.6.2" class="anchored" data-anchor-id="consistenza">
+<span class="header-section-number">2.6.2</span> Consistenza</h3>
+<p>Uno stimatore è <strong>consistente</strong> se converge al parametro quando la dimensione del campione cresce. Una formulazione comune è la convergenza in probabilità:</p>
 <p><span class="math display">\[
-SE(\bar X) = \frac{\sigma}{\sqrt n}.
+\hat\theta_n \xrightarrow{P} \theta
+\qquad
+\text{quando } n\to\infty.
 \]</span></p>
-<p>Nella pratica, <span class="math inline">\(\sigma\)</span> non è nota, quindi viene sostituita dalla deviazione standard campionaria <span class="math inline">\(s\)</span>:</p>
+<p>La consistenza è una proprietà asintotica. Non garantisce che lo stimatore funzioni bene in un campione piccolo, né corregge automaticamente errori di misura, campionamento non rappresentativo o specificazione errata del modello.</p>
+<p>Uno stimatore può essere consistente pur essendo lievemente distorto nei campioni finiti, purché il bias e la variabilità si riducano con l’aumentare di <span class="math inline">\(n\)</span>.</p>
+</section><section id="efficienza" class="level3" data-number="2.6.3"><h3 data-number="2.6.3" class="anchored" data-anchor-id="efficienza">
+<span class="header-section-number">2.6.3</span> Efficienza</h3>
+<p>All’interno di una classe specificata di stimatori e sotto un dato modello, uno stimatore viene detto più <strong>efficiente</strong> se raggiunge una precisione maggiore, spesso espressa da una varianza inferiore.</p>
+<p>Il confronto richiede cautela:</p>
+<ul>
+<li>deve riguardare lo stesso parametro;</li>
+<li>deve usare lo stesso modello e lo stesso schema di campionamento;</li>
+<li>deve chiarire la classe di stimatori considerata;</li>
+<li>può essere esatto in campioni finiti oppure soltanto asintotico.</li>
+</ul>
+<p>L’efficienza non è quindi una proprietà assoluta separata dalle assunzioni.</p>
+</section><section id="il-compromesso-bias-varianza" class="level3" data-number="2.6.4"><h3 data-number="2.6.4" class="anchored" data-anchor-id="il-compromesso-bias-varianza">
+<span class="header-section-number">2.6.4</span> Il compromesso bias-varianza</h3>
+<p>Uno stimatore lievemente distorto può avere una varianza molto inferiore a quella di uno stimatore non distorto. Per uno stimatore scalare con secondo momento finito, l’<strong>errore quadratico medio</strong> è:</p>
 <p><span class="math display">\[
-\widehat{SE}(\bar X) = \frac{s}{\sqrt n}.
+\operatorname{MSE}(\hat\theta)
+=
+\operatorname{E}\!\left[(\hat\theta-\theta)^2\right]
+=
+\operatorname{Var}(\hat\theta)
++
+\operatorname{Bias}(\hat\theta)^2.
 \]</span></p>
-<p>Il messaggio operativo è semplice: l’errore standard misura l’incertezza della <strong>stima</strong>, non la variabilità dei singoli dati. Una deviazione standard descrive quanto differiscono gli individui; un errore standard descrive quanto differirebbero le stime se ripetessimo il campionamento.</p>
+<p>La formula mostra due modi diversi di sbagliare:</p>
+<ul>
+<li>le stime possono essere molto disperse;</li>
+<li>le stime possono essere sistematicamente spostate rispetto al parametro.</li>
+</ul>
+<p>Ridurre una componente può aumentare l’altra. Per questo motivo la non distorsione non è sempre l’unico criterio rilevante.</p>
+</section></section><section id="sec-freq-role-sampling-distribution" class="level2" data-number="2.7"><h2 data-number="2.7" class="anchored" data-anchor-id="sec-freq-role-sampling-distribution">
+<span class="header-section-number">2.7</span> La distribuzione campionaria</h2>
+<p>La <strong>distribuzione campionaria</strong> descrive i valori che lo stimatore assumerebbe in campioni ripetuti generati secondo lo stesso modello e lo stesso disegno.</p>
+<p>Non è:</p>
+<ul>
+<li>la distribuzione dei dati individuali;</li>
+<li>la distribuzione osservata in un singolo campione;</li>
+<li>una distribuzione di probabilità sul parametro.</li>
+</ul>
+<p>È una distribuzione dello <strong>stimatore</strong>.</p>
+<p>La distribuzione campionaria permette di:</p>
+<ul>
+<li>calcolare errori standard;</li>
+<li>confrontare stimatori;</li>
+<li>costruire intervalli di confidenza;</li>
+<li>definire statistiche test e valori critici;</li>
+<li>valutare errori di tipo I, errori di tipo II e potenza.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Collegamento con il sito sulla probabilità">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Collegamento con il sito sulla probabilità
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il sito sulla probabilità sviluppa il passaggio dal campione alla distribuzione campionaria. Qui cambiamo prospettiva: usiamo quella distribuzione per valutare una procedura inferenziale.</p>
+<p>Questa separazione evita di ripetere la teoria probabilistica e chiarisce il ruolo specifico del modulo frequentista.</p>
+</div>
+</div>
+</section><section id="sec-freq-standard-error-operational" class="level2" data-number="2.8"><h2 data-number="2.8" class="anchored" data-anchor-id="sec-freq-standard-error-operational">
+<span class="header-section-number">2.8</span> L’errore standard</h2>
+<p>L’<strong>errore standard</strong> è la deviazione standard della distribuzione campionaria di uno stimatore:</p>
+<p><span class="math display">\[
+\operatorname{SE}(\hat\theta)
+=
+\sqrt{\operatorname{Var}(\hat\theta)}.
+\]</span></p>
+<p>Per una media calcolata su <span class="math inline">\(n\)</span> osservazioni indipendenti con la stessa varianza finita <span class="math inline">\(\sigma^2\)</span>:</p>
+<p><span class="math display">\[
+\operatorname{SE}(\bar X)
+=
+\frac{\sigma}{\sqrt n}.
+\]</span></p>
+<p>Poiché <span class="math inline">\(\sigma\)</span> è generalmente ignota, nel caso elementare viene stimata mediante la deviazione standard campionaria:</p>
+<p><span class="math display">\[
+\widehat{\operatorname{SE}}(\bar X)
+=
+\frac{s}{\sqrt n}.
+\]</span></p>
+<p>Questa formula non è universale. Dati raggruppati, misure ripetute, dipendenza temporale, campionamenti complessi o eteroschedasticità richiedono errori standard appropriati alla struttura dei dati.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="Deviazione standard ed errore standard">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -772,27 +848,61 @@ SE(\bar X) = \frac{\sigma}{\sqrt n}.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La <strong>deviazione standard</strong> descrive la dispersione delle osservazioni. L’<strong>errore standard</strong> descrive la dispersione di uno stimatore sotto campionamento ripetuto. Confondere queste due quantità porta a interpretazioni errate dei risultati empirici.</p>
+<p>La <strong>deviazione standard</strong> descrive la dispersione delle osservazioni.</p>
+<p>L’<strong>errore standard</strong> descrive la dispersione campionaria di uno stimatore.</p>
+<p>Aumentando <span class="math inline">\(n\)</span>, l’errore standard della media tende a diminuire, ma la variabilità tra gli individui non scompare.</p>
 </div>
 </div>
-</section><section id="sec-freq-from-estimate-to-procedure" class="level2" data-number="2.7"><h2 data-number="2.7" class="anchored" data-anchor-id="sec-freq-from-estimate-to-procedure">
-<span class="header-section-number">2.7</span> Dal numero osservato alla procedura</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Che cosa comunica l'errore standard">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Che cosa comunica l’errore standard
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>L’errore standard è una misura della <strong>precisione campionaria della procedura</strong>, sotto le assunzioni adottate.</p>
+<p>Non misura direttamente:</p>
+<ul>
+<li>la validità del costrutto;</li>
+<li>il bias di selezione;</li>
+<li>l’importanza dell’effetto;</li>
+<li>la probabilità che il parametro si trovi vicino alla stima;</li>
+<li>la probabilità di replicare un risultato statisticamente significativo.</li>
+</ul>
+</div>
+</div>
+</section><section id="dalla-stima-puntuale-allintervallo" class="level2" data-number="2.9"><h2 data-number="2.9" class="anchored" data-anchor-id="dalla-stima-puntuale-allintervallo">
+<span class="header-section-number">2.9</span> Dalla stima puntuale all’intervallo</h2>
 <p>Una stima puntuale risponde alla domanda:</p>
 <blockquote class="blockquote">
-<p>Qual è il valore osservato nel mio campione?</p>
+<p>Quale valore ha restituito lo stimatore nel campione osservato?</p>
 </blockquote>
-<p>L’inferenza frequentista aggiunge una seconda domanda:</p>
+<p>L’errore standard aggiunge:</p>
 <blockquote class="blockquote">
-<p>Quali garanzie avrebbe la procedura che ha prodotto questa stima se fosse applicata ripetutamente?</p>
+<p>Quanto varierebbe lo stimatore sotto ripetizioni del campionamento?</p>
 </blockquote>
-<p>Questa seconda domanda è il tratto distintivo del paradigma frequentista. Il singolo risultato osservato viene interpretato alla luce di una procedura più ampia: la procedura di campionamento, lo stimatore scelto, la sua distribuzione campionaria e le regole usate per costruire intervalli o test.</p>
-<p>Per questo motivo, la stima puntuale non è il punto di arrivo, ma il punto di partenza. Nei capitoli successivi vedremo due modi frequentisti di trasformare una stima in un risultato inferenziale:</p>
-<ol type="1">
-<li>gli <strong>intervalli di confidenza</strong>, che associano alla procedura una proprietà di copertura nel lungo periodo;</li>
-<li>i <strong>test di ipotesi</strong>, che valutano la compatibilità dei dati con un’ipotesi di riferimento attraverso il comportamento atteso della statistica test.</li>
-</ol></section><section id="sec-freq-estimation-bayes-contrast" class="level2" data-number="2.8"><h2 data-number="2.8" class="anchored" data-anchor-id="sec-freq-estimation-bayes-contrast">
-<span class="header-section-number">2.8</span> Confronto con la prospettiva bayesiana</h2>
-<p>Il confronto con il bayesianesimo aiuta a chiarire che le differenze non sono soltanto tecniche, ma riguardano il significato attribuito alla probabilità.</p>
+<p>Il capitolo successivo combinerà stima, errore standard e valore critico per costruire un <strong>intervallo di confidenza</strong>. L’obiettivo non sarà assegnare una probabilità al parametro, ma costruire una procedura con una frequenza di copertura controllata sotto il modello.</p>
+<p>Non anticipiamo qui la derivazione. È sufficiente riconoscere il passaggio logico:</p>
+<p><span class="math display">\[
+\text{stima puntuale}
+\quad\longrightarrow\quad
+\text{variabilità campionaria}
+\quad\longrightarrow\quad
+\text{procedura intervallare}.
+\]</span></p>
+</section><section id="sec-freq-estimation-bayes-contrast" class="level2" data-number="2.10"><h2 data-number="2.10" class="anchored" data-anchor-id="sec-freq-estimation-bayes-contrast">
+<span class="header-section-number">2.10</span> Stima frequentista e stima bayesiana</h2>
+<p>Frequentismo e bayesianesimo possono condividere:</p>
+<ul>
+<li>lo stesso insieme di dati;</li>
+<li>lo stesso modello generativo;</li>
+<li>la stessa funzione di verosimiglianza;</li>
+<li>la stessa domanda sostantiva.</li>
+</ul>
+<p>Differiscono nel modo in cui rappresentano l’incertezza inferenziale.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -801,99 +911,139 @@ SE(\bar X) = \frac{\sigma}{\sqrt n}.
 </colgroup>
 <thead><tr class="header">
 <th>Aspetto</th>
-<th>Frequentismo</th>
-<th>Bayesianesimo</th>
+<th>Stima frequentista</th>
+<th>Stima bayesiana</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td>Parametro</td>
-<td>Fisso ma ignoto</td>
-<td>Incerto e descritto da una distribuzione</td>
+<td>Fisso all’interno del modello</td>
+<td>Rappresentato mediante una distribuzione di probabilità</td>
 </tr>
 <tr class="even">
-<td>Fonte della probabilità</td>
-<td>Ripetizione ipotetica del campionamento</td>
-<td>Grado di credenza razionale dato il modello</td>
+<td>Quantità probabilistiche</td>
+<td>Dati, statistiche e procedure sotto campionamento</td>
+<td>Parametri e predizioni condizionati a prior, modello e dati</td>
 </tr>
 <tr class="odd">
-<td>Oggetto dell’incertezza</td>
-<td>Stimatore, dati possibili, procedura</td>
-<td>Parametro dato il campione osservato</td>
+<td>Oggetto centrale</td>
+<td>Stimatore e distribuzione campionaria</td>
+<td>Distribuzione a posteriori</td>
 </tr>
 <tr class="even">
-<td>Risultato tipico</td>
-<td>Stima, errore standard, intervallo di confidenza</td>
-<td>Distribuzione posterior, intervallo di credibilità</td>
+<td>Misura elementare di precisione</td>
+<td>Errore standard</td>
+<td>Dispersione a posteriori</td>
 </tr>
 <tr class="odd">
-<td>Domanda centrale</td>
-<td>Come si comporta la procedura nel lungo periodo?</td>
-<td>Che cosa crediamo sul parametro dopo aver visto i dati?</td>
+<td>Valutazione</td>
+<td>Proprietà sotto ripetizioni</td>
+<td>Coerenza dell’aggiornamento e adeguatezza del modello</td>
 </tr>
 </tbody>
 </table>
-<p>Questa differenza diventerà particolarmente importante nel capitolo sugli intervalli di confidenza. Un intervallo di confidenza al 95% non significa che ci sia il 95% di probabilità che il parametro cada nell’intervallo osservato. Significa che la procedura, applicata molte volte in condizioni analoghe, produce intervalli che contengono il parametro nel 95% dei casi.</p>
-</section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
-<p>In questo capitolo abbiamo ridefinito il problema della stima dal punto di vista frequentista. Il parametro è trattato come una quantità fissa ma ignota; lo stimatore è una procedura che varia da campione a campione; la stima è il valore ottenuto nel campione osservato.</p>
-<p>Le proprietà di uno stimatore, come correttezza, consistenza ed efficienza, riguardano il suo comportamento sotto ripetizione ipotetica del campionamento. L’errore standard sintetizza la variabilità dello stimatore e permette di passare dalla stima puntuale alla quantificazione dell’incertezza.</p>
-<p>Il punto essenziale è che l’inferenza frequentista fornisce garanzie sulle <strong>procedure</strong>, non probabilità dirette sui parametri. Questa impostazione è potente e ha avuto un ruolo centrale nella ricerca psicologica, ma richiede cautela interpretativa. Il prossimo capitolo mostrerà come questa logica conduce agli intervalli di confidenza.</p>
-</section><section id="punti-chiave-da-ricordare" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="punti-chiave-da-ricordare">Punti chiave da ricordare</h2>
-<div class="callout callout-style-default callout-important callout-titled">
+<p>La distinzione non implica che un’analisi frequentista produca soltanto un numero o che un’analisi bayesiana non possa essere valutata nelle ripetizioni. Indica quale oggetto viene usato come base immediata dell’inferenza.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Un confronto utile, non una gara di slogan">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Importante
+<span class="screen-reader-only">Importante</span>Un confronto utile, non una gara di slogan
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>L’errore standard non è una deviazione standard a posteriori e un intervallo di confidenza non è un intervallo di credibilità.</p>
+<p>Le quantità possono talvolta risultare numericamente simili, ma hanno significati diversi perché derivano da costruzioni probabilistiche differenti.</p>
+</div>
+</div>
+</section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
+<p>Stimare un parametro significa molto più che calcolare una statistica descrittiva. Nel frequentismo, lo stimatore viene trattato come una procedura casuale prima dell’osservazione dei dati e valutato attraverso la sua distribuzione campionaria.</p>
+<p>Abbiamo distinto parametro, stimatore e stima; introdotto correttezza, bias, consistenza, efficienza ed errore quadratico medio; chiarito che l’errore standard misura la precisione campionaria e non la variabilità individuale o la validità scientifica.</p>
+<p>La lezione centrale è duplice:</p>
 <ol type="1">
-<li>Un <strong>parametro</strong> è una quantità fissa ma ignota della popolazione.</li>
-<li>Uno <strong>stimatore</strong> è una funzione dei dati e varia da campione a campione.</li>
-<li>Una <strong>stima</strong> è il valore numerico ottenuto nel campione osservato.</li>
-<li>Uno stimatore corretto non tende sistematicamente a sovrastimare o sottostimare il parametro.</li>
-<li>L’errore standard misura la variabilità dello stimatore, non la dispersione dei dati grezzi.</li>
-<li>Nel frequentismo, le garanzie principali riguardano il comportamento a lungo termine delle procedure.</li>
-<li>La stima puntuale deve essere accompagnata da una misura dell’incertezza.</li>
+<li>una stima puntuale senza una misura di precisione è incompleta;</li>
+<li>una stima molto precisa può essere scientificamente fuorviante se il campione, la misura o il modello sono inadeguati.</li>
 </ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled" title="Esercizi">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<p>Nel prossimo capitolo vedremo come la logica della distribuzione campionaria conduce agli intervalli di confidenza e perché la loro interpretazione riguarda la copertura della procedura, non una probabilità assegnata al parametro osservato.</p>
+</section><section id="esercizi" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="esercizi">Esercizi</h2>
+<ol type="1">
+<li><p>In uno studio su 120 studenti, la media osservata di una scala di stress è 24.6. Identifica il parametro, lo stimatore e la stima.</p></li>
+<li><p>Due studi producono la stessa stima, ma il primo ha errore standard 0.4 e il secondo 2.1. Che cosa puoi concludere sulla loro precisione? Che cosa non puoi concludere sulla loro accuratezza?</p></li>
+<li><p>Perché uno stimatore non distorto può produrre una singola stima molto lontana dal parametro?</p></li>
+<li><p>Uno stimatore è lievemente distorto nei campioni piccoli, ma il bias e la varianza tendono a zero quando <span class="math inline">\(n\)</span> aumenta. Può essere consistente? Spiega.</p></li>
+<li><p>Perché un campione molto grande non elimina automaticamente il bias di selezione o gli errori di misurazione?</p></li>
+<li><p>Qual è la differenza tra la deviazione standard dei punteggi e l’errore standard della media?</p></li>
+<li><p>Che cosa mostra la decomposizione <span class="math inline">\(\operatorname{MSE}=\operatorname{Var}+\operatorname{Bias}^2\)</span>?</p></li>
+<li><p>Frequentismo e bayesianesimo usano la stessa verosimiglianza. In che modo differisce l’oggetto immediato con cui rappresentano l’incertezza sul parametro?</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Soluzioni">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>Esercizi
+<span class="screen-reader-only">Consiglio</span>Soluzioni
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>In uno studio su 120 studenti, la media osservata a una scala di stress è 24.6. Qual è il parametro? Qual è lo stimatore? Qual è la stima?</li>
-<li>Spiega con parole tue perché uno stimatore corretto può produrre una singola stima lontana dal parametro.</li>
-<li>Perché l’errore standard non deve essere interpretato come misura della variabilità individuale?</li>
-<li>Quale differenza c’è tra dire “il parametro è incerto” e dire “lo stimatore è variabile”?</li>
+<li><p>Il parametro è la media della scala di stress nella popolazione definita dallo studio. Lo stimatore è la media campionaria <span class="math inline">\(\bar X\)</span>. La stima osservata è <span class="math inline">\(\bar x=24.6\)</span>.</p></li>
+<li><p>Il primo studio ha una stima campionariamente più precisa: lo stimatore varia meno sotto le ripetizioni assunte. Non possiamo però sapere dal solo errore standard quale stima sia più vicina al parametro vero, né se campione e misura siano privi di distorsioni.</p></li>
+<li><p>La non distorsione riguarda la media delle stime in molte ripetizioni. Se la distribuzione campionaria è molto dispersa, una singola stima può comunque risultare lontana dal parametro.</p></li>
+<li><p>Sì. La consistenza richiede che lo stimatore converga al parametro quando <span class="math inline">\(n\)</span> cresce. Non richiede necessariamente che sia non distorto per ogni dimensione campionaria.</p></li>
+<li><p>Aumentare <span class="math inline">\(n\)</span> riduce soprattutto la variabilità campionaria. Se il campione esclude sistematicamente una parte della popolazione o lo strumento misura in modo distorto, più dati possono rendere molto precisa una stima sistematicamente errata.</p></li>
+<li><p>La deviazione standard descrive quanto differiscono le osservazioni individuali. L’errore standard descrive quanto varierebbe la media campionaria tra campioni ripetuti.</p></li>
+<li><p>Mostra che l’errore complessivo di uno stimatore dipende sia dalla sua dispersione sia dallo spostamento sistematico rispetto al parametro. Uno stimatore può migliorare riducendo una componente anche se l’altra aumenta leggermente.</p></li>
+<li><p>Nel frequentismo l’incertezza viene rappresentata immediatamente attraverso lo stimatore e la sua distribuzione campionaria. Nel bayesianesimo viene rappresentata mediante la distribuzione a posteriori del parametro, condizionata a prior, modello e dati.</p></li>
 </ol>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Informazioni sull'ambiente di sviluppo">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled" title="Punti chiave">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Informazioni sull’ambiente di sviluppo
+<span class="screen-reader-only">Nota</span>Punti chiave
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<ul>
+<li>Il parametro è la quantità fissa che si vuole conoscere all’interno del modello.</li>
+<li>Lo stimatore è una funzione dei dati; la stima è il valore osservato.</li>
+<li>La stima puntuale non contiene, da sola, una misura di precisione.</li>
+<li>La non distorsione riguarda il valore atteso dello stimatore, non la vicinanza di ogni singola stima al parametro.</li>
+<li>La consistenza è una proprietà asintotica.</li>
+<li>L’efficienza dipende dal modello e dalla classe di stimatori considerata.</li>
+<li>L’MSE combina varianza e bias al quadrato.</li>
+<li>L’errore standard descrive la variabilità campionaria dello stimatore.</li>
+<li>Precisione campionaria, accuratezza, validità della misura e rappresentatività del campione sono concetti distinti.</li>
+<li>Frequentismo e bayesianesimo possono condividere la verosimiglianza, ma rappresentano diversamente l’incertezza inferenziale.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Ambiente di sviluppo">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Ambiente di sviluppo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Le informazioni sull’ambiente R possono essere ottenute con:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.6.1 (2026-06-24)</span></span>
 <span><span class="co">#&gt; Platform: aarch64-apple-darwin23</span></span>
 <span><span class="co">#&gt; Running under: macOS Tahoe 26.5.2</span></span>
@@ -905,7 +1055,7 @@ Importante
 <span><span class="co">#&gt; locale:</span></span>
 <span><span class="co">#&gt; [1] C.UTF-8/UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; time zone: Europe/Rome</span></span>
+<span><span class="co">#&gt; time zone: Europe/Zagreb</span></span>
 <span><span class="co">#&gt; tzcode source: internal</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; attached base packages:</span></span>
@@ -916,7 +1066,7 @@ Importante
 <span><span class="co">#&gt;  [4] systemfonts_1.3.2     patchwork_1.3.2       ggdist_3.3.3         </span></span>
 <span><span class="co">#&gt;  [7] tidybayes_3.0.7       bayesplot_1.15.0      ggplot2_4.0.3        </span></span>
 <span><span class="co">#&gt; [10] reliabilitydiag_0.2.1 priorsense_1.2.0      posterior_1.7.0      </span></span>
-<span><span class="co">#&gt; [13] loo_2.10.0            rstan_2.32.7          StanHeaders_2.32.10  </span></span>
+<span><span class="co">#&gt; [13] loo_2.10.1            rstan_2.32.7          StanHeaders_2.32.10  </span></span>
 <span><span class="co">#&gt; [16] brms_2.23.0           Rcpp_1.1.2            sessioninfo_1.2.4    </span></span>
 <span><span class="co">#&gt; [19] conflicted_1.2.0      janitor_2.2.1         matrixStats_1.5.0    </span></span>
 <span><span class="co">#&gt; [22] modelr_0.1.11         tibble_3.3.1          dplyr_1.2.1          </span></span>
@@ -927,25 +1077,25 @@ Importante
 <span><span class="co">#&gt;  [4] S7_0.2.2              fastmap_1.2.0         tensorA_0.36.2.1     </span></span>
 <span><span class="co">#&gt;  [7] digest_0.6.39         timechange_0.4.0      estimability_2.0.0   </span></span>
 <span><span class="co">#&gt; [10] lifecycle_1.0.5       magrittr_2.0.5        compiler_4.6.1       </span></span>
-<span><span class="co">#&gt; [13] rlang_1.3.0           tools_4.6.1           knitr_1.51           </span></span>
-<span><span class="co">#&gt; [16] bridgesampling_1.2-1  htmlwidgets_1.6.4     pkgbuild_1.4.8       </span></span>
-<span><span class="co">#&gt; [19] curl_7.1.0            RColorBrewer_1.1-3    abind_1.4-8          </span></span>
-<span><span class="co">#&gt; [22] purrr_1.2.2           grid_4.6.1            stats4_4.6.1         </span></span>
-<span><span class="co">#&gt; [25] xtable_1.8-8          inline_0.3.21         emmeans_2.0.3        </span></span>
-<span><span class="co">#&gt; [28] scales_1.4.0          cli_3.6.6             mvtnorm_1.4-1        </span></span>
-<span><span class="co">#&gt; [31] rmarkdown_2.31        generics_0.1.4        otel_0.2.0           </span></span>
-<span><span class="co">#&gt; [34] RcppParallel_5.1.11-2 cachem_1.1.0          stringr_1.6.0        </span></span>
-<span><span class="co">#&gt; [37] parallel_4.6.1        vctrs_0.7.3           V8_8.2.0             </span></span>
-<span><span class="co">#&gt; [40] Matrix_1.7-5          jsonlite_2.0.0        arrayhelpers_1.1-1   </span></span>
-<span><span class="co">#&gt; [43] glue_1.8.1            codetools_0.2-20      distributional_0.8.1 </span></span>
-<span><span class="co">#&gt; [46] lubridate_1.9.5       stringi_1.8.7         gtable_0.3.6         </span></span>
-<span><span class="co">#&gt; [49] QuickJSR_1.10.0       pillar_1.11.1         htmltools_0.5.9      </span></span>
-<span><span class="co">#&gt; [52] Brobdingnag_1.2-9     R6_2.6.1              textshaping_1.0.5    </span></span>
-<span><span class="co">#&gt; [55] rprojroot_2.1.1       evaluate_1.0.5        lattice_0.22-9       </span></span>
-<span><span class="co">#&gt; [58] backports_1.5.1       memoise_2.0.1         broom_1.0.13         </span></span>
-<span><span class="co">#&gt; [61] snakecase_0.11.1      rstantools_2.6.0      coda_0.19-4.1        </span></span>
-<span><span class="co">#&gt; [64] gridExtra_2.3.1       nlme_3.1-169          checkmate_2.3.4      </span></span>
-<span><span class="co">#&gt; [67] xfun_0.60             pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt; [13] rlang_1.3.0           tools_4.6.1           yaml_2.3.12          </span></span>
+<span><span class="co">#&gt; [16] knitr_1.51            bridgesampling_1.2-1  htmlwidgets_1.6.4    </span></span>
+<span><span class="co">#&gt; [19] pkgbuild_1.4.8        curl_7.1.0            RColorBrewer_1.1-3   </span></span>
+<span><span class="co">#&gt; [22] abind_1.4-8           purrr_1.2.2           grid_4.6.1           </span></span>
+<span><span class="co">#&gt; [25] stats4_4.6.1          xtable_1.8-8          inline_0.3.21        </span></span>
+<span><span class="co">#&gt; [28] emmeans_2.0.4         scales_1.4.0          cli_3.6.6            </span></span>
+<span><span class="co">#&gt; [31] mvtnorm_1.4-2         rmarkdown_2.31        generics_0.1.4       </span></span>
+<span><span class="co">#&gt; [34] otel_0.2.0            RcppParallel_5.1.11-2 cachem_1.1.0         </span></span>
+<span><span class="co">#&gt; [37] stringr_1.6.0         parallel_4.6.1        vctrs_0.7.3          </span></span>
+<span><span class="co">#&gt; [40] V8_8.2.0              Matrix_1.7-6          jsonlite_2.0.0       </span></span>
+<span><span class="co">#&gt; [43] arrayhelpers_1.1-2    glue_1.8.1            codetools_0.2-20     </span></span>
+<span><span class="co">#&gt; [46] distributional_0.8.1  lubridate_1.9.5       stringi_1.8.7        </span></span>
+<span><span class="co">#&gt; [49] gtable_0.3.6          QuickJSR_1.10.0       pillar_1.11.1        </span></span>
+<span><span class="co">#&gt; [52] htmltools_0.5.9       Brobdingnag_1.2-9     R6_2.6.1             </span></span>
+<span><span class="co">#&gt; [55] textshaping_1.0.5     rprojroot_2.1.1       evaluate_1.0.5       </span></span>
+<span><span class="co">#&gt; [58] lattice_0.22-9        backports_1.5.1       memoise_2.0.1        </span></span>
+<span><span class="co">#&gt; [61] broom_1.0.13          snakecase_0.11.1      rstantools_2.6.0     </span></span>
+<span><span class="co">#&gt; [64] coda_0.19-4.1         gridExtra_2.3.1       nlme_3.1-170         </span></span>
+<span><span class="co">#&gt; [67] checkmate_2.3.4       xfun_0.60             pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>

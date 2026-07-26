@@ -162,13 +162,15 @@ window.Quarto = {
 </script>
 <meta property="og:title" content="4&nbsp; Test di ipotesi e valore-p – Inferenza frequentista in psicologia">
 <meta property="og:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Inferenza bayesiana in psicologia: Ragionare con l’incertezza.">
-<meta property="og:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/04_test_ipotesi_files/figure-html/fig-chi2-pvalue-1.png">
+<meta property="og:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/04_test_ipotesi_files/figure-html/fig-chi-square-p-value-1.png">
 <meta property="og:site_name" content="Inferenza frequentista in psicologia">
+<meta property="og:image:alt" content="Curva della distribuzione chi-quadrato con una linea verticale sulla statistica osservata e la coda destra evidenziata.">
 <meta property="og:image:height" content="1297">
 <meta property="og:image:width" content="2100">
 <meta name="twitter:title" content="4&nbsp; Test di ipotesi e valore-p – Inferenza frequentista in psicologia">
 <meta name="twitter:description" content="Modulo introduttivo sull’inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Inferenza bayesiana in psicologia: Ragionare con l’incertezza.">
-<meta name="twitter:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/04_test_ipotesi_files/figure-html/fig-chi2-pvalue-1.png">
+<meta name="twitter:image" content="https://ccaudek.github.io/utet-frequentista/chapters/frequentist_inference/04_test_ipotesi_files/figure-html/fig-chi-square-p-value-1.png">
+<meta name="twitter:image:alt" content="Curva della distribuzione chi-quadrato con una linea verticale sulla statistica osservata e la coda destra evidenziata.">
 <meta name="twitter:image-height" content="1297">
 <meta name="twitter:image-width" content="2100">
 <meta name="twitter:card" content="summary_large_image">
@@ -426,7 +428,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/frequentist_inference/05_sample_size.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, precisione e potenza</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -449,7 +451,7 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../chapters/epilogo/epilogo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Considerazioni conclusive: dal controllo dell’errore all’aggiornamento delle credenze</span></span></a>
+ <span class="menu-text">Conclusioni</span></a>
   </div>
 </li>
       </ul>
@@ -462,15 +464,18 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2"><h2 id="toc-title">Sommario</h2>
    
   <ul class="collapse">
-<li><a href="#la-logica-del-test-di-ipotesi" id="toc-la-logica-del-test-di-ipotesi" class="nav-link active" data-scroll-target="#la-logica-del-test-di-ipotesi"><span class="header-section-number">4.1</span> La logica del test di ipotesi</a></li>
-  <li><a href="#errori-di-tipo-i-tipo-ii-e-potenza" id="toc-errori-di-tipo-i-tipo-ii-e-potenza" class="nav-link" data-scroll-target="#errori-di-tipo-i-tipo-ii-e-potenza"><span class="header-section-number">4.2</span> Errori di tipo I, tipo II e potenza</a></li>
-  <li><a href="#esempio-1-il-test-del-chi-quadrato-di-indipendenza" id="toc-esempio-1-il-test-del-chi-quadrato-di-indipendenza" class="nav-link" data-scroll-target="#esempio-1-il-test-del-chi-quadrato-di-indipendenza"><span class="header-section-number">4.3</span> Esempio 1: il test del chi-quadrato di indipendenza</a></li>
-  <li><a href="#esempio-2-il-test-per-una-media" id="toc-esempio-2-il-test-per-una-media" class="nav-link" data-scroll-target="#esempio-2-il-test-per-una-media"><span class="header-section-number">4.4</span> Esempio 2: il test per una media</a></li>
-  <li><a href="#interpretare-correttamente-il-valore-p" id="toc-interpretare-correttamente-il-valore-p" class="nav-link" data-scroll-target="#interpretare-correttamente-il-valore-p"><span class="header-section-number">4.5</span> Interpretare correttamente il valore-<em>p</em></a></li>
-  <li><a href="#significativit%C3%A0-statistica-e-rilevanza-sostanziale" id="toc-significatività-statistica-e-rilevanza-sostanziale" class="nav-link" data-scroll-target="#significativit%C3%A0-statistica-e-rilevanza-sostanziale"><span class="header-section-number">4.6</span> Significatività statistica e rilevanza sostanziale</a></li>
-  <li><a href="#limiti-del-test-di-ipotesi-frequentista" id="toc-limiti-del-test-di-ipotesi-frequentista" class="nav-link" data-scroll-target="#limiti-del-test-di-ipotesi-frequentista"><span class="header-section-number">4.7</span> Limiti del test di ipotesi frequentista</a></li>
-  <li><a href="#ponte-verso-la-pianificazione-dello-studio" id="toc-ponte-verso-la-pianificazione-dello-studio" class="nav-link" data-scroll-target="#ponte-verso-la-pianificazione-dello-studio"><span class="header-section-number">4.8</span> Ponte verso la pianificazione dello studio</a></li>
-  <li><a href="#punti-chiave-da-ricordare" id="toc-punti-chiave-da-ricordare" class="nav-link" data-scroll-target="#punti-chiave-da-ricordare">Punti chiave da ricordare</a></li>
+<li><a href="#perch%C3%A9-%C3%A8-facile-fraintendere-un-test" id="toc-perché-è-facile-fraintendere-un-test" class="nav-link active" data-scroll-target="#perch%C3%A9-%C3%A8-facile-fraintendere-un-test"><span class="header-section-number">4.1</span> Perché è facile fraintendere un test?</a></li>
+  <li><a href="#sec-freq-two-testing-traditions" id="toc-sec-freq-two-testing-traditions" class="nav-link" data-scroll-target="#sec-freq-two-testing-traditions"><span class="header-section-number">4.2</span> Due tradizioni nella pratica contemporanea</a></li>
+  <li><a href="#sec-freq-test-anatomy" id="toc-sec-freq-test-anatomy" class="nav-link" data-scroll-target="#sec-freq-test-anatomy"><span class="header-section-number">4.3</span> Anatomia di un test</a></li>
+  <li><a href="#sec-freq-p-value" id="toc-sec-freq-p-value" class="nav-link" data-scroll-target="#sec-freq-p-value"><span class="header-section-number">4.4</span> Il valore-<em>p</em></a></li>
+  <li><a href="#sec-freq-errors-power" id="toc-sec-freq-errors-power" class="nav-link" data-scroll-target="#sec-freq-errors-power"><span class="header-section-number">4.5</span> Errori di tipo I, errori di tipo II e potenza</a></li>
+  <li><a href="#sec-freq-chi-square-example" id="toc-sec-freq-chi-square-example" class="nav-link" data-scroll-target="#sec-freq-chi-square-example"><span class="header-section-number">4.6</span> Esempio 1: test del chi-quadrato di indipendenza</a></li>
+  <li><a href="#sec-freq-one-sample-t-test" id="toc-sec-freq-one-sample-t-test" class="nav-link" data-scroll-target="#sec-freq-one-sample-t-test"><span class="header-section-number">4.7</span> Esempio 2: test <em>t</em> per una media</a></li>
+  <li><a href="#sec-freq-one-two-sided" id="toc-sec-freq-one-two-sided" class="nav-link" data-scroll-target="#sec-freq-one-two-sided"><span class="header-section-number">4.8</span> Test unilaterali e bilaterali</a></li>
+  <li><a href="#sec-freq-interpreting-test-result" id="toc-sec-freq-interpreting-test-result" class="nav-link" data-scroll-target="#sec-freq-interpreting-test-result"><span class="header-section-number">4.9</span> Interpretare un risultato</a></li>
+  <li><a href="#sec-freq-testing-limits" id="toc-sec-freq-testing-limits" class="nav-link" data-scroll-target="#sec-freq-testing-limits"><span class="header-section-number">4.10</span> Limiti e usi appropriati</a></li>
+  <li><a href="#sec-freq-testing-bayes" id="toc-sec-freq-testing-bayes" class="nav-link" data-scroll-target="#sec-freq-testing-bayes"><span class="header-section-number">4.11</span> Confronto con l’inferenza bayesiana</a></li>
+  <li><a href="#sec-freq-testing-to-sample-size" id="toc-sec-freq-testing-to-sample-size" class="nav-link" data-scroll-target="#sec-freq-testing-to-sample-size"><span class="header-section-number">4.12</span> Verso la pianificazione dello studio</a></li>
   </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/04_test_ipotesi.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -489,47 +494,69 @@ window.Quarto = {
   
 
 
-</header><div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Il <strong>test di ipotesi</strong> è uno degli strumenti più diffusi dell’inferenza statistica frequentista. In psicologia, i test di ipotesi sono ampiamente utilizzati in numerosi articoli per valutare l’efficacia di un intervento, confrontare gruppi, studiare associazioni tra variabili o verificare la compatibilità di un risultato con un modello di riferimento.</p>
-<p>In un percorso orientato all’inferenza bayesiana, lo studio dei test di ipotesi ha una funzione ben precisa: imparare a interpretare correttamente il linguaggio ancora dominante nella letteratura empirica e, al contempo, comprendere quali domande questo linguaggio è in grado di porre e quali invece lascia aperte.</p>
-<p>La domanda centrale del test frequentista non è:</p>
-<blockquote class="blockquote">
-<p>Qual è la probabilità che l’ipotesi sia vera, dati i risultati osservati?</p>
-</blockquote>
-<p>Questa sarebbe una domanda naturale in una prospettiva bayesiana. La domanda frequentista è diversa:</p>
-<blockquote class="blockquote">
-<p>Se l’ipotesi nulla fosse vera, quanto sarebbero sorprendenti dati come quelli osservati?</p>
-</blockquote>
-<p>Questa distinzione è fondamentale. Il test di ipotesi non assegna probabilità alle ipotesi, ma valuta la <strong>compatibilità dei dati con un modello nullo</strong> attraverso una procedura che controlla gli errori nel lungo periodo.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
+</header><div class="callout callout-style-default callout-note callout-titled" title="In sintesi">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>In questo capitolo imparerai a
+<span class="screen-reader-only">Nota</span>In sintesi
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p><strong>Da sapere</strong> Un test frequentista confronta una statistica osservata con la sua distribuzione sotto un’ipotesi nulla. Il valore-<em>p</em> misura quanto il risultato sia incompatibile con quel modello, ma non assegna una probabilità all’ipotesi. La pratica contemporanea combina spesso la significatività fisheriana con le decisioni e il controllo degli errori di Neyman–Pearson.</p>
+<p><strong>Da saper fare</strong> Distinguere ipotesi, statistica test, distribuzione nulla, valore-<em>p</em> e livello <span class="math inline">\(\alpha\)</span>; interpretare correttamente errori di tipo I, errori di tipo II e potenza; separare significatività statistica, dimensione dell’effetto e rilevanza sostanziale.</p>
+</div>
+</div>
+<section id="introduzione" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="introduzione">Introduzione</h2>
+<p>Nei capitoli precedenti abbiamo costruito una progressione:</p>
+<p><span class="math display">\[
+\text{stima puntuale}
+\longrightarrow
+\text{errore standard}
+\longrightarrow
+\text{intervallo di confidenza}.
+\]</span></p>
+<p>Il test di ipotesi usa gli stessi elementi per affrontare una domanda diversa:</p>
+<blockquote class="blockquote">
+<p>Quanto è incompatibile il risultato osservato con un modello di riferimento?</p>
+</blockquote>
+<p>Nella ricerca psicologica, i test vengono usati per studiare differenze tra gruppi, associazioni tra variabili, effetti di interventi e scostamenti da valori teorici o normativi. La loro diffusione rende indispensabile comprenderne sia la logica sia i limiti.</p>
+<p>Il test frequentista standard non calcola la probabilità che un’ipotesi sia vera dopo aver osservato i dati. Costruisce invece una distribuzione dei risultati possibili sotto un’ipotesi nulla e colloca il risultato osservato all’interno di quella distribuzione.</p>
+</section><section id="perché-è-facile-fraintendere-un-test" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="perché-è-facile-fraintendere-un-test">
+<span class="header-section-number">4.1</span> Perché è facile fraintendere un test?</h2>
+<p>Il linguaggio ordinario invita a leggere un test come un confronto diretto tra due spiegazioni:</p>
 <ul>
-<li>comprendere la logica del test di ipotesi frequentista;</li>
-<li>distinguere ipotesi nulla, ipotesi alternativa, statistica test e valore-<em>p</em>;</li>
-<li>interpretare correttamente il valore-<em>p</em>;</li>
-<li>comprendere il ruolo di <span class="math inline">\(\alpha\)</span>, degli errori di tipo I e II e della potenza;</li>
-<li>applicare la logica del test a due casi introduttivi: il test del chi-quadrato e il test per una media;</li>
-<li>riconoscere i limiti interpretativi della significatività statistica.</li>
+<li>l’ipotesi nulla è vera;</li>
+<li>l’ipotesi alternativa è vera.</li>
 </ul>
+<p>La procedura standard non assegna però probabilità posteriori a queste possibilità. La sua domanda è condizionale:</p>
+<blockquote class="blockquote">
+<p>Se l’ipotesi nulla e le altre assunzioni del modello fossero appropriate, quanto sarebbe estremo il risultato osservato?</p>
+</blockquote>
+<p>L’inversione tra</p>
+<p><span class="math display">\[
+P(\text{dati}\mid H_0)
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+P(H_0\mid\text{dati})
+\]</span></p>
+<p>è una delle principali fonti di errore interpretativo.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="La direzione del condizionamento">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>La direzione del condizionamento
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-body-container callout-body">
+<p>Il valore-<em>p</em> riguarda la distribuzione dei dati o della statistica test <strong>assumendo <span class="math inline">\(H_0\)</span></strong>. Non è la probabilità di <span class="math inline">\(H_0\)</span> dopo avere osservato i dati.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Prerequisiti">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -539,105 +566,208 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Per seguire questo capitolo è utile avere già compreso:</p>
+<p>È utile avere letto:</p>
 <ul>
-<li>il concetto di distribuzione campionaria;</li>
-<li>il significato dell’errore standard;</li>
-<li>la logica degli intervalli di confidenza;</li>
-<li>la distinzione tra parametro, stimatore e stima osservata.</li>
+<li>
+<a href="02_stime_parametri.html" class="quarto-xref"><span>Capitolo 2</span></a>, per stimatore, distribuzione campionaria ed errore standard;</li>
+<li>
+<a href="03_conf_interv.html" class="quarto-xref"><span>Capitolo 3</span></a>, per copertura, valori critici e livello <span class="math inline">\(\alpha\)</span>;</li>
+<li>il capitolo <a href="https://ccaudek.github.io/utet-prob/chapters/probability/04_conditional_prob_bayesian.html">Probabilità condizionata</a>, per distinguere <span class="math inline">\(P(A\mid B)\)</span> da <span class="math inline">\(P(B\mid A)\)</span>.</li>
 </ul>
-<p>Questi concetti sono richiamati solo quando servono. Il capitolo non ripete la teoria della distribuzione campionaria, ma la usa per spiegare come funziona una procedura di test.</p>
+<p>La potenza viene introdotta qui come proprietà del test e sarà approfondita nel capitolo successivo sulla numerosità campionaria.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-caution callout-titled" title="Preparazione del Notebook">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Attenzione</span>Preparazione del Notebook
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</div>
-<section id="la-logica-del-test-di-ipotesi" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="la-logica-del-test-di-ipotesi">
-<span class="header-section-number">4.1</span> La logica del test di ipotesi</h2>
-<section id="un-punto-di-partenza-concreto" class="level3" data-number="4.1.1"><h3 data-number="4.1.1" class="anchored" data-anchor-id="un-punto-di-partenza-concreto">
-<span class="header-section-number">4.1.1</span> Un punto di partenza concreto</h3>
-<p>Immaginiamo uno studio in cui si vuole valutare se un breve intervento di regolazione emotiva possa migliorare il benessere psicologico degli studenti. Dopo l’intervento, il ricercatore osserva una media leggermente più alta rispetto a un valore di riferimento.</p>
-<p>Il problema è evidente: una differenza osservata può essere dovuta a un effetto reale dell’intervento, ma può anche essere una normale fluttuazione campionaria. Il test di ipotesi fornisce una procedura per stabilire se la differenza osservata sia sufficientemente grande non poter essere spiegata con un modello di assenza di effetto.</p>
-</section><section id="ipotesi-nulla-e-ipotesi-alternativa" class="level3" data-number="4.1.2"><h3 data-number="4.1.2" class="anchored" data-anchor-id="ipotesi-nulla-e-ipotesi-alternativa">
-<span class="header-section-number">4.1.2</span> Ipotesi nulla e ipotesi alternativa</h3>
-<p>Un test frequentista comincia formulando due ipotesi:</p>
-<ul>
-<li>l’<strong>ipotesi nulla</strong> <span class="math inline">\(H_0\)</span>, che rappresenta il modello di riferimento;</li>
-<li>l’<strong>ipotesi alternativa</strong> <span class="math inline">\(H_1\)</span>, che rappresenta una deviazione dal modello nullo.</li>
-</ul>
-<p>In molti casi, <span class="math inline">\(H_0\)</span> corrisponde all’assenza di una differenza, di un effetto o di un’associazione. Per esempio:</p>
-<p><span class="math display">\[
-H_0: \mu = 24
-\]</span> può indicare che la media della popolazione è uguale a un valore normativo pari a 24. L’ipotesi alternativa può assumere diverse forme:</p>
-<p><span class="math display">\[
-H_1: \mu \neq 24
-\]</span> per un test bidirezionale, oppure:</p>
-<p><span class="math display">\[
-H_1: \mu &gt; 24
-\]</span> per un test monodirezionale.</p>
-<div class="callout callout-style-default callout-warning callout-titled" title="Una distinzione essenziale">
+</section><section id="panoramica-del-capitolo" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="panoramica-del-capitolo">Panoramica del capitolo</h2>
+<p>Il capitolo procede in nove passaggi:</p>
+<ol type="1">
+<li>distingue la significatività fisheriana dalla teoria dei test di Neyman–Pearson;</li>
+<li>identifica gli elementi che definiscono un test;</li>
+<li>introduce il valore-<em>p</em> e il livello <span class="math inline">\(\alpha\)</span>;</li>
+<li>presenta errori di tipo I, errori di tipo II e potenza;</li>
+<li>applica la logica al test del chi-quadrato;</li>
+<li>applica la stessa struttura a un test <em>t</em> per una media;</li>
+<li>chiarisce test monodirezionali e bidirezionali;</li>
+<li>separa significatività, grandezza dell’effetto e rilevanza sostanziale;</li>
+<li>confronta il tipo di domanda frequentista con quello bayesiano.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="Preparazione del notebook">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avviso</span>Una distinzione essenziale
+<span class="screen-reader-only">Nota</span>Preparazione del notebook
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Nel test frequentista non si calcola <span class="math inline">\(P(H_0 \mid \text{dati})\)</span>. Il procedimento calcola invece probabilità del tipo:</p>
+<p>Per eseguire gli esempi, prepara l’ambiente comune del progetto:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section><section id="sec-freq-two-testing-traditions" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="sec-freq-two-testing-traditions">
+<span class="header-section-number">4.2</span> Due tradizioni nella pratica contemporanea</h2>
+<p>La pratica comunemente chiamata <em>NHST</em> (<em>Null Hypothesis Significance Testing</em>) combina spesso elementi provenienti da due tradizioni.</p>
+<section id="fisher-significatività-e-incompatibilità" class="level3" data-number="4.2.1"><h3 data-number="4.2.1" class="anchored" data-anchor-id="fisher-significatività-e-incompatibilità">
+<span class="header-section-number">4.2.1</span> Fisher: significatività e incompatibilità</h3>
+<p>Nell’impostazione fisheriana, il valore-<em>p</em> è una misura graduata di quanto i dati risultino incompatibili con un’ipotesi nulla. Un valore piccolo segnala che il risultato osservato occupa una regione poco frequente della distribuzione nulla.</p>
+<p>Questa lettura non richiede necessariamente una decisione automatica e definitiva. Il valore-<em>p</em> viene considerato insieme al disegno, alla qualità dei dati e alla conoscenza scientifica disponibile.</p>
+</section><section id="neymanpearson-decisioni-ed-errori" class="level3" data-number="4.2.2"><h3 data-number="4.2.2" class="anchored" data-anchor-id="neymanpearson-decisioni-ed-errori">
+<span class="header-section-number">4.2.2</span> Neyman–Pearson: decisioni ed errori</h3>
+<p>Nell’impostazione Neyman–Pearson si specificano ipotesi, una regola decisionale e probabilità di errore valutate nelle ripetizioni. Diventano centrali:</p>
+<ul>
+<li>il livello <span class="math inline">\(\alpha\)</span>;</li>
+<li>l’errore di tipo I;</li>
+<li>l’errore di tipo II;</li>
+<li>la potenza;</li>
+<li>la regione di rifiuto.</li>
+</ul>
+<p>La decisione non dichiara che una delle ipotesi sia probabilmente vera. Applica una procedura progettata per controllare gli errori nel lungo periodo.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Una procedura ibrida">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Una procedura ibrida
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La regola</p>
+<blockquote class="blockquote">
+<p>«calcolo un valore-<em>p</em> e, se <span class="math inline">\(p\leq0.05\)</span>, dichiaro il risultato significativo»</p>
+</blockquote>
+<p>combina una misura fisheriana di incompatibilità con una soglia e una decisione di tipo Neyman–Pearson.</p>
+<p>Questa pratica è diffusa, ma interpretarla correttamente richiede sapere che valore-<em>p</em> e livello <span class="math inline">\(\alpha\)</span> non sono la stessa quantità.</p>
+</div>
+</div>
+</section></section><section id="sec-freq-test-anatomy" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="sec-freq-test-anatomy">
+<span class="header-section-number">4.3</span> Anatomia di un test</h2>
+<p>Un test è definito da più elementi. Il solo valore-<em>p</em> non basta a descriverlo.</p>
+<section id="ipotesi-nulla-e-alternativa" class="level3" data-number="4.3.1"><h3 data-number="4.3.1" class="anchored" data-anchor-id="ipotesi-nulla-e-alternativa">
+<span class="header-section-number">4.3.1</span> Ipotesi nulla e alternativa</h3>
+<p>L’<strong>ipotesi nulla</strong> <span class="math inline">\(H_0\)</span> specifica il modello di riferimento. L’<strong>ipotesi alternativa</strong> <span class="math inline">\(H_1\)</span> descrive i valori o i modelli rispetto ai quali la procedura deve essere sensibile.</p>
+<p>Per una media:</p>
 <p><span class="math display">\[
-P(\text{dati almeno così estremi} \mid H_0).
+H_0:\mu=24.
 \]</span></p>
-<p>Questa differenza è una delle principali fonti di fraintendimento nella lettura dei risultati statistici.</p>
-</div>
-</div>
-</section><section id="la-statistica-test" class="level3" data-number="4.1.3"><h3 data-number="4.1.3" class="anchored" data-anchor-id="la-statistica-test">
-<span class="header-section-number">4.1.3</span> La statistica test</h3>
-<p>Per confrontare i dati con l’ipotesi nulla si costruisce una <strong>statistica test</strong>. Una statistica test è una funzione dei dati che misura quanto il risultato osservato si discosta da ciò che ci si aspetterebbe se <span class="math inline">\(H_0\)</span> fosse vera.</p>
+<p>Un’alternativa bilaterale è:</p>
+<p><span class="math display">\[
+H_1:\mu\neq24,
+\]</span></p>
+<p>mentre un’alternativa unilaterale può essere:</p>
+<p><span class="math display">\[
+H_1:\mu&gt;24.
+\]</span></p>
+<p>L’ipotesi nulla non deve necessariamente rappresentare una teoria scientifica completa o «assenza di qualunque effetto». È una restrizione precisa del modello usata per derivare la distribuzione di riferimento.</p>
+</section><section id="statistica-test" class="level3" data-number="4.3.2"><h3 data-number="4.3.2" class="anchored" data-anchor-id="statistica-test">
+<span class="header-section-number">4.3.2</span> Statistica test</h3>
+<p>La <strong>statistica test</strong> è una funzione dei dati progettata per misurare una discrepanza rilevante rispetto a <span class="math inline">\(H_0\)</span>.</p>
 <p>Esempi comuni sono:</p>
 <ul>
-<li>la statistica <span class="math inline">\(z\)</span>, quando la deviazione standard della popolazione è nota;</li>
-<li>la statistica <span class="math inline">\(t\)</span>, quando la deviazione standard della popolazione è stimata dal campione;</li>
-<li>la statistica <span class="math inline">\(\chi^2\)</span>, quando si analizzano frequenze in tabelle di contingenza.</li>
+<li>una statistica <span class="math inline">\(z\)</span>;</li>
+<li>una statistica <span class="math inline">\(t\)</span>;</li>
+<li>una statistica <span class="math inline">\(\chi^2\)</span>;</li>
+<li>una statistica <span class="math inline">\(F\)</span>;</li>
+<li>una differenza, un rapporto o un coefficiente standardizzato.</li>
 </ul>
-<p>Il punto importante è che, sotto <span class="math inline">\(H_0\)</span>, la statistica test ha una <strong>distribuzione di riferimento</strong> nota o approssimabile. Questa distribuzione consente di valutare quanto il valore osservato sia raro nel mondo ipotetico in cui <span class="math inline">\(H_0\)</span> è vera.</p>
-</section><section id="il-valore-p" class="level3" data-number="4.1.4"><h3 data-number="4.1.4" class="anchored" data-anchor-id="il-valore-p">
-<span class="header-section-number">4.1.4</span> Il valore-<em>p</em>
-</h3>
-<p>Il <strong>valore-<em>p</em></strong> è la probabilità, assumendo vera l’ipotesi nulla, di osservare una statistica test uguale o più estrema di quella ottenuta:</p>
-<p><span class="math display">\[
-\text{valore-}p = P(\text{risultato almeno così estremo} \mid H_0).
-\]</span></p>
-<p>Un valore-<em>p</em> piccolo indica che i dati osservati sarebbero rari se <span class="math inline">\(H_0\)</span> fosse vera. Per convenzione, spesso si confronta il valore-<em>p</em> con un livello di significatività <span class="math inline">\(\alpha = 0.05\)</span>:</p>
+<p>Per interpretare l’estremità occorre sapere quali valori della statistica siano più incompatibili con <span class="math inline">\(H_0\)</span>.</p>
+</section><section id="distribuzione-sotto-lipotesi-nulla" class="level3" data-number="4.3.3"><h3 data-number="4.3.3" class="anchored" data-anchor-id="distribuzione-sotto-lipotesi-nulla">
+<span class="header-section-number">4.3.3</span> Distribuzione sotto l’ipotesi nulla</h3>
+<p>La <strong>distribuzione nulla</strong> descrive i valori che la statistica test assumerebbe se <span class="math inline">\(H_0\)</span>, il modello e il piano di analisi fossero corretti.</p>
+<p>Può essere:</p>
 <ul>
-<li>se <span class="math inline">\(p \leq \alpha\)</span>, si <strong>rifiuta <span class="math inline">\(H_0\)</span></strong>;</li>
-<li>se <span class="math inline">\(p &gt; \alpha\)</span>, <strong>non si rifiuta <span class="math inline">\(H_0\)</span></strong>.</li>
+<li>derivata esattamente;</li>
+<li>ottenuta mediante un’approssimazione asintotica;</li>
+<li>costruita attraverso permutazioni o simulazioni.</li>
+</ul></section><section id="regola-di-estremità" class="level3" data-number="4.3.4"><h3 data-number="4.3.4" class="anchored" data-anchor-id="regola-di-estremità">
+<span class="header-section-number">4.3.4</span> Regola di estremità</h3>
+<p>Il valore-<em>p</em> dipende anche dalla regola che stabilisce quali risultati siano «almeno altrettanto estremi» di quello osservato.</p>
+<p>In un test unilaterale superiore si considera una coda. In un test bilaterale si considerano discrepanze in entrambe le direzioni, secondo la procedura specificata.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Il valore-p non è determinato dai soli dati">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Il valore-p non è determinato dai soli dati
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dipende anche da:</p>
+<ul>
+<li>ipotesi nulla;</li>
+<li>statistica test;</li>
+<li>distribuzione di riferimento;</li>
+<li>scelta unilaterale o bilaterale;</li>
+<li>regola di arresto, quando rilevante;</li>
+<li>correzioni per confronti multipli;</li>
+<li>altre decisioni previste dal piano di analisi.</li>
 </ul>
-<p>La seconda formulazione è intenzionale: un test non significativo non conferma l’ipotesi nulla. Indica soltanto che i dati non sono sufficientemente incompatibili con <span class="math inline">\(H_0\)</span> secondo la regola decisionale scelta.</p>
-</section></section><section id="errori-di-tipo-i-tipo-ii-e-potenza" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="errori-di-tipo-i-tipo-ii-e-potenza">
-<span class="header-section-number">4.2</span> Errori di tipo I, tipo II e potenza</h2>
-<p>Il test di ipotesi è una procedura decisionale. Come ogni decisione basata su dati campionari, può produrre errori.</p>
-<section id="due-tipi-di-errore" class="level3" data-number="4.2.1"><h3 data-number="4.2.1" class="anchored" data-anchor-id="due-tipi-di-errore">
-<span class="header-section-number">4.2.1</span> Due tipi di errore</h3>
-<p>Se <span class="math inline">\(H_0\)</span> è vera ma la rifiutiamo, commettiamo un <strong>errore di tipo I</strong>. Questo è il caso del falso positivo: concludiamo che vi sia un effetto quando, nel modello di riferimento, l’effetto non esiste.</p>
-<p>Se <span class="math inline">\(H_0\)</span> è falsa ma non la rifiutiamo, commettiamo un <strong>errore di tipo II</strong>. Questo è il caso del falso negativo: non rileviamo un effetto che nella popolazione è presente.</p>
+</div>
+</div>
+</section></section><section id="sec-freq-p-value" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="sec-freq-p-value">
+<span class="header-section-number">4.4</span> Il valore-<em>p</em>
+</h2>
+<p>In forma generale, il valore-<em>p</em> è:</p>
+<blockquote class="blockquote">
+<p>la probabilità, calcolata sotto <span class="math inline">\(H_0\)</span>, di ottenere un valore della statistica test almeno altrettanto incompatibile con <span class="math inline">\(H_0\)</span> quanto quello osservato.</p>
+</blockquote>
+<p>In simboli schematici:</p>
+<p><span class="math display">\[
+p
+=
+P_{H_0}
+\left(
+T(Y)\text{ almeno altrettanto estremo di }T(y_{\mathrm{obs}})
+\right).
+\]</span></p>
+<p>Un valore-<em>p</em> piccolo indica che il risultato osservato occupa una regione rara della distribuzione nulla. Segnala quindi incompatibilità tra i dati e l’insieme delle assunzioni usate per costruire il test.</p>
+<p>Non identifica da solo quale assunzione sia inadeguata. Un valore piccolo può riflettere:</p>
+<ul>
+<li>una deviazione reale dal valore nullo;</li>
+<li>una specificazione errata del modello;</li>
+<li>dipendenza o eterogeneità ignorata;</li>
+<li>bias di campionamento o misurazione;</li>
+<li>selezione analitica o confronti multipli non corretti.</li>
+</ul>
+<section id="valore-p-e-livello-alpha" class="level3" data-number="4.4.1"><h3 data-number="4.4.1" class="anchored" data-anchor-id="valore-p-e-livello-alpha">
+<span class="header-section-number">4.4.1</span> Valore-<em>p</em> e livello <span class="math inline">\(\alpha\)</span>
+</h3>
+<p>Il <strong>valore-<em>p</em></strong> è calcolato dai dati. Il <strong>livello <span class="math inline">\(\alpha\)</span></strong> è una soglia decisionale scelta prima dell’analisi.</p>
+<p>La regola convenzionale è:</p>
+<ul>
+<li>se <span class="math inline">\(p\leq\alpha\)</span>, rifiutare <span class="math inline">\(H_0\)</span>;</li>
+<li>se <span class="math inline">\(p&gt;\alpha\)</span>, non rifiutare <span class="math inline">\(H_0\)</span>.</li>
+</ul>
+<p>«Non rifiutare» è intenzionale. Un risultato non significativo non prova che <span class="math inline">\(H_0\)</span> sia vera.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Che cosa non è un valore-p">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avviso</span>Che cosa non è un valore-p
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Il valore-<em>p</em> non è:</p>
+<ul>
+<li>
+<span class="math inline">\(P(H_0\mid\text{dati})\)</span>;</li>
+<li>la probabilità che il risultato sia «dovuto al caso»;</li>
+<li>la probabilità che <span class="math inline">\(H_1\)</span> sia vera;</li>
+<li>la dimensione dell’effetto;</li>
+<li>la probabilità di replicare la significatività;</li>
+<li>il tasso di falsi positivi tra tutti i risultati significativi pubblicati.</li>
+</ul>
+</div>
+</div>
+</section></section><section id="sec-freq-errors-power" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="sec-freq-errors-power">
+<span class="header-section-number">4.5</span> Errori di tipo I, errori di tipo II e potenza</h2>
+<p>Una procedura decisionale può produrre quattro combinazioni:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 27%">
@@ -645,10 +775,10 @@ P(\text{dati almeno così estremi} \mid H_0).
 <col style="width: 36%">
 </colgroup>
 <thead><tr class="header">
-<th>Situazione reale</th>
-<th style="text-align: right;">Decisione: rifiutare <span class="math inline">\(H_0\)</span>
+<th>Stato rispetto alle ipotesi specificate</th>
+<th style="text-align: right;">Rifiutare <span class="math inline">\(H_0\)</span>
 </th>
-<th style="text-align: right;">Decisione: non rifiutare <span class="math inline">\(H_0\)</span>
+<th style="text-align: right;">Non rifiutare <span class="math inline">\(H_0\)</span>
 </th>
 </tr></thead>
 <tbody>
@@ -659,73 +789,92 @@ P(\text{dati almeno così estremi} \mid H_0).
 <td style="text-align: right;">Decisione corretta</td>
 </tr>
 <tr class="even">
-<td>
-<span class="math inline">\(H_0\)</span> falsa</td>
+<td>Alternativa specificata vera</td>
 <td style="text-align: right;">Decisione corretta</td>
 <td style="text-align: right;">Errore di tipo II</td>
 </tr>
 </tbody>
 </table>
-<p>Il livello <span class="math inline">\(\alpha\)</span> controlla la probabilità di errore di tipo I nel lungo periodo. La probabilità di errore di tipo II si indica con <span class="math inline">\(\beta\)</span>. La <strong>potenza</strong> del test è:</p>
+<section id="errore-di-tipo-i" class="level3" data-number="4.5.1"><h3 data-number="4.5.1" class="anchored" data-anchor-id="errore-di-tipo-i">
+<span class="header-section-number">4.5.1</span> Errore di tipo I</h3>
+<p>L’errore di tipo I consiste nel rifiutare <span class="math inline">\(H_0\)</span> quando è vera. Sotto le condizioni previste dalla procedura:</p>
 <p><span class="math display">\[
-1 - \beta.
+P(\text{rifiutare }H_0\mid H_0)=\alpha.
 \]</span></p>
-<p>La potenza è la probabilità di rifiutare <span class="math inline">\(H_0\)</span> quando un effetto reale è presente. La potenza dipende da diversi fattori: la grandezza dell’effetto, la variabilità dei dati, la numerosità del campione e la soglia <span class="math inline">\(\alpha\)</span>.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Perché la potenza sarà ripresa nel prossimo capitolo">
+<p>Il controllo vale per la procedura e per la famiglia di analisi definita. Se vengono provati molti test e riportati soltanto quelli significativi, il tasso effettivo di falsi positivi può superare quello nominale.</p>
+</section><section id="errore-di-tipo-ii-e-potenza" class="level3" data-number="4.5.2"><h3 data-number="4.5.2" class="anchored" data-anchor-id="errore-di-tipo-ii-e-potenza">
+<span class="header-section-number">4.5.2</span> Errore di tipo II e potenza</h3>
+<p>Per una specifica alternativa, l’errore di tipo II ha probabilità:</p>
+<p><span class="math display">\[
+\beta
+=
+P(\text{non rifiutare }H_0\mid H_1).
+\]</span></p>
+<p>La potenza è:</p>
+<p><span class="math display">\[
+1-\beta
+=
+P(\text{rifiutare }H_0\mid H_1).
+\]</span></p>
+<p>La potenza non è un unico numero indipendente dall’effetto. Dipende dal valore del parametro sotto l’alternativa, oltre che da:</p>
+<ul>
+<li>numerosità campionaria;</li>
+<li>variabilità;</li>
+<li>livello <span class="math inline">\(\alpha\)</span>;</li>
+<li>struttura del disegno;</li>
+<li>test unilaterale o bilaterale;</li>
+<li>qualità della misurazione.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Perché la potenza viene ripresa nel prossimo capitolo">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Perché la potenza sarà ripresa nel prossimo capitolo
+<span class="screen-reader-only">Nota</span>Perché la potenza viene ripresa nel prossimo capitolo
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Qui introduciamo la potenza solo come parte della logica del test. Il capitolo successivo approfondirà il rapporto tra potenza, numerosità campionaria e pianificazione dello studio.</p>
+<p>Qui la potenza serve a comprendere la logica degli errori. Il capitolo successivo discuterà come scegliere un effetto bersaglio e una numerosità adeguata prima di raccogliere i dati.</p>
 </div>
 </div>
-</section></section><section id="esempio-1-il-test-del-chi-quadrato-di-indipendenza" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="esempio-1-il-test-del-chi-quadrato-di-indipendenza">
-<span class="header-section-number">4.3</span> Esempio 1: il test del chi-quadrato di indipendenza</h2>
-<p>Il test del chi-quadrato di indipendenza viene utilizzato quando si desidera valutare se due variabili categoriali siano associate.</p>
-<section id="la-domanda-di-ricerca" class="level3" data-number="4.3.1"><h3 data-number="4.3.1" class="anchored" data-anchor-id="la-domanda-di-ricerca">
-<span class="header-section-number">4.3.1</span> La domanda di ricerca</h3>
-<p>Supponiamo di voler studiare la relazione tra <strong>stress percepito</strong> e <strong>qualità del sonno</strong> in un campione di adulti. Le due variabili sono categoriali:</p>
-<ul>
-<li>stress percepito: basso / alto;</li>
-<li>qualità del sonno: buona / scarsa.</li>
-</ul>
-<p>I dati osservati sono:</p>
+</section></section><section id="sec-freq-chi-square-example" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="sec-freq-chi-square-example">
+<span class="header-section-number">4.6</span> Esempio 1: test del chi-quadrato di indipendenza</h2>
+<p>Supponiamo di studiare la relazione tra <strong>stress percepito</strong> e <strong>qualità del sonno</strong>.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">osservati</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">42</span>, <span class="fl">40</span>,</span>
-<span>    <span class="fl">19</span>, <span class="fl">39</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="fl">42</span>, <span class="fl">40</span>,</span>
+<span>    <span class="fl">19</span>, <span class="fl">39</span></span>
+<span>  <span class="op">)</span>,</span>
 <span>  nrow <span class="op">=</span> <span class="fl">2</span>,</span>
-<span>  byrow <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  byrow <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  dimnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>    Stress <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Basso"</span>, <span class="st">"Alto"</span><span class="op">)</span>,</span>
+<span>    Sonno <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Buono"</span>, <span class="st">"Scarso"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Stress basso"</span>, <span class="st">"Stress alto"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sonno buono"</span>, <span class="st">"Sonno scarso"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span></span>
-<span>  <span class="va">osservati</span>,</span>
-<span>  caption <span class="op">=</span> <span class="st">"Frequenze osservate per stress percepito e qualità del sonno"</span></span>
-<span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="tbl-stress-sleep-observed" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-stress-sleep-observed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;4.1: Frequenze osservate per stress percepito e qualità del sonno.
+</figcaption><div aria-describedby="tbl-stress-sleep-observed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Frequenze osservate per stress percepito e qualità del sonno</caption>
+<table class="cell caption-top table table-sm table-striped small">
 <thead><tr class="header">
 <th style="text-align: left;"></th>
-<th style="text-align: right;">Sonno buono</th>
-<th style="text-align: right;">Sonno scarso</th>
+<th style="text-align: right;">Buono</th>
+<th style="text-align: right;">Scarso</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Stress basso</td>
+<td style="text-align: left;">Basso</td>
 <td style="text-align: right;">42</td>
 <td style="text-align: right;">40</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Stress alto</td>
+<td style="text-align: left;">Alto</td>
 <td style="text-align: right;">19</td>
 <td style="text-align: right;">39</td>
 </tr>
@@ -733,51 +882,55 @@ P(\text{dati almeno così estremi} \mid H_0).
 </table>
 </div>
 </div>
-<p>La domanda è:</p>
-<blockquote class="blockquote">
-<p>I dati sono compatibili con l’ipotesi che lo stress percepito e la qualità del sonno siano indipendenti?</p>
-</blockquote>
+</figure>
+</div>
+</div>
 <p>Le ipotesi sono:</p>
 <p><span class="math display">\[
-H_0: \text{stress percepito e qualità del sonno sono indipendenti}
+H_0:
+\text{stress e qualità del sonno sono indipendenti},
 \]</span></p>
 <p><span class="math display">\[
-H_1: \text{stress percepito e qualità del sonno sono associati}.
+H_1:
+\text{stress e qualità del sonno non sono indipendenti}.
 \]</span></p>
-</section><section id="valori-attesi-sotto-h_0" class="level3" data-number="4.3.2"><h3 data-number="4.3.2" class="anchored" data-anchor-id="valori-attesi-sotto-h_0">
-<span class="header-section-number">4.3.2</span> Valori attesi sotto <span class="math inline">\(H_0\)</span>
-</h3>
-<p>Se le due variabili fossero indipendenti, le frequenze attese in ciascuna cella sarebbero determinate dai totali marginali. Per la cella nella riga <span class="math inline">\(i\)</span> e nella colonna <span class="math inline">\(j\)</span>:</p>
+<section id="frequenze-attese" class="level3" data-number="4.6.1"><h3 data-number="4.6.1" class="anchored" data-anchor-id="frequenze-attese">
+<span class="header-section-number">4.6.1</span> Frequenze attese</h3>
+<p>Sotto l’indipendenza, la frequenza attesa nella cella <span class="math inline">\(ij\)</span> è:</p>
 <p><span class="math display">\[
-E_{ij} = \frac{R_i \times C_j}{N},
-\]</span> dove <span class="math inline">\(R_i\)</span> è il totale della riga, <span class="math inline">\(C_j\)</span> il totale della colonna e <span class="math inline">\(N\)</span> il totale generale.</p>
+E_{ij}
+=
+\frac{R_iC_j}{N},
+\]</span></p>
+<p>dove <span class="math inline">\(R_i\)</span> è il totale della riga, <span class="math inline">\(C_j\)</span> quello della colonna e <span class="math inline">\(N\)</span> il totale complessivo.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">totali_riga</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span></span>
 <span><span class="va">totali_colonna</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span></span>
 <span><span class="va">totale</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">attesi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/outer.html">outer</a></span><span class="op">(</span><span class="va">totali_riga</span>, <span class="va">totali_colonna</span><span class="op">)</span> <span class="op">/</span> <span class="va">totale</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span><span class="op">(</span><span class="va">attesi</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/dimnames.html">dimnames</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">attesi</span>, <span class="fl">1</span><span class="op">)</span>,</span>
-<span>  caption <span class="op">=</span> <span class="st">"Frequenze attese sotto l'ipotesi nulla di indipendenza"</span></span>
-<span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">attesi</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="tbl-stress-sleep-expected" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-stress-sleep-expected-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabella&nbsp;4.2: Frequenze attese sotto l’ipotesi nulla di indipendenza.
+</figcaption><div aria-describedby="tbl-stress-sleep-expected-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<caption>Frequenze attese sotto l’ipotesi nulla di indipendenza</caption>
+<table class="cell caption-top table table-sm table-striped small">
 <thead><tr class="header">
 <th style="text-align: left;"></th>
-<th style="text-align: right;">Sonno buono</th>
-<th style="text-align: right;">Sonno scarso</th>
+<th style="text-align: right;">Buono</th>
+<th style="text-align: right;">Scarso</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Stress basso</td>
+<td style="text-align: left;">Basso</td>
 <td style="text-align: right;">35.7</td>
 <td style="text-align: right;">46.3</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Stress alto</td>
+<td style="text-align: left;">Alto</td>
 <td style="text-align: right;">25.3</td>
 <td style="text-align: right;">32.7</td>
 </tr>
@@ -785,28 +938,43 @@ E_{ij} = \frac{R_i \times C_j}{N},
 </table>
 </div>
 </div>
-<p>Le frequenze attese descrivono ciò che ci si aspetterebbe di osservare se l’apparente associazione tra stress e sonno fosse dovuta esclusivamente alla composizione marginale del campione.</p>
-</section><section id="la-statistica-chi2" class="level3" data-number="4.3.3"><h3 data-number="4.3.3" class="anchored" data-anchor-id="la-statistica-chi2">
-<span class="header-section-number">4.3.3</span> La statistica <span class="math inline">\(\chi^2\)</span>
-</h3>
-<p>La statistica del chi-quadrato misura la discrepanza complessiva tra le frequenze osservate e quelle attese:</p>
-<p><span class="math display">\[
-\chi^2 = \sum_{i=1}^{r} \sum_{j=1}^{c} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}.
-\]</span></p>
-<p>Valori piccoli indicano una buona compatibilità con <span class="math inline">\(H_0\)</span>, mentre valori grandi indicano una discrepanza più marcata.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">chi2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">osservati</span> <span class="op">-</span> <span class="va">attesi</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">attesi</span><span class="op">)</span></span>
-<span><span class="va">df_chi</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="va">p_chi</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">pchisq</a></span><span class="op">(</span><span class="va">chi2</span>, <span class="va">df_chi</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Chi-quadrato:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">chi2</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Chi-quadrato: 4.71</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Gradi di libertà:"</span>, <span class="va">df_chi</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Gradi di libertà: 1</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valore-p:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">p_chi</span>, <span class="fl">4</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Valore-p: 0.03</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</figure>
 </div>
-<p>Verifichiamo il risultato con la funzione <code><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test()</a></code>:</p>
+</div>
+</section><section id="statistica-test-1" class="level3" data-number="4.6.2"><h3 data-number="4.6.2" class="anchored" data-anchor-id="statistica-test-1">
+<span class="header-section-number">4.6.2</span> Statistica test</h3>
+<p>La statistica è:</p>
+<p><span class="math display">\[
+\chi^2
+=
+\sum_{i=1}^{r}
+\sum_{j=1}^{c}
+\frac{(O_{ij}-E_{ij})^2}{E_{ij}}.
+\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">chi2_osservato</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">osservati</span> <span class="op">-</span> <span class="va">attesi</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">attesi</span><span class="op">)</span></span>
+<span><span class="va">gradi_liberta</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">p_chi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">pchisq</a></span><span class="op">(</span></span>
+<span>  <span class="va">chi2_osservato</span>,</span>
+<span>  df <span class="op">=</span> <span class="va">gradi_liberta</span>,</span>
+<span>  lower.tail <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  chi_quadrato <span class="op">=</span> <span class="va">chi2_osservato</span>,</span>
+<span>  gradi_liberta <span class="op">=</span> <span class="va">gradi_liberta</span>,</span>
+<span>  valore_p <span class="op">=</span> <span class="va">p_chi</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt;  chi_quadrato gradi_liberta      valore_p </span></span>
+<span><span class="co">#&gt;          4.71          1.00          0.03</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Il calcolo produce circa:</p>
+<p><span class="math display">\[
+\chi^2(1)=4.71,
+\qquad
+p=0.030.
+\]</span></p>
+<p>Verifichiamo con R:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test</a></span><span class="op">(</span><span class="va">osservati</span>, correct <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -815,87 +983,122 @@ E_{ij} = \frac{R_i \times C_j}{N},
 <span><span class="co">#&gt; data:  osservati</span></span>
 <span><span class="co">#&gt; X-squared = 5, df = 1, p-value = 0.03</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>La correzione di continuità è disattivata per mantenere coerenza con il calcolo manuale.</p>
-</section><section id="visualizzare-il-valore-p" class="level3" data-number="4.3.4"><h3 data-number="4.3.4" class="anchored" data-anchor-id="visualizzare-il-valore-p">
-<span class="header-section-number">4.3.4</span> Visualizzare il valore-<em>p</em>
-</h3>
+<p>Disattiviamo la correzione di continuità per riprodurre il calcolo manuale.</p>
+</section><section id="visualizzazione" class="level3" data-number="4.6.3"><h3 data-number="4.6.3" class="anchored" data-anchor-id="visualizzazione">
+<span class="header-section-number">4.6.3</span> Visualizzazione</h3>
 <div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x_massimo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">qchisq</a></span><span class="op">(</span><span class="fl">0.999</span>, df <span class="op">=</span> <span class="va">gradi_liberta</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dati_chi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.001</span>, <span class="va">x_massimo</span>, length.out <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dati_chi</span><span class="op">$</span><span class="va">densita</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">dchisq</a></span><span class="op">(</span><span class="va">dati_chi</span><span class="op">$</span><span class="va">x</span>, df <span class="op">=</span> <span class="va">gradi_liberta</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">dati_chi</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">densita</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_area</span><span class="op">(</span></span>
+<span>    data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">dati_chi</span>, <span class="va">x</span> <span class="op">&gt;=</span> <span class="va">chi2_osservato</span><span class="op">)</span>,</span>
+<span>    alpha <span class="op">=</span> <span class="fl">0.35</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_vline</span><span class="op">(</span></span>
+<span>    xintercept <span class="op">=</span> <span class="va">chi2_osservato</span>,</span>
+<span>    linetype <span class="op">=</span> <span class="st">"dashed"</span>,</span>
+<span>    linewidth <span class="op">=</span> <span class="fl">0.8</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">chi</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Densità"</span></span>
+<span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fig-chi2-pvalue" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-chi2-pvalue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="04_test_ipotesi_files/figure-html/fig-chi2-pvalue-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figura&nbsp;4.1: Distribuzione chi-quadrato sotto H0 e valore-p osservato"><img src="04_test_ipotesi_files/figure-html/fig-chi2-pvalue-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></a>
+<div id="fig-chi-square-p-value" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Curva della distribuzione chi-quadrato con una linea verticale sulla statistica osservata e la coda destra evidenziata." data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-chi-square-p-value-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="04_test_ipotesi_files/figure-html/fig-chi-square-p-value-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figura&nbsp;4.1: Distribuzione chi-quadrato sotto l’ipotesi nulla. L’area oltre la statistica osservata rappresenta il valore-p."><img src="04_test_ipotesi_files/figure-html/fig-chi-square-p-value-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%" alt="Curva della distribuzione chi-quadrato con una linea verticale sulla statistica osservata e la coda destra evidenziata."></a>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chi2-pvalue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figura&nbsp;4.1: Distribuzione chi-quadrato sotto H0 e valore-p osservato
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chi-square-p-value-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4.1: Distribuzione chi-quadrato sotto l’ipotesi nulla. L’area oltre la statistica osservata rappresenta il valore-p.
 </figcaption></figure>
 </div>
 </div>
 </div>
-<p>L’area a destra della statistica osservata è il valore-<em>p</em>. Se tale area è inferiore a <span class="math inline">\(\alpha\)</span>, il risultato cade nella regione di rifiuto.</p>
-<p>Nel nostro esempio, il valore-<em>p</em> è inferiore a 0.05. Possiamo quindi rifiutare l’ipotesi nulla di indipendenza. Una formulazione prudente è:</p>
+<p>In <a href="#fig-chi-square-p-value" class="quarto-xref">Figura&nbsp;<span>4.1</span></a>, l’area a destra di <span class="math inline">\(\chi^2_{\mathrm{obs}}\)</span> è circa 0.030. Al livello <span class="math inline">\(\alpha=0.05\)</span>, la procedura rifiuta l’ipotesi di indipendenza.</p>
+<p>Una formulazione appropriata è:</p>
 <blockquote class="blockquote">
-<p>I dati mostrano una discrepanza rispetto all’ipotesi di indipendenza sufficientemente grande da risultare statisticamente significativa al livello <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<p>Nel campione è emersa un’associazione statisticamente significativa tra stress percepito e qualità del sonno, <span class="math inline">\(\chi^2(1)=4.71\)</span>, <span class="math inline">\(p=0.030\)</span>.</p>
 </blockquote>
-<p>Questa frase è più corretta rispetto a “abbiamo dimostrato che stress e sonno sono associati”. Il test segnala l’incompatibilità con il modello nullo, ma non fornisce una probabilità diretta dell’associazione.</p>
-</section></section><section id="esempio-2-il-test-per-una-media" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="esempio-2-il-test-per-una-media">
-<span class="header-section-number">4.4</span> Esempio 2: il test per una media</h2>
-<p>Consideriamo ora una variabile continua. Una domanda comune in psicologia è se la media di una popolazione differisca da un valore di riferimento.</p>
-<section id="dati-e-ipotesi" class="level3" data-number="4.4.1"><h3 data-number="4.4.1" class="anchored" data-anchor-id="dati-e-ipotesi">
-<span class="header-section-number">4.4.1</span> Dati e ipotesi</h3>
-<p>Un ricercatore vuole verificare se i punteggi di <strong>benessere psicologico</strong> di un gruppo di studenti universitari siano superiori alla media normativa della popolazione, pari a <span class="math inline">\(\mu_0 = 24\)</span>.</p>
-<p>I punteggi osservati sono:</p>
+<p>Questa conclusione non indica:</p>
+<ul>
+<li>la probabilità che le variabili siano associate;</li>
+<li>la grandezza dell’associazione;</li>
+<li>una relazione causale;</li>
+<li>la validità delle categorie utilizzate.</li>
+</ul>
+<p>Per completare l’analisi occorre stimare la dimensione dell’associazione e discuterne il significato sostantivo.</p>
+</section></section><section id="sec-freq-one-sample-t-test" class="level2" data-number="4.7"><h2 data-number="4.7" class="anchored" data-anchor-id="sec-freq-one-sample-t-test">
+<span class="header-section-number">4.7</span> Esempio 2: test <em>t</em> per una media</h2>
+<p>Consideriamo dieci punteggi di benessere psicologico e un valore normativo pari a 24.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">punteggi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">28</span>, <span class="fl">22</span>, <span class="fl">26</span>, <span class="fl">18</span>, <span class="fl">30</span>, <span class="fl">24</span>, <span class="fl">27</span>, <span class="fl">17</span>, <span class="fl">21</span>, <span class="fl">25</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">punteggi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">28</span>, <span class="fl">22</span>, <span class="fl">26</span>, <span class="fl">18</span>, <span class="fl">30</span>, <span class="fl">24</span>, <span class="fl">27</span>, <span class="fl">17</span>, <span class="fl">21</span>, <span class="fl">25</span><span class="op">)</span></span>
+<span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">punteggi</span><span class="op">)</span></span>
-<span><span class="va">media_campione</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">punteggi</span><span class="op">)</span></span>
-<span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">punteggi</span><span class="op">)</span></span>
+<span><span class="va">media</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">punteggi</span><span class="op">)</span></span>
+<span><span class="va">deviazione_standard</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">punteggi</span><span class="op">)</span></span>
+<span><span class="va">errore_standard</span> <span class="op">&lt;-</span> <span class="va">deviazione_standard</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Media campionaria:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">media_campione</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Media campionaria: 23.8</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Deviazione standard campionaria:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">s</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Deviazione standard campionaria: 4.26</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Numerosità:"</span>, <span class="va">n</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Numerosità: 10</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  media <span class="op">=</span> <span class="va">media</span>,</span>
+<span>  deviazione_standard <span class="op">=</span> <span class="va">deviazione_standard</span>,</span>
+<span>  errore_standard <span class="op">=</span> <span class="va">errore_standard</span>,</span>
+<span>  n <span class="op">=</span> <span class="va">n</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt;               media deviazione_standard     errore_standard                   n </span></span>
+<span><span class="co">#&gt;               23.80                4.26                1.35               10.00</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Le ipotesi per un test monodirezionale sono:</p>
+<p>Supponiamo che l’ipotesi, formulata prima di osservare i dati, sia:</p>
 <p><span class="math display">\[
-H_0: \mu = 24
+H_0:\mu=24,
 \]</span></p>
 <p><span class="math display">\[
-H_1: \mu &gt; 24.
+H_1:\mu&gt;24.
 \]</span></p>
-<p>La media osservata è 23.8, quindi non va nemmeno nella direzione ipotizzata. Il test consente comunque di formalizzare questa informazione.</p>
-</section><section id="la-statistica-t" class="level3" data-number="4.4.2"><h3 data-number="4.4.2" class="anchored" data-anchor-id="la-statistica-t">
-<span class="header-section-number">4.4.2</span> La statistica <span class="math inline">\(t\)</span>
-</h3>
-<p>Poiché la deviazione standard della popolazione non è nota, viene stimata con la deviazione standard campionaria <span class="math inline">\(s\)</span>. L’errore standard stimato è:</p>
+<p>La statistica è:</p>
 <p><span class="math display">\[
-SE = \frac{s}{\sqrt{n}}.
+t
+=
+\frac{\bar X-\mu_0}{S/\sqrt n}.
 \]</span></p>
-<p>La statistica test è:</p>
-<p><span class="math display">\[
-t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}.
-\]</span></p>
-<p>Sotto <span class="math inline">\(H_0\)</span>, questa statistica segue una distribuzione <span class="math inline">\(t\)</span> di Student con <span class="math inline">\(n - 1\)</span> gradi di libertà.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mu_0</span> <span class="op">&lt;-</span> <span class="fl">24</span></span>
-<span><span class="va">SE</span> <span class="op">&lt;-</span> <span class="va">s</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
-<span><span class="va">t_obs</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">media_campione</span> <span class="op">-</span> <span class="va">mu_0</span><span class="op">)</span> <span class="op">/</span> <span class="va">SE</span></span>
-<span><span class="va">df_t</span> <span class="op">&lt;-</span> <span class="va">n</span> <span class="op">-</span> <span class="fl">1</span></span>
-<span><span class="va">p_t_greater</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="va">t_obs</span>, <span class="va">df_t</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mu_0</span> <span class="op">&lt;-</span> <span class="fl">24</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Errore standard:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">SE</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Errore standard: 1.35</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Statistica t:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">t_obs</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Statistica t: -0.148</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Gradi di libertà:"</span>, <span class="va">df_t</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Gradi di libertà: 9</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Valore-p:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">p_t_greater</span>, <span class="fl">3</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Valore-p: 0.557</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="va">t_osservato</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">media</span> <span class="op">-</span> <span class="va">mu_0</span><span class="op">)</span> <span class="op">/</span> <span class="va">errore_standard</span></span>
+<span><span class="va">gradi_liberta_t</span> <span class="op">&lt;-</span> <span class="va">n</span> <span class="op">-</span> <span class="fl">1</span></span>
+<span><span class="va">p_unilaterale</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span></span>
+<span>  <span class="va">t_osservato</span>,</span>
+<span>  df <span class="op">=</span> <span class="va">gradi_liberta_t</span>,</span>
+<span>  lower.tail <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  t <span class="op">=</span> <span class="va">t_osservato</span>,</span>
+<span>  gradi_liberta <span class="op">=</span> <span class="va">gradi_liberta_t</span>,</span>
+<span>  valore_p <span class="op">=</span> <span class="va">p_unilaterale</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt;             t gradi_liberta      valore_p </span></span>
+<span><span class="co">#&gt;        -0.148         9.000         0.557</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Verifichiamo con <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>:</p>
+<p>Otteniamo circa:</p>
+<p><span class="math display">\[
+t(9)=-0.15,
+\qquad
+p=0.557.
+\]</span></p>
+<p>La media osservata, 23.8, non è nella direzione dell’alternativa superiore. Non rifiutiamo <span class="math inline">\(H_0\)</span>.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">punteggi</span>, mu <span class="op">=</span> <span class="fl">24</span>, alternative <span class="op">=</span> <span class="st">"greater"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span></span>
+<span>  <span class="va">punteggi</span>,</span>
+<span>  mu <span class="op">=</span> <span class="fl">24</span>,</span>
+<span>  alternative <span class="op">=</span> <span class="st">"greater"</span></span>
+<span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  One Sample t-test</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -908,15 +1111,27 @@ t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}.
 <span><span class="co">#&gt; mean of x </span></span>
 <span><span class="co">#&gt;      23.8</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Il valore-<em>p</em> è elevato. Se la media vera fosse 24, una media campionaria pari o superiore a quella osservata non sarebbe affatto rara. I dati non forniscono evidenza a sostegno dell’ipotesi che il benessere medio sia superiore alla norma.</p>
-</section><section id="test-monodirezionale-e-bidirezionale" class="level3" data-number="4.4.3"><h3 data-number="4.4.3" class="anchored" data-anchor-id="test-monodirezionale-e-bidirezionale">
-<span class="header-section-number">4.4.3</span> Test monodirezionale e bidirezionale</h3>
-<p>Se il ricercatore non avesse specificato una direzione e volesse soltanto verificare se la media differisce da 24, dovrebbe usare un test bidirezionale:</p>
+<p>Una formulazione adeguata è:</p>
+<blockquote class="blockquote">
+<p>I dati non forniscono evidenza, secondo questo test unilaterale, che la media sia superiore a 24, <span class="math inline">\(t(9)=-0.15\)</span>, <span class="math inline">\(p=0.557\)</span>.</p>
+</blockquote>
+<p>Non è adeguato concludere:</p>
+<blockquote class="blockquote">
+<p>Abbiamo dimostrato che la media è uguale a 24.</p>
+</blockquote>
+<p>Il test non significativo lascia aperte molte possibilità, comprese una differenza piccola, dati poco informativi o una deviazione nella direzione opposta.</p>
+</section><section id="sec-freq-one-two-sided" class="level2" data-number="4.8"><h2 data-number="4.8" class="anchored" data-anchor-id="sec-freq-one-two-sided">
+<span class="header-section-number">4.8</span> Test unilaterali e bilaterali</h2>
+<p>Un test bilaterale considera deviazioni in entrambe le direzioni:</p>
 <p><span class="math display">\[
-H_1: \mu \neq 24.
+H_1:\mu\neq\mu_0.
 \]</span></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">punteggi</span>, mu <span class="op">=</span> <span class="fl">24</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span></span>
+<span>  <span class="va">punteggi</span>,</span>
+<span>  mu <span class="op">=</span> <span class="fl">24</span>,</span>
+<span>  alternative <span class="op">=</span> <span class="st">"two.sided"</span></span>
+<span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  One Sample t-test</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -929,132 +1144,219 @@ H_1: \mu \neq 24.
 <span><span class="co">#&gt; mean of x </span></span>
 <span><span class="co">#&gt;      23.8</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Nel test bidirezionale il valore-<em>p</em> considera le discrepanze in entrambe le direzioni. La scelta tra il test monodirezionale e quello bidirezionale deve essere motivata dal punto di vista teorico prima di osservare i dati, non deve essere presa in base al risultato.</p>
-</section></section><section id="interpretare-correttamente-il-valore-p" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="interpretare-correttamente-il-valore-p">
-<span class="header-section-number">4.5</span> Interpretare correttamente il valore-<em>p</em>
-</h2>
-<p>Il valore-<em>p</em> è spesso interpretato in modo scorretto. È utile fissare alcune regole.</p>
-<p>Il valore-<em>p</em> <strong>non</strong> è:</p>
-<ul>
-<li>la probabilità che <span class="math inline">\(H_0\)</span> sia vera;</li>
-<li>la probabilità che <span class="math inline">\(H_1\)</span> sia vera;</li>
-<li>la probabilità che il risultato sia dovuto al caso;</li>
-<li>una misura della grandezza dell’effetto;</li>
-<li>una misura della probabilità di replicazione.</li>
-</ul>
-<p>Il valore-<em>p</em> è invece:</p>
-<ul>
-<li>una probabilità calcolata assumendo vera <span class="math inline">\(H_0\)</span>;</li>
-<li>una misura di incompatibilità tra dati e modello nullo;</li>
-<li>un elemento di una regola decisionale frequentista;</li>
-<li>una quantità dipendente dal modello, dalla statistica test e dal piano di analisi.</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled" title="Formula da ricordare">
+<p>Per gli stessi dati, il valore-<em>p</em> bilaterale è circa 0.885.</p>
+<p>La scelta tra test unilaterale e bilaterale deve essere motivata dalla domanda e definita prima di osservare i risultati. Scegliere a posteriori la coda favorevole altera il controllo dell’errore di tipo I.</p>
+<p>Un test unilaterale non dovrebbe essere usato soltanto per ottenere maggiore potenza. Deve essere scientificamente sensato escludere, dalla regola di evidenza, una deviazione nella direzione opposta.</p>
+</section><section id="sec-freq-interpreting-test-result" class="level2" data-number="4.9"><h2 data-number="4.9" class="anchored" data-anchor-id="sec-freq-interpreting-test-result">
+<span class="header-section-number">4.9</span> Interpretare un risultato</h2>
+<p>Una lettura completa separa almeno quattro livelli.</p>
+<section id="compatibilità-con-il-modello-nullo" class="level3" data-number="4.9.1"><h3 data-number="4.9.1" class="anchored" data-anchor-id="compatibilità-con-il-modello-nullo">
+<span class="header-section-number">4.9.1</span> Compatibilità con il modello nullo</h3>
+<p>Il valore-<em>p</em> descrive quanto il risultato sia estremo sotto <span class="math inline">\(H_0\)</span> e le assunzioni del test.</p>
+</section><section id="decisione-procedurale" class="level3" data-number="4.9.2"><h3 data-number="4.9.2" class="anchored" data-anchor-id="decisione-procedurale">
+<span class="header-section-number">4.9.2</span> Decisione procedurale</h3>
+<p>Il confronto con <span class="math inline">\(\alpha\)</span> applica una regola di rifiuto o non rifiuto.</p>
+</section><section id="grandezza-e-precisione-delleffetto" class="level3" data-number="4.9.3"><h3 data-number="4.9.3" class="anchored" data-anchor-id="grandezza-e-precisione-delleffetto">
+<span class="header-section-number">4.9.3</span> Grandezza e precisione dell’effetto</h3>
+<p>La stima e l’intervallo di confidenza mostrano quanto è grande l’effetto e con quale precisione è stato stimato.</p>
+</section><section id="significato-scientifico" class="level3" data-number="4.9.4"><h3 data-number="4.9.4" class="anchored" data-anchor-id="significato-scientifico">
+<span class="header-section-number">4.9.4</span> Significato scientifico</h3>
+<p>La rilevanza dipende da teoria, qualità della misura, disegno, costi, benefici e contesto applicativo.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Significativo non significa importante">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>Formula da ricordare
+<span class="screen-reader-only">Importante</span>Significativo non significa importante
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La forma corretta è:</p>
-<p><span class="math display">\[
-P(\text{dati almeno così estremi} \mid H_0),
-\]</span></p>
-<p>non:</p>
-<p><span class="math display">\[
-P(H_0 \mid \text{dati}).
-\]</span></p>
+<p>Un risultato può essere statisticamente significativo ma troppo piccolo per avere rilievo teorico o pratico.</p>
+<p>Un risultato non significativo può essere compatibile sia con effetti trascurabili sia con effetti rilevanti stimati con scarsa precisione.</p>
 </div>
 </div>
-</section><section id="significatività-statistica-e-rilevanza-sostanziale" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="significatività-statistica-e-rilevanza-sostanziale">
-<span class="header-section-number">4.6</span> Significatività statistica e rilevanza sostanziale</h2>
-<p>Un risultato statisticamente significativo non è necessariamente rilevante dal punto di vista teorico, clinico o pratico. Con campioni molto grandi, anche effetti minimi possono produrre valori-<em>p</em> piccoli. Con campioni piccoli, effetti potenzialmente rilevanti potrebbero non raggiungere la soglia convenzionale.</p>
-<p>Per questo motivo, il valore-<em>p</em> dovrebbe essere accompagnato da:</p>
+</section></section><section id="sec-freq-testing-limits" class="level2" data-number="4.10"><h2 data-number="4.10" class="anchored" data-anchor-id="sec-freq-testing-limits">
+<span class="header-section-number">4.10</span> Limiti e usi appropriati</h2>
+<section id="la-soglia-crea-una-discontinuità-decisionale" class="level3" data-number="4.10.1"><h3 data-number="4.10.1" class="anchored" data-anchor-id="la-soglia-crea-una-discontinuità-decisionale">
+<span class="header-section-number">4.10.1</span> La soglia crea una discontinuità decisionale</h3>
+<p><span class="math inline">\(p=0.049\)</span> e <span class="math inline">\(p=0.051\)</span> rappresentano livelli di incompatibilità molto simili. Trasformarli in categorie opposte può esagerare la differenza tra i risultati.</p>
+<p>La soglia può essere utile in una procedura decisionale, ma non deve sostituire la lettura continua dei dati.</p>
+</section><section id="lipotesi-nulla-puntuale-può-essere-poco-informativa" class="level3" data-number="4.10.2"><h3 data-number="4.10.2" class="anchored" data-anchor-id="lipotesi-nulla-puntuale-può-essere-poco-informativa">
+<span class="header-section-number">4.10.2</span> L’ipotesi nulla puntuale può essere poco informativa</h3>
+<p>In molti contesti, sapere che un effetto non è esattamente zero è meno utile che sapere se sia:</p>
 <ul>
-<li>una stima puntuale dell’effetto;</li>
-<li>un intervallo di confidenza;</li>
-<li>una misura della dimensione dell’effetto;</li>
-<li>una discussione della rilevanza teorica o applicativa;</li>
-<li>una valutazione della qualità del disegno di ricerca e della misura.</li>
+<li>sufficientemente grande;</li>
+<li>praticamente rilevante;</li>
+<li>compatibile con una regione di equivalenza;</li>
+<li>stabile tra popolazioni e contesti.</li>
 </ul>
-<p>Nel capitolo precedente abbiamo visto che gli intervalli di confidenza aiutano a comunicare la precisione della stima. Il test di ipotesi aggiunge una regola decisionale, ma non sostituisce la valutazione dell’effetto e della sua incertezza.</p>
-</section><section id="limiti-del-test-di-ipotesi-frequentista" class="level2" data-number="4.7"><h2 data-number="4.7" class="anchored" data-anchor-id="limiti-del-test-di-ipotesi-frequentista">
-<span class="header-section-number">4.7</span> Limiti del test di ipotesi frequentista</h2>
-<p>Il test di ipotesi è utile quando viene interpretato per ciò che è: una procedura per controllare gli errori decisionali nel lungo periodo. Tuttavia, diventa problematico quando viene trattato come una misura diretta della verità di un’ipotesi o della forza dell’evidenza.</p>
-<p>I limiti principali sono i seguenti.</p>
+<p>La difficoltà non rende sempre illegittima un’ipotesi puntuale. Indica che la domanda deve essere scelta in funzione dello scopo scientifico.</p>
+</section><section id="un-risultato-non-significativo-non-dimostra-equivalenza" class="level3" data-number="4.10.3"><h3 data-number="4.10.3" class="anchored" data-anchor-id="un-risultato-non-significativo-non-dimostra-equivalenza">
+<span class="header-section-number">4.10.3</span> Un risultato non significativo non dimostra equivalenza</h3>
+<p>Per sostenere che un effetto sia abbastanza piccolo da essere trascurabile occorre definire che cosa significhi «abbastanza piccolo» e usare una procedura adatta, come un test di equivalenza o un’analisi con una regione di effetti praticamente trascurabili.</p>
+</section><section id="il-valore-p-è-sensibile-al-piano-di-analisi" class="level3" data-number="4.10.4"><h3 data-number="4.10.4" class="anchored" data-anchor-id="il-valore-p-è-sensibile-al-piano-di-analisi">
+<span class="header-section-number">4.10.4</span> Il valore-<em>p</em> è sensibile al piano di analisi</h3>
+<p>Arresto opzionale, confronti multipli, esclusioni flessibili e scelta post hoc delle analisi modificano le proprietà nominali della procedura. Preregistrazione, trasparenza e analisi di sensibilità aiutano a rendere interpretabili i risultati.</p>
+</section><section id="il-test-non-controlla-la-validità-scientifica" class="level3" data-number="4.10.5"><h3 data-number="4.10.5" class="anchored" data-anchor-id="il-test-non-controlla-la-validità-scientifica">
+<span class="header-section-number">4.10.5</span> Il test non controlla la validità scientifica</h3>
+<p>Un test può essere calcolato correttamente su:</p>
+<ul>
+<li>un campione non rappresentativo;</li>
+<li>una misura poco valida;</li>
+<li>un disegno confuso;</li>
+<li>un modello inadeguato.</li>
+</ul>
+<p>La significatività non corregge questi problemi.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Quando il test è utile">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Quando il test è utile
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un test frequentista è particolarmente interpretabile quando:</p>
+<ul>
+<li>la domanda decisionale è definita prima dei dati;</li>
+<li>il disegno consente di collegare il parametro alla domanda scientifica;</li>
+<li>il modello e l’errore standard sono adeguati;</li>
+<li>la famiglia di test è chiaramente specificata;</li>
+<li>vengono riportati anche stime, intervalli e misure dell’effetto.</li>
+</ul>
+</div>
+</div>
+</section></section><section id="sec-freq-testing-bayes" class="level2" data-number="4.11"><h2 data-number="4.11" class="anchored" data-anchor-id="sec-freq-testing-bayes">
+<span class="header-section-number">4.11</span> Confronto con l’inferenza bayesiana</h2>
+<p>Il confronto più utile parte dalle domande, non dagli slogan.</p>
+<p>Un test frequentista standard chiede:</p>
+<blockquote class="blockquote">
+<p>Quanto è estremo il risultato sotto <span class="math inline">\(H_0\)</span>?</p>
+</blockquote>
+<p>Un’analisi bayesiana può chiedere:</p>
+<blockquote class="blockquote">
+<p>Come si distribuisce l’incertezza sul parametro dopo avere combinato prior e dati?</p>
+</blockquote>
+<p>oppure, in un modello che assegna probabilità a ipotesi discrete:</p>
+<blockquote class="blockquote">
+<p>Come cambiano le probabilità relative delle ipotesi dopo i dati?</p>
+</blockquote>
+<p>Queste non sono riformulazioni dello stesso numero. Un valore-<em>p</em> non è una probabilità a posteriori, e una probabilità a posteriori non possiede automaticamente il controllo frequentista degli errori.</p>
+<p>Il Companion approfondisce la fragilità del valore-<em>p</em> e mostra come il workflow bayesiano sposti l’attenzione verso modello generativo, distribuzione a posteriori, predizioni e controllo del modello. Il modulo frequentista conserva però una funzione indispensabile: permettere di leggere correttamente la letteratura e comprendere quali proprietà procedurali vengono garantite dai metodi classici.</p>
+</section><section id="sec-freq-testing-to-sample-size" class="level2" data-number="4.12"><h2 data-number="4.12" class="anchored" data-anchor-id="sec-freq-testing-to-sample-size">
+<span class="header-section-number">4.12</span> Verso la pianificazione dello studio</h2>
+<p>Un risultato non significativo può dipendere da:</p>
+<ul>
+<li>un effetto assente o trascurabile;</li>
+<li>un campione troppo piccolo;</li>
+<li>una misura poco precisa;</li>
+<li>grande eterogeneità;</li>
+<li>un modello o un test poco sensibile.</li>
+</ul>
+<p>Per valutare in anticipo quanto uno studio sia informativo, occorre specificare:</p>
 <ol type="1">
-<li><p><strong>Decisione dicotomica.</strong><br>
-La soglia <span class="math inline">\(\alpha = 0.05\)</span> trasforma una quantità continua in una decisione binaria. Due valori molto simili, come 0.049 e 0.051, possono ricevere etichette diverse pur rappresentando un’evidenza quasi indistinguibile.</p></li>
-<li><p><strong>Dipendenza dalla numerosità campionaria.</strong><br>
-A parità di effetto, un campione più grande produce errori standard più piccoli e, di conseguenza, test più sensibili. Questo è utile, ma può rendere statisticamente significativi effetti di scarsa importanza pratica.</p></li>
-<li><p><strong>Interpretazione debole dei risultati non significativi.</strong><br>
-Non rifiutare <span class="math inline">\(H_0\)</span> non significa dimostrare l’assenza dell’effetto. Può significare che lo studio non fornisce informazioni sufficienti per distinguere l’effetto dal rumore campionario.</p></li>
-<li><p><strong>Ipotesi nulla puntuale.</strong><br>
-Molti test valutano un’ipotesi del tipo <span class="math inline">\(\delta = 0\)</span>, ovvero un effetto esattamente nullo. In molte situazioni psicologiche, però, la domanda scientifica più rilevante non è se l’effetto sia esattamente pari a zero, ma se sia sufficientemente grande da essere rilevante dal punto di vista teorico o clinico.</p></li>
-<li><p><strong>Dipendenza dal piano di analisi.</strong><br>
-Il valore-<em>p</em> dipende non solo dai dati osservati, ma anche da aspetti procedurali come la regola di arresto, il numero di confronti e la scelta tra test monodirezionale e bidirezionale.</p></li>
+<li>quale effetto minimo sia scientificamente rilevante;</li>
+<li>quale livello di errore di tipo I sia accettabile;</li>
+<li>quale potenza si desideri;</li>
+<li>quale variabilità e struttura dei dati siano plausibili.</li>
 </ol>
-<p>Questi limiti non rendono il test di ipotesi inutile. Tuttavia, indicano che il suo significato deve essere circoscritto: il test frequentista è uno strumento decisionale, non una misura diretta della plausibilità delle ipotesi.</p>
-</section><section id="ponte-verso-la-pianificazione-dello-studio" class="level2" data-number="4.8"><h2 data-number="4.8" class="anchored" data-anchor-id="ponte-verso-la-pianificazione-dello-studio">
-<span class="header-section-number">4.8</span> Ponte verso la pianificazione dello studio</h2>
-<p>Il capitolo successivo approfondisce un punto lasciato volutamente in sospeso: la <strong>potenza</strong>. Abbiamo visto che un risultato non significativo può dipendere dall’assenza di un effetto, ma anche da un disegno sperimentale poco informativo. Per interpretare correttamente un test, è quindi necessario porsi le seguenti domande:</p>
-<ul>
-<li>quale effetto ci aspettiamo di poter rilevare?</li>
-<li>quante osservazioni sono necessarie?</li>
-<li>con quale probabilità il test riuscirà a individuare un effetto rilevante?</li>
-</ul>
-<p>Queste domande collegano direttamente il test di ipotesi alla pianificazione della numerosità del campione.</p>
+<p>Questi elementi conducono al capitolo successivo sulla pianificazione della numerosità campionaria.</p>
 </section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
-<p>Il test di ipotesi frequentista valuta la compatibilità dei dati con l’ipotesi nulla. La sua forza risiede nella chiarezza procedurale: formula una regola, controlla la probabilità di falsi positivi nel lungo periodo e consente decisioni standardizzate.</p>
-<p>Il suo limite principale è interpretativo. Il valore-<em>p</em> non indica quanto sia probabile un’ipotesi, né quanto sia rilevante un effetto. Indica quanto sarebbero rari dati almeno così estremi se <span class="math inline">\(H_0\)</span> fosse vera.</p>
-<p>Per questo motivo, quando si legge la letteratura psicologica, è utile distinguere tre livelli:</p>
-<ol type="1">
-<li>
-<strong>Decisione statistica:</strong> il risultato supera o non supera la soglia <span class="math inline">\(\alpha\)</span>?</li>
-<li>
-<strong>Stima dell’effetto:</strong> quanto è grande la differenza o l’associazione osservata?</li>
-<li>
-<strong>Interpretazione scientifica:</strong> l’effetto è rilevante dal punto di vista teorico, clinico o pratico?</li>
-</ol>
-<p>L’approccio bayesiano, che verrà approfondito nel resto del percorso, risponde a domande diverse: permette di aggiornare le credenze sui parametri e di confrontare le ipotesi alla luce dei dati osservati. Comprendere il test frequentista è quindi utile non solo per leggere la letteratura esistente, ma anche per capire con maggiore chiarezza cosa cambia quando si passa a un’impostazione bayesiana.</p>
-</section><section id="punti-chiave-da-ricordare" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="punti-chiave-da-ricordare">Punti chiave da ricordare</h2>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Importante
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p>Il test di ipotesi colloca una statistica osservata nella distribuzione che avrebbe sotto un’ipotesi nulla e un insieme di assunzioni. Il valore-<em>p</em> misura l’estremità del risultato in quella distribuzione; il confronto con <span class="math inline">\(\alpha\)</span> applica una regola decisionale.</p>
+<p>La distinzione tra Fisher e Neyman–Pearson chiarisce perché nella pratica convivano due usi:</p>
 <ul>
-<li>Il test di ipotesi frequentista valuta i dati <strong>condizionatamente a <span class="math inline">\(H_0\)</span></strong>.</li>
-<li>Il valore-<em>p</em> è <span class="math inline">\(P(\text{dati almeno così estremi} \mid H_0)\)</span>.</li>
-<li>Un valore-<em>p</em> piccolo indica incompatibilità con il modello nullo, non la probabilità che <span class="math inline">\(H_0\)</span> sia falsa.</li>
-<li>Non rifiutare <span class="math inline">\(H_0\)</span> non equivale ad accettarla.</li>
-<li>La significatività statistica non coincide con la rilevanza sostanziale.</li>
-<li>La potenza collega il test di ipotesi alla pianificazione della numerosità campionaria.</li>
+<li>il valore-<em>p</em> come misura graduata di incompatibilità;</li>
+<li>il test come procedura di decisione con errori controllati.</li>
 </ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="Informazioni sull'ambiente di sviluppo">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<p>Nessuno dei due usi autorizza a leggere il valore-<em>p</em> come probabilità dell’ipotesi o come misura dell’importanza dell’effetto.</p>
+<p>Una comunicazione scientifica adeguata affianca al risultato del test:</p>
+<ul>
+<li>stima dell’effetto;</li>
+<li>intervallo di confidenza;</li>
+<li>informazioni sul disegno e sulle assunzioni;</li>
+<li>valutazione della rilevanza sostantiva.</li>
+</ul>
+<p>Il prossimo capitolo completerà la logica decisionale studiando il rapporto tra effetto bersaglio, potenza e numerosità campionaria.</p>
+</section><section id="esercizi" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="esercizi">Esercizi</h2>
+<ol type="1">
+<li><p>Qual è la differenza tra un valore-<em>p</em> e il livello <span class="math inline">\(\alpha\)</span>?</p></li>
+<li><p>Perché <span class="math inline">\(p=0.03\)</span> non significa che l’ipotesi nulla abbia una probabilità del 3% di essere vera?</p></li>
+<li><p>Quale ruolo svolge la regola di estremità nella definizione del valore-<em>p</em>?</p></li>
+<li><p>Un risultato produce <span class="math inline">\(p=0.18\)</span>. Qual è la conclusione frequentista corretta? Quale conclusione non è giustificata?</p></li>
+<li><p>Perché la potenza non può essere descritta senza specificare un effetto sotto l’alternativa?</p></li>
+<li><p>Nel test del chi-quadrato emerge <span class="math inline">\(p=0.030\)</span>. Quali informazioni importanti non sono contenute in questo numero?</p></li>
+<li><p>Perché scegliere un test unilaterale dopo aver osservato la direzione dell’effetto altera l’interpretazione del test?</p></li>
+<li><p>In che modo un’analisi bayesiana e un test frequentista formulano domande diverse sugli stessi dati?</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled" title="Soluzioni">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Informazioni sull’ambiente di sviluppo
+<span class="screen-reader-only">Consiglio</span>Soluzioni
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Il valore-<em>p</em> è calcolato dai dati e misura l’estremità del risultato sotto <span class="math inline">\(H_0\)</span>. <span class="math inline">\(\alpha\)</span> è una soglia decisionale scelta prima dell’analisi per controllare l’errore di tipo I della procedura.</p></li>
+<li><p>Il 3% riguarda la probabilità di risultati almeno altrettanto estremi sotto <span class="math inline">\(H_0\)</span>. Non riguarda la probabilità di <span class="math inline">\(H_0\)</span> condizionata ai dati.</p></li>
+<li><p>Stabilisce quali valori della statistica siano almeno altrettanto incompatibili con <span class="math inline">\(H_0\)</span> quanto quello osservato. Cambiando test unilaterale, bilaterale o statistica, può cambiare il valore-<em>p</em>.</p></li>
+<li><p>Al livello convenzionale 0.05, non si rifiuta <span class="math inline">\(H_0\)</span>. Non è giustificato concludere che <span class="math inline">\(H_0\)</span> sia vera, che l’effetto sia esattamente zero o che i gruppi siano equivalenti.</p></li>
+<li><p>La probabilità di rifiutare <span class="math inline">\(H_0\)</span> cambia con la distanza tra il parametro vero e il valore nullo. Non esiste quindi una potenza unica per tutte le possibili alternative.</p></li>
+<li><p>Non contiene la grandezza dell’associazione, la sua precisione, la probabilità che l’associazione esista, l’eventuale causalità o la validità delle categorie e del disegno.</p></li>
+<li><p>La coda viene selezionata usando informazione già contenuta nei dati, mentre il calcolo nominale presuppone che la direzione sia stata fissata in anticipo. Il controllo dell’errore di tipo I non è più quello dichiarato.</p></li>
+<li><p>Il test frequentista valuta l’estremità dei dati sotto <span class="math inline">\(H_0\)</span>. L’analisi bayesiana rappresenta l’incertezza a posteriori su parametri o ipotesi mediante prior, verosimiglianza e dati.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Punti chiave">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Punti chiave
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Un test richiede ipotesi, statistica test, distribuzione nulla e regola di estremità.</li>
+<li>Il valore-<em>p</em> è calcolato sotto <span class="math inline">\(H_0\)</span> e non è la probabilità di <span class="math inline">\(H_0\)</span>.</li>
+<li>Il valore-<em>p</em> e il livello <span class="math inline">\(\alpha\)</span> svolgono funzioni diverse.</li>
+<li>La pratica NHST combina spesso elementi fisheriani e Neyman–Pearson.</li>
+<li>Gli errori di tipo I e II e la potenza sono proprietà della procedura sotto condizioni specificate.</li>
+<li>La potenza dipende dall’effetto sotto l’alternativa.</li>
+<li>Non rifiutare <span class="math inline">\(H_0\)</span> non significa accettarla o dimostrare equivalenza.</li>
+<li>Significatività statistica, dimensione dell’effetto e rilevanza sostantiva sono concetti distinti.</li>
+<li>La qualità di un test dipende da disegno, misurazione, modello e piano di analisi.</li>
+<li>Frequentismo e bayesianesimo rispondono a domande probabilistiche differenti.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Ambiente di sviluppo">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Ambiente di sviluppo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Le informazioni sull’ambiente R possono essere ottenute con:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.6.1 (2026-06-24)</span></span>
 <span><span class="co">#&gt; Platform: aarch64-apple-darwin23</span></span>
 <span><span class="co">#&gt; Running under: macOS Tahoe 26.5.2</span></span>
@@ -1066,7 +1368,7 @@ Importante
 <span><span class="co">#&gt; locale:</span></span>
 <span><span class="co">#&gt; [1] C.UTF-8/UTF-8/C.UTF-8/C/C.UTF-8/C.UTF-8</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; time zone: Europe/Rome</span></span>
+<span><span class="co">#&gt; time zone: Europe/Zagreb</span></span>
 <span><span class="co">#&gt; tzcode source: internal</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; attached base packages:</span></span>
@@ -1077,7 +1379,7 @@ Importante
 <span><span class="co">#&gt;  [4] systemfonts_1.3.2     patchwork_1.3.2       ggdist_3.3.3         </span></span>
 <span><span class="co">#&gt;  [7] tidybayes_3.0.7       bayesplot_1.15.0      ggplot2_4.0.3        </span></span>
 <span><span class="co">#&gt; [10] reliabilitydiag_0.2.1 priorsense_1.2.0      posterior_1.7.0      </span></span>
-<span><span class="co">#&gt; [13] loo_2.10.0            rstan_2.32.7          StanHeaders_2.32.10  </span></span>
+<span><span class="co">#&gt; [13] loo_2.10.1            rstan_2.32.7          StanHeaders_2.32.10  </span></span>
 <span><span class="co">#&gt; [16] brms_2.23.0           Rcpp_1.1.2            sessioninfo_1.2.4    </span></span>
 <span><span class="co">#&gt; [19] conflicted_1.2.0      janitor_2.2.1         matrixStats_1.5.0    </span></span>
 <span><span class="co">#&gt; [22] modelr_0.1.11         tibble_3.3.1          dplyr_1.2.1          </span></span>
@@ -1093,12 +1395,12 @@ Importante
 <span><span class="co">#&gt; [19] htmlwidgets_1.6.4     pkgbuild_1.4.8        curl_7.1.0           </span></span>
 <span><span class="co">#&gt; [22] RColorBrewer_1.1-3    abind_1.4-8           purrr_1.2.2          </span></span>
 <span><span class="co">#&gt; [25] grid_4.6.1            stats4_4.6.1          xtable_1.8-8         </span></span>
-<span><span class="co">#&gt; [28] inline_0.3.21         emmeans_2.0.3         scales_1.4.0         </span></span>
-<span><span class="co">#&gt; [31] cli_3.6.6             mvtnorm_1.4-1         rmarkdown_2.31       </span></span>
+<span><span class="co">#&gt; [28] inline_0.3.21         emmeans_2.0.4         scales_1.4.0         </span></span>
+<span><span class="co">#&gt; [31] cli_3.6.6             mvtnorm_1.4-2         rmarkdown_2.31       </span></span>
 <span><span class="co">#&gt; [34] generics_0.1.4        otel_0.2.0            RcppParallel_5.1.11-2</span></span>
 <span><span class="co">#&gt; [37] cachem_1.1.0          stringr_1.6.0         parallel_4.6.1       </span></span>
-<span><span class="co">#&gt; [40] vctrs_0.7.3           V8_8.2.0              Matrix_1.7-5         </span></span>
-<span><span class="co">#&gt; [43] jsonlite_2.0.0        arrayhelpers_1.1-1    glue_1.8.1           </span></span>
+<span><span class="co">#&gt; [40] vctrs_0.7.3           V8_8.2.0              Matrix_1.7-6         </span></span>
+<span><span class="co">#&gt; [43] jsonlite_2.0.0        arrayhelpers_1.1-2    glue_1.8.1           </span></span>
 <span><span class="co">#&gt; [46] codetools_0.2-20      distributional_0.8.1  lubridate_1.9.5      </span></span>
 <span><span class="co">#&gt; [49] stringi_1.8.7         gtable_0.3.6          QuickJSR_1.10.0      </span></span>
 <span><span class="co">#&gt; [52] pillar_1.11.1         htmltools_0.5.9       Brobdingnag_1.2-9    </span></span>
@@ -1106,7 +1408,7 @@ Importante
 <span><span class="co">#&gt; [58] evaluate_1.0.5        lattice_0.22-9        backports_1.5.1      </span></span>
 <span><span class="co">#&gt; [61] memoise_2.0.1         broom_1.0.13          snakecase_0.11.1     </span></span>
 <span><span class="co">#&gt; [64] rstantools_2.6.0      coda_0.19-4.1         gridExtra_2.3.1      </span></span>
-<span><span class="co">#&gt; [67] nlme_3.1-169          checkmate_2.3.4       xfun_0.60            </span></span>
+<span><span class="co">#&gt; [67] nlme_3.1-170          checkmate_2.3.4       xfun_0.60            </span></span>
 <span><span class="co">#&gt; [70] pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -1539,8 +1841,8 @@ Importante
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../chapters/frequentist_inference/05_sample_size.html" class="pagination-link" aria-label="Dimensione campionaria, errore e potenza">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, errore e potenza</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../chapters/frequentist_inference/05_sample_size.html" class="pagination-link" aria-label="Dimensione campionaria, precisione e potenza">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, precisione e potenza</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
