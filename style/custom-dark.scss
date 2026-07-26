@@ -245,6 +245,44 @@ pre code {
   border-radius: 0;
 }
 
+// Codice inline nel testo.
+// Quarto/Bootstrap possono applicare un background chiaro a `code` inline
+// con selettori piu specifici: qui lo separiamo esplicitamente dai code block.
+:not(pre) > code,
+p code,
+li code,
+dd code,
+dt code,
+td code,
+th code,
+figcaption code,
+.figure-caption code,
+.callout-body code,
+.quarto-title-meta code,
+a code {
+  background-color: #242b36 !important;
+  color: #f0f6fc !important;
+  border: 1px solid #3a4350;
+  border-radius: 0.25rem;
+  padding: 0.1em 0.35em;
+  font-size: 0.85em;
+  font-weight: 500;
+  white-space: nowrap;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+// Mantiene i blocchi di codice senza sfondo/padding aggiuntivi sul tag `code`.
+pre > code,
+pre code.sourceCode,
+div.sourceCode pre code {
+  background-color: transparent !important;
+  color: inherit !important;
+  border: 0;
+  padding: 0;
+  white-space: pre;
+}
+
 // Output testuale di R / knitr
 .cell-output,
 .cell-output pre,

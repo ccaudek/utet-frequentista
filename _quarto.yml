@@ -7,9 +7,8 @@ lang: it
 book:
   title: "Inferenza frequentista in psicologia"
   subtitle: "Modulo introduttivo"
-  description: "Modulo introduttivo sull'inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale Metodi bayesiani in psicologia."
+  description: "Modulo introduttivo sull'inferenza frequentista in psicologia, parte del progetto UTET a supporto del manuale *Inferenza bayesiana in psicologia: Ragionare con l'incertezza*."
   license: "CC BY-NC-ND 4.0"
-  favicon: style/gauss.png
 
   author:
     - name: "Corrado Caudek"
@@ -51,7 +50,7 @@ book:
 
   page-footer:
     left: |
-      **Inferenza frequentista in psicologia** — Modulo del progetto UTET a supporto del manuale *Metodi bayesiani in psicologia*.
+      **Inferenza frequentista in psicologia** — Modulo del progetto UTET a supporto del manuale *Inferenza bayesiana in psicologia: Ragionare con l'incertezza*.
     right: |
       Realizzato con [Quarto](https://quarto.org/).
 
@@ -72,9 +71,6 @@ book:
     - part: "Epilogo"
       chapters:
         - chapters/epilogo/epilogo.qmd
-
-crossref:
-  appendix-title: "Appendice"
 
 toc: true
 toc-depth: 2
