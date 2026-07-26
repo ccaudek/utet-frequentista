@@ -594,3 +594,51 @@ hr {
   color: #ffffff;
   opacity: 1;
 }
+
+// ============================================
+// FIX LAYOUT: OUTPUT R E SIDEBAR DESTRA
+// ============================================
+
+// Allinea la larghezza del contenuto al tema light.
+main.content {
+  width: 100%;
+  max-width: 880px;
+  min-width: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Nei layout CSS Grid/Flex, min-width:auto puo impedire ai chunk
+// di restringersi e farli invadere la margin sidebar.
+#quarto-document-content,
+.quarto-content,
+.page-columns,
+.column-body,
+.cell,
+.cell-output,
+.cell-output-stdout,
+.cell-output-stderr,
+div.sourceCode {
+  min-width: 0;
+  max-width: 100%;
+}
+
+// Il bordo e il padding del pre restano inclusi nella larghezza disponibile.
+pre,
+div.sourceCode,
+.cell-output pre,
+.cell-output-stdout pre,
+.cell-output-stderr pre {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+// Mantiene una separazione visiva dal sommario laterale, come nel tema light.
+@media (min-width: 992px) {
+  #quarto-margin-sidebar {
+    padding-left: 0.9rem;
+  }
+}
