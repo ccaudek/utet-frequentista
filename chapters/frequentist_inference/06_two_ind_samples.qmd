@@ -1,428 +1,874 @@
 # Confrontare due gruppi indipendenti {#sec-freq-two-samples}
 
-::: {.callout-note appearance="minimal"}
+::: {.callout-note title="In sintesi"}
+**Da sapere**  Il confronto tra due gruppi indipendenti stima una differenza tra medie e ne valuta la precisione e la compatibilità con un valore nullo. Il test *t* di Welch è spesso una scelta predefinita appropriata perché non richiede l'uguaglianza delle varianze.
 
-Il confronto tra due gruppi indipendenti è una delle situazioni più comuni nella ricerca psicologica: un gruppo sperimentale viene messo a confronto con un gruppo di controllo, due condizioni di trattamento vengono messe a confronto o si confrontano sottogruppi definiti da una caratteristica osservata.
-
-Nel quadro frequentista, il test *t* per campioni indipendenti risponde a una domanda specifica:
-
-> Se, nella popolazione, le due medie fossero uguali, quanto sarebbe sorprendente osservare una differenza almeno grande quanto quella trovata nel campione?
-
-Tale domanda non coincide con la probabilità che le due medie siano uguali né con la probabilità che un trattamento funzioni. Il test *t* è una procedura che permette di valutare la compatibilità dei dati con un modello nullo e di controllare gli errori decisionali nel lungo periodo.
-
+**Da saper fare**  Definire la differenza di interesse; riconoscere quando i gruppi sono indipendenti; leggere stime descrittive, intervallo di confidenza, valore-*p* e dimensione dell'effetto; distinguere associazione e causalità; collegare il test *t* a un modello di regressione con predittore dicotomico.
 :::
 
-::: callout-important
-## In questo capitolo imparerai a
+## Introduzione {.unnumbered .unlisted}
 
-- riconoscere quando è appropriato un confronto tra due gruppi indipendenti;
-- formulare ipotesi nulla e ipotesi alternativa per il test *t*;
-- distinguere il test *t* classico dal test *t* di Welch;
-- interpretare insieme differenza tra medie, intervallo di confidenza, valore-*p* e dimensione dell'effetto;
-- riportare i risultati in modo completo, evitando una lettura basata solo sulla significatività statistica;
-- comprendere quali domande restano aperte e saranno affrontate in modo più diretto dall'inferenza bayesiana.
+Il confronto tra due gruppi indipendenti è una delle situazioni più comuni nella ricerca psicologica. Possiamo confrontare un gruppo sottoposto a un intervento con un gruppo di controllo, due condizioni sperimentali oppure due gruppi definiti da una caratteristica osservata.
+
+Questo capitolo riunisce i concetti introdotti nel modulo:
+
+$$
+\text{stima}
+\longrightarrow
+\text{errore standard}
+\longrightarrow
+\text{intervallo di confidenza}
+\longrightarrow
+\text{test}
+\longrightarrow
+\text{dimensione dell'effetto}.
+$$
+
+L'obiettivo non è imparare una procedura isolata. È comprendere come questi elementi descrivano aspetti differenti dello stesso confronto.
+
+Nel quadro frequentista, il test *t* risponde a una domanda condizionale:
+
+> Se la differenza tra le medie delle popolazioni fosse nulla e il modello fosse adeguato, quanto sarebbe estremo il risultato osservato?
+
+Questa domanda non coincide con la probabilità che le medie siano uguali, con la probabilità che l'intervento funzioni o con la probabilità che la differenza superi una soglia clinicamente importante.
+
+::: {.callout-tip title="Prerequisiti"}
+È utile avere letto:
+
+- @sec-freq-stime-parametri, per stimatore, stima ed errore standard;
+- @sec-frequentism-confidence-intervals, per copertura e interpretazione degli intervalli;
+- @sec-freq-hypothesis-testing, per valore-*p*, $\alpha$ ed errori decisionali;
+- @sec-frequentist-sample-size, per effetto bersaglio, potenza e numerosità.
+
+Questo capitolo applica tali concetti a un unico caso e conclude la parte operativa del modulo.
 :::
 
-::: callout-tip
-## Prerequisiti
+## Panoramica del capitolo {.unnumbered .unlisted}
 
-Per seguire questo capitolo è utile aver letto:
+Il capitolo procede in nove passaggi:
 
-- il capitolo su stime, stimatori e stima puntuale;
-- il capitolo sugli intervalli di confidenza;
-- il capitolo sui test di ipotesi e valore-*p*;
-- il capitolo sulla numerosità campionaria, errore e potenza.
+1. definisce la quantità che si vuole confrontare;
+2. distingue gruppi indipendenti, dati appaiati e misure ripetute;
+3. presenta il modello del test *t* classico e quello di Welch;
+4. esamina disegno, distribuzioni e valori anomali;
+5. svolge un esempio completo in R;
+6. integra differenza grezza, intervallo, valore-*p* ed effetto standardizzato;
+7. chiarisce quando una differenza può essere interpretata causalmente;
+8. mostra l'equivalenza con la regressione lineare;
+9. collega il confronto frequentista ai modelli bayesiani del Companion.
 
-Il capitolo applica questi concetti a un caso concreto. Non introduce una nuova filosofia dell'inferenza, ma mostra come i diversi elementi del ragionamento frequentista si combinino in una procedura ampiamente utilizzata nella letteratura psicologica.
-:::
-
-::: {.callout-caution collapse=true title="Preparazione del Notebook"}
+::: {.callout-note title="Preparazione del notebook"}
+Per eseguire gli esempi, prepara l'ambiente comune del progetto:
 
 ```{r}
-here::here("code", "_common.R") |> 
+#| echo: true
+#| message: false
+#| warning: false
+here::here("code", "_common.R") |>
   source()
 ```
 :::
 
-## Perché confrontare due gruppi
+## Prima del test: definire il confronto {#sec-freq-two-samples-estimand}
 
-Immaginiamo uno studio in cui si valuta l'efficacia di un breve intervento di regolazione emotiva. Un gruppo di studenti riceve l'intervento, mentre un secondo gruppo segue una condizione di controllo. Al termine dello studio, tutti i partecipanti compilano una scala di benessere psicologico.
+Immaginiamo uno studio su un intervento di regolazione emotiva. Un gruppo riceve l'intervento e un gruppo di controllo non lo riceve. Al termine dello studio viene misurato il benessere psicologico.
 
-Il ricercatore osserva due medie campionarie:
+Indichiamo con:
 
 $$
-\bar{x}_1 \quad \text{e} \quad \bar{x}_2.
+\mu_1
+=
+\text{media della popolazione del gruppo intervento},
+$$
+
+$$
+\mu_0
+=
+\text{media della popolazione del gruppo controllo}.
+$$
+
+La quantità bersaglio è:
+
+$$
+\Delta
+=
+\mu_1-\mu_0.
+$$
+
+La sua stima campionaria è:
+
+$$
+\widehat{\Delta}
+=
+\bar X_1-\bar X_0.
+$$
+
+Il segno dipende dall'ordine della sottrazione. Con la definizione adottata:
+
+- $\widehat{\Delta}>0$ indica una media maggiore nel gruppo intervento;
+- $\widehat{\Delta}<0$ indica una media maggiore nel gruppo controllo.
+
+::: {.callout-important title="Definire l'ordine prima di interpretare il segno"}
+La stessa differenza può essere scritta come intervento meno controllo oppure controllo meno intervento. Il valore assoluto non cambia, ma il segno sì.
+
+L'ordine deve essere dichiarato e mantenuto coerente in stima, intervallo, dimensione dell'effetto e resoconto.
+:::
+
+### Quale popolazione rappresentano le medie?
+
+Le medie $\mu_1$ e $\mu_0$ dipendono da:
+
+- popolazione a cui si vuole generalizzare;
+- criteri di inclusione;
+- modalità di assegnazione ai gruppi;
+- momento e strumento di misurazione;
+- trattamento dei dati mancanti;
+- modello statistico.
+
+Una differenza tra medie non è un oggetto separato dal disegno. Prima di calcolare il test occorre chiarire che cosa rappresentano i due gruppi e quale confronto sia scientificamente rilevante.
+
+## Gruppi indipendenti, dati appaiati e misure ripetute {#sec-freq-independent-paired}
+
+Due gruppi sono **indipendenti** quando l'osservazione di una persona nel primo gruppo non è naturalmente collegata a una specifica osservazione del secondo gruppo.
+
+Esempi:
+
+- persone differenti assegnate a intervento e controllo;
+- partecipanti provenienti da due popolazioni distinte;
+- due gruppi osservazionali senza abbinamento individuale.
+
+Non sono invece indipendenti:
+
+- misure prima e dopo sulle stesse persone;
+- coppie abbinate;
+- gemelli o membri della stessa famiglia;
+- studenti nella stessa classe, quando la dipendenza del gruppo non è modellata;
+- più osservazioni prodotte dallo stesso partecipante.
+
+Nel caso di coppie o misure ripetute, la quantità rilevante è spesso la media delle differenze entro coppia. Usare il test per gruppi indipendenti ignora la struttura dei dati e può produrre errori standard inadeguati.
+
+::: {.callout-warning title="L'indipendenza non si verifica con un test automatico"}
+È soprattutto una proprietà del disegno e del processo di raccolta. Un grafico o un test di normalità non possono dimostrare che osservazioni provenienti dalla stessa classe, famiglia o persona siano indipendenti.
+:::
+
+## Il modello inferenziale {#sec-freq-two-samples-model}
+
+### Ipotesi nulla e alternativa
+
+Nel test bilaterale:
+
+$$
+H_0:\Delta=0,
+$$
+
+$$
+H_1:\Delta\neq0.
+$$
+
+Un'alternativa direzionale può essere:
+
+$$
+H_1:\Delta>0.
+$$
+
+La direzione deve essere scelta prima di osservare i dati e deve avere una motivazione sostantiva. Il test bilaterale è una scelta introduttiva prudente quando deviazioni in entrambe le direzioni sarebbero scientificamente rilevanti.
+
+### Struttura generale della statistica
+
+La statistica test ha la forma:
+
+$$
+t
+=
+\frac{\widehat{\Delta}-0}
+{\widehat{\operatorname{SE}}(\widehat{\Delta})}.
+$$
+
+Il numeratore è la differenza osservata rispetto al valore nullo. Il denominatore misura quanto la differenza tra medie varierebbe sotto campionamenti ripetuti, secondo il modello adottato.
+
+## Test *t* classico e test di Welch {#sec-freq-student-welch}
+
+### Test classico con varianze uguali
+
+Il test classico assume una varianza comune nelle due popolazioni. La deviazione standard pooled è:
+
+$$
+s_p
+=
+\sqrt{
+\frac{
+(n_1-1)s_1^2+(n_0-1)s_0^2
+}{
+n_1+n_0-2
+}
+}.
+$$
+
+L'errore standard è:
+
+$$
+\widehat{\operatorname{SE}}_{\text{pooled}}
+=
+s_p
+\sqrt{
+\frac{1}{n_1}+\frac{1}{n_0}
+}.
+$$
+
+La statistica segue una distribuzione *t* con:
+
+$$
+df=n_1+n_0-2
+$$
+
+quando le assunzioni del modello sono soddisfatte.
+
+### Test di Welch
+
+Il test di Welch non impone una varianza comune. Usa:
+
+$$
+\widehat{\operatorname{SE}}_{\text{Welch}}
+=
+\sqrt{
+\frac{s_1^2}{n_1}
++
+\frac{s_0^2}{n_0}
+}.
+$$
+
+I gradi di libertà vengono approssimati mediante la formula di Welch--Satterthwaite:
+
+$$
+\nu
+=
+\frac{
+\left(
+s_1^2/n_1+s_0^2/n_0
+\right)^2
+}{
+\frac{(s_1^2/n_1)^2}{n_1-1}
++
+\frac{(s_0^2/n_0)^2}{n_0-1}
+}.
+$$
+
+In R, `t.test()` usa Welch per impostazione predefinita.
+
+::: {.callout-note title="Perché Welch è una buona scelta predefinita"}
+Quando varianze e numerosità sono simili, Welch e il test classico producono spesso risultati quasi identici.
+
+Quando differiscono, Welch protegge meglio dall'assunzione non giustificata di una varianza comune. Non è corretto descriverlo semplicemente come «più prudente»: è una procedura costruita per un modello che consente dispersioni differenti.
+:::
+
+L'uso del test classico dovrebbe derivare da una ragione per assumere una varianza comune, non dal mancato rifiuto di un test preliminare sulle varianze. Testare prima l'uguaglianza delle varianze e scegliere poi il test sulla base dello stesso campione crea una procedura in due stadi con proprietà meno trasparenti.
+
+## Assunzioni e adeguatezza {#sec-freq-two-samples-assumptions}
+
+### Indipendenza e disegno
+
+L'indipendenza è essenziale per le formule standard. Clustering, abbinamento o misure ripetute richiedono procedure differenti.
+
+### Esito quantitativo
+
+Il test confronta medie. L'esito deve quindi essere quantitativo o trattato come una misura approssimativamente quantitativa. Questa scelta deve essere sostantivamente difendibile, soprattutto per punteggi con pochi livelli o forti effetti di pavimento e soffitto.
+
+### Distribuzione entro i gruppi
+
+L'esattezza del test classico e di Welch deriva da popolazioni normali. Le procedure sono spesso robuste a deviazioni moderate quando:
+
+- i campioni non sono molto piccoli;
+- le distribuzioni non sono fortemente asimmetriche;
+- non sono presenti valori estremi influenti;
+- il disegno non combina forte squilibrio e forte eteroschedasticità.
+
+La robustezza non significa che la forma dei dati sia irrilevante. Con campioni piccoli, code pesanti o valori anomali, media, deviazione standard e test possono essere instabili.
+
+### Valori anomali
+
+Un valore anomalo può:
+
+- spostare una media;
+- aumentare una deviazione standard;
+- modificare l'errore standard;
+- alterare il valore-*p* e la dimensione dell'effetto.
+
+Non va eliminato automaticamente. Occorre verificare se derivi da errore, se sia plausibile per la popolazione e quanto le conclusioni dipendano dalla sua presenza.
+
+::: {.callout-important title="Il controllo delle assunzioni è parte dell'analisi"}
+Non consiste nel cercare un test che autorizzi meccanicamente l'uso del test *t*. Richiede di collegare grafici, disegno, qualità delle misure e conseguenze delle deviazioni al modello.
+:::
+
+## Un esempio guidato {#sec-freq-two-samples-example}
+
+Consideriamo dati didattici sul benessere psicologico.
+
+```{r}
+#| label: two-groups-data
+benessere_intervento <- c(
+  27, 31, 29, 33, 35, 30,
+  32, 28, 34, 31, 36, 29
+)
+
+benessere_controllo <- c(
+  24, 26, 28, 25, 29, 27,
+  23, 30, 26, 25, 28, 24
+)
+
+dati_benessere <- data.frame(
+  gruppo = factor(
+    rep(
+      c("Controllo", "Intervento"),
+      each = 12
+    ),
+    levels = c("Controllo", "Intervento")
+  ),
+  benessere = c(
+    benessere_controllo,
+    benessere_intervento
+  )
+)
+```
+
+La codifica fissa l'ordine del confronto come:
+
+$$
+\Delta
+=
+\mu_{\text{intervento}}
+-
+\mu_{\text{controllo}}.
+$$
+
+### Descrizione prima dell'inferenza
+
+```{r}
+#| label: tbl-two-groups-descriptives
+#| tbl-cap: "Statistiche descrittive dei punteggi di benessere nei due gruppi."
+gruppi <- split(
+  dati_benessere$benessere,
+  dati_benessere$gruppo
+)
+
+descrittive <- data.frame(
+  gruppo = names(gruppi),
+  n = vapply(gruppi, length, integer(1)),
+  media = vapply(gruppi, mean, numeric(1)),
+  deviazione_standard = vapply(gruppi, sd, numeric(1)),
+  row.names = NULL
+)
+
+descrittive$media <- round(descrittive$media, 2)
+descrittive$deviazione_standard <-
+  round(descrittive$deviazione_standard, 2)
+
+knitr::kable(descrittive)
+```
+
+Le medie campionarie sono:
+
+$$
+\bar x_{\text{intervento}}=31.25,
+$$
+
+$$
+\bar x_{\text{controllo}}=26.25.
 $$
 
 La differenza osservata è:
 
 $$
-\bar{x}_1 - \bar{x}_2.
+\widehat{\Delta}=5.00.
 $$
 
-Questa differenza è una **stima puntuale** della differenza tra le medie delle popolazioni:
-
-$$
-\mu_1 - \mu_2.
-$$
-
-Tuttavia, come abbiamo visto nei capitoli precedenti, una stima puntuale non è sufficiente. Due campioni estratti dalla stessa popolazione possono produrre medie diverse, anche quando non esiste alcuna differenza reale tra i gruppi. Per questo motivo, il confronto tra due gruppi richiede sempre tre componenti:
-
-1. una **stima** della differenza osservata;
-2. una misura dell'**incertezza** associata a quella stima;
-3. una procedura per valutare la **compatibilità** dei dati con l'ipotesi nulla.
-
-Il test *t* per campioni indipendenti combina questi elementi in una procedura frequentista standard.
-
-## Il modello inferenziale del test *t*
-
-### Ipotesi nulla e ipotesi alternativa
-
-Nel confronto tra due gruppi, l'ipotesi nulla afferma di solito che le due popolazioni abbiano la stessa media:
-
-$$
-H_0: \mu_1 = \mu_2.
-$$
-
-In modo equivalente:
-
-$$
-H_0: \mu_1 - \mu_2 = 0.
-$$
-
-L'ipotesi alternativa può essere bidirezionale:
-
-$$
-H_1: \mu_1 - \mu_2 \neq 0,
-$$
-oppure direzionale:
-
-$$
-H_1: \mu_1 - \mu_2 > 0
-$$
-oppure
-
-$$
-H_1: \mu_1 - \mu_2 < 0.
-$$
-
-In un contesto introduttivo, è preferibile partire dal test bidirezionale, in quanto evita di introdurre una direzione dell'effetto dopo aver osservato i dati.
-
-### La statistica test
-
-La logica del test *t* è semplice: la differenza osservata tra le medie viene confrontata con la variabilità che ci aspetteremmo se l'ipotesi nulla fosse vera.
-
-In forma generale:
-
-$$
-t = \frac{\text{differenza osservata}}{\text{errore standard della differenza}}.
-$$
-
-Nel caso del test *t* classico con varianze uguali, la statistica è:
-
-$$
-t = \frac{\bar{X}_1 - \bar{X}_2}{s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}},
-$$
-dove $s_p$ è la deviazione standard pooled:
-
-$$
-s_p = \sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}}.
-$$
-
-Sotto $H_0$, e se le assunzioni del modello sono ragionevoli, questa statistica segue una distribuzione *t* di Student con:
-
-$$
-df = n_1 + n_2 - 2
-$$
-gradi di libertà.
-
-::: callout-note
-## Una formula già familiare
-
-La struttura del test *t* non è nuova. Si tratta della stessa logica vista nel test per una media:
-
-$$
-\text{statistica test} = \frac{\text{stima} - \text{valore atteso sotto } H_0}{\text{errore standard}}.
-$$
-
-Nel confronto tra due gruppi, la stima è la differenza tra le due medie. Il denominatore misura quanto tale differenza può variare da un campione all'altro quando $H_0$ è vera.
-:::
-
-## Assunzioni del confronto tra due gruppi
-
-Per interpretare correttamente il test, è necessario chiedersi se il modello sia plausibile per i dati osservati e per il disegno dello studio.
-
-### Indipendenza delle osservazioni
-
-Le osservazioni devono essere indipendenti sia all'interno di ciascun gruppo sia tra i gruppi. Questa è soprattutto un'assunzione di **disegno**: dipende da come sono stati reclutati i partecipanti e da come è stato condotto lo studio.
-
-Ad esempio, se più osservazioni provengono dagli stessi partecipanti, da coppie, da classi scolastiche o da terapeuti comuni, l'indipendenza può essere violata. In questi casi, un semplice test *t* per campioni indipendenti potrebbe non essere adeguato.
-
-### Variabile quantitativa
-
-Il test *t* confronta le medie. La variabile dipendente dovrebbe quindi essere quantitativa o trattata come approssimativamente quantitativa. In psicologia, questo accade spesso con i punteggi delle scale, i tempi di risposta, i punteggi clinici o gli indici compositi.
-
-### Forma della distribuzione
-
-Il test *t* assume che, in ciascun gruppo, la variabile sia approssimativamente normale nella popolazione. In pratica, il test è spesso abbastanza robusto di fronte a deviazioni moderate dalla normalità, soprattutto quando i campioni non sono molto piccoli e non ci sono outlier estremi.
-
-### Uguaglianza delle varianze
-
-Il test *t* classico presuppone che le due popolazioni abbiano la stessa varianza. Quando questa assunzione non è plausibile, è preferibile utilizzare il **test *t* di Welch**, che non richiede varianze uguali e modifica i gradi di libertà.
-
-In R, la funzione `t.test()` usa per impostazione predefinita il test di Welch. Questa scelta è spesso consigliabile nella pratica applicata.
-
-::: callout-tip
-## Regola pratica
-
-Nel lavoro applicato, il test di Welch è spesso una buona scelta predefinita per il confronto tra due gruppi indipendenti. Il test classico con varianze uguali richiede un'ulteriore assunzione che non sempre è giustificata.
-:::
-
-## Un esempio guidato
-
-Consideriamo uno studio simulato sul benessere psicologico. Un gruppo di studenti segue un breve intervento di regolazione emotiva, mentre un secondo gruppo segue una condizione di controllo. Il punteggio finale viene misurato su una scala in cui i valori più alti indicano un maggiore benessere.
+### Visualizzare distribuzioni e osservazioni
 
 ```{r}
-benessere_intervento <- c(27, 31, 29, 33, 35, 30, 32, 28, 34, 31, 36, 29)
-benessere_controllo  <- c(24, 26, 28, 25, 29, 27, 23, 30, 26, 25, 28, 24)
-
-cat("Gruppo intervento:\n")
-cat("  Media:", round(mean(benessere_intervento), 2), "\n")
-cat("  Deviazione standard:", round(sd(benessere_intervento), 2), "\n")
-cat("  n:", length(benessere_intervento), "\n\n")
-
-cat("Gruppo controllo:\n")
-cat("  Media:", round(mean(benessere_controllo), 2), "\n")
-cat("  Deviazione standard:", round(sd(benessere_controllo), 2), "\n")
-cat("  n:", length(benessere_controllo), "\n")
-```
-
-La prima cosa da fare non è calcolare il valore-*p*, ma osservare le stime descrittive. Il gruppo di intervento presenta una media più alta rispetto al gruppo di controllo. La domanda inferenziale è se questa differenza sia abbastanza grande rispetto alla variabilità attesa da risultare poco compatibile con $H_0$.
-
-### Visualizzazione descrittiva
-
-```{r}
+#| label: fig-two-groups-data
+#| fig-cap: "Punteggi individuali e distribuzioni nei gruppi controllo e intervento. Il simbolo a rombo indica la media."
+#| fig-alt: "Due gruppi di punti sovrapposti a boxplot; il gruppo intervento mostra punteggi medi più alti."
 #| fig-width: 8
 #| fig-height: 5
-
-library(ggplot2)
-
-dati_benessere <- data.frame(
-  gruppo = rep(c("Intervento", "Controllo"), each = 12),
-  benessere = c(benessere_intervento, benessere_controllo)
-)
-
-ggplot(dati_benessere, aes(x = gruppo, y = benessere)) +
-  geom_boxplot(width = 0.45, alpha = 0.6, outlier.shape = NA) +
-  geom_jitter(width = 0.08, alpha = 0.8, size = 2) +
-  stat_summary(fun = mean, geom = "point", shape = 18, size = 4) +
+ggplot(
+  dati_benessere,
+  aes(x = gruppo, y = benessere)
+) +
+  geom_boxplot(
+    width = 0.45,
+    alpha = 0.35,
+    outlier.shape = NA
+  ) +
+  geom_jitter(
+    width = 0.08,
+    alpha = 0.8,
+    size = 2
+  ) +
+  stat_summary(
+    fun = mean,
+    geom = "point",
+    shape = 18,
+    size = 4
+  ) +
   labs(
-    title = "Punteggi di benessere nei due gruppi",
-    subtitle = "Il rombo indica la media campionaria",
     x = "Gruppo",
     y = "Punteggio di benessere"
   )
 ```
 
-La visualizzazione aiuta a vedere insieme posizione, variabilità e possibili valori anomali. Tale ispezione non sostituisce il test, ma rende l'interpretazione più trasparente.
+@fig-two-groups-data mostra posizione, dispersione, sovrapposizione e singole osservazioni. Il grafico non sostituisce l'inferenza, ma impedisce che il risultato venga ridotto a un unico numero.
 
-## Il test *t* classico
-
-Calcoliamo prima il test *t* nella versione classica con varianze uguali.
+## Eseguire il test di Welch {#sec-freq-two-samples-welch-example}
 
 ```{r}
-n1 <- length(benessere_intervento)
-n2 <- length(benessere_controllo)
+#| label: two-groups-welch-test
+test_welch <- t.test(
+  benessere ~ gruppo,
+  data = dati_benessere,
+  alternative = "two.sided",
+  var.equal = FALSE,
+  conf.level = 0.95
+)
 
-m1 <- mean(benessere_intervento)
-m2 <- mean(benessere_controllo)
-
-s1 <- sd(benessere_intervento)
-s2 <- sd(benessere_controllo)
-
-s_pool <- sqrt(((n1 - 1) * s1^2 + (n2 - 1) * s2^2) / (n1 + n2 - 2))
-se_diff <- s_pool * sqrt(1/n1 + 1/n2)
-
-t_stat <- (m1 - m2) / se_diff
-df <- n1 + n2 - 2
-p_value <- 2 * pt(abs(t_stat), df = df, lower.tail = FALSE)
-
-cat("Differenza tra medie:", round(m1 - m2, 2), "\n")
-cat("Errore standard della differenza:", round(se_diff, 2), "\n")
-cat("Statistica t:", round(t_stat, 3), "\n")
-cat("Gradi di libertà:", df, "\n")
-cat("Valore-p:", round(p_value, 4), "\n")
+test_welch
 ```
 
-Il valore-*p* va letto in modo condizionale: indica quanto sarebbero rari risultati almeno così estremi se, nella popolazione, le due medie fossero uguali e se il modello del test fosse appropriato.
-
-### Uso di `t.test()`
-
-```{r}
-t_classico <- t.test(benessere_intervento, benessere_controllo, var.equal = TRUE)
-t_classico
-```
-
-Il risultato riporta la statistica test, i gradi di libertà, il valore-*p*, la differenza tra le medie e un intervallo di confidenza per tale differenza.
-
-## Il test *t* di Welch
-
-Nella pratica, spesso è preferibile utilizzare il test di Welch, che non richiede l'uguaglianza delle varianze. In R, questa è l'impostazione predefinita di `t.test()`.
-
-```{r}
-t_welch <- t.test(benessere_intervento, benessere_controllo)
-t_welch
-```
-
-Se le varianze dei gruppi sono simili, i risultati del test classico e del test di Welch sono molto simili. Se invece le varianze o le numerosità dei gruppi sono molto diverse, il test di Welch è più prudente.
-
-::: callout-note
-## Quale test riportare?
-
-Per molti studi applicati, è ragionevole riportare il test di Welch, specificando che l'uguaglianza delle varianze non è stata assunta. Il test classico con varianze uguali può essere utilizzato quando tale assunzione è giustificata dal disegno dello studio o da ragioni sostanziali.
-:::
-
-## Interpretare i risultati oltre il valore-*p*
-
-Un confronto tra due gruppi non dovrebbe essere riassunto solo dicendo se il risultato è "significativo" o "non significativo". Una lettura più informativa dovrebbe integrare quattro elementi:
-
-1. la **differenza osservata** tra le medie;
-2. l'**intervallo di confidenza** per la differenza;
-3. il **valore-*p***;
-4. la **dimensione dell'effetto**.
-
-### Differenza tra medie e intervallo di confidenza
-
-L'intervallo di confidenza descrive la precisione della stima della differenza tra le medie.
-
-```{r}
-diff_medie <- m1 - m2
-ic_diff <- t_welch$conf.int
-
-cat("Differenza tra medie:", round(diff_medie, 2), "\n")
-cat("IC 95%:", "[", round(ic_diff[1], 2), ",", round(ic_diff[2], 2), "]\n")
-```
-
-In termini frequentisti, un intervallo di confidenza al 95% è costruito con una procedura che, nel lungo periodo, contiene il valore vero nel 95% dei campioni ripetuti. Ciò non significa che vi sia il 95% di probabilità che il valore vero cada nell'intervallo osservato.
-
-### Dimensione dell'effetto
-
-La dimensione dell'effetto aiuta a distinguere la significatività statistica dalla rilevanza sostantiva. Nel confronto tra due medie, una misura comune è il $d$ di Cohen:
+Poiché il primo livello del fattore è `Controllo`, la formula di R riporta inizialmente la differenza:
 
 $$
-d = \frac{\bar{x}_1 - \bar{x}_2}{s_p}.
+\mu_{\text{controllo}}
+-
+\mu_{\text{intervento}}.
 $$
 
-```{r}
-cohens_d <- diff_medie / s_pool
-cat("Cohen's d:", round(cohens_d, 2), "\n")
-```
-
-Questa quantità esprime la differenza tra i gruppi in unità di deviazione standard pooled. È una misura descrittiva standardizzata utile, ma non deve essere interpretata in modo meccanico. Un effetto piccolo può essere importante in alcuni contesti clinici o educativi, mentre un effetto grande può essere poco rilevante se riguarda una misura secondaria o un campione non rappresentativo.
-
-::: callout-warning
-## Significativo non significa importante
-
-Un test può risultare statisticamente significativo anche quando la differenza è trascurabile sul piano teorico o pratico, se il campione è molto grande. Al contrario, un risultato non significativo può dipendere da una bassa potenza e non dimostra che le due popolazioni siano uguali.
-:::
-
-## Come riportare il risultato
-
-Una comunicazione trasparente dovrebbe evitare sia l'eccesso di formule sia la riduzione del risultato al solo valore-*p*.
-
-### Formulazione incompleta
-
-> Il gruppo di intervento ha ottenuto punteggi significativamente più alti rispetto al gruppo di controllo, $p < .05$.
-
-Questa frase è incompleta: non specifica l'entità della differenza, la precisione della stima e il metodo utilizzato.
-
-### Formulazione consigliata
+Per mantenere l'ordine scelto nel capitolo, calcoliamo esplicitamente intervento meno controllo:
 
 ```{r}
-cat(
-  "Il gruppo sottoposto all'intervento ha riportato un punteggio medio di ", round(m1, 2),
-  " (DS = ", round(s1, 2), "), mentre il gruppo controllo ha riportato un punteggio medio di ",
-  round(m2, 2), " (DS = ", round(s2, 2), "). ",
-  "La differenza media è pari a ", round(diff_medie, 2),
-  " punti, IC 95% [", round(ic_diff[1], 2), ", ", round(ic_diff[2], 2),
-  "], t(", round(t_welch$parameter, 2), ") = ", round(t_welch$statistic, 2),
-  ", p = ", signif(t_welch$p.value, 3),
-  ", d = ", round(cohens_d, 2), ".\n",
-  sep = ""
+#| label: two-groups-welch-summary
+n_intervento <- length(benessere_intervento)
+n_controllo <- length(benessere_controllo)
+
+m_intervento <- mean(benessere_intervento)
+m_controllo <- mean(benessere_controllo)
+
+s_intervento <- sd(benessere_intervento)
+s_controllo <- sd(benessere_controllo)
+
+differenza <- m_intervento - m_controllo
+
+se_welch <- sqrt(
+  s_intervento^2 / n_intervento +
+    s_controllo^2 / n_controllo
+)
+
+df_welch <- (
+  s_intervento^2 / n_intervento +
+    s_controllo^2 / n_controllo
+)^2 / (
+  (s_intervento^2 / n_intervento)^2 /
+    (n_intervento - 1) +
+    (s_controllo^2 / n_controllo)^2 /
+    (n_controllo - 1)
+)
+
+t_welch <- differenza / se_welch
+p_welch <- 2 * pt(
+  abs(t_welch),
+  df = df_welch,
+  lower.tail = FALSE
+)
+
+t_critico <- qt(0.975, df = df_welch)
+
+ic_welch <- c(
+  differenza - t_critico * se_welch,
+  differenza + t_critico * se_welch
+)
+
+c(
+  differenza = differenza,
+  errore_standard = se_welch,
+  t = t_welch,
+  gradi_liberta = df_welch,
+  valore_p = p_welch,
+  limite_inferiore = ic_welch[1],
+  limite_superiore = ic_welch[2]
 )
 ```
 
-In un testo scientifico, il risultato potrebbe essere riportato così:
-
-> Il gruppo sottoposto all'intervento ha riportato un punteggio medio più alto ($M$ = 31.25, $DS$ = 2.83) rispetto al gruppo di controllo ($M$ = 26.25, $DS$ = 2.18). La differenza media è pari a 5.00 punti, $IC$ 95% [2.85, 7.15], $t$(20.64) = 4.85, $p < .001$, $d$ = 1.98.
-
-I valori numerici dipendono dai dati utilizzati nell'esempio. Il punto didattico è la struttura del resoconto: stima, incertezza, test e dimensione dell'effetto.
-
-## Cosa il test non dice
-
-Il test *t* per campioni indipendenti è utile, ma risponde a una domanda circoscritta. In particolare, il test non risponde alla domanda:
-
-- qual è la probabilità che $H_0$ sia vera;
-- qual è la probabilità che $H_1$ sia vera;
-- qual è la probabilità che la differenza vera sia positiva;
-- quanto sia probabile che l'effetto superi una soglia di rilevanza clinica;
-- se il disegno dello studio sia valido;
-- se la differenza osservata sia priva di bias sistematici.
-
-Questi limiti non rendono il test inutile. Tuttavia, indicano che il valore-*p* deve essere interpretato insieme al disegno dello studio, alle stime, agli intervalli di confidenza, alla potenza e alla plausibilità teorica dell'effetto.
-
-## Collegamento con la prospettiva bayesiana
-
-In una prospettiva bayesiana, il confronto tra due gruppi viene formulato in modo diverso. Invece di chiedersi quanto i dati siano sorprendenti sotto $H_0$, si costruisce un modello probabilistico per i dati e si ottiene una distribuzione a posteriori per la differenza tra le medie:
+Otteniamo approssimativamente:
 
 $$
-\Delta = \mu_1 - \mu_2.
+\widehat{\Delta}=5.00,
 $$
 
-Questa distribuzione permette di rispondere direttamente a domande come:
+$$
+IC_{95\%}=[2.85,\;7.15],
+$$
 
-- qual è la probabilità che $\Delta > 0$?
-- qual è un intervallo di credibilità per $\Delta$?
-- qual è la probabilità che $\Delta$ superi una soglia clinicamente rilevante?
-- quanto sono sensibili le conclusioni alle assunzioni del modello e alla scelta del prior?
+$$
+t(20.64)=4.85,
+\qquad
+p<0.001.
+$$
 
-Il test *t* frequentista rimane quindi importante da conoscere perché è molto diffuso nella letteratura psicologica. Tuttavia, nel percorso bayesiano, il test *t* frequentista funziona soprattutto come termine di confronto, mostrando chiaramente la differenza tra una procedura basata sul controllo dell'errore nel lungo periodo e una procedura basata sull'aggiornamento delle credenze sui parametri.
+Il valore-*p* indica che, sotto l'ipotesi di differenza nulla e le altre assunzioni del test, una statistica almeno altrettanto estrema sarebbe rara.
 
-::: callout-tip
-## Lettura complementare
+Non è la probabilità che $\Delta=0$.
 
-Un confronto esplicito tra il test *t* tradizionale e una formulazione bayesiana del confronto tra due gruppi è discusso da @kruschke2013bayesian.
+## Il caso con varianza comune {#sec-freq-two-samples-pooled-example}
+
+Per confronto, eseguiamo il test classico:
+
+```{r}
+#| label: two-groups-pooled-test
+test_pooled <- t.test(
+  benessere_intervento,
+  benessere_controllo,
+  alternative = "two.sided",
+  var.equal = TRUE,
+  conf.level = 0.95
+)
+
+test_pooled
+```
+
+In questi dati, numerosità e deviazioni standard sono simili, quindi i due test producono risultati quasi identici.
+
+Questa somiglianza non dimostra che le varianze delle popolazioni siano uguali. Mostra soltanto che, per questo campione, l'assunzione aggiuntiva ha conseguenze numeriche limitate.
+
+## Interpretare insieme le quantità {#sec-freq-two-samples-integrated}
+
+### Differenza nella scala originale
+
+La differenza di 5 punti è la quantità più direttamente interpretabile:
+
+> Nel campione, la media del gruppo intervento supera quella del gruppo controllo di 5 punti.
+
+La sua importanza dipende dalla scala, dall'affidabilità dello strumento e dal contesto.
+
+### Intervallo di confidenza
+
+L'intervallo al 95% è:
+
+$$
+[2.85,\;7.15].
+$$
+
+Descrive la precisione della procedura frequentista. Non assegna il 95% di probabilità alla differenza vera entro questi estremi.
+
+L'intervallo è utile anche per confrontare i dati con una soglia sostantiva. Se, per esempio, fossero necessari almeno 6 punti per una rilevanza pratica, l'intervallo mostrerebbe che i dati sono compatibili sia con differenze inferiori sia con differenze superiori a tale soglia.
+
+### Valore-*p*
+
+Il valore-*p* sintetizza l'incompatibilità con $\Delta=0$. Non descrive la grandezza della differenza né la sua importanza.
+
+### Dimensione dell'effetto standardizzata
+
+Una misura comune è il $d$ di Cohen:
+
+$$
+d
+=
+\frac{
+\bar x_{\text{intervento}}
+-
+\bar x_{\text{controllo}}
+}{
+s_p
+}.
+$$
+
+```{r}
+#| label: two-groups-effect-size
+s_pooled <- sqrt(
+  (
+    (n_intervento - 1) * s_intervento^2 +
+      (n_controllo - 1) * s_controllo^2
+  ) /
+    (
+      n_intervento +
+        n_controllo -
+        2
+    )
+)
+
+cohen_d <- differenza / s_pooled
+
+correzione_hedges <- 1 -
+  3 /
+    (
+      4 *
+        (
+          n_intervento +
+            n_controllo
+        ) -
+        9
+    )
+
+hedges_g <- correzione_hedges * cohen_d
+
+c(
+  cohen_d = cohen_d,
+  hedges_g = hedges_g
+)
+```
+
+Per questi dati:
+
+$$
+d\approx1.98,
+\qquad
+g\approx1.91.
+$$
+
+$g$ di Hedges applica una correzione alla tendenza di $d$ a sovrastimare l'effetto standardizzato nei piccoli campioni.
+
+::: {.callout-warning title="L'effetto standardizzato non sostituisce la differenza grezza"}
+$d$ e $g$ dipendono anche dalla dispersione dei punteggi. Lo stesso cambiamento di 5 punti può produrre valori standardizzati differenti in popolazioni con variabilità diversa.
+
+Quando la scala originale è interpretabile, è opportuno riportare sia la differenza grezza sia una misura standardizzata.
+:::
+
+## Significatività, equivalenza e rilevanza pratica {#sec-freq-two-samples-relevance}
+
+Un risultato significativo rispetto a zero non dimostra che l'effetto sia abbastanza grande da essere utile.
+
+Un risultato non significativo, d'altra parte, non dimostra che i gruppi siano equivalenti. Per sostenere equivalenza occorrono:
+
+1. una regione di differenze considerate praticamente trascurabili;
+2. una procedura progettata per valutare quella regione;
+3. dati sufficientemente precisi.
+
+La soglia di rilevanza dovrebbe essere motivata prima dell'analisi e collegata alla scala del fenomeno.
+
+::: {.callout-important title="Tre domande differenti"}
+1. **Esclusione dello zero:** i dati sono incompatibili con $\Delta=0$ secondo il test?
+2. **Precisione:** quali differenze non vengono escluse dall'intervallo?
+3. **Rilevanza:** quali differenze cambierebbero una conclusione teorica o pratica?
+
+Rispondere alla prima non risponde automaticamente alle altre due.
+:::
+
+## Dalla differenza osservata all'effetto causale {#sec-freq-two-samples-causality}
+
+Una differenza tra medie è sempre descrittiva del confronto definito. Diventa interpretabile come effetto causale soltanto sotto condizioni aggiuntive.
+
+### Studio randomizzato
+
+Se i partecipanti sono assegnati casualmente ai gruppi, l'assegnazione è rispettata e non vi sono problemi sostanziali di attrito, aderenza o contaminazione, la differenza può sostenere un'interpretazione causale riferita alla popolazione e al trattamento definiti.
+
+### Gruppi osservazionali
+
+Se i gruppi sono definiti da una caratteristica osservata, una differenza può dipendere da variabili confondenti.
+
+Per esempio, una differenza tra persone che scelgono o non scelgono un trattamento non dimostra che il trattamento abbia prodotto la differenza. I gruppi possono differire già prima dell'intervento.
+
+::: {.callout-warning title="Il test t non crea causalità"}
+Randomizzazione, identificazione e qualità del disegno giustificano una conclusione causale. Il valore-*p* non può compensare l'assenza di queste condizioni.
+:::
+
+## Il test *t* come modello lineare {#sec-freq-two-samples-regression}
+
+Il confronto tra due gruppi può essere scritto come una regressione con un predittore dicotomico:
+
+$$
+Y_i
+=
+\alpha
++
+\beta X_i
++
+\varepsilon_i,
+$$
+
+dove:
+
+- $X_i=0$ indica il controllo;
+- $X_i=1$ indica l'intervento.
+
+Allora:
+
+$$
+E(Y\mid X=0)=\alpha,
+$$
+
+$$
+E(Y\mid X=1)=\alpha+\beta.
+$$
+
+La differenza è:
+
+$$
+E(Y\mid X=1)-E(Y\mid X=0)=\beta.
+$$
+
+Il coefficiente $\beta$ rappresenta quindi la stessa quantità:
+
+$$
+\beta
+=
+\mu_{\text{intervento}}
+-
+\mu_{\text{controllo}}.
+$$
+
+```{r}
+#| label: two-groups-linear-model
+modello_lineare <- lm(
+  benessere ~ gruppo,
+  data = dati_benessere
+)
+
+summary(modello_lineare)
+confint(modello_lineare)
+```
+
+Con varianza comune, il test del coefficiente del predittore è equivalente al test *t* classico per due gruppi.
+
+Questa equivalenza è importante perché mostra che il test *t* non è un procedimento isolato. È il caso più semplice di una famiglia di modelli che può includere:
+
+- più gruppi;
+- covariate;
+- interazioni;
+- strutture gerarchiche;
+- esiti non gaussiani.
+
+::: {.callout-note title="Un ponte verso il progetto bayesiano"}
+Il Companion usa la stessa rappresentazione con un predittore 0--1:
+
+- [Confrontare due medie con Stan](https://ccaudek.github.io/utet-companion/chapters/calcolo/05_stan_two_means.html);
+- il capitolo 26, *Due gruppi: codifiche, differenze e rilevanza pratica*.
+
+Nel modello bayesiano, la distribuzione a posteriori di $\beta$ rappresenta direttamente l'incertezza sulla differenza tra le medie.
+:::
+
+## Che cosa cambia nel modello bayesiano? {#sec-freq-two-samples-bayes}
+
+Il confronto frequentista e quello bayesiano possono condividere:
+
+- gli stessi dati;
+- lo stesso predittore dicotomico;
+- una verosimiglianza normale;
+- la stessa quantità bersaglio $\Delta$;
+- modelli con dispersione comune o differente.
+
+Cambiano l'oggetto inferenziale immediato e il significato delle probabilità.
+
+| Domanda | Procedura frequentista | Modello bayesiano |
+|---|---|---|
+| Quanto differiscono i gruppi? | Stima puntuale e intervallo di confidenza | Distribuzione a posteriori di $\Delta$ |
+| Quanto è incompatibile lo zero? | Valore-*p* sotto $H_0$ | Massa a posteriori rispetto a zero o confronto tra modelli |
+| L'effetto supera una soglia pratica? | Intervallo, equivalenza o test dedicato | Probabilità a posteriori che $\Delta$ superi la soglia |
+| Il modello descrive adeguatamente i dati? | Diagnostica e controlli frequentisti | Controlli predittivi e confronto predittivo |
+
+Nel modello bayesiano si possono calcolare quantità come:
+
+$$
+P(\Delta>0\mid y)
+$$
+
+oppure:
+
+$$
+P(\Delta>\delta_{\min}\mid y),
+$$
+
+dove $\delta_{\min}$ è una soglia sostantiva. Queste probabilità non sono valori-*p* e dipendono da prior, verosimiglianza e dati.
+
+Il vantaggio di un'interpretazione diretta non elimina la necessità di controllare modello, misura, disegno e identificazione causale.
+
+## Come riportare il risultato {#sec-freq-two-samples-report}
+
+Un resoconto informativo dovrebbe includere:
+
+- numerosità, media e deviazione standard dei gruppi;
+- ordine della differenza;
+- differenza grezza e intervallo;
+- test utilizzato;
+- statistica, gradi di libertà e valore-*p*;
+- dimensione dell'effetto;
+- interpretazione sostantiva e limiti del disegno.
+
+Per l'esempio:
+
+> Il gruppo sottoposto all'intervento ha riportato un punteggio medio di benessere maggiore ($M=31.25$, $DS=2.83$, $n=12$) rispetto al gruppo di controllo ($M=26.25$, $DS=2.18$, $n=12$). La differenza intervento meno controllo è stata di 5.00 punti, $IC$ 95% [2.85, 7.15]. Il test *t* di Welch ha indicato incompatibilità con una differenza nulla, $t(20.64)=4.85$, $p<.001$. La differenza standardizzata è risultata elevata nel campione, $g=1.91$. L'interpretazione causale dipende dall'assegnazione e dalle altre caratteristiche del disegno.
+
+::: {.callout-note title="Perché nominare Welch"}
+Scrivere soltanto «test *t*» lascia implicita un'assunzione importante. Specificare «test *t* di Welch» comunica che non è stata imposta l'uguaglianza delle varianze.
 :::
 
 ## Riflessioni conclusive {.unnumbered .unlisted}
 
-Il test *t* per campioni indipendenti è uno strumento fondamentale dell'inferenza frequentista. Consente di confrontare due gruppi quando l'esito è di tipo quantitativo e quando il disegno dello studio rende plausibile l'indipendenza delle osservazioni.
+Il confronto tra due gruppi indipendenti conclude il percorso applicativo del modulo frequentista perché riunisce tutti gli elementi introdotti nei capitoli precedenti.
 
-In questo capitolo lo abbiamo interpretato come applicazione finale della logica introdotta nei capitoli precedenti: a una stima puntuale sono associati un intervallo di confidenza, una statistica di test, un valore p e una dimensione dell'effetto. Nessuno di questi elementi, preso singolarmente, esaurisce il significato del risultato.
+Abbiamo definito la differenza tra le medie come quantità bersaglio, distinto gruppi indipendenti e dati appaiati, confrontato il test classico con quello di Welch e interpretato congiuntamente:
 
-Il messaggio principale è che un buon resoconto non dovrebbe limitarsi a dichiarare se un risultato è significativo. Dovrebbe invece comunicare **quanto** differiscono i gruppi, **con quale incertezza**, **rispetto a quale procedura di test** e **con quale rilevanza sostantiva**.
+- differenza grezza;
+- errore standard;
+- intervallo di confidenza;
+- valore-*p*;
+- dimensione dell'effetto.
 
-Da qui, il passaggio alla prospettiva bayesiana è naturale: anziché domandarsi se una differenza sia abbastanza sorprendente sotto un'ipotesi nulla, è possibile modellare direttamente l'incertezza sulla differenza tra i gruppi e aggiornare le proprie credenze alla luce dei dati osservati.
+Il risultato di un test non esaurisce l'analisi. Occorre chiedersi quale differenza sia rilevante, quanto precisamente sia stimata, se il modello sia adeguato e se il disegno autorizzi un'interpretazione causale.
 
-## Punti chiave da ricordare {.unnumbered}
+L'equivalenza tra test *t* e regressione con predittore dicotomico crea il ponte più naturale verso il progetto bayesiano. La domanda sostantiva rimane la stessa — quanto differiscono i gruppi? — ma l'incertezza viene rappresentata mediante la distribuzione a posteriori del coefficiente che codifica la differenza.
 
-::: callout-important
+L'epilogo userà questo punto di arrivo per confrontare in modo complessivo controllo dell'errore, interpretazione dell'incertezza e workflow scientifico.
 
-- Il test *t* per campioni indipendenti confronta le medie di due gruppi distinti.
-- La domanda frequentista è condizionale a $H_0$: quanto sarebbero sorprendenti dati come quelli osservati se le due medie fossero uguali?
-- Il test di Welch è spesso preferibile perché non richiede l'assunzione di varianze uguali.
-- Il valore-*p* non è la probabilità che l'ipotesi nulla sia vera.
-- L'intervallo di confidenza descrive la precisione della stima secondo una procedura con copertura nel lungo periodo.
-- La dimensione dell'effetto aiuta a valutare la rilevanza sostantiva della differenza.
-- Un risultato completo integra stima, incertezza, test, valore-*p* e dimensione dell'effetto.
-- La prospettiva bayesiana permette di formulare direttamente domande sulla differenza tra le medie e sulla probabilità di effetti rilevanti.
+## Esercizi {.unnumbered .unlisted}
 
+1. Qual è la differenza tra la quantità $\Delta=\mu_1-\mu_0$ e la stima $\widehat{\Delta}=\bar X_1-\bar X_0$?
+
+2. Perché un disegno prima-dopo sulle stesse persone non dovrebbe essere analizzato come confronto tra gruppi indipendenti?
+
+3. Quale assunzione aggiuntiva distingue il test *t* classico dal test di Welch?
+
+4. Perché non è consigliabile scegliere tra test classico e Welch sulla base di un test preliminare delle varianze?
+
+5. Un intervallo per la differenza è [1.2, 6.8], mentre la soglia di rilevanza pratica è 5. Che cosa suggerisce l'intervallo?
+
+6. Perché una differenza statisticamente significativa tra due gruppi osservazionali non dimostra un effetto causale?
+
+7. Nel modello $Y_i=\alpha+\beta X_i+\varepsilon_i$, con controllo codificato 0 e intervento codificato 1, che cosa rappresentano $\alpha$ e $\beta$?
+
+8. Qual è la differenza tra un valore-*p* piccolo per $H_0:\Delta=0$ e una probabilità a posteriori elevata per $\Delta>0$?
+
+::: {.callout-tip title="Soluzioni" collapse="true"}
+1. $\Delta$ è la differenza tra le medie delle popolazioni o del modello. $\widehat{\Delta}$ è la differenza osservata tra le medie campionarie e varia da campione a campione.
+
+2. Le due osservazioni della stessa persona sono dipendenti. Un test indipendente ignora l'abbinamento e usa un errore standard non coerente con il disegno.
+
+3. Il test classico assume una varianza comune nelle due popolazioni. Welch permette varianze differenti e modifica errore standard e gradi di libertà.
+
+4. La procedura risultante dipende da una decisione presa sugli stessi dati e ha proprietà inferenziali meno trasparenti. Welch può essere adottato direttamente senza imporre l'uguaglianza delle varianze.
+
+5. I dati sono compatibili, secondo la procedura, sia con differenze inferiori sia con differenze superiori a 5. L'esclusione dello zero non consente di stabilire con precisione che la soglia pratica sia superata.
+
+6. I gruppi possono differire per confondenti, selezione o condizioni precedenti all'esposizione. Il test quantifica una differenza, ma non identifica da solo il meccanismo che l'ha prodotta.
+
+7. $\alpha$ è la media del gruppo controllo. $\beta$ è la differenza intervento meno controllo.
+
+8. Il valore-*p* riguarda risultati estremi sotto $\Delta=0$. La probabilità a posteriori riguarda l'incertezza su $\Delta$ dopo avere combinato prior, modello e dati.
 :::
 
-::: {.callout-note collapse=true title="Informazioni sull'ambiente di sviluppo"}
+::: {.callout-note title="Punti chiave" collapse="true"}
+- Il confronto deve iniziare dalla definizione della differenza e del suo ordine.
+- Gruppi indipendenti, dati appaiati e misure ripetute richiedono strutture inferenziali diverse.
+- Il test di Welch non richiede una varianza comune ed è spesso una scelta predefinita adeguata.
+- L'indipendenza è soprattutto un'assunzione del disegno.
+- Differenza grezza, intervallo, valore-*p* e dimensione standardizzata comunicano informazioni diverse.
+- Un risultato significativo rispetto a zero non dimostra rilevanza pratica.
+- Un risultato non significativo non dimostra equivalenza.
+- Il test *t* non trasforma un confronto osservazionale in un effetto causale.
+- Il confronto tra due gruppi è equivalente a una regressione con predittore dicotomico.
+- Nel modello bayesiano, la posterior del coefficiente dicotomico rappresenta l'incertezza sulla differenza tra le medie.
+:::
+
+::: {.callout-note title="Ambiente di sviluppo" collapse="true"}
+Le informazioni sull'ambiente R possono essere ottenute con:
+
 ```{r}
+#| echo: true
 sessionInfo()
 ```
 :::
-
-## Bibliografia {.unnumbered .unlisted}

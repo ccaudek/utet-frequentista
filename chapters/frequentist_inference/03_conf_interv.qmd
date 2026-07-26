@@ -1,145 +1,186 @@
 # Intervalli di confidenza {#sec-frequentism-confidence-intervals}
 
-::: {.callout-note appearance="minimal"}
-Nel capitolo precedente abbiamo distinto il **parametro**, lo **stimatore** e la **stima**. Una stima puntuale, come ad esempio una media campionaria, è un riassunto utile dei dati osservati, ma non comunica da sola l'incertezza associata al risultato.
+::: {.callout-note title="In sintesi"}
+**Da sapere**  Un intervallo di confidenza combina una stima puntuale e una misura della sua variabilità campionaria. Il livello di confidenza descrive la copertura della procedura sotto ripetizioni del campionamento e non assegna una probabilità al parametro nell'intervallo osservato.
 
-Gli **intervalli di confidenza** sono lo strumento con cui l'inferenza frequentista accompagna una stima puntuale con una misura della sua incertezza. La loro interpretazione richiede tuttavia attenzione: un intervallo di confidenza non assegna una probabilità al parametro. Esprime, piuttosto, una garanzia sulla **procedura** che ha prodotto l'intervallo, valutata nel lungo periodo e ipotizzando la ripetizione del campionamento.
+**Da saper fare**  Interpretare correttamente un intervallo di confidenza; distinguere copertura, precisione e validità; spiegare il ruolo di errore standard, valore critico e dimensione campionaria; confrontare intervalli di confidenza e intervalli di credibilità senza confonderli.
 :::
 
-::: {.callout-important}
-## In questo capitolo imparerai a
+## Introduzione {.unnumbered .unlisted}
 
-- costruire un intervallo di confidenza per la media di una popolazione;
-- interpretare il livello di confidenza come **copertura nel lungo periodo**;
-- distinguere tra intervallo di confidenza e intervallo di credibilità;
-- riconoscere i fraintendimenti più comuni;
-- comprendere come livello di confidenza, variabilità e dimensione campionaria influenzano l'ampiezza dell'intervallo.
+Nel capitolo precedente abbiamo distinto **parametro**, **stimatore** e **stima**. Abbiamo inoltre visto che una stima puntuale, come una media campionaria, è incompleta se non viene accompagnata da una misura della sua precisione.
+
+L'intervallo di confidenza sviluppa questa idea. Parte dalla distribuzione campionaria dello stimatore e costruisce, intorno alla stima osservata, un intervallo mediante una procedura progettata per raggiungere una determinata frequenza di copertura.
+
+Il punto più delicato è interpretativo. Un intervallo di confidenza al 95% non significa che il parametro abbia il 95% di probabilità di trovarsi tra i due estremi osservati. Il 95% qualifica la procedura prima dell'osservazione dei dati: sotto il modello e il piano di campionamento assunti, il 95% degli intervalli prodotti in ripetizioni analoghe contiene il parametro vero.
+
+## Perché una stima puntuale non basta?
+
+Supponiamo di osservare una media campionaria pari a 24.8. Questo numero risponde alla domanda:
+
+> Quale valore ha assunto lo stimatore nel campione osservato?
+
+Non risponde però a una seconda domanda:
+
+> Quanto cambierebbe la stima se osservassimo un altro campione generato nelle stesse condizioni?
+
+Due studi possono ottenere la stessa media e avere precisioni molto diverse. L'intervallo di confidenza rende visibile questa seconda informazione, combinando:
+
+1. la stima puntuale;
+2. l'errore standard;
+3. un valore critico associato al livello di confidenza.
+
+::: {.callout-important title="Precisione, non garanzia di verità"}
+Un intervallo stretto indica una bassa variabilità campionaria della procedura nelle condizioni assunte. Non garantisce che il campione sia rappresentativo, che la misura sia valida o che il modello sia corretto.
+
+Una stima può essere molto precisa e tuttavia sistematicamente fuorviante.
 :::
 
-::: {.callout-tip collapse="true"}
-## Prerequisiti
+::: {.callout-tip title="Prerequisiti"}
+È utile avere letto:
 
-Per seguire questo capitolo è utile aver letto:
+- @sec-freq-stime-parametri, per la distinzione tra parametro, stimatore, stima ed errore standard;
+- il capitolo [Dal campione all'evidenza](https://ccaudek.github.io/utet-prob/chapters/probability/13_from_sample_to_evidence.html), per il significato della distribuzione campionaria;
+- l'introduzione al modulo frequentista, per la distinzione tra probabilità della procedura e incertezza sul parametro.
 
-- @sec-freq-stime-parametri, per la distinzione tra parametro, stimatore e stima;
-- il capitolo del companion sulla probabilità dedicato al passaggio dal campione all'evidenza, in particolare per errore standard e distribuzione campionaria;
-- l'introduzione a questo modulo, dove abbiamo distinto le domande frequentiste dalle domande bayesiane.
-
-Qui non ripeteremo in dettaglio la teoria della distribuzione campionaria. Useremo quel risultato per capire come il frequentismo costruisce intervalli con una proprietà di copertura controllata.
+Qui useremo questi concetti senza ripeterne la teoria probabilistica.
 :::
 
-::: {.callout-caution collapse=true title="Preparazione del Notebook"}
+## Panoramica del capitolo {.unnumbered .unlisted}
+
+Il capitolo procede in otto passaggi:
+
+1. introduce la forma generale di un intervallo di confidenza;
+2. deriva l'intervallo per una media con varianza nota;
+3. presenta l'intervallo *t* per una media con varianza ignota;
+4. calcola un esempio numerico in R;
+5. rende intuitiva la copertura mediante simulazione;
+6. discute i principali fraintendimenti;
+7. mostra che ampiezza e copertura dipendono da procedura e assunzioni;
+8. distingue l'intervallo di confidenza dall'intervallo di credibilità e prepara il passaggio ai test di ipotesi.
+
+::: {.callout-note title="Preparazione del notebook"}
+Per eseguire gli esempi, prepara l'ambiente comune del progetto:
 
 ```{r}
+#| echo: true
+#| message: false
+#| warning: false
 here::here("code", "_common.R") |>
   source()
 ```
 :::
 
-## Dalla stima puntuale all'intervallo {#sec-freq-from-point-to-interval}
+## Dalla stima all'intervallo {#sec-freq-from-point-to-interval}
 
-Supponiamo di voler stimare il punteggio medio di benessere psicologico in una popolazione di studenti. Raccogliamo un campione e otteniamo una media pari a 24.8. Questo valore è la nostra **stima puntuale** della media della popolazione, indicata con $\mu$.
-
-Il problema è che un altro campione avrebbe probabilmente prodotto una media diversa. La variabilità campionaria rende quindi incompleta una comunicazione basata solo sulla stima puntuale.
-
-Un intervallo di confidenza fornisce una seconda informazione: non solo "qual è la stima?", ma anche "quanto è variabile la procedura che ha prodotto questa stima?".
-
-Nel caso più comune, un intervallo di confidenza ha la forma:
+Molti intervalli di confidenza hanno la forma:
 
 $$
-\text{stima} \; \pm \; \text{margine di errore}.
+\text{stima}
+\;\pm\;
+\text{valore critico}
+\times
+\text{errore standard}.
 $$
 
-Il margine di errore combina due elementi:
+Il prodotto tra valore critico ed errore standard è il **margine di errore**.
 
-1. una misura della variabilità della stima, cioè l'**errore standard**;
-2. un valore critico, scelto in base al livello di confidenza desiderato.
+La stima determina il centro dell'intervallo. L'errore standard descrive la variabilità campionaria dello stimatore. Il valore critico stabilisce quanto dobbiamo allontanarci dal centro per ottenere il livello di copertura desiderato.
 
-Per la media di una popolazione, quando la varianza viene stimata dal campione, la forma generale è:
+Questa forma non è universale. Esistono intervalli asimmetrici, intervalli basati sulla verosimiglianza, intervalli bootstrap e procedure specifiche per proporzioni, varianze e coefficienti di regressione. Tuttavia, il caso della media rende visibile la logica fondamentale.
+
+## Caso ideale: media con varianza nota {#sec-freq-ci-known-variance}
+
+Consideriamo osservazioni indipendenti da una popolazione normale con media ignota $\mu$ e deviazione standard nota $\sigma$. La media campionaria ha distribuzione:
 
 $$
-\bar X \pm t^*_{n-1}\frac{s}{\sqrt n},
+\bar X
+\sim
+\mathcal{N}\!\left(
+\mu,
+\frac{\sigma^2}{n}
+\right).
 $$
-dove $\bar X$ è la media campionaria, $s$ è la deviazione standard campionaria, $n$ è la dimensione del campione e $t^*_{n-1}$ è il valore critico della distribuzione *t* di Student con $n-1$ gradi di libertà.
 
-## La logica della copertura {#sec-freq-coverage-logic}
+Di conseguenza,
 
-La nozione centrale per interpretare un intervallo di confidenza è la **copertura**.
+$$
+Z
+=
+\frac{\bar X-\mu}{\sigma/\sqrt n}
+\sim
+\mathcal{N}(0,1).
+$$
 
-Un intervallo di confidenza al 95% viene costruito con una procedura che, se applicata molte volte a campioni estratti nelle stesse condizioni, produrrebbe intervalli contenenti il vero valore del parametro nel 95% dei casi.
+Per un livello di confidenza del 95%:
 
-::: {.callout-important title="Interpretazione corretta"}
-Un intervallo di confidenza al 95% non significa che, per l'intervallo osservato, vi sia il 95% di probabilità che il parametro sia al suo interno.
+$$
+P(-1.96 \le Z \le 1.96)=0.95.
+$$
 
-Significa invece che la **procedura** usata per costruire l'intervallo ha una copertura del 95% nel lungo periodo.
+Sostituendo la definizione di $Z$ e riordinando la disuguaglianza:
+
+$$
+P\!\left(
+\bar X-1.96\frac{\sigma}{\sqrt n}
+\le
+\mu
+\le
+\bar X+1.96\frac{\sigma}{\sqrt n}
+\right)
+=
+0.95.
+$$
+
+Prima di osservare il campione, gli estremi sono variabili casuali perché dipendono da $\bar X$. La procedura produce quindi un intervallo casuale con copertura 0.95.
+
+Dopo aver osservato i dati, otteniamo due estremi numerici. Il parametro, nel modello frequentista, è fisso: l'intervallo osservato lo contiene oppure non lo contiene.
+
+::: {.callout-note title="Dove si trova la probabilità?"}
+Nell'espressione precedente, la probabilità riguarda gli estremi casuali dell'intervallo prima dell'osservazione dei dati. Non riguarda una distribuzione di probabilità assegnata a $\mu$.
 :::
 
-Questa distinzione è il cuore dell'interpretazione frequentista. Prima di osservare i dati, l'intervallo è casuale, perché dipende dal campione che verrà osservato. Dopo aver osservato i dati, l'intervallo è fissato: contiene oppure non contiene il parametro vero. Nella prospettiva frequentista, non assegniamo una probabilità a questo evento per il singolo intervallo osservato, in quanto il parametro non è considerato una variabile casuale.
+## Caso usuale: media con varianza ignota {#sec-freq-ci-unknown-variance}
 
-::: {.callout-note title="La domanda frequentista"}
-La domanda non è:
+Nella ricerca psicologica, $\sigma$ è quasi sempre ignota. La sostituiamo quindi con la deviazione standard campionaria $s$.
 
-> Qual è la probabilità che $\mu$ sia in questo intervallo?
+Se le osservazioni sono indipendenti e provengono da una popolazione normale, la statistica
 
-ma:
+$$
+T
+=
+\frac{\bar X-\mu}{s/\sqrt n}
+$$
 
-> Che percentuale di intervalli costruiti con questa procedura conterrebbe $\mu$ se ripetessimo lo studio molte volte?
+segue esattamente una distribuzione *t* di Student con $n-1$ gradi di libertà:
+
+$$
+T\sim t_{n-1}.
+$$
+
+L'intervallo bilaterale al livello $1-\alpha$ è:
+
+$$
+\bar X
+\pm
+t_{1-\alpha/2,\;n-1}
+\frac{s}{\sqrt n}.
+$$
+
+La distribuzione *t* ha code più pesanti della normale standard. Nei campioni piccoli, il valore critico è quindi più grande e l'intervallo più ampio. Al crescere dei gradi di libertà, la distribuzione *t* si avvicina alla normale standard.
+
+::: {.callout-warning title="Esatto e approssimato"}
+L'intervallo *t* classico ha copertura esatta sotto indipendenza e normalità della popolazione.
+
+Con campioni grandi può essere usato come approssimazione anche in situazioni non perfettamente normali, ma la qualità dell'approssimazione dipende dalla forma della distribuzione, dalla presenza di valori estremi e dalla struttura di dipendenza. Un campione grande non rende irrilevante qualunque violazione.
 :::
 
-## Costruzione dell'intervallo per una media {#sec-freq-ci-mean}
+## Un esempio numerico {#sec-freq-ci-example-r}
 
-### Caso ideale: varianza nota
-
-Il caso più semplice, anche se raramente realistico, è quello in cui la popolazione è normale, la media $\mu$ è ignota e la deviazione standard della popolazione $\sigma$ è nota. In questo caso:
-
-$$
-\bar X \sim \mathcal{N}\!\left(\mu, \frac{\sigma^2}{n}\right).
-$$
-
-Standardizzando:
-
-$$
-Z = \frac{\bar X - \mu}{\sigma/\sqrt n} \sim \mathcal{N}(0,1).
-$$
-
-Per un livello di confidenza del 95%, il valore critico della normale standard è circa 1.96. L'intervallo diventa:
-
-$$
-\bar X \pm 1.96\frac{\sigma}{\sqrt n}.
-$$
-
-Questo caso è utile perché mostra la struttura logica dell'intervallo: stima puntuale, errore standard e valore critico. Nella ricerca psicologica, però, $\sigma$ non è quasi mai nota.
-
-### Caso usuale: varianza ignota
-
-Quando la deviazione standard della popolazione non è nota, la stimiamo con la deviazione standard campionaria $s$. Questa sostituzione introduce ulteriore incertezza. Per tenere conto di ciò, utilizziamo la distribuzione *t* di Student:
-
-$$
-T = \frac{\bar X - \mu}{s/\sqrt n} \sim t_{n-1}.
-$$
-
-L'intervallo di confidenza al livello $1-\alpha$ è:
-
-$$
-\left(
-\bar X - t^*_{n-1}\frac{s}{\sqrt n},
-\;
-\bar X + t^*_{n-1}\frac{s}{\sqrt n}
-\right),
-$$
-dove $t^*_{n-1}$ è il quantile della distribuzione *t* di Student corrispondente al livello di confidenza scelto.
-
-Per campioni piccoli, la distribuzione *t* di Student presenta code più pesanti rispetto alla distribuzione normale standard e produce intervalli più ampi. Per campioni grandi, la distribuzione *t* di Student diventa molto simile alla distribuzione normale.
-
-::: {.callout-note title="Perché la distribuzione t?"}
-La distribuzione *t* di Student tiene conto del fatto che stiamo utilizzando $s$ al posto di $\sigma$. In altre parole, non stiamo solo stimando la media: stiamo anche stimando la variabilità della popolazione. Questa incertezza aggiuntiva rende l'intervallo più prudente, soprattutto con pochi dati.
-:::
-
-## Esempio pratico in R {#sec-freq-ci-example-r}
-
-Consideriamo un piccolo campione di punteggi di benessere psicologico. L'obiettivo è stimare la media della popolazione e costruire un intervallo di confidenza al 95%.
+Consideriamo dieci punteggi di benessere psicologico:
 
 ```{r}
+#| label: ci-example-data
 punteggi <- c(28, 22, 26, 18, 30, 24, 27, 17, 21, 25)
 
 n <- length(punteggi)
@@ -147,51 +188,76 @@ media <- mean(punteggi)
 dev_std <- sd(punteggi)
 errore_standard <- dev_std / sqrt(n)
 
-cat("Media campionaria:", round(media, 2), "\n")
-cat("Deviazione standard campionaria:", round(dev_std, 2), "\n")
-cat("Errore standard:", round(errore_standard, 2), "\n")
-cat("Dimensione campionaria:", n, "\n")
+c(
+  media = media,
+  deviazione_standard = dev_std,
+  errore_standard = errore_standard,
+  n = n
+)
 ```
 
-Calcoliamo ora manualmente l'intervallo di confidenza.
+La media osservata è 23.8, la deviazione standard campionaria è circa 4.26 e l'errore standard è circa 1.35.
+
+Calcoliamo manualmente l'intervallo di confidenza al 95%:
 
 ```{r}
+#| label: ci-example-manual
 alpha <- 0.05
 t_star <- qt(1 - alpha / 2, df = n - 1)
 margine_errore <- t_star * errore_standard
 
-limite_inf <- media - margine_errore
-limite_sup <- media + margine_errore
+limite_inferiore <- media - margine_errore
+limite_superiore <- media + margine_errore
 
-cat("Valore critico t*:", round(t_star, 3), "\n")
-cat("Margine di errore:", round(margine_errore, 2), "\n")
-cat("Intervallo di confidenza al 95%: [",
-    round(limite_inf, 2), ", ", round(limite_sup, 2), "]\n")
+c(
+  t_critico = t_star,
+  margine_errore = margine_errore,
+  limite_inferiore = limite_inferiore,
+  limite_superiore = limite_superiore
+)
 ```
 
-La stessa procedura può essere eseguita con `t.test()`:
+Otteniamo approssimativamente:
+
+$$
+23.8
+\pm
+2.262\times1.348
+=
+[20.75,\;26.85].
+$$
+
+La stessa procedura è disponibile in R:
 
 ```{r}
+#| label: ci-example-ttest
 t.test(punteggi, conf.level = 0.95)
 ```
 
-L'output di `t.test()` include anche una statistica test e un valore-$p$. In questo capitolo ci concentriamo sull'intervallo di confidenza; il valore-$p$ verrà discusso nel capitolo sui test di ipotesi.
+`t.test()` restituisce anche una statistica test e un valore-$p$. In questo capitolo usiamo soltanto l'intervallo; i test di ipotesi saranno introdotti nel capitolo successivo.
 
-::: {.callout-tip title="Come scrivere il risultato"}
-Una formulazione corretta è:
+::: {.callout-tip title="Come comunicare il risultato"}
+Una formulazione appropriata è:
 
-> La media campionaria è 23.8 e l'intervallo di confidenza al 95% per la media della popolazione va da 20.75 a 26.85.
+> Nel campione, il punteggio medio di benessere è 23.8. L'intervallo di confidenza al 95% per la media, costruito con la procedura *t*, è [20.75, 26.85].
 
-Una formulazione da evitare è:
+È utile riportare anche unità di misura, numerosità campionaria e condizioni dell'analisi.
 
-> C'è il 95% di probabilità che la media vera sia tra 20.75 e 26.85.
+Da evitare:
+
+> C'è il 95% di probabilità che la media vera sia compresa tra 20.75 e 26.85.
 :::
 
-## Simulare la copertura {#sec-freq-ci-coverage-simulation}
+## La logica della copertura {#sec-freq-coverage-logic}
 
-La copertura è una proprietà della procedura. Per renderla più intuitiva, possiamo simulare molti campioni da una popolazione con media nota e verificare quante volte l'intervallo contiene il valore vero.
+La **copertura** è la proporzione di intervalli che contengono il parametro quando la procedura viene ripetuta secondo il modello e il piano di campionamento specificati.
+
+Per rendere visibile questa idea, simuliamo molti campioni da una popolazione normale con media nota e costruiamo un intervallo *t* per ciascun campione.
 
 ```{r}
+#| label: fig-ci-coverage
+#| fig-cap: "Cinquanta intervalli di confidenza al 95% ottenuti da campioni ripetuti. La linea tratteggiata indica la media vera."
+#| fig-alt: "Cinquanta segmenti orizzontali rappresentano intervalli di confidenza; alcuni non attraversano la linea della media vera."
 set.seed(42)
 
 mu_vero <- 50
@@ -201,187 +267,244 @@ n_simulazioni <- 1000
 
 intervalli <- replicate(n_simulazioni, {
   campione <- rnorm(n, mean = mu_vero, sd = sigma_vera)
-  test <- t.test(campione, conf.level = 0.95)
-  c(inferiore = test$conf.int[1], superiore = test$conf.int[2])
+  ic <- t.test(campione, conf.level = 0.95)$conf.int
+  c(inferiore = ic[1], superiore = ic[2])
 })
 
-contiene_mu <- (intervalli["inferiore", ] <= mu_vero) &
-  (intervalli["superiore", ] >= mu_vero)
+contiene_mu <- intervalli["inferiore", ] <= mu_vero &
+  intervalli["superiore", ] >= mu_vero
 
-copertura_empirica <- mean(contiene_mu)
+mean(contiene_mu)
 
-cat("Copertura empirica:", round(copertura_empirica * 100, 1), "%\n")
-cat("Copertura nominale: 95%\n")
-```
-
-La copertura empirica non sarà esattamente 95%, perché abbiamo simulato un numero finito di campioni. Tuttavia, dovrebbe oscillare attorno al valore nominale.
-
-Visualizziamo i primi 50 intervalli simulati.
-
-```{r}
 n_mostra <- 50
 
-df_ic <- data.frame(
-  id = seq_len(n_mostra),
+dati_grafico <- data.frame(
+  campione = seq_len(n_mostra),
   inferiore = intervalli["inferiore", seq_len(n_mostra)],
   superiore = intervalli["superiore", seq_len(n_mostra)],
   contiene = contiene_mu[seq_len(n_mostra)]
 )
 
-ggplot(df_ic, aes(x = id)) +
-  geom_segment(aes(xend = id,
-                   y = inferiore,
-                   yend = superiore,
-                   linetype = contiene),
-               linewidth = 0.7) +
+ggplot(
+  dati_grafico,
+  aes(
+    x = campione,
+    y = inferiore,
+    yend = superiore,
+    linetype = contiene
+  )
+) +
+  geom_segment(aes(xend = campione), linewidth = 0.7) +
   geom_hline(yintercept = mu_vero, linetype = "dashed") +
+  coord_flip() +
   labs(
-    title = "Intervalli di confidenza costruiti su campioni ripetuti",
-    subtitle = "La linea tratteggiata indica il valore vero della media",
     x = "Campione simulato",
     y = "Intervallo di confidenza",
     linetype = "Contiene la media vera"
-  ) +
-  coord_flip()
+  )
 ```
 
-Il grafico mostra perché l'interpretazione frequentista riguarda la procedura e non il singolo intervallo. In molti campioni l'intervallo contiene il valore vero, in altri no. Dopo aver osservato un solo intervallo, non è possibile sapere a quale dei due casi appartenga.
+Nella simulazione, la copertura empirica oscilla intorno al 95%. Non deve risultare esattamente 0.95 in un numero finito di ripetizioni.
 
-## Interpretazioni corrette e fraintendimenti comuni {#sec-freq-ci-misinterpretations}
+@fig-ci-coverage mostra che alcuni intervalli non contengono il parametro. Il livello di confidenza non identifica quali siano. Dopo aver osservato un singolo intervallo, la proprietà di copertura non si trasforma in una probabilità riferita a quello specifico intervallo.
 
-Gli intervalli di confidenza sono spesso interpretati in modo intuitivo ma scorretto. La tabella seguente riassume le distinzioni principali.
+::: {.callout-important title="Copertura nominale e copertura effettiva"}
+Il 95% è una proprietà nominale della procedura sotto determinate assunzioni.
 
-| Affermazione | Corretta? | Perché |
-|---|---:|---|
-| "La procedura produce intervalli che contengono il parametro nel 95% dei campioni ripetuti." | Sì | Questa è l'interpretazione frequentista della copertura. |
-| "C'è il 95% di probabilità che il parametro sia dentro questo intervallo." | No | Nel frequentismo il parametro è fisso, non casuale. |
-| "Il 95% dei valori individuali della popolazione cade nell'intervallo." | No | L'intervallo riguarda il parametro, non i singoli valori osservabili. |
-| "I valori centrali dell'intervallo sono più probabili dei valori vicini agli estremi." | No | L'intervallo di confidenza non è una distribuzione di probabilità sul parametro. |
-| "Un intervallo più stretto indica maggiore precisione della stima, a parità di condizioni." | Sì | L'ampiezza riflette errore standard e livello di confidenza. |
-
-::: {.callout-warning title="Il punto più importante"}
-Un intervallo di confidenza sembra parlare direttamente del parametro, ma la sua giustificazione formale riguarda la procedura che lo genera. Questa è la ragione per cui l'interpretazione corretta è spesso meno intuitiva di quella desiderata dai ricercatori.
+Se il modello, l'indipendenza, il piano di campionamento o il metodo di calcolo non sono appropriati, la copertura effettiva può essere diversa dal valore nominale.
 :::
 
-## Che cosa determina l'ampiezza dell'intervallo? {#sec-freq-ci-width}
+## Interpretazioni corrette e fraintendimenti {#sec-freq-ci-misinterpretations}
 
-L'ampiezza di un intervallo di confidenza dipende da tre elementi principali.
+| Affermazione | Valutazione | Motivo |
+|---|---|---|
+| «La procedura produce intervalli che contengono il parametro nel 95% delle ripetizioni previste dal modello.» | Corretta | Descrive la copertura frequentista. |
+| «Il parametro ha il 95% di probabilità di trovarsi in questo intervallo.» | Scorretta | Il parametro è fisso nel modello frequentista; la probabilità riguarda la procedura. |
+| «Il 95% dei valori individuali si trova nell'intervallo.» | Scorretta | L'intervallo riguarda un parametro, non la dispersione dei punteggi individuali. |
+| «I valori centrali sono più probabili di quelli vicini agli estremi.» | Non giustificata | L'intervallo non è una distribuzione di probabilità sul parametro. |
+| «Un intervallo più stretto indica maggiore precisione campionaria, a parità di metodo e livello di confidenza.» | Corretta | L'ampiezza dipende dall'errore standard e dal valore critico. |
+| «Tutti i valori interni sono ugualmente plausibili.» | Non giustificata | La procedura non assegna probabilità o plausibilità ai singoli valori del parametro. |
+
+A volte un intervallo di confidenza viene descritto come insieme di valori **compatibili con i dati**. Questa espressione può essere utile, ma deve essere completata:
+
+> valori non esclusi dalla procedura, dato il modello, le assunzioni e il livello scelto.
+
+Non significa che tutti i valori interni siano ugualmente credibili, né che quelli esterni siano impossibili.
+
+## Che cosa determina l'ampiezza? {#sec-freq-ci-width}
+
+### Errore standard
+
+A parità di valore critico, un errore standard maggiore produce un intervallo più ampio. L'errore standard dipende dalla variabilità dei dati e dalla struttura dello stimatore.
 
 ### Livello di confidenza
 
-Aumentare il livello di confidenza aumenta l'ampiezza dell'intervallo. Per garantire una copertura più elevata nel lungo periodo, la procedura deve produrre intervalli più larghi.
+Aumentare il livello di confidenza richiede un valore critico più grande. Sullo stesso campione, un intervallo al 99% è quindi più ampio di uno al 95%, che a sua volta è più ampio di uno al 90%.
 
 ```{r}
+#| label: ci-confidence-levels
 livelli <- c(0.80, 0.90, 0.95, 0.99)
 
-for (livello in livelli) {
-  test <- t.test(punteggi, conf.level = livello)
-  ampiezza <- diff(test$conf.int)
-  cat(sprintf(
-    "IC al %d%%: [%.2f, %.2f], ampiezza = %.2f\n",
-    livello * 100,
-    test$conf.int[1],
-    test$conf.int[2],
-    ampiezza
-  ))
-}
+data.frame(
+  livello = livelli,
+  t_critico = qt(1 - (1 - livelli) / 2, df = n - 1)
+) |>
+  transform(
+    limite_inferiore =
+      media - t_critico * errore_standard,
+    limite_superiore =
+      media + t_critico * errore_standard,
+    ampiezza =
+      2 * t_critico * errore_standard
+  )
 ```
 
-### Variabilità dei dati
-
-A parità di dimensione campionaria, dati più variabili producono un errore standard maggiore e quindi intervalli più ampi. In psicologia questo punto è cruciale: misure rumorose o costrutti eterogenei rendono più difficile ottenere stime precise.
+Una copertura nominale più elevata viene ottenuta al prezzo di un intervallo più largo.
 
 ### Dimensione campionaria
 
-Aumentare $n$ riduce l'errore standard e quindi restringe l'intervallo. Tuttavia, la relazione non è lineare: l'errore standard diminuisce come $1/\sqrt n$. Per dimezzare l'errore standard, occorre circa quadruplicare la dimensione del campione.
+Nel caso elementare della media indipendente:
 
-```{r}
-set.seed(123)
+$$
+\operatorname{SE}(\bar X)
+=
+\frac{\sigma}{\sqrt n}.
+$$
 
-dimensioni <- c(10, 30, 100, 300)
-popolazione <- rnorm(10000, mean = 50, sd = 10)
+A parità di variabilità e metodo, quadruplicare $n$ dimezza l'errore standard. Per questo motivo ottenere intervalli molto più stretti richiede aumenti sostanziali della numerosità.
 
-risultati_n <- lapply(dimensioni, function(n) {
-  campione <- sample(popolazione, size = n)
-  test <- t.test(campione, conf.level = 0.95)
-  data.frame(
-    n = n,
-    inferiore = test$conf.int[1],
-    superiore = test$conf.int[2],
-    ampiezza = diff(test$conf.int)
-  )
-})
+L'aumento di $n$ riduce la variabilità campionaria, ma non corregge automaticamente:
 
-risultati_n <- do.call(rbind, risultati_n)
-risultati_n
-```
+- campionamento distorto;
+- misurazione inadeguata;
+- dipendenza ignorata;
+- modello mal specificato.
 
-::: {.callout-note title="Precisione e validità"}
-Un intervallo stretto indica una bassa incertezza campionaria, ma non necessariamente una alta qualità scientifica. Se il campione non è rappresentativo o la misura è distorta, l'intervallo può essere molto preciso, ma centrato sul valore sbagliato.
+## Intervalli e validità del modello {#sec-freq-ci-assumptions}
+
+La copertura non è una proprietà magica dei due estremi numerici. Dipende dall'intero procedimento:
+
+- definizione della popolazione;
+- disegno di campionamento o assegnazione;
+- stimatore usato;
+- formula dell'errore standard;
+- distribuzione di riferimento;
+- trattamento di dipendenza, eterogeneità e valori estremi.
+
+Nel semplice intervallo *t* per una media, per esempio, l'indipendenza è essenziale. Se i dati provengono da studenti raggruppati in classi o da misure ripetute sulla stessa persona, la formula $s/\sqrt n$ può sottostimare la variabilità dello stimatore.
+
+::: {.callout-warning title="Un intervallo ben calcolato può rispondere alla domanda sbagliata"}
+La copertura riguarda il parametro definito dal modello e dal processo di campionamento. Non garantisce che quel parametro corrisponda al costrutto psicologico che interessa realmente.
+
+Precisione statistica e validità sostantiva devono essere valutate separatamente.
 :::
 
 ## Intervalli di confidenza e intervalli di credibilità {#sec-freq-ci-vs-credible}
 
-Per gli studenti che stanno studiando l'inferenza bayesiana, il confronto con gli intervalli di credibilità è inevitabile. I due strumenti possono apparire simili perché entrambi forniscono un intervallo numerico. Tuttavia, rispondono a domande diverse.
+I due strumenti possono produrre estremi numericamente simili, ma derivano da costruzioni differenti.
 
 | Aspetto | Intervallo di confidenza | Intervallo di credibilità |
 |---|---|---|
-| Paradigma | Frequentista | Bayesiano |
-| Oggetto probabilistico | La procedura in campioni ripetuti | Il parametro, condizionatamente ai dati e al modello |
-| Domanda | Quale procedura ha copertura del 95% nel lungo periodo? | Quale intervallo contiene il 95% della probabilità a posteriori? |
-| Parametro | Fisso ma ignoto | Incerto, rappresentato da una distribuzione |
-| Dipende da una prior? | No, nella forma standard | Sì, attraverso la distribuzione a posteriori |
-| Interpretazione intuitiva | Procedurale | Diretta sul parametro, dato il modello |
+| Oggetto probabilistico immediato | Intervallo casuale sotto campionamenti ripetuti | Parametro sotto la distribuzione a posteriori |
+| Significato del 95% | Copertura della procedura, sotto le assunzioni | Massa a posteriori contenuta nell'intervallo |
+| Dipendenza da una prior | Non nella procedura standard | Sì |
+| Dipendenza dal modello dei dati | Sì | Sì |
+| Interpretazione del singolo intervallo | Non assegna probabilità al parametro | Assegna probabilità a posteriori al parametro, condizionatamente a prior, modello e dati |
 
-Un intervallo di credibilità bayesiano al 95% può essere interpretato come un intervallo che contiene il 95% della probabilità a posteriori del parametro, dato il modello, la prior e i dati. Questa è spesso l'interpretazione che i ricercatori vorrebbero dare agli intervalli di confidenza, ma formalmente appartiene al paradigma bayesiano.
+Un intervallo di credibilità al 95% contiene il 95% della distribuzione a posteriori scelta. Questa interpretazione è diretta sul parametro, ma rimane condizionata alla prior, alla verosimiglianza e all'adeguatezza del modello.
 
-::: {.callout-important title="Stessa forma, significato diverso"}
-Due intervalli possono avere numeri simili e interpretazioni diverse. La differenza non è solo di natura computazionale, ma riguarda anche il significato che attribuiamo al termine "probabilità" e l'oggetto che consideriamo incerto.
+::: {.callout-important title="Non basta cambiare il nome"}
+Un intervallo di confidenza non diventa un intervallo di credibilità perché viene interpretato in modo intuitivo. Allo stesso modo, un intervallo bayesiano non è automaticamente affidabile soltanto perché consente un'affermazione probabilistica sul parametro.
+
+Entrambi richiedono un modello adeguato e una comunicazione coerente con la procedura che li ha generati.
 :::
 
-## Limiti e ruolo degli intervalli di confidenza {#sec-freq-ci-limits}
+## Dall'intervallo al test di ipotesi {#sec-freq-ci-to-hypothesis-testing}
 
-Gli intervalli di confidenza sono strumenti utili e ampiamente utilizzati. Permettono di evitare una comunicazione basata esclusivamente sulla stima puntuale e di rendere esplicita la precisione della procedura di stima.
+Per molte procedure standard, un intervallo bilaterale al livello $1-\alpha$ è collegato al corrispondente test bilaterale di livello $\alpha$.
 
-Tuttavia, hanno alcuni limiti importanti.
+Nel caso della media con test *t*:
 
-1. **Interpretazione controintuitiva.** Il livello di confidenza riguarda campioni ipotetici ripetuti, non il singolo intervallo osservato.
-2. **Assenza di probabilità diretta sul parametro.** Nel frequentismo non è possibile affermare che il parametro abbia il 95% di probabilità di appartenere all'intervallo.
-3. **Dipendenza dalle assunzioni.** La copertura nominale è valida solo se si rispettano le condizioni previste dal modello e dal piano di campionamento.
-4. **Nessuna protezione automatica dal bias.** Un intervallo può essere stretto ma fuorviante se i dati sono distorti.
+- se il valore ipotizzato $\mu_0$ è fuori dall'intervallo al 95%, il test bilaterale di livello 0.05 rifiuta $H_0:\mu=\mu_0$;
+- se $\mu_0$ è dentro l'intervallo, il test non rifiuta $H_0$ allo stesso livello.
 
-Questi limiti non rendono inutili gli intervalli di confidenza. Indicano piuttosto come interpretarli correttamente e perché, in un percorso bayesiano, sia utile confrontarli con gli intervalli di credibilità.
+Questa è una relazione tra procedure costruite in modo coerente. Non significa che i valori interni siano «veri» o che quelli esterni siano impossibili.
 
-## Verso i test di ipotesi {#sec-freq-ci-to-hypothesis-testing}
+Il capitolo successivo svilupperà la logica dei test, distinguendo:
 
-Gli intervalli di confidenza introducono un principio fondamentale del frequentismo: valutare una procedura in base al suo comportamento nel lungo periodo. Nel prossimo capitolo incontreremo una seconda famiglia di procedure frequentiste: i **test di ipotesi**.
-
-Il passaggio è naturale. Gli intervalli di confidenza chiedono quali valori del parametro siano compatibili con i dati secondo una procedura con copertura controllata.  I test di ipotesi, invece, chiedono quanto i dati osservati siano insoliti rispetto a un'ipotesi di riferimento, solitamente chiamata **ipotesi nulla**.
-
-In entrambi i casi, il punto chiave rimane lo stesso: l'inferenza frequentista non assegna direttamente probabilità al parametro o all'ipotesi dopo aver osservato i dati, ma valuta le procedure e le statistiche rispetto a distribuzioni di riferimento.
+- ipotesi nulla e alternativa;
+- statistica test;
+- livello $\alpha$;
+- valore-$p$;
+- errori di tipo I e II;
+- potenza.
 
 ## Riflessioni conclusive {.unnumbered .unlisted}
 
-Gli intervalli di confidenza sono uno degli strumenti più importanti della statistica applicata. La loro forza risiede nel fatto che collegano una stima puntuale a una misura della sua precisione e forniscono una garanzia procedurale: in campioni ripetuti, la procedura produce intervalli che includono il parametro vero con una frequenza prestabilita.
+Un intervallo di confidenza collega una stima puntuale alla distribuzione campionaria dello stimatore. Il suo livello descrive la copertura della procedura sotto ripetizioni definite dal modello e dal disegno.
 
-La loro difficoltà risiede proprio in questa caratteristica. L'intervallo osservato non è una distribuzione di probabilità sul parametro e il livello di confidenza non deve essere interpretato come una probabilità riferita al singolo risultato.
+La distinzione più importante è tra:
 
-Per questo motivo, gli intervalli di confidenza sono un eccellente punto di confronto tra il frequentismo e il bayesianesimo. Il frequentismo controlla il comportamento delle procedure nel lungo periodo, mentre il bayesianesimo rappresenta direttamente l'incertezza sul parametro, condizionatamente ai dati e alle assunzioni del modello.
+- la probabilità che una **procedura casuale** produca un intervallo contenente il parametro;
+- una probabilità assegnata al **parametro**, che non appartiene all'interpretazione frequentista standard.
 
-::: {.callout-important title="Punti chiave da ricordare"}
+L'ampiezza dell'intervallo informa sulla precisione campionaria, ma non certifica rappresentatività, validità della misura o correttezza del modello. La copertura nominale è affidabile soltanto nella misura in cui la procedura e le sue assunzioni sono adeguate.
 
-1. Un intervallo di confidenza accompagna una stima puntuale con una misura della sua incertezza campionaria.
-2. Il livello di confidenza è una proprietà della procedura, non del singolo intervallo osservato.
-3. Un IC al 95% significa che, nel lungo periodo, circa il 95% degli intervalli costruiti con quella procedura contiene il parametro vero.
-4. Non è corretto dire che c'è il 95% di probabilità che il parametro sia dentro l'intervallo osservato.
-5. L'ampiezza dell'intervallo dipende da livello di confidenza, variabilità dei dati e dimensione campionaria.
-6. Un intervallo di credibilità bayesiano ha un'interpretazione diversa: riguarda la probabilità a posteriori del parametro, date prior, verosimiglianza e dati.
+Questo capitolo completa il passaggio dalla stima puntuale all'inferenza intervallare. Il prossimo userà le stesse distribuzioni di riferimento per introdurre i test di ipotesi.
 
+## Esercizi {.unnumbered .unlisted}
+
+1. Che cosa aggiunge un intervallo di confidenza rispetto a una stima puntuale?
+
+2. Che cosa significa affermare che una procedura ha copertura del 95%?
+
+3. Perché non è corretto dire che il parametro ha il 95% di probabilità di trovarsi nell'intervallo osservato?
+
+4. Due studi riportano la stessa stima e lo stesso livello di confidenza. Il primo intervallo è molto più stretto. Che cosa puoi concludere e che cosa non puoi concludere?
+
+5. Perché quadruplicare la dimensione campionaria dimezza approssimativamente l'errore standard della media?
+
+6. Un intervallo al 99% è più ampio dell'intervallo al 95% costruito sugli stessi dati. Quale compromesso esprime questa differenza?
+
+7. Perché ignorare la dipendenza tra osservazioni può compromettere la copertura?
+
+8. Qual è la differenza fondamentale tra il 95% di un intervallo di confidenza e il 95% di un intervallo di credibilità?
+
+::: {.callout-tip title="Soluzioni" collapse="true"}
+1. Aggiunge informazione sulla precisione campionaria della procedura, combinando stima, errore standard e valore critico.
+
+2. Significa che, sotto il modello e il piano di campionamento assunti, il 95% degli intervalli costruiti in ripetizioni analoghe contiene il parametro vero.
+
+3. Dopo l'osservazione, gli estremi sono fissi e il parametro è trattato come fisso nel modello frequentista. Il 95% qualifica il comportamento della procedura prima dell'osservazione, non una distribuzione di probabilità sul parametro.
+
+4. Il primo studio ha maggiore precisione campionaria, a parità di metodo e assunzioni. Non puoi concludere, dai soli estremi, che la stima sia più accurata, che il campione sia più rappresentativo o che la misura sia più valida.
+
+5. L'errore standard della media è proporzionale a $1/\sqrt n$. Sostituendo $4n$ a $n$, otteniamo $1/\sqrt{4n}=1/(2\sqrt n)$.
+
+6. Una copertura nominale più alta richiede un valore critico maggiore e quindi un intervallo più ampio. Si guadagna copertura procedurale e si perde precisione.
+
+7. La formula standard può trattare come informazione indipendente osservazioni che condividono fonti di variabilità. L'errore standard può risultare troppo piccolo e la copertura effettiva inferiore a quella nominale.
+
+8. Nel primo caso, il 95% descrive la frequenza di copertura della procedura. Nel secondo descrive la massa della distribuzione a posteriori contenuta nell'intervallo, condizionatamente a prior, modello e dati.
 :::
 
-::: {.callout-note collapse=true title="Informazioni sull'ambiente di sviluppo"}
+::: {.callout-note title="Punti chiave" collapse="true"}
+- Un intervallo di confidenza combina stima, errore standard e valore critico.
+- Il livello di confidenza è una proprietà della procedura.
+- Il singolo intervallo osservato non assegna probabilità al parametro.
+- L'intervallo *t* classico è esatto sotto indipendenza e normalità.
+- La copertura effettiva può differire da quella nominale quando le assunzioni non sono adeguate.
+- Un intervallo stretto indica precisione campionaria, non necessariamente accuratezza o validità.
+- L'ampiezza aumenta con il livello di confidenza e diminuisce, in genere, con la dimensione campionaria.
+- Gli intervalli di confidenza e di credibilità possono essere numericamente simili ma hanno significati differenti.
+- Per procedure standard, intervalli e test bilaterali possono essere duali.
+:::
+
+::: {.callout-note title="Ambiente di sviluppo" collapse="true"}
+Le informazioni sull'ambiente R possono essere ottenute con:
 
 ```{r}
+#| echo: true
 sessionInfo()
 ```
 :::

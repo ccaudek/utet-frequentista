@@ -1,486 +1,746 @@
 # Test di ipotesi e valore-*p* {#sec-freq-hypothesis-testing}
 
-::: {.callout-note appearance="minimal"}
+::: {.callout-note title="In sintesi"}
+**Da sapere**  Un test frequentista confronta una statistica osservata con la sua distribuzione sotto un'ipotesi nulla. Il valore-*p* misura quanto il risultato sia incompatibile con quel modello, ma non assegna una probabilità all'ipotesi. La pratica contemporanea combina spesso la significatività fisheriana con le decisioni e il controllo degli errori di Neyman--Pearson.
 
-Il **test di ipotesi** è uno degli strumenti più diffusi dell'inferenza statistica frequentista. In psicologia, i test di ipotesi sono ampiamente utilizzati in numerosi articoli per valutare l'efficacia di un intervento, confrontare gruppi, studiare associazioni tra variabili o verificare la compatibilità di un risultato con un modello di riferimento.
-
-In un percorso orientato all'inferenza bayesiana, lo studio dei test di ipotesi ha una funzione ben precisa: imparare a interpretare correttamente il linguaggio ancora dominante nella letteratura empirica e, al contempo, comprendere quali domande questo linguaggio è in grado di porre e quali invece lascia aperte.
-
-La domanda centrale del test frequentista non è:
-
-> Qual è la probabilità che l'ipotesi sia vera, dati i risultati osservati?
-
-Questa sarebbe una domanda naturale in una prospettiva bayesiana. La domanda frequentista è diversa:
-
-> Se l'ipotesi nulla fosse vera, quanto sarebbero sorprendenti dati come quelli osservati?
-
-Questa distinzione è fondamentale. Il test di ipotesi non assegna probabilità alle ipotesi, ma valuta la **compatibilità dei dati con un modello nullo** attraverso una procedura che controlla gli errori nel lungo periodo.
-
+**Da saper fare**  Distinguere ipotesi, statistica test, distribuzione nulla, valore-*p* e livello $\alpha$; interpretare correttamente errori di tipo I, errori di tipo II e potenza; separare significatività statistica, dimensione dell'effetto e rilevanza sostanziale.
 :::
 
-::: callout-important
-## In questo capitolo imparerai a
+## Introduzione {.unnumbered .unlisted}
 
-- comprendere la logica del test di ipotesi frequentista;
-- distinguere ipotesi nulla, ipotesi alternativa, statistica test e valore-*p*;
-- interpretare correttamente il valore-*p*;
-- comprendere il ruolo di $\alpha$, degli errori di tipo I e II e della potenza;
-- applicare la logica del test a due casi introduttivi: il test del chi-quadrato e il test per una media;
-- riconoscere i limiti interpretativi della significatività statistica.
+Nei capitoli precedenti abbiamo costruito una progressione:
+
+$$
+\text{stima puntuale}
+\longrightarrow
+\text{errore standard}
+\longrightarrow
+\text{intervallo di confidenza}.
+$$
+
+Il test di ipotesi usa gli stessi elementi per affrontare una domanda diversa:
+
+> Quanto è incompatibile il risultato osservato con un modello di riferimento?
+
+Nella ricerca psicologica, i test vengono usati per studiare differenze tra gruppi, associazioni tra variabili, effetti di interventi e scostamenti da valori teorici o normativi. La loro diffusione rende indispensabile comprenderne sia la logica sia i limiti.
+
+Il test frequentista standard non calcola la probabilità che un'ipotesi sia vera dopo aver osservato i dati. Costruisce invece una distribuzione dei risultati possibili sotto un'ipotesi nulla e colloca il risultato osservato all'interno di quella distribuzione.
+
+## Perché è facile fraintendere un test?
+
+Il linguaggio ordinario invita a leggere un test come un confronto diretto tra due spiegazioni:
+
+- l'ipotesi nulla è vera;
+- l'ipotesi alternativa è vera.
+
+La procedura standard non assegna però probabilità posteriori a queste possibilità. La sua domanda è condizionale:
+
+> Se l'ipotesi nulla e le altre assunzioni del modello fossero appropriate, quanto sarebbe estremo il risultato osservato?
+
+L'inversione tra
+
+$$
+P(\text{dati}\mid H_0)
+$$
+
+e
+
+$$
+P(H_0\mid\text{dati})
+$$
+
+è una delle principali fonti di errore interpretativo.
+
+::: {.callout-important title="La direzione del condizionamento"}
+Il valore-*p* riguarda la distribuzione dei dati o della statistica test **assumendo $H_0$**. Non è la probabilità di $H_0$ dopo avere osservato i dati.
 :::
 
-::: callout-tip
-## Prerequisiti
+::: {.callout-tip title="Prerequisiti"}
+È utile avere letto:
 
-Per seguire questo capitolo è utile avere già compreso:
+- @sec-freq-stime-parametri, per stimatore, distribuzione campionaria ed errore standard;
+- @sec-frequentism-confidence-intervals, per copertura, valori critici e livello $\alpha$;
+- il capitolo [Probabilità condizionata](https://ccaudek.github.io/utet-prob/chapters/probability/04_conditional_prob_bayesian.html), per distinguere $P(A\mid B)$ da $P(B\mid A)$.
 
-- il concetto di distribuzione campionaria;
-- il significato dell'errore standard;
-- la logica degli intervalli di confidenza;
-- la distinzione tra parametro, stimatore e stima osservata.
-
-Questi concetti sono richiamati solo quando servono. Il capitolo non ripete la teoria della distribuzione campionaria, ma la usa per spiegare come funziona una procedura di test.
+La potenza viene introdotta qui come proprietà del test e sarà approfondita nel capitolo successivo sulla numerosità campionaria.
 :::
 
-::: {.callout-caution collapse=true title="Preparazione del Notebook"}
+## Panoramica del capitolo {.unnumbered .unlisted}
+
+Il capitolo procede in nove passaggi:
+
+1. distingue la significatività fisheriana dalla teoria dei test di Neyman--Pearson;
+2. identifica gli elementi che definiscono un test;
+3. introduce il valore-*p* e il livello $\alpha$;
+4. presenta errori di tipo I, errori di tipo II e potenza;
+5. applica la logica al test del chi-quadrato;
+6. applica la stessa struttura a un test *t* per una media;
+7. chiarisce test monodirezionali e bidirezionali;
+8. separa significatività, grandezza dell'effetto e rilevanza sostanziale;
+9. confronta il tipo di domanda frequentista con quello bayesiano.
+
+::: {.callout-note title="Preparazione del notebook"}
+Per eseguire gli esempi, prepara l'ambiente comune del progetto:
 
 ```{r}
-here::here("code", "_common.R") |> 
+#| echo: true
+#| message: false
+#| warning: false
+here::here("code", "_common.R") |>
   source()
 ```
 :::
 
-## La logica del test di ipotesi
+## Due tradizioni nella pratica contemporanea {#sec-freq-two-testing-traditions}
 
-### Un punto di partenza concreto
+La pratica comunemente chiamata *NHST* (*Null Hypothesis Significance Testing*) combina spesso elementi provenienti da due tradizioni.
 
-Immaginiamo uno studio in cui si vuole valutare se un breve intervento di regolazione emotiva possa migliorare il benessere psicologico degli studenti. Dopo l'intervento, il ricercatore osserva una media leggermente più alta rispetto a un valore di riferimento.
+### Fisher: significatività e incompatibilità
 
-Il problema è evidente: una differenza osservata può essere dovuta a un effetto reale dell'intervento, ma può anche essere una normale fluttuazione campionaria. Il test di ipotesi fornisce una procedura per stabilire se la differenza osservata sia sufficientemente grande non poter essere spiegata con un modello di assenza di effetto.
+Nell'impostazione fisheriana, il valore-*p* è una misura graduata di quanto i dati risultino incompatibili con un'ipotesi nulla. Un valore piccolo segnala che il risultato osservato occupa una regione poco frequente della distribuzione nulla.
 
-### Ipotesi nulla e ipotesi alternativa
+Questa lettura non richiede necessariamente una decisione automatica e definitiva. Il valore-*p* viene considerato insieme al disegno, alla qualità dei dati e alla conoscenza scientifica disponibile.
 
-Un test frequentista comincia formulando due ipotesi:
+### Neyman--Pearson: decisioni ed errori
 
-- l'**ipotesi nulla** $H_0$, che rappresenta il modello di riferimento;
-- l'**ipotesi alternativa** $H_1$, che rappresenta una deviazione dal modello nullo.
+Nell'impostazione Neyman--Pearson si specificano ipotesi, una regola decisionale e probabilità di errore valutate nelle ripetizioni. Diventano centrali:
 
-In molti casi, $H_0$ corrisponde all'assenza di una differenza, di un effetto o di un'associazione. Per esempio:
+- il livello $\alpha$;
+- l'errore di tipo I;
+- l'errore di tipo II;
+- la potenza;
+- la regione di rifiuto.
 
-$$
-H_0: \mu = 24
-$$
-può indicare che la media della popolazione è uguale a un valore normativo pari a 24. L'ipotesi alternativa può assumere diverse forme:
+La decisione non dichiara che una delle ipotesi sia probabilmente vera. Applica una procedura progettata per controllare gli errori nel lungo periodo.
 
-$$
-H_1: \mu \neq 24
-$$
-per un test bidirezionale, oppure:
+::: {.callout-note title="Una procedura ibrida"}
+La regola
 
-$$
-H_1: \mu > 24
-$$
-per un test monodirezionale.
+> «calcolo un valore-*p* e, se $p\leq0.05$, dichiaro il risultato significativo»
 
-::: {.callout-warning title="Una distinzione essenziale"}
+combina una misura fisheriana di incompatibilità con una soglia e una decisione di tipo Neyman--Pearson.
 
-Nel test frequentista non si calcola $P(H_0 \mid \text{dati})$. Il procedimento calcola invece probabilità del tipo:
-
-$$
-P(\text{dati almeno così estremi} \mid H_0).
-$$
-
-Questa differenza è una delle principali fonti di fraintendimento nella lettura dei risultati statistici.
+Questa pratica è diffusa, ma interpretarla correttamente richiede sapere che valore-*p* e livello $\alpha$ non sono la stessa quantità.
 :::
 
-### La statistica test
+## Anatomia di un test {#sec-freq-test-anatomy}
 
-Per confrontare i dati con l'ipotesi nulla si costruisce una **statistica test**. Una statistica test è una funzione dei dati che misura quanto il risultato osservato si discosta da ciò che ci si aspetterebbe se $H_0$ fosse vera.
+Un test è definito da più elementi. Il solo valore-*p* non basta a descriverlo.
+
+### Ipotesi nulla e alternativa
+
+L'**ipotesi nulla** $H_0$ specifica il modello di riferimento. L'**ipotesi alternativa** $H_1$ descrive i valori o i modelli rispetto ai quali la procedura deve essere sensibile.
+
+Per una media:
+
+$$
+H_0:\mu=24.
+$$
+
+Un'alternativa bilaterale è:
+
+$$
+H_1:\mu\neq24,
+$$
+
+mentre un'alternativa unilaterale può essere:
+
+$$
+H_1:\mu>24.
+$$
+
+L'ipotesi nulla non deve necessariamente rappresentare una teoria scientifica completa o «assenza di qualunque effetto». È una restrizione precisa del modello usata per derivare la distribuzione di riferimento.
+
+### Statistica test
+
+La **statistica test** è una funzione dei dati progettata per misurare una discrepanza rilevante rispetto a $H_0$.
 
 Esempi comuni sono:
 
-- la statistica $z$, quando la deviazione standard della popolazione è nota;
-- la statistica $t$, quando la deviazione standard della popolazione è stimata dal campione;
-- la statistica $\chi^2$, quando si analizzano frequenze in tabelle di contingenza.
+- una statistica $z$;
+- una statistica $t$;
+- una statistica $\chi^2$;
+- una statistica $F$;
+- una differenza, un rapporto o un coefficiente standardizzato.
 
-Il punto importante è che, sotto $H_0$, la statistica test ha una **distribuzione di riferimento** nota o approssimabile. Questa distribuzione consente di valutare quanto il valore osservato sia raro nel mondo ipotetico in cui $H_0$ è vera.
+Per interpretare l'estremità occorre sapere quali valori della statistica siano più incompatibili con $H_0$.
 
-### Il valore-*p*
+### Distribuzione sotto l'ipotesi nulla
 
-Il **valore-*p*** è la probabilità, assumendo vera l'ipotesi nulla, di osservare una statistica test uguale o più estrema di quella ottenuta:
+La **distribuzione nulla** descrive i valori che la statistica test assumerebbe se $H_0$, il modello e il piano di analisi fossero corretti.
 
-$$
-\text{valore-}p = P(\text{risultato almeno così estremo} \mid H_0).
-$$
+Può essere:
 
-Un valore-*p* piccolo indica che i dati osservati sarebbero rari se $H_0$ fosse vera. Per convenzione, spesso si confronta il valore-*p* con un livello di significatività $\alpha = 0.05$:
+- derivata esattamente;
+- ottenuta mediante un'approssimazione asintotica;
+- costruita attraverso permutazioni o simulazioni.
 
-- se $p \leq \alpha$, si **rifiuta $H_0$**;
-- se $p > \alpha$, **non si rifiuta $H_0$**.
+### Regola di estremità
 
-La seconda formulazione è intenzionale: un test non significativo non conferma l'ipotesi nulla. Indica soltanto che i dati non sono sufficientemente incompatibili con $H_0$ secondo la regola decisionale scelta.
+Il valore-*p* dipende anche dalla regola che stabilisce quali risultati siano «almeno altrettanto estremi» di quello osservato.
 
-## Errori di tipo I, tipo II e potenza
+In un test unilaterale superiore si considera una coda. In un test bilaterale si considerano discrepanze in entrambe le direzioni, secondo la procedura specificata.
 
-Il test di ipotesi è una procedura decisionale. Come ogni decisione basata su dati campionari, può produrre errori.
+::: {.callout-warning title="Il valore-p non è determinato dai soli dati"}
+Dipende anche da:
 
-### Due tipi di errore
-
-Se $H_0$ è vera ma la rifiutiamo, commettiamo un **errore di tipo I**. Questo è il caso del falso positivo: concludiamo che vi sia un effetto quando, nel modello di riferimento, l'effetto non esiste.
-
-Se $H_0$ è falsa ma non la rifiutiamo, commettiamo un **errore di tipo II**. Questo è il caso del falso negativo: non rileviamo un effetto che nella popolazione è presente.
-
-| Situazione reale | Decisione: rifiutare $H_0$ | Decisione: non rifiutare $H_0$ |
-|---|---:|---:|
-| $H_0$ vera | Errore di tipo I | Decisione corretta |
-| $H_0$ falsa | Decisione corretta | Errore di tipo II |
-
-Il livello $\alpha$ controlla la probabilità di errore di tipo I nel lungo periodo. La probabilità di errore di tipo II si indica con $\beta$. La **potenza** del test è:
-
-$$
-1 - \beta.
-$$
-
-La potenza è la probabilità di rifiutare $H_0$ quando un effetto reale è presente. La potenza dipende da diversi fattori: la grandezza dell'effetto, la variabilità dei dati, la numerosità del campione e la soglia $\alpha$.
-
-::: {.callout-note title="Perché la potenza sarà ripresa nel prossimo capitolo"}
-
-Qui introduciamo la potenza solo come parte della logica del test. Il capitolo successivo approfondirà il rapporto tra potenza, numerosità campionaria e pianificazione dello studio.
+- ipotesi nulla;
+- statistica test;
+- distribuzione di riferimento;
+- scelta unilaterale o bilaterale;
+- regola di arresto, quando rilevante;
+- correzioni per confronti multipli;
+- altre decisioni previste dal piano di analisi.
 :::
 
-## Esempio 1: il test del chi-quadrato di indipendenza
+## Il valore-*p* {#sec-freq-p-value}
 
-Il test del chi-quadrato di indipendenza viene utilizzato quando si desidera valutare se due variabili categoriali siano associate.
+In forma generale, il valore-*p* è:
 
-### La domanda di ricerca
+> la probabilità, calcolata sotto $H_0$, di ottenere un valore della statistica test almeno altrettanto incompatibile con $H_0$ quanto quello osservato.
 
-Supponiamo di voler studiare la relazione tra **stress percepito** e **qualità del sonno** in un campione di adulti. Le due variabili sono categoriali:
+In simboli schematici:
 
-- stress percepito: basso / alto;
-- qualità del sonno: buona / scarsa.
+$$
+p
+=
+P_{H_0}
+\left(
+T(Y)\text{ almeno altrettanto estremo di }T(y_{\mathrm{obs}})
+\right).
+$$
 
-I dati osservati sono:
+Un valore-*p* piccolo indica che il risultato osservato occupa una regione rara della distribuzione nulla. Segnala quindi incompatibilità tra i dati e l'insieme delle assunzioni usate per costruire il test.
+
+Non identifica da solo quale assunzione sia inadeguata. Un valore piccolo può riflettere:
+
+- una deviazione reale dal valore nullo;
+- una specificazione errata del modello;
+- dipendenza o eterogeneità ignorata;
+- bias di campionamento o misurazione;
+- selezione analitica o confronti multipli non corretti.
+
+### Valore-*p* e livello $\alpha$
+
+Il **valore-*p*** è calcolato dai dati. Il **livello $\alpha$** è una soglia decisionale scelta prima dell'analisi.
+
+La regola convenzionale è:
+
+- se $p\leq\alpha$, rifiutare $H_0$;
+- se $p>\alpha$, non rifiutare $H_0$.
+
+«Non rifiutare» è intenzionale. Un risultato non significativo non prova che $H_0$ sia vera.
+
+::: {.callout-warning title="Che cosa non è un valore-p"}
+Il valore-*p* non è:
+
+- $P(H_0\mid\text{dati})$;
+- la probabilità che il risultato sia «dovuto al caso»;
+- la probabilità che $H_1$ sia vera;
+- la dimensione dell'effetto;
+- la probabilità di replicare la significatività;
+- il tasso di falsi positivi tra tutti i risultati significativi pubblicati.
+:::
+
+## Errori di tipo I, errori di tipo II e potenza {#sec-freq-errors-power}
+
+Una procedura decisionale può produrre quattro combinazioni:
+
+| Stato rispetto alle ipotesi specificate | Rifiutare $H_0$ | Non rifiutare $H_0$ |
+|---|---:|---:|
+| $H_0$ vera | Errore di tipo I | Decisione corretta |
+| Alternativa specificata vera | Decisione corretta | Errore di tipo II |
+
+### Errore di tipo I
+
+L'errore di tipo I consiste nel rifiutare $H_0$ quando è vera. Sotto le condizioni previste dalla procedura:
+
+$$
+P(\text{rifiutare }H_0\mid H_0)=\alpha.
+$$
+
+Il controllo vale per la procedura e per la famiglia di analisi definita. Se vengono provati molti test e riportati soltanto quelli significativi, il tasso effettivo di falsi positivi può superare quello nominale.
+
+### Errore di tipo II e potenza
+
+Per una specifica alternativa, l'errore di tipo II ha probabilità:
+
+$$
+\beta
+=
+P(\text{non rifiutare }H_0\mid H_1).
+$$
+
+La potenza è:
+
+$$
+1-\beta
+=
+P(\text{rifiutare }H_0\mid H_1).
+$$
+
+La potenza non è un unico numero indipendente dall'effetto. Dipende dal valore del parametro sotto l'alternativa, oltre che da:
+
+- numerosità campionaria;
+- variabilità;
+- livello $\alpha$;
+- struttura del disegno;
+- test unilaterale o bilaterale;
+- qualità della misurazione.
+
+::: {.callout-note title="Perché la potenza viene ripresa nel prossimo capitolo"}
+Qui la potenza serve a comprendere la logica degli errori. Il capitolo successivo discuterà come scegliere un effetto bersaglio e una numerosità adeguata prima di raccogliere i dati.
+:::
+
+## Esempio 1: test del chi-quadrato di indipendenza {#sec-freq-chi-square-example}
+
+Supponiamo di studiare la relazione tra **stress percepito** e **qualità del sonno**.
 
 ```{r}
+#| label: tbl-stress-sleep-observed
+#| tbl-cap: "Frequenze osservate per stress percepito e qualità del sonno."
 osservati <- matrix(
-  c(42, 40,
-    19, 39),
+  c(
+    42, 40,
+    19, 39
+  ),
   nrow = 2,
-  byrow = TRUE
+  byrow = TRUE,
+  dimnames = list(
+    Stress = c("Basso", "Alto"),
+    Sonno = c("Buono", "Scarso")
+  )
 )
 
-rownames(osservati) <- c("Stress basso", "Stress alto")
-colnames(osservati) <- c("Sonno buono", "Sonno scarso")
-
-knitr::kable(
-  osservati,
-  caption = "Frequenze osservate per stress percepito e qualità del sonno"
-)
+knitr::kable(osservati)
 ```
-
-La domanda è:
-
-> I dati sono compatibili con l'ipotesi che lo stress percepito e la qualità del sonno siano indipendenti?
 
 Le ipotesi sono:
 
 $$
-H_0: \text{stress percepito e qualità del sonno sono indipendenti}
+H_0:
+\text{stress e qualità del sonno sono indipendenti},
 $$
 
 $$
-H_1: \text{stress percepito e qualità del sonno sono associati}.
+H_1:
+\text{stress e qualità del sonno non sono indipendenti}.
 $$
 
-### Valori attesi sotto $H_0$
+### Frequenze attese
 
-Se le due variabili fossero indipendenti, le frequenze attese in ciascuna cella sarebbero determinate dai totali marginali. Per la cella nella riga $i$ e nella colonna $j$:
+Sotto l'indipendenza, la frequenza attesa nella cella $ij$ è:
 
 $$
-E_{ij} = \frac{R_i \times C_j}{N},
+E_{ij}
+=
+\frac{R_iC_j}{N},
 $$
-dove $R_i$ è il totale della riga, $C_j$ il totale della colonna e $N$ il totale generale.
+
+dove $R_i$ è il totale della riga, $C_j$ quello della colonna e $N$ il totale complessivo.
 
 ```{r}
+#| label: tbl-stress-sleep-expected
+#| tbl-cap: "Frequenze attese sotto l'ipotesi nulla di indipendenza."
 totali_riga <- rowSums(osservati)
 totali_colonna <- colSums(osservati)
 totale <- sum(osservati)
 
 attesi <- outer(totali_riga, totali_colonna) / totale
+dimnames(attesi) <- dimnames(osservati)
 
-knitr::kable(
-  round(attesi, 1),
-  caption = "Frequenze attese sotto l'ipotesi nulla di indipendenza"
+knitr::kable(round(attesi, 2))
+```
+
+### Statistica test
+
+La statistica è:
+
+$$
+\chi^2
+=
+\sum_{i=1}^{r}
+\sum_{j=1}^{c}
+\frac{(O_{ij}-E_{ij})^2}{E_{ij}}.
+$$
+
+```{r}
+#| label: chi-square-manual
+chi2_osservato <- sum((osservati - attesi)^2 / attesi)
+gradi_liberta <- (nrow(osservati) - 1) * (ncol(osservati) - 1)
+p_chi <- pchisq(
+  chi2_osservato,
+  df = gradi_liberta,
+  lower.tail = FALSE
+)
+
+c(
+  chi_quadrato = chi2_osservato,
+  gradi_liberta = gradi_liberta,
+  valore_p = p_chi
 )
 ```
 
-Le frequenze attese descrivono ciò che ci si aspetterebbe di osservare se l'apparente associazione tra stress e sonno fosse dovuta esclusivamente alla composizione marginale del campione.
-
-### La statistica $\chi^2$
-
-La statistica del chi-quadrato misura la discrepanza complessiva tra le frequenze osservate e quelle attese:
+Il calcolo produce circa:
 
 $$
-\chi^2 = \sum_{i=1}^{r} \sum_{j=1}^{c} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}.
+\chi^2(1)=4.71,
+\qquad
+p=0.030.
 $$
 
-Valori piccoli indicano una buona compatibilità con $H_0$, mentre valori grandi indicano una discrepanza più marcata.
+Verifichiamo con R:
 
 ```{r}
-chi2 <- sum((osservati - attesi)^2 / attesi)
-df_chi <- (nrow(osservati) - 1) * (ncol(osservati) - 1)
-p_chi <- 1 - pchisq(chi2, df_chi)
-
-cat("Chi-quadrato:", round(chi2, 3), "\n")
-cat("Gradi di libertà:", df_chi, "\n")
-cat("Valore-p:", round(p_chi, 4), "\n")
-```
-
-Verifichiamo il risultato con la funzione `chisq.test()`:
-
-```{r}
+#| label: chi-square-r
 chisq.test(osservati, correct = FALSE)
 ```
 
-La correzione di continuità è disattivata per mantenere coerenza con il calcolo manuale.
+Disattiviamo la correzione di continuità per riprodurre il calcolo manuale.
 
-### Visualizzare il valore-*p*
+### Visualizzazione
 
 ```{r}
-#| echo: false
-#| label: fig-chi2-pvalue
-#| fig-cap: "Distribuzione chi-quadrato sotto H0 e valore-p osservato"
+#| label: fig-chi-square-p-value
+#| fig-cap: "Distribuzione chi-quadrato sotto l'ipotesi nulla. L'area oltre la statistica osservata rappresenta il valore-p."
+#| fig-alt: "Curva della distribuzione chi-quadrato con una linea verticale sulla statistica osservata e la coda destra evidenziata."
+x_massimo <- qchisq(0.999, df = gradi_liberta)
 
-alpha <- 0.05
-chi2_crit <- qchisq(1 - alpha, df_chi)
+dati_chi <- data.frame(
+  x = seq(0.001, x_massimo, length.out = 2000)
+)
 
-x_max <- qchisq(0.995, df_chi)
-dens_df <- data.frame(x = seq(0.001, x_max, length.out = 2000))
-dens_df$y <- dchisq(dens_df$x, df_chi)
-p_area <- subset(dens_df, x >= chi2)
-alpha_area <- subset(dens_df, x >= chi2_crit)
+dati_chi$densita <- dchisq(dati_chi$x, df = gradi_liberta)
 
-ggplot(dens_df, aes(x = x, y = y)) +
-  geom_line(linewidth = 1) +
-  geom_area(data = p_area, aes(x = x, y = y), alpha = 0.35) +
-  geom_area(data = alpha_area, aes(x = x, y = y), alpha = 0.20) +
-  geom_vline(xintercept = chi2, linetype = "dashed", linewidth = 0.9) +
-  geom_vline(xintercept = chi2_crit, linetype = "dotted", linewidth = 0.9) +
+ggplot(dati_chi, aes(x = x, y = densita)) +
+  geom_line(linewidth = 0.9) +
+  geom_area(
+    data = subset(dati_chi, x >= chi2_osservato),
+    alpha = 0.35
+  ) +
+  geom_vline(
+    xintercept = chi2_osservato,
+    linetype = "dashed",
+    linewidth = 0.8
+  ) +
   labs(
-    title = expression(paste("Distribuzione ", chi^2, " sotto ", H[0])),
-    subtitle = paste0(
-      "chi2 osservato = ", round(chi2, 3),
-      " | valore-p = ", round(p_chi, 4),
-      " | soglia critica = ", round(chi2_crit, 3)
-    ),
     x = expression(chi^2),
     y = "Densità"
   )
 ```
 
-L'area a destra della statistica osservata è il valore-*p*. Se tale area è inferiore a $\alpha$, il risultato cade nella regione di rifiuto.
+In @fig-chi-square-p-value, l'area a destra di $\chi^2_{\mathrm{obs}}$ è circa 0.030. Al livello $\alpha=0.05$, la procedura rifiuta l'ipotesi di indipendenza.
 
-Nel nostro esempio, il valore-*p* è inferiore a 0.05. Possiamo quindi rifiutare l'ipotesi nulla di indipendenza. Una formulazione prudente è:
+Una formulazione appropriata è:
 
-> I dati mostrano una discrepanza rispetto all'ipotesi di indipendenza sufficientemente grande da risultare statisticamente significativa al livello $\alpha = 0.05$.
+> Nel campione è emersa un'associazione statisticamente significativa tra stress percepito e qualità del sonno, $\chi^2(1)=4.71$, $p=0.030$.
 
-Questa frase è più corretta rispetto a "abbiamo dimostrato che stress e sonno sono associati". Il test segnala l'incompatibilità con il modello nullo, ma non fornisce una probabilità diretta dell'associazione.
+Questa conclusione non indica:
 
-## Esempio 2: il test per una media
+- la probabilità che le variabili siano associate;
+- la grandezza dell'associazione;
+- una relazione causale;
+- la validità delle categorie utilizzate.
 
-Consideriamo ora una variabile continua. Una domanda comune in psicologia è se la media di una popolazione differisca da un valore di riferimento.
+Per completare l'analisi occorre stimare la dimensione dell'associazione e discuterne il significato sostantivo.
 
-### Dati e ipotesi
+## Esempio 2: test *t* per una media {#sec-freq-one-sample-t-test}
 
-Un ricercatore vuole verificare se i punteggi di **benessere psicologico** di un gruppo di studenti universitari siano superiori alla media normativa della popolazione, pari a $\mu_0 = 24$.
-
-I punteggi osservati sono:
+Consideriamo dieci punteggi di benessere psicologico e un valore normativo pari a 24.
 
 ```{r}
+#| label: one-sample-data
 punteggi <- c(28, 22, 26, 18, 30, 24, 27, 17, 21, 25)
+
 n <- length(punteggi)
-media_campione <- mean(punteggi)
-s <- sd(punteggi)
+media <- mean(punteggi)
+deviazione_standard <- sd(punteggi)
+errore_standard <- deviazione_standard / sqrt(n)
 
-cat("Media campionaria:", round(media_campione, 2), "\n")
-cat("Deviazione standard campionaria:", round(s, 2), "\n")
-cat("Numerosità:", n, "\n")
+c(
+  media = media,
+  deviazione_standard = deviazione_standard,
+  errore_standard = errore_standard,
+  n = n
+)
 ```
 
-Le ipotesi per un test monodirezionale sono:
+Supponiamo che l'ipotesi, formulata prima di osservare i dati, sia:
 
 $$
-H_0: \mu = 24
+H_0:\mu=24,
 $$
 
 $$
-H_1: \mu > 24.
+H_1:\mu>24.
 $$
 
-La media osservata è 23.8, quindi non va nemmeno nella direzione ipotizzata. Il test consente comunque di formalizzare questa informazione.
-
-### La statistica $t$
-
-Poiché la deviazione standard della popolazione non è nota, viene stimata con la deviazione standard campionaria $s$. L'errore standard stimato è:
+La statistica è:
 
 $$
-SE = \frac{s}{\sqrt{n}}.
+t
+=
+\frac{\bar X-\mu_0}{S/\sqrt n}.
 $$
-
-La statistica test è:
-
-$$
-t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}.
-$$
-
-Sotto $H_0$, questa statistica segue una distribuzione $t$ di Student con $n - 1$ gradi di libertà.
 
 ```{r}
+#| label: one-sample-t-manual
 mu_0 <- 24
-SE <- s / sqrt(n)
-t_obs <- (media_campione - mu_0) / SE
-df_t <- n - 1
-p_t_greater <- 1 - pt(t_obs, df_t)
 
-cat("Errore standard:", round(SE, 3), "\n")
-cat("Statistica t:", round(t_obs, 3), "\n")
-cat("Gradi di libertà:", df_t, "\n")
-cat("Valore-p:", round(p_t_greater, 3), "\n")
+t_osservato <- (media - mu_0) / errore_standard
+gradi_liberta_t <- n - 1
+p_unilaterale <- pt(
+  t_osservato,
+  df = gradi_liberta_t,
+  lower.tail = FALSE
+)
+
+c(
+  t = t_osservato,
+  gradi_liberta = gradi_liberta_t,
+  valore_p = p_unilaterale
+)
 ```
 
-Verifichiamo con `t.test()`:
+Otteniamo circa:
+
+$$
+t(9)=-0.15,
+\qquad
+p=0.557.
+$$
+
+La media osservata, 23.8, non è nella direzione dell'alternativa superiore. Non rifiutiamo $H_0$.
 
 ```{r}
-t.test(punteggi, mu = 24, alternative = "greater")
+#| label: one-sample-t-r
+t.test(
+  punteggi,
+  mu = 24,
+  alternative = "greater"
+)
 ```
 
-Il valore-*p* è elevato. Se la media vera fosse 24, una media campionaria pari o superiore a quella osservata non sarebbe affatto rara. I dati non forniscono evidenza a sostegno dell'ipotesi che il benessere medio sia superiore alla norma.
+Una formulazione adeguata è:
 
-### Test monodirezionale e bidirezionale
+> I dati non forniscono evidenza, secondo questo test unilaterale, che la media sia superiore a 24, $t(9)=-0.15$, $p=0.557$.
 
-Se il ricercatore non avesse specificato una direzione e volesse soltanto verificare se la media differisce da 24, dovrebbe usare un test bidirezionale:
+Non è adeguato concludere:
+
+> Abbiamo dimostrato che la media è uguale a 24.
+
+Il test non significativo lascia aperte molte possibilità, comprese una differenza piccola, dati poco informativi o una deviazione nella direzione opposta.
+
+## Test unilaterali e bilaterali {#sec-freq-one-two-sided}
+
+Un test bilaterale considera deviazioni in entrambe le direzioni:
 
 $$
-H_1: \mu \neq 24.
+H_1:\mu\neq\mu_0.
 $$
 
 ```{r}
-t.test(punteggi, mu = 24, alternative = "two.sided")
+#| label: one-sample-t-two-sided
+t.test(
+  punteggi,
+  mu = 24,
+  alternative = "two.sided"
+)
 ```
 
-Nel test bidirezionale il valore-*p* considera le discrepanze in entrambe le direzioni. La scelta tra il test monodirezionale e quello bidirezionale deve essere motivata dal punto di vista teorico prima di osservare i dati, non deve essere presa in base al risultato.
+Per gli stessi dati, il valore-*p* bilaterale è circa 0.885.
 
-## Interpretare correttamente il valore-*p*
+La scelta tra test unilaterale e bilaterale deve essere motivata dalla domanda e definita prima di osservare i risultati. Scegliere a posteriori la coda favorevole altera il controllo dell'errore di tipo I.
 
-Il valore-*p* è spesso interpretato in modo scorretto. È utile fissare alcune regole.
+Un test unilaterale non dovrebbe essere usato soltanto per ottenere maggiore potenza. Deve essere scientificamente sensato escludere, dalla regola di evidenza, una deviazione nella direzione opposta.
 
-Il valore-*p* **non** è:
+## Interpretare un risultato {#sec-freq-interpreting-test-result}
 
-- la probabilità che $H_0$ sia vera;
-- la probabilità che $H_1$ sia vera;
-- la probabilità che il risultato sia dovuto al caso;
-- una misura della grandezza dell'effetto;
-- una misura della probabilità di replicazione.
+Una lettura completa separa almeno quattro livelli.
 
-Il valore-*p* è invece:
+### Compatibilità con il modello nullo
 
-- una probabilità calcolata assumendo vera $H_0$;
-- una misura di incompatibilità tra dati e modello nullo;
-- un elemento di una regola decisionale frequentista;
-- una quantità dipendente dal modello, dalla statistica test e dal piano di analisi.
+Il valore-*p* descrive quanto il risultato sia estremo sotto $H_0$ e le assunzioni del test.
 
-::: {.callout-important title="Formula da ricordare"}
+### Decisione procedurale
 
-La forma corretta è:
+Il confronto con $\alpha$ applica una regola di rifiuto o non rifiuto.
 
-$$
-P(\text{dati almeno così estremi} \mid H_0),
-$$
+### Grandezza e precisione dell'effetto
 
-non:
+La stima e l'intervallo di confidenza mostrano quanto è grande l'effetto e con quale precisione è stato stimato.
 
-$$
-P(H_0 \mid \text{dati}).
-$$
+### Significato scientifico
+
+La rilevanza dipende da teoria, qualità della misura, disegno, costi, benefici e contesto applicativo.
+
+::: {.callout-important title="Significativo non significa importante"}
+Un risultato può essere statisticamente significativo ma troppo piccolo per avere rilievo teorico o pratico.
+
+Un risultato non significativo può essere compatibile sia con effetti trascurabili sia con effetti rilevanti stimati con scarsa precisione.
 :::
 
-## Significatività statistica e rilevanza sostanziale
+## Limiti e usi appropriati {#sec-freq-testing-limits}
 
-Un risultato statisticamente significativo non è necessariamente rilevante dal punto di vista teorico, clinico o pratico. Con campioni molto grandi, anche effetti minimi possono produrre valori-*p* piccoli. Con campioni piccoli, effetti potenzialmente rilevanti potrebbero non raggiungere la soglia convenzionale.
+### La soglia crea una discontinuità decisionale
 
-Per questo motivo, il valore-*p* dovrebbe essere accompagnato da:
+$p=0.049$ e $p=0.051$ rappresentano livelli di incompatibilità molto simili. Trasformarli in categorie opposte può esagerare la differenza tra i risultati.
 
-- una stima puntuale dell'effetto;
-- un intervallo di confidenza;
-- una misura della dimensione dell'effetto;
-- una discussione della rilevanza teorica o applicativa;
-- una valutazione della qualità del disegno di ricerca e della misura.
+La soglia può essere utile in una procedura decisionale, ma non deve sostituire la lettura continua dei dati.
 
-Nel capitolo precedente abbiamo visto che gli intervalli di confidenza aiutano a comunicare la precisione della stima. Il test di ipotesi aggiunge una regola decisionale, ma non sostituisce la valutazione dell'effetto e della sua incertezza.
+### L'ipotesi nulla puntuale può essere poco informativa
 
-## Limiti del test di ipotesi frequentista
+In molti contesti, sapere che un effetto non è esattamente zero è meno utile che sapere se sia:
 
-Il test di ipotesi è utile quando viene interpretato per ciò che è: una procedura per controllare gli errori decisionali nel lungo periodo. Tuttavia, diventa problematico quando viene trattato come una misura diretta della verità di un'ipotesi o della forza dell'evidenza.
+- sufficientemente grande;
+- praticamente rilevante;
+- compatibile con una regione di equivalenza;
+- stabile tra popolazioni e contesti.
 
-I limiti principali sono i seguenti.
+La difficoltà non rende sempre illegittima un'ipotesi puntuale. Indica che la domanda deve essere scelta in funzione dello scopo scientifico.
 
-1. **Decisione dicotomica.**  
-   La soglia $\alpha = 0.05$ trasforma una quantità continua in una decisione binaria. Due valori molto simili, come 0.049 e 0.051, possono ricevere etichette diverse pur rappresentando un'evidenza quasi indistinguibile.
+### Un risultato non significativo non dimostra equivalenza
 
-2. **Dipendenza dalla numerosità campionaria.**  
-   A parità di effetto, un campione più grande produce errori standard più piccoli e, di conseguenza, test più sensibili. Questo è utile, ma può rendere statisticamente significativi effetti di scarsa importanza pratica.
+Per sostenere che un effetto sia abbastanza piccolo da essere trascurabile occorre definire che cosa significhi «abbastanza piccolo» e usare una procedura adatta, come un test di equivalenza o un'analisi con una regione di effetti praticamente trascurabili.
 
-3. **Interpretazione debole dei risultati non significativi.**  
-   Non rifiutare $H_0$ non significa dimostrare l'assenza dell'effetto. Può significare che lo studio non fornisce informazioni sufficienti per distinguere l'effetto dal rumore campionario.
+### Il valore-*p* è sensibile al piano di analisi
 
-4. **Ipotesi nulla puntuale.**  
-   Molti test valutano un'ipotesi del tipo $\delta = 0$, ovvero un effetto esattamente nullo. In molte situazioni psicologiche, però, la domanda scientifica più rilevante non è se l'effetto sia esattamente pari a zero, ma se sia sufficientemente grande da essere rilevante dal punto di vista teorico o clinico.
+Arresto opzionale, confronti multipli, esclusioni flessibili e scelta post hoc delle analisi modificano le proprietà nominali della procedura. Preregistrazione, trasparenza e analisi di sensibilità aiutano a rendere interpretabili i risultati.
 
-5. **Dipendenza dal piano di analisi.**  
-   Il valore-*p* dipende non solo dai dati osservati, ma anche da aspetti procedurali come la regola di arresto, il numero di confronti e la scelta tra test monodirezionale e bidirezionale.
+### Il test non controlla la validità scientifica
 
-Questi limiti non rendono il test di ipotesi inutile. Tuttavia, indicano che il suo significato deve essere circoscritto: il test frequentista è uno strumento decisionale, non una misura diretta della plausibilità delle ipotesi.
+Un test può essere calcolato correttamente su:
 
-## Ponte verso la pianificazione dello studio
+- un campione non rappresentativo;
+- una misura poco valida;
+- un disegno confuso;
+- un modello inadeguato.
 
-Il capitolo successivo approfondisce un punto lasciato volutamente in sospeso: la **potenza**. Abbiamo visto che un risultato non significativo può dipendere dall'assenza di un effetto, ma anche da un disegno sperimentale poco informativo. Per interpretare correttamente un test, è quindi necessario porsi le seguenti domande:
+La significatività non corregge questi problemi.
 
-- quale effetto ci aspettiamo di poter rilevare?
-- quante osservazioni sono necessarie?
-- con quale probabilità il test riuscirà a individuare un effetto rilevante?
+::: {.callout-note title="Quando il test è utile"}
+Un test frequentista è particolarmente interpretabile quando:
 
-Queste domande collegano direttamente il test di ipotesi alla pianificazione della numerosità del campione.
+- la domanda decisionale è definita prima dei dati;
+- il disegno consente di collegare il parametro alla domanda scientifica;
+- il modello e l'errore standard sono adeguati;
+- la famiglia di test è chiaramente specificata;
+- vengono riportati anche stime, intervalli e misure dell'effetto.
+:::
+
+## Confronto con l'inferenza bayesiana {#sec-freq-testing-bayes}
+
+Il confronto più utile parte dalle domande, non dagli slogan.
+
+Un test frequentista standard chiede:
+
+> Quanto è estremo il risultato sotto $H_0$?
+
+Un'analisi bayesiana può chiedere:
+
+> Come si distribuisce l'incertezza sul parametro dopo avere combinato prior e dati?
+
+oppure, in un modello che assegna probabilità a ipotesi discrete:
+
+> Come cambiano le probabilità relative delle ipotesi dopo i dati?
+
+Queste non sono riformulazioni dello stesso numero. Un valore-*p* non è una probabilità a posteriori, e una probabilità a posteriori non possiede automaticamente il controllo frequentista degli errori.
+
+Il Companion approfondisce la fragilità del valore-*p* e mostra come il workflow bayesiano sposti l'attenzione verso modello generativo, distribuzione a posteriori, predizioni e controllo del modello. Il modulo frequentista conserva però una funzione indispensabile: permettere di leggere correttamente la letteratura e comprendere quali proprietà procedurali vengono garantite dai metodi classici.
+
+## Verso la pianificazione dello studio {#sec-freq-testing-to-sample-size}
+
+Un risultato non significativo può dipendere da:
+
+- un effetto assente o trascurabile;
+- un campione troppo piccolo;
+- una misura poco precisa;
+- grande eterogeneità;
+- un modello o un test poco sensibile.
+
+Per valutare in anticipo quanto uno studio sia informativo, occorre specificare:
+
+1. quale effetto minimo sia scientificamente rilevante;
+2. quale livello di errore di tipo I sia accettabile;
+3. quale potenza si desideri;
+4. quale variabilità e struttura dei dati siano plausibili.
+
+Questi elementi conducono al capitolo successivo sulla pianificazione della numerosità campionaria.
 
 ## Riflessioni conclusive {.unnumbered .unlisted}
 
-Il test di ipotesi frequentista valuta la compatibilità dei dati con l'ipotesi nulla. La sua forza risiede nella chiarezza procedurale: formula una regola, controlla la probabilità di falsi positivi nel lungo periodo e consente decisioni standardizzate.
+Il test di ipotesi colloca una statistica osservata nella distribuzione che avrebbe sotto un'ipotesi nulla e un insieme di assunzioni. Il valore-*p* misura l'estremità del risultato in quella distribuzione; il confronto con $\alpha$ applica una regola decisionale.
 
-Il suo limite principale è interpretativo. Il valore-*p* non indica quanto sia probabile un'ipotesi, né quanto sia rilevante un effetto. Indica quanto sarebbero rari dati almeno così estremi se $H_0$ fosse vera.
+La distinzione tra Fisher e Neyman--Pearson chiarisce perché nella pratica convivano due usi:
 
-Per questo motivo, quando si legge la letteratura psicologica, è utile distinguere tre livelli:
+- il valore-*p* come misura graduata di incompatibilità;
+- il test come procedura di decisione con errori controllati.
 
-1. **Decisione statistica:** il risultato supera o non supera la soglia $\alpha$?
-2. **Stima dell'effetto:** quanto è grande la differenza o l'associazione osservata?
-3. **Interpretazione scientifica:** l'effetto è rilevante dal punto di vista teorico, clinico o pratico?
+Nessuno dei due usi autorizza a leggere il valore-*p* come probabilità dell'ipotesi o come misura dell'importanza dell'effetto.
 
-L'approccio bayesiano, che verrà approfondito nel resto del percorso, risponde a domande diverse: permette di aggiornare le credenze sui parametri e di confrontare le ipotesi alla luce dei dati osservati. Comprendere il test frequentista è quindi utile non solo per leggere la letteratura esistente, ma anche per capire con maggiore chiarezza cosa cambia quando si passa a un'impostazione bayesiana.
+Una comunicazione scientifica adeguata affianca al risultato del test:
 
-## Punti chiave da ricordare {.unnumbered}
+- stima dell'effetto;
+- intervallo di confidenza;
+- informazioni sul disegno e sulle assunzioni;
+- valutazione della rilevanza sostantiva.
 
-::: {.callout-important}
+Il prossimo capitolo completerà la logica decisionale studiando il rapporto tra effetto bersaglio, potenza e numerosità campionaria.
 
-- Il test di ipotesi frequentista valuta i dati **condizionatamente a $H_0$**.
-- Il valore-*p* è $P(\text{dati almeno così estremi} \mid H_0)$.
-- Un valore-*p* piccolo indica incompatibilità con il modello nullo, non la probabilità che $H_0$ sia falsa.
-- Non rifiutare $H_0$ non equivale ad accettarla.
-- La significatività statistica non coincide con la rilevanza sostanziale.
-- La potenza collega il test di ipotesi alla pianificazione della numerosità campionaria.
+## Esercizi {.unnumbered .unlisted}
 
+1. Qual è la differenza tra un valore-*p* e il livello $\alpha$?
+
+2. Perché $p=0.03$ non significa che l'ipotesi nulla abbia una probabilità del 3% di essere vera?
+
+3. Quale ruolo svolge la regola di estremità nella definizione del valore-*p*?
+
+4. Un risultato produce $p=0.18$. Qual è la conclusione frequentista corretta? Quale conclusione non è giustificata?
+
+5. Perché la potenza non può essere descritta senza specificare un effetto sotto l'alternativa?
+
+6. Nel test del chi-quadrato emerge $p=0.030$. Quali informazioni importanti non sono contenute in questo numero?
+
+7. Perché scegliere un test unilaterale dopo aver osservato la direzione dell'effetto altera l'interpretazione del test?
+
+8. In che modo un'analisi bayesiana e un test frequentista formulano domande diverse sugli stessi dati?
+
+::: {.callout-tip title="Soluzioni" collapse="true"}
+1. Il valore-*p* è calcolato dai dati e misura l'estremità del risultato sotto $H_0$. $\alpha$ è una soglia decisionale scelta prima dell'analisi per controllare l'errore di tipo I della procedura.
+
+2. Il 3% riguarda la probabilità di risultati almeno altrettanto estremi sotto $H_0$. Non riguarda la probabilità di $H_0$ condizionata ai dati.
+
+3. Stabilisce quali valori della statistica siano almeno altrettanto incompatibili con $H_0$ quanto quello osservato. Cambiando test unilaterale, bilaterale o statistica, può cambiare il valore-*p*.
+
+4. Al livello convenzionale 0.05, non si rifiuta $H_0$. Non è giustificato concludere che $H_0$ sia vera, che l'effetto sia esattamente zero o che i gruppi siano equivalenti.
+
+5. La probabilità di rifiutare $H_0$ cambia con la distanza tra il parametro vero e il valore nullo. Non esiste quindi una potenza unica per tutte le possibili alternative.
+
+6. Non contiene la grandezza dell'associazione, la sua precisione, la probabilità che l'associazione esista, l'eventuale causalità o la validità delle categorie e del disegno.
+
+7. La coda viene selezionata usando informazione già contenuta nei dati, mentre il calcolo nominale presuppone che la direzione sia stata fissata in anticipo. Il controllo dell'errore di tipo I non è più quello dichiarato.
+
+8. Il test frequentista valuta l'estremità dei dati sotto $H_0$. L'analisi bayesiana rappresenta l'incertezza a posteriori su parametri o ipotesi mediante prior, verosimiglianza e dati.
 :::
 
-::: {.callout-note collapse=true title="Informazioni sull'ambiente di sviluppo"}
+::: {.callout-note title="Punti chiave" collapse="true"}
+- Un test richiede ipotesi, statistica test, distribuzione nulla e regola di estremità.
+- Il valore-*p* è calcolato sotto $H_0$ e non è la probabilità di $H_0$.
+- Il valore-*p* e il livello $\alpha$ svolgono funzioni diverse.
+- La pratica NHST combina spesso elementi fisheriani e Neyman--Pearson.
+- Gli errori di tipo I e II e la potenza sono proprietà della procedura sotto condizioni specificate.
+- La potenza dipende dall'effetto sotto l'alternativa.
+- Non rifiutare $H_0$ non significa accettarla o dimostrare equivalenza.
+- Significatività statistica, dimensione dell'effetto e rilevanza sostantiva sono concetti distinti.
+- La qualità di un test dipende da disegno, misurazione, modello e piano di analisi.
+- Frequentismo e bayesianesimo rispondono a domande probabilistiche differenti.
+:::
+
+::: {.callout-note title="Ambiente di sviluppo" collapse="true"}
+Le informazioni sull'ambiente R possono essere ottenute con:
+
 ```{r}
+#| echo: true
 sessionInfo()
 ```
 :::
-

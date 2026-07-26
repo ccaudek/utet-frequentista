@@ -1,170 +1,275 @@
-# Introduzione all'inferenza frequentista in un percorso bayesiano {.unnumbered .unlisted}
+# Introduzione all'inferenza frequentista in un percorso bayesiano {#sec-intro-frequentista .unnumbered .unlisted}
 
-Questo modulo introduce l'inferenza frequentista all'interno di un percorso più ampio dedicato all'inferenza bayesiana. La scelta potrebbe sembrare paradossale: perché studiare metodi frequentisti in un manuale che adotta una prospettiva bayesiana?
+::: {.callout-note title="In sintesi"}
+**Da sapere**  L'inferenza frequentista valuta stime, intervalli e decisioni attraverso il loro comportamento in ripetuti campionamenti. I parametri del modello sono trattati come fissi ma ignoti; la variabilità riguarda i dati e le statistiche calcolate sui campioni.
 
-La risposta è semplice. Gran parte della letteratura psicologica utilizza ancora intervalli di confidenza, test di significatività, valori-$p$, livelli di significatività e analisi di potenza. Per leggere criticamente un articolo, progettare uno studio, comprendere una tabella di risultati o dialogare con colleghi formati nella tradizione statistica dominante, è necessario conoscere bene questi strumenti.
-
-Tuttavia, li studieremo con un obiettivo preciso: non come l'unico modo possibile di fare inferenza, ma come un sistema coerente di procedure che risponde a domande specifiche. Il confronto con l'approccio bayesiano ci aiuterà a distinguere tra due compiti spesso confusi:
-
-- controllare il comportamento di una procedura statistica nel lungo periodo;
-- quantificare l'incertezza su un'ipotesi o su un parametro dopo aver osservato i dati.
-
-La prima domanda è al centro dell'inferenza frequentista. La seconda è al centro dell'inferenza bayesiana.
-
-## Perché studiare il frequentismo in un companion bayesiano?
-
-L'inferenza frequentista è stata, e in molti ambiti continua a essere, il linguaggio standard della ricerca empirica. Concetti come *statisticamente significativo*, *intervallo di confidenza al 95%*, *errore di primo tipo*, *potenza statistica* e *test t* compaiono regolarmente negli articoli di psicologia, neuroscienze, medicina e scienze sociali.
-
-Ignorare questo linguaggio renderebbe difficile comprendere la letteratura esistente. Accettarlo in modo acritico, però, potrebbe portare a fraintendimenti diffusi. Questo modulo ha quindi una funzione duplice:
-
-1. **fornire competenze operative**, ovvero spiegare il funzionamento delle procedure frequentiste più comuni;
-2. **sviluppare una consapevolezza interpretativa**, cioè chiarire a quali domande tali procedure possono rispondere e a quali invece non possono rispondere direttamente.
-
-::: {.callout-note title="Una prospettiva didattica, non polemica"}
-Studiare il frequentismo non significa considerarlo un errore da correggere. Molte procedure frequentiste sono utili, robuste e storicamente rilevanti. Il punto è comprenderne la logica: esse valutano il comportamento di procedure ripetute nel lungo periodo e non assegnano direttamente probabilità alle ipotesi o ai parametri dopo aver osservato i dati.
+**Da saper fare**  Distinguere una domanda sul comportamento di una procedura da una domanda sulla plausibilità di un parametro; interpretare correttamente intervalli di confidenza, valori-$p$ e significatività statistica.
 :::
 
-## Due modi di intendere la probabilità
+## Introduzione {.unnumbered .unlisted}
 
-La differenza tra frequentismo e bayesianesimo nasce da una diversa interpretazione della probabilità.
+Questo modulo introduce l'inferenza frequentista all'interno di un percorso più ampio dedicato al ragionamento bayesiano. La scelta non è paradossale. Gran parte della letteratura psicologica utilizza ancora intervalli di confidenza, test di significatività, valori-$p$, livelli di significatività e analisi di potenza. Per leggere criticamente un articolo, progettare uno studio o comprendere una tabella di risultati, è quindi necessario conoscere bene questi strumenti.
 
-Secondo la prospettiva frequentista, la probabilità è collegata alla frequenza relativa di un evento in una lunga sequenza di ripetizioni idealmente identiche. Se, per esempio, diciamo che la probabilità di ottenere "testa" nel lancio di una moneta è 0.5, intendiamo che, in un numero molto grande di lanci condotti nelle stesse condizioni, circa la metà degli esiti sarà "testa".
+Li studieremo come un sistema coerente di procedure che risponde a domande specifiche. Il confronto con l'approccio bayesiano servirà a distinguere due obiettivi diversi:
 
-In questa prospettiva, i parametri della popolazione sono considerati quantità fisse, ma sconosciute. Per esempio, la media della popolazione, la differenza tra due gruppi o la proporzione di persone con un certo sintomo non sono variabili casuali, ma hanno un valore definito, anche se noi non lo conosciamo. La variabilità deriva dal campione: campioni diversi produrrebbero stime diverse.
+- valutare come si comporta una procedura statistica quando viene applicata ripetutamente a nuovi campioni;
+- rappresentare direttamente l'incertezza su un parametro o su un'ipotesi dopo avere osservato i dati.
 
-Nella prospettiva bayesiana, la probabilità esprime un grado di plausibilità o di incertezza razionale. Il parametro sconosciuto viene trattato come una quantità incerta descritta da una distribuzione di probabilità. I dati osservati modificano tale distribuzione attraverso il teorema di Bayes:
+Il primo obiettivo è caratteristico dell'inferenza frequentista. Il secondo è affrontato in modo esplicito dall'inferenza bayesiana. Le due prospettive possono partire dallo stesso modello probabilistico dei dati, ma organizzano l'inferenza in modo diverso.
 
-$$
-p(\theta \mid y) \propto p(y \mid \theta) p(\theta).
-$$
+## Perché studiare il frequentismo in un percorso bayesiano?
 
-In questa formula, $p(\theta)$ rappresenta ciò che si sa prima di osservare i dati, $p(y \mid \theta)$ rappresenta la verosimiglianza dei dati sotto diversi valori del parametro, e $p(\theta \mid y)$ rappresenta ciò che si sa dopo aver osservato i dati.
+L'inferenza frequentista è stata, e in molti ambiti continua a essere, il linguaggio standard della ricerca empirica. Espressioni come *statisticamente significativo*, *intervallo di confidenza al 95%*, *errore di primo tipo*, *potenza statistica* e *test $t$* compaiono regolarmente negli articoli di psicologia, neuroscienze, medicina e scienze sociali.
+
+Ignorare questo linguaggio renderebbe difficile comprendere la letteratura esistente. Accettarlo in modo meccanico, però, favorirebbe errori interpretativi molto diffusi. Questo modulo ha quindi una duplice funzione:
+
+1. spiegare la logica e il funzionamento delle procedure frequentiste più comuni;
+2. chiarire che cosa i loro risultati permettono di concludere e che cosa, invece, non esprimono direttamente.
+
+::: {.callout-note title="Una prospettiva didattica, non polemica"}
+Studiare il frequentismo non significa presentarlo come un errore da correggere. Le procedure frequentiste forniscono strumenti importanti per controllare i tassi di errore, valutare la precisione delle stime e progettare studi informativi. Il punto è comprenderne con precisione la logica, senza attribuire ai risultati un significato che non possiedono.
+:::
+
+## Panoramica del capitolo {.unnumbered .unlisted}
+
+Il capitolo procede in cinque passaggi:
+
+1. chiarisce il ruolo delle ripetizioni ipotetiche nell'inferenza frequentista;
+2. distingue parametri, dati, statistiche e distribuzioni campionarie;
+3. confronta le domande frequentiste e bayesiane attraverso un esempio binomiale;
+4. presenta le interpretazioni scorrette più comuni;
+5. anticipa il percorso dei capitoli successivi.
+
+::: {.callout-note title="Preparazione del notebook"}
+Questo capitolo è interamente concettuale e non richiede l'esecuzione di codice R. Nei capitoli successivi useremo simulazioni e calcoli per rendere visibile il comportamento delle procedure in campioni ripetuti.
+:::
+
+## Probabilità e ripetizione campionaria
+
+Nell'inferenza frequentista, le probabilità sono utilizzate per descrivere il comportamento di dati e statistiche sotto un modello specificato. Operativamente, ci si chiede che cosa accadrebbe se il processo di raccolta dei dati fosse ripetuto molte volte nelle stesse condizioni rilevanti.
+
+Se, per esempio, un modello assegna probabilità $0.5$ all'esito *testa* di una moneta, una lunga sequenza di lanci indipendenti prodotti da quel modello avrà una proporzione di teste che tende a stabilizzarsi intorno a $0.5$. Questa affermazione riguarda il comportamento del processo generativo nelle ripetizioni, non la probabilità attribuita a un parametro dopo avere osservato un singolo campione.
+
+Esistono diverse interpretazioni filosofiche della probabilità. Per comprendere le procedure frequentiste, tuttavia, è sufficiente concentrarsi sul loro significato operativo: distribuzioni campionarie, copertura degli intervalli e tassi di errore sono definiti attraverso ripetizioni reali o ipotetiche del campionamento.
 
 ## Parametri fissi, dati variabili
 
-Il modo più semplice per comprendere la logica frequentista è ricordare questa distinzione:
+Nel modello frequentista:
 
-- il **parametro** è fisso ma ignoto;
-- il **campione** è variabile;
-- la **procedura inferenziale** viene valutata chiedendosi come si comporterebbe se fosse applicata molte volte a campioni diversi generati dallo stesso processo.
+- il **parametro** è trattato come fisso ma ignoto;
+- il **campione**, prima di essere osservato, è una variabile casuale;
+- una **statistica**, essendo una funzione del campione, varia da un campione all'altro;
+- la **procedura inferenziale** viene valutata considerando il suo comportamento nelle ripetizioni del campionamento.
 
-Supponiamo, per esempio, di voler stimare la media del benessere psicologico di una popolazione di studenti. Il valore vero della media esiste, ma non lo conosciamo. Se estraessimo molti campioni diversi, otterremmo molte medie campionarie diverse. L'inferenza frequentista studia proprio questa variabilità da campione a campione.
+Supponiamo di voler stimare la media del benessere psicologico in una popolazione di studenti. Il modello assume che la media della popolazione abbia un unico valore, anche se non lo conosciamo. Campioni diversi produrrebbero invece medie campionarie differenti. L'inferenza frequentista studia questa variabilità per valutare la precisione della stima e costruire procedure con proprietà controllate.
 
-Da qui nascono concetti fondamentali come:
+Da questa impostazione derivano concetti fondamentali:
 
-- la **distribuzione campionaria**, ovvero la distribuzione che una statistica assumerebbe in ripetuti campionamenti;
-- l'**errore standard**, ovvero la variabilità attesa di una stima da un campione all'altro;
-- l'**intervallo di confidenza**, cioè una procedura che, se ripetuta molte volte, produce intervalli che contengono il parametro vero con una frequenza prestabilita;
-- il **test di ipotesi**, cioè una procedura che valuta quanto i dati osservati siano insoliti rispetto a un'ipotesi nulla.
+- la **distribuzione campionaria**, cioè la distribuzione che una statistica assumerebbe in ripetuti campionamenti;
+- l'**errore standard**, che descrive la variabilità della statistica da un campione all'altro;
+- l'**intervallo di confidenza**, costruito mediante una procedura con una copertura prefissata sotto il modello e le assunzioni adottate;
+- il **test di ipotesi**, che valuta la compatibilità dei dati con una specifica ipotesi di riferimento attraverso una statistica test e la sua distribuzione sotto tale ipotesi.
 
-Questi strumenti non sono arbitrari, ma formano un sistema coerente. Tuttavia, la loro interpretazione è spesso meno intuitiva di quanto sembri.
-
-## Un esempio: il lancio di una moneta
-
-Consideriamo una moneta lanciata 20 volte. Osserviamo 14 teste e 6 croci. Che cosa possiamo concludere?
-
-Un'analisi frequentista parte da un'ipotesi, ad esempio che la moneta sia equilibrata. Se la moneta fosse davvero equilibrata, il numero di teste in 20 lanci seguirebbe una distribuzione binomiale con parametro $\theta = 0.5$. La domanda diventa:
-
-> Quanto sarebbe insolito osservare 14 o più teste, o un risultato almeno altrettanto estremo, se la moneta fosse equilibrata?
-
-Questa domanda conduce al valore-$p$. Il valore-$p$ non è la probabilità che la moneta sia equilibrata. È una probabilità calcolata assumendo che l'ipotesi nulla sia vera.
-
-Un'analisi bayesiana formula la domanda in modo diverso. Si parte da una distribuzione a priori del grado di sbilanciamento della moneta, si osservano i dati e si ottiene una distribuzione a posteriori. La domanda diventa:
-
-> Dopo aver osservato 14 teste su 20 lanci, quali valori di $\theta$ sono più plausibili?
-
-Le due analisi possono usare lo stesso modello probabilistico per i dati, ma rispondono a domande diverse.
-
-::: {.callout-important title="Domande diverse, risposte diverse"}
-Nel frequentismo ci si chiede: *Quanto sarebbe raro questo risultato se una certa ipotesi fosse vera?*
-
-Nel bayesianesimo, invece, ci si chiede: *Quanto è plausibile ciascuna ipotesi, o ciascun valore del parametro, dopo aver osservato questi dati?*
+::: {.callout-important title="Che cosa è casuale?"}
+Prima del campionamento, dati, stime e intervalli possibili sono casuali perché dipendono dal campione che verrà osservato. Dopo il campionamento, il particolare insieme di dati, la stima e l'intervallo calcolato sono valori osservati. Le proprietà frequentiste continuano però a riferirsi alla procedura che li ha prodotti.
 :::
+
+## Una stessa osservazione, due domande diverse
+
+Consideriamo una moneta lanciata 20 volte. Osserviamo 14 teste e 6 croci.
+
+Un'analisi frequentista può partire dall'ipotesi nulla che la probabilità di testa sia $	heta=0.5$. Se questa ipotesi e il modello binomiale fossero appropriati, il numero di teste avrebbe distribuzione
+
+$$
+Y \sim \operatorname{Binomiale}(20, 0.5).
+$$
+
+La domanda frequentista è:
+
+> Quanto sono incompatibili i dati osservati con l'ipotesi di una moneta equilibrata, secondo la statistica test e la regola di estremità definite prima dell'analisi?
+
+Il valore-$p$ quantifica la probabilità, assumendo vera l'ipotesi nulla, di ottenere un valore della statistica test almeno altrettanto incompatibile con l'ipotesi quanto quello osservato. Non è la probabilità che la moneta sia equilibrata.
+
+Un'analisi bayesiana usa lo stesso possibile modello binomiale per i dati, ma tratta l'incertezza su $	heta$ mediante una distribuzione. Combina una distribuzione a priori con la verosimiglianza e ottiene una distribuzione a posteriori:
+
+$$
+p(\theta \mid y)
+\propto
+p(y \mid \theta)p(\theta).
+$$
+
+La domanda bayesiana è:
+
+> Dopo avere osservato 14 teste su 20 lanci, come cambia la plausibilità relativa dei diversi valori di $\theta$?
+
+::: {.callout-important title="Non invertire la probabilità condizionata"}
+Il valore-$p$ riguarda una probabilità dei dati, o di una statistica test, **assumendo** l'ipotesi nulla. Non fornisce direttamente la probabilità dell'ipotesi nulla dati i risultati.
+
+In simboli, una quantità del tipo $P(\text{dati estremi}\mid H_0)$ non coincide con $P(H_0\mid\text{dati})$.
+:::
+
+## Che cosa esprimono le procedure frequentiste
+
+Le procedure frequentiste sono progettate per garantire proprietà controllate nel lungo periodo, purché il modello e le assunzioni rilevanti siano adeguati.
+
+Un intervallo di confidenza al 95%, per esempio, deriva da una procedura che, in ripetuti campionamenti condotti secondo il modello, produce intervalli contenenti il parametro vero nel 95% dei casi. Una volta calcolato un particolare intervallo, il parametro fisso è contenuto oppure non è contenuto in quell'intervallo. Il 95% descrive la procedura, non una probabilità a posteriori assegnata al parametro.
+
+Analogamente, un test con livello di significatività $\alpha=0.05$ è costruito affinché, quando l'ipotesi nulla è vera e le assunzioni sono rispettate, la probabilità di rifiutarla non superi il 5% nelle ripetizioni previste dal disegno.
+
+Queste proprietà sono utili, ma sono sempre condizionate alla qualità del modello, del disegno e delle misure. Un tasso di errore formalmente controllato non corregge automaticamente un campione distorto, una misura poco valida o una specificazione inadeguata.
 
 ## Interpretazioni da evitare
 
-Molti errori nella lettura della letteratura scientifica derivano dal fatto che termini familiari vengono interpretati in modo intuitivo ma non corretto.
+Molti errori nella lettura della letteratura scientifica derivano dall'attribuzione di un significato intuitivo ma scorretto a risultati tecnici.
 
-Un **intervallo di confidenza al 95%** non significa che vi sia il 95% di probabilità che il parametro vero cada nell'intervallo calcolato. Nella logica frequentista, il parametro non è casuale, ma fisso. Il 95% si riferisce al comportamento della procedura in ripetuti campionamenti.
+### Intervallo di confidenza
 
-Un **valore-$p$** non è la probabilità che l'ipotesi nulla sia vera. È la probabilità, calcolata assumendo vera l'ipotesi nulla, di ottenere dati uguali o più estremi di quelli osservati, secondo una regola specifica.
+Un intervallo di confidenza al 95% non significa, nell'interpretazione frequentista standard, che il parametro abbia il 95% di probabilità di trovarsi nell'intervallo osservato. La copertura riguarda la procedura nelle ripetizioni.
 
-La **significatività statistica** non implica necessariamente importanza teorica, rilevanza clinica o replicabilità. Un effetto può essere statisticamente significativo ma piccolo, instabile o poco informativo dal punto di vista sostanziale.
+### Valore-$p$
 
-La **non significatività statistica** non dimostra l'assenza dell'effetto. Può essere causata da dati insufficienti, misure rumorose, campioni piccoli o da un disegno poco sensibile.
+Un valore-$p$ non è:
 
-Questi chiarimenti non intendono screditare gli strumenti frequentisti, ma insegnare a usarli correttamente.
+- la probabilità che l'ipotesi nulla sia vera;
+- la probabilità che il risultato sia dovuto al caso;
+- la probabilità che lo studio non si replichi;
+- una misura diretta dell'ampiezza o dell'importanza dell'effetto.
+
+### Significatività statistica
+
+La significatività statistica non implica automaticamente importanza teorica, rilevanza clinica, precisione elevata o replicabilità. Dipende, tra le altre cose, dall'ampiezza dell'effetto, dalla variabilità, dalla dimensione campionaria e dal modello utilizzato.
+
+### Non significatività
+
+La mancata significatività non dimostra che l'effetto sia esattamente nullo. Può riflettere dati poco informativi, misure rumorose, campioni piccoli oppure effetti compatibili con un'ampia gamma di valori.
+
+::: {.callout-warning title="La soglia non sostituisce l'interpretazione"}
+Ridurre un risultato alla dicotomia *significativo/non significativo* nasconde informazioni importanti. Stima dell'effetto, incertezza, qualità del disegno, plausibilità delle assunzioni e rilevanza sostantiva devono essere considerate insieme.
+:::
 
 ## Il ruolo del frequentismo nella ricerca psicologica
 
-Il frequentismo ha avuto un ruolo enorme nella ricerca psicologica. Ha fornito un linguaggio condiviso per valutare i risultati empirici, confrontare i gruppi, stimare gli effetti, pianificare gli studi e controllare il rischio di conclusioni affrettate.
+Il frequentismo ha fornito alla ricerca psicologica strumenti condivisi per stimare quantità, confrontare gruppi, progettare studi e controllare tassi di errore. Molte delle sue procedure restano utili, soprattutto quando la domanda scientifica è accompagnata da un disegno ben definito e da un'interpretazione coerente con il metodo.
 
-Tuttavia, l'uso meccanico di soglie decisionali, in particolare la soglia convenzionale $\alpha = .05$, ha contribuito a una comunicazione troppo dicotomica dei risultati: "significativo/non significativo", "effetto presente/effetto assente", "ipotesi confermata/ipotesi non confermata".
+I problemi emergono quando le procedure vengono usate in modo automatico oppure quando il loro risultato viene trasformato in un verdetto sull'esistenza, sull'importanza o sulla verità di un effetto. L'uso rigido della soglia $\alpha=0.05$ ha favorito una comunicazione dicotomica: *significativo/non significativo*, *effetto presente/effetto assente*, *ipotesi confermata/ipotesi respinta*.
 
-Una prospettiva bayesiana invita a spostare l'attenzione dalla semplice decisione alla quantificazione dell'incertezza. Tuttavia, per capire perché questo spostamento è utile, è necessario comprendere bene la logica che lo precede.
+Comprendere il frequentismo significa quindi apprendere sia i suoi strumenti sia i limiti delle conclusioni che possono essere tratte da essi.
 
-## Che cosa impareremo in questo modulo
+## Il percorso del modulo
 
-Il modulo è organizzato come un percorso graduale.
+I capitoli successivi sviluppano il ragionamento in modo graduale.
 
 1. **Origini storiche dell'approccio frequentista**  
-   Introdurremo il contesto storico ed epistemologico in cui si è sviluppata la statistica frequentista, con attenzione sia al suo contributo scientifico sia alle sue ambivalenze storiche.
+   Il contesto scientifico e sociale nel quale si sono sviluppati alcuni concetti fondamentali della statistica moderna.
 
 2. **Stime, stimatori e distribuzioni campionarie**  
-   Studieremo come il frequentismo rappresenta la variabilità delle stime da un campione all'altro. Questo capitolo introduce media campionaria, correttezza, errore standard e Teorema del Limite Centrale.
+   Il modo in cui la variabilità tra campioni viene usata per valutare precisione e proprietà degli stimatori.
 
 3. **Intervalli di confidenza**  
-   Vedremo come costruire e interpretare gli intervalli di confidenza, distinguendoli dagli intervalli di credibilità bayesiani.
+   Costruzione, copertura e interpretazione degli intervalli frequentisti.
 
 4. **Test di ipotesi e valore-$p$**  
-   Analizzeremo la logica del test di significatività: ipotesi nulla, statistica test, distribuzione di riferimento, regione critica, valore-$p$ ed errori decisionali.
+   Ipotesi nulla, statistica test, distribuzione di riferimento, regione critica, valore-$p$ ed errori decisionali.
 
 5. **Dimensione campionaria e potenza statistica**  
-   Una volta compresa la logica dei test, discuteremo il ruolo della dimensione campionaria, dell'errore di secondo tipo e della potenza statistica.
+   Relazioni tra ampiezza dell'effetto, variabilità, errore di secondo tipo e capacità dello studio di produrre risultati informativi.
 
 6. **Confronto tra due gruppi indipendenti**  
-   Applicheremo gli strumenti introdotti al caso del test $t$ per due campioni indipendenti, uno degli esempi più comuni nella ricerca psicologica.
+   Applicazione integrata degli strumenti al test $t$ per due campioni indipendenti.
 
 7. **Considerazioni conclusive**  
-   Chiuderemo il modulo collegando i limiti interpretativi del frequentismo alla motivazione dell'approccio bayesiano.
+   Sintesi dei risultati ottenuti e passaggio al quadro bayesiano.
 
-## Come leggere questo modulo
+## Come leggere i prossimi capitoli
 
-Il modo migliore per affrontare questi capitoli è tenere sempre separate tre domande:
+Per ogni procedura è utile tenere separate quattro domande:
 
 1. **Qual è il modello dei dati?**  
-   Quale processo probabilistico assumiamo abbia generato le osservazioni?
+   Quale processo probabilistico viene assunto per le osservazioni?
 
-2. **Qual è la procedura?**  
-   Stiamo calcolando una stima, un intervallo di confidenza, una statistica test, un valore-$p$ o una misura di potenza?
+2. **Quale quantità viene calcolata?**  
+   Una stima, un errore standard, un intervallo, una statistica test, un valore-$p$ o una misura di potenza?
 
-3. **Qual è l'interpretazione corretta?**  
-   Il risultato parla del parametro, dei dati osservati, dell'ipotesi nulla o del comportamento della procedura nel lungo periodo?
+3. **Quale ripetizione ipotetica definisce la procedura?**  
+   Che cosa cambierebbe da un campione all'altro e quali elementi resterebbero fissi?
 
-Questa attenzione interpretativa è essenziale. Le formule sono importanti, ma in statistica l'errore più frequente non è sbagliare un calcolo, bensì attribuire al risultato di un calcolo un significato che non possiede.
+4. **Quale conclusione è giustificata?**  
+   Il risultato riguarda la precisione della stima, la compatibilità con un'ipotesi, un tasso di errore oppure la capacità del disegno di rilevare determinati effetti?
 
-## Dalla procedura all'aggiornamento delle credenze
+Le formule sono necessarie, ma molti errori statistici non nascono dal calcolo. Nascono dal passaggio ingiustificato dal valore calcolato a una conclusione che quella quantità non sostiene.
 
-L'inferenza frequentista fornisce strumenti potenti per il controllo degli errori e la valutazione delle procedure. Il suo punto di forza è la disciplina del lungo periodo: una procedura viene giudicata in base a ciò che farebbe se fosse ripetuta molte volte.
+## Dalle procedure all'aggiornamento dell'incertezza
 
-L'inferenza bayesiana, invece, parte da una domanda diversa: dati il modello, le conoscenze iniziali e i risultati osservati, come devono cambiare le nostre credenze? Questa domanda richiede di trattare l'incertezza sui parametri in modo esplicito, attraverso distribuzioni di probabilità.
+L'inferenza frequentista valuta le procedure attraverso distribuzioni campionarie, copertura e tassi di errore. Questa impostazione risponde bene a domande sul comportamento ripetuto di un metodo.
 
-Per questo motivo, il confronto tra frequentismo e bayesianesimo non deve essere ridotto a una contrapposizione tra un metodo giusto e uno sbagliato. È più utile considerarlo come un confronto tra due grammatiche dell'inferenza:
+L'inferenza bayesiana affronta esplicitamente un'altra domanda: dati un modello, le conoscenze iniziali e le osservazioni disponibili, come deve cambiare l'incertezza sui parametri? Per rispondere, rappresenta tale incertezza mediante distribuzioni di probabilità e la aggiorna attraverso il teorema di Bayes.
 
-- il frequentismo parla il linguaggio delle procedure, degli errori e delle frequenze nel lungo periodo;
-- il bayesianesimo parla il linguaggio dell'incertezza, dell'evidenza e dell'aggiornamento delle credenze.
+Il confronto non va ridotto a una contrapposizione tra un metodo corretto e uno scorretto. È più utile riconoscere due grammatiche inferenziali:
 
-Comprendere entrambe le grammatiche rende la lettura della ricerca empirica più solida e prepara a utilizzare l'inferenza bayesiana in modo più consapevole.
+- il frequentismo parla soprattutto il linguaggio delle procedure, delle distribuzioni campionarie e dei tassi di errore;
+- il bayesianesimo parla il linguaggio della plausibilità condizionata al modello, della verosimiglianza e dell'aggiornamento.
 
-## Punti chiave da ricordare {.unnumbered}
+Comprendere entrambe permette di leggere la ricerca empirica con maggiore precisione e di capire quali domande richiedono strumenti diversi.
 
-::: {.callout-important}
-- Il frequentismo valuta le procedure statistiche in termini di comportamento nel lungo periodo.
-- Nel frequentismo i parametri sono considerati fissi ma ignoti; la variabilità deriva dal campione.
-- Un intervallo di confidenza non è, in senso stretto, una probabilità sul parametro dopo aver osservato i dati.
-- Un valore-$p$ non è la probabilità che l'ipotesi nulla sia vera.
-- Il bayesianesimo rappresenta esplicitamente l'incertezza sui parametri mediante distribuzioni di probabilità.
-- Studiare il frequentismo è essenziale per leggere la letteratura psicologica e per comprendere meglio il passaggio all'inferenza bayesiana.
+## Riflessioni conclusive {.unnumbered .unlisted}
+
+Il frequentismo non coincide con il semplice uso di una soglia né con il calcolo meccanico di un valore-$p$. È un sistema inferenziale nel quale le procedure vengono progettate e valutate attraverso il loro comportamento in campioni ripetuti.
+
+Per comprenderlo è necessario distinguere il parametro fisso dalle statistiche variabili, il risultato osservato dalla procedura che lo ha prodotto e la probabilità dei dati sotto un'ipotesi dalla probabilità dell'ipotesi dopo i dati.
+
+I capitoli successivi svilupperanno questi concetti uno alla volta. Il criterio guida resterà lo stesso: prima capire quale domanda viene posta, poi interpretare la risposta nel linguaggio appropriato.
+
+## Esercizi {.unnumbered .unlisted}
+
+1. In uno studio viene stimata la media di una popolazione. Che cosa è considerato fisso e che cosa varierebbe se lo studio fosse ripetuto con nuovi campioni?
+
+2. Che cosa descrive la distribuzione campionaria di una statistica?
+
+3. Un intervallo di confidenza al 95% viene calcolato come $[4.2, 7.1]$. Perché non è corretto affermare, nell'interpretazione frequentista standard, che vi sia il 95% di probabilità che il parametro sia compreso tra 4.2 e 7.1?
+
+4. Uno studio riporta $p=0.03$. Quale delle seguenti conclusioni è giustificata: «l'ipotesi nulla ha probabilità 0.03» oppure «sotto l'ipotesi nulla, un risultato almeno altrettanto incompatibile avrebbe probabilità 0.03»?
+
+5. Perché un risultato statisticamente significativo può essere poco importante dal punto di vista psicologico o clinico?
+
+6. Perché un risultato non significativo non dimostra automaticamente l'assenza di un effetto?
+
+7. Due analisi usano lo stesso modello binomiale per 14 teste su 20 lanci. In che cosa differiscono la domanda frequentista e quella bayesiana?
+
+8. Perché il controllo formale del tasso di errore non basta a garantire la validità scientifica di una conclusione?
+
+::: {.callout-tip title="Soluzioni" collapse="true"}
+1. Il parametro della popolazione è trattato come fisso ma ignoto. Il campione e la media campionaria cambierebbero da una ripetizione all'altra.
+
+2. Descrive come varierebbe la statistica se il campionamento fosse ripetuto secondo lo stesso modello e disegno.
+
+3. Il 95% è la copertura della procedura nelle ripetizioni. Dopo il calcolo, il particolare intervallo contiene oppure non contiene il parametro fisso; la procedura frequentista non assegna direttamente una probabilità a posteriori al parametro.
+
+4. È giustificata la seconda formulazione, purché «almeno altrettanto incompatibile» sia definito dalla statistica test e dalla regola di estremità utilizzate.
+
+5. La significatività dipende anche da numerosità e variabilità. Un effetto molto piccolo può risultare statisticamente significativo in un campione grande senza avere rilevanza sostantiva.
+
+6. La non significatività può derivare da scarsa precisione, bassa potenza, misure rumorose o dati compatibili con molti valori dell'effetto.
+
+7. La domanda frequentista valuta quanto i dati siano incompatibili con un valore ipotizzato del parametro secondo una procedura definita. La domanda bayesiana aggiorna la plausibilità relativa dei diversi valori del parametro dopo i dati.
+
+8. Le garanzie frequentiste sono condizionate al modello, al disegno e alle assunzioni. Campionamento distorto, misure non valide o modelli inadeguati possono produrre conclusioni fuorvianti anche quando il tasso di errore nominale è controllato.
 :::
 
-## Bibliografia {.unnumbered .unlisted}
+::: {.callout-note title="Punti chiave" collapse="true"}
+- Nel frequentismo i parametri sono trattati come fissi ma ignoti; dati e statistiche variano tra campioni.
+- Le proprietà inferenziali sono definite mediante ripetizioni reali o ipotetiche del campionamento.
+- Un intervallo di confidenza descrive la copertura di una procedura, non direttamente una probabilità a posteriori sul parametro.
+- Un valore-$p$ è calcolato assumendo l'ipotesi nulla; non è la probabilità che l'ipotesi nulla sia vera.
+- Significatività statistica, importanza dell'effetto e validità scientifica sono concetti distinti.
+- Frequentismo e bayesianesimo possono condividere il modello dei dati ma rispondono a domande inferenziali differenti.
+:::
+
+::: {.callout-note title="Ambiente di sviluppo" collapse="true"}
+Questo capitolo non richiede pacchetti aggiuntivi. Le informazioni sull'ambiente R possono essere ottenute con:
+
+```{r}
+#| echo: true
+#| eval: false
+sessionInfo()
+```
+:::
