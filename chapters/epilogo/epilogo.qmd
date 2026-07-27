@@ -1,83 +1,48 @@
 # Conclusioni {#sec-frequentist-conclusions .unnumbered}
 
 ::: {.callout-note title="In sintesi"}
-Questo modulo ha presentato l'inferenza frequentista come un insieme di procedure valutate attraverso il loro comportamento sotto campionamenti ripetuti. Comprenderne la logica è necessario per leggere la letteratura psicologica, interpretare correttamente stime, intervalli e test e riconoscere quali domande richiedano una diversa rappresentazione dell'incertezza.
+Questo modulo ha presentato l'inferenza frequentista come un insieme di procedure il cui valore dipende dal comportamento che esse mostrano in una successione, reale o ipotetica, di campionamenti ripetuti. Comprendere questa logica è indispensabile per leggere con consapevolezza la letteratura psicologica, interpretare correttamente stime, intervalli e test e riconoscere i casi in cui una diversa rappresentazione dell'incertezza diventa necessaria.
 
-Il passaggio al progetto bayesiano non consiste nel sostituire meccanicamente una tecnica con un'altra. Consiste nel riformulare il problema inferenziale: dal comportamento della procedura nelle ripetizioni alla distribuzione dell'incertezza su parametri, predizioni e modelli, condizionatamente alle assunzioni e ai dati.
+Il passaggio al progetto bayesiano non consiste nella sostituzione meccanica di una tecnica con un'altra. Richiede piuttosto una riformulazione del problema inferenziale: l'attenzione si sposta dalle proprietà di lungo periodo delle procedure alla distribuzione dell'incertezza relativa a parametri, predizioni e modelli, condizionatamente alle assunzioni formulate e ai dati osservati.
 :::
 
 ## Che cosa abbiamo imparato
 
-Il percorso è iniziato dalle origini storiche del frequentismo e dal rapporto, scientificamente fecondo ma eticamente problematico, tra misurazione delle differenze individuali, statistica ed eugenetica.
+Il percorso è iniziato dalle origini storiche del frequentismo e dal legame, scientificamente fecondo ma eticamente problematico, tra la misurazione delle differenze individuali, lo sviluppo della statistica e il movimento eugenetico. Questo inquadramento ha mostrato fin dall'inizio che i metodi statistici non nascono in un vuoto culturale: essi rispondono a specifiche domande scientifiche, ma riflettono anche le finalità, i valori e i limiti del contesto nel quale vengono elaborati.
 
-Nei capitoli successivi abbiamo costruito il lessico operativo dell'inferenza frequentista:
+Nei capitoli successivi è stato costruito il lessico operativo dell'inferenza frequentista. All'interno di un modello, il parametro è una quantità fissa ma ignota, mentre lo stimatore è la regola che viene applicata ai dati per ricavare informazioni su di esso. La stima è il valore assunto dallo stimatore nel campione osservato e l'errore standard descrive quanto tale valore potrebbe variare da un campione all'altro. Su questa stessa logica si fonda l'intervallo di confidenza, che non attribuisce una probabilità al parametro, ma definisce una procedura capace di raggiungere una determinata frequenza di copertura nel lungo periodo.
 
-- il **parametro** è una quantità fissa ma ignota all'interno del modello;
-- lo **stimatore** è una regola applicata ai dati;
-- la **stima** è il valore osservato dello stimatore;
-- l'**errore standard** descrive la variabilità campionaria dello stimatore;
-- l'**intervallo di confidenza** è una procedura con una determinata frequenza di copertura;
-- il **valore-*p*** misura l'estremità del risultato sotto un'ipotesi nulla e un insieme di assunzioni;
-- gli errori di tipo I e II e la **potenza** descrivono il comportamento di una regola decisionale;
-- la numerosità campionaria deve essere pianificata rispetto a precisione, effetto bersaglio, variabilità e disegno.
+La discussione dei test di ipotesi ha chiarito che il valore-*p* misura quanto il risultato osservato, o un risultato ancora più estremo, sia compatibile con l'ipotesi nulla e con l'insieme delle assunzioni adottate. Gli errori di tipo I e di tipo II, insieme alla potenza, descrivono invece il comportamento di una regola decisionale in differenti scenari. Anche la pianificazione della numerosità campionaria deve essere compresa in questa prospettiva: non esiste una dimensione del campione adeguata in assoluto, perché essa dipende dalla precisione desiderata, dall'effetto assunto come rilevante, dalla variabilità dei dati e dalle caratteristiche del disegno.
 
-Il confronto tra due gruppi ha infine mostrato come queste quantità si integrino nella pratica. Una conclusione scientifica non dovrebbe dipendere da un unico indicatore: stima, intervallo, valore-*p*, dimensione dell'effetto, qualità del disegno e rilevanza sostantiva rispondono a domande differenti.
+Il confronto tra due gruppi ha infine mostrato come queste nozioni si integrino nell'analisi concreta. Una conclusione scientifica non dovrebbe dipendere da un singolo indicatore. La stima, l'intervallo di confidenza, il valore-*p*, la dimensione dell'effetto, la qualità del disegno e la rilevanza sostantiva rispondono infatti a domande differenti e devono essere interpretati congiuntamente.
 
 ## Che cosa offre il frequentismo
 
-L'inferenza frequentista fornisce strumenti fondamentali per valutare procedure e decisioni.
+L'inferenza frequentista mette a disposizione strumenti fondamentali per valutare la qualità delle procedure statistiche e delle decisioni che ne derivano. Consente di studiare quanto varia uno stimatore sotto campionamenti ripetuti, con quale frequenza una procedura intervallare contiene il parametro, quale tasso di errore di tipo I produce una determinata regola decisionale e con quale probabilità un test riesce a rilevare un effetto specificato. Permette inoltre di stabilire quante osservazioni siano necessarie per raggiungere un livello prefissato di precisione o di potenza.
 
-Permette, per esempio, di chiedere:
+Queste proprietà assumono un'importanza particolare quando il disegno dell'indagine definisce in modo chiaro quali ripetizioni siano rilevanti e quando il controllo degli errori costituisce uno degli obiettivi principali dell'analisi. In tali circostanze, la prospettiva frequentista offre criteri rigorosi per progettare gli studi e valutarne le prestazioni.
 
-- quanto varia uno stimatore sotto campionamenti ripetuti;
-- con quale frequenza una procedura intervallare contiene il parametro;
-- quale tasso di errore di tipo I produce una regola decisionale;
-- con quale probabilità un test rileva un effetto specificato;
-- quante osservazioni sono necessarie per ottenere una precisione o una potenza prefissata.
-
-Queste proprietà sono particolarmente importanti quando il disegno dell'indagine definisce chiaramente le ripetizioni rilevanti e quando il controllo degli errori costituisce un obiettivo centrale.
-
-Il contributo del frequentismo non si riduce quindi al valore-*p*. Comprende teoria della stima, disegno sperimentale, randomizzazione, campionamento, intervalli, test, pianificazione e valutazione delle proprietà di lungo periodo.
+Il contributo del frequentismo non può quindi essere ridotto all'impiego del valore-*p*. Esso comprende la teoria della stima, il disegno sperimentale, la randomizzazione, il campionamento, la costruzione degli intervalli, i test di ipotesi, la pianificazione degli studi e, più in generale, la valutazione delle proprietà di lungo periodo delle procedure statistiche.
 
 ## I limiti da non dimenticare
 
-Le garanzie frequentiste sono condizionate al modello e al disegno. Non proteggono automaticamente da:
+Le garanzie frequentiste sono sempre condizionate al modello e al disegno. Una procedura formalmente corretta non protegge, da sola, dalle conseguenze di un campione non rappresentativo, di misure poco valide o inaffidabili, di dipendenze ignorate o di un modello mal specificato. Allo stesso modo, non elimina i problemi prodotti dai confronti multipli, dalla flessibilità delle scelte analitiche, dalla selezione dei risultati o da interpretazioni causali che il disegno non consente di sostenere.
 
-- campioni non rappresentativi;
-- misure poco valide o inaffidabili;
-- dipendenze ignorate;
-- modelli mal specificati;
-- confronti multipli o scelte analitiche flessibili;
-- selezione dei risultati;
-- interpretazioni causali non sostenute dal disegno.
-
-Anche quando una procedura è applicata correttamente, alcune domande restano fuori dal suo significato immediato.
-
-Un intervallo di confidenza non assegna probabilità al parametro. Un valore-*p* non esprime la probabilità dell'ipotesi nulla. La potenza non indica quanto sia plausibile un effetto dopo avere osservato i dati.
-
-Questi limiti non rendono inutili le procedure. Delimitano le conclusioni che possono sostenere.
+Anche quando la procedura viene applicata correttamente, alcune domande rimangono al di fuori del suo significato immediato. Un intervallo di confidenza non assegna probabilità ai possibili valori del parametro; un valore-*p* non esprime la probabilità che l'ipotesi nulla sia vera; la potenza, infine, non indica quanto un effetto sia plausibile dopo che i dati sono stati osservati. Questi limiti non rendono inutili le procedure frequentiste, ma definiscono con precisione il tipo di conclusioni che esse possono autorizzare.
 
 ::: {.callout-warning title="La critica corretta non è una caricatura"}
-Il frequentismo non afferma che l'incertezza scientifica sia irrilevante e il bayesianesimo non elimina automaticamente gli errori di misura, i bias di selezione o i modelli inadeguati.
+Il frequentismo non sostiene che l'incertezza scientifica sia irrilevante, così come il bayesianesimo non elimina automaticamente gli errori di misura, i bias di selezione o le conseguenze di modelli inadeguati.
 
-Il confronto utile riguarda il significato delle quantità inferenziali, le domande che possono ricevere risposta e il workflow con cui le assunzioni vengono rese esplicite e controllate.
+Il confronto più utile riguarda il significato delle quantità inferenziali, le domande alle quali esse permettono di rispondere e il processo attraverso il quale le assunzioni vengono rese esplicite, controllate e messe in relazione con i dati.
 :::
 
 ## Dal confronto frequentista al ragionamento bayesiano
 
-Frequentismo e bayesianesimo possono condividere:
+Frequentismo e bayesianesimo possono partire dalla stessa domanda psicologica, utilizzare gli stessi dati, adottare la stessa funzione di verosimiglianza e condividere tanto il modello generativo quanto la quantità di interesse. Ciò che cambia è il modo in cui l'incertezza viene rappresentata e aggiornata.
 
-- la stessa domanda psicologica;
-- gli stessi dati;
-- la stessa funzione di verosimiglianza;
-- lo stesso modello generativo;
-- la stessa quantità di interesse.
+Nel quadro frequentista, la probabilità descrive principalmente il comportamento di dati, statistiche e procedure in una serie di ripetizioni reali o ipotetiche. Nel quadro bayesiano, la probabilità viene impiegata anche per rappresentare l'incertezza relativa ai parametri e alle predizioni, sempre condizionatamente alla distribuzione a priori, al modello e ai dati disponibili.
 
-Cambiano però il modo in cui l'incertezza viene rappresentata e aggiornata.
-
-Nel quadro frequentista, la probabilità descrive principalmente dati, statistiche e procedure sotto ripetizioni reali o ipotetiche. Nel quadro bayesiano, la probabilità viene usata anche per rappresentare l'incertezza sui parametri e sulle predizioni, condizionatamente a prior, modello e dati.
-
-Il passaggio centrale è:
+Il passaggio concettuale centrale può essere rappresentato nel modo seguente:
 
 $$
 p(\theta)
@@ -87,59 +52,30 @@ p(y\mid\theta)
 p(\theta\mid y).
 $$
 
-La distribuzione a priori rappresenta l'incertezza prima dei dati. La verosimiglianza collega parametri e osservazioni. La distribuzione a posteriori esprime come l'incertezza cambia dopo l'osservazione.
+La distribuzione a priori esprime l'incertezza prima dell'osservazione dei dati. La verosimiglianza stabilisce il collegamento tra i parametri del modello e le osservazioni possibili. La distribuzione a posteriori descrive infine come l'incertezza si modifica dopo che i dati sono stati osservati.
 
-Da questa rappresentazione derivano domande come:
-
-- qual è la probabilità a posteriori che un effetto sia positivo;
-- quanto è probabile che superi una soglia sostantiva;
-- quali valori futuri prevede il modello;
-- quanto le conclusioni dipendono dalla prior;
-- quanto bene il modello riproduce le caratteristiche rilevanti dei dati.
-
-Queste quantità non sono reinterpretazioni bayesiane di valori-*p* e intervalli di confidenza. Appartengono a una diversa costruzione inferenziale.
+Questa rappresentazione consente di formulare domande che non trovano una risposta diretta nelle quantità frequentiste. Diventa possibile valutare la probabilità a posteriori che un effetto sia positivo o che superi una soglia sostantivamente rilevante, esaminare i valori futuri previsti dal modello, studiare quanto le conclusioni dipendano dalla distribuzione a priori e verificare quanto bene il modello riesca a riprodurre le caratteristiche importanti dei dati. Non si tratta di reinterpretare in chiave bayesiana i valori-*p* o gli intervalli di confidenza, ma di costruire l'inferenza secondo una diversa concezione della probabilità e dell'apprendimento dai dati.
 
 ## Il ruolo di questo modulo nel progetto editoriale
 
-*Inferenza bayesiana in psicologia: Ragionare con l'incertezza* costituisce il nucleo concettuale del progetto. Il manuale presenta i problemi epistemologici e metodologici, discute i limiti dell'uso meccanico della significatività statistica e sviluppa il ragionamento bayesiano come metodo di modellizzazione e apprendimento scientifico.
+*Inferenza bayesiana in psicologia: Ragionare con l'incertezza* costituisce il nucleo concettuale del progetto. Il manuale affronta i problemi epistemologici e metodologici dell'inferenza, discute i limiti dell'uso meccanico della significatività statistica e sviluppa il ragionamento bayesiano come metodo di modellizzazione e di apprendimento scientifico.
 
-Questo sito svolge una funzione più circoscritta:
+Questo sito svolge una funzione più circoscritta ma essenziale: fornisce il termine di confronto concettuale e tecnico necessario per comprendere che cosa cambia quando si passa dall'inferenza frequentista a quella bayesiana. Può essere utilizzato prima della lettura del manuale, come richiamo per chi proviene da una formazione statistica classica, oppure durante e dopo la Parte II, per consolidare il significato di stima, copertura, valore-*p*, potenza e confronto tra gruppi.
 
-> fornire il termine di confronto concettuale e tecnico necessario per comprendere che cosa cambia passando dall'inferenza frequentista a quella bayesiana.
-
-Il modulo può quindi essere usato in due modi:
-
-1. **prima del manuale**, come richiamo per chi proviene da una formazione statistica classica;
-2. **durante o dopo la Parte II del manuale**, per consolidare il significato di stima, copertura, valore-*p*, potenza e confronto tra gruppi.
-
-Il manuale non presuppone che ogni lettore padroneggi tutte le formule presentate qui. È più importante riconoscere quali affermazioni siano autorizzate da una procedura e quali costituiscano invece un'inversione o un'estensione indebita del suo significato.
+Il manuale non presuppone che ogni lettore padroneggi tutte le formule presentate in questo modulo. È più importante imparare a riconoscere quali affermazioni siano effettivamente autorizzate da una procedura e quali costituiscano, invece, un'inversione o un'estensione indebita del suo significato.
 
 ## Come proseguire
 
 ::: {.callout-important title="Il percorso consigliato"}
-**Manuale UTET**  
-Prosegui con *Inferenza bayesiana in psicologia: Ragionare con l'incertezza* di Corrado Caudek e Caterina Primi. Il volume costituisce il nucleo concettuale del progetto e introduce il passaggio dalla diagnosi dei limiti delle pratiche tradizionali al workflow bayesiano.
+Il passo successivo è la lettura del manuale UTET *Inferenza bayesiana in psicologia: Ragionare con l'incertezza* di Corrado Caudek e Caterina Primi. Il volume costituisce il centro teorico del progetto e accompagna il lettore dalla diagnosi dei limiti delle pratiche statistiche tradizionali alla costruzione di un workflow bayesiano.
 
-**Guida permanente al manuale**  
-La [Guida al manuale](https://ccaudek.github.io/utet-companion/guida-al-manuale/) mantiene il raccordo aggiornato tra i capitoli del volume, il Companion e i moduli di supporto.
+La [Guida al manuale](https://ccaudek.github.io/utet-companion/guida-al-manuale/) mantiene il raccordo aggiornato tra i capitoli del volume, il Companion e i diversi moduli di supporto. Il [Companion online](https://ccaudek.github.io/utet-companion/) rappresenta invece il laboratorio operativo del progetto: qui vengono sviluppati modelli generativi, distribuzioni a priori e a posteriori, predizioni, strumenti diagnostici, controlli predittivi e implementazioni in R, `brms` e Stan.
 
-**Companion online**  
-Il [Companion](https://ccaudek.github.io/utet-companion/) è il laboratorio operativo del progetto. Sviluppa modelli generativi, prior, distribuzioni a posteriori, predizioni, diagnostica, controlli predittivi e implementazioni in R, `brms` e Stan.
-
-**Probabilità per la psicologia**  
-Il modulo [Probabilità per la psicologia](https://ccaudek.github.io/utet-prob/) offre il richiamo su probabilità condizionata, distribuzioni, verosimiglianza e teorema di Bayes necessario per affrontare il passaggio formale all'aggiornamento bayesiano.
+Per chi desidera consolidare i prerequisiti formali, il modulo [Probabilità per la psicologia](https://ccaudek.github.io/utet-prob/) offre un richiamo alla probabilità condizionata, alle distribuzioni, alla verosimiglianza e al teorema di Bayes, fornendo le basi necessarie per comprendere l'aggiornamento bayesiano.
 :::
 
 ## Un ultimo criterio di lettura
 
-Quando incontri un risultato statistico, non chiederti soltanto se sia significativo. Chiediti:
+Di fronte a un risultato statistico, la prima domanda non dovrebbe essere soltanto se esso sia significativo. Occorre anzitutto chiarire quale quantità si desideri conoscere e quale modello colleghi quella quantità ai dati. È poi necessario chiedersi quali caratteristiche del disegno giustifichino l'inferenza, in che modo l'incertezza venga rappresentata e quali conclusioni siano realmente autorizzate dalle procedure adottate. A queste domande si aggiungono la verifica dell'adeguatezza del modello e la valutazione di quale decisione, previsione o conoscenza scientifica dovrebbe cambiare alla luce del risultato.
 
-1. qual è la quantità che si vuole conoscere;
-2. quale modello collega quella quantità ai dati;
-3. quali aspetti del disegno giustificano l'inferenza;
-4. come viene rappresentata l'incertezza;
-5. quali conclusioni sono effettivamente autorizzate;
-6. quali controlli mostrano che il modello è adeguato;
-7. quale decisione o conoscenza scientifica dovrebbe cambiare.
-
-Il contributo più importante del confronto tra paradigmi non è la scelta di una nuova etichetta. È imparare a formulare meglio le domande, rendere esplicite le assunzioni e trattare l'incertezza come parte costitutiva della conoscenza psicologica.
+Il contributo più importante del confronto tra paradigmi non consiste dunque nella scelta di una nuova etichetta. Consiste nell'imparare a formulare domande migliori, a rendere esplicite le assunzioni e a trattare l'incertezza non come un ostacolo accessorio, ma come una componente costitutiva della conoscenza psicologica.

@@ -1,67 +1,48 @@
 # Dimensione campionaria, precisione e potenza {#sec-frequentist-sample-size}
 
 ::: {.callout-note title="In sintesi"}
-**Da sapere**  La numerosità campionaria può essere pianificata per ottenere una precisione prefissata oppure per raggiungere una determinata potenza rispetto a un effetto specifico. Entrambi i calcoli dipendono da assunzioni su variabilità, modello, disegno e quantità scientificamente rilevanti.
+**Da sapere**  La numerosità campionaria può essere pianificata per ottenere una precisione prefissata oppure per raggiungere una determinata potenza rispetto a un effetto specifico. In entrambi i casi, il risultato dipende dalle assunzioni formulate sulla variabilità, sul modello, sul disegno e sulle quantità considerate scientificamente rilevanti.
 
-**Da saper fare**  Distinguere pianificazione per precisione e per potenza; interpretare correttamente $\alpha$, $\beta$ e potenza; motivare un effetto minimo di interesse; leggere l'output di `power.t.test()`; riconoscere perché la potenza post hoc basata sull'effetto osservato è poco informativa.
+**Da saper fare**  Al termine del capitolo, il lettore dovrebbe saper distinguere la pianificazione per precisione da quella per potenza, interpretare correttamente $\alpha$, $\beta$ e potenza, motivare un effetto minimo di interesse, leggere l'output di `power.t.test()` e spiegare perché la potenza post hoc calcolata a partire dall'effetto osservato sia poco informativa.
 :::
 
 ## Introduzione {.unnumbered .unlisted}
 
-Nel capitolo precedente abbiamo introdotto errori di tipo I, errori di tipo II e potenza. Questi concetti non servono soltanto a interpretare un test già eseguito: permettono anche di progettare lo studio prima della raccolta dei dati.
+Nel capitolo precedente abbiamo introdotto gli errori di tipo I e di tipo II e abbiamo definito la potenza come la probabilità di rifiutare l'ipotesi nulla quando è presente una specifica alternativa. Questi concetti non servono soltanto a interpretare un test già eseguito. Acquistano un ruolo ancora più importante prima della raccolta dei dati, quando occorre stabilire quale studio sia necessario per rispondere in modo informativo alla domanda di ricerca.
 
-La numerosità campionaria condiziona ciò che uno studio può apprendere. Un campione piccolo produce generalmente stime poco precise e test poco sensibili agli effetti di interesse. Un campione molto grande può invece richiedere risorse non giustificate e rendere statisticamente rilevabili differenze troppo piccole per avere significato teorico o pratico.
+La numerosità campionaria condiziona infatti ciò che uno studio può apprendere. Un campione troppo piccolo tende a produrre stime poco precise e test scarsamente sensibili agli effetti di interesse. Un campione molto ampio può invece richiedere risorse non giustificate e rendere statisticamente rilevabili differenze così piccole da non avere conseguenze teoriche, cliniche o pratiche.
 
-Non esiste quindi una numerosità «giusta» in astratto. Il numero di partecipanti dipende dalla domanda, dalla procedura inferenziale, dalla variabilità attesa, dal disegno e dal livello di informazione che si desidera ottenere.
+Non esiste, dunque, una numerosità corretta in astratto. Il numero di partecipanti dipende dalla domanda scientifica, dalla procedura inferenziale, dalla variabilità attesa, dalla struttura del disegno e dal livello di informazione che si desidera ottenere. Pianificare significa rendere esplicite queste dipendenze prima che i risultati osservati possano influenzare le scelte analitiche.
 
 ## Perché pianificare prima di raccogliere i dati?
 
-La pianificazione costringe a trasformare una domanda generica in un obiettivo quantitativo.
+La pianificazione trasforma una domanda generale in un obiettivo quantitativo. Quando l'interesse principale riguarda la stima, occorre stabilire quanta imprecisione sia accettabile:
 
-Per la **stima**, dobbiamo specificare quanta imprecisione siamo disposti ad accettare:
+> Quanto stretto dovrebbe essere l'intervallo di confidenza affinché la stima sia utile?
 
-> Quanto stretto dovrebbe essere l'intervallo di confidenza?
-
-Per il **test**, dobbiamo specificare quale effetto vogliamo essere in grado di rilevare:
+Quando l'obiettivo riguarda un test, la domanda cambia:
 
 > Con quale probabilità il test dovrebbe rifiutare l'ipotesi nulla se fosse presente un effetto scientificamente rilevante?
 
-Queste domande sono collegate, perché entrambe dipendono dall'errore standard, ma non sono equivalenti. La prima riguarda la precisione di una stima. La seconda riguarda il comportamento di una regola decisionale sotto una specifica alternativa.
+Le due domande sono collegate, perché entrambe dipendono dall'errore standard e quindi dalla quantità di informazione contenuta nei dati. Non sono però equivalenti. La prima riguarda la precisione con cui viene stimata una quantità; la seconda riguarda il comportamento di una regola decisionale sotto una specifica alternativa.
 
 ::: {.callout-important title="Il calcolo non sceglie gli obiettivi scientifici"}
-Una funzione software può calcolare $n$ dopo che sono stati forniti margine di errore, variabilità, effetto bersaglio, $\alpha$ e potenza.
+Una funzione software può calcolare $n$ dopo che sono stati specificati il margine di errore, la variabilità, l'effetto bersaglio, il livello $\alpha$ e la potenza desiderata. Non può però decidere quale popolazione sia rilevante, quale effetto meriti attenzione, quale precisione sia sufficiente, quale perdita di partecipanti sia plausibile o se il disegno e la misura siano realmente adeguati alla domanda scientifica.
 
-Non può stabilire:
-
-- quale popolazione sia rilevante;
-- quale effetto meriti attenzione;
-- quale precisione sia sufficiente;
-- quale perdita di partecipanti sia plausibile;
-- se il disegno e la misura rispondano alla domanda scientifica.
+La numerosità è una conseguenza degli obiettivi e delle assunzioni; non può sostituirli.
 :::
 
 ::: {.callout-tip title="Prerequisiti"}
-È utile avere letto:
+Per seguire il capitolo è utile avere letto @sec-freq-stime-parametri, dove sono stati introdotti errore standard e precisione, @sec-frequentism-confidence-intervals, dedicato al margine di errore e al livello di confidenza, e @sec-freq-hypothesis-testing, nel quale sono stati discussi $\alpha$, $\beta$ e potenza.
 
-- @sec-freq-stime-parametri, per errore standard e precisione;
-- @sec-frequentism-confidence-intervals, per margine di errore e livello di confidenza;
-- @sec-freq-hypothesis-testing, per $\alpha$, $\beta$ e potenza.
-
-Come approfondimento sul rapporto tra obiettivo scientifico e pianificazione, si veda @giner2024power.
+Per un approfondimento sul rapporto tra obiettivo scientifico e pianificazione si veda @giner2024power.
 :::
 
 ## Panoramica del capitolo {.unnumbered .unlisted}
 
-Il capitolo procede in otto passaggi:
+Il capitolo distingue anzitutto due obiettivi di pianificazione: ottenere una stima sufficientemente precisa e costruire un test dotato di una determinata potenza rispetto a un effetto specificato. Verrà quindi ricavata una formula introduttiva per la precisione di una media, mostrando come il margine di errore e la variabilità influenzino la numerosità richiesta.
 
-1. distingue pianificazione per precisione e pianificazione per potenza;
-2. ricava una formula introduttiva per la precisione di una media;
-3. mostra come margine di errore e variabilità influenzino $n$;
-4. interpreta la potenza come funzione di un'alternativa specifica;
-5. introduce l'effetto minimo di interesse;
-6. applica `power.t.test()` a uno e due gruppi;
-7. trasforma la numerosità analitica in un obiettivo realistico di reclutamento;
-8. discute sensibilità delle assunzioni, potenza post hoc e confronto con la pianificazione bayesiana.
+La seconda parte interpreterà la potenza come una funzione dell'alternativa e introdurrà il concetto di effetto minimo di interesse. Gli esempi con `power.t.test()` mostreranno come pianificare un test *t* per una media e un confronto tra due gruppi indipendenti. Infine, il numero di osservazioni richiesto dall'analisi verrà trasformato in un obiettivo realistico di reclutamento, tenendo conto delle perdite, della complessità del disegno e dell'incertezza delle assunzioni. La discussione si concluderà con la potenza post hoc e con il confronto tra pianificazione frequentista e bayesiana.
 
 ::: {.callout-note title="Preparazione del notebook"}
 Per eseguire gli esempi, prepara l'ambiente comune del progetto:
@@ -79,19 +60,23 @@ here::here("code", "_common.R") |>
 
 ### Pianificare per la precisione
 
-L'obiettivo è ottenere una stima con un intervallo sufficientemente stretto. La domanda centrale è:
+Quando l'interesse principale riguarda la grandezza di una media, di una proporzione o di una differenza, la pianificazione può essere costruita attorno alla precisione della stima. L'obiettivo consiste nell'ottenere un intervallo sufficientemente stretto da distinguere valori scientificamente diversi.
+
+La domanda centrale è:
 
 > Quale ampiezza dell'intervallo renderebbe la stima utile?
 
-Questa strategia è naturale quando l'interesse principale riguarda la grandezza di una media, una proporzione o una differenza.
+Una risposta adeguata richiede di stabilire quanto debba essere piccolo il margine di errore e di formulare un'ipotesi plausibile sulla variabilità dei dati.
 
 ### Pianificare per la potenza
 
-L'obiettivo è costruire un test che abbia una probabilità prefissata di rifiutare $H_0$ sotto una specifica alternativa. La domanda centrale è:
+Quando l'analisi è organizzata attorno a una decisione di test, l'obiettivo consiste nel costruire una procedura che abbia una probabilità prefissata di rifiutare $H_0$ sotto una specifica alternativa.
 
-> Qual è il più piccolo effetto che lo studio dovrebbe riuscire a rilevare con adeguata probabilità?
+La domanda centrale diventa:
 
-Questa strategia è legata a una procedura decisionale. Richiede di specificare sia l'effetto bersaglio sia il livello $\alpha$.
+> Qual è il più piccolo effetto che lo studio dovrebbe riuscire a rilevare con una probabilità adeguata?
+
+Questa strategia richiede di specificare sia l'effetto bersaglio sia il livello $\alpha$. Il risultato del calcolo descrive quindi la numerosità necessaria affinché il test raggiunga una determinata sensibilità nelle condizioni assunte.
 
 | Obiettivo | Quantità da specificare | Risultato della pianificazione |
 |---|---|---|
@@ -99,12 +84,12 @@ Questa strategia è legata a una procedura decisionale. Richiede di specificare 
 | Potenza | Effetto bersaglio, variabilità, $\alpha$ e potenza | $n$ necessario per una probabilità di rifiuto desiderata |
 
 ::: {.callout-note title="Lo stesso studio può avere più obiettivi"}
-Uno studio può essere pianificato sia per stimare con sufficiente precisione sia per raggiungere una determinata potenza. In tal caso, una scelta prudente consiste nel calcolare i requisiti per entrambi gli obiettivi e adottare quello più esigente, purché le ipotesi siano coerenti con il disegno.
+Uno studio può essere progettato per produrre stime sufficientemente precise e, nello stesso tempo, per raggiungere una potenza prestabilita. In questo caso è opportuno calcolare separatamente i requisiti associati ai due obiettivi e adottare quello più esigente, purché le assunzioni utilizzate siano coerenti con lo stesso disegno e con la stessa popolazione.
 :::
 
 ## Pianificare la precisione di una media {#sec-freq-sample-size-precision}
 
-Nel caso ideale di osservazioni indipendenti, deviazione standard della popolazione nota e intervallo normale, il margine di errore per una media è:
+Consideriamo anzitutto il caso elementare di una media calcolata su osservazioni indipendenti. Se la deviazione standard della popolazione $\sigma$ fosse nota e l'intervallo venisse costruito mediante l'approssimazione normale, il margine di errore sarebbe
 
 $$
 E
@@ -113,7 +98,7 @@ z_{1-\alpha/2}
 \frac{\sigma}{\sqrt n}.
 $$
 
-Risolvendo rispetto a $n$:
+Risolvendo l'equazione rispetto a $n$, otteniamo
 
 $$
 n
@@ -123,16 +108,13 @@ n
 \right)^2.
 $$
 
-La formula mostra che:
+La formula rende visibile il rapporto tra precisione e quantità di informazione. Una maggiore variabilità richiede più osservazioni, perché la media cambia maggiormente da un campione all'altro. Un margine di errore più piccolo richiede anch'esso un campione più ampio. Anche un livello di confidenza maggiore aumenta la numerosità, perché comporta l'impiego di un valore critico più grande.
 
-- una maggiore variabilità $\sigma$ richiede più osservazioni;
-- un margine di errore più piccolo richiede più osservazioni;
-- un livello di confidenza maggiore richiede un valore critico più grande;
-- dimezzare $E$ moltiplica approssimativamente $n$ per quattro.
+La dipendenza quadratica dal margine di errore ha una conseguenza particolarmente importante: dimezzare $E$ richiede, approssimativamente, di quadruplicare $n$. Un incremento moderato della precisione può quindi comportare un aumento considerevole delle risorse necessarie.
 
 ### Un esempio introduttivo
 
-Vogliamo stimare il punteggio medio di autostima in una popolazione di studenti. Studi precedenti suggeriscono una deviazione standard di circa 6 punti. Desideriamo un intervallo al 95% con margine di errore non superiore a 2 punti.
+Supponiamo di voler stimare il punteggio medio di autostima in una popolazione di studenti. Studi precedenti suggeriscono una deviazione standard di circa 6 punti. Desideriamo costruire un intervallo al 95% con un margine di errore non superiore a 2 punti.
 
 ```{r}
 #| label: precision-example
@@ -147,11 +129,13 @@ n_precisione <- (
 ceiling(n_precisione)
 ```
 
-Il calcolo restituisce 35 partecipanti.
+Il calcolo restituisce 35 partecipanti. Poiché una frazione di partecipante non è osservabile e una numerosità inferiore non raggiungerebbe l'obiettivo stabilito, l'arrotondamento deve essere effettuato verso l'alto.
 
-L'arrotondamento va sempre effettuato verso l'alto. Il valore rappresenta la numerosità **analizzabile** richiesta sotto le assunzioni del calcolo, non necessariamente il numero iniziale da reclutare.
+Il valore ottenuto indica il numero di osservazioni **analizzabili** richiesto sotto le assunzioni della formula. Non coincide necessariamente con il numero iniziale di persone da reclutare, perché una parte dei partecipanti può abbandonare lo studio o produrre dati non utilizzabili.
 
 ### Sensibilità al margine di errore
+
+Per comprendere quanto la numerosità dipenda dalla precisione desiderata, possiamo ripetere il calcolo per diversi margini di errore.
 
 ```{r}
 #| label: tbl-precision-sensitivity
@@ -168,23 +152,15 @@ risultati_precisione <- data.frame(
 knitr::kable(risultati_precisione)
 ```
 
-@tbl-precision-sensitivity rende visibile la relazione quadratica: una richiesta apparentemente modesta di maggiore precisione può aumentare molto il campione necessario.
+La @tbl-precision-sensitivity rende evidente la relazione quadratica. Ridurre il margine di errore da 3 a 2 punti può sembrare una modifica modesta sul piano sostantivo, ma richiede un aumento notevole del campione. La scelta della precisione desiderata deve quindi essere motivata scientificamente e confrontata con i costi effettivi della raccolta.
 
 ::: {.callout-warning title="Una formula introduttiva, non universale"}
-La formula usa $\sigma$ come se fosse nota e assume un modello elementare con osservazioni indipendenti.
-
-Nella pratica:
-
-- $\sigma$ deve essere stimata o ipotizzata;
-- l'ampiezza effettiva dell'intervallo può essere casuale;
-- l'uso della distribuzione *t* può richiedere un calcolo iterativo;
-- clustering, misure ripetute, pesi campionari o dati mancanti modificano la precisione;
-- altri parametri richiedono formule o simulazioni differenti.
+La formula precedente tratta $\sigma$ come se fosse nota e assume un modello elementare con osservazioni indipendenti. Nella pratica, la deviazione standard deve essere stimata o ipotizzata e l'ampiezza effettiva dell'intervallo può risultare casuale. L'impiego della distribuzione *t* può richiedere un calcolo iterativo, mentre clustering, misure ripetute, pesi campionari e dati mancanti modificano la precisione. Parametri diversi dalla media richiedono inoltre formule specifiche o una pianificazione basata sulla simulazione.
 :::
 
 ## Pianificare la potenza di un test {#sec-freq-sample-size-power}
 
-Per una specifica alternativa, la potenza è:
+Per una specifica alternativa, la potenza è definita come
 
 $$
 1-\beta
@@ -192,66 +168,45 @@ $$
 P(\text{rifiutare }H_0\mid\theta=\theta_1),
 $$
 
-dove $\theta_1$ indica il valore del parametro assunto nella pianificazione.
+dove $\theta_1$ rappresenta il valore del parametro assunto nella pianificazione.
 
-Una potenza pari a 0.80 significa:
+Affermare che un test possiede potenza pari a 0.80 significa che, se l'effetto specificato, il modello e il disegno fossero quelli assunti, circa l'80% delle ripetizioni produrrebbe un risultato capace di rifiutare $H_0$ al livello scelto.
 
-> Se l'effetto specificato, il modello e il disegno fossero quelli assunti, circa l'80% delle ripetizioni produrrebbe un risultato che rifiuta $H_0$ al livello scelto.
-
-Non significa:
-
-- che $H_1$ abbia probabilità 0.80;
-- che lo studio abbia l'80% di probabilità di essere «corretto»;
-- che, dopo un risultato significativo, vi sia l'80% di probabilità che l'effetto sia reale.
+Questa affermazione non attribuisce probabilità alle ipotesi. Non significa che $H_1$ abbia probabilità 0.80, che lo studio abbia l'80% di probabilità di essere corretto o che, dopo un risultato significativo, vi sia l'80% di probabilità che l'effetto sia reale. La potenza descrive una proprietà della procedura sotto un'alternativa specificata.
 
 ### La potenza è una funzione
 
-La potenza cambia al cambiare del valore vero dell'effetto. Uno studio non è semplicemente «potente» o «non potente» senza specificare rispetto a quale alternativa.
+La potenza cambia al variare del valore vero dell'effetto. Uno studio non può quindi essere descritto semplicemente come potente o non potente senza chiarire rispetto a quale alternativa venga valutato.
 
-Dipende inoltre da:
+A parità delle altre condizioni, la potenza aumenta quando cresce la dimensione dell'effetto, quando diminuisce la variabilità o quando aumenta la numerosità. Dipende inoltre dal livello $\alpha$, dalla scelta tra test unilaterale e bilaterale, dall'allocazione dei partecipanti tra i gruppi, dalla struttura di dipendenza dei dati e dall'affidabilità delle misure.
 
-1. dimensione dell'effetto;
-2. variabilità;
-3. numerosità;
-4. livello $\alpha$;
-5. test unilaterale o bilaterale;
-6. allocazione tra gruppi;
-7. struttura di dipendenza e affidabilità della misura.
+Queste dipendenze mostrano perché una singola percentuale non sia sufficiente a descrivere la capacità informativa di uno studio. La potenza è una funzione dell'effetto e delle assunzioni progettuali.
 
 ::: {.callout-important title="Potenza per rilevare che cosa?"}
-Dire «lo studio ha potenza 0.80» è incompleto.
+Dire che «lo studio ha potenza 0.80» è incompleto. Una formulazione interpretabile deve specificare almeno l'alternativa e le principali assunzioni:
 
-Una formulazione interpretabile è:
-
-> Il test bilaterale di livello 0.05 ha potenza 0.80 per una differenza di 3 punti, assumendo deviazione standard pari a 6 e il modello specificato.
+> Il test bilaterale di livello 0.05 ha potenza 0.80 per una differenza di 3 punti, assumendo una deviazione standard pari a 6 e il modello specificato.
 :::
 
 ## Scegliere l'effetto bersaglio {#sec-freq-sesoi}
 
-La numerosità non dovrebbe essere pianificata automaticamente sull'effetto osservato in un singolo studio precedente. Gli effetti pubblicati, soprattutto se ottenuti con campioni piccoli o selezionati perché significativi, possono essere sovrastimati.
+La pianificazione non dovrebbe utilizzare automaticamente l'effetto osservato in un singolo studio precedente. Gli effetti pubblicati, soprattutto quando derivano da campioni piccoli o sono stati selezionati perché statisticamente significativi, possono sovrastimare la grandezza reale del fenomeno. Costruire il nuovo studio su una stima instabile rischia quindi di produrre una numerosità insufficiente.
 
-Una strategia più trasparente è definire il **più piccolo effetto di interesse** (*smallest effect size of interest*, SESOI):
+Una strategia più trasparente consiste nel definire il **più piccolo effetto di interesse**, indicato spesso con l'acronimo SESOI, da *smallest effect size of interest*:
 
 > Qual è il più piccolo effetto che cambierebbe una conclusione teorica, clinica, educativa o decisionale?
 
-La risposta può derivare da:
+La risposta può essere fondata su una soglia di rilevanza clinica o pratica, sui costi e benefici associati a una decisione, sulla precisione dello strumento, sul confronto con effetti già conosciuti, su vincoli derivati da una teoria o sul giudizio motivato di esperti e portatori di interesse. Nessuna di queste fonti è automatica: il loro compito è collegare il numero utilizzato nel calcolo a una conseguenza scientifica comprensibile.
 
-- una soglia di rilevanza clinica o pratica;
-- costi e benefici di una decisione;
-- precisione dello strumento;
-- confronto con effetti già noti;
-- vincoli derivati da una teoria;
-- consenso tra esperti e portatori di interesse.
-
-Quando possibile, è preferibile motivare l'effetto nella scala originale. Un effetto standardizzato dipende anche dalla deviazione standard prevista: lo stesso cambiamento grezzo può corrispondere a valori standardizzati diversi in popolazioni differenti.
+Quando possibile, è preferibile esprimere l'effetto nella scala originale. Un effetto standardizzato dipende infatti anche dalla deviazione standard prevista. La stessa differenza grezza può quindi produrre valori standardizzati diversi in popolazioni caratterizzate da variabilità differente.
 
 ::: {.callout-warning title="Convenzioni non equivalgono a rilevanza"}
-Etichette come effetto «piccolo», «medio» o «grande» possono fornire un riferimento descrittivo, ma non stabiliscono quale effetto sia importante per la specifica domanda di ricerca.
+Le etichette convenzionali di effetto «piccolo», «medio» o «grande» possono offrire un riferimento descrittivo, ma non stabiliscono quale differenza sia importante per la specifica domanda di ricerca. La rilevanza deve essere motivata nel contesto teorico o applicativo dello studio.
 :::
 
 ## Esempio: test *t* per una media {#sec-freq-power-one-sample}
 
-Vogliamo confrontare una media con un valore di riferimento. Consideriamo rilevante una differenza di 3 punti e prevediamo una deviazione standard pari a 6. Pianifichiamo un test bilaterale con $\alpha=0.05$ e potenza 0.80.
+Supponiamo di voler confrontare una media con un valore di riferimento. Consideriamo scientificamente rilevante una differenza di 3 punti e prevediamo una deviazione standard pari a 6. Pianifichiamo un test bilaterale con $\alpha=0.05$ e potenza 0.80.
 
 ```{r}
 #| label: power-one-sample
@@ -270,7 +225,7 @@ ceiling(piano_un_campione$n)
 
 Il risultato richiede 34 osservazioni analizzabili.
 
-L'interpretazione è condizionale: se la differenza vera fosse 3, la deviazione standard 6 e le assunzioni del test fossero appropriate, il test rifiuterebbe $H_0$ in circa l'80% delle ripetizioni.
+L'interpretazione resta interamente condizionale: se la differenza vera fosse pari a 3 punti, la deviazione standard fosse 6 e le assunzioni del test fossero appropriate, il test rifiuterebbe $H_0$ in circa l'80% delle ripetizioni. Se la differenza vera fosse più piccola o la variabilità maggiore, la potenza effettiva sarebbe inferiore.
 
 ## Esempio: due gruppi indipendenti {#sec-freq-power-two-sample}
 
@@ -293,9 +248,13 @@ ceiling(piano_due_gruppi$n)
 
 Il risultato richiede 24 partecipanti analizzabili **per gruppo**, quindi 48 complessivi.
 
-Questo esempio prepara il capitolo successivo, nel quale applicheremo il test *t* al confronto tra gruppi indipendenti. Qui l'obiettivo non è ancora eseguire il test, ma capire quali assunzioni rendono interpretabile il numero di partecipanti.
+La distinzione tra numerosità per gruppo e numerosità totale è importante nella lettura dell'output di `power.t.test()`. Nel caso di un confronto a due campioni, il valore restituito da `n` si riferisce a ciascun gruppo quando l'allocazione è bilanciata.
+
+L'esempio prepara il capitolo successivo, nel quale applicheremo il test *t* al confronto tra gruppi indipendenti. In questa fase, tuttavia, l'obiettivo non è ancora eseguire il test, ma comprendere quali assunzioni rendano interpretabile il numero ottenuto.
 
 ### Sensibilità all'effetto bersaglio
+
+Possiamo ora ripetere il calcolo per più differenze bersaglio, mantenendo costanti la deviazione standard, il livello $\alpha$ e la potenza desiderata.
 
 ```{r}
 #| label: tbl-power-sensitivity
@@ -327,9 +286,11 @@ risultati_potenza <- data.frame(
 knitr::kable(risultati_potenza)
 ```
 
-@tbl-power-sensitivity mostra che la numerosità dipende fortemente dall'effetto scelto. Questa sensibilità non è un difetto del software: riflette il fatto che effetti più piccoli sono più difficili da distinguere dalla variabilità campionaria.
+La @tbl-power-sensitivity mostra che la numerosità dipende fortemente dall'effetto scelto. Questa sensibilità non costituisce un difetto del software. Riflette una proprietà del problema inferenziale: effetti piccoli sono più difficili da distinguere dalla variabilità campionaria e richiedono quindi una quantità maggiore di informazione.
 
 ### Curve di potenza
+
+La relazione tra numerosità, dimensione dell'effetto e potenza può essere rappresentata attraverso curve distinte per differenti valori veri della differenza.
 
 ```{r}
 #| label: fig-power-curves
@@ -376,13 +337,13 @@ ggplot(
   )
 ```
 
-@fig-power-curves rende evidente che la potenza non è una caratteristica fissa del disegno: ogni possibile effetto genera una curva differente.
+La @fig-power-curves rende visibile che la potenza non è una caratteristica fissa del disegno. Ogni possibile effetto produce una curva differente. A una stessa numerosità, il test è più sensibile agli effetti grandi e meno sensibile a quelli piccoli; per una stessa differenza, la potenza cresce invece all'aumentare del numero di partecipanti.
 
 ## Dalla numerosità analitica al reclutamento {#sec-freq-recruitment-target}
 
-Il valore restituito dal calcolo indica generalmente quante osservazioni **utilizzabili nell'analisi** sono necessarie. Il numero da reclutare può essere maggiore.
+Il valore restituito da un calcolo di pianificazione indica generalmente quante osservazioni **utilizzabili nell'analisi** siano necessarie. Il numero iniziale di persone da reclutare può essere maggiore, perché non tutti i partecipanti completano lo studio o producono dati conformi ai criteri stabiliti.
 
-Se prevediamo una quota di perdita $r$, un calcolo elementare è:
+Se prevediamo una quota di perdita $r$, un aggiustamento elementare è
 
 $$
 n_{\text{reclutare}}
@@ -392,7 +353,7 @@ n_{\text{reclutare}}
 \right\rceil.
 $$
 
-Per esempio, se servono 48 partecipanti analizzabili e prevediamo il 15% di abbandoni o dati inutilizzabili:
+Supponiamo, per esempio, che siano necessari 48 partecipanti analizzabili e che si preveda il 15% di abbandoni o dati inutilizzabili.
 
 ```{r}
 #| label: recruitment-adjustment
@@ -404,109 +365,73 @@ ceiling(
 )
 ```
 
-Occorre reclutare almeno 57 partecipanti, assumendo che la perdita sia plausibilmente vicina al 15%.
+Il calcolo indica che occorre reclutare almeno 57 partecipanti, assumendo che la perdita sia plausibilmente vicina al 15%.
 
-Questo aggiustamento non risolve automaticamente i problemi dei dati mancanti. Se l'abbandono è collegato all'esito o al trattamento, può introdurre bias oltre a ridurre la numerosità.
+Questo aggiustamento protegge la numerosità finale, ma non risolve automaticamente i problemi generati dai dati mancanti. Se l'abbandono dipende dall'esito, dal trattamento o da caratteristiche rilevanti dei partecipanti, può introdurre una distorsione oltre a ridurre il campione. La pianificazione deve quindi considerare non soltanto quanti dati potrebbero mancare, ma anche perché potrebbero mancare.
 
 ### Disegni complessi
 
-La numerosità richiesta può aumentare quando le osservazioni non forniscono informazione indipendente. Esempi:
+La numerosità richiesta può aumentare quando le osservazioni non forniscono informazione indipendente. È ciò che accade, per esempio, quando gli studenti sono raggruppati in classi, i pazienti sono trattati dagli stessi terapeuti, la stessa persona viene misurata più volte oppure le unità statistiche appartengono a coppie o famiglie. Anche la presenza di più esiti o confronti primari può modificare i requisiti della pianificazione.
 
-- studenti raggruppati in classi;
-- pazienti trattati dagli stessi terapeuti;
-- misure ripetute sulla stessa persona;
-- coppie o famiglie;
-- più esiti o confronti primari.
-
-In questi casi occorre pianificare usando un modello coerente con il disegno, spesso mediante formule specifiche o simulazioni. Applicare la formula per osservazioni indipendenti e aumentare arbitrariamente $n$ non garantisce il controllo desiderato.
+In questi contesti occorre utilizzare un modello coerente con la struttura del disegno, ricorrendo a formule specifiche o, più spesso, a simulazioni. Applicare la formula prevista per osservazioni indipendenti e aumentare arbitrariamente $n$ non garantisce il livello di precisione o di potenza desiderato.
 
 ## Analisi di sensibilità della pianificazione {#sec-freq-planning-sensitivity}
 
-Deviazione standard, tasso di abbandono ed effetto bersaglio sono spesso incerti prima dello studio. Presentare un unico valore di $n$ può nascondere questa incertezza.
+Prima della raccolta dei dati, la deviazione standard, il tasso di abbandono e persino l'effetto bersaglio sono spesso incerti. Presentare un unico valore di $n$ può nascondere questa incertezza e dare un'impressione di precisione che il calcolo non possiede.
 
-È più informativo valutare scenari:
+È più informativo esaminare più scenari. Uno scenario ottimistico può utilizzare una variabilità relativamente contenuta e perdite modeste; uno scenario centrale può riflettere le ipotesi considerate più plausibili; uno scenario prudente può assumere una variabilità maggiore, un effetto più piccolo o un tasso di abbandono più elevato.
 
-- ottimistico;
-- centrale;
-- prudente.
-
-Per esempio, possiamo calcolare la numerosità per più valori plausibili della deviazione standard o dell'effetto. La scelta finale dovrebbe essere accompagnata dalle assunzioni che la sostengono.
+Calcolare la numerosità sotto ciascuno scenario permette di capire quali assunzioni guidino maggiormente il risultato e di valutare il rischio di progettare uno studio insufficiente. La scelta finale dovrebbe essere accompagnata dalla descrizione esplicita degli scenari e delle fonti utilizzate per definirli.
 
 ::: {.callout-note title="Il calcolo è una conseguenza delle assunzioni"}
-Un risultato come «servono 48 partecipanti» dovrebbe essere letto come abbreviazione di una frase più completa:
+Un risultato come «servono 48 partecipanti» costituisce l'abbreviazione di una frase molto più completa:
 
-> Servono 48 partecipanti analizzabili per il test, l'effetto, la variabilità, l'allocazione, $\alpha$ e la potenza specificati.
+> Servono 48 partecipanti analizzabili per il test, l'effetto, la variabilità, l'allocazione, il livello $\alpha$ e la potenza specificati.
 
-Cambiare una di queste quantità può cambiare sostanzialmente il risultato.
+La modifica di una sola di queste quantità può cambiare sostanzialmente il risultato.
 :::
 
 ## Perché la potenza post hoc è poco informativa? {#sec-freq-observed-power}
 
-Dopo uno studio, talvolta si sostituisce nella formula di potenza l'effetto osservato e si calcola la cosiddetta *potenza osservata*.
+Dopo la conclusione di uno studio, talvolta si inserisce nella formula di potenza l'effetto osservato e si calcola la cosiddetta *potenza osservata*. Questa pratica può sembrare un modo per stabilire se lo studio fosse adeguato, ma la quantità ottenuta è quasi interamente determinata dalla statistica test o dal valore-*p*.
 
-Questa quantità è quasi interamente determinata dalla statistica test o dal valore-*p*:
+Un risultato significativo tende a produrre una potenza osservata elevata; un risultato non significativo tende a produrre una potenza osservata bassa. Il nuovo numero riproduce quindi, in una forma diversa, un'informazione già contenuta nell'esito del test e non fornisce una valutazione indipendente della qualità o della precisione dello studio.
 
-- un risultato significativo tende a produrre alta potenza osservata;
-- un risultato non significativo tende a produrre bassa potenza osservata.
+Dopo la raccolta dei dati è generalmente più utile esaminare la stima dell'effetto, il relativo intervallo di confidenza, la compatibilità dei dati con effetti scientificamente rilevanti e la plausibilità delle assunzioni. Anche la qualità del disegno e delle misure deve essere discussa direttamente, perché non può essere riassunta da una percentuale di potenza post hoc.
 
-Non aggiunge quindi una valutazione indipendente dell'informazione contenuta nei dati.
-
-Dopo la raccolta, è generalmente più utile esaminare:
-
-- la stima dell'effetto;
-- l'intervallo di confidenza;
-- la compatibilità con effetti scientificamente rilevanti;
-- le assunzioni e la qualità del disegno.
-
-Una nuova analisi di potenza può essere utile per pianificare **uno studio futuro**, purché non utilizzi meccanicamente l'effetto instabile del primo studio come verità nota.
+Un'analisi di potenza può tornare utile per progettare uno studio futuro. In questo caso, tuttavia, non è opportuno trattare meccanicamente l'effetto instabile osservato nel primo studio come se fosse il valore vero. La nuova pianificazione dovrebbe utilizzare un effetto bersaglio motivato e includere un'analisi di sensibilità.
 
 ## Pianificazione frequentista e bayesiana {#sec-freq-sample-size-bayes}
 
-La pianificazione frequentista formula obiettivi come:
+La pianificazione frequentista definisce spesso uno studio adeguato attraverso proprietà della procedura nelle ripetizioni. Può richiedere una determinata copertura o ampiezza attesa dell'intervallo, il controllo dell'errore di tipo I oppure una potenza prestabilita rispetto a un effetto bersaglio.
 
-- raggiungere una determinata copertura o ampiezza attesa;
-- controllare $\alpha$;
-- ottenere una certa potenza rispetto a un effetto bersaglio.
+Una pianificazione bayesiana può invece formulare criteri relativi alla distribuzione a posteriori o alle conseguenze decisionali. Può domandare quanto debba essere stretta la distribuzione a posteriori, con quale probabilità il parametro debba superare una soglia pratica, quale sia la probabilità predittiva di raggiungere una decisione oppure quale disegno massimizzi l'utilità attesa.
 
-Una pianificazione bayesiana può invece definire criteri relativi a:
+Le due prospettive non sono necessariamente separate sul piano computazionale. Entrambe possono essere studiate mediante simulazione. Una procedura bayesiana può essere valutata anche per le sue proprietà frequentiste, mentre una pianificazione frequentista può utilizzare conoscenze precedenti per definire scenari realistici di variabilità ed effetto.
 
-- ampiezza della distribuzione a posteriori;
-- probabilità di superare una soglia pratica;
-- probabilità predittiva di raggiungere una decisione;
-- utilità attesa delle possibili decisioni.
-
-Le due prospettive possono anche essere valutate con simulazioni comuni. Una procedura bayesiana può essere studiata per le sue proprietà frequentiste, e una pianificazione frequentista può incorporare informazioni precedenti nella scelta degli scenari.
-
-La differenza centrale non è che una prospettiva pianifichi e l'altra no. È quale criterio definisce uno studio sufficientemente informativo.
+La differenza principale non consiste quindi nel fatto che una prospettiva pianifichi e l'altra no. Riguarda il criterio con cui viene stabilito che uno studio sia sufficientemente informativo.
 
 ::: {.callout-important title="Un confronto senza scorciatoie"}
-La potenza non risponde direttamente alla domanda «quanta incertezza resterà sul parametro?».
+La potenza non risponde direttamente alla domanda relativa a quanta incertezza rimarrà sul parametro dopo lo studio. Una distribuzione a posteriori stretta, d'altra parte, non garantisce automaticamente una buona copertura frequentista né protegge dalle conseguenze di un modello mal specificato.
 
-Una distribuzione a posteriori stretta, d'altra parte, non garantisce automaticamente adeguata copertura frequentista o protezione da un modello mal specificato.
-
-Entrambe le pianificazioni richiedono obiettivi sostantivi, un modello plausibile e assunzioni esplicite.
+Entrambe le forme di pianificazione richiedono obiettivi sostantivi, un modello plausibile e assunzioni formulate in modo trasparente.
 :::
 
 ## Riflessioni conclusive {.unnumbered .unlisted}
 
-La numerosità campionaria non è una proprietà generale di un argomento di ricerca. È il risultato di una pianificazione riferita a una specifica domanda, procedura e serie di assunzioni.
+La numerosità campionaria non è una proprietà generale di un argomento di ricerca. È il risultato di una pianificazione riferita a una domanda, a una procedura e a un insieme specifico di assunzioni.
 
-Abbiamo distinto due obiettivi:
+La pianificazione per precisione rende esplicito quanto debba essere stretto l'intervallo affinché la stima sia utile. La pianificazione per potenza stabilisce invece quale effetto il test debba riuscire a rilevare e con quale probabilità. I due obiettivi sono collegati dalla variabilità campionaria, ma non sono intercambiabili.
 
-1. ottenere una precisione prefissata;
-2. raggiungere una potenza desiderata per un effetto bersaglio.
+In entrambi i casi, il numero calcolato è condizionale. La variabilità effettiva, gli abbandoni, la dipendenza tra osservazioni, l'affidabilità delle misure e le differenze tra il disegno ideale e la sua realizzazione concreta possono modificare il fabbisogno. Per questa ragione, una buona pianificazione non presenta soltanto un numero finale, ma rende visibili le assunzioni da cui esso deriva e mostra quanto il risultato cambi sotto scenari alternativi.
 
-La pianificazione per precisione rende esplicito quanto stretto debba essere un intervallo. La pianificazione per potenza rende esplicito quale effetto lo studio debba riuscire a rilevare e con quale probabilità.
-
-In entrambi i casi, il numero calcolato è condizionale. Variabilità, abbandoni, dipendenza, affidabilità delle misure e differenze tra disegno ideale e realizzazione concreta possono modificare il fabbisogno effettivo.
-
-Nel prossimo capitolo applicheremo questi concetti al confronto tra due gruppi indipendenti. La numerosità non sarà trattata come un'aggiunta finale, ma come parte del modello inferenziale e del disegno dello studio.
+Nel prossimo capitolo applicheremo questi concetti al confronto tra due gruppi indipendenti. La numerosità non verrà trattata come un'aggiunta finale all'analisi, ma come parte integrante del modello inferenziale e del disegno dello studio.
 
 ## Esercizi {.unnumbered .unlisted}
 
 1. Qual è la differenza tra pianificare uno studio per precisione e pianificarlo per potenza?
 
-2. Perché dimezzare il margine di errore richiede approssimativamente quattro volte le osservazioni, nel caso elementare della media?
+2. Perché dimezzare il margine di errore richiede approssimativamente quattro volte le osservazioni nel caso elementare della media?
 
 3. Che cosa significa affermare che un test ha potenza 0.80 per una differenza di 3 punti?
 
@@ -521,35 +446,25 @@ Nel prossimo capitolo applicheremo questi concetti al confronto tra due gruppi i
 8. In che modo differiscono gli obiettivi tipici di una pianificazione frequentista e di una pianificazione bayesiana?
 
 ::: {.callout-tip title="Soluzioni" collapse="true"}
-1. La pianificazione per precisione sceglie $n$ per ottenere un intervallo sufficientemente stretto. La pianificazione per potenza sceglie $n$ per ottenere una probabilità prefissata di rifiutare $H_0$ sotto una specifica alternativa.
+1. La pianificazione per precisione sceglie $n$ affinché l'intervallo risulti sufficientemente stretto. La pianificazione per potenza sceglie invece $n$ affinché il test raggiunga una probabilità prefissata di rifiutare $H_0$ sotto una specifica alternativa.
 
-2. Il margine di errore è proporzionale a $1/\sqrt n$. Per ridurlo della metà occorre raddoppiare $\sqrt n$, quindi quadruplicare $n$.
+2. Il margine di errore è proporzionale a $1/\sqrt n$. Per ridurlo della metà occorre raddoppiare $\sqrt n$ e quindi quadruplicare $n$.
 
-3. Se la differenza vera fosse 3 punti e tutte le altre assunzioni fossero quelle della pianificazione, il test rifiuterebbe $H_0$ in circa l'80% delle ripetizioni.
+3. Se la differenza vera fosse pari a 3 punti e tutte le altre assunzioni corrispondessero a quelle della pianificazione, il test rifiuterebbe $H_0$ in circa l'80% delle ripetizioni.
 
-4. La potenza dipende dall'effetto vero, dalla variabilità, da $\alpha$, dalla numerosità, dal tipo di test e dal disegno. Senza specificare almeno l'alternativa, il numero non è interpretabile.
+4. La potenza dipende dall'effetto vero, dalla variabilità, da $\alpha$, dalla numerosità, dal tipo di test e dal disegno. Senza specificare almeno l'alternativa rispetto alla quale è stata calcolata, la percentuale non è interpretabile.
 
-5. La rilevanza scientifica riguarda spesso una differenza concreta nel costrutto misurato. L'effetto standardizzato dipende anche dalla deviazione standard della popolazione e può cambiare significato tra contesti.
+5. La rilevanza scientifica riguarda spesso una differenza concreta nel costrutto misurato. Un effetto standardizzato dipende anche dalla deviazione standard della popolazione e può quindi assumere un significato diverso in contesti differenti.
 
-6. Il calcolo riguarda le osservazioni che entreranno nell'analisi. Se alcune persone abbandonano o producono dati inutilizzabili, occorre reclutarne di più per conservare la numerosità finale desiderata.
+6. Il calcolo riguarda le osservazioni che entreranno nell'analisi. Se alcune persone abbandonano lo studio o producono dati inutilizzabili, occorre reclutarne un numero maggiore per conservare la numerosità finale desiderata.
 
-7. Usando l'effetto osservato, la potenza diventa quasi una trasformazione della statistica test: risultati significativi producono valori alti e risultati non significativi valori bassi. Non offre una nuova misura indipendente della precisione.
+7. Quando viene calcolata usando l'effetto osservato, la potenza diventa quasi una trasformazione della statistica test: i risultati significativi producono valori elevati e quelli non significativi valori bassi. Non offre quindi una nuova misura indipendente della precisione o della qualità dello studio.
 
-8. La pianificazione frequentista usa spesso copertura, ampiezza, errore di tipo I e potenza. Quella bayesiana può usare precisione a posteriori, probabilità di superare soglie decisionali o utilità attesa. Entrambe dipendono da modelli e obiettivi espliciti.
+8. La pianificazione frequentista utilizza spesso criteri di copertura, ampiezza, errore di tipo I e potenza. Quella bayesiana può utilizzare la precisione a posteriori, la probabilità di superare soglie decisionali o l'utilità attesa. Entrambe dipendono da modelli e obiettivi espliciti.
 :::
 
 ::: {.callout-note title="Punti chiave" collapse="true"}
-- Non esiste una numerosità adeguata indipendente dalla domanda e dal disegno.
-- Precisione e potenza sono obiettivi collegati ma distinti.
-- Il calcolo per la precisione dipende da variabilità, margine di errore e livello di confidenza.
-- La potenza è definita rispetto a una specifica alternativa.
-- L'effetto minimo di interesse deve essere motivato scientificamente.
-- Gli effetti standardizzati dipendono dalla variabilità prevista.
-- `power.t.test()` restituisce, nel caso a due gruppi, la numerosità per gruppo.
-- La numerosità analitica deve essere distinta dall'obiettivo di reclutamento.
-- Dipendenza, abbandoni e dati mancanti possono modificare il fabbisogno.
-- La potenza post hoc basata sull'effetto osservato è generalmente ridondante.
-- Pianificazione frequentista e bayesiana definiscono in modo diverso quando uno studio è sufficientemente informativo.
+Non esiste una numerosità adeguata indipendentemente dalla domanda e dal disegno. Precisione e potenza sono obiettivi collegati, ma distinti. La pianificazione per precisione dipende dalla variabilità, dal margine di errore e dal livello di confidenza; quella per potenza richiede una specifica alternativa e un effetto minimo di interesse motivato scientificamente. Gli effetti standardizzati dipendono dalla variabilità prevista e non sostituiscono una valutazione nella scala originale. Nel confronto tra due gruppi, `power.t.test()` restituisce la numerosità richiesta per ciascun gruppo. Il numero di osservazioni analizzabili deve essere distinto dall'obiettivo di reclutamento, perché abbandoni, dati mancanti e dipendenze possono aumentare il fabbisogno. La potenza post hoc basata sull'effetto osservato è generalmente ridondante. La pianificazione frequentista e quella bayesiana definiscono infine attraverso criteri differenti quando uno studio possa essere considerato sufficientemente informativo.
 :::
 
 ::: {.callout-note title="Ambiente di sviluppo" collapse="true"}

@@ -1,65 +1,44 @@
 # Stime, stimatori e parametri {#sec-freq-stime-parametri}
 
 ::: {.callout-note title="In sintesi"}
-**Da sapere**  Nell'inferenza frequentista, il parametro è una quantità fissa del modello, lo stimatore è una regola applicata ai dati e la stima è il valore numerico osservato. Le proprietà di uno stimatore vengono valutate immaginando di ripetere il campionamento nelle stesse condizioni.
+**Da sapere**  Nell'inferenza frequentista, il parametro è una quantità fissa del modello, lo stimatore è una regola applicata ai dati e la stima è il valore numerico assunto da quella regola nel campione osservato. Le proprietà di uno stimatore vengono valutate immaginando di ripetere il campionamento nelle stesse condizioni.
 
-**Da saper fare**  Distinguere parametro, stimatore e stima; interpretare bias, consistenza, efficienza ed errore quadratico medio; distinguere deviazione standard ed errore standard; spiegare perché una stima puntuale deve essere accompagnata da una misura di precisione.
+**Da saper fare**  Al termine del capitolo, il lettore dovrebbe saper distinguere parametro, stimatore e stima; interpretare bias, consistenza, efficienza ed errore quadratico medio; distinguere deviazione standard ed errore standard; spiegare perché una stima puntuale deve essere accompagnata da una misura di precisione.
 :::
 
 ## Introduzione {.unnumbered .unlisted}
 
-Il capitolo precedente ha mostrato come la statistica frequentista si sia formata attraverso contributi differenti: lo studio della variabilità, la regressione e la correlazione, la significatività fisheriana e il controllo degli errori di Neyman--Pearson. Passiamo ora dalla storia al primo problema operativo dell'inferenza:
+Il capitolo precedente ha mostrato come la statistica frequentista sia nata dall'incontro di tradizioni differenti: lo studio della variabilità, la regressione e la correlazione, la significatività fisheriana e il controllo degli errori sviluppato da Neyman e Pearson. Passiamo ora dalla ricostruzione storica al primo problema operativo dell'inferenza:
 
-> Come possiamo usare un campione per stimare una quantità sconosciuta della popolazione o del modello?
+> Come possiamo usare un campione per conoscere una quantità ignota della popolazione o del modello?
 
-La risposta frequentista non consiste soltanto nel calcolare un numero. Occorre anche valutare la procedura che produce quel numero: quanto varia da campione a campione, se tende sistematicamente a sbagliare e se diventa più precisa quando aumentano le informazioni disponibili.
+La risposta frequentista non consiste semplicemente nel calcolare un numero. Una stima acquista significato soltanto quando viene considerata insieme alla procedura che l'ha prodotta. Occorre quindi domandarsi quanto quella procedura vari da un campione all'altro, se tenda a sbagliare sistematicamente e se diventi più precisa quando aumentano le informazioni disponibili.
 
-Questo capitolo introduce il lessico necessario per comprendere i capitoli successivi. Gli intervalli di confidenza e i test di ipotesi dipendono infatti dalla stessa idea fondamentale: una statistica osservata va interpretata attraverso il comportamento che avrebbe sotto campionamenti ripetuti.
+Questo capitolo introduce il lessico necessario per affrontare i temi successivi. Gli intervalli di confidenza e i test di ipotesi, pur rispondendo a domande diverse, dipendono infatti dalla stessa idea fondamentale: una statistica osservata deve essere interpretata attraverso il comportamento che avrebbe in una successione di campionamenti ripetuti.
 
 ## Perché la stima è il primo passo dell'inferenza?
 
-Immaginiamo di voler conoscere il livello medio di ansia degli studenti iscritti a un'università. Non possiamo osservare ogni studente, quindi selezioniamo un campione e calcoliamo la media dei punteggi.
+Immaginiamo di voler conoscere il livello medio di ansia degli studenti iscritti a un'università. Osservare ogni studente sarebbe spesso impossibile, costoso o comunque poco realistico. Selezioniamo quindi un campione e calcoliamo la media dei punteggi rilevati.
 
-La media campionaria descrive il campione osservato. Per usarla come informazione sulla popolazione dobbiamo però affrontare due domande:
+La media campionaria descrive esattamente il gruppo osservato, ma per utilizzarla come informazione sulla popolazione dobbiamo chiarire due aspetti. Il primo riguarda la quantità che desideriamo conoscere: in questo caso, la media dei punteggi di ansia nella popolazione definita dallo studio. Il secondo riguarda la stabilità della nostra conclusione: quanto cambierebbe la media se osservassimo un altro campione estratto nelle stesse condizioni?
 
-1. **Quale quantità vogliamo stimare?**
-2. **Quanto cambierebbe la nostra stima se osservassimo un altro campione?**
-
-La prima domanda riguarda il parametro o, più precisamente, la **quantità bersaglio** dell'analisi. La seconda riguarda la variabilità campionaria dello stimatore.
+La prima domanda definisce il parametro o, più in generale, la **quantità bersaglio** dell'analisi. La seconda introduce la variabilità campionaria dello stimatore. L'inferenza nasce precisamente dalla relazione tra questi due livelli: una quantità ignota e fissa nel modello, da una parte, e un'informazione osservata ma variabile, dall'altra.
 
 ::: {.callout-important title="Prima della formula viene la domanda"}
-Una stima è interpretabile soltanto se sono definiti con chiarezza:
+Una stima può essere interpretata soltanto dopo avere definito la popolazione o il processo al quale si intende generalizzare, il costrutto psicologico e il modo in cui viene misurato, la quantità bersaglio, il meccanismo di campionamento o di assegnazione e il modello che collega i dati alla domanda scientifica.
 
-- la popolazione o il processo a cui si vuole generalizzare;
-- il costrutto psicologico e il modo in cui viene misurato;
-- la quantità da stimare;
-- il meccanismo di campionamento o di assegnazione;
-- il modello che collega i dati alla quantità bersaglio.
-
-Una procedura può essere matematicamente precisa e stimare con grande accuratezza la quantità sbagliata.
+Una procedura può essere matematicamente impeccabile e stimare con grande precisione la quantità sbagliata.
 :::
 
 ::: {.callout-tip title="Prerequisiti"}
-È utile avere letto:
+Per seguire il capitolo è utile avere letto l'introduzione al modulo e il capitolo sulle origini storiche del frequentismo. È inoltre consigliabile richiamare il capitolo [Dal campione all'evidenza](https://ccaudek.github.io/utet-prob/chapters/probability/13_from_sample_to_evidence.html) del sito dedicato alla probabilità, insieme alle nozioni di valore atteso, varianza e distribuzione campionaria.
 
-- l'introduzione a questo modulo e il capitolo sulle origini storiche del frequentismo;
-- il capitolo [Dal campione all'evidenza](https://ccaudek.github.io/utet-prob/chapters/probability/13_from_sample_to_evidence.html) del sito dedicato alla probabilità;
-- i richiami su valore atteso, varianza e distribuzioni campionarie.
-
-Qui non ridimostreremo la Legge dei Grandi Numeri o il Teorema del Limite Centrale. Useremo quei risultati per comprendere la logica frequentista della stima.
+Non ridimostreremo la Legge dei Grandi Numeri o il Teorema del Limite Centrale. Utilizzeremo questi risultati per comprendere la logica frequentista della stima.
 :::
 
 ## Panoramica del capitolo {.unnumbered .unlisted}
 
-Il capitolo procede in sette passaggi:
-
-1. distingue parametro, stimatore e stima;
-2. chiarisce che cosa significa produrre una stima puntuale;
-3. introduce correttezza e bias;
-4. presenta consistenza, efficienza ed errore quadratico medio;
-5. collega lo stimatore alla sua distribuzione campionaria;
-6. distingue deviazione standard ed errore standard;
-7. confronta, senza sovrapporle, la stima frequentista e quella bayesiana.
+Il percorso parte dalla distinzione tra parametro, stimatore e stima, per chiarire poi che cosa significhi produrre una stima puntuale. Su questa base verranno introdotti correttezza e bias, consistenza, efficienza ed errore quadratico medio. La discussione si sposterà quindi sulla distribuzione campionaria e sull'errore standard, fino a mostrare perché una stima debba essere accompagnata da una misura della propria precisione. L'ultima parte confronterà la logica della stima frequentista con quella bayesiana, mantenendo distinti i significati delle rispettive quantità inferenziali.
 
 ::: {.callout-note title="Preparazione del notebook"}
 Per eseguire gli esempi, prepara l'ambiente comune del progetto:
@@ -75,26 +54,23 @@ here::here("code", "_common.R") |>
 
 ## Il problema della stima {#sec-freq-estimation-problem}
 
-Una ricercatrice raccoglie un campione di studenti e osserva un punteggio medio di ansia pari a 18.4. Questo numero è una descrizione esatta del campione, ma è soltanto una possibile stima della media della popolazione.
+Supponiamo che una ricercatrice raccolga un campione di studenti e osservi un punteggio medio di ansia pari a 18.4. Questo valore descrive esattamente il campione disponibile, ma rappresenta soltanto una delle molte medie che si sarebbero potute ottenere selezionando partecipanti differenti.
 
-Se venisse selezionato un altro campione, la media sarebbe probabilmente diversa. Il problema inferenziale nasce quindi dalla distanza tra:
+Se lo studio venisse ripetuto, la nuova media sarebbe probabilmente diversa. Il problema inferenziale nasce dunque dalla distanza tra la quantità della popolazione o del modello che interessa alla ricerca e l'informazione inevitabilmente parziale e variabile contenuta nel campione.
 
-- la quantità della popolazione o del modello che interessa alla ricerca;
-- l'informazione parziale e variabile fornita dal campione.
-
-Nel frequentismo standard, il parametro viene trattato come **fisso ma ignoto** all'interno del modello. La nostra conoscenza del parametro è incompleta, ma la probabilità non viene normalmente usata per assegnare una distribuzione ai suoi valori possibili. Viene invece usata per descrivere dati, statistiche e procedure sotto ripetizioni reali o ipotetiche.
+Nel frequentismo standard, il parametro viene trattato come **fisso ma ignoto** all'interno del modello. Il fatto che non ne conosciamo il valore esprime un limite della nostra informazione, ma non comporta normalmente l'assegnazione di una distribuzione di probabilità ai suoi valori possibili. La probabilità viene invece utilizzata per descrivere il comportamento dei dati, delle statistiche e delle procedure in ripetizioni reali o ipotetiche del campionamento.
 
 ::: {.callout-note title="La domanda frequentista"}
-Una domanda frequentista tipica è:
+Una domanda tipicamente frequentista può essere formulata così:
 
 > Se applicassimo lo stesso stimatore a molti campioni generati nelle stesse condizioni, come si comporterebbero le stime?
 
-Questa domanda consente di definire bias, errore standard, copertura ed errori decisionali.
+Da questa domanda derivano concetti quali bias, errore standard, copertura ed errori decisionali.
 :::
 
 ## Parametro, stimatore e stima {#sec-freq-parameter-estimator-estimate}
 
-I tre termini descrivono livelli differenti dell'analisi.
+Parametro, stimatore e stima appartengono a livelli differenti dell'analisi. La distinzione è essenziale perché molte incomprensioni derivano dal loro uso come se fossero sinonimi.
 
 | Termine | Significato | Esempio |
 |---|---|---|
@@ -102,69 +78,58 @@ I tre termini descrivono livelli differenti dell'analisi.
 | **Stimatore** | Regola o funzione dei dati usata per stimare il parametro | La media campionaria, $\bar X$ |
 | **Stima** | Valore numerico assunto dallo stimatore nel campione osservato | $\bar x = 18.4$ |
 
-Il **parametro** è l'obiettivo dell'inferenza. Può essere una media, una proporzione, una varianza, una differenza tra gruppi, una correlazione o un coefficiente di regressione.
+Il **parametro** costituisce l'obiettivo dell'inferenza. Può essere una media, una proporzione, una varianza, una differenza tra gruppi, una correlazione o un coefficiente di regressione. All'interno del modello possiede un unico valore, anche quando quel valore rimane sconosciuto.
 
-Lo **stimatore** è una funzione dei dati. Prima di osservare il campione, il suo valore non è noto perché dipende da quali dati verranno raccolti. Per questo motivo viene rappresentato con una variabile casuale, come $\bar X$ o $\hat\theta$.
+Lo **stimatore** è una funzione dei dati. Prima di osservare il campione, il suo valore non è noto perché dipende da quali osservazioni verranno raccolte. Per questo viene rappresentato mediante una variabile casuale, come $\bar X$ o $\hat\theta$.
 
-La **stima** è la realizzazione osservata dello stimatore, indicata spesso con lettere minuscole, come $\bar x$ o $\hat\theta_{\mathrm{obs}}$.
+La **stima** è invece il valore assunto dallo stimatore nel campione effettivamente osservato. Viene spesso indicata con lettere minuscole, come $\bar x$, oppure con una notazione che ne segnala il carattere osservato, come $\hat\theta_{\mathrm{obs}}$.
 
 ::: {.callout-warning title="Stimatore e stima non sono sinonimi"}
-Correttezza, consistenza, varianza ed efficienza sono proprietà dello **stimatore come procedura**. La singola **stima osservata** può essere vicina o lontana dal parametro. Poiché il valore vero è ignoto, la sua accuratezza non può essere letta direttamente dal numero osservato.
+Correttezza, consistenza, varianza ed efficienza sono proprietà dello **stimatore inteso come procedura**. Una singola **stima osservata** può risultare vicina o lontana dal parametro. Poiché il valore vero è ignoto, la sua accuratezza non può essere dedotta direttamente dal numero calcolato.
 :::
 
 ## La stima puntuale {#sec-freq-point-estimate}
 
-Una **stima puntuale** usa un singolo numero come sintesi del parametro di interesse. Esempi comuni sono:
+Una **stima puntuale** utilizza un singolo numero per rappresentare il parametro di interesse. La media campionaria $\bar x$ può essere usata per stimare la media della popolazione $\mu$; una proporzione campionaria $\hat p$ può stimare la proporzione $p$; la differenza $\bar x_1-\bar x_2$ può stimare una differenza tra medie; la correlazione campionaria $r$ può essere impiegata per stimare la correlazione $\rho$ della popolazione.
 
-- $\bar x$ per stimare la media $\mu$;
-- $\hat p$ per stimare una proporzione $p$;
-- $\bar x_1-\bar x_2$ per stimare una differenza tra medie;
-- $r$ per stimare una correlazione $\rho$.
+Il termine *puntuale* non implica che il valore ottenuto sia certamente corretto, né che debba essere interpretato come il valore più probabile del parametro. Significa soltanto che la procedura restituisce un unico valore numerico.
 
-Il termine *puntuale* non significa che quel valore sia certamente corretto, né necessariamente che sia il valore «più probabile». Significa soltanto che la procedura restituisce un singolo valore.
-
-Due studi possono produrre la stessa stima ma livelli molto differenti di precisione:
+Due studi possono produrre la stessa stima puntuale e, nello stesso tempo, offrire quantità di informazione molto differenti:
 
 | Studio | Stima della media | Errore standard |
 |---|---:|---:|
 | A | 18.4 | 0.30 |
 | B | 18.4 | 1.80 |
 
-La stima puntuale coincide, ma nello studio B lo stimatore varia molto di più da campione a campione. Il numero 18.4 non contiene, da solo, questa informazione.
+La media osservata è identica, ma nello studio B lo stimatore varia molto di più da un campione all'altro. Il solo valore 18.4 non permette di cogliere questa differenza. Per comprendere quanto la stima sia informativa è necessario affiancarle una misura della variabilità campionaria.
 
 ::: {.callout-important title="Precisione non significa accuratezza"}
-Un errore standard piccolo indica che la procedura produce stime poco variabili nelle condizioni assunte. Non dimostra che la stima sia vicina alla quantità scientificamente rilevante.
+Un errore standard piccolo indica che, nelle condizioni assunte, la procedura produrrebbe stime poco variabili. Non dimostra però che il valore osservato sia vicino alla quantità scientificamente rilevante.
 
-Un campione molto grande può produrre una stima estremamente precisa ma sistematicamente distorta a causa di selezione dei partecipanti, misurazione inadeguata o modello errato.
+Un campione molto grande può generare una stima estremamente precisa e tuttavia sistematicamente distorta a causa della selezione dei partecipanti, di una misurazione inadeguata o di un modello errato.
 :::
 
 ## Come si sceglie uno stimatore?
 
-Uno stesso parametro può essere stimato in modi differenti. La scelta può derivare:
+Uno stesso parametro può essere stimato attraverso procedure differenti. In alcuni casi la scelta appare naturale, come quando si utilizza la media campionaria per stimare la media della popolazione. In altri casi lo stimatore deriva da un criterio generale, come il metodo dei minimi quadrati o la massimizzazione della verosimiglianza. In problemi più complessi possono diventare rilevanti anche la robustezza rispetto alle osservazioni anomale, la stabilità numerica o l'impiego di forme di regolarizzazione.
 
-- da una sintesi naturale dei dati, come la media campionaria;
-- dal metodo dei minimi quadrati;
-- dalla massimizzazione della verosimiglianza;
-- da criteri di robustezza o regolarizzazione;
-- da proprietà teoriche considerate desiderabili.
+La **massima verosimiglianza**, per esempio, seleziona il valore del parametro che rende i dati osservati più compatibili con il modello, nel senso preciso definito dalla funzione di verosimiglianza. Il sito dedicato alla probabilità introduce separatamente questo concetto nel capitolo sulla [verosimiglianza](https://ccaudek.github.io/utet-prob/chapters/probability/14_likelihood.html).
 
-La **massima verosimiglianza**, per esempio, sceglie il valore del parametro che rende massimi i dati osservati secondo il modello. Il sito dedicato alla probabilità introduce separatamente il concetto di [verosimiglianza](https://ccaudek.github.io/utet-prob/chapters/probability/14_likelihood.html).
+La scelta di uno stimatore non dipende quindi soltanto dalla disponibilità di una formula. Dipende dal modello, dallo scopo dell'analisi, dalla quantità di dati disponibili e dal costo attribuito ai diversi tipi di errore. Una procedura adeguata in un contesto può essere poco utile in un altro.
 
-La scelta di uno stimatore non dipende soltanto dalla disponibilità di una formula. Dipende dal modello, dallo scopo dell'analisi e dal costo attribuito ai diversi tipi di errore.
+## Quali proprietà campionarie definiscono l'ottimalità di uno stimatore? {#sec-freq-good-estimators}
 
-## Che cosa rende buono uno stimatore? {#sec-freq-good-estimators}
-
-Le proprietà seguenti descrivono il comportamento dello stimatore sotto il modello e il meccanismo di campionamento specificati. Nessuna di esse garantisce, da sola, che il modello o la misura siano adeguati alla domanda psicologica.
+Le proprietà di uno stimatore vengono definite rispetto a un modello e a un determinato meccanismo di campionamento. Esse descrivono il comportamento matematico della procedura, ma non garantiscono da sole che il modello, il campione o la misura siano adeguati alla domanda psicologica.
 
 ### Correttezza e bias
 
-Uno stimatore $\hat\theta$ è **corretto**, o **non distorto**, se il suo valore atteso coincide con il parametro:
+Uno stimatore $\hat\theta$ è detto **corretto**, o **non distorto**, quando il suo valore atteso coincide con il parametro:
 
 $$
 \operatorname{E}(\hat\theta)=\theta.
 $$
 
-Il **bias statistico** è definito come:
+Il **bias statistico** dello stimatore è definito come
 
 $$
 \operatorname{Bias}(\hat\theta)
@@ -172,17 +137,19 @@ $$
 \operatorname{E}(\hat\theta)-\theta.
 $$
 
-Uno stimatore corretto è centrato sul parametro nel lungo periodo. Non segue che ogni singola stima sia vicina al valore vero: uno stimatore può essere non distorto ma molto variabile.
+Uno stimatore corretto è dunque centrato sul parametro nel lungo periodo. Se il campionamento fosse ripetuto molte volte e lo stimatore venisse applicato a ogni campione, la media delle stime coinciderebbe con il valore del parametro.
+
+Questa proprietà non implica che ogni singola stima sia vicina al valore vero. Uno stimatore può essere non distorto e, nello stesso tempo, possedere una distribuzione campionaria molto ampia. In tal caso le stime risulterebbero mediamente centrate, ma potrebbero essere spesso lontane dal parametro.
 
 ::: {.callout-warning title="Due significati diversi di bias"}
-Il bias dello stimatore è una proprietà matematica definita rispetto a un modello e a ripetizioni del campionamento.
+Il bias dello stimatore è una proprietà matematica definita rispetto a un modello e a una successione di campionamenti.
 
-Espressioni come *bias di selezione*, *bias di misurazione* o *bias di pubblicazione* indicano invece distorsioni del processo di ricerca. Non sono automaticamente rappresentate da $\operatorname{Bias}(\hat\theta)$ e non vengono eliminate scegliendo uno stimatore non distorto.
+Espressioni come *bias di selezione*, *bias di misurazione* o *bias di pubblicazione* indicano invece distorsioni del processo di ricerca. Non coincidono automaticamente con $\operatorname{Bias}(\hat\theta)$ e non vengono eliminate scegliendo uno stimatore non distorto.
 :::
 
 ### Consistenza
 
-Uno stimatore è **consistente** se converge al parametro quando la dimensione del campione cresce. Una formulazione comune è la convergenza in probabilità:
+Uno stimatore è **consistente** quando converge al parametro al crescere della dimensione campionaria. Una formulazione comune utilizza la convergenza in probabilità:
 
 $$
 \hat\theta_n \xrightarrow{P} \theta
@@ -190,26 +157,23 @@ $$
 \text{quando } n\to\infty.
 $$
 
-La consistenza è una proprietà asintotica. Non garantisce che lo stimatore funzioni bene in un campione piccolo, né corregge automaticamente errori di misura, campionamento non rappresentativo o specificazione errata del modello.
+La consistenza esprime quindi un comportamento asintotico. Aumentando progressivamente il numero delle osservazioni, lo stimatore tende a concentrarsi sempre più vicino al parametro.
 
-Uno stimatore può essere consistente pur essendo lievemente distorto nei campioni finiti, purché il bias e la variabilità si riducano con l'aumentare di $n$.
+Questa proprietà non garantisce che la procedura funzioni bene in un campione piccolo. Non corregge neppure errori di misura, campionamenti non rappresentativi o specificazioni errate del modello. Uno stimatore può inoltre essere consistente pur mostrando un lieve bias nei campioni finiti, purché tale bias e la variabilità si riducano quando $n$ aumenta.
 
 ### Efficienza
 
-All'interno di una classe specificata di stimatori e sotto un dato modello, uno stimatore viene detto più **efficiente** se raggiunge una precisione maggiore, spesso espressa da una varianza inferiore.
+All'interno di una classe specificata di stimatori e sotto un determinato modello, uno stimatore viene detto più **efficiente** quando raggiunge una maggiore precisione, spesso espressa da una varianza più piccola.
 
-Il confronto richiede cautela:
+Il confronto ha senso soltanto se gli stimatori riguardano lo stesso parametro, vengono valutati sotto lo stesso modello e lo stesso schema di campionamento e appartengono a una classe chiaramente definita. L'efficienza può inoltre essere stabilita esattamente per una particolare dimensione campionaria oppure soltanto in termini asintotici.
 
-- deve riguardare lo stesso parametro;
-- deve usare lo stesso modello e lo stesso schema di campionamento;
-- deve chiarire la classe di stimatori considerata;
-- può essere esatto in campioni finiti oppure soltanto asintotico.
-
-L'efficienza non è quindi una proprietà assoluta separata dalle assunzioni.
+Non si tratta quindi di una qualità assoluta. Uno stimatore non è efficiente in generale, ma rispetto a precise alternative e sotto specifiche assunzioni.
 
 ### Il compromesso bias-varianza
 
-Uno stimatore lievemente distorto può avere una varianza molto inferiore a quella di uno stimatore non distorto. Per uno stimatore scalare con secondo momento finito, l'**errore quadratico medio** è:
+La non distorsione non è sempre l'unico criterio utile per scegliere uno stimatore. Una procedura lievemente distorta può infatti possedere una varianza molto inferiore a quella di uno stimatore non distorto e produrre, nel complesso, stime migliori.
+
+Per uno stimatore scalare con secondo momento finito, l'**errore quadratico medio** è definito come
 
 $$
 \operatorname{MSE}(\hat\theta)
@@ -221,35 +185,22 @@ $$
 \operatorname{Bias}(\hat\theta)^2.
 $$
 
-La formula mostra due modi diversi di sbagliare:
+La decomposizione mostra che uno stimatore può sbagliare in due modi. Le stime possono essere molto disperse da un campione all'altro, oppure possono essere sistematicamente spostate rispetto al parametro. Ridurre una componente può comportare un aumento dell'altra.
 
-- le stime possono essere molto disperse;
-- le stime possono essere sistematicamente spostate rispetto al parametro.
-
-Ridurre una componente può aumentare l'altra. Per questo motivo la non distorsione non è sempre l'unico criterio rilevante.
+Il criterio dell'MSE rende quindi esplicito il compromesso tra variabilità e distorsione. In alcuni problemi, accettare un piccolo bias permette di ottenere una riduzione sostanziale della varianza e, di conseguenza, un errore complessivo minore.
 
 ## La distribuzione campionaria {#sec-freq-role-sampling-distribution}
 
-La **distribuzione campionaria** descrive i valori che lo stimatore assumerebbe in campioni ripetuti generati secondo lo stesso modello e lo stesso disegno.
+La **distribuzione campionaria** descrive i valori che uno stimatore assumerebbe se il campionamento fosse ripetuto molte volte secondo lo stesso modello e lo stesso disegno.
 
-Non è:
+Non coincide con la distribuzione delle osservazioni individuali e non rappresenta la semplice distribuzione empirica rilevata in un singolo campione. Non è neppure una distribuzione di probabilità sul parametro. Il suo oggetto è lo **stimatore**.
 
-- la distribuzione dei dati individuali;
-- la distribuzione osservata in un singolo campione;
-- una distribuzione di probabilità sul parametro.
+Supponiamo di estrarre ripetutamente campioni della stessa dimensione e di calcolare ogni volta la media. Le medie ottenute formerebbero una distribuzione campionaria. Il suo centro informerebbe sul bias dello stimatore, mentre la sua dispersione ne descriverebbe la precisione. La forma complessiva della distribuzione permetterebbe inoltre di stabilire quali valori siano più o meno comuni sotto le assunzioni del modello.
 
-È una distribuzione dello **stimatore**.
-
-La distribuzione campionaria permette di:
-
-- calcolare errori standard;
-- confrontare stimatori;
-- costruire intervalli di confidenza;
-- definire statistiche test e valori critici;
-- valutare errori di tipo I, errori di tipo II e potenza.
+La distribuzione campionaria costituisce il fondamento operativo dell'inferenza frequentista. Da essa derivano gli errori standard, il confronto tra stimatori, la costruzione degli intervalli di confidenza, le distribuzioni di riferimento dei test, i valori critici, gli errori di tipo I e di tipo II e la potenza statistica.
 
 ::: {.callout-note title="Collegamento con il sito sulla probabilità"}
-Il sito sulla probabilità sviluppa il passaggio dal campione alla distribuzione campionaria. Qui cambiamo prospettiva: usiamo quella distribuzione per valutare una procedura inferenziale.
+Il sito dedicato alla probabilità sviluppa il passaggio dal campione alla distribuzione campionaria. Qui adottiamo una prospettiva diversa e utilizziamo quella distribuzione per valutare il comportamento di una procedura inferenziale.
 
 Questa separazione evita di ripetere la teoria probabilistica e chiarisce il ruolo specifico del modulo frequentista.
 :::
@@ -264,7 +215,9 @@ $$
 \sqrt{\operatorname{Var}(\hat\theta)}.
 $$
 
-Per una media calcolata su $n$ osservazioni indipendenti con la stessa varianza finita $\sigma^2$:
+Esso descrive quanto lo stimatore tenderebbe a cambiare da un campione all'altro nelle condizioni definite dal modello e dal disegno.
+
+Per una media calcolata su $n$ osservazioni indipendenti con la stessa varianza finita $\sigma^2$, l'errore standard è
 
 $$
 \operatorname{SE}(\bar X)
@@ -272,7 +225,7 @@ $$
 \frac{\sigma}{\sqrt n}.
 $$
 
-Poiché $\sigma$ è generalmente ignota, nel caso elementare viene stimata mediante la deviazione standard campionaria:
+Poiché la deviazione standard della popolazione $\sigma$ è generalmente ignota, nel caso elementare viene sostituita dalla deviazione standard campionaria:
 
 $$
 \widehat{\operatorname{SE}}(\bar X)
@@ -280,10 +233,12 @@ $$
 \frac{s}{\sqrt n}.
 $$
 
-Questa formula non è universale. Dati raggruppati, misure ripetute, dipendenza temporale, campionamenti complessi o eteroschedasticità richiedono errori standard appropriati alla struttura dei dati.
+La formula mostra che, a parità di variabilità, l'errore standard della media diminuisce quando cresce la dimensione del campione. La riduzione segue però la radice quadrata di $n$: per dimezzare l'errore standard occorre quadruplicare il numero delle osservazioni.
+
+Questa espressione non è universale. Dati raggruppati, misure ripetute, dipendenza temporale, campionamenti complessi o eteroschedasticità richiedono errori standard coerenti con la struttura effettiva dei dati. Applicare la formula elementare ignorando tali dipendenze può produrre una rappresentazione eccessivamente ottimistica della precisione.
 
 ::: {.callout-warning title="Deviazione standard ed errore standard"}
-La **deviazione standard** descrive la dispersione delle osservazioni.
+La **deviazione standard** descrive la dispersione delle osservazioni individuali.
 
 L'**errore standard** descrive la dispersione campionaria di uno stimatore.
 
@@ -291,15 +246,7 @@ Aumentando $n$, l'errore standard della media tende a diminuire, ma la variabili
 :::
 
 ::: {.callout-note title="Che cosa comunica l'errore standard"}
-L'errore standard è una misura della **precisione campionaria della procedura**, sotto le assunzioni adottate.
-
-Non misura direttamente:
-
-- la validità del costrutto;
-- il bias di selezione;
-- l'importanza dell'effetto;
-- la probabilità che il parametro si trovi vicino alla stima;
-- la probabilità di replicare un risultato statisticamente significativo.
+L'errore standard misura la **precisione campionaria della procedura** sotto le assunzioni adottate. Non misura direttamente la validità del costrutto, il bias di selezione, l'importanza dell'effetto o la probabilità che il parametro sia vicino alla stima. Non indica neppure, da solo, la probabilità che un risultato statisticamente significativo venga replicato.
 :::
 
 ## Dalla stima puntuale all'intervallo
@@ -308,13 +255,13 @@ Una stima puntuale risponde alla domanda:
 
 > Quale valore ha restituito lo stimatore nel campione osservato?
 
-L'errore standard aggiunge:
+L'errore standard aggiunge una seconda informazione:
 
-> Quanto varierebbe lo stimatore sotto ripetizioni del campionamento?
+> Quanto varierebbe lo stimatore se il campionamento fosse ripetuto nelle stesse condizioni?
 
-Il capitolo successivo combinerà stima, errore standard e valore critico per costruire un **intervallo di confidenza**. L'obiettivo non sarà assegnare una probabilità al parametro, ma costruire una procedura con una frequenza di copertura controllata sotto il modello.
+Il capitolo successivo combinerà la stima, l'errore standard e un valore critico per costruire un **intervallo di confidenza**. L'obiettivo non sarà assegnare una probabilità al parametro, ma definire una procedura capace di raggiungere una determinata frequenza di copertura sotto il modello.
 
-Non anticipiamo qui la derivazione. È sufficiente riconoscere il passaggio logico:
+Il passaggio logico può essere rappresentato così:
 
 $$
 \text{stima puntuale}
@@ -324,16 +271,11 @@ $$
 \text{procedura intervallare}.
 $$
 
+La stima puntuale fornisce il centro dell'inferenza, mentre la distribuzione campionaria permette di quantificare quanto quel centro sia sensibile alla particolare realizzazione del campione.
+
 ## Stima frequentista e stima bayesiana {#sec-freq-estimation-bayes-contrast}
 
-Frequentismo e bayesianesimo possono condividere:
-
-- lo stesso insieme di dati;
-- lo stesso modello generativo;
-- la stessa funzione di verosimiglianza;
-- la stessa domanda sostantiva.
-
-Differiscono nel modo in cui rappresentano l'incertezza inferenziale.
+Frequentismo e bayesianesimo possono partire dagli stessi dati, adottare lo stesso modello generativo, utilizzare la stessa funzione di verosimiglianza e affrontare la stessa domanda sostantiva. La differenza riguarda il modo in cui l'incertezza inferenziale viene rappresentata.
 
 | Aspetto | Stima frequentista | Stima bayesiana |
 |---|---|---|
@@ -343,26 +285,27 @@ Differiscono nel modo in cui rappresentano l'incertezza inferenziale.
 | Misura elementare di precisione | Errore standard | Dispersione a posteriori |
 | Valutazione | Proprietà sotto ripetizioni | Coerenza dell'aggiornamento e adeguatezza del modello |
 
-La distinzione non implica che un'analisi frequentista produca soltanto un numero o che un'analisi bayesiana non possa essere valutata nelle ripetizioni. Indica quale oggetto viene usato come base immediata dell'inferenza.
+Nel quadro frequentista, la variabilità viene attribuita allo stimatore attraverso la sua distribuzione campionaria. Il parametro resta fisso e la precisione viene descritta, nel caso più semplice, mediante l'errore standard.
+
+Nel quadro bayesiano, l'incertezza relativa al parametro viene rappresentata direttamente mediante una distribuzione a posteriori. Tale distribuzione deriva dalla combinazione tra distribuzione a priori e verosimiglianza e viene interpretata condizionatamente al modello e ai dati osservati.
+
+La distinzione non implica che un'analisi frequentista produca soltanto un numero o che un metodo bayesiano non possa essere valutato attraverso simulazioni ripetute. Indica piuttosto quale oggetto probabilistico costituisca la base immediata dell'inferenza.
 
 ::: {.callout-important title="Un confronto utile, non una gara di slogan"}
 L'errore standard non è una deviazione standard a posteriori e un intervallo di confidenza non è un intervallo di credibilità.
 
-Le quantità possono talvolta risultare numericamente simili, ma hanno significati diversi perché derivano da costruzioni probabilistiche differenti.
+Le quantità possono talvolta risultare numericamente simili, ma conservano significati diversi perché derivano da costruzioni probabilistiche differenti.
 :::
 
 ## Riflessioni conclusive {.unnumbered .unlisted}
 
-Stimare un parametro significa molto più che calcolare una statistica descrittiva. Nel frequentismo, lo stimatore viene trattato come una procedura casuale prima dell'osservazione dei dati e valutato attraverso la sua distribuzione campionaria.
+Stimare un parametro significa molto più che calcolare una statistica descrittiva. Nell'inferenza frequentista, lo stimatore viene considerato come una procedura casuale prima dell'osservazione dei dati e valutato attraverso la propria distribuzione campionaria.
 
-Abbiamo distinto parametro, stimatore e stima; introdotto correttezza, bias, consistenza, efficienza ed errore quadratico medio; chiarito che l'errore standard misura la precisione campionaria e non la variabilità individuale o la validità scientifica.
+La distinzione tra parametro, stimatore e stima permette di separare la quantità bersaglio, la regola di calcolo e il valore osservato. Correttezza, bias, consistenza, efficienza ed errore quadratico medio descrivono aspetti diversi del comportamento dello stimatore. L'errore standard, a sua volta, quantifica la precisione campionaria senza fornire informazioni dirette sulla validità della misura, sulla rappresentatività del campione o sull'importanza sostantiva dell'effetto.
 
-La lezione centrale è duplice:
+Una stima puntuale priva di una misura di precisione rimane incompleta, perché non comunica quanto il risultato dipenda dal particolare campione osservato. Nello stesso tempo, una stima estremamente precisa può essere scientificamente fuorviante quando il campione, la misura o il modello sono inadeguati. La precisione statistica non può sostituire la qualità del disegno e della misurazione.
 
-1. una stima puntuale senza una misura di precisione è incompleta;
-2. una stima molto precisa può essere scientificamente fuorviante se il campione, la misura o il modello sono inadeguati.
-
-Nel prossimo capitolo vedremo come la logica della distribuzione campionaria conduce agli intervalli di confidenza e perché la loro interpretazione riguarda la copertura della procedura, non una probabilità assegnata al parametro osservato.
+Nel prossimo capitolo vedremo come la distribuzione campionaria conduca alla costruzione degli intervalli di confidenza e perché il loro significato riguardi la copertura della procedura, non una probabilità assegnata al parametro dopo avere osservato i dati.
 
 ## Esercizi {.unnumbered .unlisted}
 
@@ -402,16 +345,7 @@ Nel prossimo capitolo vedremo come la logica della distribuzione campionaria con
 :::
 
 ::: {.callout-note title="Punti chiave" collapse="true"}
-- Il parametro è la quantità fissa che si vuole conoscere all'interno del modello.
-- Lo stimatore è una funzione dei dati; la stima è il valore osservato.
-- La stima puntuale non contiene, da sola, una misura di precisione.
-- La non distorsione riguarda il valore atteso dello stimatore, non la vicinanza di ogni singola stima al parametro.
-- La consistenza è una proprietà asintotica.
-- L'efficienza dipende dal modello e dalla classe di stimatori considerata.
-- L'MSE combina varianza e bias al quadrato.
-- L'errore standard descrive la variabilità campionaria dello stimatore.
-- Precisione campionaria, accuratezza, validità della misura e rappresentatività del campione sono concetti distinti.
-- Frequentismo e bayesianesimo possono condividere la verosimiglianza, ma rappresentano diversamente l'incertezza inferenziale.
+Nel modello frequentista, il parametro è una quantità fissa e ignota, lo stimatore è una funzione dei dati e la stima è il valore osservato. Una stima puntuale non contiene da sola una misura di precisione. La non distorsione riguarda il valore atteso dello stimatore, mentre la consistenza descrive il suo comportamento al crescere della dimensione campionaria. L'efficienza dipende dal modello e dalla classe di procedure considerate, e l'MSE combina la varianza con il quadrato del bias. L'errore standard descrive la variabilità campionaria dello stimatore, ma non la validità della misura o la rappresentatività del campione. Frequentismo e bayesianesimo possono condividere la stessa verosimiglianza, pur rappresentando in modo diverso l'incertezza inferenziale.
 :::
 
 ::: {.callout-note title="Ambiente di sviluppo" collapse="true"}

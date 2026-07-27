@@ -78,7 +78,6 @@ toc-depth: 2
 bibliography: references.bib
 csl: apa.csl
 link-citations: true
-link-bibliography: true
 
 format:
   html:
@@ -126,115 +125,48 @@ format:
     link-external-newwindow: true
     link-external-filter: "^(?:https?:)?//ccaudek\\.github\\.io/utet-prob/"
 
-    html-math-method:
+    html-math-method: 
       method: mathjax
       mathjax:
         config: TeX-AMS_CHTML
         options:
           font: "Latin-Modern"
 
+
   pdf:
     documentclass: scrbook
     classoption:
       - a4paper
       - 11pt
-      - open=any
-      - headings=big
-      - numbers=noenddot
-
-    pdf-engine: lualatex
-    mainfont: "Libertinus Serif"
-    sansfont: "Libertinus Sans"
-    lang: it
-
+      - open=any            # i capitoli non iniziano forzatamente a pagina dispari
+                            # (evita pagine bianche: sensato per un PDF letto a schermo;
+                            # per la stampa tipografica rimuovere questa riga)
+    pdf-engine: lualatex    
+    mainfont: "Libertinus Serif"   # copertura IAST completa; alternative: "Gentium Plus",
+    sansfont: "Libertinus Sans"    # "EB Garamond", "Charis SIL"
+    lang: it                # se non è già a livello di progetto: attiva sillabazione
+                            # italiana e traduce "Indice", "Capitolo", ecc.
     toc: true
     toc-depth: 2
     number-sections: true
 
-    # Bibliografia distinta alla fine di ciascun capitolo.
-    # Installare una sola volta dalla radice del progetto:
-    # quarto add pandoc-ext/section-bibliographies --no-prompt
-    filters:
-      - quarto
-      - pandoc-ext/section-bibliographies
-    citeproc: false
-    reference-section-title: "Riferimenti bibliografici"
-    section-bibliographies:
-      level: 1
-      minlevel: 1
-      cleanup-first: true
-
     colorlinks: true
-    linkcolor: MidnightBlue
+    linkcolor: MidnightBlue    # più sobrio del blu acceso predefinito
     citecolor: MidnightBlue
     urlcolor: MidnightBlue
 
-    highlight-style: github
-    code-overflow: wrap
-    fig-align: center
-    fig-cap-location: bottom
-    tbl-cap-location: top
-
     geometry:
-      - top=24mm
+      - top=25mm
       - bottom=25mm
-      - inner=31mm
-      - outer=24mm
-      - headsep=8mm
-      - footskip=12mm
-      - heightrounded
+      - inner=30mm           # con scrbook (twoside) inner/outer è più corretto
+      - outer=25mm           # di left/right: il margine interno assorbe la rilegatura
 
     include-in-header:
       text: |
-        % Microtipografia e resa generale
-        \usepackage{microtype}
-        \microtypesetup{protrusion=true,expansion=true,tracking=true}
-        \emergencystretch=2em
-        \setlength{\parindent}{1.25em}
-        \setlength{\parskip}{0pt plus 0.5pt}
-        \AtBeginDocument{\linespread{1.04}\selectfont}
+        \usepackage[automark]{scrlayer-scrpage}  % testatine correnti (capitolo/sezione)
+        \clubpenalty=10000                        % niente righe orfane
+        \widowpenalty=10000                       % niente righe vedove
 
-        % Colore editoriale sobrio
-        \definecolor{BookAccent}{HTML}{243B53}
-
-        % Testatine correnti e numeri di pagina
-        \usepackage[automark,headsepline=0.35pt]{scrlayer-scrpage}
-        \clearpairofpagestyles
-        \automark[section]{chapter}
-        \ihead[]{\headmark}
-        \ohead[]{\pagemark}
-        \cfoot[\pagemark]{}
-        \setkomafont{pageheadfoot}{\small\sffamily}
-        \setkomafont{pagenumber}{\small\sffamily}
-        \addtokomafont{headsepline}{\color{BookAccent}}
-
-        % Gerarchia tipografica dei titoli
-        \setkomafont{chapter}{\normalfont\sffamily\bfseries\color{BookAccent}}
-        \setkomafont{section}{\normalfont\sffamily\bfseries\color{BookAccent}}
-        \setkomafont{subsection}{\normalfont\sffamily\bfseries}
-        \setkomafont{disposition}{\normalfont\sffamily\bfseries}
-
-        % Didascalie e tabelle
-        \setkomafont{caption}{\small}
-        \setkomafont{captionlabel}{\small\sffamily\bfseries\color{BookAccent}}
-        \setcapindent{0pt}
-        \usepackage{booktabs}
-        \usepackage{array}
-
-        % Spaziatura più equilibrata attorno a figure e tabelle
-        \setlength{\textfloatsep}{18pt plus 3pt minus 3pt}
-        \setlength{\floatsep}{14pt plus 3pt minus 2pt}
-        \setlength{\intextsep}{14pt plus 3pt minus 2pt}
-
-        % Elenchi più leggibili, senza eccessiva dispersione verticale
-        \usepackage{enumitem}
-        \setlist{itemsep=0.25em,topsep=0.5em,parsep=0pt,partopsep=0pt}
-
-        % Controllo delle righe isolate e dei salti di pagina
-        \clubpenalty=10000
-        \widowpenalty=10000
-        \displaywidowpenalty=10000
-        \brokenpenalty=10000
 
 execute:
   freeze: auto
@@ -255,3 +187,4 @@ execute:
     width: 90
     pillar.width: 90
     tibble.width: 90
+
