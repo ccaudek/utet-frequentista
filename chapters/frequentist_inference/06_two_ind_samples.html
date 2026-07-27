@@ -506,13 +506,12 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Da sapere</strong> Il confronto tra due gruppi indipendenti stima una differenza tra medie e ne valuta la precisione e la compatibilità con un valore nullo. Il test <em>t</em> di Welch è spesso una scelta predefinita appropriata perché non richiede l’uguaglianza delle varianze.</p>
-<p><strong>Da saper fare</strong> Definire la differenza di interesse; riconoscere quando i gruppi sono indipendenti; leggere stime descrittive, intervallo di confidenza, valore-<em>p</em> e dimensione dell’effetto; distinguere associazione e causalità; collegare il test <em>t</em> a un modello di regressione con predittore dicotomico.</p>
+<p><strong>Da sapere</strong> Il confronto tra due gruppi indipendenti stima una differenza tra medie e ne valuta la precisione e la compatibilità con un valore nullo. Il test <em>t</em> di Welch costituisce spesso una scelta predefinita appropriata, perché non richiede di assumere che le due popolazioni abbiano la stessa varianza.</p>
+<p><strong>Da saper fare</strong> Al termine del capitolo, il lettore dovrebbe saper definire la differenza di interesse e il suo ordine, riconoscere quando i gruppi sono realmente indipendenti, interpretare congiuntamente statistiche descrittive, intervallo di confidenza, valore-<em>p</em> e dimensione dell’effetto, distinguere una differenza associativa da un effetto causale e collegare il test <em>t</em> a un modello di regressione con predittore dicotomico.</p>
 </div>
 </div>
 <section id="introduzione" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="introduzione">Introduzione</h2>
-<p>Il confronto tra due gruppi indipendenti è una delle situazioni più comuni nella ricerca psicologica. Possiamo confrontare un gruppo sottoposto a un intervento con un gruppo di controllo, due condizioni sperimentali oppure due gruppi definiti da una caratteristica osservata.</p>
-<p>Questo capitolo riunisce i concetti introdotti nel modulo:</p>
+<p>Il confronto tra due gruppi indipendenti è una delle situazioni più frequenti nella ricerca psicologica. Possiamo voler confrontare un gruppo che ha ricevuto un intervento con un gruppo di controllo, due condizioni sperimentali assegnate a persone differenti oppure due gruppi definiti da una caratteristica osservata. In tutti questi casi, la domanda iniziale riguarda una differenza tra medie, ma la sua interpretazione richiede di integrare i diversi concetti sviluppati nei capitoli precedenti:</p>
 <p><span class="math display">\[
 \text{stima}
 \longrightarrow
@@ -524,12 +523,12 @@ window.Quarto = {
 \longrightarrow
 \text{dimensione dell'effetto}.
 \]</span></p>
-<p>L’obiettivo non è imparare una procedura isolata. È comprendere come questi elementi descrivano aspetti differenti dello stesso confronto.</p>
+<p>L’obiettivo del capitolo non è presentare il test <em>t</em> come una procedura isolata da applicare meccanicamente. È mostrare come la differenza osservata, la sua precisione, la compatibilità con un valore nullo e la sua rilevanza sostantiva descrivano aspetti differenti dello stesso problema scientifico.</p>
 <p>Nel quadro frequentista, il test <em>t</em> risponde a una domanda condizionale:</p>
 <blockquote class="blockquote">
 <p>Se la differenza tra le medie delle popolazioni fosse nulla e il modello fosse adeguato, quanto sarebbe estremo il risultato osservato?</p>
 </blockquote>
-<p>Questa domanda non coincide con la probabilità che le medie siano uguali, con la probabilità che l’intervento funzioni o con la probabilità che la differenza superi una soglia clinicamente importante.</p>
+<p>Questa domanda non coincide con la probabilità che le medie siano uguali, con la probabilità che un intervento funzioni o con la probabilità che la differenza superi una soglia clinicamente importante. Per rispondere a queste domande occorrono quantità inferenziali e, in alcuni casi, disegni differenti.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Prerequisiti">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -540,33 +539,13 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>È utile avere letto:</p>
-<ul>
-<li>
-<a href="02_stime_parametri.html" class="quarto-xref"><span>Capitolo 2</span></a>, per stimatore, stima ed errore standard;</li>
-<li>
-<a href="03_conf_interv.html" class="quarto-xref"><span>Capitolo 3</span></a>, per copertura e interpretazione degli intervalli;</li>
-<li>
-<a href="04_test_ipotesi.html" class="quarto-xref"><span>Capitolo 4</span></a>, per valore-<em>p</em>, <span class="math inline">\(\alpha\)</span> ed errori decisionali;</li>
-<li>
-<a href="05_sample_size.html" class="quarto-xref"><span>Capitolo 5</span></a>, per effetto bersaglio, potenza e numerosità.</li>
-</ul>
-<p>Questo capitolo applica tali concetti a un unico caso e conclude la parte operativa del modulo.</p>
+<p>Il capitolo riunisce le nozioni introdotte in <a href="02_stime_parametri.html" class="quarto-xref"><span>Capitolo 2</span></a>, dedicate a stimatore, stima ed errore standard, in <a href="03_conf_interv.html" class="quarto-xref"><span>Capitolo 3</span></a>, relative alla copertura degli intervalli, in <a href="04_test_ipotesi.html" class="quarto-xref"><span>Capitolo 4</span></a>, dedicate al valore-<em>p</em> e agli errori decisionali, e in <a href="05_sample_size.html" class="quarto-xref"><span>Capitolo 5</span></a>, dove sono stati discussi effetto bersaglio, potenza e numerosità.</p>
+<p>Questi concetti vengono ora applicati a un unico problema e completano la parte operativa del modulo.</p>
 </div>
 </div>
 </section><section id="panoramica-del-capitolo" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="panoramica-del-capitolo">Panoramica del capitolo</h2>
-<p>Il capitolo procede in nove passaggi:</p>
-<ol type="1">
-<li>definisce la quantità che si vuole confrontare;</li>
-<li>distingue gruppi indipendenti, dati appaiati e misure ripetute;</li>
-<li>presenta il modello del test <em>t</em> classico e quello di Welch;</li>
-<li>esamina disegno, distribuzioni e valori anomali;</li>
-<li>svolge un esempio completo in R;</li>
-<li>integra differenza grezza, intervallo, valore-<em>p</em> ed effetto standardizzato;</li>
-<li>chiarisce quando una differenza può essere interpretata causalmente;</li>
-<li>mostra l’equivalenza con la regressione lineare;</li>
-<li>collega il confronto frequentista ai modelli bayesiani del Companion.</li>
-</ol>
+<p>Il percorso inizia dalla definizione della quantità che si desidera confrontare e dalla distinzione tra gruppi indipendenti, dati appaiati e misure ripetute. Verranno quindi introdotti il test <em>t</em> classico e il test di Welch, con particolare attenzione alle assunzioni che li distinguono e al ruolo del disegno.</p>
+<p>Un esempio completo in R mostrerà come descrivere i dati, visualizzarne la distribuzione, eseguire il test e interpretare insieme la differenza grezza, l’intervallo di confidenza, il valore-<em>p</em> e la dimensione standardizzata dell’effetto. La discussione si estenderà poi alla rilevanza pratica, all’equivalenza e alle condizioni necessarie per attribuire un significato causale alla differenza osservata. Infine, il confronto tra gruppi verrà riscritto come un modello lineare con predittore dicotomico, creando un collegamento diretto con l’analisi bayesiana sviluppata nel Companion.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Preparazione del notebook">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -586,37 +565,32 @@ window.Quarto = {
 </div>
 </section><section id="sec-freq-two-samples-estimand" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="sec-freq-two-samples-estimand">
 <span class="header-section-number">6.1</span> Prima del test: definire il confronto</h2>
-<p>Immaginiamo uno studio su un intervento di regolazione emotiva. Un gruppo riceve l’intervento e un gruppo di controllo non lo riceve. Al termine dello studio viene misurato il benessere psicologico.</p>
-<p>Indichiamo con:</p>
+<p>Immaginiamo uno studio dedicato a un intervento di regolazione emotiva. Un gruppo riceve l’intervento, mentre un gruppo di controllo non lo riceve. Al termine dello studio viene misurato il benessere psicologico.</p>
+<p>Indichiamo con</p>
 <p><span class="math display">\[
 \mu_1
 =
-\text{media della popolazione del gruppo intervento},
+\text{media della popolazione del gruppo intervento}
 \]</span></p>
+<p>e con</p>
 <p><span class="math display">\[
 \mu_0
 =
 \text{media della popolazione del gruppo controllo}.
 \]</span></p>
-<p>La quantità bersaglio è:</p>
+<p>La quantità bersaglio è la differenza</p>
 <p><span class="math display">\[
 \Delta
 =
 \mu_1-\mu_0.
 \]</span></p>
-<p>La sua stima campionaria è:</p>
+<p>La corrispondente stima campionaria è</p>
 <p><span class="math display">\[
 \widehat{\Delta}
 =
 \bar X_1-\bar X_0.
 \]</span></p>
-<p>Il segno dipende dall’ordine della sottrazione. Con la definizione adottata:</p>
-<ul>
-<li>
-<span class="math inline">\(\widehat{\Delta}&gt;0\)</span> indica una media maggiore nel gruppo intervento;</li>
-<li>
-<span class="math inline">\(\widehat{\Delta}&lt;0\)</span> indica una media maggiore nel gruppo controllo.</li>
-</ul>
+<p>Il segno della differenza dipende dall’ordine della sottrazione. Con la definizione adottata, un valore positivo di <span class="math inline">\(\widehat{\Delta}\)</span> indica che la media del gruppo intervento è maggiore, mentre un valore negativo indica che la media del gruppo controllo è maggiore.</p>
 <div class="callout callout-style-default callout-important callout-titled" title="Definire l'ordine prima di interpretare il segno">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -627,40 +601,19 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La stessa differenza può essere scritta come intervento meno controllo oppure controllo meno intervento. Il valore assoluto non cambia, ma il segno sì.</p>
-<p>L’ordine deve essere dichiarato e mantenuto coerente in stima, intervallo, dimensione dell’effetto e resoconto.</p>
+<p>La stessa differenza può essere scritta come intervento meno controllo oppure come controllo meno intervento. Il valore assoluto non cambia, ma il segno sì.</p>
+<p>L’ordine deve essere dichiarato prima dell’analisi e mantenuto coerente nella stima, nell’intervallo, nella dimensione dell’effetto e nel resoconto finale.</p>
 </div>
 </div>
 <section id="quale-popolazione-rappresentano-le-medie" class="level3" data-number="6.1.1"><h3 data-number="6.1.1" class="anchored" data-anchor-id="quale-popolazione-rappresentano-le-medie">
 <span class="header-section-number">6.1.1</span> Quale popolazione rappresentano le medie?</h3>
-<p>Le medie <span class="math inline">\(\mu_1\)</span> e <span class="math inline">\(\mu_0\)</span> dipendono da:</p>
-<ul>
-<li>popolazione a cui si vuole generalizzare;</li>
-<li>criteri di inclusione;</li>
-<li>modalità di assegnazione ai gruppi;</li>
-<li>momento e strumento di misurazione;</li>
-<li>trattamento dei dati mancanti;</li>
-<li>modello statistico.</li>
-</ul>
-<p>Una differenza tra medie non è un oggetto separato dal disegno. Prima di calcolare il test occorre chiarire che cosa rappresentano i due gruppi e quale confronto sia scientificamente rilevante.</p>
+<p>Le quantità <span class="math inline">\(\mu_1\)</span> e <span class="math inline">\(\mu_0\)</span> acquistano significato soltanto rispetto alla popolazione alla quale si intende generalizzare, ai criteri con cui i partecipanti sono stati inclusi, alla modalità di assegnazione ai gruppi, al momento e allo strumento con cui l’esito è stato misurato e alle decisioni relative ai dati mancanti. Anche il modello statistico contribuisce a definire ciò che viene stimato.</p>
+<p>Una differenza tra medie non è dunque un oggetto separato dal disegno. Prima di calcolare il test occorre chiarire che cosa rappresentino i due gruppi, quale popolazione descrivano e perché il confronto scelto sia rilevante per la domanda scientifica.</p>
 </section></section><section id="sec-freq-independent-paired" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="sec-freq-independent-paired">
 <span class="header-section-number">6.2</span> Gruppi indipendenti, dati appaiati e misure ripetute</h2>
-<p>Due gruppi sono <strong>indipendenti</strong> quando l’osservazione di una persona nel primo gruppo non è naturalmente collegata a una specifica osservazione del secondo gruppo.</p>
-<p>Esempi:</p>
-<ul>
-<li>persone differenti assegnate a intervento e controllo;</li>
-<li>partecipanti provenienti da due popolazioni distinte;</li>
-<li>due gruppi osservazionali senza abbinamento individuale.</li>
-</ul>
-<p>Non sono invece indipendenti:</p>
-<ul>
-<li>misure prima e dopo sulle stesse persone;</li>
-<li>coppie abbinate;</li>
-<li>gemelli o membri della stessa famiglia;</li>
-<li>studenti nella stessa classe, quando la dipendenza del gruppo non è modellata;</li>
-<li>più osservazioni prodotte dallo stesso partecipante.</li>
-</ul>
-<p>Nel caso di coppie o misure ripetute, la quantità rilevante è spesso la media delle differenze entro coppia. Usare il test per gruppi indipendenti ignora la struttura dei dati e può produrre errori standard inadeguati.</p>
+<p>Due gruppi sono <strong>indipendenti</strong> quando l’osservazione di una persona nel primo gruppo non è naturalmente collegata a una specifica osservazione del secondo gruppo. È ciò che accade, per esempio, quando persone differenti vengono assegnate all’intervento e al controllo, quando i partecipanti provengono da due popolazioni distinte oppure quando si confrontano due gruppi osservazionali privi di un abbinamento individuale.</p>
+<p>La situazione cambia quando le osservazioni appartengono alle stesse persone in momenti diversi, a coppie appaiate, a gemelli o membri della stessa famiglia, oppure a individui inseriti nella stessa classe o nello stesso contesto. Anche più osservazioni prodotte dal medesimo partecipante sono dipendenti.</p>
+<p>Nel caso di dati appaiati o di misure ripetute, la quantità rilevante è spesso la differenza calcolata all’interno di ciascuna coppia o persona. Trattare queste osservazioni come se provenissero da gruppi indipendenti ignora una parte essenziale della struttura dei dati e può produrre un errore standard non coerente con il disegno.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="L'indipendenza non si verifica con un test automatico">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -671,40 +624,41 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>È soprattutto una proprietà del disegno e del processo di raccolta. Un grafico o un test di normalità non possono dimostrare che osservazioni provenienti dalla stessa classe, famiglia o persona siano indipendenti.</p>
+<p>L’indipendenza è soprattutto una proprietà del disegno e del processo di raccolta. Un grafico o un test di normalità non possono dimostrare che osservazioni provenienti dalla stessa classe, famiglia o persona siano indipendenti.</p>
 </div>
 </div>
 </section><section id="sec-freq-two-samples-model" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="sec-freq-two-samples-model">
 <span class="header-section-number">6.3</span> Il modello inferenziale</h2>
 <section id="ipotesi-nulla-e-alternativa" class="level3" data-number="6.3.1"><h3 data-number="6.3.1" class="anchored" data-anchor-id="ipotesi-nulla-e-alternativa">
 <span class="header-section-number">6.3.1</span> Ipotesi nulla e alternativa</h3>
-<p>Nel test bilaterale:</p>
+<p>Nel test bilaterale, l’ipotesi nulla stabilisce che la differenza tra le medie sia pari a zero:</p>
 <p><span class="math display">\[
-H_0:\Delta=0,
+H_0:\Delta=0.
 \]</span></p>
+<p>L’alternativa ammette invece una differenza in una qualunque delle due direzioni:</p>
 <p><span class="math display">\[
 H_1:\Delta\neq0.
 \]</span></p>
-<p>Un’alternativa direzionale può essere:</p>
+<p>Quando la domanda scientifica riguarda esclusivamente una direzione, può essere formulata un’alternativa come</p>
 <p><span class="math display">\[
 H_1:\Delta&gt;0.
 \]</span></p>
-<p>La direzione deve essere scelta prima di osservare i dati e deve avere una motivazione sostantiva. Il test bilaterale è una scelta introduttiva prudente quando deviazioni in entrambe le direzioni sarebbero scientificamente rilevanti.</p>
+<p>La scelta deve precedere l’osservazione dei dati e deve avere una motivazione sostantiva. Il test bilaterale costituisce una scelta introduttiva prudente quando una deviazione in entrambe le direzioni avrebbe rilevanza scientifica.</p>
 </section><section id="struttura-generale-della-statistica" class="level3" data-number="6.3.2"><h3 data-number="6.3.2" class="anchored" data-anchor-id="struttura-generale-della-statistica">
 <span class="header-section-number">6.3.2</span> Struttura generale della statistica</h3>
-<p>La statistica test ha la forma:</p>
+<p>La statistica test ha la forma</p>
 <p><span class="math display">\[
 t
 =
 \frac{\widehat{\Delta}-0}
 {\widehat{\operatorname{SE}}(\widehat{\Delta})}.
 \]</span></p>
-<p>Il numeratore è la differenza osservata rispetto al valore nullo. Il denominatore misura quanto la differenza tra medie varierebbe sotto campionamenti ripetuti, secondo il modello adottato.</p>
+<p>Il numeratore esprime la distanza tra la differenza osservata e il valore nullo. Il denominatore descrive quanto la differenza tra le medie cambierebbe da un campione all’altro secondo il modello adottato. La statistica mette quindi in relazione la grandezza dello scostamento con la variabilità campionaria prevista.</p>
 </section></section><section id="sec-freq-student-welch" class="level2" data-number="6.4"><h2 data-number="6.4" class="anchored" data-anchor-id="sec-freq-student-welch">
 <span class="header-section-number">6.4</span> Test <em>t</em> classico e test di Welch</h2>
 <section id="test-classico-con-varianze-uguali" class="level3" data-number="6.4.1"><h3 data-number="6.4.1" class="anchored" data-anchor-id="test-classico-con-varianze-uguali">
 <span class="header-section-number">6.4.1</span> Test classico con varianze uguali</h3>
-<p>Il test classico assume una varianza comune nelle due popolazioni. La deviazione standard pooled è:</p>
+<p>Il test <em>t</em> classico assume che le due popolazioni possiedano una varianza comune. Le due varianze campionarie vengono quindi combinate nella deviazione standard pooled:</p>
 <p><span class="math display">\[
 s_p
 =
@@ -716,7 +670,7 @@ n_1+n_0-2
 }
 }.
 \]</span></p>
-<p>L’errore standard è:</p>
+<p>L’errore standard della differenza è</p>
 <p><span class="math display">\[
 \widehat{\operatorname{SE}}_{\text{pooled}}
 =
@@ -725,14 +679,13 @@ s_p
 \frac{1}{n_1}+\frac{1}{n_0}
 }.
 \]</span></p>
-<p>La statistica segue una distribuzione <em>t</em> con:</p>
+<p>Quando le assunzioni del modello sono soddisfatte, la statistica segue una distribuzione <em>t</em> con</p>
 <p><span class="math display">\[
-df=n_1+n_0-2
+df=n_1+n_0-2.
 \]</span></p>
-<p>quando le assunzioni del modello sono soddisfatte.</p>
 </section><section id="test-di-welch" class="level3" data-number="6.4.2"><h3 data-number="6.4.2" class="anchored" data-anchor-id="test-di-welch">
 <span class="header-section-number">6.4.2</span> Test di Welch</h3>
-<p>Il test di Welch non impone una varianza comune. Usa:</p>
+<p>Il test di Welch non impone che le due popolazioni abbiano la stessa varianza. L’errore standard viene calcolato come</p>
 <p><span class="math display">\[
 \widehat{\operatorname{SE}}_{\text{Welch}}
 =
@@ -756,7 +709,7 @@ s_1^2/n_1+s_0^2/n_0
 \frac{(s_0^2/n_0)^2}{n_0-1}
 }.
 \]</span></p>
-<p>In R, <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> usa Welch per impostazione predefinita.</p>
+<p>In R, <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> utilizza Welch come impostazione predefinita.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Perché Welch è una buona scelta predefinita">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -767,39 +720,27 @@ s_1^2/n_1+s_0^2/n_0
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Quando varianze e numerosità sono simili, Welch e il test classico producono spesso risultati quasi identici.</p>
-<p>Quando differiscono, Welch protegge meglio dall’assunzione non giustificata di una varianza comune. Non è corretto descriverlo semplicemente come «più prudente»: è una procedura costruita per un modello che consente dispersioni differenti.</p>
+<p>Quando varianze e numerosità sono simili, Welch e il test classico producono spesso risultati quasi identici. Quando invece le dispersioni o le dimensioni dei gruppi differiscono, Welch evita di imporre un’uguaglianza non giustificata.</p>
+<p>Non è corretto descriverlo semplicemente come un test più prudente. È una procedura costruita per un modello che consente alle due popolazioni di avere dispersioni differenti.</p>
 </div>
 </div>
-<p>L’uso del test classico dovrebbe derivare da una ragione per assumere una varianza comune, non dal mancato rifiuto di un test preliminare sulle varianze. Testare prima l’uguaglianza delle varianze e scegliere poi il test sulla base dello stesso campione crea una procedura in due stadi con proprietà meno trasparenti.</p>
+<p>L’impiego del test classico dovrebbe derivare da una ragione sostantiva o progettuale per assumere una varianza comune, non dal mancato rifiuto di un test preliminare sulle varianze. Verificare prima l’uguaglianza delle varianze e scegliere poi il test sulla base dello stesso campione produce una procedura in due stadi le cui proprietà inferenziali sono meno trasparenti.</p>
 </section></section><section id="sec-freq-two-samples-assumptions" class="level2" data-number="6.5"><h2 data-number="6.5" class="anchored" data-anchor-id="sec-freq-two-samples-assumptions">
 <span class="header-section-number">6.5</span> Assunzioni e adeguatezza</h2>
 <section id="indipendenza-e-disegno" class="level3" data-number="6.5.1"><h3 data-number="6.5.1" class="anchored" data-anchor-id="indipendenza-e-disegno">
 <span class="header-section-number">6.5.1</span> Indipendenza e disegno</h3>
-<p>L’indipendenza è essenziale per le formule standard. Clustering, abbinamento o misure ripetute richiedono procedure differenti.</p>
+<p>L’indipendenza è una condizione essenziale per le formule standard. Quando le osservazioni sono raggruppate, abbinate o ripetute, il modello deve rappresentare esplicitamente questa dipendenza. Non è sufficiente aumentare la numerosità o applicare una diversa correzione alla fine dell’analisi.</p>
 </section><section id="esito-quantitativo" class="level3" data-number="6.5.2"><h3 data-number="6.5.2" class="anchored" data-anchor-id="esito-quantitativo">
 <span class="header-section-number">6.5.2</span> Esito quantitativo</h3>
-<p>Il test confronta medie. L’esito deve quindi essere quantitativo o trattato come una misura approssimativamente quantitativa. Questa scelta deve essere sostantivamente difendibile, soprattutto per punteggi con pochi livelli o forti effetti di pavimento e soffitto.</p>
+<p>Il test confronta le medie e richiede quindi un esito quantitativo, oppure una misura che possa essere trattata in modo difendibile come approssimativamente quantitativa. Questa scelta merita particolare attenzione quando il punteggio possiede pochi livelli, presenta forti effetti di pavimento o soffitto oppure deriva da una scala la cui unità di misura è difficile da interpretare.</p>
 </section><section id="distribuzione-entro-i-gruppi" class="level3" data-number="6.5.3"><h3 data-number="6.5.3" class="anchored" data-anchor-id="distribuzione-entro-i-gruppi">
 <span class="header-section-number">6.5.3</span> Distribuzione entro i gruppi</h3>
-<p>L’esattezza del test classico e di Welch deriva da popolazioni normali. Le procedure sono spesso robuste a deviazioni moderate quando:</p>
-<ul>
-<li>i campioni non sono molto piccoli;</li>
-<li>le distribuzioni non sono fortemente asimmetriche;</li>
-<li>non sono presenti valori estremi influenti;</li>
-<li>il disegno non combina forte squilibrio e forte eteroschedasticità.</li>
-</ul>
-<p>La robustezza non significa che la forma dei dati sia irrilevante. Con campioni piccoli, code pesanti o valori anomali, media, deviazione standard e test possono essere instabili.</p>
+<p>L’esattezza del test classico e di Welch deriva dall’assunzione di popolazioni normali. Le procedure sono spesso robuste a deviazioni moderate quando i campioni non sono molto piccoli, le distribuzioni non sono fortemente asimmetriche, non compaiono valori estremi influenti e il disegno non combina un forte squilibrio delle numerosità con una marcata eteroschedasticità.</p>
+<p>La robustezza non rende irrilevante la forma dei dati. Nei campioni piccoli, distribuzioni con code pesanti, forte asimmetria o osservazioni estreme possono rendere instabili la media, la deviazione standard e la statistica test. In questi casi è necessario esaminare i dati, valutare procedure alternative o utilizzare modelli più adatti alla struttura osservata.</p>
 </section><section id="valori-anomali" class="level3" data-number="6.5.4"><h3 data-number="6.5.4" class="anchored" data-anchor-id="valori-anomali">
 <span class="header-section-number">6.5.4</span> Valori anomali</h3>
-<p>Un valore anomalo può:</p>
-<ul>
-<li>spostare una media;</li>
-<li>aumentare una deviazione standard;</li>
-<li>modificare l’errore standard;</li>
-<li>alterare il valore-<em>p</em> e la dimensione dell’effetto.</li>
-</ul>
-<p>Non va eliminato automaticamente. Occorre verificare se derivi da errore, se sia plausibile per la popolazione e quanto le conclusioni dipendano dalla sua presenza.</p>
+<p>Un valore anomalo può spostare la media, aumentare la deviazione standard, modificare l’errore standard e influenzare sia il valore-<em>p</em> sia la dimensione standardizzata dell’effetto. Non deve però essere eliminato automaticamente.</p>
+<p>Occorre anzitutto verificare se derivi da un errore di registrazione o di misurazione. Se il valore è plausibile, bisogna domandarsi se appartenga alla popolazione definita dallo studio e quanto le conclusioni dipendano dalla sua presenza. Un’analisi di sensibilità è spesso più informativa di una cancellazione priva di giustificazione.</p>
 <div class="callout callout-style-default callout-important callout-titled" title="Il controllo delle assunzioni è parte dell'analisi">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -810,12 +751,12 @@ s_1^2/n_1+s_0^2/n_0
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Non consiste nel cercare un test che autorizzi meccanicamente l’uso del test <em>t</em>. Richiede di collegare grafici, disegno, qualità delle misure e conseguenze delle deviazioni al modello.</p>
+<p>Controllare le assunzioni non significa cercare un test preliminare che autorizzi meccanicamente l’uso del test <em>t</em>. Significa collegare la forma dei dati, il disegno, la qualità delle misure e le conseguenze delle possibili deviazioni al modello utilizzato.</p>
 </div>
 </div>
 </section></section><section id="sec-freq-two-samples-example" class="level2" data-number="6.6"><h2 data-number="6.6" class="anchored" data-anchor-id="sec-freq-two-samples-example">
 <span class="header-section-number">6.6</span> Un esempio guidato</h2>
-<p>Consideriamo dati didattici sul benessere psicologico.</p>
+<p>Consideriamo un insieme di dati didattici sul benessere psicologico. Dodici partecipanti appartengono al gruppo intervento e dodici al gruppo di controllo.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">benessere_intervento</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
 <span>  <span class="fl">27</span>, <span class="fl">31</span>, <span class="fl">29</span>, <span class="fl">33</span>, <span class="fl">35</span>, <span class="fl">30</span>,</span>
@@ -841,7 +782,7 @@ s_1^2/n_1+s_0^2/n_0
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>La codifica fissa l’ordine del confronto come:</p>
+<p>La codifica fissa l’ordine del confronto come</p>
 <p><span class="math display">\[
 \Delta
 =
@@ -851,6 +792,7 @@ s_1^2/n_1+s_0^2/n_0
 \]</span></p>
 <section id="descrizione-prima-dellinferenza" class="level3" data-number="6.6.1"><h3 data-number="6.6.1" class="anchored" data-anchor-id="descrizione-prima-dellinferenza">
 <span class="header-section-number">6.6.1</span> Descrizione prima dell’inferenza</h3>
+<p>Prima di eseguire il test, è necessario conoscere numerosità, media e dispersione di ciascun gruppo.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gruppi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html">split</a></span><span class="op">(</span></span>
 <span>  <span class="va">dati_benessere</span><span class="op">$</span><span class="va">benessere</span>,</span>
@@ -902,17 +844,19 @@ Tabella&nbsp;6.1: Statistiche descrittive dei punteggi di benessere nei due grup
 </figure>
 </div>
 </div>
-<p>Le medie campionarie sono:</p>
+<p>Le medie campionarie sono</p>
 <p><span class="math display">\[
-\bar x_{\text{intervento}}=31.25,
+\bar x_{\text{intervento}}=31.25
 \]</span></p>
+<p>e</p>
 <p><span class="math display">\[
 \bar x_{\text{controllo}}=26.25.
 \]</span></p>
-<p>La differenza osservata è:</p>
+<p>La differenza osservata è quindi</p>
 <p><span class="math display">\[
 \widehat{\Delta}=5.00.
 \]</span></p>
+<p>Questo valore descrive il campione: la media del gruppo intervento supera di 5 punti quella del gruppo controllo. Per stabilire quanto la differenza sia precisa e quanto sia compatibile con il valore nullo, dobbiamo però considerare anche la variabilità entro i gruppi e la distribuzione campionaria dello stimatore.</p>
 </section><section id="visualizzare-distribuzioni-e-osservazioni" class="level3" data-number="6.6.2"><h3 data-number="6.6.2" class="anchored" data-anchor-id="visualizzare-distribuzioni-e-osservazioni">
 <span class="header-section-number">6.6.2</span> Visualizzare distribuzioni e osservazioni</h3>
 <div class="cell" data-layout-align="center">
@@ -951,9 +895,10 @@ Figura&nbsp;6.1: Punteggi individuali e distribuzioni nei gruppi controllo e int
 </div>
 </div>
 </div>
-<p><a href="#fig-two-groups-data" class="quarto-xref">Figura&nbsp;<span>6.1</span></a> mostra posizione, dispersione, sovrapposizione e singole osservazioni. Il grafico non sostituisce l’inferenza, ma impedisce che il risultato venga ridotto a un unico numero.</p>
+<p><a href="#fig-two-groups-data" class="quarto-xref">Figura&nbsp;<span>6.1</span></a> permette di osservare contemporaneamente la posizione delle distribuzioni, la loro dispersione, il grado di sovrapposizione e le singole osservazioni. Il grafico non sostituisce l’inferenza, ma impedisce che il confronto venga ridotto a una sola statistica. In particolare, aiuta a riconoscere eventuali valori influenti, asimmetrie o differenze di variabilità che meritino attenzione.</p>
 </section></section><section id="sec-freq-two-samples-welch-example" class="level2" data-number="6.7"><h2 data-number="6.7" class="anchored" data-anchor-id="sec-freq-two-samples-welch-example">
 <span class="header-section-number">6.7</span> Eseguire il test di Welch</h2>
+<p>Eseguiamo ora il test bilaterale di Welch.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">test_welch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span></span>
 <span>  <span class="va">benessere</span> <span class="op">~</span> <span class="va">gruppo</span>,</span>
@@ -976,13 +921,13 @@ Figura&nbsp;6.1: Punteggi individuali e distribuzioni nei gruppi controllo e int
 <span><span class="co">#&gt;  mean in group Controllo mean in group Intervento </span></span>
 <span><span class="co">#&gt;                     26.2                     31.2</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Poiché il primo livello del fattore è <code>Controllo</code>, la formula di R riporta inizialmente la differenza:</p>
+<p>Poiché il primo livello del fattore è <code>Controllo</code>, la formula di R riporta inizialmente la differenza</p>
 <p><span class="math display">\[
 \mu_{\text{controllo}}
 -
 \mu_{\text{intervento}}.
 \]</span></p>
-<p>Per mantenere l’ordine scelto nel capitolo, calcoliamo esplicitamente intervento meno controllo:</p>
+<p>Per mantenere l’ordine stabilito nel capitolo, calcoliamo esplicitamente intervento meno controllo:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n_intervento</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">benessere_intervento</span><span class="op">)</span></span>
 <span><span class="va">n_controllo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">benessere_controllo</span><span class="op">)</span></span>
@@ -1038,23 +983,24 @@ Figura&nbsp;6.1: Punteggi individuali e distribuzioni nei gruppi controllo e int
 <span><span class="co">#&gt;         valore_p limite_inferiore limite_superiore </span></span>
 <span><span class="co">#&gt;        0.0000901        2.8522224        7.1477776</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Otteniamo approssimativamente:</p>
+<p>Otteniamo approssimativamente</p>
 <p><span class="math display">\[
 \widehat{\Delta}=5.00,
 \]</span></p>
 <p><span class="math display">\[
 IC_{95\%}=[2.85,\;7.15],
 \]</span></p>
+<p>e</p>
 <p><span class="math display">\[
 t(20.64)=4.85,
 \qquad
 p&lt;0.001.
 \]</span></p>
-<p>Il valore-<em>p</em> indica che, sotto l’ipotesi di differenza nulla e le altre assunzioni del test, una statistica almeno altrettanto estrema sarebbe rara.</p>
-<p>Non è la probabilità che <span class="math inline">\(\Delta=0\)</span>.</p>
+<p>Il valore-<em>p</em> indica che, sotto l’ipotesi di una differenza nulla e le altre assunzioni del test, una statistica almeno altrettanto estrema di quella osservata sarebbe rara. Non rappresenta la probabilità che <span class="math inline">\(\Delta=0\)</span>.</p>
+<p>La stima e l’intervallo forniscono informazioni ulteriori. La differenza osservata è pari a 5 punti e, secondo la procedura frequentista, i valori non esclusi dall’intervallo vanno approssimativamente da 2.85 a 7.15 punti. La significatività rispetto a zero non esaurisce dunque l’interpretazione del confronto.</p>
 </section><section id="sec-freq-two-samples-pooled-example" class="level2" data-number="6.8"><h2 data-number="6.8" class="anchored" data-anchor-id="sec-freq-two-samples-pooled-example">
 <span class="header-section-number">6.8</span> Il caso con varianza comune</h2>
-<p>Per confronto, eseguiamo il test classico:</p>
+<p>Per confronto, eseguiamo anche il test classico con varianza comune:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">test_pooled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span></span>
 <span>  <span class="va">benessere_intervento</span>,</span>
@@ -1077,8 +1023,8 @@ p&lt;0.001.
 <span><span class="co">#&gt; mean of x mean of y </span></span>
 <span><span class="co">#&gt;      31.2      26.2</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>In questi dati, numerosità e deviazioni standard sono simili, quindi i due test producono risultati quasi identici.</p>
-<p>Questa somiglianza non dimostra che le varianze delle popolazioni siano uguali. Mostra soltanto che, per questo campione, l’assunzione aggiuntiva ha conseguenze numeriche limitate.</p>
+<p>In questi dati, le numerosità e le deviazioni standard dei gruppi sono simili. Di conseguenza, il test classico e quello di Welch producono risultati quasi identici.</p>
+<p>La somiglianza numerica non dimostra che le varianze delle popolazioni siano uguali. Mostra soltanto che, in questo campione, l’assunzione aggiuntiva del modello pooled ha conseguenze limitate sul risultato. In altri contesti, soprattutto quando numerosità e dispersioni differiscono, la scelta può incidere in modo sostanziale sull’errore standard e sui gradi di libertà.</p>
 </section><section id="sec-freq-two-samples-integrated" class="level2" data-number="6.9"><h2 data-number="6.9" class="anchored" data-anchor-id="sec-freq-two-samples-integrated">
 <span class="header-section-number">6.9</span> Interpretare insieme le quantità</h2>
 <section id="differenza-nella-scala-originale" class="level3" data-number="6.9.1"><h3 data-number="6.9.1" class="anchored" data-anchor-id="differenza-nella-scala-originale">
@@ -1087,22 +1033,22 @@ p&lt;0.001.
 <blockquote class="blockquote">
 <p>Nel campione, la media del gruppo intervento supera quella del gruppo controllo di 5 punti.</p>
 </blockquote>
-<p>La sua importanza dipende dalla scala, dall’affidabilità dello strumento e dal contesto.</p>
+<p>Il significato di questo scarto dipende però dalla scala utilizzata, dall’affidabilità dello strumento, dalla distribuzione dei punteggi e dal contesto teorico o applicativo. Una differenza numericamente identica può assumere importanza diversa in strumenti e popolazioni differenti.</p>
 </section><section id="intervallo-di-confidenza" class="level3" data-number="6.9.2"><h3 data-number="6.9.2" class="anchored" data-anchor-id="intervallo-di-confidenza">
 <span class="header-section-number">6.9.2</span> Intervallo di confidenza</h3>
-<p>L’intervallo al 95% è:</p>
+<p>L’intervallo al 95% è</p>
 <p><span class="math display">\[
 [2.85,\;7.15].
 \]</span></p>
-<p>Descrive la precisione della procedura frequentista. Non assegna il 95% di probabilità alla differenza vera entro questi estremi.</p>
-<p>L’intervallo è utile anche per confrontare i dati con una soglia sostantiva. Se, per esempio, fossero necessari almeno 6 punti per una rilevanza pratica, l’intervallo mostrerebbe che i dati sono compatibili sia con differenze inferiori sia con differenze superiori a tale soglia.</p>
+<p>Esso descrive la precisione della procedura frequentista e non assegna il 95% di probabilità alla differenza vera all’interno di questi estremi.</p>
+<p>L’intervallo permette anche di confrontare i dati con una soglia sostantiva. Supponiamo, per esempio, che una differenza debba raggiungere almeno 6 punti per essere considerata praticamente rilevante. L’intervallo mostra che i dati sono compatibili sia con differenze inferiori sia con differenze superiori a tale soglia. Sebbene lo zero venga escluso, la precisione non è sufficiente per stabilire con chiarezza che il criterio pratico sia superato.</p>
 </section><section id="valore-p" class="level3" data-number="6.9.3"><h3 data-number="6.9.3" class="anchored" data-anchor-id="valore-p">
 <span class="header-section-number">6.9.3</span> Valore-<em>p</em>
 </h3>
-<p>Il valore-<em>p</em> sintetizza l’incompatibilità con <span class="math inline">\(\Delta=0\)</span>. Non descrive la grandezza della differenza né la sua importanza.</p>
+<p>Il valore-<em>p</em> sintetizza l’incompatibilità del risultato con l’ipotesi <span class="math inline">\(\Delta=0\)</span>, condizionatamente al modello e al piano di analisi. Non descrive la grandezza della differenza, la sua precisione o la sua importanza scientifica. Due studi possono produrre valori-<em>p</em> simili e, nello stesso tempo, stimare effetti molto differenti.</p>
 </section><section id="dimensione-delleffetto-standardizzata" class="level3" data-number="6.9.4"><h3 data-number="6.9.4" class="anchored" data-anchor-id="dimensione-delleffetto-standardizzata">
 <span class="header-section-number">6.9.4</span> Dimensione dell’effetto standardizzata</h3>
-<p>Una misura comune è il <span class="math inline">\(d\)</span> di Cohen:</p>
+<p>Una misura comune della differenza standardizzata è il <span class="math inline">\(d\)</span> di Cohen:</p>
 <p><span class="math display">\[
 d
 =
@@ -1149,13 +1095,13 @@ s_p
 <span><span class="co">#&gt;  cohen_d hedges_g </span></span>
 <span><span class="co">#&gt;     1.98     1.91</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Per questi dati:</p>
+<p>Per questi dati otteniamo</p>
 <p><span class="math display">\[
 d\approx1.98,
 \qquad
 g\approx1.91.
 \]</span></p>
-<p><span class="math inline">\(g\)</span> di Hedges applica una correzione alla tendenza di <span class="math inline">\(d\)</span> a sovrastimare l’effetto standardizzato nei piccoli campioni.</p>
+<p>Il <span class="math inline">\(g\)</span> di Hedges applica una correzione alla tendenza di <span class="math inline">\(d\)</span> a sovrastimare l’effetto standardizzato nei piccoli campioni. Entrambe le misure esprimono la differenza in unità di deviazione standard, facilitando alcuni confronti tra scale e studi.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="L'effetto standardizzato non sostituisce la differenza grezza">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1167,19 +1113,14 @@ g\approx1.91.
 </div>
 <div class="callout-body-container callout-body">
 <p><span class="math inline">\(d\)</span> e <span class="math inline">\(g\)</span> dipendono anche dalla dispersione dei punteggi. Lo stesso cambiamento di 5 punti può produrre valori standardizzati differenti in popolazioni con variabilità diversa.</p>
-<p>Quando la scala originale è interpretabile, è opportuno riportare sia la differenza grezza sia una misura standardizzata.</p>
+<p>Quando la scala originale è interpretabile, è opportuno riportare sia la differenza grezza sia una misura standardizzata, evitando di trattare quest’ultima come una misura universale dell’importanza dell’effetto.</p>
 </div>
 </div>
 </section></section><section id="sec-freq-two-samples-relevance" class="level2" data-number="6.10"><h2 data-number="6.10" class="anchored" data-anchor-id="sec-freq-two-samples-relevance">
 <span class="header-section-number">6.10</span> Significatività, equivalenza e rilevanza pratica</h2>
-<p>Un risultato significativo rispetto a zero non dimostra che l’effetto sia abbastanza grande da essere utile.</p>
-<p>Un risultato non significativo, d’altra parte, non dimostra che i gruppi siano equivalenti. Per sostenere equivalenza occorrono:</p>
-<ol type="1">
-<li>una regione di differenze considerate praticamente trascurabili;</li>
-<li>una procedura progettata per valutare quella regione;</li>
-<li>dati sufficientemente precisi.</li>
-</ol>
-<p>La soglia di rilevanza dovrebbe essere motivata prima dell’analisi e collegata alla scala del fenomeno.</p>
+<p>Un risultato significativo rispetto a zero non dimostra che l’effetto sia abbastanza grande da avere utilità teorica, clinica o pratica. Stabilisce soltanto che, secondo il test e le sue assunzioni, i dati risultano difficilmente compatibili con una differenza esattamente nulla.</p>
+<p>Allo stesso modo, un risultato non significativo non dimostra che i gruppi siano equivalenti. Per sostenere un’interpretazione di equivalenza occorre definire in anticipo una regione di differenze considerate praticamente trascurabili, utilizzare una procedura costruita per valutare quella regione e disporre di dati sufficientemente precisi.</p>
+<p>La soglia di rilevanza dovrebbe essere motivata nella scala del fenomeno prima dell’analisi. Non può essere ricavata automaticamente dalla significatività statistica né da una convenzione generale sulla dimensione standardizzata dell’effetto.</p>
 <div class="callout callout-style-default callout-important callout-titled" title="Tre domande differenti">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1190,27 +1131,21 @@ g\approx1.91.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li>
-<strong>Esclusione dello zero:</strong> i dati sono incompatibili con <span class="math inline">\(\Delta=0\)</span> secondo il test?</li>
-<li>
-<strong>Precisione:</strong> quali differenze non vengono escluse dall’intervallo?</li>
-<li>
-<strong>Rilevanza:</strong> quali differenze cambierebbero una conclusione teorica o pratica?</li>
-</ol>
-<p>Rispondere alla prima non risponde automaticamente alle altre due.</p>
+<p>Il confronto deve mantenere separate tre domande. La prima riguarda l’esclusione dello zero: i dati sono incompatibili con <span class="math inline">\(\Delta=0\)</span> secondo il test? La seconda riguarda la precisione: quali differenze rimangono compatibili con l’intervallo? La terza riguarda la rilevanza: quali differenze modificherebbero una conclusione teorica o una decisione pratica?</p>
+<p>La risposta alla prima domanda non risponde automaticamente alle altre due.</p>
 </div>
 </div>
 </section><section id="sec-freq-two-samples-causality" class="level2" data-number="6.11"><h2 data-number="6.11" class="anchored" data-anchor-id="sec-freq-two-samples-causality">
 <span class="header-section-number">6.11</span> Dalla differenza osservata all’effetto causale</h2>
-<p>Una differenza tra medie è sempre descrittiva del confronto definito. Diventa interpretabile come effetto causale soltanto sotto condizioni aggiuntive.</p>
+<p>Una differenza tra medie descrive sempre il confronto definito dai dati e dal modello. Per interpretarla come effetto causale sono necessarie condizioni ulteriori, che riguardano il disegno e non la grandezza del valore-<em>p</em>.</p>
 <section id="studio-randomizzato" class="level3" data-number="6.11.1"><h3 data-number="6.11.1" class="anchored" data-anchor-id="studio-randomizzato">
 <span class="header-section-number">6.11.1</span> Studio randomizzato</h3>
-<p>Se i partecipanti sono assegnati casualmente ai gruppi, l’assegnazione è rispettata e non vi sono problemi sostanziali di attrito, aderenza o contaminazione, la differenza può sostenere un’interpretazione causale riferita alla popolazione e al trattamento definiti.</p>
+<p>Quando i partecipanti vengono assegnati casualmente ai gruppi, l’assegnazione viene rispettata e non emergono problemi sostanziali di attrito, aderenza o contaminazione, la differenza può sostenere un’interpretazione causale riferita alla popolazione, al trattamento e all’esito definiti dallo studio.</p>
+<p>La randomizzazione rende comparabili i gruppi, in senso probabilistico, rispetto ai fattori precedenti al trattamento. Non garantisce però da sola che la misura sia valida, che i dati mancanti siano innocui o che il risultato possa essere generalizzato a popolazioni diverse da quella studiata.</p>
 </section><section id="gruppi-osservazionali" class="level3" data-number="6.11.2"><h3 data-number="6.11.2" class="anchored" data-anchor-id="gruppi-osservazionali">
 <span class="header-section-number">6.11.2</span> Gruppi osservazionali</h3>
-<p>Se i gruppi sono definiti da una caratteristica osservata, una differenza può dipendere da variabili confondenti.</p>
-<p>Per esempio, una differenza tra persone che scelgono o non scelgono un trattamento non dimostra che il trattamento abbia prodotto la differenza. I gruppi possono differire già prima dell’intervento.</p>
+<p>Quando i gruppi sono definiti da una caratteristica osservata o da una scelta dei partecipanti, la differenza può riflettere variabili confondenti. Le persone che scelgono un trattamento, per esempio, possono differire da quelle che non lo scelgono già prima dell’intervento per motivazione, gravità iniziale, accesso alle risorse o altre caratteristiche rilevanti.</p>
+<p>In questa situazione, il test quantifica la differenza osservata ma non identifica da solo il processo che l’ha prodotta. Un valore-<em>p</em> piccolo non consente di distinguere l’effetto del trattamento dalle differenze preesistenti tra i gruppi.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="Il test t non crea causalità">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1221,12 +1156,12 @@ g\approx1.91.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Randomizzazione, identificazione e qualità del disegno giustificano una conclusione causale. Il valore-<em>p</em> non può compensare l’assenza di queste condizioni.</p>
+<p>Sono la randomizzazione, le assunzioni di identificazione e la qualità del disegno a giustificare una conclusione causale. Il valore-<em>p</em> non può compensare l’assenza di queste condizioni.</p>
 </div>
 </div>
 </section></section><section id="sec-freq-two-samples-regression" class="level2" data-number="6.12"><h2 data-number="6.12" class="anchored" data-anchor-id="sec-freq-two-samples-regression">
 <span class="header-section-number">6.12</span> Il test <em>t</em> come modello lineare</h2>
-<p>Il confronto tra due gruppi può essere scritto come una regressione con un predittore dicotomico:</p>
+<p>Il confronto tra due gruppi può essere riscritto come una regressione con un predittore dicotomico:</p>
 <p><span class="math display">\[
 Y_i
 =
@@ -1236,25 +1171,20 @@ Y_i
 +
 \varepsilon_i,
 \]</span></p>
-<p>dove:</p>
-<ul>
-<li>
-<span class="math inline">\(X_i=0\)</span> indica il controllo;</li>
-<li>
-<span class="math inline">\(X_i=1\)</span> indica l’intervento.</li>
-</ul>
-<p>Allora:</p>
+<p>dove <span class="math inline">\(X_i=0\)</span> indica il gruppo di controllo e <span class="math inline">\(X_i=1\)</span> il gruppo intervento.</p>
+<p>Quando <span class="math inline">\(X=0\)</span>,</p>
 <p><span class="math display">\[
-E(Y\mid X=0)=\alpha,
+E(Y\mid X=0)=\alpha.
 \]</span></p>
+<p>Quando <span class="math inline">\(X=1\)</span>,</p>
 <p><span class="math display">\[
 E(Y\mid X=1)=\alpha+\beta.
 \]</span></p>
-<p>La differenza è:</p>
+<p>La differenza tra i due valori attesi è quindi</p>
 <p><span class="math display">\[
 E(Y\mid X=1)-E(Y\mid X=0)=\beta.
 \]</span></p>
-<p>Il coefficiente <span class="math inline">\(\beta\)</span> rappresenta quindi la stessa quantità:</p>
+<p>Il coefficiente <span class="math inline">\(\beta\)</span> rappresenta la stessa quantità definita all’inizio del capitolo:</p>
 <p><span class="math display">\[
 \beta
 =
@@ -1290,15 +1220,7 @@ E(Y\mid X=1)-E(Y\mid X=0)=\beta.
 <span><span class="co">#&gt; (Intercept)      24.74  27.76</span></span>
 <span><span class="co">#&gt; gruppoIntervento  2.86   7.14</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Con varianza comune, il test del coefficiente del predittore è equivalente al test <em>t</em> classico per due gruppi.</p>
-<p>Questa equivalenza è importante perché mostra che il test <em>t</em> non è un procedimento isolato. È il caso più semplice di una famiglia di modelli che può includere:</p>
-<ul>
-<li>più gruppi;</li>
-<li>covariate;</li>
-<li>interazioni;</li>
-<li>strutture gerarchiche;</li>
-<li>esiti non gaussiani.</li>
-</ul>
+<p>Quando si assume una varianza comune, il test sul coefficiente del predittore è equivalente al test <em>t</em> classico per due gruppi. Questa equivalenza mostra che il test <em>t</em> non è un procedimento separato dal resto della modellizzazione statistica. Rappresenta il caso più semplice di una famiglia di modelli che può essere estesa includendo più gruppi, covariate, interazioni, strutture gerarchiche ed esiti non gaussiani.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Un ponte verso il progetto bayesiano">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1309,26 +1231,13 @@ E(Y\mid X=1)-E(Y\mid X=0)=\beta.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Il Companion usa la stessa rappresentazione con un predittore 0–1:</p>
-<ul>
-<li>
-<a href="https://ccaudek.github.io/utet-companion/chapters/calcolo/05_stan_two_means.html">Confrontare due medie con Stan</a>;</li>
-<li>il capitolo 26, <em>Due gruppi: codifiche, differenze e rilevanza pratica</em>.</li>
-</ul>
+<p>Il Companion utilizza la stessa rappresentazione con un predittore codificato 0–1 nel capitolo <a href="https://ccaudek.github.io/utet-companion/chapters/calcolo/05_stan_two_means.html">Confrontare due medie con Stan</a> e nel capitolo 26, <em>Due gruppi: codifiche, differenze e rilevanza pratica</em>.</p>
 <p>Nel modello bayesiano, la distribuzione a posteriori di <span class="math inline">\(\beta\)</span> rappresenta direttamente l’incertezza sulla differenza tra le medie.</p>
 </div>
 </div>
 </section><section id="sec-freq-two-samples-bayes" class="level2" data-number="6.13"><h2 data-number="6.13" class="anchored" data-anchor-id="sec-freq-two-samples-bayes">
 <span class="header-section-number">6.13</span> Che cosa cambia nel modello bayesiano?</h2>
-<p>Il confronto frequentista e quello bayesiano possono condividere:</p>
-<ul>
-<li>gli stessi dati;</li>
-<li>lo stesso predittore dicotomico;</li>
-<li>una verosimiglianza normale;</li>
-<li>la stessa quantità bersaglio <span class="math inline">\(\Delta\)</span>;</li>
-<li>modelli con dispersione comune o differente.</li>
-</ul>
-<p>Cambiano l’oggetto inferenziale immediato e il significato delle probabilità.</p>
+<p>Il confronto frequentista e quello bayesiano possono utilizzare gli stessi dati, lo stesso predittore dicotomico, una medesima verosimiglianza normale e la stessa quantità bersaglio <span class="math inline">\(\Delta\)</span>. Entrambi possono inoltre rappresentare dispersioni comuni o differenti. Ciò che cambia è l’oggetto inferenziale immediato e, di conseguenza, il significato delle probabilità utilizzate.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -1365,29 +1274,20 @@ E(Y\mid X=1)-E(Y\mid X=0)=\beta.
 </tr>
 </tbody>
 </table>
-<p>Nel modello bayesiano si possono calcolare quantità come:</p>
+<p>Nel quadro bayesiano è possibile calcolare quantità come</p>
 <p><span class="math display">\[
 P(\Delta&gt;0\mid y)
 \]</span></p>
-<p>oppure:</p>
+<p>oppure</p>
 <p><span class="math display">\[
 P(\Delta&gt;\delta_{\min}\mid y),
 \]</span></p>
-<p>dove <span class="math inline">\(\delta_{\min}\)</span> è una soglia sostantiva. Queste probabilità non sono valori-<em>p</em> e dipendono da prior, verosimiglianza e dati.</p>
-<p>Il vantaggio di un’interpretazione diretta non elimina la necessità di controllare modello, misura, disegno e identificazione causale.</p>
+<p>dove <span class="math inline">\(\delta_{\min}\)</span> rappresenta una soglia sostantiva. Queste probabilità non sono valori-<em>p</em>: descrivono l’incertezza sul parametro dopo avere combinato la distribuzione a priori, la verosimiglianza e i dati.</p>
+<p>La possibilità di formulare un’interpretazione probabilistica diretta non elimina la necessità di controllare il modello, la qualità delle misure, la struttura del disegno e le condizioni necessarie per un’interpretazione causale. Un modello bayesiano non corregge automaticamente un confronto mal definito o un campione distorto.</p>
 </section><section id="sec-freq-two-samples-report" class="level2" data-number="6.14"><h2 data-number="6.14" class="anchored" data-anchor-id="sec-freq-two-samples-report">
 <span class="header-section-number">6.14</span> Come riportare il risultato</h2>
-<p>Un resoconto informativo dovrebbe includere:</p>
-<ul>
-<li>numerosità, media e deviazione standard dei gruppi;</li>
-<li>ordine della differenza;</li>
-<li>differenza grezza e intervallo;</li>
-<li>test utilizzato;</li>
-<li>statistica, gradi di libertà e valore-<em>p</em>;</li>
-<li>dimensione dell’effetto;</li>
-<li>interpretazione sostantiva e limiti del disegno.</li>
-</ul>
-<p>Per l’esempio:</p>
+<p>Un resoconto informativo dovrebbe permettere al lettore di ricostruire il confronto senza ridurlo alla dichiarazione di significatività. È quindi necessario riportare numerosità, media e deviazione standard di ciascun gruppo, specificare l’ordine della differenza e presentare la differenza grezza con il relativo intervallo. Devono inoltre essere indicati il test utilizzato, la statistica, i gradi di libertà, il valore-<em>p</em> e una misura della dimensione dell’effetto. L’interpretazione deve infine discutere il significato sostantivo e i limiti del disegno.</p>
+<p>Per l’esempio, il risultato può essere comunicato nel modo seguente:</p>
 <blockquote class="blockquote">
 <p>Il gruppo sottoposto all’intervento ha riportato un punteggio medio di benessere maggiore (<span class="math inline">\(M=31.25\)</span>, <span class="math inline">\(DS=2.83\)</span>, <span class="math inline">\(n=12\)</span>) rispetto al gruppo di controllo (<span class="math inline">\(M=26.25\)</span>, <span class="math inline">\(DS=2.18\)</span>, <span class="math inline">\(n=12\)</span>). La differenza intervento meno controllo è stata di 5.00 punti, <span class="math inline">\(IC\)</span> 95% [2.85, 7.15]. Il test <em>t</em> di Welch ha indicato incompatibilità con una differenza nulla, <span class="math inline">\(t(20.64)=4.85\)</span>, <span class="math inline">\(p&lt;.001\)</span>. La differenza standardizzata è risultata elevata nel campione, <span class="math inline">\(g=1.91\)</span>. L’interpretazione causale dipende dall’assegnazione e dalle altre caratteristiche del disegno.</p>
 </blockquote>
@@ -1405,18 +1305,11 @@ P(\Delta&gt;\delta_{\min}\mid y),
 </div>
 </div>
 </section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
-<p>Il confronto tra due gruppi indipendenti conclude il percorso applicativo del modulo frequentista perché riunisce tutti gli elementi introdotti nei capitoli precedenti.</p>
-<p>Abbiamo definito la differenza tra le medie come quantità bersaglio, distinto gruppi indipendenti e dati appaiati, confrontato il test classico con quello di Welch e interpretato congiuntamente:</p>
-<ul>
-<li>differenza grezza;</li>
-<li>errore standard;</li>
-<li>intervallo di confidenza;</li>
-<li>valore-<em>p</em>;</li>
-<li>dimensione dell’effetto.</li>
-</ul>
-<p>Il risultato di un test non esaurisce l’analisi. Occorre chiedersi quale differenza sia rilevante, quanto precisamente sia stimata, se il modello sia adeguato e se il disegno autorizzi un’interpretazione causale.</p>
-<p>L’equivalenza tra test <em>t</em> e regressione con predittore dicotomico crea il ponte più naturale verso il progetto bayesiano. La domanda sostantiva rimane la stessa — quanto differiscono i gruppi? — ma l’incertezza viene rappresentata mediante la distribuzione a posteriori del coefficiente che codifica la differenza.</p>
-<p>L’epilogo userà questo punto di arrivo per confrontare in modo complessivo controllo dell’errore, interpretazione dell’incertezza e workflow scientifico.</p>
+<p>Il confronto tra due gruppi indipendenti conclude il percorso applicativo del modulo frequentista perché riunisce in un unico esempio tutti gli elementi introdotti nei capitoli precedenti.</p>
+<p>La differenza tra le medie costituisce la quantità bersaglio. L’errore standard descrive quanto la sua stima varierebbe tra campioni, l’intervallo di confidenza ne esprime la precisione e il valore-<em>p</em> valuta l’incompatibilità con una differenza nulla sotto il modello. La dimensione standardizzata colloca infine lo scarto in relazione alla dispersione dei punteggi, senza sostituire l’interpretazione nella scala originale.</p>
+<p>Nessuna di queste quantità esaurisce l’analisi. Occorre stabilire quale differenza abbia rilevanza scientifica, quanto precisamente sia stata stimata, se il modello descriva adeguatamente i dati e se il disegno autorizzi una conclusione causale. La significatività rispetto a zero, la precisione e la rilevanza pratica rimangono domande distinte.</p>
+<p>L’equivalenza tra il test <em>t</em> e la regressione con predittore dicotomico crea il collegamento più naturale con il progetto bayesiano. La domanda sostantiva rimane la stessa — quanto differiscono i gruppi? — ma l’incertezza viene rappresentata mediante la distribuzione a posteriori del coefficiente che codifica la differenza.</p>
+<p>L’epilogo utilizzerà questo punto di arrivo per confrontare in modo complessivo il controllo frequentista degli errori, la rappresentazione bayesiana dell’incertezza e il ruolo del workflow scientifico nella costruzione di conclusioni affidabili.</p>
 </section><section id="esercizi" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="esercizi">Esercizi</h2>
 <ol type="1">
 <li><p>Qual è la differenza tra la quantità <span class="math inline">\(\Delta=\mu_1-\mu_0\)</span> e la stima <span class="math inline">\(\widehat{\Delta}=\bar X_1-\bar X_0\)</span>?</p></li>
@@ -1442,13 +1335,13 @@ P(\Delta&gt;\delta_{\min}\mid y),
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li><p><span class="math inline">\(\Delta\)</span> è la differenza tra le medie delle popolazioni o del modello. <span class="math inline">\(\widehat{\Delta}\)</span> è la differenza osservata tra le medie campionarie e varia da campione a campione.</p></li>
-<li><p>Le due osservazioni della stessa persona sono dipendenti. Un test indipendente ignora l’abbinamento e usa un errore standard non coerente con il disegno.</p></li>
-<li><p>Il test classico assume una varianza comune nelle due popolazioni. Welch permette varianze differenti e modifica errore standard e gradi di libertà.</p></li>
-<li><p>La procedura risultante dipende da una decisione presa sugli stessi dati e ha proprietà inferenziali meno trasparenti. Welch può essere adottato direttamente senza imporre l’uguaglianza delle varianze.</p></li>
-<li><p>I dati sono compatibili, secondo la procedura, sia con differenze inferiori sia con differenze superiori a 5. L’esclusione dello zero non consente di stabilire con precisione che la soglia pratica sia superata.</p></li>
+<li><p>Le due osservazioni della stessa persona sono dipendenti. Un test per gruppi indipendenti ignora l’abbinamento e utilizza un errore standard non coerente con il disegno.</p></li>
+<li><p>Il test classico assume una varianza comune nelle due popolazioni. Welch permette varianze differenti e modifica di conseguenza l’errore standard e i gradi di libertà.</p></li>
+<li><p>La procedura risultante dipende da una decisione presa sugli stessi dati e possiede proprietà inferenziali meno trasparenti. Welch può essere adottato direttamente senza imporre l’uguaglianza delle varianze.</p></li>
+<li><p>I dati sono compatibili, secondo la procedura, sia con differenze inferiori sia con differenze superiori a 5. L’esclusione dello zero non permette quindi di stabilire con precisione che la soglia pratica sia superata.</p></li>
 <li><p>I gruppi possono differire per confondenti, selezione o condizioni precedenti all’esposizione. Il test quantifica una differenza, ma non identifica da solo il meccanismo che l’ha prodotta.</p></li>
 <li><p><span class="math inline">\(\alpha\)</span> è la media del gruppo controllo. <span class="math inline">\(\beta\)</span> è la differenza intervento meno controllo.</p></li>
-<li><p>Il valore-<em>p</em> riguarda risultati estremi sotto <span class="math inline">\(\Delta=0\)</span>. La probabilità a posteriori riguarda l’incertezza su <span class="math inline">\(\Delta\)</span> dopo avere combinato prior, modello e dati.</p></li>
+<li><p>Il valore-<em>p</em> riguarda la probabilità di risultati almeno altrettanto estremi sotto <span class="math inline">\(\Delta=0\)</span>. La probabilità a posteriori riguarda invece l’incertezza su <span class="math inline">\(\Delta\)</span> dopo avere combinato distribuzione a priori, modello e dati.</p></li>
 </ol>
 </div>
 </div>
@@ -1465,18 +1358,7 @@ P(\Delta&gt;\delta_{\min}\mid y),
 </div>
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li>Il confronto deve iniziare dalla definizione della differenza e del suo ordine.</li>
-<li>Gruppi indipendenti, dati appaiati e misure ripetute richiedono strutture inferenziali diverse.</li>
-<li>Il test di Welch non richiede una varianza comune ed è spesso una scelta predefinita adeguata.</li>
-<li>L’indipendenza è soprattutto un’assunzione del disegno.</li>
-<li>Differenza grezza, intervallo, valore-<em>p</em> e dimensione standardizzata comunicano informazioni diverse.</li>
-<li>Un risultato significativo rispetto a zero non dimostra rilevanza pratica.</li>
-<li>Un risultato non significativo non dimostra equivalenza.</li>
-<li>Il test <em>t</em> non trasforma un confronto osservazionale in un effetto causale.</li>
-<li>Il confronto tra due gruppi è equivalente a una regressione con predittore dicotomico.</li>
-<li>Nel modello bayesiano, la posterior del coefficiente dicotomico rappresenta l’incertezza sulla differenza tra le medie.</li>
-</ul>
+<p>Il confronto deve iniziare dalla definizione della differenza e del suo ordine. Gruppi indipendenti, dati appaiati e misure ripetute richiedono strutture inferenziali diverse, e l’indipendenza è soprattutto una proprietà del disegno. Il test di Welch non richiede una varianza comune ed è spesso una scelta predefinita adeguata. Differenza grezza, intervallo, valore-<em>p</em> e dimensione standardizzata comunicano informazioni differenti e devono essere interpretati congiuntamente. Un risultato significativo rispetto a zero non dimostra rilevanza pratica, mentre un risultato non significativo non dimostra equivalenza. Il test <em>t</em> non trasforma un confronto osservazionale in un effetto causale. Il confronto tra due gruppi è equivalente a una regressione con predittore dicotomico e, nel modello bayesiano, la distribuzione a posteriori del relativo coefficiente rappresenta l’incertezza sulla differenza tra le medie.</p>
 </div>
 </div>
 </div>

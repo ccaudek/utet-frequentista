@@ -504,12 +504,12 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Da sapere</strong> Un test frequentista confronta una statistica osservata con la sua distribuzione sotto un’ipotesi nulla. Il valore-<em>p</em> misura quanto il risultato sia incompatibile con quel modello, ma non assegna una probabilità all’ipotesi. La pratica contemporanea combina spesso la significatività fisheriana con le decisioni e il controllo degli errori di Neyman–Pearson.</p>
-<p><strong>Da saper fare</strong> Distinguere ipotesi, statistica test, distribuzione nulla, valore-<em>p</em> e livello <span class="math inline">\(\alpha\)</span>; interpretare correttamente errori di tipo I, errori di tipo II e potenza; separare significatività statistica, dimensione dell’effetto e rilevanza sostanziale.</p>
+<p><strong>Da sapere</strong> Un test frequentista confronta una statistica osservata con la distribuzione che essa avrebbe sotto un’ipotesi nulla e un insieme di assunzioni. Il valore-<em>p</em> descrive quanto il risultato sia incompatibile con quel modello di riferimento, ma non assegna una probabilità all’ipotesi. La pratica contemporanea combina spesso la concezione fisheriana della significatività con la teoria delle decisioni e degli errori sviluppata da Neyman e Pearson.</p>
+<p><strong>Da saper fare</strong> Al termine del capitolo, il lettore dovrebbe saper distinguere ipotesi, statistica test, distribuzione nulla, valore-<em>p</em> e livello <span class="math inline">\(\alpha\)</span>; interpretare correttamente gli errori di tipo I e di tipo II e la potenza; separare la significatività statistica dalla dimensione dell’effetto e dalla sua rilevanza sostantiva.</p>
 </div>
 </div>
 <section id="introduzione" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="introduzione">Introduzione</h2>
-<p>Nei capitoli precedenti abbiamo costruito una progressione:</p>
+<p>Nei capitoli precedenti abbiamo seguito un percorso che dalla stima puntuale conduce alla quantificazione della sua incertezza:</p>
 <p><span class="math display">\[
 \text{stima puntuale}
 \longrightarrow
@@ -517,32 +517,27 @@ window.Quarto = {
 \longrightarrow
 \text{intervallo di confidenza}.
 \]</span></p>
-<p>Il test di ipotesi usa gli stessi elementi per affrontare una domanda diversa:</p>
+<p>Il test di ipotesi utilizza gli stessi elementi, ma li organizza attorno a una domanda differente:</p>
 <blockquote class="blockquote">
-<p>Quanto è incompatibile il risultato osservato con un modello di riferimento?</p>
+<p>Quanto è incompatibile il risultato osservato con un modello assunto come riferimento?</p>
 </blockquote>
-<p>Nella ricerca psicologica, i test vengono usati per studiare differenze tra gruppi, associazioni tra variabili, effetti di interventi e scostamenti da valori teorici o normativi. La loro diffusione rende indispensabile comprenderne sia la logica sia i limiti.</p>
-<p>Il test frequentista standard non calcola la probabilità che un’ipotesi sia vera dopo aver osservato i dati. Costruisce invece una distribuzione dei risultati possibili sotto un’ipotesi nulla e colloca il risultato osservato all’interno di quella distribuzione.</p>
+<p>Nella ricerca psicologica, questa domanda compare ogni volta che si confrontano gruppi, si studiano associazioni tra variabili, si valutano gli effetti di un intervento o si esamina lo scostamento da un valore teorico o normativo. La diffusione dei test rende quindi indispensabile comprenderne non soltanto il calcolo, ma anche la logica e i limiti interpretativi.</p>
+<p>Un test frequentista standard non determina la probabilità che un’ipotesi sia vera dopo avere osservato i dati. Costruisce invece la distribuzione dei risultati che sarebbero possibili sotto un’ipotesi nulla e colloca al suo interno il risultato effettivamente osservato. Il significato dell’analisi dipende da questa direzione del ragionamento.</p>
 </section><section id="perché-è-facile-fraintendere-un-test" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="perché-è-facile-fraintendere-un-test">
 <span class="header-section-number">4.1</span> Perché è facile fraintendere un test?</h2>
-<p>Il linguaggio ordinario invita a leggere un test come un confronto diretto tra due spiegazioni:</p>
-<ul>
-<li>l’ipotesi nulla è vera;</li>
-<li>l’ipotesi alternativa è vera.</li>
-</ul>
-<p>La procedura standard non assegna però probabilità posteriori a queste possibilità. La sua domanda è condizionale:</p>
+<p>Nel linguaggio ordinario, verificare un’ipotesi sembra significare scegliere direttamente tra due spiegazioni: l’ipotesi nulla oppure l’ipotesi alternativa. La procedura frequentista standard non attribuisce però probabilità posteriori a queste possibilità. La domanda che formula è condizionale:</p>
 <blockquote class="blockquote">
 <p>Se l’ipotesi nulla e le altre assunzioni del modello fossero appropriate, quanto sarebbe estremo il risultato osservato?</p>
 </blockquote>
-<p>L’inversione tra</p>
+<p>La differenza tra questa domanda e quella che spesso vorremmo porre può essere espressa distinguendo</p>
 <p><span class="math display">\[
 P(\text{dati}\mid H_0)
 \]</span></p>
-<p>e</p>
+<p>da</p>
 <p><span class="math display">\[
-P(H_0\mid\text{dati})
+P(H_0\mid\text{dati}).
 \]</span></p>
-<p>è una delle principali fonti di errore interpretativo.</p>
+<p>La prima quantità riguarda la distribuzione dei dati sotto l’ipotesi nulla. La seconda riguarda la probabilità dell’ipotesi dopo avere osservato i dati. Confondere le due direzioni del condizionamento costituisce una delle principali fonti di errore nell’interpretazione dei test.</p>
 <div class="callout callout-style-default callout-important callout-titled" title="La direzione del condizionamento">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -553,7 +548,7 @@ P(H_0\mid\text{dati})
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Il valore-<em>p</em> riguarda la distribuzione dei dati o della statistica test <strong>assumendo <span class="math inline">\(H_0\)</span></strong>. Non è la probabilità di <span class="math inline">\(H_0\)</span> dopo avere osservato i dati.</p>
+<p>Il valore-<em>p</em> riguarda la distribuzione dei dati, o della statistica test, <strong>assumendo <span class="math inline">\(H_0\)</span></strong>. Non rappresenta la probabilità di <span class="math inline">\(H_0\)</span> dopo avere osservato i dati.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Prerequisiti">
@@ -566,30 +561,13 @@ P(H_0\mid\text{dati})
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>È utile avere letto:</p>
-<ul>
-<li>
-<a href="02_stime_parametri.html" class="quarto-xref"><span>Capitolo 2</span></a>, per stimatore, distribuzione campionaria ed errore standard;</li>
-<li>
-<a href="03_conf_interv.html" class="quarto-xref"><span>Capitolo 3</span></a>, per copertura, valori critici e livello <span class="math inline">\(\alpha\)</span>;</li>
-<li>il capitolo <a href="https://ccaudek.github.io/utet-prob/chapters/probability/04_conditional_prob_bayesian.html">Probabilità condizionata</a>, per distinguere <span class="math inline">\(P(A\mid B)\)</span> da <span class="math inline">\(P(B\mid A)\)</span>.</li>
-</ul>
-<p>La potenza viene introdotta qui come proprietà del test e sarà approfondita nel capitolo successivo sulla numerosità campionaria.</p>
+<p>Per seguire il capitolo è utile avere letto <a href="02_stime_parametri.html" class="quarto-xref"><span>Capitolo 2</span></a>, dove sono stati introdotti stimatore, distribuzione campionaria ed errore standard, e <a href="03_conf_interv.html" class="quarto-xref"><span>Capitolo 3</span></a>, dedicato a copertura, valori critici e livello <span class="math inline">\(\alpha\)</span>. Il capitolo <a href="https://ccaudek.github.io/utet-prob/chapters/probability/04_conditional_prob_bayesian.html">Probabilità condizionata</a> aiuta inoltre a distinguere <span class="math inline">\(P(A\mid B)\)</span> da <span class="math inline">\(P(B\mid A)\)</span>.</p>
+<p>La potenza verrà introdotta qui come proprietà del test e approfondita nel capitolo successivo, dedicato alla pianificazione della numerosità campionaria.</p>
 </div>
 </div>
 </section><section id="panoramica-del-capitolo" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="panoramica-del-capitolo">Panoramica del capitolo</h2>
-<p>Il capitolo procede in nove passaggi:</p>
-<ol type="1">
-<li>distingue la significatività fisheriana dalla teoria dei test di Neyman–Pearson;</li>
-<li>identifica gli elementi che definiscono un test;</li>
-<li>introduce il valore-<em>p</em> e il livello <span class="math inline">\(\alpha\)</span>;</li>
-<li>presenta errori di tipo I, errori di tipo II e potenza;</li>
-<li>applica la logica al test del chi-quadrato;</li>
-<li>applica la stessa struttura a un test <em>t</em> per una media;</li>
-<li>chiarisce test monodirezionali e bidirezionali;</li>
-<li>separa significatività, grandezza dell’effetto e rilevanza sostanziale;</li>
-<li>confronta il tipo di domanda frequentista con quello bayesiano.</li>
-</ol>
+<p>Il capitolo parte dalla distinzione tra la significatività fisheriana e la teoria dei test di Neyman–Pearson. Verranno quindi identificati gli elementi che definiscono una procedura di test e chiarito il diverso ruolo del valore-<em>p</em> e del livello <span class="math inline">\(\alpha\)</span>. Su questa base sarà possibile introdurre gli errori di tipo I e di tipo II e la potenza statistica.</p>
+<p>La logica generale verrà applicata prima a un test del chi-quadrato e poi a un test <em>t</em> per una media. La discussione dei test unilaterali e bilaterali permetterà di mostrare come la definizione dell’estremità dipenda dalla domanda formulata prima dell’analisi. L’ultima parte distinguerà significatività, grandezza dell’effetto e rilevanza sostantiva e metterà a confronto la domanda frequentista con quella bayesiana.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Preparazione del notebook">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -609,22 +587,15 @@ P(H_0\mid\text{dati})
 </div>
 </section><section id="sec-freq-two-testing-traditions" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="sec-freq-two-testing-traditions">
 <span class="header-section-number">4.2</span> Due tradizioni nella pratica contemporanea</h2>
-<p>La pratica comunemente chiamata <em>NHST</em> (<em>Null Hypothesis Significance Testing</em>) combina spesso elementi provenienti da due tradizioni.</p>
+<p>La pratica comunemente indicata come <em>NHST</em>, acronimo di <em>Null Hypothesis Significance Testing</em>, non coincide perfettamente con una singola teoria. Essa combina elementi provenienti da due tradizioni storicamente e concettualmente distinte.</p>
 <section id="fisher-significatività-e-incompatibilità" class="level3" data-number="4.2.1"><h3 data-number="4.2.1" class="anchored" data-anchor-id="fisher-significatività-e-incompatibilità">
 <span class="header-section-number">4.2.1</span> Fisher: significatività e incompatibilità</h3>
-<p>Nell’impostazione fisheriana, il valore-<em>p</em> è una misura graduata di quanto i dati risultino incompatibili con un’ipotesi nulla. Un valore piccolo segnala che il risultato osservato occupa una regione poco frequente della distribuzione nulla.</p>
-<p>Questa lettura non richiede necessariamente una decisione automatica e definitiva. Il valore-<em>p</em> viene considerato insieme al disegno, alla qualità dei dati e alla conoscenza scientifica disponibile.</p>
+<p>Nell’impostazione fisheriana, il valore-<em>p</em> fornisce una misura graduata dell’incompatibilità tra i dati e un’ipotesi nulla. Un valore piccolo indica che il risultato osservato si trova in una regione poco frequente della distribuzione prevista sotto quell’ipotesi.</p>
+<p>Questa lettura non richiede necessariamente una decisione automatica e definitiva. Il valore-<em>p</em> viene considerato insieme alla qualità del disegno, all’affidabilità delle misure, alle caratteristiche dei dati e alle conoscenze scientifiche disponibili. Esso rappresenta quindi un elemento dell’argomentazione, non un verdetto autosufficiente.</p>
 </section><section id="neymanpearson-decisioni-ed-errori" class="level3" data-number="4.2.2"><h3 data-number="4.2.2" class="anchored" data-anchor-id="neymanpearson-decisioni-ed-errori">
 <span class="header-section-number">4.2.2</span> Neyman–Pearson: decisioni ed errori</h3>
-<p>Nell’impostazione Neyman–Pearson si specificano ipotesi, una regola decisionale e probabilità di errore valutate nelle ripetizioni. Diventano centrali:</p>
-<ul>
-<li>il livello <span class="math inline">\(\alpha\)</span>;</li>
-<li>l’errore di tipo I;</li>
-<li>l’errore di tipo II;</li>
-<li>la potenza;</li>
-<li>la regione di rifiuto.</li>
-</ul>
-<p>La decisione non dichiara che una delle ipotesi sia probabilmente vera. Applica una procedura progettata per controllare gli errori nel lungo periodo.</p>
+<p>Nella teoria di Neyman e Pearson, l’attenzione si sposta verso il comportamento di una regola decisionale nelle ripetizioni. Vengono specificate le ipotesi, la regione di rifiuto e le probabilità di commettere errori quando si applica la procedura. Il livello <span class="math inline">\(\alpha\)</span> controlla l’errore di tipo I, mentre l’errore di tipo II e la potenza descrivono il comportamento del test sotto alternative specificate.</p>
+<p>La decisione di rifiutare o non rifiutare l’ipotesi nulla non dichiara che una delle ipotesi sia probabilmente vera. Applica una regola progettata per produrre determinate frequenze di errore nel lungo periodo.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Una procedura ibrida">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -639,53 +610,40 @@ P(H_0\mid\text{dati})
 <blockquote class="blockquote">
 <p>«calcolo un valore-<em>p</em> e, se <span class="math inline">\(p\leq0.05\)</span>, dichiaro il risultato significativo»</p>
 </blockquote>
-<p>combina una misura fisheriana di incompatibilità con una soglia e una decisione di tipo Neyman–Pearson.</p>
-<p>Questa pratica è diffusa, ma interpretarla correttamente richiede sapere che valore-<em>p</em> e livello <span class="math inline">\(\alpha\)</span> non sono la stessa quantità.</p>
+<p>combina una misura fisheriana di incompatibilità con una soglia e una decisione di tipo Neyman–Pearson. Questa pratica è molto diffusa, ma può essere interpretata correttamente soltanto ricordando che il valore-<em>p</em> e il livello <span class="math inline">\(\alpha\)</span> sono quantità diverse e svolgono funzioni differenti.</p>
 </div>
 </div>
 </section></section><section id="sec-freq-test-anatomy" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="sec-freq-test-anatomy">
 <span class="header-section-number">4.3</span> Anatomia di un test</h2>
-<p>Un test è definito da più elementi. Il solo valore-<em>p</em> non basta a descriverlo.</p>
+<p>Un test non è definito dal solo valore-<em>p</em>. Per comprenderne il significato occorre ricostruire l’intera procedura: l’ipotesi nulla, l’alternativa, la statistica test, la distribuzione di riferimento e la regola che stabilisce quali risultati siano almeno altrettanto estremi di quello osservato.</p>
 <section id="ipotesi-nulla-e-alternativa" class="level3" data-number="4.3.1"><h3 data-number="4.3.1" class="anchored" data-anchor-id="ipotesi-nulla-e-alternativa">
 <span class="header-section-number">4.3.1</span> Ipotesi nulla e alternativa</h3>
-<p>L’<strong>ipotesi nulla</strong> <span class="math inline">\(H_0\)</span> specifica il modello di riferimento. L’<strong>ipotesi alternativa</strong> <span class="math inline">\(H_1\)</span> descrive i valori o i modelli rispetto ai quali la procedura deve essere sensibile.</p>
-<p>Per una media:</p>
+<p>L’<strong>ipotesi nulla</strong> <span class="math inline">\(H_0\)</span> specifica il modello di riferimento. L’<strong>ipotesi alternativa</strong> <span class="math inline">\(H_1\)</span> descrive invece i valori o i modelli rispetto ai quali la procedura deve essere sensibile.</p>
+<p>Nel caso di una media, l’ipotesi nulla può essere</p>
 <p><span class="math display">\[
 H_0:\mu=24.
 \]</span></p>
-<p>Un’alternativa bilaterale è:</p>
+<p>Un’alternativa bilaterale è</p>
 <p><span class="math display">\[
 H_1:\mu\neq24,
 \]</span></p>
-<p>mentre un’alternativa unilaterale può essere:</p>
+<p>mentre un’alternativa unilaterale superiore può essere espressa come</p>
 <p><span class="math display">\[
 H_1:\mu&gt;24.
 \]</span></p>
-<p>L’ipotesi nulla non deve necessariamente rappresentare una teoria scientifica completa o «assenza di qualunque effetto». È una restrizione precisa del modello usata per derivare la distribuzione di riferimento.</p>
+<p>L’ipotesi nulla non deve necessariamente rappresentare una teoria scientifica completa, né coincide sempre con l’assenza di qualunque effetto. È una restrizione precisa del modello che consente di derivare una distribuzione di riferimento per la statistica test.</p>
 </section><section id="statistica-test" class="level3" data-number="4.3.2"><h3 data-number="4.3.2" class="anchored" data-anchor-id="statistica-test">
 <span class="header-section-number">4.3.2</span> Statistica test</h3>
-<p>La <strong>statistica test</strong> è una funzione dei dati progettata per misurare una discrepanza rilevante rispetto a <span class="math inline">\(H_0\)</span>.</p>
-<p>Esempi comuni sono:</p>
-<ul>
-<li>una statistica <span class="math inline">\(z\)</span>;</li>
-<li>una statistica <span class="math inline">\(t\)</span>;</li>
-<li>una statistica <span class="math inline">\(\chi^2\)</span>;</li>
-<li>una statistica <span class="math inline">\(F\)</span>;</li>
-<li>una differenza, un rapporto o un coefficiente standardizzato.</li>
-</ul>
-<p>Per interpretare l’estremità occorre sapere quali valori della statistica siano più incompatibili con <span class="math inline">\(H_0\)</span>.</p>
+<p>La <strong>statistica test</strong> è una funzione dei dati costruita per quantificare una discrepanza rilevante rispetto a <span class="math inline">\(H_0\)</span>. Può assumere la forma di una statistica <span class="math inline">\(z\)</span>, <span class="math inline">\(t\)</span>, <span class="math inline">\(\chi^2\)</span> o <span class="math inline">\(F\)</span>, oppure di una differenza, un rapporto o un coefficiente standardizzato.</p>
+<p>Il suo valore non è interpretabile isolatamente. Per stabilire quanto sia estremo occorre conoscere la distribuzione che la statistica avrebbe sotto l’ipotesi nulla e sapere quali direzioni o valori rappresentino una maggiore incompatibilità con il modello di riferimento.</p>
 </section><section id="distribuzione-sotto-lipotesi-nulla" class="level3" data-number="4.3.3"><h3 data-number="4.3.3" class="anchored" data-anchor-id="distribuzione-sotto-lipotesi-nulla">
 <span class="header-section-number">4.3.3</span> Distribuzione sotto l’ipotesi nulla</h3>
-<p>La <strong>distribuzione nulla</strong> descrive i valori che la statistica test assumerebbe se <span class="math inline">\(H_0\)</span>, il modello e il piano di analisi fossero corretti.</p>
-<p>Può essere:</p>
-<ul>
-<li>derivata esattamente;</li>
-<li>ottenuta mediante un’approssimazione asintotica;</li>
-<li>costruita attraverso permutazioni o simulazioni.</li>
-</ul></section><section id="regola-di-estremità" class="level3" data-number="4.3.4"><h3 data-number="4.3.4" class="anchored" data-anchor-id="regola-di-estremità">
+<p>La <strong>distribuzione nulla</strong> descrive i valori che la statistica test assumerebbe se l’ipotesi nulla, il modello e il piano di analisi fossero corretti. A seconda del problema, questa distribuzione può essere derivata esattamente, approssimata mediante risultati asintotici oppure costruita attraverso permutazioni o simulazioni.</p>
+<p>Essa traduce l’ipotesi nulla in una previsione sul comportamento della statistica. Soltanto grazie a questa distribuzione è possibile valutare la posizione del risultato osservato.</p>
+</section><section id="regola-di-estremità" class="level3" data-number="4.3.4"><h3 data-number="4.3.4" class="anchored" data-anchor-id="regola-di-estremità">
 <span class="header-section-number">4.3.4</span> Regola di estremità</h3>
-<p>Il valore-<em>p</em> dipende anche dalla regola che stabilisce quali risultati siano «almeno altrettanto estremi» di quello osservato.</p>
-<p>In un test unilaterale superiore si considera una coda. In un test bilaterale si considerano discrepanze in entrambe le direzioni, secondo la procedura specificata.</p>
+<p>Il valore-<em>p</em> dipende anche dalla regola che definisce quali risultati siano almeno altrettanto incompatibili con <span class="math inline">\(H_0\)</span> quanto quello osservato. In un test unilaterale superiore si considera una sola coda della distribuzione; in un test bilaterale si considerano discrepanze in entrambe le direzioni, secondo la procedura stabilita.</p>
+<p>La nozione di risultato estremo non è quindi contenuta nei dati in modo automatico. Dipende dalla domanda, dalla statistica scelta e dal piano di analisi.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="Il valore-p non è determinato dai soli dati">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -696,26 +654,17 @@ H_1:\mu&gt;24.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Dipende anche da:</p>
-<ul>
-<li>ipotesi nulla;</li>
-<li>statistica test;</li>
-<li>distribuzione di riferimento;</li>
-<li>scelta unilaterale o bilaterale;</li>
-<li>regola di arresto, quando rilevante;</li>
-<li>correzioni per confronti multipli;</li>
-<li>altre decisioni previste dal piano di analisi.</li>
-</ul>
+<p>A parità di dati, il valore-<em>p</em> può cambiare quando cambiano l’ipotesi nulla, la statistica test, la distribuzione di riferimento, la scelta tra test unilaterale e bilaterale, la regola di arresto, le correzioni per confronti multipli o altre decisioni previste dal piano di analisi.</p>
 </div>
 </div>
 </section></section><section id="sec-freq-p-value" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="sec-freq-p-value">
 <span class="header-section-number">4.4</span> Il valore-<em>p</em>
 </h2>
-<p>In forma generale, il valore-<em>p</em> è:</p>
+<p>In forma generale, il valore-<em>p</em> può essere definito come</p>
 <blockquote class="blockquote">
 <p>la probabilità, calcolata sotto <span class="math inline">\(H_0\)</span>, di ottenere un valore della statistica test almeno altrettanto incompatibile con <span class="math inline">\(H_0\)</span> quanto quello osservato.</p>
 </blockquote>
-<p>In simboli schematici:</p>
+<p>In simboli schematici,</p>
 <p><span class="math display">\[
 p
 =
@@ -724,25 +673,13 @@ P_{H_0}
 T(Y)\text{ almeno altrettanto estremo di }T(y_{\mathrm{obs}})
 \right).
 \]</span></p>
-<p>Un valore-<em>p</em> piccolo indica che il risultato osservato occupa una regione rara della distribuzione nulla. Segnala quindi incompatibilità tra i dati e l’insieme delle assunzioni usate per costruire il test.</p>
-<p>Non identifica da solo quale assunzione sia inadeguata. Un valore piccolo può riflettere:</p>
-<ul>
-<li>una deviazione reale dal valore nullo;</li>
-<li>una specificazione errata del modello;</li>
-<li>dipendenza o eterogeneità ignorata;</li>
-<li>bias di campionamento o misurazione;</li>
-<li>selezione analitica o confronti multipli non corretti.</li>
-</ul>
+<p>Un valore-<em>p</em> piccolo indica che il risultato osservato occupa una regione rara della distribuzione nulla. Esprime quindi una tensione tra i dati e l’insieme delle assunzioni utilizzate per costruire il test.</p>
+<p>Questa tensione non identifica automaticamente quale componente sia problematica. Un valore piccolo può derivare da una deviazione reale rispetto al valore nullo, ma anche da una specificazione inadeguata del modello, da dipendenze o forme di eterogeneità ignorate, da distorsioni del campionamento o della misurazione oppure da una selezione analitica e da confronti multipli non adeguatamente considerati.</p>
 <section id="valore-p-e-livello-alpha" class="level3" data-number="4.4.1"><h3 data-number="4.4.1" class="anchored" data-anchor-id="valore-p-e-livello-alpha">
 <span class="header-section-number">4.4.1</span> Valore-<em>p</em> e livello <span class="math inline">\(\alpha\)</span>
 </h3>
-<p>Il <strong>valore-<em>p</em></strong> è calcolato dai dati. Il <strong>livello <span class="math inline">\(\alpha\)</span></strong> è una soglia decisionale scelta prima dell’analisi.</p>
-<p>La regola convenzionale è:</p>
-<ul>
-<li>se <span class="math inline">\(p\leq\alpha\)</span>, rifiutare <span class="math inline">\(H_0\)</span>;</li>
-<li>se <span class="math inline">\(p&gt;\alpha\)</span>, non rifiutare <span class="math inline">\(H_0\)</span>.</li>
-</ul>
-<p>«Non rifiutare» è intenzionale. Un risultato non significativo non prova che <span class="math inline">\(H_0\)</span> sia vera.</p>
+<p>Il <strong>valore-<em>p</em></strong> viene calcolato a partire dai dati. Il <strong>livello <span class="math inline">\(\alpha\)</span></strong> è invece una soglia decisionale stabilita prima dell’analisi.</p>
+<p>La regola convenzionale prevede di rifiutare <span class="math inline">\(H_0\)</span> quando <span class="math inline">\(p\leq\alpha\)</span> e di non rifiutarla quando <span class="math inline">\(p&gt;\alpha\)</span>. L’espressione <em>non rifiutare</em> è intenzionale: un risultato non significativo non dimostra che l’ipotesi nulla sia vera.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="Che cosa non è un valore-p">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -753,21 +690,12 @@ T(Y)\text{ almeno altrettanto estremo di }T(y_{\mathrm{obs}})
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Il valore-<em>p</em> non è:</p>
-<ul>
-<li>
-<span class="math inline">\(P(H_0\mid\text{dati})\)</span>;</li>
-<li>la probabilità che il risultato sia «dovuto al caso»;</li>
-<li>la probabilità che <span class="math inline">\(H_1\)</span> sia vera;</li>
-<li>la dimensione dell’effetto;</li>
-<li>la probabilità di replicare la significatività;</li>
-<li>il tasso di falsi positivi tra tutti i risultati significativi pubblicati.</li>
-</ul>
+<p>Il valore-<em>p</em> non è <span class="math inline">\(P(H_0\mid\text{dati})\)</span>, non rappresenta la probabilità che il risultato sia «dovuto al caso» e non esprime la probabilità che <span class="math inline">\(H_1\)</span> sia vera. Non misura la dimensione dell’effetto, non indica la probabilità di replicare la significatività e non coincide con il tasso di falsi positivi tra tutti i risultati significativi pubblicati.</p>
 </div>
 </div>
 </section></section><section id="sec-freq-errors-power" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="sec-freq-errors-power">
 <span class="header-section-number">4.5</span> Errori di tipo I, errori di tipo II e potenza</h2>
-<p>Una procedura decisionale può produrre quattro combinazioni:</p>
+<p>Quando un test viene utilizzato come regola decisionale, il suo risultato può essere classificato in relazione allo stato specificato dalle ipotesi:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 27%">
@@ -797,34 +725,27 @@ T(Y)\text{ almeno altrettanto estremo di }T(y_{\mathrm{obs}})
 </table>
 <section id="errore-di-tipo-i" class="level3" data-number="4.5.1"><h3 data-number="4.5.1" class="anchored" data-anchor-id="errore-di-tipo-i">
 <span class="header-section-number">4.5.1</span> Errore di tipo I</h3>
-<p>L’errore di tipo I consiste nel rifiutare <span class="math inline">\(H_0\)</span> quando è vera. Sotto le condizioni previste dalla procedura:</p>
+<p>L’errore di tipo I consiste nel rifiutare <span class="math inline">\(H_0\)</span> quando essa è vera. Sotto le condizioni previste dalla procedura,</p>
 <p><span class="math display">\[
 P(\text{rifiutare }H_0\mid H_0)=\alpha.
 \]</span></p>
-<p>Il controllo vale per la procedura e per la famiglia di analisi definita. Se vengono provati molti test e riportati soltanto quelli significativi, il tasso effettivo di falsi positivi può superare quello nominale.</p>
+<p>Il controllo riguarda la procedura e la famiglia di analisi effettivamente definita. Se vengono eseguiti numerosi test e riportati soltanto quelli significativi, oppure se le analisi vengono modificate dopo avere osservato i risultati, il tasso effettivo di falsi positivi può superare il livello nominale.</p>
 </section><section id="errore-di-tipo-ii-e-potenza" class="level3" data-number="4.5.2"><h3 data-number="4.5.2" class="anchored" data-anchor-id="errore-di-tipo-ii-e-potenza">
 <span class="header-section-number">4.5.2</span> Errore di tipo II e potenza</h3>
-<p>Per una specifica alternativa, l’errore di tipo II ha probabilità:</p>
+<p>Per una specifica alternativa, la probabilità di errore di tipo II è</p>
 <p><span class="math display">\[
 \beta
 =
 P(\text{non rifiutare }H_0\mid H_1).
 \]</span></p>
-<p>La potenza è:</p>
+<p>La <strong>potenza</strong> è il suo complemento:</p>
 <p><span class="math display">\[
 1-\beta
 =
 P(\text{rifiutare }H_0\mid H_1).
 \]</span></p>
-<p>La potenza non è un unico numero indipendente dall’effetto. Dipende dal valore del parametro sotto l’alternativa, oltre che da:</p>
-<ul>
-<li>numerosità campionaria;</li>
-<li>variabilità;</li>
-<li>livello <span class="math inline">\(\alpha\)</span>;</li>
-<li>struttura del disegno;</li>
-<li>test unilaterale o bilaterale;</li>
-<li>qualità della misurazione.</li>
-</ul>
+<p>La potenza non è un unico numero valido per qualunque alternativa. Cambia al variare del parametro sotto <span class="math inline">\(H_1\)</span> e dipende anche dalla numerosità campionaria, dalla variabilità, dal livello <span class="math inline">\(\alpha\)</span>, dalla struttura del disegno, dalla scelta tra test unilaterale e bilaterale e dalla qualità della misurazione.</p>
+<p>Un effetto molto distante dal valore nullo è generalmente più facile da rilevare di un effetto piccolo. Allo stesso modo, un campione più ampio o una misura più precisa rendono la procedura più sensibile, a parità delle altre condizioni.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Perché la potenza viene ripresa nel prossimo capitolo">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -835,7 +756,7 @@ P(\text{rifiutare }H_0\mid H_1).
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Qui la potenza serve a comprendere la logica degli errori. Il capitolo successivo discuterà come scegliere un effetto bersaglio e una numerosità adeguata prima di raccogliere i dati.</p>
+<p>In questo capitolo la potenza serve a completare la logica degli errori decisionali. Nel capitolo successivo verrà utilizzata per discutere come scegliere un effetto bersaglio e una numerosità campionaria adeguata prima della raccolta dei dati.</p>
 </div>
 </div>
 </section></section><section id="sec-freq-chi-square-example" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="sec-freq-chi-square-example">
@@ -885,24 +806,25 @@ Tabella&nbsp;4.1: Frequenze osservate per stress percepito e qualità del sonno.
 </figure>
 </div>
 </div>
-<p>Le ipotesi sono:</p>
+<p>L’ipotesi nulla afferma che stress e qualità del sonno siano indipendenti:</p>
 <p><span class="math display">\[
 H_0:
-\text{stress e qualità del sonno sono indipendenti},
+\text{stress e qualità del sonno sono indipendenti}.
 \]</span></p>
+<p>L’alternativa sostiene invece che tra le due variabili vi sia un’associazione:</p>
 <p><span class="math display">\[
 H_1:
 \text{stress e qualità del sonno non sono indipendenti}.
 \]</span></p>
 <section id="frequenze-attese" class="level3" data-number="4.6.1"><h3 data-number="4.6.1" class="anchored" data-anchor-id="frequenze-attese">
 <span class="header-section-number">4.6.1</span> Frequenze attese</h3>
-<p>Sotto l’indipendenza, la frequenza attesa nella cella <span class="math inline">\(ij\)</span> è:</p>
+<p>Sotto l’ipotesi di indipendenza, la frequenza attesa nella cella <span class="math inline">\(ij\)</span> è</p>
 <p><span class="math display">\[
 E_{ij}
 =
 \frac{R_iC_j}{N},
 \]</span></p>
-<p>dove <span class="math inline">\(R_i\)</span> è il totale della riga, <span class="math inline">\(C_j\)</span> quello della colonna e <span class="math inline">\(N\)</span> il totale complessivo.</p>
+<p>dove <span class="math inline">\(R_i\)</span> indica il totale della riga, <span class="math inline">\(C_j\)</span> quello della colonna e <span class="math inline">\(N\)</span> il totale complessivo. Le frequenze attese descrivono quindi la tabella che ci aspetteremmo di osservare, salvo la variabilità campionaria, se la distribuzione di una variabile non dipendesse dall’altra.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">totali_riga</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span></span>
 <span><span class="va">totali_colonna</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colSums</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span></span>
@@ -943,7 +865,7 @@ Tabella&nbsp;4.2: Frequenze attese sotto l’ipotesi nulla di indipendenza.
 </div>
 </section><section id="statistica-test-1" class="level3" data-number="4.6.2"><h3 data-number="4.6.2" class="anchored" data-anchor-id="statistica-test-1">
 <span class="header-section-number">4.6.2</span> Statistica test</h3>
-<p>La statistica è:</p>
+<p>La statistica del chi-quadrato confronta sistematicamente frequenze osservate e attese:</p>
 <p><span class="math display">\[
 \chi^2
 =
@@ -951,6 +873,7 @@ Tabella&nbsp;4.2: Frequenze attese sotto l’ipotesi nulla di indipendenza.
 \sum_{j=1}^{c}
 \frac{(O_{ij}-E_{ij})^2}{E_{ij}}.
 \]</span></p>
+<p>Le discrepanze vengono elevate al quadrato, rapportate alle frequenze attese e sommate. Valori più grandi indicano una maggiore distanza dalla configurazione prevista sotto l’indipendenza.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">chi2_osservato</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">osservati</span> <span class="op">-</span> <span class="va">attesi</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="va">attesi</span><span class="op">)</span></span>
 <span><span class="va">gradi_liberta</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">osservati</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span>
@@ -968,13 +891,13 @@ Tabella&nbsp;4.2: Frequenze attese sotto l’ipotesi nulla di indipendenza.
 <span><span class="co">#&gt;  chi_quadrato gradi_liberta      valore_p </span></span>
 <span><span class="co">#&gt;          4.71          1.00          0.03</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Il calcolo produce circa:</p>
+<p>Il calcolo produce approssimativamente</p>
 <p><span class="math display">\[
 \chi^2(1)=4.71,
 \qquad
 p=0.030.
 \]</span></p>
-<p>Verifichiamo con R:</p>
+<p>Possiamo verificare il risultato mediante la funzione disponibile in R:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test</a></span><span class="op">(</span><span class="va">osservati</span>, correct <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -983,7 +906,7 @@ p=0.030.
 <span><span class="co">#&gt; data:  osservati</span></span>
 <span><span class="co">#&gt; X-squared = 5, df = 1, p-value = 0.03</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Disattiviamo la correzione di continuità per riprodurre il calcolo manuale.</p>
+<p>La correzione di continuità viene disattivata per riprodurre il calcolo manuale.</p>
 </section><section id="visualizzazione" class="level3" data-number="4.6.3"><h3 data-number="4.6.3" class="anchored" data-anchor-id="visualizzazione">
 <span class="header-section-number">4.6.3</span> Visualizzazione</h3>
 <div class="cell" data-layout-align="center">
@@ -1021,19 +944,12 @@ Figura&nbsp;4.1: Distribuzione chi-quadrato sotto l’ipotesi nulla. L’area ol
 </div>
 </div>
 </div>
-<p>In <a href="#fig-chi-square-p-value" class="quarto-xref">Figura&nbsp;<span>4.1</span></a>, l’area a destra di <span class="math inline">\(\chi^2_{\mathrm{obs}}\)</span> è circa 0.030. Al livello <span class="math inline">\(\alpha=0.05\)</span>, la procedura rifiuta l’ipotesi di indipendenza.</p>
-<p>Una formulazione appropriata è:</p>
+<p>In <a href="#fig-chi-square-p-value" class="quarto-xref">Figura&nbsp;<span>4.1</span></a>, l’area a destra di <span class="math inline">\(\chi^2_{\mathrm{obs}}\)</span> è pari a circa 0.030. Se il livello <span class="math inline">\(\alpha\)</span> è stato fissato a 0.05, la procedura conduce al rifiuto dell’ipotesi di indipendenza.</p>
+<p>Il risultato può essere comunicato nel modo seguente:</p>
 <blockquote class="blockquote">
 <p>Nel campione è emersa un’associazione statisticamente significativa tra stress percepito e qualità del sonno, <span class="math inline">\(\chi^2(1)=4.71\)</span>, <span class="math inline">\(p=0.030\)</span>.</p>
 </blockquote>
-<p>Questa conclusione non indica:</p>
-<ul>
-<li>la probabilità che le variabili siano associate;</li>
-<li>la grandezza dell’associazione;</li>
-<li>una relazione causale;</li>
-<li>la validità delle categorie utilizzate.</li>
-</ul>
-<p>Per completare l’analisi occorre stimare la dimensione dell’associazione e discuterne il significato sostantivo.</p>
+<p>Questa conclusione non fornisce la probabilità che le variabili siano associate, non quantifica la grandezza dell’associazione e non dimostra una relazione causale. Non garantisce neppure che le categorie utilizzate siano valide o che il disegno consenta una generalizzazione appropriata. Per completare l’analisi occorre stimare la dimensione dell’associazione e discuterne il significato sostantivo.</p>
 </section></section><section id="sec-freq-one-sample-t-test" class="level2" data-number="4.7"><h2 data-number="4.7" class="anchored" data-anchor-id="sec-freq-one-sample-t-test">
 <span class="header-section-number">4.7</span> Esempio 2: test <em>t</em> per una media</h2>
 <p>Consideriamo dieci punteggi di benessere psicologico e un valore normativo pari a 24.</p>
@@ -1054,14 +970,15 @@ Figura&nbsp;4.1: Distribuzione chi-quadrato sotto l’ipotesi nulla. L’area ol
 <span><span class="co">#&gt;               media deviazione_standard     errore_standard                   n </span></span>
 <span><span class="co">#&gt;               23.80                4.26                1.35               10.00</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Supponiamo che l’ipotesi, formulata prima di osservare i dati, sia:</p>
+<p>Supponiamo che, prima di osservare i dati, sia stata formulata l’ipotesi nulla</p>
 <p><span class="math display">\[
-H_0:\mu=24,
+H_0:\mu=24
 \]</span></p>
+<p>e che l’alternativa di interesse sia</p>
 <p><span class="math display">\[
 H_1:\mu&gt;24.
 \]</span></p>
-<p>La statistica è:</p>
+<p>La statistica test confronta la distanza tra la media osservata e il valore nullo con l’errore standard stimato:</p>
 <p><span class="math display">\[
 t
 =
@@ -1086,13 +1003,13 @@ t
 <span><span class="co">#&gt;             t gradi_liberta      valore_p </span></span>
 <span><span class="co">#&gt;        -0.148         9.000         0.557</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Otteniamo circa:</p>
+<p>Otteniamo approssimativamente</p>
 <p><span class="math display">\[
 t(9)=-0.15,
 \qquad
 p=0.557.
 \]</span></p>
-<p>La media osservata, 23.8, non è nella direzione dell’alternativa superiore. Non rifiutiamo <span class="math inline">\(H_0\)</span>.</p>
+<p>La media osservata, pari a 23.8, non si trova nella direzione indicata dall’alternativa superiore. La procedura non conduce quindi al rifiuto di <span class="math inline">\(H_0\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span></span>
 <span>  <span class="va">punteggi</span>,</span>
@@ -1115,11 +1032,7 @@ p=0.557.
 <blockquote class="blockquote">
 <p>I dati non forniscono evidenza, secondo questo test unilaterale, che la media sia superiore a 24, <span class="math inline">\(t(9)=-0.15\)</span>, <span class="math inline">\(p=0.557\)</span>.</p>
 </blockquote>
-<p>Non è adeguato concludere:</p>
-<blockquote class="blockquote">
-<p>Abbiamo dimostrato che la media è uguale a 24.</p>
-</blockquote>
-<p>Il test non significativo lascia aperte molte possibilità, comprese una differenza piccola, dati poco informativi o una deviazione nella direzione opposta.</p>
+<p>Non sarebbe invece corretto affermare di avere dimostrato che la media sia uguale a 24. Il risultato non significativo lascia aperte possibilità differenti: la differenza potrebbe essere piccola, i dati potrebbero essere poco informativi oppure lo scostamento potrebbe trovarsi nella direzione opposta a quella specificata.</p>
 </section><section id="sec-freq-one-two-sided" class="level2" data-number="4.8"><h2 data-number="4.8" class="anchored" data-anchor-id="sec-freq-one-two-sided">
 <span class="header-section-number">4.8</span> Test unilaterali e bilaterali</h2>
 <p>Un test bilaterale considera deviazioni in entrambe le direzioni:</p>
@@ -1144,24 +1057,24 @@ H_1:\mu\neq\mu_0.
 <span><span class="co">#&gt; mean of x </span></span>
 <span><span class="co">#&gt;      23.8</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Per gli stessi dati, il valore-<em>p</em> bilaterale è circa 0.885.</p>
-<p>La scelta tra test unilaterale e bilaterale deve essere motivata dalla domanda e definita prima di osservare i risultati. Scegliere a posteriori la coda favorevole altera il controllo dell’errore di tipo I.</p>
-<p>Un test unilaterale non dovrebbe essere usato soltanto per ottenere maggiore potenza. Deve essere scientificamente sensato escludere, dalla regola di evidenza, una deviazione nella direzione opposta.</p>
+<p>Per gli stessi dati, il valore-<em>p</em> bilaterale è circa 0.885. La differenza rispetto al valore unilaterale non dipende da un cambiamento dei dati, ma dalla diversa definizione dei risultati considerati estremi.</p>
+<p>La scelta tra un test unilaterale e uno bilaterale deve essere motivata dalla domanda scientifica e stabilita prima di osservare i risultati. Se la coda favorevole viene scelta soltanto dopo avere visto la direzione dell’effetto, il controllo nominale dell’errore di tipo I non è più valido.</p>
+<p>Un test unilaterale non dovrebbe dunque essere utilizzato semplicemente perché offre maggiore potenza nella direzione prevista. Deve essere scientificamente sensato escludere dalla regola di evidenza una deviazione nella direzione opposta, anche qualora essa risultasse ampia.</p>
 </section><section id="sec-freq-interpreting-test-result" class="level2" data-number="4.9"><h2 data-number="4.9" class="anchored" data-anchor-id="sec-freq-interpreting-test-result">
 <span class="header-section-number">4.9</span> Interpretare un risultato</h2>
-<p>Una lettura completa separa almeno quattro livelli.</p>
+<p>Una lettura completa di un test richiede di mantenere distinti quattro livelli dell’interpretazione.</p>
 <section id="compatibilità-con-il-modello-nullo" class="level3" data-number="4.9.1"><h3 data-number="4.9.1" class="anchored" data-anchor-id="compatibilità-con-il-modello-nullo">
 <span class="header-section-number">4.9.1</span> Compatibilità con il modello nullo</h3>
-<p>Il valore-<em>p</em> descrive quanto il risultato sia estremo sotto <span class="math inline">\(H_0\)</span> e le assunzioni del test.</p>
+<p>Il valore-<em>p</em> descrive quanto il risultato osservato sia estremo sotto <span class="math inline">\(H_0\)</span> e sotto le altre assunzioni necessarie per costruire la distribuzione di riferimento. Esso informa quindi sulla compatibilità tra dati e modello nullo, non sulla probabilità dell’ipotesi.</p>
 </section><section id="decisione-procedurale" class="level3" data-number="4.9.2"><h3 data-number="4.9.2" class="anchored" data-anchor-id="decisione-procedurale">
 <span class="header-section-number">4.9.2</span> Decisione procedurale</h3>
-<p>Il confronto con <span class="math inline">\(\alpha\)</span> applica una regola di rifiuto o non rifiuto.</p>
+<p>Il confronto con <span class="math inline">\(\alpha\)</span> applica una regola di rifiuto o di non rifiuto. Questa decisione possiede proprietà di errore definite nelle ripetizioni, ma non coincide con una dichiarazione di verità o falsità dell’ipotesi.</p>
 </section><section id="grandezza-e-precisione-delleffetto" class="level3" data-number="4.9.3"><h3 data-number="4.9.3" class="anchored" data-anchor-id="grandezza-e-precisione-delleffetto">
 <span class="header-section-number">4.9.3</span> Grandezza e precisione dell’effetto</h3>
-<p>La stima e l’intervallo di confidenza mostrano quanto è grande l’effetto e con quale precisione è stato stimato.</p>
+<p>La stima e l’intervallo di confidenza mostrano quanto l’effetto sia grande e con quale precisione sia stato stimato. Queste informazioni non sono sostituite dal valore-<em>p</em>: risultati con lo stesso livello di significatività possono corrispondere a effetti e precisioni molto differenti.</p>
 </section><section id="significato-scientifico" class="level3" data-number="4.9.4"><h3 data-number="4.9.4" class="anchored" data-anchor-id="significato-scientifico">
 <span class="header-section-number">4.9.4</span> Significato scientifico</h3>
-<p>La rilevanza dipende da teoria, qualità della misura, disegno, costi, benefici e contesto applicativo.</p>
+<p>La rilevanza del risultato dipende dalla teoria, dalla qualità della misura, dal disegno, dai costi e benefici e dal contesto applicativo. La significatività statistica non stabilisce da sola se una differenza sia importante sul piano psicologico, clinico o sociale.</p>
 <div class="callout callout-style-default callout-important callout-titled" title="Significativo non significa importante">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1172,42 +1085,30 @@ H_1:\mu\neq\mu_0.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Un risultato può essere statisticamente significativo ma troppo piccolo per avere rilievo teorico o pratico.</p>
-<p>Un risultato non significativo può essere compatibile sia con effetti trascurabili sia con effetti rilevanti stimati con scarsa precisione.</p>
+<p>Un risultato può essere statisticamente significativo ma troppo piccolo per avere rilievo teorico o pratico. Al contrario, un risultato non significativo può essere compatibile sia con effetti trascurabili sia con effetti rilevanti stimati con scarsa precisione.</p>
 </div>
 </div>
 </section></section><section id="sec-freq-testing-limits" class="level2" data-number="4.10"><h2 data-number="4.10" class="anchored" data-anchor-id="sec-freq-testing-limits">
 <span class="header-section-number">4.10</span> Limiti e usi appropriati</h2>
 <section id="la-soglia-crea-una-discontinuità-decisionale" class="level3" data-number="4.10.1"><h3 data-number="4.10.1" class="anchored" data-anchor-id="la-soglia-crea-una-discontinuità-decisionale">
 <span class="header-section-number">4.10.1</span> La soglia crea una discontinuità decisionale</h3>
-<p><span class="math inline">\(p=0.049\)</span> e <span class="math inline">\(p=0.051\)</span> rappresentano livelli di incompatibilità molto simili. Trasformarli in categorie opposte può esagerare la differenza tra i risultati.</p>
-<p>La soglia può essere utile in una procedura decisionale, ma non deve sostituire la lettura continua dei dati.</p>
+<p>Valori come <span class="math inline">\(p=0.049\)</span> e <span class="math inline">\(p=0.051\)</span> rappresentano livelli di incompatibilità molto simili. La loro trasformazione in categorie opposte può far apparire una differenza sostanziale dove esiste soltanto un piccolo scarto numerico.</p>
+<p>Una soglia può essere utile quando occorre applicare una regola decisionale prestabilita, ma non dovrebbe sostituire la lettura continua dei risultati né la considerazione della grandezza dell’effetto e della sua incertezza.</p>
 </section><section id="lipotesi-nulla-puntuale-può-essere-poco-informativa" class="level3" data-number="4.10.2"><h3 data-number="4.10.2" class="anchored" data-anchor-id="lipotesi-nulla-puntuale-può-essere-poco-informativa">
 <span class="header-section-number">4.10.2</span> L’ipotesi nulla puntuale può essere poco informativa</h3>
-<p>In molti contesti, sapere che un effetto non è esattamente zero è meno utile che sapere se sia:</p>
-<ul>
-<li>sufficientemente grande;</li>
-<li>praticamente rilevante;</li>
-<li>compatibile con una regione di equivalenza;</li>
-<li>stabile tra popolazioni e contesti.</li>
-</ul>
-<p>La difficoltà non rende sempre illegittima un’ipotesi puntuale. Indica che la domanda deve essere scelta in funzione dello scopo scientifico.</p>
+<p>In molti contesti, sapere che un effetto non è esattamente uguale a zero è meno utile che stabilire se sia abbastanza grande da avere rilevanza pratica, se ricada all’interno di una regione di equivalenza oppure se rimanga stabile tra popolazioni e contesti differenti.</p>
+<p>Ciò non rende sempre illegittima un’ipotesi nulla puntuale. Mostra piuttosto che l’ipotesi deve essere scelta in funzione della domanda scientifica e della decisione che si intende sostenere.</p>
 </section><section id="un-risultato-non-significativo-non-dimostra-equivalenza" class="level3" data-number="4.10.3"><h3 data-number="4.10.3" class="anchored" data-anchor-id="un-risultato-non-significativo-non-dimostra-equivalenza">
 <span class="header-section-number">4.10.3</span> Un risultato non significativo non dimostra equivalenza</h3>
-<p>Per sostenere che un effetto sia abbastanza piccolo da essere trascurabile occorre definire che cosa significhi «abbastanza piccolo» e usare una procedura adatta, come un test di equivalenza o un’analisi con una regione di effetti praticamente trascurabili.</p>
+<p>Per sostenere che un effetto sia sufficientemente piccolo da poter essere considerato trascurabile occorre definire in anticipo che cosa significhi <em>sufficientemente piccolo</em> e utilizzare una procedura coerente con questa domanda, come un test di equivalenza o un’analisi basata su una regione di effetti praticamente trascurabili.</p>
+<p>Il semplice mancato rifiuto di un’ipotesi nulla puntuale non fornisce questa informazione.</p>
 </section><section id="il-valore-p-è-sensibile-al-piano-di-analisi" class="level3" data-number="4.10.4"><h3 data-number="4.10.4" class="anchored" data-anchor-id="il-valore-p-è-sensibile-al-piano-di-analisi">
 <span class="header-section-number">4.10.4</span> Il valore-<em>p</em> è sensibile al piano di analisi</h3>
-<p>Arresto opzionale, confronti multipli, esclusioni flessibili e scelta post hoc delle analisi modificano le proprietà nominali della procedura. Preregistrazione, trasparenza e analisi di sensibilità aiutano a rendere interpretabili i risultati.</p>
+<p>Arresto opzionale della raccolta, confronti multipli, criteri flessibili di esclusione e selezione post hoc delle analisi modificano le proprietà nominali della procedura. Lo stesso valore-<em>p</em> può quindi assumere significati diversi a seconda di come lo studio è stato condotto e analizzato.</p>
+<p>Preregistrazione, trasparenza nelle scelte e analisi di sensibilità contribuiscono a rendere il risultato interpretabile, perché permettono di ricostruire il processo che ha prodotto la statistica osservata.</p>
 </section><section id="il-test-non-controlla-la-validità-scientifica" class="level3" data-number="4.10.5"><h3 data-number="4.10.5" class="anchored" data-anchor-id="il-test-non-controlla-la-validità-scientifica">
 <span class="header-section-number">4.10.5</span> Il test non controlla la validità scientifica</h3>
-<p>Un test può essere calcolato correttamente su:</p>
-<ul>
-<li>un campione non rappresentativo;</li>
-<li>una misura poco valida;</li>
-<li>un disegno confuso;</li>
-<li>un modello inadeguato.</li>
-</ul>
-<p>La significatività non corregge questi problemi.</p>
+<p>Un test può essere calcolato correttamente anche quando il campione non è rappresentativo, la misura possiede scarsa validità, il disegno è confuso o il modello è inadeguato. La significatività statistica non corregge questi problemi e non può trasformare un disegno debole in una fonte affidabile di conoscenza.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Quando il test è utile">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1218,67 +1119,33 @@ H_1:\mu\neq\mu_0.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Un test frequentista è particolarmente interpretabile quando:</p>
-<ul>
-<li>la domanda decisionale è definita prima dei dati;</li>
-<li>il disegno consente di collegare il parametro alla domanda scientifica;</li>
-<li>il modello e l’errore standard sono adeguati;</li>
-<li>la famiglia di test è chiaramente specificata;</li>
-<li>vengono riportati anche stime, intervalli e misure dell’effetto.</li>
-</ul>
+<p>Un test frequentista è particolarmente interpretabile quando la domanda decisionale è definita prima dei dati, il disegno collega chiaramente il parametro alla domanda scientifica, il modello e l’errore standard sono adeguati, la famiglia di test è specificata e il risultato viene accompagnato da stime, intervalli e misure della dimensione dell’effetto.</p>
 </div>
 </div>
 </section></section><section id="sec-freq-testing-bayes" class="level2" data-number="4.11"><h2 data-number="4.11" class="anchored" data-anchor-id="sec-freq-testing-bayes">
 <span class="header-section-number">4.11</span> Confronto con l’inferenza bayesiana</h2>
-<p>Il confronto più utile parte dalle domande, non dagli slogan.</p>
+<p>Il confronto più utile tra frequentismo e bayesianesimo parte dalle domande che i due approcci consentono di formulare.</p>
 <p>Un test frequentista standard chiede:</p>
 <blockquote class="blockquote">
 <p>Quanto è estremo il risultato sotto <span class="math inline">\(H_0\)</span>?</p>
 </blockquote>
-<p>Un’analisi bayesiana può chiedere:</p>
+<p>Un’analisi bayesiana può invece chiedere:</p>
 <blockquote class="blockquote">
-<p>Come si distribuisce l’incertezza sul parametro dopo avere combinato prior e dati?</p>
+<p>Come si distribuisce l’incertezza sul parametro dopo avere combinato la distribuzione a priori e i dati?</p>
 </blockquote>
-<p>oppure, in un modello che assegna probabilità a ipotesi discrete:</p>
-<blockquote class="blockquote">
-<p>Come cambiano le probabilità relative delle ipotesi dopo i dati?</p>
-</blockquote>
-<p>Queste non sono riformulazioni dello stesso numero. Un valore-<em>p</em> non è una probabilità a posteriori, e una probabilità a posteriori non possiede automaticamente il controllo frequentista degli errori.</p>
-<p>Il Companion approfondisce la fragilità del valore-<em>p</em> e mostra come il workflow bayesiano sposti l’attenzione verso modello generativo, distribuzione a posteriori, predizioni e controllo del modello. Il modulo frequentista conserva però una funzione indispensabile: permettere di leggere correttamente la letteratura e comprendere quali proprietà procedurali vengono garantite dai metodi classici.</p>
+<p>Quando il modello assegna probabilità a ipotesi discrete, la domanda può riguardare anche il modo in cui cambiano le loro probabilità relative dopo l’osservazione dei dati.</p>
+<p>Queste formulazioni non rappresentano interpretazioni diverse dello stesso numero. Un valore-<em>p</em> non è una probabilità a posteriori, così come una probabilità a posteriori non possiede automaticamente il controllo frequentista degli errori.</p>
+<p>Il Companion approfondisce i limiti dell’uso meccanico del valore-<em>p</em> e mostra come il workflow bayesiano sposti l’attenzione verso il modello generativo, la distribuzione a posteriori, le predizioni e il controllo dell’adeguatezza del modello. Il modulo frequentista conserva tuttavia una funzione essenziale: permette di leggere correttamente la letteratura esistente e di comprendere quali proprietà procedurali siano garantite dai metodi classici.</p>
 </section><section id="sec-freq-testing-to-sample-size" class="level2" data-number="4.12"><h2 data-number="4.12" class="anchored" data-anchor-id="sec-freq-testing-to-sample-size">
 <span class="header-section-number">4.12</span> Verso la pianificazione dello studio</h2>
-<p>Un risultato non significativo può dipendere da:</p>
-<ul>
-<li>un effetto assente o trascurabile;</li>
-<li>un campione troppo piccolo;</li>
-<li>una misura poco precisa;</li>
-<li>grande eterogeneità;</li>
-<li>un modello o un test poco sensibile.</li>
-</ul>
-<p>Per valutare in anticipo quanto uno studio sia informativo, occorre specificare:</p>
-<ol type="1">
-<li>quale effetto minimo sia scientificamente rilevante;</li>
-<li>quale livello di errore di tipo I sia accettabile;</li>
-<li>quale potenza si desideri;</li>
-<li>quale variabilità e struttura dei dati siano plausibili.</li>
-</ol>
-<p>Questi elementi conducono al capitolo successivo sulla pianificazione della numerosità campionaria.</p>
+<p>Un risultato non significativo può avere origini molto differenti. L’effetto potrebbe essere assente o trascurabile, ma il campione potrebbe anche essere troppo piccolo, la misura poco precisa, l’eterogeneità elevata oppure il modello e il test poco sensibili alla differenza di interesse.</p>
+<p>Per valutare in anticipo quanto uno studio potrà essere informativo è necessario specificare quale effetto minimo abbia rilevanza scientifica, quale livello di errore di tipo I sia accettabile, quale potenza si desideri e quali valori della variabilità e della struttura dei dati siano plausibili.</p>
+<p>Questi elementi collegano la teoria del test alla progettazione dello studio e introducono il capitolo successivo, dedicato alla pianificazione della numerosità campionaria.</p>
 </section><section id="riflessioni-conclusive" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="riflessioni-conclusive">Riflessioni conclusive</h2>
-<p>Il test di ipotesi colloca una statistica osservata nella distribuzione che avrebbe sotto un’ipotesi nulla e un insieme di assunzioni. Il valore-<em>p</em> misura l’estremità del risultato in quella distribuzione; il confronto con <span class="math inline">\(\alpha\)</span> applica una regola decisionale.</p>
-<p>La distinzione tra Fisher e Neyman–Pearson chiarisce perché nella pratica convivano due usi:</p>
-<ul>
-<li>il valore-<em>p</em> come misura graduata di incompatibilità;</li>
-<li>il test come procedura di decisione con errori controllati.</li>
-</ul>
-<p>Nessuno dei due usi autorizza a leggere il valore-<em>p</em> come probabilità dell’ipotesi o come misura dell’importanza dell’effetto.</p>
-<p>Una comunicazione scientifica adeguata affianca al risultato del test:</p>
-<ul>
-<li>stima dell’effetto;</li>
-<li>intervallo di confidenza;</li>
-<li>informazioni sul disegno e sulle assunzioni;</li>
-<li>valutazione della rilevanza sostantiva.</li>
-</ul>
-<p>Il prossimo capitolo completerà la logica decisionale studiando il rapporto tra effetto bersaglio, potenza e numerosità campionaria.</p>
+<p>Il test di ipotesi colloca una statistica osservata nella distribuzione che essa avrebbe sotto un’ipotesi nulla e un insieme di assunzioni. Il valore-<em>p</em> misura l’estremità del risultato all’interno di quella distribuzione, mentre il confronto con <span class="math inline">\(\alpha\)</span> applica una regola decisionale.</p>
+<p>La distinzione tra Fisher e Neyman–Pearson chiarisce perché nella pratica contemporanea convivano due usi differenti. Il valore-<em>p</em> può essere letto come misura graduata di incompatibilità oppure inserito in una procedura di decisione dotata di errori controllati. Nessuno dei due usi autorizza tuttavia a interpretarlo come probabilità dell’ipotesi o come misura dell’importanza dell’effetto.</p>
+<p>Una comunicazione scientifica adeguata non si arresta quindi alla dichiarazione di significatività. Riporta la stima dell’effetto e il relativo intervallo, descrive il disegno e le assunzioni, chiarisce il piano di analisi e valuta la rilevanza sostantiva del risultato.</p>
+<p>Il prossimo capitolo completerà la logica decisionale esaminando il rapporto tra effetto bersaglio, potenza e numerosità campionaria.</p>
 </section><section id="esercizi" class="level2 unnumbered unlisted"><h2 class="unnumbered unlisted anchored" data-anchor-id="esercizi">Esercizi</h2>
 <ol type="1">
 <li><p>Qual è la differenza tra un valore-<em>p</em> e il livello <span class="math inline">\(\alpha\)</span>?</p></li>
@@ -1287,7 +1154,7 @@ H_1:\mu\neq\mu_0.
 <li><p>Un risultato produce <span class="math inline">\(p=0.18\)</span>. Qual è la conclusione frequentista corretta? Quale conclusione non è giustificata?</p></li>
 <li><p>Perché la potenza non può essere descritta senza specificare un effetto sotto l’alternativa?</p></li>
 <li><p>Nel test del chi-quadrato emerge <span class="math inline">\(p=0.030\)</span>. Quali informazioni importanti non sono contenute in questo numero?</p></li>
-<li><p>Perché scegliere un test unilaterale dopo aver osservato la direzione dell’effetto altera l’interpretazione del test?</p></li>
+<li><p>Perché scegliere un test unilaterale dopo avere osservato la direzione dell’effetto altera l’interpretazione del test?</p></li>
 <li><p>In che modo un’analisi bayesiana e un test frequentista formulano domande diverse sugli stessi dati?</p></li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled" title="Soluzioni">
@@ -1305,12 +1172,12 @@ H_1:\mu\neq\mu_0.
 <ol type="1">
 <li><p>Il valore-<em>p</em> è calcolato dai dati e misura l’estremità del risultato sotto <span class="math inline">\(H_0\)</span>. <span class="math inline">\(\alpha\)</span> è una soglia decisionale scelta prima dell’analisi per controllare l’errore di tipo I della procedura.</p></li>
 <li><p>Il 3% riguarda la probabilità di risultati almeno altrettanto estremi sotto <span class="math inline">\(H_0\)</span>. Non riguarda la probabilità di <span class="math inline">\(H_0\)</span> condizionata ai dati.</p></li>
-<li><p>Stabilisce quali valori della statistica siano almeno altrettanto incompatibili con <span class="math inline">\(H_0\)</span> quanto quello osservato. Cambiando test unilaterale, bilaterale o statistica, può cambiare il valore-<em>p</em>.</p></li>
+<li><p>La regola stabilisce quali valori della statistica siano almeno altrettanto incompatibili con <span class="math inline">\(H_0\)</span> quanto quello osservato. Cambiando la statistica o la scelta tra test unilaterale e bilaterale può cambiare anche il valore-<em>p</em>.</p></li>
 <li><p>Al livello convenzionale 0.05, non si rifiuta <span class="math inline">\(H_0\)</span>. Non è giustificato concludere che <span class="math inline">\(H_0\)</span> sia vera, che l’effetto sia esattamente zero o che i gruppi siano equivalenti.</p></li>
 <li><p>La probabilità di rifiutare <span class="math inline">\(H_0\)</span> cambia con la distanza tra il parametro vero e il valore nullo. Non esiste quindi una potenza unica per tutte le possibili alternative.</p></li>
-<li><p>Non contiene la grandezza dell’associazione, la sua precisione, la probabilità che l’associazione esista, l’eventuale causalità o la validità delle categorie e del disegno.</p></li>
-<li><p>La coda viene selezionata usando informazione già contenuta nei dati, mentre il calcolo nominale presuppone che la direzione sia stata fissata in anticipo. Il controllo dell’errore di tipo I non è più quello dichiarato.</p></li>
-<li><p>Il test frequentista valuta l’estremità dei dati sotto <span class="math inline">\(H_0\)</span>. L’analisi bayesiana rappresenta l’incertezza a posteriori su parametri o ipotesi mediante prior, verosimiglianza e dati.</p></li>
+<li><p>Il valore-<em>p</em> non contiene la grandezza dell’associazione, la sua precisione, la probabilità che l’associazione esista, l’eventuale causalità o la validità delle categorie e del disegno.</p></li>
+<li><p>La coda viene selezionata usando informazione già contenuta nei dati, mentre il calcolo nominale presuppone che la direzione sia stata fissata in anticipo. Il controllo dell’errore di tipo I non è quindi più quello dichiarato.</p></li>
+<li><p>Il test frequentista valuta l’estremità dei dati sotto <span class="math inline">\(H_0\)</span>. L’analisi bayesiana rappresenta l’incertezza a posteriori su parametri o ipotesi mediante distribuzione a priori, verosimiglianza e dati.</p></li>
 </ol>
 </div>
 </div>
@@ -1327,18 +1194,7 @@ H_1:\mu\neq\mu_0.
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li>Un test richiede ipotesi, statistica test, distribuzione nulla e regola di estremità.</li>
-<li>Il valore-<em>p</em> è calcolato sotto <span class="math inline">\(H_0\)</span> e non è la probabilità di <span class="math inline">\(H_0\)</span>.</li>
-<li>Il valore-<em>p</em> e il livello <span class="math inline">\(\alpha\)</span> svolgono funzioni diverse.</li>
-<li>La pratica NHST combina spesso elementi fisheriani e Neyman–Pearson.</li>
-<li>Gli errori di tipo I e II e la potenza sono proprietà della procedura sotto condizioni specificate.</li>
-<li>La potenza dipende dall’effetto sotto l’alternativa.</li>
-<li>Non rifiutare <span class="math inline">\(H_0\)</span> non significa accettarla o dimostrare equivalenza.</li>
-<li>Significatività statistica, dimensione dell’effetto e rilevanza sostantiva sono concetti distinti.</li>
-<li>La qualità di un test dipende da disegno, misurazione, modello e piano di analisi.</li>
-<li>Frequentismo e bayesianesimo rispondono a domande probabilistiche differenti.</li>
-</ul>
+<p>Un test richiede un’ipotesi nulla, un’alternativa, una statistica test, una distribuzione di riferimento e una regola di estremità. Il valore-<em>p</em> viene calcolato sotto <span class="math inline">\(H_0\)</span> e non rappresenta la probabilità di <span class="math inline">\(H_0\)</span>. Il valore-<em>p</em> e il livello <span class="math inline">\(\alpha\)</span> svolgono funzioni differenti, anche se vengono spesso combinati nella pratica NHST. Gli errori di tipo I e di tipo II e la potenza sono proprietà della procedura sotto condizioni specificate, e la potenza dipende dall’effetto considerato sotto l’alternativa. Non rifiutare <span class="math inline">\(H_0\)</span> non significa accettarla o dimostrare equivalenza. Significatività statistica, dimensione dell’effetto e rilevanza sostantiva rimangono concetti distinti. La qualità dell’inferenza dipende dal disegno, dalla misurazione, dal modello e dal piano di analisi. Frequentismo e bayesianesimo rispondono infine a domande probabilistiche differenti.</p>
 </div>
 </div>
 </div>
