@@ -1,57 +1,59 @@
 /*-- scss:defaults --*/
 
-// ============================================
-// FONT
-// ============================================
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap");
-
-$font-family-sans-serif: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$font-family-sans-serif: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 $font-family-serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
 $font-family-monospace: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-// ============================================
-// DIMENSIONI
-// ============================================
-
-$font-size-base: 1.0625rem;
-$line-height-base: 1.65;
-
-// ============================================
-// COLORI LIGHT
-// ============================================
-
-$body-color: #2d2d2d;
-$link-color: #1a5fb4;
-$headings-color: #1a1a1a;
-
-$border-color: #dee2e6;
-$pre-bg: #f6f8fa;
-$code-bg: #f0f2f5;
-
-$code-font-size: 0.85em;
-$pre-border-radius: 0.5rem;
-
-// ============================================
-// HEADINGS
-// ============================================
-
+$font-size-base: 1.05rem;
+$line-height-base: 1.67;
 $headings-font-family: $font-family-sans-serif;
 $headings-font-weight: 600;
-$headings-line-height: 1.3;
+$headings-line-height: 1.25;
+
+$body-bg: #ffffff;
+$body-color: #27333c;
+$headings-color: #17232c;
+$primary: #39729e;
+$link-color: #2f6f9d;
+$link-hover-color: #214f70;
+$border-color: #dce3e8;
+$code-bg: #f2f5f7;
+$code-color: #24313a;
+$code-block-bg: #f6f8f9;
+$pre-border-radius: 0.35rem;
 
 /*-- scss:rules --*/
 
-// ============================================
-// BASE
-// ============================================
+:root {
+  --utet-accent: #39729e;
+  --utet-accent-strong: #275675;
+  --utet-accent-soft: #eaf2f7;
+  --utet-ink: #17232c;
+  --utet-text: #27333c;
+  --utet-muted: #657582;
+  --utet-border: #dce3e8;
+  --utet-border-strong: #c7d2da;
+  --utet-surface: #f6f8f9;
+  --utet-surface-raised: #ffffff;
+  --utet-code-bg: #f2f5f7;
+  --utet-shadow: 0 0.5rem 1.5rem rgba(25, 48, 64, 0.08);
+  --utet-reading-width: 74ch;
+}
+
+// -----------------------------------------------------------------------------
+// Base and reading measure
+// -----------------------------------------------------------------------------
+
+html {
+  scroll-padding-top: 5rem;
+}
 
 body {
   font-family: $font-family-sans-serif;
   font-weight: 400;
-  color: $body-color;
+  color: var(--utet-text);
   line-height: $line-height-base;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -59,105 +61,159 @@ body {
   font-feature-settings: "liga", "kern";
 }
 
-// ============================================
-// LAYOUT E LARGHEZZA DEL TESTO
-// ============================================
-
-// Lascia che sia la griglia responsiva di Quarto a determinare la larghezza
-// della colonna centrale. Una larghezza fissa qui puo invadere il TOC destro.
-main.content {
-  width: 100%;
-  max-width: 100%;
+main.content,
+#quarto-document-content,
+.quarto-content,
+.page-columns,
+.column-body,
+.cell,
+.cell-output,
+div.sourceCode {
   min-width: 0;
+  max-width: 100%;
   box-sizing: border-box;
 }
 
-// Limita solo gli elementi testuali, non i contenitori generali.
+main.content {
+  width: 100%;
+}
+
 main.content p,
-main.content li,
+main.content > ul,
+main.content > ol,
 main.content blockquote,
 main.content .callout-body {
-  max-width: 74ch;
+  max-width: var(--utet-reading-width);
 }
 
 p {
-  margin-bottom: 1rem;
+  margin-bottom: 1.05rem;
 }
 
-// Spazio tra corpo centrale e Sommario destro.
-// Non riduce la larghezza utile del testo.
 @media (min-width: 992px) {
   #quarto-margin-sidebar {
-    padding-left: 0.9rem;
+    padding-left: 1.1rem;
   }
 }
 
-// ============================================
-// TITOLI
-// ============================================
+// -----------------------------------------------------------------------------
+// Headings and title metadata
+// -----------------------------------------------------------------------------
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family-sans-serif;
-  color: $headings-color;
+  color: var(--utet-ink);
   margin-top: 0;
+  text-wrap: balance;
 }
 
-h1 {
-  font-size: 2.35rem;
-  font-weight: 700; // Un peso 700 compensa la mancanza del serif per dare impatto
+h1,
+.quarto-title h1 {
+  font-family: $font-family-serif;
+  font-size: clamp(2.15rem, 4vw, 2.85rem);
+  font-weight: 600;
   letter-spacing: -0.025em;
-  line-height: 1.15;
-  margin-top: 0.4em;
-  margin-bottom: 0.8em;
+  line-height: 1.12;
+  margin-top: 0.25em;
+  margin-bottom: 0.65em;
 }
 
 h2 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-top: 2.4rem;
-  margin-bottom: 1.2rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 2px solid #e8ecf0;
+  font-size: 1.7rem;
+  letter-spacing: -0.018em;
   line-height: 1.2;
+  margin-top: 2.8rem;
+  margin-bottom: 1.15rem;
+  padding-bottom: 0.42rem;
+  border-bottom: 1px solid var(--utet-border);
 }
 
-// ============================================
-// METADATI
-// ============================================
+h3 {
+  font-size: 1.3rem;
+  margin-top: 2.1rem;
+  margin-bottom: 0.8rem;
+}
+
+h4 {
+  font-size: 1.08rem;
+  margin-top: 1.7rem;
+  margin-bottom: 0.65rem;
+}
 
 .quarto-title-meta {
-  font-size: 0.95rem;
-  color: #5a5a5a;
-  border-bottom: 1px solid #dee2e6;
-  padding-bottom: 1.5rem;
-  margin-bottom: 2.2rem;
+  font-size: 0.9rem;
+  color: var(--utet-muted);
+  border-bottom: 1px solid var(--utet-border);
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
 }
 
-.quarto-title-meta .author,
-.quarto-title-meta .date {
+.quarto-title-meta-heading {
+  color: var(--utet-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.quarto-title-meta-contents {
+  color: var(--utet-text);
   font-weight: 500;
 }
 
-// ============================================
-// LINK
-// ============================================
+// -----------------------------------------------------------------------------
+// Links and controls
+// -----------------------------------------------------------------------------
 
 a {
   color: $link-color;
-  text-decoration: none;
-  transition: color 0.15s ease, border-bottom-color 0.15s ease;
-  border-bottom: 1px solid transparent;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
 }
 
 a:hover {
-  color: #12437f;
-  border-bottom-color: $link-color;
+  color: $link-hover-color;
 }
 
-// ============================================
-// MATEMATICA / MATHJAX
-// ============================================
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+}
+
+.home-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.58rem 0.95rem;
+  border: 1px solid var(--utet-border-strong);
+  border-radius: 0.25rem;
+  background: var(--utet-surface-raised);
+  color: var(--utet-accent-strong);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.home-action:hover {
+  background: var(--utet-accent-soft);
+  border-color: var(--utet-accent);
+}
+
+.home-action--primary {
+  background: var(--utet-accent);
+  border-color: var(--utet-accent);
+  color: #ffffff;
+}
+
+.home-action--primary:hover {
+  background: var(--utet-accent-strong);
+  color: #ffffff;
+}
+
+// -----------------------------------------------------------------------------
+// Mathematics, code, and output
+// -----------------------------------------------------------------------------
 
 .math.display,
 .MathJax_Display,
@@ -166,11 +222,9 @@ mjx-container[display="true"] {
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
-
   font-size: 106%;
-  margin: 1.5rem 0;
-  padding: 0.25rem 0 0.5rem 0;
-
+  margin: 1.55rem 0;
+  padding: 0.25rem 0 0.5rem;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
@@ -181,81 +235,163 @@ mjx-container:not([display="true"]) {
   vertical-align: 0.04em;
 }
 
-// ============================================
-// CODE BLOCKS
-// ============================================
+pre,
+div.sourceCode,
+.cell-output pre,
+.cell-output-stdout pre,
+.cell-output-stderr pre {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
 
 pre {
-  border-radius: $pre-border-radius;
-  background-color: $pre-bg;
-  padding: 1rem 1.2rem;
-  font-size: $code-font-size;
+  padding: 1rem 1.15rem;
+  font-size: 0.86em;
   line-height: 1.6;
-  border: 1px solid #eaedf0;
-  overflow-x: auto;
+  color: var(--utet-text);
+  background: var(--utet-surface);
+  border: 1px solid var(--utet-border);
+  border-radius: $pre-border-radius;
 }
 
 code {
   font-family: $font-family-monospace;
   font-size: 0.85em;
   font-weight: 500;
-  padding: 0.1em 0.3em;
-  border-radius: 0.25rem;
-  background-color: $code-bg;
+  color: var(--utet-text);
+  background: var(--utet-code-bg);
+  border: 1px solid var(--utet-border);
+  border-radius: 0.2rem;
+  padding: 0.08em 0.3em;
 }
 
-pre code {
-  background-color: transparent;
+pre code,
+pre > code,
+pre code.sourceCode,
+div.sourceCode pre code {
+  color: inherit;
+  background: transparent;
+  border: 0;
   padding: 0;
-  border-radius: 0;
   font-size: inherit;
+  white-space: pre;
 }
 
-// ============================================
-// CITAZIONI
-// ============================================
+details.code-fold > summary,
+details.callout > summary {
+  font-family: $font-family-sans-serif;
+  color: var(--utet-muted);
+  font-weight: 600;
+}
+
+.cell-output,
+.cell-output-stdout,
+.cell-output-stderr {
+  color: var(--utet-text);
+}
+
+// -----------------------------------------------------------------------------
+// Quotations, tables, tabs, callouts
+// -----------------------------------------------------------------------------
 
 blockquote {
-  border-left: 4px solid #1a5fb4;
-  padding: 0.6rem 0 0.6rem 1.4rem;
-  margin: 1.5rem 0;
-  font-style: italic;
-  color: #3d3d3d;
-  background-color: #f8f9fa;
-  border-radius: 0 0.4rem 0.4rem 0;
+  margin: 1.6rem 0;
+  padding: 0.65rem 0 0.65rem 1.25rem;
+  color: var(--utet-text);
+  background: var(--utet-surface);
+  border-left: 3px solid var(--utet-accent);
+  border-radius: 0 0.25rem 0.25rem 0;
+  font-family: $font-family-serif;
+  font-style: normal;
 }
 
-// ============================================
-// TABELLE
-// ============================================
-
 table {
-  font-size: 0.95rem;
   width: 100%;
   margin: 1.5rem 0;
   border-collapse: collapse;
+  font-size: 0.94rem;
+  color: var(--utet-text);
 }
 
 th {
-  font-family: $font-family-sans-serif;
+  padding: 0.62rem 0.72rem;
+  color: var(--utet-ink);
+  background: var(--utet-surface);
+  border-top: 1px solid var(--utet-border-strong);
+  border-bottom: 2px solid var(--utet-border-strong);
   font-weight: 600;
   text-align: left;
-  padding: 0.6rem 0.8rem;
-  border-bottom: 2px solid #dee2e6;
 }
 
 td {
-  padding: 0.5rem 0.8rem;
-  border-bottom: 1px solid #e9ecef;
+  padding: 0.58rem 0.72rem;
+  border-bottom: 1px solid var(--utet-border);
 }
 
 tbody tr:hover {
-  background-color: rgba(26, 95, 180, 0.06);
+  background: var(--utet-accent-soft);
 }
 
-// ============================================
-// NAVIGAZIONE, SIDEBAR E TOC
-// ============================================
+.nav-tabs {
+  border-bottom-color: var(--utet-border);
+  margin-bottom: 1.5rem;
+}
+
+.nav-tabs .nav-link {
+  color: var(--utet-muted);
+  background: var(--utet-surface);
+  border-color: var(--utet-border);
+  border-radius: 0.25rem 0.25rem 0 0;
+  font-weight: 500;
+}
+
+.nav-tabs .nav-link.active {
+  color: #ffffff;
+  background: var(--utet-accent);
+  border-color: var(--utet-accent);
+}
+
+.callout {
+  border-radius: 0.3rem;
+  border-left-width: 4px;
+  box-shadow: none;
+}
+
+.callout-title-container,
+.callout-title {
+  font-family: $font-family-sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.callout-body {
+  font-family: $font-family-sans-serif;
+  font-size: 0.97rem;
+}
+
+.callout-note {
+  border-left-color: var(--utet-accent);
+}
+
+.callout-tip {
+  border-left-color: #4c8062;
+}
+
+.callout-warning {
+  border-left-color: #a16a24;
+}
+
+.callout-important,
+.callout-caution {
+  border-left-color: #9a4b4b;
+}
+
+// -----------------------------------------------------------------------------
+// Navigation and sidebar
+// -----------------------------------------------------------------------------
 
 .sidebar,
 .sidebar-title,
@@ -265,231 +401,428 @@ tbody tr:hover {
 #TOC,
 .toc-title,
 .navbar,
-.nav-tabs,
-.quarto-title-meta,
-.quarto-listing,
-.quarto-categories,
-.quarto-page-breadcrumbs {
+.quarto-page-breadcrumbs,
+.quarto-page-footer {
   font-family: $font-family-sans-serif;
 }
 
-.toc-title {
+.sidebar-title {
   font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
+}
+
+.toc-title {
+  color: var(--utet-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #4a4a4a;
 }
 
-#TOC a {
-  font-weight: 400;
-  padding: 0.2rem 0;
-  transition: color 0.15s ease;
+#TOC a,
+.sidebar a {
+  text-decoration: none;
 }
 
-#TOC a:hover {
-  color: #1a5fb4;
-}
-
-// Numeri nella sidebar e nel TOC
 #quarto-sidebar .chapter-number,
 #quarto-sidebar .section-number,
 .sidebar .chapter-number,
 .sidebar .section-number,
 #TOC .section-number {
+  color: var(--utet-muted);
   opacity: 1;
   font-weight: 500;
 }
 
-// ============================================
-// TAB PANEL
-// ============================================
-
-.nav-tabs {
-  border-bottom: 2px solid #dee2e6;
-  margin-bottom: 1.5rem;
-}
-
-.nav-tabs .nav-item {
-  margin-bottom: -2px;
-}
-
-.nav-tabs .nav-item .nav-link {
-  font-family: $font-family-sans-serif;
-  font-weight: 500;
-  background-color: #f0f2f5;
-  color: #585858;
-  border: 1px solid #dee2e6;
-  border-bottom: none;
-  border-radius: 0.5rem 0.5rem 0 0;
-  padding: 0.6rem 1.4rem;
-  margin-right: 0.2rem;
-  transition: all 0.2s ease;
-}
-
-.nav-tabs .nav-item .nav-link.active {
-  background-color: #1a5fb4;
-  color: #ffffff;
-  border-color: #1a5fb4;
+#quarto-sidebar .sidebar-link.active .chapter-number,
+#quarto-sidebar .sidebar-link.active .section-number,
+.sidebar .sidebar-link.active .chapter-number,
+.sidebar .sidebar-link.active .section-number {
+  color: var(--utet-accent);
   font-weight: 600;
 }
 
-.nav-tabs .nav-link:hover {
-  background-color: #e4e7eb;
-  color: #2d2d2d;
-  border-color: #cfd6dd;
+.quarto-page-breadcrumbs {
+  color: var(--utet-muted);
+  font-size: 0.82rem;
 }
 
-// ============================================
-// CALLOUT
-// ============================================
+// -----------------------------------------------------------------------------
+// Chapter orientation component
+// -----------------------------------------------------------------------------
 
-.callout {
-  border-radius: 0.5rem;
-  border-left-width: 5px;
-}
-
-.callout-title {
-  font-family: $font-family-sans-serif;
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.callout-body {
-  font-family: $font-family-sans-serif;
-  font-size: 0.98rem;
-}
-
-.callout-note {
-  border-left-color: #1a5fb4;
-}
-
-// Riquadro iniziale del capitolo: resta nella colonna del testo e puo
-// restringersi senza spingere o coprire il sommario laterale.
-main.content .chapter-status {
+.chapter-status {
   width: 100%;
-  max-width: 74ch;
+  max-width: var(--utet-reading-width);
+  margin: 0.5rem 0 2.2rem;
+  padding: 1.15rem 1.2rem 1.2rem;
+  background: var(--utet-surface);
+  border-top: 3px solid var(--utet-accent);
+  border-right: 1px solid var(--utet-border);
+  border-bottom: 1px solid var(--utet-border);
+  border-left: 1px solid var(--utet-border);
+  border-radius: 0.25rem;
+}
+
+.chapter-status__eyebrow,
+.home-eyebrow,
+.section-kicker {
+  color: var(--utet-accent-strong);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.chapter-status__eyebrow {
+  margin-bottom: 0.85rem;
+}
+
+.chapter-status__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.35rem;
+}
+
+.chapter-status__item {
   min-width: 0;
-  box-sizing: border-box;
-  margin-inline: 0;
 }
 
-main.content .chapter-status .callout-body-container,
-main.content .chapter-status .callout-body {
-  width: 100%;
+.chapter-status__item p,
+.chapter-status__item ul {
+  max-width: none !important;
+  margin: 0.25rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.chapter-status__item ul {
+  padding-left: 1.1rem;
+}
+
+.chapter-status__label {
+  display: block;
+  color: var(--utet-ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+// -----------------------------------------------------------------------------
+// Homepage
+// -----------------------------------------------------------------------------
+
+.homefront .quarto-title-block {
+  margin-bottom: 1.4rem;
+}
+
+.homefront .quarto-title h1 {
+  max-width: 17ch;
+  font-size: clamp(2.7rem, 6vw, 4.45rem);
+  margin-bottom: 0.3rem;
+}
+
+.homefront .subtitle {
+  max-width: 42ch;
+  color: var(--utet-muted);
+  font-size: 1.15rem;
+  line-height: 1.45;
+}
+
+.homefront .quarto-title-meta {
+  max-width: var(--utet-reading-width);
+  padding-top: 0.3rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.home-intro {
+  max-width: 82ch;
+  padding: 0.4rem 0 2.2rem;
+}
+
+.home-intro .lead {
+  max-width: 66ch;
+  margin-top: 0.65rem;
+  color: var(--utet-text);
+  font-family: $font-family-serif;
+  font-size: clamp(1.18rem, 2.2vw, 1.42rem);
+  line-height: 1.55;
+}
+
+.module-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
   max-width: 100%;
+  margin: 0 0 2.6rem;
+  border-top: 1px solid var(--utet-border-strong);
+  border-bottom: 1px solid var(--utet-border-strong);
+}
+
+.module-fact {
   min-width: 0;
-  box-sizing: border-box;
+  padding: 1rem 1.15rem 1rem 0;
+  border-right: 1px solid var(--utet-border);
 }
 
-main.content .chapter-status p,
-main.content .chapter-status li,
-main.content .chapter-status a {
-  overflow-wrap: anywhere;
+.module-fact + .module-fact {
+  padding-left: 1.15rem;
 }
 
-.callout-warning {
-  border-left-color: #e67e22;
+.module-fact:last-child {
+  border-right: 0;
 }
 
-.callout-important {
-  border-left-color: #c0392b;
+.module-fact__label {
+  display: block;
+  margin-bottom: 0.18rem;
+  color: var(--utet-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
-.callout-tip {
-  border-left-color: #27ae60;
+.module-fact strong {
+  display: block;
+  color: var(--utet-ink);
+  font-size: 0.98rem;
+  line-height: 1.35;
 }
 
-// ============================================
-// FIGURE E IMMAGINI
-// ============================================
+.homefront h2 {
+  max-width: 22ch;
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-top: 3.2rem;
+  font-family: $font-family-serif;
+  font-size: clamp(1.85rem, 3.5vw, 2.35rem);
+}
+
+.study-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0 2.5rem;
+}
+
+.study-step {
+  padding: 1rem 1.05rem;
+  background: var(--utet-surface);
+  border: 1px solid var(--utet-border);
+  border-radius: 0.25rem;
+}
+
+.study-step__number {
+  color: var(--utet-accent);
+  font-family: $font-family-serif;
+  font-size: 1.55rem;
+  font-weight: 600;
+}
+
+.study-step strong {
+  display: block;
+  margin: 0.1rem 0 0.35rem;
+  color: var(--utet-ink);
+}
+
+.study-step p {
+  max-width: none !important;
+  margin: 0;
+  color: var(--utet-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.learning-path {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0 2.2rem;
+}
+
+.path-card {
+  position: relative;
+  min-width: 0;
+  padding: 1.15rem 1.2rem 1.2rem;
+  background: var(--utet-surface-raised);
+  border: 1px solid var(--utet-border);
+  border-radius: 0.25rem;
+  box-shadow: 0 0.2rem 0.8rem rgba(25, 48, 64, 0.04);
+}
+
+.path-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.8rem;
+  margin-bottom: 0.55rem;
+  color: var(--utet-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.path-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.17rem;
+}
+
+.path-card p {
+  max-width: none !important;
+  margin: 0 0 0.85rem;
+  color: var(--utet-muted);
+  font-size: 0.91rem;
+  line-height: 1.5;
+}
+
+.path-card a {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.editorial-note {
+  max-width: 82ch;
+  margin: 2.5rem 0;
+  padding: 1.1rem 1.2rem;
+  background: var(--utet-accent-soft);
+  border-left: 3px solid var(--utet-accent);
+}
+
+.editorial-note p {
+  max-width: none !important;
+  margin: 0;
+}
+
+// -----------------------------------------------------------------------------
+// Figures, lists, notes, footer
+// -----------------------------------------------------------------------------
 
 .figure {
   margin: 2rem 0;
 }
 
-.figure-caption {
-  font-family: $font-family-sans-serif;
-  font-size: 0.9rem;
-  color: #5a5a5a;
+.figure-caption,
+figcaption {
+  color: var(--utet-muted);
+  font-size: 0.88rem;
   text-align: center;
-  margin-top: 0.5rem;
+  margin-top: 0.55rem;
 }
-
-// ============================================
-// LISTE
-// ============================================
 
 ul, ol {
   margin-bottom: 1rem;
-  padding-left: 1.5rem;
+  padding-left: 1.45rem;
 }
 
 li {
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.28rem;
 }
-
-// ============================================
-// FOOTNOTE
-// ============================================
 
 .footnotes {
-  font-size: 0.9rem;
-  border-top: 1px solid #dee2e6;
+  color: var(--utet-muted);
+  font-size: 0.88rem;
+  border-top: 1px solid var(--utet-border);
   margin-top: 3rem;
-  padding-top: 1.5rem;
+  padding-top: 1.4rem;
 }
 
-.footnote-ref {
-  font-size: 0.75rem;
-  vertical-align: super;
+.quarto-page-footer {
+  color: var(--utet-muted);
+  border-top-color: var(--utet-border);
+  font-size: 0.82rem;
 }
 
-// ============================================
-// RESPONSIVE
-// ============================================
+// -----------------------------------------------------------------------------
+// Responsive and print
+// -----------------------------------------------------------------------------
+
+@media (max-width: 991px) {
+  .module-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .module-fact:nth-child(2) {
+    border-right: 0;
+  }
+
+  .module-fact:nth-child(n + 3) {
+    border-top: 1px solid var(--utet-border);
+  }
+}
 
 @media (max-width: 768px) {
   main.content {
-    max-width: 100%;
-    padding: 0 1rem;
+    padding-inline: 0.25rem;
   }
 
   main.content p,
-  main.content li,
+  main.content > ul,
+  main.content > ol,
   main.content blockquote,
   main.content .callout-body {
     max-width: 100%;
   }
 
-  h1 {
-    font-size: 1.9rem;
+  h1,
+  .quarto-title h1 {
+    font-size: 2.15rem;
   }
 
   h2 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
-  h3 {
-    font-size: 1.3rem;
+  .chapter-status__grid,
+  .study-steps,
+  .learning-path {
+    grid-template-columns: 1fr;
   }
 
-  .nav-tabs .nav-item .nav-link {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9rem;
+  .module-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .module-fact,
+  .module-fact + .module-fact {
+    padding: 0.85rem 0;
+    border-right: 0;
+    border-top: 1px solid var(--utet-border);
+  }
+
+  .module-fact:first-child {
+    border-top: 0;
+  }
+
+  .homefront .quarto-title h1 {
+    font-size: 2.65rem;
   }
 }
 
-// ============================================
-// PRINT
-// ============================================
-
 @media print {
+  :root {
+    --utet-ink: #000000;
+    --utet-text: #000000;
+    --utet-muted: #333333;
+    --utet-border: #cccccc;
+    --utet-surface: #ffffff;
+    --utet-surface-raised: #ffffff;
+    --utet-accent-soft: #ffffff;
+  }
+
   body {
     font-size: 11pt;
     line-height: 1.5;
     color: #000000;
-    background-color: #ffffff;
+    background: #ffffff;
+  }
+
+  .nav-tabs,
+  .navbar,
+  #quarto-sidebar,
+  #TOC,
+  .home-actions {
+    display: none !important;
   }
 
   a {
@@ -497,17 +830,55 @@ li {
     text-decoration: underline;
   }
 
-  .nav-tabs,
-  .navbar,
-  #quarto-sidebar,
-  #TOC {
-    display: none !important;
-  }
-
   pre,
-  code {
-    background-color: #f5f5f5;
+  code,
+  .chapter-status,
+  .path-card,
+  .study-step {
     color: #000000;
-    border-color: #dddddd;
+    background: #ffffff;
+    box-shadow: none;
   }
+}
+
+// Pandoc wraps inline component content in paragraphs. These rules keep the
+// visual components compact while preserving valid Markdown for HTML and PDF.
+.home-actions {
+  display: block;
+}
+
+.home-actions p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  max-width: none !important;
+  margin: 0;
+}
+
+.module-fact p,
+.path-card > p:first-child,
+.study-step > p:first-child,
+.chapter-status__item > p:first-child {
+  margin-top: 0;
+}
+
+.module-fact p {
+  max-width: none !important;
+  margin-bottom: 0.12rem;
+}
+
+.module-fact p:last-child,
+.path-card p:last-child,
+.study-step p:last-child,
+.chapter-status__item p:last-child {
+  margin-bottom: 0;
+}
+
+.home-intro .lead p {
+  max-width: 66ch !important;
+  margin: 0.65rem 0 1rem;
+}
+
+.path-card > p:first-child {
+  margin-bottom: 0.55rem;
 }

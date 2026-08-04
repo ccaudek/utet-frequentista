@@ -1,254 +1,177 @@
 /*-- scss:defaults --*/
 
-// ============================================
-// PALETTE DARK OTTIMIZZATA
-// ============================================
+$body-bg: #11161a;
+$body-color: #e4eaee;
+$headings-color: #f4f7f9;
+$link-color: #8fc4e4;
+$link-hover-color: #b8dcf0;
+$border-color: #34414a;
+$code-bg: #20282e;
+$code-color: #eef3f6;
+$code-block-bg: #171e23;
 
-$body-bg: #111418;
-$body-color: #e6edf3;
-$headings-color: #f5f7fa;
-$link-color: #8fbfff;
-$link-hover-color: #b8d7ff;
-
-$code-block-bg: #1b2028;
-$code-bg: #1b2028;
-$code-color: #e6edf3;
-
-$border-color: #303743;
+// Quarto/Bootstrap surfaces that otherwise may retain the light theme.
+$navbar-bg: #11161a;
+$navbar-fg: #e4eaee;
+$sidebar-bg: #141a1f;
+$sidebar-fg: #dbe4e9;
+$footer-bg: #0f1418;
+$footer-fg: #b8c4cb;
 
 /*-- scss:rules --*/
 
-// ============================================
-// VARIABILI BOOTSTRAP / QUARTO
-// ============================================
-
 :root,
 [data-bs-theme="dark"] {
-  --bs-body-bg: #111418;
-  --bs-body-color: #e6edf3;
-  --bs-emphasis-color: #f5f7fa;
-  --bs-secondary-color: #aeb8c4;
-  --bs-tertiary-color: #8894a3;
-  --bs-border-color: #303743;
+  color-scheme: dark;
 
-  --bs-link-color: #8fbfff;
-  --bs-link-hover-color: #b8d7ff;
+  --utet-accent: #8fc4e4;
+  --utet-accent-strong: #b8dcf0;
+  --utet-accent-soft: #172b37;
+  --utet-ink: #f4f7f9;
+  --utet-text: #e4eaee;
+  --utet-muted: #aebbc4;
+  --utet-border: #34414a;
+  --utet-border-strong: #465660;
+  --utet-surface: #171e23;
+  --utet-surface-raised: #141a1f;
+  --utet-code-bg: #20282e;
+  --utet-code-block-bg: #171e23;
+  --utet-nav-bg: #141a1f;
+  --utet-footer-bg: #0f1418;
+  --utet-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.28);
 
-  --bs-code-color: #e6edf3;
-  --bs-code-bg: #1b2028;
-
-  --quarto-body-bg: #111418;
-  --quarto-body-color: #e6edf3;
+  --bs-body-bg: #11161a;
+  --bs-body-color: #e4eaee;
+  --bs-emphasis-color: #f4f7f9;
+  --bs-secondary-color: #aebbc4;
+  --bs-tertiary-color: #8e9ca6;
+  --bs-border-color: #34414a;
+  --bs-link-color: #8fc4e4;
+  --bs-link-hover-color: #b8dcf0;
+  --bs-code-color: #eef3f6;
+  --bs-code-bg: #20282e;
+  --bs-secondary-bg: #171e23;
+  --bs-tertiary-bg: #20282e;
+  --bs-light-rgb: 23, 30, 35;
+  --quarto-body-bg: #11161a;
+  --quarto-body-color: #e4eaee;
+  --quarto-text-muted: #aebbc4;
+  --quarto-border-color: #34414a;
+  --quarto-sidebar-bg: #141a1f;
 }
-
-// ============================================
-// BASE
-// ============================================
 
 html,
-body {
-  color: #e6edf3;
-  background-color: #111418;
-}
-
-body {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "liga", "kern";
-}
-
-// Regola di sicurezza: forza il testo del contenuto principale.
-// Serve a evitare eredità scure da Bootstrap/Quarto.
-main.content,
-#quarto-document-content,
-.quarto-content,
+body,
+#quarto-content,
+.quarto-container,
 .page-columns,
-.content {
-  color: #e6edf3;
+main.content {
+  color: var(--utet-text);
+  background-color: #11161a;
 }
 
-main.content p,
-main.content li,
-main.content dd,
-main.content dt,
-main.content figcaption,
-main.content .figure-caption,
-main.content .cell-output,
-main.content .cell-output-stdout,
-main.content .cell-output-stderr,
-main.content .callout-body,
-main.content table,
-main.content td,
-main.content th {
-  color: #e6edf3;
-}
+// -----------------------------------------------------------------------------
+// Sidebar and book navigation
+// -----------------------------------------------------------------------------
 
-// Non applicare max-width ai contenitori generali.
-// Limitalo solo al testo vero.
-main.content p,
-main.content ul,
-main.content ol,
-main.content blockquote {
-  max-width: 72ch;
-}
-
-p {
-  margin-bottom: 1rem;
-}
-
-// ============================================
-// TITOLI
-// ============================================
-
-h1, h2, h3, h4, h5, h6 {
-  color: #f5f7fa;
-}
-
-h1 {
-  color: #ffffff;
-}
-
-h2 {
-  color: #f5f7fa;
-  border-bottom-color: #303743;
-}
-
-h6 {
-  color: #b8c2cf;
-}
-
-// ============================================
-// LINK
-// ============================================
-
-a {
-  color: #8fbfff;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: color 0.15s ease, border-bottom-color 0.15s ease;
-}
-
-a:hover {
-  color: #b8d7ff;
-  border-bottom-color: #8fbfff;
-}
-
-// ============================================
-// NAVIGAZIONE, SIDEBAR, TOC
-// ============================================
-
-.sidebar,
-.sidebar-title,
-.sidebar nav,
-.sidebar-navigation,
 #quarto-sidebar,
-#TOC,
-.toc-title,
-.navbar,
-.nav-tabs,
-.quarto-title-meta,
-.quarto-listing,
-.quarto-categories,
-.quarto-page-breadcrumbs {
-  color: #d7dee8;
+.quarto-sidebar,
+.sidebar,
+.sidebar-navigation,
+.sidebar-menu-container,
+.sidebar-logo,
+.sidebar-title,
+.sidebar-tools-main,
+.quarto-sidebar-header,
+.quarto-sidebar-toggle,
+.quarto-sidebar-toggle-contents {
+  color: #dbe4e9 !important;
+  background-color: var(--utet-nav-bg) !important;
+  border-color: var(--utet-border) !important;
 }
 
-.sidebar a,
-#TOC a,
-.navbar a {
-  color: #cbd8e6;
-  border-bottom: none;
+#quarto-sidebar {
+  box-shadow: inset -1px 0 0 var(--utet-border);
 }
 
-.sidebar a:hover,
-#TOC a:hover,
-.navbar a:hover {
-  color: #ffffff;
+#quarto-sidebar .sidebar-title,
+#quarto-sidebar .sidebar-section-title,
+#quarto-sidebar .sidebar-item-text,
+#quarto-sidebar .menu-text,
+#quarto-sidebar .sidebar-link,
+#quarto-sidebar a,
+.sidebar-navigation .sidebar-item-text,
+.sidebar-navigation .menu-text,
+.sidebar-navigation .sidebar-link,
+.sidebar-navigation a {
+  color: #dbe4e9 !important;
 }
 
-.sidebar .active,
-#TOC .active,
-.sidebar a.active,
-#TOC a.active {
-  color: #8fbfff;
+#quarto-sidebar .sidebar-section-title,
+.sidebar-navigation .sidebar-section-title {
+  color: var(--utet-muted) !important;
 }
 
-.toc-title {
-  color: #f0f3f6;
+#quarto-sidebar .sidebar-link:hover,
+#quarto-sidebar .sidebar-item-container:hover,
+.sidebar-navigation .sidebar-link:hover,
+.sidebar-navigation .sidebar-item-container:hover {
+  color: #ffffff !important;
+  background-color: #202a31 !important;
+}
+
+#quarto-sidebar .sidebar-link.active,
+#quarto-sidebar .sidebar-item-container .active,
+.sidebar-navigation .sidebar-link.active,
+.sidebar-navigation .sidebar-item-container .active {
+  color: var(--utet-accent-strong) !important;
+  background-color: var(--utet-accent-soft) !important;
   font-weight: 600;
 }
 
-// ============================================
-// TESTO SECONDARIO E METADATI
-// ============================================
-
-.quarto-title-meta,
-.quarto-title-meta .author,
-.quarto-title-meta .date,
-.figure-caption,
-figcaption,
-.footnotes {
-  color: #aeb8c4;
+#quarto-sidebar .chapter-number,
+#quarto-sidebar .section-number,
+.sidebar-navigation .chapter-number,
+.sidebar-navigation .section-number {
+  color: #91a3ae !important;
 }
 
-.quarto-title-meta {
-  border-bottom-color: #303743;
+#quarto-sidebar .sidebar-link.active .chapter-number,
+#quarto-sidebar .sidebar-link.active .section-number,
+.sidebar-navigation .sidebar-link.active .chapter-number,
+.sidebar-navigation .sidebar-link.active .section-number {
+  color: var(--utet-accent) !important;
 }
 
-// ============================================
-// MATEMATICA
-// ============================================
-
-mjx-container {
-  color: #f0f3f6;
+#quarto-sidebar .sidebar-tools-main a,
+#quarto-sidebar .sidebar-tool,
+.quarto-sidebar-toggle .bi,
+.quarto-sidebar-toggle-title {
+  color: #cbd7de !important;
 }
 
-mjx-container[display="true"] {
-  font-size: 108%;
-  margin: 1.5rem 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 0.25rem 0;
+#quarto-sidebar .sidebar-tools-main a:hover,
+#quarto-sidebar .sidebar-tool:hover {
+  color: #ffffff !important;
 }
 
-mjx-container:not([display="true"]) {
-  font-size: 103%;
-  vertical-align: 0.03em;
+#quarto-sidebar::-webkit-scrollbar,
+.sidebar-menu-container::-webkit-scrollbar {
+  width: 0.65rem;
 }
 
-// ============================================
-// CODE BLOCKS
-// ============================================
-
-pre {
-  background-color: #1b2028;
-  color: #e6edf3;
-  border: 1px solid #303743;
-  border-radius: 0.5rem;
-  padding: 1rem 1.2rem;
-  line-height: 1.6;
-  overflow-x: auto;
+#quarto-sidebar::-webkit-scrollbar-thumb,
+.sidebar-menu-container::-webkit-scrollbar-thumb {
+  background-color: #43515a;
+  border: 2px solid var(--utet-nav-bg);
+  border-radius: 999px;
 }
 
-code {
-  background-color: #1b2028;
-  color: #e6edf3;
-  border-radius: 0.25rem;
-  padding: 0.1em 0.3em;
-}
+// -----------------------------------------------------------------------------
+// Inline code
+// -----------------------------------------------------------------------------
 
-pre code {
-  background-color: transparent;
-  color: inherit;
-  padding: 0;
-  border-radius: 0;
-}
-
-// Codice inline nel testo.
-// Quarto/Bootstrap possono applicare un background chiaro a `code` inline
-// con selettori piu specifici: qui lo separiamo esplicitamente dai code block.
-:not(pre) > code,
+:not(pre) > code:not(.sourceCode),
 p code,
 li code,
 dd code,
@@ -260,385 +183,309 @@ figcaption code,
 .callout-body code,
 .quarto-title-meta code,
 a code {
-  background-color: #242b36 !important;
-  color: #f0f6fc !important;
-  border: 1px solid #3a4350;
-  border-radius: 0.25rem;
-  padding: 0.1em 0.35em;
-  font-size: 0.85em;
-  font-weight: 500;
-  white-space: nowrap;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
+  color: #f2f6f8 !important;
+  background-color: #253039 !important;
+  border-color: #43525c !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025);
 }
 
-// Mantiene i blocchi di codice senza sfondo/padding aggiuntivi sul tag `code`.
-pre > code,
-pre code.sourceCode,
-div.sourceCode pre code {
-  background-color: transparent !important;
+:not(pre) > code:not(.sourceCode) span,
+p code span,
+li code span,
+td code span,
+th code span,
+.callout-body code span {
   color: inherit !important;
-  border: 0;
-  padding: 0;
-  white-space: pre;
+  background: transparent !important;
 }
 
-// Output testuale di R / knitr
-.cell-output,
+// -----------------------------------------------------------------------------
+// Code blocks, filenames, output and syntax highlighting
+// -----------------------------------------------------------------------------
+
+pre,
+pre.sourceCode,
+div.sourceCode,
+.cell-code,
+.cell-code pre,
+.cell-code div.sourceCode,
+.code-with-filename,
+.code-with-filename .sourceCode,
 .cell-output pre,
+.cell-output-stdout pre,
+.cell-output-stderr pre {
+  color: #e7edf1 !important;
+  background-color: var(--utet-code-block-bg) !important;
+  border-color: #3b4952 !important;
+}
+
+div.sourceCode > pre,
+.code-with-filename div.sourceCode > pre,
+.cell-code div.sourceCode > pre,
+pre.sourceCode > code,
+div.sourceCode code.sourceCode,
+.sourceCode code {
+  color: #e7edf1 !important;
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+.code-with-filename .code-with-filename-file,
+.code-with-filename .code-with-filename-file strong,
+.code-annotation-container-grid,
+.code-annotation-gutter,
+.code-copy-button,
+.code-tools-button,
+details.code-fold > summary {
+  color: #c9d5dc !important;
+  background-color: #20282e !important;
+  border-color: #3b4952 !important;
+}
+
+.code-copy-button:hover,
+.code-tools-button:hover,
+details.code-fold > summary:hover {
+  color: #ffffff !important;
+  background-color: #29343c !important;
+}
+
+.cell-output,
 .cell-output-stdout,
 .cell-output-stderr {
-  color: #d7dee8;
-  background-color: transparent;
+  color: var(--utet-text) !important;
 }
 
-// ============================================
-// CALLOUT
-// ============================================
+// Pandoc/Skylighting token classes. Explicit colours avoid light-theme tokens
+// becoming invisible when the block background is dark.
+.sourceCode .al { color: #ff6b7a !important; font-weight: 600; }
+.sourceCode .an { color: #aebbc4 !important; font-style: italic; }
+.sourceCode .at { color: #ffcb6b !important; }
+.sourceCode .bn,
+.sourceCode .dv,
+.sourceCode .fl { color: #f5a97f !important; }
+.sourceCode .bu,
+.sourceCode .cf,
+.sourceCode .kw { color: #c7a0f4 !important; font-weight: 500; }
+.sourceCode .ch,
+.sourceCode .sc,
+.sourceCode .ss,
+.sourceCode .st,
+.sourceCode .vs { color: #b8d98a !important; }
+.sourceCode .cn { color: #f5a97f !important; }
+.sourceCode .co,
+.sourceCode .cv,
+.sourceCode .do,
+.sourceCode .in,
+.sourceCode .wa { color: #8fa1ad !important; font-style: italic; }
+.sourceCode .dt { color: #7fc8d6 !important; }
+.sourceCode .er { color: #ff6b7a !important; text-decoration: underline; }
+.sourceCode .ex,
+.sourceCode .fu { color: #82b4f4 !important; }
+.sourceCode .im,
+.sourceCode .pp { color: #c7a0f4 !important; }
+.sourceCode .op { color: #89dceb !important; }
+.sourceCode .ot { color: #ffcb6b !important; }
+.sourceCode .va { color: #e7edf1 !important; }
 
-.callout {
-  background-color: #171c23;
-  border-color: #303743;
-  border-radius: 0.55rem;
+// -----------------------------------------------------------------------------
+// Callouts
+// -----------------------------------------------------------------------------
+
+.callout,
+.callout.callout-style-default,
+.callout.callout-style-simple {
+  color: var(--utet-text) !important;
+  background-color: var(--utet-surface) !important;
+  border-color: var(--utet-border) !important;
 }
 
-.callout-title {
-  color: #f5f7fa;
-  font-weight: 600;
+.callout .callout-body,
+.callout .callout-body-container,
+.callout .callout-content-container {
+  color: var(--utet-text) !important;
+  background-color: transparent !important;
 }
 
-.callout-body {
-  color: #e6edf3;
+.callout .callout-header,
+.callout .callout-title,
+.callout .callout-title-container,
+details.callout > summary {
+  color: #f4f7f9 !important;
+  border-color: var(--utet-border) !important;
 }
 
-.callout-note {
-  background-color: #152235;
-  border-left-color: #8fbfff;
+.callout .callout-title-container p,
+.callout .callout-title-container strong,
+.callout .callout-title p,
+.callout .callout-title strong,
+details.callout > summary p,
+details.callout > summary strong {
+  color: inherit !important;
 }
 
-.callout-tip {
-  background-color: #13261c;
-  border-left-color: #4ade80;
+.callout-note,
+.callout-note.callout-style-default {
+  background-color: #142733 !important;
+  border-left-color: #6fb5dc !important;
 }
 
-.callout-warning {
-  background-color: #2a2112;
-  border-left-color: #fbbf24;
+.callout-note .callout-header,
+.callout-note .callout-title,
+.callout-note .callout-title-container,
+details.callout-note > summary {
+  color: #d9effc !important;
+  background-color: #1b3544 !important;
 }
 
-.callout-important {
-  background-color: #2a171a;
-  border-left-color: #f87171;
+.callout-tip,
+.callout-tip.callout-style-default {
+  background-color: #17281f !important;
+  border-left-color: #69a77e !important;
 }
 
-.callout-caution {
-  background-color: #2a1c13;
-  border-left-color: #fb923c;
+.callout-tip .callout-header,
+.callout-tip .callout-title,
+.callout-tip .callout-title-container,
+details.callout-tip > summary {
+  color: #ddf4e5 !important;
+  background-color: #20362a !important;
 }
 
-// ============================================
-// TABELLE
-// ============================================
-
-table {
-  color: #e6edf3;
-  border-color: #303743;
+.callout-warning,
+.callout-warning.callout-style-default {
+  background-color: #2b2317 !important;
+  border-left-color: #d29a4a !important;
 }
 
+.callout-warning .callout-header,
+.callout-warning .callout-title,
+.callout-warning .callout-title-container,
+details.callout-warning > summary {
+  color: #ffe7bd !important;
+  background-color: #3a2f1e !important;
+}
+
+.callout-important,
+.callout-caution,
+.callout-important.callout-style-default,
+.callout-caution.callout-style-default {
+  background-color: #2b1a1d !important;
+  border-left-color: #c86b75 !important;
+}
+
+.callout-important .callout-header,
+.callout-important .callout-title,
+.callout-important .callout-title-container,
+.callout-caution .callout-header,
+.callout-caution .callout-title,
+.callout-caution .callout-title-container,
+details.callout-important > summary,
+details.callout-caution > summary {
+  color: #ffdde1 !important;
+  background-color: #3b2428 !important;
+}
+
+.callout-icon-container,
+.callout-toggle {
+  color: inherit !important;
+}
+
+// -----------------------------------------------------------------------------
+// Footer and page navigation
+// -----------------------------------------------------------------------------
+
+footer.footer,
+.quarto-page-footer,
+.nav-footer,
+.nav-footer-left,
+.nav-footer-center,
+.nav-footer-right,
+.page-navigation,
+.page-navigation .nav-page,
+.page-navigation .nav-page-text,
+.page-navigation .nav-page-previous,
+.page-navigation .nav-page-next {
+  color: #b8c4cb !important;
+  background-color: var(--utet-footer-bg) !important;
+  border-color: var(--utet-border) !important;
+}
+
+footer.footer,
+.quarto-page-footer,
+.nav-footer {
+  border-top: 1px solid var(--utet-border) !important;
+}
+
+.quarto-page-footer a,
+.nav-footer a,
+.page-navigation a,
+.page-navigation .nav-page-text {
+  color: #9dcbe6 !important;
+}
+
+.quarto-page-footer a:hover,
+.nav-footer a:hover,
+.page-navigation a:hover,
+.page-navigation a:hover .nav-page-text {
+  color: #d3ecfa !important;
+}
+
+// -----------------------------------------------------------------------------
+// Other dark surfaces
+// -----------------------------------------------------------------------------
+
+blockquote,
+.study-step,
+.chapter-status,
+.path-card,
+.editorial-note,
+.nav-tabs .nav-link,
 th {
-  color: #f5f7fa;
-  border-bottom-color: #3a4350;
+  color: var(--utet-text);
+  background-color: var(--utet-surface) !important;
+  border-color: var(--utet-border) !important;
 }
 
-td {
-  color: #e6edf3;
-  border-bottom-color: #303743;
+.path-card,
+.home-action {
+  background-color: var(--utet-surface-raised) !important;
 }
 
-tbody tr:hover {
-  background-color: rgba(143, 191, 255, 0.08);
+.nav-tabs .nav-link.active,
+.home-action--primary {
+  color: #11161a !important;
+  background-color: var(--utet-accent) !important;
+  border-color: var(--utet-accent) !important;
 }
-
-// ============================================
-// TAB PANEL
-// ============================================
-
-.nav-tabs {
-  border-bottom-color: #303743;
-}
-
-.nav-tabs .nav-item .nav-link {
-  background-color: #1b2028;
-  color: #cbd8e6;
-  border-color: #303743;
-  border-bottom: none;
-  border-radius: 0.5rem 0.5rem 0 0;
-}
-
-.nav-tabs .nav-item .nav-link.active {
-  background-color: #24476f;
-  color: #ffffff;
-  border-color: #2f5f95;
-}
-
-.nav-tabs .nav-link:hover {
-  background-color: #253142;
-  color: #ffffff;
-  border-color: #3a4a61;
-}
-
-// ============================================
-// CITAZIONI
-// ============================================
-
-blockquote {
-  color: #d7dee8;
-  background-color: #171c23;
-  border-left: 4px solid #8fbfff;
-  border-radius: 0 0.45rem 0.45rem 0;
-  padding: 0.6rem 0 0.6rem 1.4rem;
-}
-
-// ============================================
-// FIGURE E IMMAGINI
-// ============================================
-
-.figure {
-  margin: 2rem 0;
-}
-
-.figure-caption {
-  color: #aeb8c4;
-  text-align: center;
-  margin-top: 0.6rem;
-}
-
-// Mantiene leggibili le figure generate in R con testo scuro.
-.cell-output-display img,
-.quarto-figure img,
-.figure-img {
-  background-color: #ffffff;
-  padding: 1rem;
-  border-radius: 0.45rem;
-  box-shadow: 0 0.25rem 1.2rem rgba(0, 0, 0, 0.35);
-  max-width: 100%;
-  height: auto;
-}
-
-// ============================================
-// FOOTNOTE
-// ============================================
-
-.footnotes {
-  border-top: 1px solid #303743;
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-}
-
-.footnote-ref {
-  color: #8fbfff;
-}
-
-// ============================================
-// FORM, BUTTON, SEARCH
-// ============================================
 
 input,
 textarea,
 select,
-.form-control {
-  background-color: #1b2028;
-  color: #e6edf3;
-  border-color: #303743;
+.form-control,
+.btn,
+button,
+.aa-Input,
+.aa-Form,
+.aa-Panel {
+  color: var(--utet-text) !important;
+  background-color: var(--utet-surface) !important;
+  border-color: var(--utet-border) !important;
 }
 
 input::placeholder,
-textarea::placeholder {
-  color: #8894a3;
+textarea::placeholder,
+.aa-Input::placeholder {
+  color: var(--utet-muted) !important;
 }
 
-.btn,
-button {
-  background-color: #1b2028;
-  color: #e6edf3;
-  border-color: #303743;
-}
-
-.btn:hover,
-button:hover {
-  background-color: #253142;
-  color: #ffffff;
-}
-
-// ============================================
-// SEPARATORI
-// ============================================
-
-hr {
-  border-color: #303743;
-  margin: 2rem 0;
-}
-
-// ============================================
-// RESPONSIVE
-// ============================================
-
-@media (max-width: 768px) {
-  main.content {
-    max-width: 100%;
-    padding: 0 1rem;
-  }
-
-  main.content p,
-  main.content ul,
-  main.content ol,
-  main.content blockquote {
-    max-width: 100%;
-  }
-}
-
-// ============================================
-// PRINT
-// ============================================
-
-@media print {
-  html,
-  body {
-    color: #000000;
-    background-color: #ffffff;
-  }
-
-  main.content,
-  #quarto-document-content,
-  .quarto-content,
-  .page-columns,
-  .content,
-  p,
-  li,
-  td,
-  th,
-  blockquote,
-  .callout-body {
-    color: #000000;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    color: #000000;
-  }
-
-  a {
-    color: #000000;
-    text-decoration: underline;
-  }
-
-  .nav-tabs,
-  .navbar,
-  #quarto-sidebar,
-  #TOC {
-    display: none !important;
-  }
-
-  pre,
-  code {
-    background-color: #f5f5f5;
-    color: #000000;
-    border-color: #dddddd;
-  }
-
-  .callout {
-    background-color: #f5f5f5;
-    border-color: #dddddd;
-  }
-
-  .callout-title,
-  .callout-body {
-    color: #000000;
-  }
-
-  .cell-output-display img,
-  .quarto-figure img,
-  .figure-img {
-    background-color: #ffffff;
-    box-shadow: none;
-    padding: 0.5rem;
-  }
-}
-
-// ============================================
-// NUMERI DEI CAPITOLI NELLA SIDEBAR
-// ============================================
-
-#quarto-sidebar .chapter-number,
-#quarto-sidebar .section-number,
-.sidebar .chapter-number,
-.sidebar .section-number {
-  color: #aeb8c4;
-  opacity: 1;
-  font-weight: 500;
-  margin-right: 0.35rem;
-}
-
-#quarto-sidebar .sidebar-link.active .chapter-number,
-#quarto-sidebar .sidebar-link.active .section-number,
-.sidebar .sidebar-link.active .chapter-number,
-.sidebar .sidebar-link.active .section-number {
-  color: #8fbfff;
-  opacity: 1;
-  font-weight: 600;
-}
-
-#quarto-sidebar .sidebar-link:hover .chapter-number,
-#quarto-sidebar .sidebar-link:hover .section-number,
-.sidebar .sidebar-link:hover .chapter-number,
-.sidebar .sidebar-link:hover .section-number {
-  color: #ffffff;
-  opacity: 1;
-}
-
-// ============================================
-// FIX LAYOUT: OUTPUT R E SIDEBAR DESTRA
-// ============================================
-
-// Allinea la larghezza del contenuto al tema light.
-main.content {
-  width: 100%;
-  max-width: 880px;
-  min-width: 0;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-// Nei layout CSS Grid/Flex, min-width:auto puo impedire ai chunk
-// di restringersi e farli invadere la margin sidebar.
-#quarto-document-content,
-.quarto-content,
-.page-columns,
-.column-body,
-.cell,
-.cell-output,
-.cell-output-stdout,
-.cell-output-stderr,
-div.sourceCode {
-  min-width: 0;
+// Figures generated by R deliberately retain a white plotting canvas.
+.cell-output-display img,
+.quarto-figure img,
+.figure-img {
   max-width: 100%;
-}
-
-// Il bordo e il padding del pre restano inclusi nella larghezza disponibile.
-pre,
-div.sourceCode,
-.cell-output pre,
-.cell-output-stdout pre,
-.cell-output-stderr pre {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
-// Mantiene una separazione visiva dal sommario laterale, come nel tema light.
-@media (min-width: 992px) {
-  #quarto-margin-sidebar {
-    padding-left: 0.9rem;
-  }
+  height: auto;
+  padding: 0.75rem;
+  background: #ffffff;
+  border-radius: 0.25rem;
+  box-shadow: var(--utet-shadow);
 }

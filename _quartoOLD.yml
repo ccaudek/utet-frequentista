@@ -19,12 +19,11 @@ book:
 
   site-url: https://ccaudek.github.io/utet-frequentista/
   repo-url: https://github.com/ccaudek/utet-frequentista/
-  repo-actions: [issue]
+  repo-actions: [source, issue]
 
   reader-mode: true
   page-navigation: true
   back-to-top-navigation: true
-  bread-crumbs: true
 
   search:
     location: sidebar
@@ -34,10 +33,6 @@ book:
 
   sidebar:
     collapse-level: 1
-    tools:
-      - icon: book
-        href: https://ccaudek.github.io/utet-companion/
-        text: "Manuale e companion"
 
   google-analytics:
     tracking-id: "G-QT5S3P9D31"
@@ -109,7 +104,7 @@ format:
     smooth-scroll: true
     anchor-sections: true
 
-    code-fold: show
+    code-fold: false
     code-summary: "Mostra/Nascondi codice"
     code-copy: hover
     code-link: true

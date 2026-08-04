@@ -3,26 +3,173 @@ page-classes: homefront
 toc: false
 ---
 
-Questo sito ospita il **modulo sull’inferenza frequentista** del progetto UTET, concepito a supporto del manuale *Inferenza bayesiana in psicologia: Ragionare con l’incertezza. Fondamenti, workflow e applicazioni*. Il percorso offre un'introduzione critica alle tecniche statistiche tradizionali, quali le stime puntuali, gli intervalli di confidenza e i test di ipotesi, accompagnata da un'approfondita riflessione sulle loro premesse concettuali e sulle criticità metodologiche che hanno contribuito alla crisi di replicabilità nella ricerca psicologica.
+:::: {.home-intro}
+[Progetto UTET · Materiali digitali di supporto]{.home-eyebrow}
 
-## Percorso e obiettivi {.unnumbered .unlisted}
+::: {.lead}
+Un’introduzione critica all’inferenza frequentista per comprendere stima, intervalli di fiducia, test di ipotesi e pianificazione degli studi nella ricerca psicologica.
+:::
 
-- **Origini storiche**: da Galton e Fisher ai fondamenti del pensiero frequentista.  
-- **Stima dei parametri**: concetti di media campionaria, varianza, stimatori corretti.  
-- **Intervalli di confidenza**: costruzione, interpretazione, equivoci comuni.  
-- **Test di ipotesi**: logica, errori di I e II tipo, potenza statistica.  
+Questo modulo accompagna il manuale *Inferenza bayesiana in psicologia: Ragionare con l’incertezza*. Ricostruisce le premesse storiche e concettuali dell’approccio frequentista, chiarisce che cosa consentono di affermare i suoi principali strumenti e offre il termine di confronto necessario per comprendere la prospettiva bayesiana sviluppata nel volume principale.
 
-Il sito non intende sostituire il manuale principale, ma integrarlo: fornisce il **background propedeutico** e il contesto critico indispensabili per apprezzare in profondità le ragioni e la struttura dell'alternativa bayesiana.
+::: {.home-actions}
+[Inizia dall’introduzione](chapters/frequentist_inference/introduction_frequentist_inference.qmd){.home-action .home-action--primary}
+[Esamina il percorso](#percorso-del-modulo){.home-action}
+[Vai al companion principale](https://ccaudek.github.io/utet-companion/){.home-action}
+:::
+::::
+
+::::: {.module-facts}
+::: {.module-fact}
+[Funzione]{.module-fact__label}
+
+**Inquadramento propedeutico e critico**
+:::
+::: {.module-fact}
+[Livello]{.module-fact__label}
+
+**Introduttivo**
+:::
+::: {.module-fact}
+[Ambito]{.module-fact__label}
+
+**Stima, test e pianificazione**
+:::
+::: {.module-fact}
+[Modalità]{.module-fact__label}
+
+**Studio sequenziale o consultazione**
+:::
+:::::
 
 ## Come usare il modulo {.unnumbered .unlisted}
 
-- **Leggi con spirito critico**: lo scopo è capire potenzialità e limiti del frequentismo.  
-- **Collega al manuale**: ciascun tema trattato in questo modulo costituisce il presupposto teorico o il termine di confronto necessario per apprezzare l'approccio bayesiano sviluppato nel manuale principale, dove viene proposto un superamento delle criticità discusse.
-- **Utilizza le appendici**: per un riferimento rapido, sono disponibili appendici dedicate alla notazione matematica, ai simboli e a richiami di concetti fondamentali, consultabili sul sito companion [Inferenza bayesiana in psicologia: ragionare con l’incertezza](https://ccaudek.github.io/utet-companion/).
+Il percorso è progressivo: parte dalla formazione storica del pensiero frequentista e conduce alle procedure di stima, ai test di ipotesi e alla pianificazione degli studi. Per una prima lettura conviene seguire l’ordine dei capitoli; in seguito il sito può essere usato come riferimento durante lo studio del manuale.
 
-## Licenza d’uso {.unnumbered .unlisted}
+:::: {.study-steps}
+::: {.study-step}
+[01]{.study-step__number}
 
-Materiali rilasciati con licenza  
-[CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.it):  
-è consentita la condivisione con attribuzione **solo per usi non commerciali** e **senza modifiche**.
+**Inquadrare**
 
+Distingui le diverse tradizioni frequentiste e le domande inferenziali a cui cercano di rispondere.
+:::
+::: {.study-step}
+[02]{.study-step__number}
+
+**Interpretare**
+
+Concentrati sul significato di stime, intervalli, valori *p*, errori e potenza, non soltanto sulle procedure di calcolo.
+:::
+::: {.study-step}
+[03]{.study-step__number}
+
+**Confrontare**
+
+Collega ogni strumento al problema scientifico e osserva come cambiano domande e risposte nell’impostazione bayesiana.
+:::
+::::
+
+## Percorso del modulo {.unnumbered .unlisted}
+
+I capitoli seguono il passaggio dalle origini dell’approccio frequentista alla stima e alla verifica delle ipotesi, fino alla pianificazione campionaria e al confronto tra gruppi.
+
+::::: {.learning-path}
+::: {.path-card}
+[Orientamento · Inizio]{.path-card__meta}
+
+### Introduzione all’inferenza frequentista {.unnumbered .unlisted}
+
+Finalità del modulo, quadro concettuale e rapporto con il manuale bayesiano.
+
+[Apri l’introduzione](chapters/frequentist_inference/introduction_frequentist_inference.qmd)
+:::
+::: {.path-card}
+[Capitolo 1 · Contesto storico]{.path-card__meta}
+
+### Origini dell’approccio frequentista {.unnumbered .unlisted}
+
+Dalla misurazione delle differenze individuali alla costruzione del pensiero statistico moderno.
+
+[Apri il capitolo 1](chapters/frequentist_inference/01_galton.qmd)
+:::
+::: {.path-card}
+[Capitolo 2 · Stima]{.path-card__meta}
+
+### Stime, stimatori e parametri {.unnumbered .unlisted}
+
+Popolazioni e campioni, proprietà degli stimatori e logica della stima puntuale.
+
+[Apri il capitolo 2](chapters/frequentist_inference/02_stime_parametri.qmd)
+:::
+::: {.path-card}
+[Capitolo 3 · Incertezza]{.path-card__meta}
+
+### Intervalli di fiducia {.unnumbered .unlisted}
+
+Costruzione, interpretazione frequentista ed equivoci ricorrenti sugli intervalli.
+
+[Apri il capitolo 3](chapters/frequentist_inference/03_conf_interv.qmd)
+:::
+::: {.path-card}
+[Capitolo 4 · Decisione statistica]{.path-card__meta}
+
+### Test di ipotesi e significatività {.unnumbered .unlisted}
+
+Ipotesi nulla, valori *p*, errori di primo e secondo tipo e limiti interpretativi.
+
+[Apri il capitolo 4](chapters/frequentist_inference/04_test_ipotesi.qmd)
+:::
+::: {.path-card}
+[Capitolo 5 · Pianificazione]{.path-card__meta}
+
+### Dimensione campionaria e potenza {.unnumbered .unlisted}
+
+Relazione tra effetto, variabilità, errore, potenza e numerosità dello studio.
+
+[Apri il capitolo 5](chapters/frequentist_inference/05_sample_size.qmd)
+:::
+::: {.path-card}
+[Capitolo 6 · Applicazione]{.path-card__meta}
+
+### Confronto tra due campioni indipendenti {.unnumbered .unlisted}
+
+Il test *t* come caso di studio per collegare assunzioni, calcolo e interpretazione.
+
+[Apri il capitolo 6](chapters/frequentist_inference/06_two_ind_samples.qmd)
+:::
+::: {.path-card}
+[Epilogo · Sintesi critica]{.path-card__meta}
+
+### Considerazioni conclusive {.unnumbered .unlisted}
+
+Bilancio del percorso e passaggio dal quadro frequentista all’inferenza bayesiana.
+
+[Apri l’epilogo](chapters/epilogo/epilogo.qmd)
+:::
+:::::
+
+::: {.editorial-note}
+Il modulo non presenta l’inferenza frequentista come un repertorio di procedure da applicare meccanicamente. L’obiettivo è comprendere quali affermazioni sono giustificate dai diversi strumenti, quali non lo sono e perché l’interpretazione metodologica è parte integrante dell’analisi statistica.
+:::
+
+## Collegamento con il manuale {.unnumbered .unlisted}
+
+Il manuale principale sviluppa l’inferenza bayesiana come un diverso modo di formulare e aggiornare l’incertezza. Questo modulo fornisce il contesto necessario per confrontare le due prospettive senza confonderne il linguaggio e gli obiettivi.
+
+Durante lo studio è particolarmente importante saper riconoscere:
+
+- la distinzione tra parametro, stimatore e stima osservata;
+- il significato frequentista di un intervallo di fiducia;
+- ciò che un valore *p* consente e non consente di concludere;
+- la relazione tra errori, potenza e dimensione campionaria;
+- il ruolo delle assunzioni nei test e nei modelli statistici;
+- la differenza tra evidenza nei dati e probabilità attribuita a un’ipotesi.
+
+## Informazioni editoriali {.unnumbered .unlisted}
+
+Il materiale fa parte del progetto UTET a supporto del manuale *Inferenza bayesiana in psicologia: Ragionare con l’incertezza*. Il sito è aggiornabile e può integrare correzioni, chiarimenti ed esempi successivi alla pubblicazione del volume.
+
+- **Autore:** Corrado Caudek ([ORCID 0000-0002-1404-0420](https://orcid.org/0000-0002-1404-0420))
+- **Segnalazioni:** usa il comando “Segnala un problema” presente nelle pagine oppure il [repository GitHub](https://github.com/ccaudek/utet-frequentista/issues/new)
+- **Licenza:** [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.it)
