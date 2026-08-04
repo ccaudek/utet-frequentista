@@ -100,9 +100,9 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bd31b91f9ddb1a75e3744ba9797c8182.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-53264a22b0443984ee448b2ff0c6d8df.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-60290a63818ba04bbebcabda62d8ea0d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-53264a22b0443984ee448b2ff0c6d8df.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-656e41c40711b9d7156bc514cdbc1101.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-887124665b495401b57de95ea3ab5285.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-656e41c40711b9d7156bc514cdbc1101.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
@@ -387,6 +387,7 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Inferenza frequentista in psicologia</a> 
         <div class="sidebar-tools-main tools-wide">
+    <a href="https://ccaudek.github.io/utet-companion/" title="Manuale e companion" class="quarto-navigation-tool px-1" aria-label="Manuale e companion"><i class="bi bi-book"></i></a>
     <a href="https://github.com/ccaudek/utet-frequentista/" title="Eseguire il codice" class="quarto-navigation-tool px-1" aria-label="Eseguire il codice"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Attiva/disattiva la modalità oscura"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Attiva/disattiva la modalità lettore">
@@ -403,7 +404,7 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Percorso e obiettivi</span></a>
+ <span class="menu-text">Come usare il modulo</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -495,7 +496,7 @@ window.Quarto = {
   <li><a href="#sec-freq-planning-sensitivity" id="toc-sec-freq-planning-sensitivity" class="nav-link" data-scroll-target="#sec-freq-planning-sensitivity"><span class="header-section-number">5.9</span> Analisi di sensibilità della pianificazione</a></li>
   <li><a href="#sec-freq-observed-power" id="toc-sec-freq-observed-power" class="nav-link" data-scroll-target="#sec-freq-observed-power"><span class="header-section-number">5.10</span> Perché la potenza post hoc è poco informativa?</a></li>
   <li><a href="#sec-freq-sample-size-bayes" id="toc-sec-freq-sample-size-bayes" class="nav-link" data-scroll-target="#sec-freq-sample-size-bayes"><span class="header-section-number">5.11</span> Pianificazione frequentista e bayesiana</a></li>
-  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/05_sample_size.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/05_sample_size.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Dimensione campionaria, precisione e potenza</span></a></li></ol></nav><div class="quarto-title">
@@ -585,8 +586,9 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p>Per eseguire gli esempi, prepara l’ambiente comune del progetto:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </div>
 </div>
@@ -670,7 +672,7 @@ n
 <span class="header-section-number">5.3.1</span> Un esempio introduttivo</h3>
 <p>Supponiamo di voler stimare il punteggio medio di autostima in una popolazione di studenti. Studi precedenti suggeriscono una deviazione standard di circa 6 punti. Desideriamo costruire un intervallo al 95% con un margine di errore non superiore a 2 punti.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sigma_attesa</span> <span class="op">&lt;-</span> <span class="fl">6</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sigma_attesa</span> <span class="op">&lt;-</span> <span class="fl">6</span></span>
 <span><span class="va">margine_desiderato</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
 <span><span class="va">z_critico</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.975</span><span class="op">)</span></span>
 <span></span>
@@ -680,6 +682,7 @@ n
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">n_precisione</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 35</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <p>Il calcolo restituisce 35 partecipanti. Poiché una frazione di partecipante non è osservabile e una numerosità inferiore non raggiungerebbe l’obiettivo stabilito, l’arrotondamento deve essere effettuato verso l’alto.</p>
 <p>Il valore ottenuto indica il numero di osservazioni <strong>analizzabili</strong> richiesto sotto le assunzioni della formula. Non coincide necessariamente con il numero iniziale di persone da reclutare, perché una parte dei partecipanti può abbandonare lo studio o produrre dati non utilizzabili.</p>
@@ -687,7 +690,7 @@ n
 <span class="header-section-number">5.3.2</span> Sensibilità al margine di errore</h3>
 <p>Per comprendere quanto la numerosità dipenda dalla precisione desiderata, possiamo ripetere il calcolo per diversi margini di errore.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">margini</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1.5</span>, <span class="fl">2</span>, <span class="fl">2.5</span>, <span class="fl">3</span><span class="op">)</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">margini</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1.5</span>, <span class="fl">2</span>, <span class="fl">2.5</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">risultati_precisione</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  margine_errore <span class="op">=</span> <span class="va">margini</span>,</span>
@@ -697,7 +700,7 @@ n
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">risultati_precisione</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="tbl-precision-sensitivity" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+</details><div id="tbl-precision-sensitivity" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-precision-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Tabella&nbsp;5.1: Numerosità richiesta al variare del margine di errore, assumendo deviazione standard pari a 6 e livello di confidenza del 95%.
 </figcaption><div aria-describedby="tbl-precision-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -807,7 +810,7 @@ P(\text{rifiutare }H_0\mid\theta=\theta_1),
 <span class="header-section-number">5.6</span> Esempio: test <em>t</em> per una media</h2>
 <p>Supponiamo di voler confrontare una media con un valore di riferimento. Consideriamo scientificamente rilevante una differenza di 3 punti e prevediamo una deviazione standard pari a 6. Pianifichiamo un test bilaterale con <span class="math inline">\(\alpha=0.05\)</span> e potenza 0.80.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">piano_un_campione</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">piano_un_campione</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
 <span>  delta <span class="op">=</span> <span class="fl">3</span>,</span>
 <span>  sd <span class="op">=</span> <span class="fl">6</span>,</span>
 <span>  sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
@@ -828,6 +831,7 @@ P(\text{rifiutare }H_0\mid\theta=\theta_1),
 <span><span class="co">#&gt;     alternative = two.sided</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">piano_un_campione</span><span class="op">$</span><span class="va">n</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 34</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <p>Il risultato richiede 34 osservazioni analizzabili.</p>
 <p>L’interpretazione resta interamente condizionale: se la differenza vera fosse pari a 3 punti, la deviazione standard fosse 6 e le assunzioni del test fossero appropriate, il test rifiuterebbe <span class="math inline">\(H_0\)</span> in circa l’80% delle ripetizioni. Se la differenza vera fosse più piccola o la variabilità maggiore, la potenza effettiva sarebbe inferiore.</p>
@@ -835,7 +839,7 @@ P(\text{rifiutare }H_0\mid\theta=\theta_1),
 <span class="header-section-number">5.7</span> Esempio: due gruppi indipendenti</h2>
 <p>Consideriamo ora un confronto tra due gruppi di uguale numerosità. L’effetto minimo di interesse è una differenza di 5 punti e la deviazione standard comune prevista è 6.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">piano_due_gruppi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">piano_due_gruppi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test</a></span><span class="op">(</span></span>
 <span>  delta <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  sd <span class="op">=</span> <span class="fl">6</span>,</span>
 <span>  sig.level <span class="op">=</span> <span class="fl">0.05</span>,</span>
@@ -858,6 +862,7 @@ P(\text{rifiutare }H_0\mid\theta=\theta_1),
 <span><span class="co">#&gt; NOTE: n is number in *each* group</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span><span class="va">piano_due_gruppi</span><span class="op">$</span><span class="va">n</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 24</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <p>Il risultato richiede 24 partecipanti analizzabili <strong>per gruppo</strong>, quindi 48 complessivi.</p>
 <p>La distinzione tra numerosità per gruppo e numerosità totale è importante nella lettura dell’output di <code><a href="https://rdrr.io/r/stats/power.t.test.html">power.t.test()</a></code>. Nel caso di un confronto a due campioni, il valore restituito da <code>n</code> si riferisce a ciascun gruppo quando l’allocazione è bilanciata.</p>
@@ -866,7 +871,7 @@ P(\text{rifiutare }H_0\mid\theta=\theta_1),
 <span class="header-section-number">5.7.1</span> Sensibilità all’effetto bersaglio</h3>
 <p>Possiamo ora ripetere il calcolo per più differenze bersaglio, mantenendo costanti la deviazione standard, il livello <span class="math inline">\(\alpha\)</span> e la potenza desiderata.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">differenze</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">differenze</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">6</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">n_per_gruppo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">vapply</a></span><span class="op">(</span></span>
 <span>  <span class="va">differenze</span>,</span>
@@ -891,7 +896,7 @@ P(\text{rifiutare }H_0\mid\theta=\theta_1),
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">risultati_potenza</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="tbl-power-sensitivity" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+</details><div id="tbl-power-sensitivity" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-power-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Tabella&nbsp;5.2: Numerosità per gruppo richiesta al variare della differenza bersaglio, assumendo deviazione standard pari a 6, test bilaterale, livello 0.05 e potenza 0.80.
 </figcaption><div aria-describedby="tbl-power-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -940,7 +945,7 @@ Tabella&nbsp;5.2: Numerosità per gruppo richiesta al variare della differenza b
 <span class="header-section-number">5.7.2</span> Curve di potenza</h3>
 <p>La relazione tra numerosità, dimensione dell’effetto e potenza può essere rappresentata attraverso curve distinte per differenti valori veri della differenza.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">griglia_potenza</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">griglia_potenza</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span></span>
 <span>  n_per_gruppo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">100</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
 <span>  differenza <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
@@ -979,8 +984,8 @@ Tabella&nbsp;5.2: Numerosità per gruppo richiesta al variare della differenza b
 <span>    y <span class="op">=</span> <span class="st">"Potenza"</span>,</span>
 <span>    linetype <span class="op">=</span> <span class="st">"Differenza vera"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div id="fig-power-curves" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Tre curve crescenti mostrano che la potenza aumenta con la numerosità e con la differenza tra le medie." data-fig-align="center">
+</details><div class="cell-output-display">
+<div id="fig-power-curves" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Tre curve crescenti mostrano che la potenza aumenta con la numerosità e con la differenza tra le medie.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-power-curves-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="05_sample_size_files/figure-html/fig-power-curves-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figura&nbsp;5.1: Potenza di un test t bilaterale per due gruppi di uguale numerosità, per tre differenze vere e deviazione standard pari a 6."><img src="05_sample_size_files/figure-html/fig-power-curves-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%" alt="Tre curve crescenti mostrano che la potenza aumenta con la numerosità e con la differenza tra le medie."></a>
 </div>
@@ -1004,13 +1009,14 @@ n_{\text{reclutare}}
 \]</span></p>
 <p>Supponiamo, per esempio, che siano necessari 48 partecipanti analizzabili e che si preveda il 15% di abbandoni o dati inutilizzabili.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n_analizzabile</span> <span class="op">&lt;-</span> <span class="fl">48</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n_analizzabile</span> <span class="op">&lt;-</span> <span class="fl">48</span></span>
 <span><span class="va">perdita_attesa</span> <span class="op">&lt;-</span> <span class="fl">0.15</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">ceiling</a></span><span class="op">(</span></span>
 <span>  <span class="va">n_analizzabile</span> <span class="op">/</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">perdita_attesa</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 57</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <p>Il calcolo indica che occorre reclutare almeno 57 partecipanti, assumendo che la perdita sia plausibilmente vicina al 15%.</p>
 <p>Questo aggiustamento protegge la numerosità finale, ma non risolve automaticamente i problemi generati dai dati mancanti. Se l’abbandono dipende dall’esito, dal trattamento o da caratteristiche rilevanti dei partecipanti, può introdurre una distorsione oltre a ridurre il campione. La pianificazione deve quindi considerare non soltanto quanti dati potrebbero mancare, ma anche perché potrebbero mancare.</p>
@@ -1137,7 +1143,7 @@ n_{\text{reclutare}}
 <div class="callout-body-container callout-body">
 <p>Le informazioni sull’ambiente R possono essere ottenute con:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.6.1 (2026-06-24)</span></span>
 <span><span class="co">#&gt; Platform: aarch64-apple-darwin23</span></span>
 <span><span class="co">#&gt; Running under: macOS Tahoe 26.5.2</span></span>
@@ -1191,6 +1197,7 @@ n_{\text{reclutare}}
 <span><span class="co">#&gt; [64] rstantools_2.6.0      coda_0.19-4.1         gridExtra_2.3.1      </span></span>
 <span><span class="co">#&gt; [67] nlme_3.1-170          checkmate_2.3.4       xfun_0.60            </span></span>
 <span><span class="co">#&gt; [70] pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </div>
 </div>
@@ -1640,7 +1647,7 @@ n_{\text{reclutare}}
 </div>   
     <div class="nav-footer-center">
 
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/05_sample_size.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Preferenze cookie</a></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Preferenze cookie</a></div></div>
     <div class="nav-footer-right">
 <p>Realizzato con <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

@@ -80,9 +80,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bd31b91f9ddb1a75e3744ba9797c8182.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-53264a22b0443984ee448b2ff0c6d8df.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-60290a63818ba04bbebcabda62d8ea0d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-53264a22b0443984ee448b2ff0c6d8df.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-656e41c40711b9d7156bc514cdbc1101.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-887124665b495401b57de95ea3ab5285.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-656e41c40711b9d7156bc514cdbc1101.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
@@ -367,6 +367,7 @@ window.Quarto = {
     <div class="sidebar-title mb-0 py-0">
       <a href="../../">Inferenza frequentista in psicologia</a> 
         <div class="sidebar-tools-main tools-wide">
+    <a href="https://ccaudek.github.io/utet-companion/" title="Manuale e companion" class="quarto-navigation-tool px-1" aria-label="Manuale e companion"><i class="bi bi-book"></i></a>
     <a href="https://github.com/ccaudek/utet-frequentista/" title="Eseguire il codice" class="quarto-navigation-tool px-1" aria-label="Eseguire il codice"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Attiva/disattiva la modalità oscura"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Attiva/disattiva la modalità lettore">
@@ -383,7 +384,7 @@ window.Quarto = {
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Percorso e obiettivi</span></a>
+ <span class="menu-text">Come usare il modulo</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -478,7 +479,7 @@ window.Quarto = {
   <li><a href="#sec-freq-two-samples-regression" id="toc-sec-freq-two-samples-regression" class="nav-link" data-scroll-target="#sec-freq-two-samples-regression"><span class="header-section-number">6.12</span> Il test <em>t</em> come modello lineare</a></li>
   <li><a href="#sec-freq-two-samples-bayes" id="toc-sec-freq-two-samples-bayes" class="nav-link" data-scroll-target="#sec-freq-two-samples-bayes"><span class="header-section-number">6.13</span> Che cosa cambia nel modello bayesiano?</a></li>
   <li><a href="#sec-freq-two-samples-report" id="toc-sec-freq-two-samples-report" class="nav-link" data-scroll-target="#sec-freq-two-samples-report"><span class="header-section-number">6.14</span> Come riportare il risultato</a></li>
-  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/06_two_ind_samples.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div></nav>
+  </ul><div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/introduction_frequentist_inference.html">Frequentismo</a></li><li class="breadcrumb-item"><a href="../../chapters/frequentist_inference/06_two_ind_samples.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Confrontare due gruppi indipendenti</span></a></li></ol></nav><div class="quarto-title">
@@ -558,8 +559,9 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p>Per eseguire gli esempi, prepara l’ambiente comune del progetto:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"code"</span>, <span class="st">"_common.R"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </div>
 </div>
@@ -758,7 +760,7 @@ s_1^2/n_1+s_0^2/n_0
 <span class="header-section-number">6.6</span> Un esempio guidato</h2>
 <p>Consideriamo un insieme di dati didattici sul benessere psicologico. Dodici partecipanti appartengono al gruppo intervento e dodici al gruppo di controllo.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">benessere_intervento</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">benessere_intervento</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
 <span>  <span class="fl">27</span>, <span class="fl">31</span>, <span class="fl">29</span>, <span class="fl">33</span>, <span class="fl">35</span>, <span class="fl">30</span>,</span>
 <span>  <span class="fl">32</span>, <span class="fl">28</span>, <span class="fl">34</span>, <span class="fl">31</span>, <span class="fl">36</span>, <span class="fl">29</span></span>
 <span><span class="op">)</span></span>
@@ -781,6 +783,7 @@ s_1^2/n_1+s_0^2/n_0
 <span>    <span class="va">benessere_intervento</span></span>
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <p>La codifica fissa l’ordine del confronto come</p>
 <p><span class="math display">\[
@@ -794,7 +797,7 @@ s_1^2/n_1+s_0^2/n_0
 <span class="header-section-number">6.6.1</span> Descrizione prima dell’inferenza</h3>
 <p>Prima di eseguire il test, è necessario conoscere numerosità, media e dispersione di ciascun gruppo.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gruppi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html">split</a></span><span class="op">(</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gruppi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html">split</a></span><span class="op">(</span></span>
 <span>  <span class="va">dati_benessere</span><span class="op">$</span><span class="va">benessere</span>,</span>
 <span>  <span class="va">dati_benessere</span><span class="op">$</span><span class="va">gruppo</span></span>
 <span><span class="op">)</span></span>
@@ -812,7 +815,7 @@ s_1^2/n_1+s_0^2/n_0
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">descrittive</span><span class="op">$</span><span class="va">deviazione_standard</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">descrittive</span><span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="tbl-two-groups-descriptives" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+</details><div id="tbl-two-groups-descriptives" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
 <figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-two-groups-descriptives-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Tabella&nbsp;6.1: Statistiche descrittive dei punteggi di benessere nei due gruppi.
 </figcaption><div aria-describedby="tbl-two-groups-descriptives-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -860,7 +863,7 @@ Tabella&nbsp;6.1: Statistiche descrittive dei punteggi di benessere nei due grup
 </section><section id="visualizzare-distribuzioni-e-osservazioni" class="level3" data-number="6.6.2"><h3 data-number="6.6.2" class="anchored" data-anchor-id="visualizzare-distribuzioni-e-osservazioni">
 <span class="header-section-number">6.6.2</span> Visualizzare distribuzioni e osservazioni</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span></span>
 <span>  <span class="va">dati_benessere</span>,</span>
 <span>  <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gruppo</span>, y <span class="op">=</span> <span class="va">benessere</span><span class="op">)</span></span>
 <span><span class="op">)</span> <span class="op">+</span></span>
@@ -884,8 +887,8 @@ Tabella&nbsp;6.1: Statistiche descrittive dei punteggi di benessere nei due grup
 <span>    x <span class="op">=</span> <span class="st">"Gruppo"</span>,</span>
 <span>    y <span class="op">=</span> <span class="st">"Punteggio di benessere"</span></span>
 <span>  <span class="op">)</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div id="fig-two-groups-data" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Due gruppi di punti sovrapposti a boxplot; il gruppo intervento mostra punteggi medi più alti." data-fig-align="center">
+</details><div class="cell-output-display">
+<div id="fig-two-groups-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" alt="Due gruppi di punti sovrapposti a boxplot; il gruppo intervento mostra punteggi medi più alti.">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-two-groups-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="06_two_ind_samples_files/figure-html/fig-two-groups-data-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figura&nbsp;6.1: Punteggi individuali e distribuzioni nei gruppi controllo e intervento. Il simbolo a rombo indica la media."><img src="06_two_ind_samples_files/figure-html/fig-two-groups-data-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%" alt="Due gruppi di punti sovrapposti a boxplot; il gruppo intervento mostra punteggi medi più alti."></a>
 </div>
@@ -900,7 +903,7 @@ Figura&nbsp;6.1: Punteggi individuali e distribuzioni nei gruppi controllo e int
 <span class="header-section-number">6.7</span> Eseguire il test di Welch</h2>
 <p>Eseguiamo ora il test bilaterale di Welch.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">test_welch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">test_welch</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span></span>
 <span>  <span class="va">benessere</span> <span class="op">~</span> <span class="va">gruppo</span>,</span>
 <span>  data <span class="op">=</span> <span class="va">dati_benessere</span>,</span>
 <span>  alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
@@ -920,6 +923,7 @@ Figura&nbsp;6.1: Punteggi individuali e distribuzioni nei gruppi controllo e int
 <span><span class="co">#&gt; sample estimates:</span></span>
 <span><span class="co">#&gt;  mean in group Controllo mean in group Intervento </span></span>
 <span><span class="co">#&gt;                     26.2                     31.2</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <p>Poiché il primo livello del fattore è <code>Controllo</code>, la formula di R riporta inizialmente la differenza</p>
 <p><span class="math display">\[
@@ -929,7 +933,7 @@ Figura&nbsp;6.1: Punteggi individuali e distribuzioni nei gruppi controllo e int
 \]</span></p>
 <p>Per mantenere l’ordine stabilito nel capitolo, calcoliamo esplicitamente intervento meno controllo:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n_intervento</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">benessere_intervento</span><span class="op">)</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n_intervento</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">benessere_intervento</span><span class="op">)</span></span>
 <span><span class="va">n_controllo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">benessere_controllo</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">m_intervento</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">benessere_intervento</span><span class="op">)</span></span>
@@ -982,6 +986,7 @@ Figura&nbsp;6.1: Punteggi individuali e distribuzioni nei gruppi controllo e int
 <span><span class="co">#&gt;        5.0000000        1.0316947        4.8463950       20.6446253 </span></span>
 <span><span class="co">#&gt;         valore_p limite_inferiore limite_superiore </span></span>
 <span><span class="co">#&gt;        0.0000901        2.8522224        7.1477776</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <p>Otteniamo approssimativamente</p>
 <p><span class="math display">\[
@@ -1002,7 +1007,7 @@ p&lt;0.001.
 <span class="header-section-number">6.8</span> Il caso con varianza comune</h2>
 <p>Per confronto, eseguiamo anche il test classico con varianza comune:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">test_pooled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">test_pooled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span></span>
 <span>  <span class="va">benessere_intervento</span>,</span>
 <span>  <span class="va">benessere_controllo</span>,</span>
 <span>  alternative <span class="op">=</span> <span class="st">"two.sided"</span>,</span>
@@ -1022,6 +1027,7 @@ p&lt;0.001.
 <span><span class="co">#&gt; sample estimates:</span></span>
 <span><span class="co">#&gt; mean of x mean of y </span></span>
 <span><span class="co">#&gt;      31.2      26.2</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <p>In questi dati, le numerosità e le deviazioni standard dei gruppi sono simili. Di conseguenza, il test classico e quello di Welch producono risultati quasi identici.</p>
 <p>La somiglianza numerica non dimostra che le varianze delle popolazioni siano uguali. Mostra soltanto che, in questo campione, l’assunzione aggiuntiva del modello pooled ha conseguenze limitate sul risultato. In altri contesti, soprattutto quando numerosità e dispersioni differiscono, la scelta può incidere in modo sostanziale sull’errore standard e sui gradi di libertà.</p>
@@ -1061,7 +1067,7 @@ s_p
 }.
 \]</span></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s_pooled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s_pooled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span></span>
 <span>  <span class="op">(</span></span>
 <span>    <span class="op">(</span><span class="va">n_intervento</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="va">s_intervento</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span></span>
 <span>      <span class="op">(</span><span class="va">n_controllo</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">*</span> <span class="va">s_controllo</span><span class="op">^</span><span class="fl">2</span></span>
@@ -1094,6 +1100,7 @@ s_p
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt;  cohen_d hedges_g </span></span>
 <span><span class="co">#&gt;     1.98     1.91</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <p>Per questi dati otteniamo</p>
 <p><span class="math display">\[
@@ -1193,7 +1200,7 @@ E(Y\mid X=1)-E(Y\mid X=0)=\beta.
 \mu_{\text{controllo}}.
 \]</span></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">modello_lineare</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">modello_lineare</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span></span>
 <span>  <span class="va">benessere</span> <span class="op">~</span> <span class="va">gruppo</span>,</span>
 <span>  data <span class="op">=</span> <span class="va">dati_benessere</span></span>
 <span><span class="op">)</span></span>
@@ -1219,6 +1226,7 @@ E(Y\mid X=1)-E(Y\mid X=0)=\beta.
 <span><span class="co">#&gt;                  2.5 % 97.5 %</span></span>
 <span><span class="co">#&gt; (Intercept)      24.74  27.76</span></span>
 <span><span class="co">#&gt; gruppoIntervento  2.86   7.14</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <p>Quando si assume una varianza comune, il test sul coefficiente del predittore è equivalente al test <em>t</em> classico per due gruppi. Questa equivalenza mostra che il test <em>t</em> non è un procedimento separato dal resto della modellizzazione statistica. Rappresenta il caso più semplice di una famiglia di modelli che può essere estesa includendo più gruppi, covariate, interazioni, strutture gerarchiche ed esiti non gaussiani.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Un ponte verso il progetto bayesiano">
@@ -1376,7 +1384,7 @@ P(\Delta&gt;\delta_{\min}\mid y),
 <div class="callout-body-container callout-body">
 <p>Le informazioni sull’ambiente R possono essere ottenute con:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
+<details open="" class="code-fold"><summary>Mostra/Nascondi codice</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; R version 4.6.1 (2026-06-24)</span></span>
 <span><span class="co">#&gt; Platform: aarch64-apple-darwin23</span></span>
 <span><span class="co">#&gt; Running under: macOS Tahoe 26.5.2</span></span>
@@ -1430,6 +1438,7 @@ P(\Delta&gt;\delta_{\min}\mid y),
 <span><span class="co">#&gt; [64] rstantools_2.6.0      coda_0.19-4.1         gridExtra_2.3.1      </span></span>
 <span><span class="co">#&gt; [67] nlme_3.1-170          checkmate_2.3.4       xfun_0.60            </span></span>
 <span><span class="co">#&gt; [70] pkgconfig_2.0.3</span></span></code></pre></div><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 </div>
 </div>
@@ -1873,7 +1882,7 @@ P(\Delta&gt;\delta_{\min}\mid y),
 </div>   
     <div class="nav-footer-center">
 
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ccaudek/utet-frequentista/blob/main/chapters/frequentist_inference/06_two_ind_samples.qmd" class="toc-action"><i class="bi bi-github"></i>Mostra il codice</a></li><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi empty"></i>Segnala un problema</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Preferenze cookie</a></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/ccaudek/utet-frequentista/issues/new" class="toc-action"><i class="bi bi-github"></i>Segnala un problema</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Preferenze cookie</a></div></div>
     <div class="nav-footer-right">
 <p>Realizzato con <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
