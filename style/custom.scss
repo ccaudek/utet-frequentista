@@ -215,19 +215,29 @@ a:hover {
 // Mathematics, code, and output
 // -----------------------------------------------------------------------------
 
+// Quarto/Pandoc wraps display math in `.math.display`; MathJax then adds an
+// inner `mjx-container[display="true"]`. Giving both elements margins and
+// padding doubles the vertical whitespace (and compounds the font scaling).
+// Keep the vertical rhythm on the outer wrapper only.
 .math.display,
-.MathJax_Display,
-mjx-container[display="true"] {
+.MathJax_Display {
   display: block;
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
   font-size: 106%;
-  margin: 1.55rem 0;
-  padding: 0.25rem 0 0.5rem;
+  margin-block: 0.85rem;
+  padding-block: 0;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
+}
+
+// Neutralize MathJax's own display margins inside the Quarto wrapper.
+.math.display mjx-container[display="true"],
+.MathJax_Display mjx-container[display="true"] {
+  margin: 0 !important;
+  padding: 0;
 }
 
 mjx-container:not([display="true"]) {

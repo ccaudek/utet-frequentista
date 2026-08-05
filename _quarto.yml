@@ -139,57 +139,55 @@ format:
           font: "Latin-Modern"
 
 
-# ============================================================
-# Sezione `format: pdf:` per _quarto.yml — utet-frequentista
-# Sostituisce integralmente la sezione pdf esistente.
-# Stile: manuale universitario di statistica (KOMA scrbook).
-# ============================================================
-
   pdf:
     documentclass: scrbook
     classoption:
       - a4paper
-      - 11pt
-      - open=any        # per una resa da libro stampato: open=right
-      - headings=big
+      - 12pt
+      - open=right
       - numbers=noenddot
 
     pdf-engine: lualatex
-    mainfont: "Libertinus Serif"
-    sansfont: "Libertinus Sans"
-    monofont: "Libertinus Mono"
-    mathfont: "Libertinus Math"   # matematica coerente col testo;
-                                  # se il font non è installato, rimuovere questa riga
-    lang: it
 
+    # Tipografia
+    mainfont: "Palatino"
+    sansfont: "Libertinus Sans"
+    monofont: "Source Code Pro"
+    mathfont: "TeX Gyre Pagella Math"
+
+    sansfontoptions:
+      - Scale=MatchLowercase
+    monofontoptions:
+      - Scale=MatchLowercase
+
+    linestretch: 1.05
+
+    # Struttura del volume
     toc: true
     toc-depth: 2
     number-sections: true
 
     # Bibliografia distinta alla fine di ciascun capitolo.
-    # Installare una sola volta dalla radice del progetto:
-    # quarto add pandoc-ext/section-bibliographies --no-prompt
     filters:
       - quarto
       - pandoc-ext/section-bibliographies
     citeproc: false
     reference-section-title: "Riferimenti bibliografici"
-    section-bibliographies:
-      level: 1
-      minlevel: 1
-      cleanup-first: true
 
+    # Collegamenti
     colorlinks: true
     linkcolor: MidnightBlue
     citecolor: MidnightBlue
     urlcolor: MidnightBlue
 
+    # Codice, figure e tabelle
     highlight-style: github
     code-overflow: wrap
     fig-align: center
     fig-cap-location: bottom
     tbl-cap-location: top
 
+    # Geometria della pagina
     geometry:
       - top=25mm
       - bottom=26mm
@@ -205,50 +203,77 @@ format:
         % 1. Microtipografia e impostazione del paragrafo
         % ==========================================================
         \usepackage{microtype}
-        \microtypesetup{protrusion=true,expansion=true,tracking=true}
+        \microtypesetup{
+          protrusion=true,
+          expansion=true,
+          tracking=true
+        }
+
         \emergencystretch=2em
         \setlength{\parindent}{1.25em}
         \setlength{\parskip}{0pt plus 0.5pt}
-        \AtBeginDocument{\linespread{1.05}\selectfont}
+
+        % L'interlinea è impostata mediante `linestretch: 1.05`
+        % nella configurazione Quarto.
 
         % ==========================================================
         % 2. Palette editoriale
         % ==========================================================
         \definecolor{BookAccent}{HTML}{243B53}       % blu editoriale sobrio
-        \definecolor{BookAccentLight}{HTML}{C9D4E0}  % numeri di capitolo, filetti chiari
+        \definecolor{BookAccentLight}{HTML}{C9D4E0}  % numeri di capitolo e filetti chiari
         \definecolor{BookGrey}{HTML}{5A6572}         % elementi secondari
 
         % ==========================================================
         % 3. Testatine e piè di pagina
         % ==========================================================
-        \usepackage[automark,headsepline=0.4pt]{scrlayer-scrpage}
+        \usepackage[
+          automark,
+          headsepline=0.4pt
+        ]{scrlayer-scrpage}
+
         \clearpairofpagestyles
         \automark[section]{chapter}
+
         \ihead[]{\headmark}
         \ohead[]{\pagemark}
         \cfoot[\pagemark]{}
-        \setkomafont{pageheadfoot}{\small\sffamily\color{BookGrey}}
-        \setkomafont{pagenumber}{\small\sffamily\bfseries\color{BookAccent}}
+
+        \setkomafont{pageheadfoot}{%
+          \footnotesize\sffamily\color{BookGrey}%
+        }
+        \setkomafont{pagenumber}{%
+          \footnotesize\sffamily\bfseries\color{BookAccent}%
+        }
         \addtokomafont{headsepline}{\color{BookAccentLight}}
 
         % ==========================================================
         % 4. Aperture di capitolo
         %    Numero grande in tinta chiara allineato a destra,
-        %    filetto pieno, titolo ampio: impianto da manuale.
+        %    filetto pieno e titolo ampio.
         % ==========================================================
         \RedeclareSectionCommand[
           beforeskip=1\baselineskip,
           afterskip=2\baselineskip,
           tocbeforeskip=1.1\baselineskip
         ]{chapter}
-        \setkomafont{disposition}{\normalfont\sffamily\bfseries}
-        \setkomafont{chapter}{\normalfont\sffamily\bfseries\Huge\color{BookAccent}}
+
+        \setkomafont{disposition}{%
+          \normalfont\sffamily\bfseries
+        }
+        \setkomafont{chapter}{%
+          \normalfont\sffamily\bfseries\Huge\color{BookAccent}
+        }
+
         \renewcommand*{\chapterformat}{%
-          {\normalfont\sffamily\bfseries\fontsize{58}{58}\selectfont
-           \color{BookAccentLight}\thechapter}}
+          {\normalfont\sffamily\bfseries
+           \fontsize{58}{58}\selectfont
+           \color{BookAccentLight}\thechapter}%
+        }
+
         \renewcommand{\chapterlinesformat}[3]{%
           \Ifstr{#2}{}{%
-            % Capitoli non numerati (Prefazione, Conclusioni, ...)
+            % Capitoli non numerati:
+            % Prefazione, Introduzione, Conclusioni, ecc.
             {\raggedright #3\par}\nobreak
             \vskip 0.5\baselineskip
             {\color{BookAccent}\rule{\textwidth}{0.9pt}}\par
@@ -258,18 +283,28 @@ format:
             \vskip 0.4\baselineskip
             {\color{BookAccent}\rule{\textwidth}{0.9pt}}\par\nobreak
             \vskip 1\baselineskip
-            {\raggedright #3\par}}}
+            {\raggedright #3\par}%
+          }%
+        }
 
         % ==========================================================
         % 5. Gerarchia dei titoli interni
         % ==========================================================
-        \setkomafont{section}{\normalfont\sffamily\bfseries\Large\color{BookAccent}}
-        \setkomafont{subsection}{\normalfont\sffamily\bfseries\large}
-        \setkomafont{subsubsection}{\normalfont\sffamily\bfseries\normalsize\color{BookGrey}}
+        \setkomafont{section}{%
+          \normalfont\sffamily\bfseries\Large\color{BookAccent}
+        }
+        \setkomafont{subsection}{%
+          \normalfont\sffamily\bfseries\large
+        }
+        \setkomafont{subsubsection}{%
+          \normalfont\sffamily\bfseries\normalsize\color{BookGrey}
+        }
+
         \RedeclareSectionCommands[
           beforeskip=1.6\baselineskip,
           afterskip=0.8\baselineskip
         ]{section}
+
         \RedeclareSectionCommands[
           beforeskip=1.3\baselineskip,
           afterskip=0.6\baselineskip
@@ -278,22 +313,35 @@ format:
         % ==========================================================
         % 6. Frontespizi di parte
         % ==========================================================
-        \setkomafont{part}{\normalfont\sffamily\bfseries\Huge\color{BookAccent}}
-        \setkomafont{partnumber}{\normalfont\sffamily\mdseries\huge\color{BookGrey}}
+        \setkomafont{part}{%
+          \normalfont\sffamily\bfseries\Huge\color{BookAccent}
+        }
+        \setkomafont{partnumber}{%
+          \normalfont\sffamily\mdseries\huge\color{BookGrey}
+        }
 
         % ==========================================================
         % 7. Sommario
         % ==========================================================
-        \setkomafont{partentry}{\sffamily\bfseries\large\color{BookAccent}}
-        \setkomafont{chapterentry}{\sffamily\bfseries}
-        \setkomafont{chapterentrypagenumber}{\sffamily\bfseries}
+        \setkomafont{partentry}{%
+          \sffamily\bfseries\large\color{BookAccent}
+        }
+        \setkomafont{chapterentry}{%
+          \sffamily\bfseries
+        }
+        \setkomafont{chapterentrypagenumber}{%
+          \sffamily\bfseries
+        }
 
         % ==========================================================
         % 8. Didascalie e tabelle
         % ==========================================================
         \setkomafont{caption}{\small}
-        \setkomafont{captionlabel}{\small\sffamily\bfseries\color{BookAccent}}
+        \setkomafont{captionlabel}{%
+          \small\sffamily\bfseries\color{BookAccent}
+        }
         \setcapindent{0pt}
+
         \usepackage{booktabs}
         \usepackage{array}
 
@@ -301,30 +349,70 @@ format:
         % 9. Note a piè di pagina e descrizioni
         % ==========================================================
         \setkomafont{footnote}{\small}
-        \deffootnote{1.4em}{1em}{\textsuperscript{\thefootnotemark}\,}
-        \setkomafont{descriptionlabel}{\sffamily\bfseries}
+        \deffootnote{1.4em}{1em}{%
+          \textsuperscript{\thefootnotemark}\,
+        }
+
+        \setkomafont{descriptionlabel}{%
+          \sffamily\bfseries
+        }
 
         % ==========================================================
         % 10. Spaziatura attorno a figure e tabelle
+        %     Valori calibrati per il corpo a 12 pt.
         % ==========================================================
-        \setlength{\textfloatsep}{18pt plus 3pt minus 3pt}
-        \setlength{\floatsep}{14pt plus 3pt minus 2pt}
-        \setlength{\intextsep}{14pt plus 3pt minus 2pt}
+        \setlength{\textfloatsep}{20pt plus 4pt minus 3pt}
+        \setlength{\floatsep}{16pt plus 3pt minus 2pt}
+        \setlength{\intextsep}{16pt plus 3pt minus 2pt}
 
         % ==========================================================
         % 11. Elenchi
         % ==========================================================
         \usepackage{enumitem}
-        \setlist{itemsep=0.25em,topsep=0.5em,parsep=0pt,partopsep=0pt}
+
+        \setlist{
+          itemsep=0.25em,
+          topsep=0.5em,
+          parsep=0pt,
+          partopsep=0pt
+        }
 
         % ==========================================================
         % 12. Controllo di vedove, orfane e salti di pagina
+        %     Controllo forte, ma non assoluto, per evitare pagine
+        %     eccessivamente vuote o spaziature verticali irregolari.
         % ==========================================================
-        \clubpenalty=10000
-        \widowpenalty=10000
+        \clubpenalty=9000
+        \widowpenalty=9000
         \displaywidowpenalty=10000
-        \brokenpenalty=10000
+        \brokenpenalty=5000
 
+        % ==========================================================
+        % 13. Codice sorgente e output della console
+        %     Corpo ridotto e ritorno a capo automatico.
+        % ==========================================================
+        \usepackage{fvextra}
+
+        % Codice sorgente con evidenziazione sintattica
+        \RecustomVerbatimEnvironment{Highlighting}{Verbatim}{
+          commandchars=\\\{\},
+          fontsize=\footnotesize,
+          breaklines=true,
+          breakanywhere=true,
+          breakautoindent=true,
+          breaksymbolleft={\tiny\ensuremath{\hookrightarrow}\,}
+        }
+
+        % Output testuale prodotto da R/knitr
+        \RecustomVerbatimEnvironment{verbatim}{Verbatim}{
+          fontsize=\footnotesize,
+          breaklines=true,
+          breakanywhere=true,
+          breakautoindent=true,
+          breaksymbolleft={\tiny\ensuremath{\hookrightarrow}\,}
+        }
+
+editor: source
 
 execute:
   freeze: auto
